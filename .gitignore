@@ -1,0 +1,26 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+
+# Java / Gradle
+api/build/
+api/.gradle/
+api/bin/
+api/out/
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Local data and secrets
+.env
+*.local.yml
+ingest/snapshots/
+ingest/reports/
