@@ -1,0 +1,60 @@
+{
+  "slug": "pmfby",
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "category": "agriculture",
+  "icon": "🌦️",
+  "ministry": { "en": "Ministry of Agriculture and Farmers Welfare", "hi": "कृषि एवं किसान कल्याण मंत्रालय" },
+  "official_apply_url": "https://pmfby.gov.in/",
+  "reverify_days": 120,
+  "content": {
+    "en": {
+      "name": "PM Fasal Bima Yojana (crop insurance)",
+      "summary": "Low-cost insurance for crops lost to bad weather, pests or disease.",
+      "benefit": "The farmer pays at most 2% of the insured amount for kharif crops, 1.5% for rabi crops and 5% for commercial and horticulture crops. The government pays the rest of the premium.",
+      "how_to_apply": "Enrol through your bank, a Common Service Centre, the insurance company or the PMFBY website before your state's last date for the season. Only notified crops in notified areas are covered."
+    },
+    "hi": {
+      "name": "प्रधानमंत्री फ़सल बीमा योजना",
+      "summary": "ख़राब मौसम, कीड़ों या बीमारी से फ़सल के नुकसान के लिए कम कीमत का बीमा।",
+      "benefit": "किसान ख़रीफ़ फ़सल के लिए बीमा राशि का ज़्यादा से ज़्यादा 2%, रबी के लिए 1.5% और व्यावसायिक व बागवानी फ़सलों के लिए 5% देता है। बाकी प्रीमियम सरकार देती है।",
+      "how_to_apply": "सीज़न के लिए अपने राज्य की आख़िरी तारीख़ से पहले बैंक, कॉमन सर्विस सेंटर, बीमा कंपनी या पीएमएफ़बीवाई वेबसाइट से नामांकन करें। केवल अधिसूचित क्षेत्रों की अधिसूचित फ़सलें कवर होती हैं।"
+    }
+  },
+  "sources": [
+    {
+      "id": "portal",
+      "url": "https://pmfby.gov.in/",
+      "title": "PMFBY official portal",
+      "publisher": "Ministry of Agriculture and Farmers Welfare",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": null,
+      "content_hash": null,
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "farmer",
+      "logic": { "==": [{ "var": "occupation" }, "farmer"] },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "portal",
+      "locator": null,
+      "text": { "en": "Grows crops (as owner, tenant or sharecropper)", "hi": "फ़सल उगाते हैं (मालिक, किरायेदार या बटाईदार के रूप में)" }
+    }
+  ],
+  "documents": [
+    { "code": "aadhaar", "mandatory": true, "source": "portal" },
+    { "code": "bank_account", "mandatory": true, "source": "portal" },
+    { "code": "land_records", "mandatory": false, "source": "portal" },
+    { "code": "sowing_certificate", "mandatory": false, "source": "portal" }
+  ],
+  "window": { "type": "seasonal" },
+  "deadlines": [],
+  "relations": []
+}

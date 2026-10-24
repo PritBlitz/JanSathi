@@ -1,0 +1,85 @@
+{
+  "slug": "pmay-g",
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "category": "housing",
+  "icon": "🏠",
+  "ministry": { "en": "Ministry of Rural Development", "hi": "ग्रामीण विकास मंत्रालय" },
+  "official_apply_url": "https://pmayg.nic.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "PM Awas Yojana – Gramin (rural housing)",
+      "summary": "Help to build a pucca house for village families who have no house or live in a kutcha house.",
+      "benefit": "The scheme gives about ₹1.2 lakh (₹1.3 lakh in hilly and difficult areas) to build a pucca house, plus wage support under MGNREGA and help for a toilet.",
+      "how_to_apply": "Families are chosen from the government's housing survey list and checked by the gram sabha. Ask at your gram panchayat or block office whether your family is on the list."
+    },
+    "hi": {
+      "name": "प्रधानमंत्री आवास योजना – ग्रामीण",
+      "summary": "जिन गाँव के परिवारों के पास घर नहीं है या जो कच्चे घर में रहते हैं, उन्हें पक्का घर बनाने में मदद।",
+      "benefit": "पक्का घर बनाने के लिए लगभग ₹1.2 लाख (पहाड़ी और कठिन इलाकों में ₹1.3 लाख) दिए जाते हैं, साथ में मनरेगा से मज़दूरी और शौचालय के लिए मदद।",
+      "how_to_apply": "परिवारों को सरकार के आवास सर्वे की सूची से चुना जाता है और ग्राम सभा जाँच करती है। अपनी ग्राम पंचायत या ब्लॉक कार्यालय में पूछें कि आपका परिवार सूची में है या नहीं।"
+    }
+  },
+  "sources": [
+    {
+      "id": "portal",
+      "url": "https://pmayg.nic.in/",
+      "title": "PMAY-G official portal",
+      "publisher": "Ministry of Rural Development",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": null,
+      "content_hash": null,
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "rural",
+      "logic": { "==": [{ "var": "area" }, "rural"] },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "portal",
+      "locator": null,
+      "text": { "en": "Lives in a village (rural area)", "hi": "गाँव (ग्रामीण क्षेत्र) में रहते हैं" }
+    },
+    {
+      "code": "no_pucca_house",
+      "logic": { "==": [{ "var": "has_pucca_house" }, false] },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "portal",
+      "locator": null,
+      "text": { "en": "The family has no pucca house", "hi": "परिवार के पास पक्का घर नहीं है" }
+    },
+    {
+      "code": "no_income_tax",
+      "logic": { "==": [{ "var": "family_pays_income_tax" }, false] },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "portal",
+      "locator": null,
+      "text": { "en": "No one in the family pays income tax", "hi": "परिवार में कोई आयकर नहीं भरता" }
+    },
+    {
+      "code": "no_govt_job",
+      "logic": { "==": [{ "var": "family_has_govt_job" }, false] },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "portal",
+      "locator": null,
+      "text": { "en": "No one in the family has a government job", "hi": "परिवार में किसी के पास सरकारी नौकरी नहीं है" }
+    }
+  ],
+  "documents": [
+    { "code": "aadhaar", "mandatory": true, "source": "portal" },
+    { "code": "bank_account", "mandatory": true, "source": "portal" }
+  ],
+  "window": { "type": "rolling" },
+  "deadlines": [],
+  "relations": []
+}

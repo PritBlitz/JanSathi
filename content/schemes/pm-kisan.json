@@ -1,0 +1,169 @@
+{
+  "slug": "pm-kisan",
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "category": "agriculture",
+  "icon": "🌾",
+  "ministry": {
+    "en": "Ministry of Agriculture and Farmers Welfare",
+    "hi": "कृषि एवं किसान कल्याण मंत्रालय"
+  },
+  "official_apply_url": "https://pmkisan.gov.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "PM-KISAN (farmer income support)",
+      "summary": "Money support for farmer families who own farm land.",
+      "benefit": "The scheme gives ₹6,000 a year to eligible farmer families, in three parts of ₹2,000, straight into the bank account.",
+      "how_to_apply": "Register on the PM-KISAN website (New Farmer Registration) or at a Common Service Centre. Aadhaar e-KYC is needed. Your state checks the land records before payment starts. Families with a member who holds a constitutional post or is a minister, MP, MLA or mayor are not covered."
+    },
+    "hi": {
+      "name": "पीएम-किसान (किसान आय सहायता)",
+      "summary": "खेती की ज़मीन वाले किसान परिवारों के लिए पैसों की मदद।",
+      "benefit": "इस योजना में पात्र किसान परिवारों को साल में ₹6,000 दिए जाते हैं, ₹2,000 की तीन किस्तों में, सीधे बैंक खाते में।",
+      "how_to_apply": "पीएम-किसान वेबसाइट पर (नया किसान पंजीकरण) या कॉमन सर्विस सेंटर पर पंजीकरण करें। आधार ई-केवाईसी ज़रूरी है। भुगतान से पहले राज्य ज़मीन के रिकॉर्ड जाँचता है। जिन परिवारों में कोई संवैधानिक पद पर है, या मंत्री, सांसद, विधायक या महापौर है, वे इसमें शामिल नहीं हैं।"
+    }
+  },
+  "sources": [
+    {
+      "id": "guidelines",
+      "url": "https://pmkisan.gov.in/Documents/RevisedPM-KISANOperationalGuidelines(English).pdf",
+      "title": "PM-KISAN Operational Guidelines (revised)",
+      "publisher": "Department of Agriculture and Farmers Welfare",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-24",
+      "content_hash": "sha256:ae82cac83f61a5fa5049387a7c13e00c6d55cef0e9163deb5497dc86c86d697f",
+      "verified_at": null,
+      "verified_by": null
+    },
+    {
+      "id": "faq",
+      "url": "https://pmkisan.gov.in/Documents/RevisedFAQ.pdf",
+      "title": "PM-KISAN FAQ (revised)",
+      "publisher": "Department of Agriculture and Farmers Welfare",
+      "doc_type": "faq",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-24",
+      "content_hash": "sha256:95d4e2892b4b351e599bf903f8c6f89b20d4b74831eb8f1a0e61a2a66771ff86",
+      "verified_at": null,
+      "verified_by": null
+    },
+    {
+      "id": "portal",
+      "url": "https://pmkisan.gov.in/",
+      "title": "PM-KISAN official portal",
+      "publisher": "Department of Agriculture and Farmers Welfare",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": null,
+      "content_hash": null,
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "owns_farmland",
+      "logic": {
+        "==": [
+          {
+            "var": "owns_farmland"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "Para 3",
+      "text": {
+        "en": "The family owns farm land in its name",
+        "hi": "परिवार के नाम पर खेती की ज़मीन है"
+      }
+    },
+    {
+      "code": "no_income_tax",
+      "logic": {
+        "==": [
+          {
+            "var": "family_pays_income_tax"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "Para 4.1(b)(v)",
+      "text": {
+        "en": "No one in the family paid income tax last year",
+        "hi": "पिछले साल परिवार में किसी ने आयकर नहीं भरा"
+      }
+    },
+    {
+      "code": "no_govt_job",
+      "logic": {
+        "==": [
+          {
+            "var": "family_has_govt_job"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "Para 4.1(b)(iii)-(iv)",
+      "text": {
+        "en": "No one in the family has a government or PSU job above Group D / Class IV, or a government pension of ₹10,000 or more a month",
+        "hi": "परिवार में किसी के पास ग्रुप डी / चतुर्थ श्रेणी से ऊपर की सरकारी या सार्वजनिक उपक्रम की नौकरी, या ₹10,000 या ज़्यादा महीने की सरकारी पेंशन नहीं है"
+      }
+    },
+    {
+      "code": "no_professional",
+      "logic": {
+        "==": [
+          {
+            "var": "family_has_registered_professional"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "Para 4.1(b)(vi)",
+      "text": {
+        "en": "No one in the family works as a registered doctor, engineer, lawyer, chartered accountant or architect",
+        "hi": "परिवार में कोई पंजीकृत डॉक्टर, इंजीनियर, वकील, चार्टर्ड अकाउंटेंट या आर्किटेक्ट के रूप में काम नहीं करता"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "land_records",
+      "mandatory": true,
+      "source": "guidelines"
+    }
+  ],
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": []
+}

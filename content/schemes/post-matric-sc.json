@@ -1,0 +1,162 @@
+{
+  "slug": "post-matric-sc",
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "category": "education",
+  "icon": "🎓",
+  "ministry": {
+    "en": "Ministry of Social Justice and Empowerment",
+    "hi": "सामाजिक न्याय एवं अधिकारिता मंत्रालय"
+  },
+  "official_apply_url": "https://scholarships.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Post-matric scholarship for SC students",
+      "summary": "A scholarship for Scheduled Caste students studying after class 10.",
+      "benefit": "The scholarship pays the compulsory fees charged by the institution and a yearly allowance. The amount depends on the course.",
+      "how_to_apply": "Apply on the National Scholarship Portal or your state's scholarship portal while applications are open for the academic year. Your institution verifies the application."
+    },
+    "hi": {
+      "name": "अनुसूचित जाति के छात्रों के लिए पोस्ट-मैट्रिक छात्रवृत्ति",
+      "summary": "कक्षा 10 के बाद पढ़ने वाले अनुसूचित जाति के छात्रों के लिए छात्रवृत्ति।",
+      "benefit": "छात्रवृत्ति संस्थान की अनिवार्य फ़ीस और सालाना भत्ता देती है। राशि कोर्स पर निर्भर करती है।",
+      "how_to_apply": "शैक्षणिक वर्ष के लिए आवेदन खुले हों तब राष्ट्रीय छात्रवृत्ति पोर्टल या अपने राज्य के छात्रवृत्ति पोर्टल पर आवेदन करें। आपका संस्थान आवेदन की जाँच करता है।"
+    }
+  },
+  "sources": [
+    {
+      "id": "msje",
+      "url": "https://socialjustice.gov.in/schemes/25",
+      "title": "Post Matric Scholarship for Scheduled Caste Students",
+      "publisher": "Ministry of Social Justice and Empowerment",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-24",
+      "content_hash": "sha256:7bb50ca8a9087a2114cd97939b1ab47aadea7bac1ea312eac54a92fdeeef4ac2",
+      "verified_at": null,
+      "verified_by": null
+    },
+    {
+      "id": "nsp",
+      "url": "https://scholarships.gov.in/",
+      "title": "National Scholarship Portal",
+      "publisher": "Government of India",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": null,
+      "content_hash": null,
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "category_sc",
+      "logic": {
+        "==": [
+          {
+            "var": "social_category"
+          },
+          "sc"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "msje",
+      "locator": "To verify against the scheme guidelines",
+      "text": {
+        "en": "Belongs to a Scheduled Caste",
+        "hi": "अनुसूचित जाति से हैं"
+      }
+    },
+    {
+      "code": "post_matric",
+      "logic": {
+        "in": [
+          {
+            "var": "education_level"
+          },
+          [
+            "class_11_12",
+            "diploma",
+            "ug",
+            "pg"
+          ]
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "msje",
+      "locator": "To verify against the scheme guidelines",
+      "text": {
+        "en": "Studying after class 10 (class 11 or higher)",
+        "hi": "कक्षा 10 के बाद पढ़ाई (कक्षा 11 या ऊपर)"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          250000
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "msje",
+      "locator": "To verify: 2026 news reports say the limit may be raised to ₹4.5 lakh",
+      "text": {
+        "en": "Family income up to ₹2.5 lakh a year",
+        "hi": "परिवार की आय साल में ₹2.5 लाख तक"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "caste_certificate",
+      "mandatory": true,
+      "source": "nsp"
+    },
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "nsp"
+    },
+    {
+      "code": "marksheet",
+      "mandatory": true,
+      "source": "nsp"
+    },
+    {
+      "code": "fee_receipt",
+      "mandatory": true,
+      "source": "nsp"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "nsp"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "nsp"
+    },
+    {
+      "code": "photo",
+      "mandatory": false,
+      "source": "nsp"
+    }
+  ],
+  "window": {
+    "type": "yearly"
+  },
+  "deadlines": [],
+  "relations": []
+}

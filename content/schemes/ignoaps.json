@@ -1,0 +1,115 @@
+{
+  "slug": "ignoaps",
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "category": "pension",
+  "icon": "👵",
+  "ministry": {
+    "en": "Ministry of Rural Development (NSAP)",
+    "hi": "ग्रामीण विकास मंत्रालय (NSAP)"
+  },
+  "official_apply_url": "https://nsap.dord.gov.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "Old age pension (IGNOAPS)",
+      "summary": "A monthly pension for older people from families below the poverty line.",
+      "benefit": "The central government pays ₹200 a month for ages 60 to 79 and ₹500 a month from age 80. Most states add more money on top.",
+      "how_to_apply": "Apply at the gram panchayat or block office in villages, or the municipal office in towns. Many states also have an online pension portal."
+    },
+    "hi": {
+      "name": "वृद्धावस्था पेंशन (IGNOAPS)",
+      "summary": "गरीबी रेखा से नीचे के परिवारों के बुज़ुर्गों के लिए हर महीने पेंशन।",
+      "benefit": "केंद्र सरकार 60 से 79 साल की उम्र में ₹200 महीना और 80 साल से ₹500 महीना देती है। ज़्यादातर राज्य इसमें और पैसा जोड़ते हैं।",
+      "how_to_apply": "गाँव में ग्राम पंचायत या ब्लॉक कार्यालय में, शहर में नगर निकाय कार्यालय में आवेदन करें। कई राज्यों में ऑनलाइन पेंशन पोर्टल भी है।"
+    }
+  },
+  "sources": [
+    {
+      "id": "nsap",
+      "url": "https://nsap.dord.gov.in/",
+      "title": "National Social Assistance Programme",
+      "publisher": "Department of Rural Development",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-24",
+      "content_hash": "sha256:6d952aa16008f6ba89814a6e28a94e1361b47187f6422cdb9fb1029edabf37ac",
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          60
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "nsap",
+      "locator": "To verify: the portal does not state the criteria; current text is from secondary sources",
+      "text": {
+        "en": "Age 60 or older",
+        "hi": "उम्र 60 साल या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "bpl",
+      "logic": {
+        "==": [
+          {
+            "var": "is_bpl"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "nsap",
+      "locator": "To verify: the portal does not state the criteria; current text is from secondary sources",
+      "text": {
+        "en": "The family is below the poverty line (BPL)",
+        "hi": "परिवार गरीबी रेखा से नीचे (बीपीएल) है"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "age_proof",
+      "mandatory": true,
+      "source": "nsap"
+    },
+    {
+      "code": "ration_card",
+      "mandatory": true,
+      "source": "nsap"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "nsap"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "nsap"
+    },
+    {
+      "code": "photo",
+      "mandatory": false,
+      "source": "nsap"
+    }
+  ],
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": []
+}

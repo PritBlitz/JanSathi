@@ -1,0 +1,71 @@
+{
+  "slug": "pm-jay",
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "category": "health",
+  "icon": "🏥",
+  "ministry": { "en": "National Health Authority", "hi": "राष्ट्रीय स्वास्थ्य प्राधिकरण" },
+  "official_apply_url": "https://beneficiary.nha.gov.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "Ayushman Bharat PM-JAY (health cover)",
+      "summary": "Free hospital treatment at listed hospitals for families on the scheme list, and for people aged 70 or older.",
+      "benefit": "The scheme covers hospital treatment up to ₹5 lakh per family per year at listed government and private hospitals, without paying at the hospital.",
+      "how_to_apply": "Check if your family is on the list on the official beneficiary website, at a Common Service Centre, or with the Ayushman Mitra at a listed hospital. Then get an Ayushman card with Aadhaar e-KYC. People aged 70 or older can get a card whatever their income."
+    },
+    "hi": {
+      "name": "आयुष्मान भारत पीएम-जेएवाई (स्वास्थ्य बीमा)",
+      "summary": "योजना की सूची वाले परिवारों और 70 साल या उससे ज़्यादा उम्र के लोगों के लिए सूचीबद्ध अस्पतालों में मुफ़्त इलाज।",
+      "benefit": "यह योजना सूचीबद्ध सरकारी और निजी अस्पतालों में हर परिवार के लिए साल में ₹5 लाख तक का इलाज कवर करती है, अस्पताल में पैसे दिए बिना।",
+      "how_to_apply": "आधिकारिक लाभार्थी वेबसाइट पर, कॉमन सर्विस सेंटर पर, या सूचीबद्ध अस्पताल के आयुष्मान मित्र से देखें कि आपका परिवार सूची में है या नहीं। फिर आधार ई-केवाईसी से आयुष्मान कार्ड बनवाएँ। 70 साल या उससे ज़्यादा उम्र के लोग आय से फ़र्क पड़े बिना कार्ड बनवा सकते हैं।"
+    }
+  },
+  "sources": [
+    {
+      "id": "pmjay",
+      "url": "https://pmjay.gov.in/",
+      "title": "Ayushman Bharat PM-JAY",
+      "publisher": "National Health Authority",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": null,
+      "content_hash": null,
+      "verified_at": null,
+      "verified_by": null
+    },
+    {
+      "id": "beneficiary",
+      "url": "https://beneficiary.nha.gov.in/",
+      "title": "PM-JAY beneficiary portal",
+      "publisher": "National Health Authority",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": null,
+      "content_hash": null,
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "listed_or_70_plus",
+      "logic": { "or": [{ ">=": [{ "var": "age" }, 70] }, { "==": [{ "var": "in_pmjay_list" }, true] }] },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "pmjay",
+      "locator": null,
+      "text": { "en": "The family is on the PM-JAY list, or you are 70 or older", "hi": "परिवार पीएम-जेएवाई सूची में है, या आपकी उम्र 70 साल या उससे ज़्यादा है" }
+    }
+  ],
+  "documents": [
+    { "code": "aadhaar", "mandatory": true, "source": "beneficiary" },
+    { "code": "ration_card", "mandatory": false, "source": "beneficiary" }
+  ],
+  "window": { "type": "rolling" },
+  "deadlines": [],
+  "relations": []
+}

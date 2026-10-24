@@ -1,0 +1,168 @@
+{
+  "$comment": "Profile fields that rules may read. Labels are UI strings: q.<field> and opt.<field>.<value> in web/locales/*.json. A band option sets {min,max}; 'unknown: true' options store nothing (missing).",
+  "core": ["age", "gender", "area", "occupation"],
+  "fields": {
+    "age": {
+      "type": "band",
+      "scope": "member",
+      "allowExact": true,
+      "unit": "years",
+      "options": [
+        { "value": "under_18", "icon": "🧒", "band": { "min": 0, "max": 17 } },
+        { "value": "18_39", "icon": "🧑", "band": { "min": 18, "max": 39 } },
+        { "value": "40_59", "icon": "🧔", "band": { "min": 40, "max": 59 } },
+        { "value": "60_69", "icon": "👵", "band": { "min": 60, "max": 69 } },
+        { "value": "70_79", "icon": "👴", "band": { "min": 70, "max": 79 } },
+        { "value": "80_plus", "icon": "🧓", "band": { "min": 80, "max": 120 } }
+      ]
+    },
+    "gender": {
+      "type": "enum",
+      "scope": "member",
+      "options": [
+        { "value": "female", "icon": "👩" },
+        { "value": "male", "icon": "👨" },
+        { "value": "transgender", "icon": "🧑" },
+        { "value": "undisclosed", "icon": "🤐", "unknown": true }
+      ]
+    },
+    "area": {
+      "type": "enum",
+      "scope": "household",
+      "options": [
+        { "value": "rural", "icon": "🏡" },
+        { "value": "urban", "icon": "🏙️" }
+      ]
+    },
+    "occupation": {
+      "type": "enum",
+      "scope": "member",
+      "options": [
+        { "value": "farmer", "icon": "🌾" },
+        { "value": "student", "icon": "🎓" },
+        { "value": "daily_wage", "icon": "🛠️" },
+        { "value": "self_employed", "icon": "🏪" },
+        { "value": "salaried", "icon": "💼" },
+        { "value": "homemaker", "icon": "🏠" },
+        { "value": "retired", "icon": "🪑" },
+        { "value": "unemployed", "icon": "🔎" }
+      ]
+    },
+    "annual_income": {
+      "type": "band",
+      "scope": "household",
+      "allowExact": true,
+      "unit": "inr",
+      "options": [
+        { "value": "up_to_1l", "icon": "🪙", "band": { "min": 0, "max": 100000 } },
+        { "value": "1l_2_5l", "icon": "💵", "band": { "min": 100001, "max": 250000 } },
+        { "value": "2_5l_5l", "icon": "💰", "band": { "min": 250001, "max": 500000 } },
+        { "value": "5l_8l", "icon": "💳", "band": { "min": 500001, "max": 800000 } },
+        { "value": "above_8l", "icon": "🏦", "band": { "min": 800001, "max": 1000000000 } },
+        { "value": "dont_know", "icon": "🤷", "unknown": true }
+      ]
+    },
+    "social_category": {
+      "type": "enum",
+      "scope": "member",
+      "options": [
+        { "value": "general", "icon": "👥" },
+        { "value": "obc", "icon": "👥" },
+        { "value": "sc", "icon": "👥" },
+        { "value": "st", "icon": "👥" },
+        { "value": "ews", "icon": "👥" },
+        { "value": "undisclosed", "icon": "🤐", "unknown": true }
+      ]
+    },
+    "education_level": {
+      "type": "enum",
+      "scope": "member",
+      "options": [
+        { "value": "up_to_class_10", "icon": "📗" },
+        { "value": "class_11_12", "icon": "📘" },
+        { "value": "diploma", "icon": "🛠️" },
+        { "value": "ug", "icon": "🎓" },
+        { "value": "pg", "icon": "📜" },
+        { "value": "not_studying", "icon": "🚫" }
+      ]
+    },
+    "is_bpl": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🧾"
+    },
+    "disability": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "♿"
+    },
+    "disability_percent": {
+      "type": "band",
+      "scope": "member",
+      "allowExact": true,
+      "unit": "percent",
+      "options": [
+        { "value": "under_40", "icon": "♿", "band": { "min": 0, "max": 39 } },
+        { "value": "40_79", "icon": "♿", "band": { "min": 40, "max": 79 } },
+        { "value": "80_plus", "icon": "♿", "band": { "min": 80, "max": 100 } },
+        { "value": "dont_know", "icon": "🤷", "unknown": true }
+      ]
+    },
+    "marital_status": {
+      "type": "enum",
+      "scope": "member",
+      "options": [
+        { "value": "married", "icon": "💍" },
+        { "value": "unmarried", "icon": "🧍" },
+        { "value": "widowed", "icon": "🕊️" },
+        { "value": "separated", "icon": "↔️" },
+        { "value": "undisclosed", "icon": "🤐", "unknown": true }
+      ]
+    },
+    "is_pregnant_or_lactating": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🤰"
+    },
+    "owns_farmland": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🌱"
+    },
+    "family_pays_income_tax": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🧮"
+    },
+    "family_has_govt_job": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🏛️"
+    },
+    "family_has_registered_professional": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🩺"
+    },
+    "is_govt_employee": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🏛️"
+    },
+    "has_pucca_house": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🧱"
+    },
+    "in_pmjay_list": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🏥"
+    },
+    "has_daughter_under_10": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "👧"
+    }
+  }
+}

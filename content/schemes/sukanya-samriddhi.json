@@ -1,0 +1,86 @@
+{
+  "slug": "sukanya-samriddhi",
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "category": "women_child",
+  "icon": "👧",
+  "ministry": {
+    "en": "Ministry of Finance",
+    "hi": "वित्त मंत्रालय"
+  },
+  "official_apply_url": "https://www.indiapost.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Sukanya Samriddhi (savings for a daughter)",
+      "summary": "A government savings account for a girl under 10, opened by a parent or guardian.",
+      "benefit": "Deposits of ₹250 to ₹1.5 lakh a year earn an interest rate set by the government. The interest is tax-free and deposits get a tax deduction. The account matures after 21 years. One account per girl.",
+      "how_to_apply": "Open the account at a post office or an authorised bank, with the girl's birth certificate and the parent's identity and address proof."
+    },
+    "hi": {
+      "name": "सुकन्या समृद्धि (बेटी के लिए बचत)",
+      "summary": "10 साल से कम उम्र की बेटी के लिए सरकारी बचत खाता, जिसे माता-पिता या अभिभावक खोलते हैं।",
+      "benefit": "साल में ₹250 से ₹1.5 लाख तक जमा पर सरकार की तय ब्याज दर मिलती है। ब्याज टैक्स-फ़्री है और जमा पर टैक्स छूट है। खाता 21 साल में पूरा होता है। हर बेटी का एक खाता।",
+      "how_to_apply": "बेटी के जन्म प्रमाण पत्र और माता-पिता के पहचान और पते के प्रमाण के साथ डाकघर या अधिकृत बैंक में खाता खोलें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "nsi",
+      "url": "https://www.nsiindia.gov.in/InternalPage.aspx?Id_Pk=89",
+      "title": "Sukanya Samriddhi Account",
+      "publisher": "National Savings Institute, Ministry of Finance",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-24",
+      "content_hash": "sha256:34b1afacd4c6ac77121a20489b77a62c774984f15fbe3a6ee7cd966cd477ad5d",
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "daughter_under_10",
+      "logic": {
+        "==": [
+          {
+            "var": "has_daughter_under_10"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "nsi",
+      "locator": null,
+      "text": {
+        "en": "Has a daughter younger than 10 (the account is opened in her name)",
+        "hi": "10 साल से कम उम्र की बेटी है (खाता उसके नाम पर खुलता है)"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "birth_certificate_child",
+      "mandatory": true,
+      "source": "nsi"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "nsi"
+    },
+    {
+      "code": "photo",
+      "mandatory": true,
+      "source": "nsi"
+    }
+  ],
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": []
+}

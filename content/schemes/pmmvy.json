@@ -1,0 +1,98 @@
+{
+  "slug": "pmmvy",
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "category": "women_child",
+  "icon": "🤰",
+  "ministry": { "en": "Ministry of Women and Child Development", "hi": "महिला एवं बाल विकास मंत्रालय" },
+  "official_apply_url": "https://pmmvy.wcd.gov.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "PM Matru Vandana Yojana (maternity support)",
+      "summary": "Money support for pregnant women and new mothers, for better rest and nutrition.",
+      "benefit": "The scheme gives ₹5,000 for the first child, in two parts, and ₹6,000 for a second child if she is a girl.",
+      "how_to_apply": "Register at your Anganwadi centre or with the ANM / health worker, or on the PMMVY website. Register early in the pregnancy."
+    },
+    "hi": {
+      "name": "प्रधानमंत्री मातृ वंदना योजना",
+      "summary": "गर्भवती महिलाओं और नई माताओं के लिए आराम और पोषण के लिए पैसों की मदद।",
+      "benefit": "योजना में पहले बच्चे के लिए ₹5,000 दो किस्तों में, और दूसरी संतान बेटी होने पर ₹6,000 दिए जाते हैं।",
+      "how_to_apply": "अपने आंगनवाड़ी केंद्र या ANM / स्वास्थ्य कार्यकर्ता के पास, या पीएमएमवीवाई वेबसाइट पर पंजीकरण करें। गर्भावस्था में जल्दी पंजीकरण कराएँ।"
+    }
+  },
+  "sources": [
+    {
+      "id": "portal",
+      "url": "https://pmmvy.wcd.gov.in/",
+      "title": "PMMVY official portal",
+      "publisher": "Ministry of Women and Child Development",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": null,
+      "content_hash": null,
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "female",
+      "logic": { "==": [{ "var": "gender" }, "female"] },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "portal",
+      "locator": null,
+      "text": { "en": "Woman", "hi": "महिला" }
+    },
+    {
+      "code": "pregnant_or_lactating",
+      "logic": { "==": [{ "var": "is_pregnant_or_lactating" }, true] },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "portal",
+      "locator": null,
+      "text": { "en": "Pregnant or breastfeeding", "hi": "गर्भवती हैं या स्तनपान करा रही हैं" }
+    },
+    {
+      "code": "not_govt_employee",
+      "logic": { "==": [{ "var": "is_govt_employee" }, false] },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "portal",
+      "locator": null,
+      "text": { "en": "Not in a regular government or PSU job", "hi": "नियमित सरकारी या सार्वजनिक उपक्रम की नौकरी में नहीं हैं" }
+    },
+    {
+      "code": "priority_group",
+      "logic": {
+        "or": [
+          { "<=": [{ "var": "annual_income" }, 800000] },
+          { "in": [{ "var": "social_category" }, ["sc", "st"]] },
+          { "==": [{ "var": "is_bpl" }, true] },
+          { ">=": [{ "var": "disability_percent" }, 40] },
+          { "==": [{ "var": "in_pmjay_list" }, true] }
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "portal",
+      "locator": null,
+      "text": {
+        "en": "Meets one of these: family income up to ₹8 lakh, SC or ST, BPL card, 40% or more disability, or Ayushman card",
+        "hi": "इनमें से एक: परिवार की आय ₹8 लाख तक, अनुसूचित जाति या जनजाति, बीपीएल कार्ड, 40% या ज़्यादा दिव्यांगता, या आयुष्मान कार्ड"
+      }
+    }
+  ],
+  "documents": [
+    { "code": "mcp_card", "mandatory": true, "source": "portal" },
+    { "code": "aadhaar", "mandatory": true, "source": "portal" },
+    { "code": "bank_account", "mandatory": true, "source": "portal" },
+    { "code": "birth_certificate_child", "mandatory": false, "source": "portal" }
+  ],
+  "window": { "type": "rolling" },
+  "deadlines": [],
+  "relations": []
+}
