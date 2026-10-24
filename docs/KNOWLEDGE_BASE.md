@@ -1,0 +1,98 @@
+# Knowledge base
+
+> **Status:** planned (Phases 1 and 4). Not implemented.
+
+The knowledge base is the verified, structured store of schemes, rules, documents, deadlines and their sources. Nothing reaches a user unless a human reviewer has checked it against an official source.
+
+## 1. Source types
+
+| `doc_type` | What it is | Example | Can back a `confirmed` rule? |
+|---|---|---|---|
+| `gazette` | Official notification in the Gazette of India or a state gazette | Scheme notification | Yes |
+| `guideline` | Official scheme guidelines / operational manual from the ministry or department | Guidelines PDF | Yes |
+| `faq` | Official FAQ or help page from the scheme owner | FAQ on the scheme portal | No — `guidance` at most |
+| `portal` | The official application portal's own text | National Scholarship Portal pages | Yes, for process facts (how to apply, documents, dates); `guidance` for eligibility |
+| `secondary` | Anything not published by the scheme owner: news, NGO explainers, aggregators | — | No. Used only to *find* official sources; never cited to users as the basis of a fact. |
+
+**Preferred order:** gazette > guideline > portal > faq. Where an official open-data source exists (e.g. data.gov.in, or myScheme where its terms permit), prefer it to scraping.
+
+## 2. Ingestion and verification workflow
+
+```
+  ┌────────┐   ┌─────────┐   ┌───────────┐   ┌──────────────┐   ┌────────┐   ┌─────────┐
+  │ Find   │──►│ Fetch   │──►│ Extract   │──►│ Review &     │──►│ Second │──►│ Publish │
+  │ source │   │ snapshot│   │ chunk,    │   │ encode       │   │ check  │   │         │
+  │        │   │ + hash  │   │ embed     │   │ (human)      │   │(human) │   │         │
+  └────────┘   └─────────┘   └───────────┘   └──────────────┘   └────────┘   └─────────┘
+```
+
+1. **Find.** A reviewer adds the official URL(s) for a scheme. Secondary sources may point the way, but the record stores the official URL.
+2. **Fetch.** `ingest/` fetches the page with Playwright (for JS-rendered portals) or plain HTTP, and PDFs with PyMuPDF. It:
+   - checks `robots.txt` and the site's terms first, and skips anything disallowed;
+   - rate-limits to at most 1 request per 5 seconds per host, with an identifying User-Agent and contact address;
+   - stores a snapshot (`archived_copy`), `fetched_at` and `content_hash` (sha256 of the normalised text).
+3. **Extract.** trafilatura (HTML) or PyMuPDF (PDF) extracts the text; scanned PDFs go through OCR and are flagged for closer review. Text is split into 300–500-token chunks along headings, each with a `locator` (page, heading path), then embedded.
+4. **Review and encode** (reviewer UI). The reviewer reads the snapshot side-by-side with the structured form and:
+   - writes the scheme summary and benefit text (plain language, grade 5);
+   - encodes eligibility rules as json-logic, each linked to a clause (`source_locator`) and given a confidence label;
+   - lists documents, deadlines and stacking/exclusion relations, each with a source;
+   - adds test fixtures for every rule (see [RULES_ENGINE.md](RULES_ENGINE.md#8-testing));
+   - sets `verified_at` and `verified_by` on the source.
+5. **Second check.** A different reviewer approves. Nobody can approve their own work.
+6. **Publish.** The scheme moves to `published`. Publishing is blocked unless the integrity rules in [DATA_MODEL.md](DATA_MODEL.md#5-integrity-rules) hold and the fixtures pass.
+
+Translations of scheme content follow the same review rule: see [I18N_AND_VOICE.md](I18N_AND_VOICE.md#6-translation-review).
+
+## 3. Confidence labels
+
+Every rule and every assistant answer carries one of three labels.
+
+| Label | Key | When | Shown as |
+|---|---|---|---|
+| **Confirmed rule** | `confirmed` | Taken directly from a gazette, guideline or official portal clause, verified by two reviewers, not stale | Green shield chip |
+| **Official FAQ / guidance** | `guidance` | From an official FAQ or help text, or an official source whose wording is open to interpretation | Outlined document chip |
+| **Unverified / may be outdated** | `uncertain` | Source has changed (`needs_review`), is past its re-verification interval, or the reviewer could only find partial support | Amber warning chip, plus the warning text |
+
+An answer's label is the **weakest** label among the sources it cites.
+
+## 4. Citation format
+
+Every fact shown to a user, in the UI or in an assistant answer, carries a citation:
+
+```json
+{
+  "source_id": "…",
+  "title": "Indira Gandhi National Old Age Pension Scheme — Guidelines",
+  "publisher": "Ministry of Rural Development",
+  "url": "https://…",
+  "locator": "p. 3, para 2.1",
+  "published_date": "2014-…",
+  "verified_at": "2026-10-12",
+  "stale": false
+}
+```
+
+**Display (compact):** `[1] Ministry of Rural Development · Guidelines, p. 3 · verified 12 Oct 2026`, with the link opening the official URL. Dates are formatted with `Intl.DateTimeFormat` in the user's language.
+
+**Read aloud:** *"Source: Ministry of Rural Development guidelines. Last checked 12 October 2026."* URLs are never read aloud.
+
+## 5. Re-check job
+
+Runs daily (GitHub Actions cron or `pg_cron`):
+
+1. For each source of a `published` scheme, fetch with the same rules as ingestion.
+2. Normalise the text (strip navigation, timestamps, whitespace) and hash it. Normalisation avoids false alarms from page chrome.
+3. **Hash changed** → set the scheme to `needs_review`, open a `review_task(kind = source_changed)` with a text diff, and keep serving the old content with the "may be outdated" warning.
+4. **Fetch failed** (404, moved) three runs in a row → same as changed, with the reason recorded.
+5. **Past interval:** if `now - verified_at > scheme.reverify_days` (default 180 days; 30 days during an open application window) → open a `review_task(kind = reverify_due)` and mark the facts stale.
+6. A reviewer re-verifies: either confirms nothing material changed (updates `verified_at`, new hash) or edits rules/content and goes through the second check again.
+
+## 6. User reports
+
+A "Report outdated info" button sits on every scheme page and every assistant answer. It opens a short form: what looks wrong (pick list), optional comment, and the current language. No login and no contact details are needed. The report creates a `review_task(kind = user_report)`. Three or more open reports on one scheme add the "may be outdated" warning until a reviewer resolves them.
+
+## 7. MVP content plan
+
+- About 30 schemes: central schemes plus one state (state to be chosen; see [ROADMAP.md](ROADMAP.md#open-questions)).
+- Cover each persona in the brief: students (scholarships), elderly (pensions), farmers (income support, crop insurance), women and children, people with disabilities, housing and health.
+- Each scheme needs: at least one gazette or guideline source, encoded hard rules with fixtures, documents with state-specific how-to-obtain, deadlines, and en + hi content reviewed by a human.
