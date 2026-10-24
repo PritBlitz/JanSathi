@@ -173,3 +173,109 @@ A household profile holds one record per member. The engine evaluates each schem
   profile: { age: { min: 70, max: 79 } }
   expect: { result: NEED_MORE_INFO, missing_fields: [is_bpl] }
 ```
+
+## 9. Implementation contract (Java and JS must match exactly)
+
+This section is normative. Both engines (`web/js/rules.js`, `api/.../rules/`) implement it, and the shared fixtures in `rules/` check it.
+
+**Do not use a stock json-logic evaluator for results.** Stock json-logic has no "unknown" value. Implement this small subset directly. A library may be used only to parse.
+
+### 9.1 Inputs
+
+- **Rules** come from `content/schemes/<slug>.json`: `{code, logic, hard, confidence, source, locator, text}`. (The DB columns `json_logic`/`is_hard` map to `logic`/`hard`.)
+- **Profile** is a flat JSON object `field → value`. Field names and types are listed in `content/fields.json`.
+  - `band` fields hold either `{"min": a, "max": b}` or an exact number. An exact number `n` is treated as `{n, n}`.
+  - `bool` fields hold `true` / `false`.
+  - `enum` fields hold a string.
+  - **Missing = the key is absent.** "Don't know", "prefer not to say", options marked `unknown: true`, and skipped questions are all stored as an absent key. Never store `null` or `false` for these.
+- `skipped`: a list of field names the user chose to skip. These are only used to exclude fields from `next_question`.
+- `as_of`: an ISO date, used for the staleness check. Tests always pass it.
+
+### 9.2 Value logic (Kleene three-valued)
+
+Values are T, F and U.
+
+- `var` on an absent field → U.
+- `==`, `!=`, `<`, `<=`, `>`, `>=` → U if either operand is U; otherwise a strict comparison (no type coercion).
+- `in` (`[x, array]`) → U if x is U; otherwise array membership.
+- `!` → U stays U.
+- `and` → F if any operand is F, else U if any is U, else T.
+- `or` → T if any operand is T, else U if any is U, else F.
+- Any other operator is an error and fails validation.
+
+### 9.3 Rule outcome
+
+1. Let B = the band fields the rule references whose profile value has `min != max`. Enumerate the corners: the cartesian product of `{min, max}` over B, in the field order of `fields.json`. With no bands there is one corner.
+2. Evaluate the rule at every corner.
+   - All corners T → `pass`.
+   - All corners F → `fail`.
+   - Anything else → `unknown`.
+3. `missing_fields` is set only when the outcome is `unknown`. It holds:
+   - the referenced fields that are absent; plus
+   - every band field v in B where flipping v (min↔max) changes the result at some corner (a "straddle").
+
+   The list is ordered by `fields.json` order and de-duplicated.
+
+### 9.4 Scheme result
+
+1. If any hard rule is `fail` with confidence ≠ `uncertain` → `NOT_ELIGIBLE`.
+2. Else, if any hard rule is `unknown`, or `fail` with confidence `uncertain` → `NEED_MORE_INFO`.
+3. Else → `LIKELY_ELIGIBLE`.
+
+Soft rules never change the result.
+
+The scheme's `missing_fields` is the union of the hard `unknown` rules' `missing_fields`, in rule order.
+
+### 9.5 Stale flag and label
+
+- **`stale`** is true if any of these hold:
+  - status ≠ `published`;
+  - any source referenced by a hard rule has `verified_at == null`;
+  - `as_of − verified_at > reverify_days` for any such source.
+- **`label`** is the weakest confidence among the hard rules, where `uncertain` < `guidance` < `confirmed`. A stale scheme forces `label = uncertain`.
+
+### 9.6 `next_question`
+
+1. Count, over the `NEED_MORE_INFO` schemes, how many list each field in `missing_fields`.
+2. Leave out fields in `skipped`.
+3. Pick the field with the highest count. Break ties by `fields.json` order.
+4. If no field qualifies → `null`.
+
+If the chosen field is already a band in the profile, the client asks for an exact value.
+
+### 9.7 Shapes
+
+**Fixtures:** `rules/<slug>.cases.json` (scheme taken from `content/schemes/<slug>.json`) and `rules/_engine.cases.json` (inline `scheme`):
+
+```json
+[{ "name": "…", "profile": {}, "skipped": [], "as_of": "2026-10-24",
+   "expect": { "result": "NEED_MORE_INFO", "missing_fields": ["is_bpl"], "rules": { "age_min": "pass" }, "stale": true, "label": "uncertain" } }]
+```
+
+Every key in `expect` other than `result` is optional; only the keys present are checked.
+
+**`/api/v1/rules/bundle`** (identical to the static `web/data/bundle.json`):
+
+```json
+{ "version": "<sha256 of content>", "generated_at": "…", "include_drafts": false,
+  "fields": {...fields.json}, "documents": {...documents.json}, "schemes": [ ...scheme files ] }
+```
+
+**`POST /api/v1/match`**
+
+Request:
+
+```json
+{ "profile": {}, "skipped": [], "as_of": "2026-10-24", "schemes": ["slug"] }
+```
+
+`schemes` is optional; omit it to match all schemes.
+
+Response:
+
+```json
+{ "ruleset_version": "…", "next_question": "is_bpl",
+  "results": [{ "scheme": "ignoaps", "result": "NEED_MORE_INFO", "label": "uncertain", "stale": true,
+    "missing_fields": ["is_bpl"],
+    "rules": [{ "code": "age_min", "outcome": "pass", "hard": true, "confidence": "guidance", "source": "nsap", "missing_fields": [] }] }] }
+```
