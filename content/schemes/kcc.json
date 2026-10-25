@@ -1,0 +1,86 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "kcc",
+  "category": "agriculture",
+  "icon": "💳",
+  "ministry": {
+    "en": "Ministry of Agriculture and Farmers Welfare",
+    "hi": "कृषि एवं किसान कल्याण मंत्रालय"
+  },
+  "official_apply_url": "https://pmkisan.gov.in/",
+  "reverify_days": 120,
+  "content": {
+    "en": {
+      "name": "Kisan Credit Card (farm loans)",
+      "summary": "A bank credit card for farmers to get short-term loans for crops and for allied work such as dairy, poultry and fisheries. Owner farmers, tenant farmers, oral lessees, sharecroppers and farmer groups can get one.",
+      "benefit": "Short-term farm loans of up to ₹3 lakh at 7% interest, with 3% back for repaying on time, so the effective rate is 4%. In 2025-26 the government raised the crop loan limit under the interest subvention scheme from ₹3 lakh to ₹5 lakh, raised the limit for fisheries and allied work to ₹5 lakh, and raised collateral-free credit to ₹2 lakh per borrower (from 1 January 2025). The card is a RuPay card.",
+      "how_to_apply": "Apply at any bank branch (commercial, regional rural or cooperative bank) with your identity proof and land records, or a tenancy or sowing document if you farm someone else's land. PM-KISAN beneficiaries can also apply through the PM-KISAN portal."
+    },
+    "hi": {
+      "name": "किसान क्रेडिट कार्ड (खेती के लिए ऋण)",
+      "summary": "फ़सलों और डेयरी, मुर्गी पालन और मछली पालन जैसे कामों के लिए छोटी अवधि का ऋण लेने के लिए किसानों का बैंक क्रेडिट कार्ड। ज़मीन के मालिक किसान, किरायेदार किसान, मौखिक पट्टेदार, बटाईदार और किसान समूह इसे ले सकते हैं।",
+      "benefit": "₹3 लाख तक का छोटी अवधि का खेती ऋण 7% ब्याज पर, समय पर चुकाने पर 3% वापस, यानी असल दर 4%। 2025-26 में सरकार ने ब्याज सब्सिडी योजना में फ़सल ऋण की सीमा ₹3 लाख से ₹5 लाख की, मछली पालन और संबंधित कामों की सीमा ₹5 लाख की, और बिना गिरवी के ऋण की सीमा प्रति व्यक्ति ₹2 लाख की (1 जनवरी 2025 से)। कार्ड रुपे कार्ड है।",
+      "how_to_apply": "पहचान पत्र और भूमि रिकॉर्ड के साथ, या किसी और की ज़मीन पर खेती करते हैं तो किरायेदारी या बुवाई के दस्तावेज़ के साथ, किसी भी बैंक शाखा (व्यावसायिक, क्षेत्रीय ग्रामीण या सहकारी बैंक) में आवेदन करें। पीएम-किसान लाभार्थी पीएम-किसान पोर्टल से भी आवेदन कर सकते हैं।"
+    }
+  },
+  "sources": [
+    {
+      "id": "pib_2026",
+      "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/mar/doc2026311819801.pdf",
+      "title": "Kisan Credit Card: Fueling Growth in Agriculture",
+      "publisher": "Press Information Bureau",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-03-11",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:59186de69287b83f2d59fdd0e2fc7cc22c1e8a154ebbdf8353dbf65babd1538a",
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "farmer",
+      "logic": {
+        "==": [
+          {
+            "var": "occupation"
+          },
+          "farmer"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "pib_2026",
+      "locator": "Eligible Beneficiaries, pp. 2-3",
+      "text": {
+        "en": "Farms (as owner, tenant, oral lessee or sharecropper), or does dairy, poultry or fisheries work",
+        "hi": "खेती करते हैं (मालिक, किरायेदार, मौखिक पट्टेदार या बटाईदार के रूप में), या डेयरी, मुर्गी पालन या मछली पालन का काम करते हैं"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "pib_2026"
+    },
+    {
+      "code": "land_records",
+      "mandatory": false,
+      "source": "pib_2026"
+    },
+    {
+      "code": "sowing_certificate",
+      "mandatory": false,
+      "source": "pib_2026"
+    }
+  ]
+}

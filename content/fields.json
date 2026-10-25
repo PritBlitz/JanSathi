@@ -249,6 +249,11 @@
       "type": "bool",
       "scope": "household",
       "icon": "🍚"
+    },
+    "land_up_to_2_ha": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "📏"
     }
   }
 }

@@ -1,0 +1,59 @@
+[
+  {
+    "name": "ST student in class 9-10, income 249,999",
+    "profile": {
+      "social_category": "st",
+      "education_level": "class_9_10",
+      "annual_income": 249999
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "income 250,001",
+    "profile": {
+      "social_category": "st",
+      "education_level": "class_9_10",
+      "annual_income": 250001
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "class 8 or below",
+    "profile": {
+      "social_category": "st",
+      "education_level": "up_to_class_8",
+      "annual_income": 90000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "class_9_10": "fail"
+      }
+    }
+  },
+  {
+    "name": "not ST",
+    "profile": {
+      "social_category": "obc",
+      "education_level": "class_9_10",
+      "annual_income": 90000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  }
+]

@@ -162,6 +162,7 @@
   "q.is_street_vendor": "Do you sell goods or food on the street, from a cart, stall or basket?",
   "q.has_residential_electricity": "Does your household have its own home electricity connection?",
   "q.has_nfsa_ration_card": "Does your family have a ration card under the National Food Security Act (Antyodaya or Priority Household)?",
+  "q.land_up_to_2_ha": "Does your family own 2 hectares (about 5 acres) or less of farm land?",
   "opt.bool.yes": "Yes",
   "opt.bool.no": "No",
   "opt.bool.dont_know": "I don't know",

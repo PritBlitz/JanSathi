@@ -1,0 +1,153 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "yearly"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "post-matric-obc",
+  "category": "education",
+  "icon": "🎓",
+  "ministry": {
+    "en": "Ministry of Social Justice and Empowerment",
+    "hi": "सामाजिक न्याय एवं अधिकारिता मंत्रालय"
+  },
+  "official_apply_url": "https://scholarships.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Post-matric scholarship for OBC, EBC and DNT students (PM-YASASVI)",
+      "summary": "A scholarship for students from Other Backward Classes, Economically Backward Classes and Denotified Tribes who have passed class 10 and study further.",
+      "benefit": "The scholarship pays an academic allowance and fees as set out in the scheme for each course group. Your state may add more. Only two boys of the same parents can get it; there is no such limit for girls.",
+      "how_to_apply": "Apply on your state's scholarship portal or the National Scholarship Portal. Get an income certificate once, at admission. You cannot hold another scholarship at the same time. The current guidelines cover 2021-22 to 2025-26; check the portal for this year's rules."
+    },
+    "hi": {
+      "name": "अन्य पिछड़ा वर्ग, आर्थिक रूप से पिछड़ा वर्ग और विमुक्त जनजाति छात्रों के लिए पोस्ट-मैट्रिक छात्रवृत्ति (पीएम-यशस्वी)",
+      "summary": "कक्षा 10 पास करके आगे पढ़ने वाले अन्य पिछड़ा वर्ग, आर्थिक रूप से पिछड़ा वर्ग और विमुक्त जनजाति के छात्रों के लिए छात्रवृत्ति।",
+      "benefit": "छात्रवृत्ति हर कोर्स समूह के लिए योजना में तय शैक्षणिक भत्ता और फ़ीस देती है। राज्य इसमें और जोड़ सकता है। एक ही माता-पिता के केवल दो बेटों को मिलती है; बेटियों के लिए ऐसी कोई सीमा नहीं है।",
+      "how_to_apply": "अपने राज्य के छात्रवृत्ति पोर्टल या राष्ट्रीय छात्रवृत्ति पोर्टल पर आवेदन करें। आय प्रमाण पत्र एक बार, दाख़िले के समय बनवाएँ। एक साथ दूसरी छात्रवृत्ति नहीं ले सकते। मौजूदा दिशानिर्देश 2021-22 से 2025-26 तक के हैं; इस साल के नियम पोर्टल पर देखें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "guidelines",
+      "url": "https://socialjustice.gov.in/public/ckeditor/upload/65661651839791.pdf",
+      "title": "PM Young Achievers Scholarship Award Scheme for Vibrant India for OBCs and Others (PM-YASASVI), 2021-22 to 2025-26",
+      "publisher": "Department of Social Justice and Empowerment",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:4241720de7314a384a7b2f4c595066c974752aedf721e86dd160dc8e824c63d8",
+      "verified_at": null,
+      "verified_by": null,
+      "note": "Guidelines cover 2021-22 to 2025-26. A reviewer must confirm the scheme period after March 2026."
+    },
+    {
+      "id": "msje",
+      "url": "https://socialjustice.gov.in/schemes/101",
+      "title": "PM-YASASVI",
+      "publisher": "Department of Social Justice and Empowerment",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:7897664e41137dd91ba373018d889d95be00b370a8d3905e20b3d797ae980f27",
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "category_obc",
+      "logic": {
+        "==": [
+          {
+            "var": "social_category"
+          },
+          "obc"
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "Post-matric component, Conditions of Eligibility (i), p. 14",
+      "text": {
+        "en": "Belongs to an Other Backward Class (OBC). Economically backward (EBC) and denotified tribe (DNT) students can also apply: check with the office.",
+        "hi": "अन्य पिछड़ा वर्ग (OBC) से हैं। आर्थिक रूप से पिछड़े (EBC) और विमुक्त जनजाति (DNT) के छात्र भी आवेदन कर सकते हैं: कार्यालय से पूछें।"
+      }
+    },
+    {
+      "code": "post_matric",
+      "logic": {
+        "in": [
+          {
+            "var": "education_level"
+          },
+          [
+            "class_11_12",
+            "diploma",
+            "ug",
+            "pg"
+          ]
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "Conditions of Eligibility (iii), p. 14",
+      "text": {
+        "en": "Has passed class 10 and is studying further",
+        "hi": "कक्षा 10 पास है और आगे पढ़ रहे हैं"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          250000
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "Conditions of Eligibility (xiv)-(xv), p. 15",
+      "text": {
+        "en": "Parents' or guardian's income is up to ₹2.5 lakh a year",
+        "hi": "माता-पिता या अभिभावक की आय साल में ₹2.5 लाख तक है"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "caste_certificate",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "marksheet",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "msje"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "msje"
+    }
+  ]
+}

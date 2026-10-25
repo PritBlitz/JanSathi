@@ -1,0 +1,185 @@
+[
+  {
+    "name": "small farmer aged 30",
+    "profile": {
+      "owns_farmland": true,
+      "land_up_to_2_ha": true,
+      "has_formal_pension_cover": false,
+      "family_has_govt_job": false,
+      "pays_income_tax": false,
+      "family_has_registered_professional": false,
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "age 18",
+    "profile": {
+      "owns_farmland": true,
+      "land_up_to_2_ha": true,
+      "has_formal_pension_cover": false,
+      "family_has_govt_job": false,
+      "pays_income_tax": false,
+      "family_has_registered_professional": false,
+      "age": 18
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 17",
+    "profile": {
+      "owns_farmland": true,
+      "land_up_to_2_ha": true,
+      "has_formal_pension_cover": false,
+      "family_has_govt_job": false,
+      "pays_income_tax": false,
+      "family_has_registered_professional": false,
+      "age": 17
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "age 40",
+    "profile": {
+      "owns_farmland": true,
+      "land_up_to_2_ha": true,
+      "has_formal_pension_cover": false,
+      "family_has_govt_job": false,
+      "pays_income_tax": false,
+      "family_has_registered_professional": false,
+      "age": 40
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 41",
+    "profile": {
+      "owns_farmland": true,
+      "land_up_to_2_ha": true,
+      "has_formal_pension_cover": false,
+      "family_has_govt_job": false,
+      "pays_income_tax": false,
+      "family_has_registered_professional": false,
+      "age": 41
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "more than 2 hectares",
+    "profile": {
+      "owns_farmland": true,
+      "land_up_to_2_ha": false,
+      "has_formal_pension_cover": false,
+      "family_has_govt_job": false,
+      "pays_income_tax": false,
+      "family_has_registered_professional": false,
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "small_holding": "fail"
+      }
+    }
+  },
+  {
+    "name": "no land in the family name",
+    "profile": {
+      "owns_farmland": false,
+      "land_up_to_2_ha": true,
+      "has_formal_pension_cover": false,
+      "family_has_govt_job": false,
+      "pays_income_tax": false,
+      "family_has_registered_professional": false,
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "already in NPS/ESIC/EPF",
+    "profile": {
+      "owns_farmland": true,
+      "land_up_to_2_ha": true,
+      "has_formal_pension_cover": true,
+      "family_has_govt_job": false,
+      "pays_income_tax": false,
+      "family_has_registered_professional": false,
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income tax payer",
+    "profile": {
+      "owns_farmland": true,
+      "land_up_to_2_ha": true,
+      "has_formal_pension_cover": false,
+      "family_has_govt_job": false,
+      "pays_income_tax": true,
+      "family_has_registered_professional": false,
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "only land answered",
+    "profile": {
+      "owns_farmland": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "land_up_to_2_ha",
+        "age",
+        "has_formal_pension_cover",
+        "family_has_govt_job",
+        "pays_income_tax",
+        "family_has_registered_professional"
+      ]
+    }
+  }
+]

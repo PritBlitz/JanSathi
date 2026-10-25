@@ -1,0 +1,84 @@
+[
+  {
+    "name": "ST undergraduate, income 250,000",
+    "profile": {
+      "social_category": "st",
+      "education_level": "ug",
+      "annual_income": 250000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "income 250,001",
+    "profile": {
+      "social_category": "st",
+      "education_level": "ug",
+      "annual_income": 250001
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "income band 2-3 lakh straddles the limit",
+    "profile": {
+      "social_category": "st",
+      "education_level": "ug",
+      "annual_income": {
+        "min": 200000,
+        "max": 300000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  },
+  {
+    "name": "class 9-10 is pre-matric",
+    "profile": {
+      "social_category": "st",
+      "education_level": "class_9_10",
+      "annual_income": 90000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "post_matric": "fail"
+      }
+    }
+  },
+  {
+    "name": "not ST",
+    "profile": {
+      "social_category": "sc",
+      "education_level": "ug",
+      "annual_income": 90000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "category_st": "fail"
+      }
+    }
+  }
+]

@@ -1,0 +1,129 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "yearly"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "pre-matric-st",
+  "category": "education",
+  "icon": "📚",
+  "ministry": {
+    "en": "Ministry of Tribal Affairs",
+    "hi": "जनजातीय कार्य मंत्रालय"
+  },
+  "official_apply_url": "https://scholarships.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Pre-matric scholarship for ST students (class 9 and 10)",
+      "summary": "A scholarship for Scheduled Tribe students studying in class 9 or 10.",
+      "benefit": "₹225 a month for day scholars and ₹525 a month for students living in a hostel, for 10 months a year.",
+      "how_to_apply": "Apply on your state's scholarship portal or the National Scholarship Portal while applications are open. The state checks eligibility and pays the money into your bank account."
+    },
+    "hi": {
+      "name": "अनुसूचित जनजाति के छात्रों के लिए प्री-मैट्रिक छात्रवृत्ति (कक्षा 9 और 10)",
+      "summary": "कक्षा 9 या 10 में पढ़ने वाले अनुसूचित जनजाति के छात्रों के लिए छात्रवृत्ति।",
+      "benefit": "घर से पढ़ने वालों को ₹225 महीना और छात्रावास में रहने वालों को ₹525 महीना, साल में 10 महीने।",
+      "how_to_apply": "आवेदन खुले हों तब अपने राज्य के छात्रवृत्ति पोर्टल या राष्ट्रीय छात्रवृत्ति पोर्टल पर आवेदन करें। राज्य पात्रता जाँचता है और पैसा आपके बैंक खाते में भेजता है।"
+    }
+  },
+  "sources": [
+    {
+      "id": "mota",
+      "url": "https://tribal.nic.in/Scholarship.aspx",
+      "title": "Scholarship & DBT: Pre-Matric and Post-Matric Scholarship Schemes for ST students",
+      "publisher": "Ministry of Tribal Affairs",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:0f2a0bedc08dee157e48a6c695ea0db2c8573f49fa012c44bd6d93274fe8a539",
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "category_st",
+      "logic": {
+        "==": [
+          {
+            "var": "social_category"
+          },
+          "st"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "mota",
+      "locator": "Pre Matric Scholarship Scheme: main features",
+      "text": {
+        "en": "Belongs to a Scheduled Tribe",
+        "hi": "अनुसूचित जनजाति से हैं"
+      }
+    },
+    {
+      "code": "class_9_10",
+      "logic": {
+        "==": [
+          {
+            "var": "education_level"
+          },
+          "class_9_10"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "mota",
+      "locator": "Pre Matric Scholarship Scheme: main features",
+      "text": {
+        "en": "Studying in class 9 or 10",
+        "hi": "कक्षा 9 या 10 में पढ़ रहे हैं"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          250000
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "mota",
+      "locator": "Pre Matric Scholarship Scheme: main features",
+      "text": {
+        "en": "Parents' income is up to ₹2.5 lakh a year",
+        "hi": "माता-पिता की आय साल में ₹2.5 लाख तक है"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "caste_certificate",
+      "mandatory": true,
+      "source": "mota"
+    },
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "mota"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "mota"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "mota"
+    }
+  ]
+}

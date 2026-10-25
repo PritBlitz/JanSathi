@@ -1,0 +1,96 @@
+[
+  {
+    "name": "OBC diploma student, income 250,000",
+    "profile": {
+      "social_category": "obc",
+      "education_level": "diploma",
+      "annual_income": 250000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "income 250,001",
+    "profile": {
+      "social_category": "obc",
+      "education_level": "diploma",
+      "annual_income": 250001
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "income band up to 1 lakh",
+    "profile": {
+      "social_category": "obc",
+      "education_level": "diploma",
+      "annual_income": {
+        "min": 0,
+        "max": 100000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "not studying",
+    "profile": {
+      "social_category": "obc",
+      "education_level": "not_studying",
+      "annual_income": 90000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "post_matric": "fail"
+      }
+    }
+  },
+  {
+    "name": "general category",
+    "profile": {
+      "social_category": "general",
+      "education_level": "diploma",
+      "annual_income": 90000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "category_obc": "fail"
+      }
+    }
+  },
+  {
+    "name": "category undisclosed",
+    "profile": {
+      "education_level": "ug",
+      "annual_income": 90000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "social_category"
+      ]
+    }
+  }
+]

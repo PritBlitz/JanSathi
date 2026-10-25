@@ -1,0 +1,234 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "pm-kmy",
+  "category": "pension",
+  "icon": "👨‍🌾",
+  "ministry": {
+    "en": "Ministry of Agriculture and Farmers Welfare",
+    "hi": "कृषि एवं किसान कल्याण मंत्रालय"
+  },
+  "official_apply_url": "https://maandhan.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "PM Kisan Maandhan (pension for small farmers)",
+      "summary": "A pension scheme for small and marginal farmers with up to 2 hectares of land, who join between age 18 and 40.",
+      "benefit": "From age 60 you receive a pension of at least ₹3,000 a month. You pay ₹55 to ₹200 a month depending on your age when you join, and the central government pays the same amount. After your death, your spouse receives ₹1,500 a month.",
+      "how_to_apply": "Enrol at your nearest Common Service Centre with Aadhaar, bank account details and your mobile number. Your contribution can be taken from your PM-KISAN payments. Your name must be in the state land records as on 1 August 2019. Eligibility is by self-declaration; a false declaration stops the benefit."
+    },
+    "hi": {
+      "name": "प्रधानमंत्री किसान मानधन (छोटे किसानों के लिए पेंशन)",
+      "summary": "2 हेक्टेयर तक ज़मीन वाले छोटे और सीमांत किसानों के लिए पेंशन योजना, जो 18 से 40 साल की उम्र में जुड़ते हैं।",
+      "benefit": "60 साल की उम्र से हर महीने कम से कम ₹3,000 पेंशन मिलती है। जुड़ते समय की उम्र के हिसाब से आप हर महीने ₹55 से ₹200 जमा करते हैं, और केंद्र सरकार उतना ही जमा करती है। आपकी मृत्यु के बाद पति या पत्नी को हर महीने ₹1,500 मिलते हैं।",
+      "how_to_apply": "आधार, बैंक खाते की जानकारी और मोबाइल नंबर लेकर पास के कॉमन सर्विस सेंटर पर नामांकन करें। आपका योगदान पीएम-किसान की किस्त से कट सकता है। 1 अगस्त 2019 को राज्य के भूमि रिकॉर्ड में आपका नाम होना चाहिए। पात्रता स्व-घोषणा से तय होती है; झूठी घोषणा पर लाभ बंद हो जाता है।"
+    }
+  },
+  "sources": [
+    {
+      "id": "pib_2026",
+      "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=159959&ModuleId=3",
+      "title": "Pradhan Mantri Kisan Maandhan Yojana: seven years",
+      "publisher": "Press Information Bureau (Ministry of Agriculture and Farmers Welfare)",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-09-11",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:06ae1b7c742bb58e16256b846d872c0122d6e381f08985095f980db30f52eb97",
+      "verified_at": null,
+      "verified_by": null,
+      "fetch": "manual",
+      "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
+    },
+    {
+      "id": "portal",
+      "url": "https://maandhan.in/",
+      "title": "Maandhan portal",
+      "publisher": "Government of India",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:4cd6beea9a655e6565ee104892d6957dd6b904cc8c472cde7a123d0e6b6f2add",
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "owns_farmland",
+      "logic": {
+        "==": [
+          {
+            "var": "owns_farmland"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "pib_2026",
+      "locator": "Eligibility",
+      "text": {
+        "en": "The family owns farm land in its name",
+        "hi": "परिवार के नाम पर खेती की ज़मीन है"
+      }
+    },
+    {
+      "code": "small_holding",
+      "logic": {
+        "==": [
+          {
+            "var": "land_up_to_2_ha"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "pib_2026",
+      "locator": "Eligibility",
+      "text": {
+        "en": "Farm land of 2 hectares or less",
+        "hi": "2 हेक्टेयर या उससे कम खेती की ज़मीन"
+      }
+    },
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          18
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "pib_2026",
+      "locator": "Eligibility",
+      "text": {
+        "en": "Age 18 or older",
+        "hi": "उम्र 18 साल या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "age_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "age"
+          },
+          40
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "pib_2026",
+      "locator": "Eligibility",
+      "text": {
+        "en": "Age 40 or younger",
+        "hi": "उम्र 40 साल या उससे कम"
+      }
+    },
+    {
+      "code": "no_formal_cover",
+      "logic": {
+        "==": [
+          {
+            "var": "has_formal_pension_cover"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "pib_2026",
+      "locator": "Exclusion criteria 1",
+      "text": {
+        "en": "Not covered by NPS, ESIC or EPF, and not in PM-SYM or PM-LVM",
+        "hi": "NPS, ESIC या EPF में नहीं हैं, और PM-SYM या PM-LVM में नहीं हैं"
+      }
+    },
+    {
+      "code": "no_govt_job",
+      "logic": {
+        "==": [
+          {
+            "var": "family_has_govt_job"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "pib_2026",
+      "locator": "Exclusion criteria 2",
+      "text": {
+        "en": "No one in the family has (or retired from) a government or PSU job above Group D / Class IV / MTS",
+        "hi": "परिवार में किसी के पास ग्रुप डी / चतुर्थ श्रेणी / MTS से ऊपर की सरकारी या सार्वजनिक उपक्रम की नौकरी नहीं है (न ही वहाँ से रिटायर हुआ है)"
+      }
+    },
+    {
+      "code": "no_income_tax",
+      "logic": {
+        "==": [
+          {
+            "var": "pays_income_tax"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "pib_2026",
+      "locator": "Exclusion criteria 2",
+      "text": {
+        "en": "Did not pay income tax in the last assessment year",
+        "hi": "पिछले कर निर्धारण वर्ष में आयकर नहीं भरा"
+      }
+    },
+    {
+      "code": "no_professional",
+      "logic": {
+        "==": [
+          {
+            "var": "family_has_registered_professional"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "pib_2026",
+      "locator": "Exclusion criteria 2",
+      "text": {
+        "en": "No one in the family practises as a registered doctor, engineer, lawyer, chartered accountant or architect",
+        "hi": "परिवार में कोई पंजीकृत डॉक्टर, इंजीनियर, वकील, चार्टर्ड अकाउंटेंट या आर्किटेक्ट के रूप में काम नहीं करता"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "pib_2026"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "pib_2026"
+    },
+    {
+      "code": "land_records",
+      "mandatory": true,
+      "source": "pib_2026"
+    }
+  ]
+}
