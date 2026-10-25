@@ -166,12 +166,12 @@ def main() -> int:
                 if r.get("status") in ("new", "unchanged", "changed"):
                     src["fetched_at"] = today
                     src["content_hash"] = r["hash"]
-            path.write_text(json.dumps(scheme, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            path.write_text(json.dumps(scheme, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
             print(f"updated {path.relative_to(ROOT)} (verified_at is unchanged; a reviewer sets it)")
 
     REPORTS.mkdir(parents=True, exist_ok=True)
     out = REPORTS / f"recheck-{today}.json"
-    out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(f"report: {out.relative_to(ROOT)}")
     return 1 if problems else 0
 
