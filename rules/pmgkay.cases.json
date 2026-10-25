@@ -1,0 +1,41 @@
+[
+  {
+    "name": "family with an NFSA ration card",
+    "profile": {
+      "has_nfsa_ration_card": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "no NFSA ration card",
+    "profile": {
+      "has_nfsa_ration_card": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "nfsa_card": "fail"
+      }
+    }
+  },
+  {
+    "name": "not answered",
+    "profile": {},
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "has_nfsa_ration_card"
+      ]
+    }
+  }
+]

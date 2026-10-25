@@ -1,0 +1,38 @@
+[
+  {
+    "name": "street vendor",
+    "profile": {
+      "is_street_vendor": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "not a street vendor",
+    "profile": {
+      "is_street_vendor": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "not answered",
+    "profile": {},
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "is_street_vendor"
+      ]
+    }
+  }
+]

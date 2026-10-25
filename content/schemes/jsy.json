@@ -1,0 +1,139 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "jsy",
+  "category": "women_children",
+  "icon": "🤰",
+  "ministry": {
+    "en": "Ministry of Health and Family Welfare (National Health Mission)",
+    "hi": "स्वास्थ्य एवं परिवार कल्याण मंत्रालय (राष्ट्रीय स्वास्थ्य मिशन)"
+  },
+  "official_apply_url": "https://nhm.gov.in/index1.php?lang=1&level=3&lid=309&sublinkid=841",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "Janani Suraksha Yojana (cash for giving birth in hospital)",
+      "summary": "Cash help for pregnant women who give birth in a government hospital or health centre, or in an accredited private hospital.",
+      "benefit": "In the Low Performing States (Uttar Pradesh, Uttarakhand, Bihar, Jharkhand, Madhya Pradesh, Chhattisgarh, Assam, Rajasthan, Odisha and Jammu and Kashmir), the mother gets ₹1,400 in rural areas and ₹1,000 in urban areas, and every woman delivering in a government facility qualifies. In other states the mother gets ₹700 in rural areas and ₹600 in urban areas, for BPL, SC and ST women. BPL, SC and ST women can also use accredited private hospitals in all states.",
+      "how_to_apply": "Register your pregnancy with your ASHA worker, ANM or the nearest government health centre, and give birth in a government facility or an accredited private hospital. The ASHA helps with the paperwork. The money goes to your bank account."
+    },
+    "hi": {
+      "name": "जननी सुरक्षा योजना (अस्पताल में प्रसव के लिए पैसे)",
+      "summary": "सरकारी अस्पताल या स्वास्थ्य केंद्र, या मान्य निजी अस्पताल में बच्चे को जन्म देने वाली गर्भवती महिलाओं के लिए पैसों की मदद।",
+      "benefit": "कम प्रदर्शन वाले राज्यों (उत्तर प्रदेश, उत्तराखंड, बिहार, झारखंड, मध्य प्रदेश, छत्तीसगढ़, असम, राजस्थान, ओडिशा और जम्मू-कश्मीर) में माँ को गाँव में ₹1,400 और शहर में ₹1,000 मिलते हैं, और सरकारी केंद्र में प्रसव कराने वाली हर महिला इसमें शामिल है। बाकी राज्यों में बीपीएल, अनुसूचित जाति और जनजाति की महिलाओं को गाँव में ₹700 और शहर में ₹600 मिलते हैं। बीपीएल, अनुसूचित जाति और जनजाति की महिलाएँ सभी राज्यों में मान्य निजी अस्पताल भी चुन सकती हैं।",
+      "how_to_apply": "अपनी आशा कार्यकर्ता, ANM या पास के सरकारी स्वास्थ्य केंद्र में गर्भावस्था का पंजीकरण कराएँ, और सरकारी केंद्र या मान्य निजी अस्पताल में प्रसव कराएँ। आशा काग़ज़ी काम में मदद करती है। पैसा आपके बैंक खाते में आता है।"
+    }
+  },
+  "sources": [
+    {
+      "id": "nhm",
+      "url": "https://nhm.gov.in/index1.php?lang=1&level=3&lid=309&sublinkid=841",
+      "title": "Janani Suraksha Yojana",
+      "publisher": "National Health Mission, Ministry of Health and Family Welfare",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:a07afc3c88820e8736356dc25d367170d75e7f002217a61dd273049dae2f4e36",
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "female",
+      "logic": {
+        "==": [
+          {
+            "var": "gender"
+          },
+          "female"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "nhm",
+      "locator": "Eligibility for Cash Assistance",
+      "text": {
+        "en": "Woman",
+        "hi": "महिला"
+      }
+    },
+    {
+      "code": "pregnant",
+      "logic": {
+        "==": [
+          {
+            "var": "is_pregnant_or_lactating"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "nhm",
+      "locator": "Eligibility for Cash Assistance",
+      "text": {
+        "en": "Pregnant (or has just given birth)",
+        "hi": "गर्भवती हैं (या अभी प्रसव हुआ है)"
+      }
+    },
+    {
+      "code": "state_group",
+      "logic": {
+        "or": [
+          {
+            "in": [
+              {
+                "var": "social_category"
+              },
+              [
+                "sc",
+                "st"
+              ]
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "is_bpl"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "nhm",
+      "locator": "Eligibility for Cash Assistance: LPS all women; HPS BPL/SC/ST",
+      "text": {
+        "en": "BPL, SC or ST, or lives in a Low Performing State (where every woman delivering in a government facility qualifies)",
+        "hi": "बीपीएल, अनुसूचित जाति या जनजाति, या कम प्रदर्शन वाले राज्य में रहती हैं (जहाँ सरकारी केंद्र में प्रसव कराने वाली हर महिला शामिल है)"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "mcp_card",
+      "mandatory": true,
+      "source": "nhm"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "nhm"
+    },
+    {
+      "code": "ration_card",
+      "mandatory": false,
+      "source": "nhm"
+    }
+  ]
+}

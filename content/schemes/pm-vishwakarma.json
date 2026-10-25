@@ -1,0 +1,151 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "pm-vishwakarma",
+  "category": "employment",
+  "icon": "🔨",
+  "ministry": {
+    "en": "Ministry of Micro, Small and Medium Enterprises",
+    "hi": "सूक्ष्म, लघु एवं मध्यम उद्यम मंत्रालय"
+  },
+  "official_apply_url": "https://pmvishwakarma.gov.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "PM Vishwakarma (support for traditional artisans)",
+      "summary": "Recognition, training, a toolkit grant and cheap loans for people who work with their hands and tools in one of 18 traditional trades, such as carpenters, blacksmiths, potters, cobblers, masons, barbers, tailors, washermen and goldsmiths.",
+      "benefit": "A PM Vishwakarma certificate and ID card; 5 days of basic training and 15 days or more of advanced training, with ₹500 a day as a stipend; a ₹15,000 toolkit incentive; collateral-free loans of up to ₹1 lakh (first part, 18 months) and then up to ₹2 lakh (second part, 30 months) at 5% interest; ₹1 per digital transaction for up to 100 transactions a month; and marketing support.",
+      "how_to_apply": "Register at a Common Service Centre (CSC). Registration uses Aadhaar with biometrics. The gram panchayat head or urban local body checks your application, then the district committee. Only one member of a family (husband, wife and unmarried children) can register. Mudra or PM SVANidhi borrowers who have fully repaid can apply."
+    },
+    "hi": {
+      "name": "पीएम विश्वकर्मा (पारंपरिक कारीगरों के लिए सहायता)",
+      "summary": "18 पारंपरिक कामों में हाथ और औज़ारों से काम करने वालों, जैसे बढ़ई, लोहार, कुम्हार, मोची, राजमिस्त्री, नाई, दर्ज़ी, धोबी और सुनार, के लिए पहचान, प्रशिक्षण, औज़ार सहायता और सस्ता ऋण।",
+      "benefit": "पीएम विश्वकर्मा प्रमाण पत्र और पहचान पत्र; 5 दिन का बुनियादी और 15 दिन या ज़्यादा का उन्नत प्रशिक्षण, ₹500 रोज़ भत्ते के साथ; ₹15,000 की औज़ार सहायता; बिना गिरवी के ₹1 लाख तक (पहली किस्त, 18 महीने) और फिर ₹2 लाख तक (दूसरी किस्त, 30 महीने) का ऋण, 5% ब्याज पर; हर डिजिटल लेनदेन पर ₹1, महीने में 100 लेनदेन तक; और बाज़ार से जोड़ने में मदद।",
+      "how_to_apply": "कॉमन सर्विस सेंटर (CSC) पर पंजीकरण करें। पंजीकरण आधार और बायोमेट्रिक से होता है। ग्राम पंचायत प्रमुख या नगर निकाय आवेदन जाँचता है, फिर ज़िला समिति। परिवार (पति, पत्नी और अविवाहित बच्चे) से केवल एक सदस्य पंजीकरण कर सकता है। जिन्होंने मुद्रा या पीएम स्वनिधि ऋण पूरा चुका दिया है, वे आवेदन कर सकते हैं।"
+    }
+  },
+  "sources": [
+    {
+      "id": "pib_2025",
+      "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/sep/doc2025916638501.pdf",
+      "title": "PM Vishwakarma Scheme: Honouring Heritage, Powering Progress",
+      "publisher": "Press Information Bureau",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2025-09-16",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:cd1275f8f438c9e405b31bff466a4d28f217b8011d7660aa84ad51293e17b696",
+      "verified_at": null,
+      "verified_by": null
+    },
+    {
+      "id": "scheme",
+      "url": "https://pmvishwakarma.gov.in/CDN/MiscFiles/PM_Vishwakarma_Scheme.pdf",
+      "title": "PM Vishwakarma: scheme overview",
+      "publisher": "Ministry of MSME",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:998fb9996cafcbd11cf2f97205c8d445007c98fc79d0419e079c27c5aacf3e7f",
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "artisan",
+      "logic": {
+        "==": [
+          {
+            "var": "is_traditional_artisan"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "pib_2025",
+      "locator": "Eligibility conditions, p. 3",
+      "text": {
+        "en": "Works on their own, with hands and tools, in one of the 18 traditional trades",
+        "hi": "18 पारंपरिक कामों में से किसी एक में अपने बल पर, हाथ और औज़ारों से काम करते हैं"
+      }
+    },
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          18
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "pib_2025",
+      "locator": "Eligibility conditions, p. 3",
+      "text": {
+        "en": "Age 18 or older",
+        "hi": "उम्र 18 साल या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "no_recent_loan",
+      "logic": {
+        "==": [
+          {
+            "var": "had_govt_business_loan_5y"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "pib_2025",
+      "locator": "Eligibility conditions, p. 3",
+      "text": {
+        "en": "No government self-employment loan in the last 5 years (fully repaid Mudra or PM SVANidhi loans are fine)",
+        "hi": "पिछले 5 साल में कोई सरकारी स्वरोज़गार ऋण नहीं (पूरा चुकाया मुद्रा या पीएम स्वनिधि ऋण चलेगा)"
+      }
+    },
+    {
+      "code": "no_govt_employee",
+      "logic": {
+        "==": [
+          {
+            "var": "household_has_govt_employee"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "pib_2025",
+      "locator": "Eligibility conditions, p. 3",
+      "text": {
+        "en": "No one in the family works in government service",
+        "hi": "परिवार में कोई सरकारी नौकरी में नहीं है"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "pib_2025"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "scheme"
+    }
+  ]
+}

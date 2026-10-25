@@ -1,0 +1,124 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "pm-surya-ghar",
+  "category": "energy",
+  "icon": "☀️",
+  "ministry": {
+    "en": "Ministry of New and Renewable Energy",
+    "hi": "नवीन और नवीकरणीय ऊर्जा मंत्रालय"
+  },
+  "official_apply_url": "https://pmsuryaghar.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "PM Surya Ghar: Muft Bijli Yojana (rooftop solar)",
+      "summary": "A subsidy to put solar panels on the roof, terrace or balcony of your home, so you can get up to 300 units of electricity a month free.",
+      "benefit": "The central subsidy is ₹30,000 per kW for the first 2 kW and ₹18,000 for the third kW, so ₹30,000 for 1 kW, ₹60,000 for 2 kW and ₹78,000 for 3 kW or more. Special category states get ₹33,000 and ₹19,800 per kW. Collateral-free loans of around 7% are available for systems up to 3 kW. Extra power can be sold to the electricity company. The scheme aims to reach 1 crore homes by 2026-27; 51.58 lakh homes had it by 12 August 2026.",
+      "how_to_apply": "Register on the PM Surya Ghar national portal with your electricity connection details, choose a registered vendor, and apply for the subsidy there. The subsidy is paid into your bank account after the system is installed and inspected."
+    },
+    "hi": {
+      "name": "पीएम सूर्य घर: मुफ़्त बिजली योजना (छत पर सौर)",
+      "summary": "घर की छत, छज्जे या बालकनी पर सौर पैनल लगाने के लिए सब्सिडी, ताकि हर महीने 300 यूनिट तक बिजली मुफ़्त मिल सके।",
+      "benefit": "केंद्र की सब्सिडी पहले 2 किलोवाट के लिए ₹30,000 प्रति किलोवाट और तीसरे किलोवाट के लिए ₹18,000 है, यानी 1 किलोवाट पर ₹30,000, 2 किलोवाट पर ₹60,000 और 3 किलोवाट या ज़्यादा पर ₹78,000। विशेष श्रेणी राज्यों में ₹33,000 और ₹19,800 प्रति किलोवाट। 3 किलोवाट तक के लिए लगभग 7% पर बिना गिरवी का ऋण मिलता है। बची हुई बिजली बिजली कंपनी को बेची जा सकती है। योजना का लक्ष्य 2026-27 तक 1 करोड़ घर है; 12 अगस्त 2026 तक 51.58 लाख घरों में लग चुका था।",
+      "how_to_apply": "बिजली कनेक्शन की जानकारी के साथ पीएम सूर्य घर राष्ट्रीय पोर्टल पर पंजीकरण करें, पंजीकृत विक्रेता चुनें और वहीं सब्सिडी के लिए आवेदन करें। सिस्टम लगने और जाँच के बाद सब्सिडी आपके बैंक खाते में आती है।"
+    }
+  },
+  "sources": [
+    {
+      "id": "criteria",
+      "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2024/aug/doc202487368301.pdf",
+      "title": "Annexure-I: Criteria and details of incentives available to individuals under solar schemes of MNRE",
+      "publisher": "Ministry of New and Renewable Energy (via PIB)",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2024-08",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:4301f494aaa3074ed857baace54a68ec80c7a5dfd0c83751e6465260bb20648b",
+      "verified_at": null,
+      "verified_by": null
+    },
+    {
+      "id": "cabinet_2024",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2010133",
+      "title": "Cabinet approves PM-Surya Ghar: Muft Bijli Yojana for installing rooftop solar in One Crore households",
+      "publisher": "Press Information Bureau (MNRE)",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2024-02-29",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:c7ca06f6a3e9216f7685b460f2cb77168507e007de37d747bd378774a4907aa0",
+      "verified_at": null,
+      "verified_by": null,
+      "fetch": "manual",
+      "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
+    },
+    {
+      "id": "progress_2026",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2294208",
+      "title": "PM Surya Ghar: Muft Bijli Yojana achieves milestone of over 50 lakh rooftop solar installations",
+      "publisher": "Press Information Bureau (MNRE)",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-08-04",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:ddc4be110f5af38da98603a1b541fe75a093bd83916365b0ac9337d175894cab",
+      "verified_at": null,
+      "verified_by": null,
+      "fetch": "manual",
+      "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
+    },
+    {
+      "id": "portal",
+      "url": "https://pmsuryaghar.gov.in/",
+      "title": "PM Surya Ghar national portal",
+      "publisher": "Ministry of New and Renewable Energy",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:5418a03d5e8e6c09af97f18c9a640152b30ec8d6befff8bbcd1240089194fcc8",
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "residential_connection",
+      "logic": {
+        "==": [
+          {
+            "var": "has_residential_electricity"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "criteria",
+      "locator": "§1 Criteria, p. 1",
+      "text": {
+        "en": "The household has its own home (residential) electricity connection",
+        "hi": "परिवार के पास घर का अपना (आवासीय) बिजली कनेक्शन है"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "cabinet_2024"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": false,
+      "source": "portal"
+    }
+  ]
+}

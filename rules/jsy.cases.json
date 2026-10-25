@@ -1,0 +1,93 @@
+[
+  {
+    "name": "pregnant BPL woman",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "pregnant SC woman",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "social_category": "sc"
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "pregnant, general, not BPL: depends on the state, so check with the office",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "social_category": "general",
+      "is_bpl": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "rules": {
+        "state_group": "fail"
+      },
+      "missing_fields": []
+    }
+  },
+  {
+    "name": "not pregnant",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": false,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "pregnant": "fail"
+      }
+    }
+  },
+  {
+    "name": "man",
+    "profile": {
+      "gender": "male",
+      "is_pregnant_or_lactating": false,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "group not known",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "social_category",
+        "is_bpl"
+      ]
+    }
+  }
+]

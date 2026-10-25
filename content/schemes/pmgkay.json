@@ -1,0 +1,110 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "pmgkay",
+  "category": "food",
+  "icon": "🍚",
+  "ministry": {
+    "en": "Ministry of Consumer Affairs, Food and Public Distribution",
+    "hi": "उपभोक्ता मामले, खाद्य और सार्वजनिक वितरण मंत्रालय"
+  },
+  "official_apply_url": "https://nfsa.gov.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "PM Garib Kalyan Anna Yojana (free ration)",
+      "summary": "Free foodgrains every month for families with a National Food Security Act ration card. The central government decided to continue it for five years from 1 January 2024.",
+      "benefit": "Antyodaya (AAY) families get 35 kg of foodgrains per family per month, and Priority Household families get 5 kg per person per month, free of cost, from any fair price shop in the country under One Nation One Ration Card.",
+      "how_to_apply": "Take your ration card (or Aadhaar with fingerprint) to any fair price shop. If your family has no NFSA ration card, apply to your state's food and civil supplies department; each state decides which families get a card."
+    },
+    "hi": {
+      "name": "प्रधानमंत्री गरीब कल्याण अन्न योजना (मुफ़्त राशन)",
+      "summary": "राष्ट्रीय खाद्य सुरक्षा अधिनियम वाले राशन कार्ड के परिवारों को हर महीने मुफ़्त अनाज। केंद्र सरकार ने इसे 1 जनवरी 2024 से पाँच साल तक जारी रखने का फ़ैसला किया।",
+      "benefit": "अंत्योदय (AAY) परिवारों को हर महीने प्रति परिवार 35 किलो अनाज, और प्राथमिकता परिवारों को हर महीने प्रति व्यक्ति 5 किलो अनाज मुफ़्त, एक राष्ट्र एक राशन कार्ड के तहत देश की किसी भी उचित मूल्य दुकान से।",
+      "how_to_apply": "राशन कार्ड (या उंगली के निशान के साथ आधार) लेकर किसी भी उचित मूल्य दुकान पर जाएँ। अगर परिवार के पास NFSA राशन कार्ड नहीं है, तो अपने राज्य के खाद्य एवं नागरिक आपूर्ति विभाग में आवेदन करें; किस परिवार को कार्ड मिलेगा, यह हर राज्य तय करता है।"
+    }
+  },
+  "sources": [
+    {
+      "id": "cabinet_2023",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1980686",
+      "title": "Free foodgrains for 81.35 crore beneficiaries for five years: Cabinet decision",
+      "publisher": "Press Information Bureau (Cabinet)",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2023-11-29",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:2a52ccc6aa17be71636eba9886887078ee6547619ba96ae4aff11a7a9ff3d30c",
+      "verified_at": null,
+      "verified_by": null,
+      "fetch": "manual",
+      "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
+    },
+    {
+      "id": "nfsa_act",
+      "url": "https://dfpd.gov.in/WriteReadData/Other/nfsa_1.pdf",
+      "title": "The National Food Security Act, 2013 (No. 20 of 2013)",
+      "publisher": "Government of India (Gazette of India)",
+      "doc_type": "gazette",
+      "lang": "en",
+      "published_date": "2013-09-10",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:4f7f27f452ceda2a1951e4bde77177717971487453e45906b1ffc2bb75579c34",
+      "verified_at": null,
+      "verified_by": null,
+      "note": "Section 3(1): 5 kg per person per month for priority households; first proviso: 35 kg per household for AAY. A draft NFS (Amendment) Bill, 2026 was put out for comments by DFPD; not enacted as of 2026-10-25."
+    },
+    {
+      "id": "nfsa",
+      "url": "https://nfsa.gov.in/",
+      "title": "National Food Security Portal",
+      "publisher": "Department of Food and Public Distribution",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:ecd23a6232ec57145d394adde8d9f5b6534d26b1c5b757c46de896eb8625e7c7",
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "nfsa_card",
+      "logic": {
+        "==": [
+          {
+            "var": "has_nfsa_ration_card"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "cabinet_2023",
+      "locator": "Paras 1 and 4",
+      "text": {
+        "en": "The family has an NFSA ration card (Antyodaya or Priority Household)",
+        "hi": "परिवार के पास NFSA राशन कार्ड (अंत्योदय या प्राथमिकता परिवार) है"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "ration_card",
+      "mandatory": true,
+      "source": "nfsa_act"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": false,
+      "source": "cabinet_2023"
+    }
+  ]
+}

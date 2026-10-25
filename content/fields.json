@@ -224,6 +224,31 @@
       "type": "bool",
       "scope": "household",
       "icon": "🕯️"
+    },
+    "is_traditional_artisan": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🔨"
+    },
+    "had_govt_business_loan_5y": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🏦"
+    },
+    "is_street_vendor": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🛒"
+    },
+    "has_residential_electricity": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "💡"
+    },
+    "has_nfsa_ration_card": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🍚"
     }
   }
 }

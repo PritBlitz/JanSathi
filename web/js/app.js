@@ -7,7 +7,7 @@ import { match, toBand } from './rules.js';
 const KEYS = { profile: 'jansathi.profile', checklist: 'jansathi.checklist', motion: 'jansathi.motion', preview: 'jansathi.preview' };
 const CATEGORY_ICONS = {
   pension: '👵', agriculture: '🌾', health: '🏥', housing: '🏠', education: '🎓', women_children: '🤱', disability: '♿',
-  insurance: '🛡️', employment: '⛏️', energy: '🔥', family_support: '🤝',
+  insurance: '🛡️', employment: '⛏️', energy: '🔥', family_support: '🤝', food: '🍚',
 };
 const REPORT_URL = 'https://github.com/PritBlitz/JanSathi/issues/new';
 

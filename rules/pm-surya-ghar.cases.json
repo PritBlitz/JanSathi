@@ -1,0 +1,38 @@
+[
+  {
+    "name": "own residential electricity connection",
+    "profile": {
+      "has_residential_electricity": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "no own connection",
+    "profile": {
+      "has_residential_electricity": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "not answered",
+    "profile": {},
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "has_residential_electricity"
+      ]
+    }
+  }
+]

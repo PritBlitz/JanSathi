@@ -1,0 +1,113 @@
+[
+  {
+    "name": "artisan aged 30, no recent loan, no government job",
+    "profile": {
+      "is_traditional_artisan": true,
+      "had_govt_business_loan_5y": false,
+      "household_has_govt_employee": false,
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "age 18",
+    "profile": {
+      "is_traditional_artisan": true,
+      "had_govt_business_loan_5y": false,
+      "household_has_govt_employee": false,
+      "age": 18
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 17",
+    "profile": {
+      "is_traditional_artisan": true,
+      "had_govt_business_loan_5y": false,
+      "household_has_govt_employee": false,
+      "age": 17
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "not a traditional artisan",
+    "profile": {
+      "is_traditional_artisan": false,
+      "had_govt_business_loan_5y": false,
+      "household_has_govt_employee": false,
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "artisan": "fail"
+      }
+    }
+  },
+  {
+    "name": "government self-employment loan in the last 5 years",
+    "profile": {
+      "is_traditional_artisan": true,
+      "had_govt_business_loan_5y": true,
+      "household_has_govt_employee": false,
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "no_recent_loan": "fail"
+      }
+    }
+  },
+  {
+    "name": "government employee in the family",
+    "profile": {
+      "is_traditional_artisan": true,
+      "had_govt_business_loan_5y": false,
+      "household_has_govt_employee": true,
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "only artisan answered",
+    "profile": {
+      "is_traditional_artisan": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "age",
+        "had_govt_business_loan_5y",
+        "household_has_govt_employee"
+      ]
+    }
+  }
+]

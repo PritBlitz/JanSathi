@@ -1,0 +1,96 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "pm-svanidhi",
+  "category": "employment",
+  "icon": "🛒",
+  "ministry": {
+    "en": "Ministry of Housing and Urban Affairs",
+    "hi": "आवास एवं शहरी कार्य मंत्रालय"
+  },
+  "official_apply_url": "https://pmsvanidhi.mohua.gov.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "PM SVANidhi (loans for street vendors)",
+      "summary": "Small working-capital loans without collateral for street vendors in towns, census towns and peri-urban areas. Lending is open until 31 March 2030.",
+      "benefit": "A first loan of up to ₹15,000 (repay in 12 months). If you repay on time or early, a second loan of up to ₹25,000 (18 months), then a third of up to ₹50,000 (36 months). You get an interest subsidy of 7% a year, credited every quarter, and there is no penalty for repaying early. After repaying the second loan you can get a UPI-linked credit card.",
+      "how_to_apply": "You need a Certificate of Vending, vendor ID card or a Letter of Recommendation. In statutory towns the town vending committee or urban local body gives it; in census towns and peri-urban areas the Block Development Office does, within 15 days of applying. Then apply through a bank, a Common Service Centre or the PM SVANidhi portal."
+    },
+    "hi": {
+      "name": "पीएम स्वनिधि (रेहड़ी-पटरी वालों के लिए ऋण)",
+      "summary": "शहरों, जनगणना कस्बों और शहर से लगे इलाकों के रेहड़ी-पटरी वालों के लिए बिना गिरवी के छोटा कार्यशील पूंजी ऋण। ऋण 31 मार्च 2030 तक मिलेगा।",
+      "benefit": "पहला ऋण ₹15,000 तक (12 महीने में चुकाना)। समय पर या पहले चुकाने पर दूसरा ऋण ₹25,000 तक (18 महीने), फिर तीसरा ₹50,000 तक (36 महीने)। साल में 7% ब्याज सब्सिडी हर तिमाही खाते में आती है, और पहले चुकाने पर कोई जुर्माना नहीं। दूसरा ऋण चुकाने के बाद यूपीआई से जुड़ा क्रेडिट कार्ड मिल सकता है।",
+      "how_to_apply": "वेंडिंग प्रमाण पत्र, विक्रेता पहचान पत्र या सिफ़ारिश पत्र चाहिए। वैधानिक शहरों में टाउन वेंडिंग कमेटी या नगर निकाय देता है; जनगणना कस्बों और शहर से लगे इलाकों में खंड विकास कार्यालय आवेदन के 15 दिन के भीतर देता है। फिर बैंक, कॉमन सर्विस सेंटर या पीएम स्वनिधि पोर्टल से आवेदन करें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "guidelines",
+      "url": "https://www.mohua.gov.in/static/uploads/2026/01/bde957bc3a87fb001c05ddd09484edda.pdf",
+      "title": "PM SVANidhi Scheme Guidelines (restructured, January 2026)",
+      "publisher": "Ministry of Housing and Urban Affairs",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2026-01",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:c3e73b7107ee281e8c875478604722d0fdb8234ed0f4ebd8644a79d7722c43be",
+      "verified_at": null,
+      "verified_by": null,
+      "fetch": "manual",
+      "fetch_note": "mohua.gov.in answers 403 to automated clients. Fetched by hand; hash with ingest/recheck.py --hash-file."
+    },
+    {
+      "id": "portal",
+      "url": "https://pmsvanidhi.mohua.gov.in/",
+      "title": "PM SVANidhi portal",
+      "publisher": "Ministry of Housing and Urban Affairs",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:ba8eea2dd5eb7d258a6d36f9e8cfd30bd207484db5b1ecb50996a279b2ac2c24",
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "street_vendor",
+      "logic": {
+        "==": [
+          {
+            "var": "is_street_vendor"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§4, p. 3",
+      "text": {
+        "en": "Sells goods or food on the street (with a vending certificate, ID or recommendation letter)",
+        "hi": "गली में सामान या खाना बेचते हैं (वेंडिंग प्रमाण पत्र, पहचान पत्र या सिफ़ारिश पत्र के साथ)"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "portal"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "guidelines"
+    }
+  ]
+}
