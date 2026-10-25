@@ -1,4 +1,4 @@
-# Handover — 2026-10-25 (session 2, in progress)
+# Handover — 2026-10-25 (session 2)
 
 For the next AI session working in this repo. Read [CLAUDE.md](CLAUDE.md) and [docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md) first. The brief's §17 decisions log overrides the rest of the brief.
 
@@ -20,6 +20,8 @@ For the next AI session working in this repo. Read [CLAUDE.md](CLAUDE.md) and [d
 1. `110af54` **JS rules engine** `web/js/rules.js` (§9 exactly), `rules/_engine.cases.json` (44 cases incl. multi-scheme `next_question`; format added to RULES_ENGINE §9.7), `tools/test-rules.mjs`, root `package.json` (no dependencies).
 2. `461af7d` **All 10 schemes checked against official sources** (see "Source findings" below), per-scheme fixtures (96 cases), `ingest/recheck.py`, new `doc_type: govt_statement`, manual-fetch sources, 7 new profile fields, `job_card` document.
 3. `383403b` **Tools:** `validate-content`, `lint-copy` (10 languages + official-name allowlist), `check-locales`, `build-bundle` (+ `--check`), `serve`. `npm run check` runs all of them; `web/data/bundle.json` is empty because nothing is published yet, `bundle.preview.json` has the 10 drafts.
+4. `11a1fba` **Web PWA** in `web/` to DESIGN.md (see the commit message for the feature list), 10 locales (9 machine-authored; `review-status.json`), self-hosted OFL fonts, service worker, `tools/test-lint.mjs`, `tools/smoke-web.mjs` (headless Chrome via DevTools protocol; checks flows, console errors, hero fill per locale). The app auto-switches to preview mode (drafts, banner on every page) while `bundle.json` is empty.
+5. `13e9969` **Docs** updated to what exists; "Improvements over the brief" table in ROADMAP.md.
 
 ## Source findings (2026-10-25)
 
@@ -35,10 +37,10 @@ For the next AI session working in this repo. Read [CLAUDE.md](CLAUDE.md) and [d
 
 ## Next steps (in order)
 
-1. **`web/` frontend** (in progress next): index.html, css (DESIGN tokens), i18n.js, speech.js, app.js (home, questionnaire, results, scheme detail, checklist, search), 10 locale files + `review-status.json`, PWA manifest + sw.js, preview mode for drafts, delete-my-data.
-2. More schemes toward ~30, each from official sources (VB-G RAM G, NFBS/PM Parivar Labh, Atal Pension, PMJJBY, PMSBY, PM-SYM, PM Ujjwala, Pre-matric SC, NMMSS, PM SVANidhi, Stand-Up India, PM Vishwakarma, JSY, …).
-3. Docs: README status, ROADMAP checkboxes (Phase 0 is marked done but `web/` did not exist), CLAUDE.md run/test commands.
-4. Tell the backend session: fixtures, `govt_statement`, `fetch: manual`, new fields.
+1. More schemes toward ~30, each from official sources (VB-G RAM G, NFBS/PM Parivar Labh, Atal Pension, PMJJBY, PMSBY, PM-SYM, PM Ujjwala, Pre-matric SC, NMMSS, PM SVANidhi, Stand-Up India, PM Vishwakarma, JSY, …). For each: read the source, add rules + fixtures, `recheck.py --update`, `npm run build`, add any new UI keys to all 10 locales.
+2. Scheme content is en + hi only; other languages fall back to English with a note. Translation pipeline is Phase 6.
+3. Tell the backend session: fixtures incl. multi-scheme cases, `govt_statement`, `fetch: manual`, 7 new fields, `job_card` document.
+4. Not built from DESIGN: marquee, sticky storytelling, theme toggle; hero photos (abstract placeholder); Lighthouse/axe runs.
 
 ## Open questions for the maintainer
 
