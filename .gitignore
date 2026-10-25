@@ -24,3 +24,7 @@ __pycache__/
 *.local.yml
 ingest/snapshots/
 ingest/reports/
+
+# Frontend build output; API report files (local moderation queue)
+frontend/dist/
+backend/data/

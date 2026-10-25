@@ -1,0 +1,10 @@
+.git
+**/node_modules
+frontend/dist
+backend/build
+backend/.gradle
+backend/data
+content/snapshots
+ingest
+docs
+*.md

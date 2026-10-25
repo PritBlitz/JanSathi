@@ -1,0 +1,54 @@
+# Daily: re-fetch every official source (robots.txt respected, 5 s per host), compare its hash
+# with the one recorded in content/, and open an issue when a source changed or could not be
+# fetched (docs/KNOWLEDGE_BASE.md §5). It never edits content: a reviewer reads the change.
+name: Source re-check
+
+on:
+  schedule:
+    - cron: "30 1 * * *" # 07:00 IST
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  recheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - id: run
+        # Exit 1 means a source changed or failed; that is a finding, not a broken job.
+        run: |
+          set +e
+          python -I ingest/recheck.py > recheck.txt 2>&1
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          cat recheck.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: recheck-report
+          path: |
+            recheck.txt
+            ingest/reports/
+      - if: steps.run.outputs.code == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "The daily re-check found official sources that changed or could not be fetched."
+            echo "A reviewer must read each change and update the scheme (docs/REVIEW.md)."
+            echo
+            echo '```'
+            tail -n 80 recheck.txt
+            echo '```'
+            echo
+            echo "Full report: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > body.md
+          gh issue create --title "Source re-check $(date -u +%F): sources changed" --label source-changed --body-file body.md \
+            || gh issue create --title "Source re-check $(date -u +%F): sources changed" --body-file body.md
+      - if: steps.run.outputs.code == '2'
+        run: exit 1
