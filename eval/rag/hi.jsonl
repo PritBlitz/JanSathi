@@ -1,0 +1,30 @@
+{"id": "hi-001", "lang": "hi", "type": "eligibility", "question": "अटल पेंशन योजना में जुड़ने की उम्र क्या है?", "expected_schemes": ["atal-pension"]}
+{"id": "hi-002", "lang": "hi", "type": "eligibility", "question": "दिव्यांगजन पेंशन के लिए कितनी दिव्यांगता चाहिए?", "expected_schemes": ["igndps"]}
+{"id": "hi-003", "lang": "hi", "type": "eligibility", "question": "वृद्धावस्था पेंशन किस उम्र में मिलती है?", "expected_schemes": ["ignoaps"]}
+{"id": "hi-004", "lang": "hi", "type": "eligibility", "question": "विधवा पेंशन किसे मिलती है?", "expected_schemes": ["ignwps"]}
+{"id": "hi-005", "lang": "hi", "type": "eligibility", "question": "अस्पताल में प्रसव के लिए पैसे", "expected_schemes": ["jsy"]}
+{"id": "hi-006", "lang": "hi", "type": "eligibility", "question": "किसान क्रेडिट कार्ड कौन ले सकता है?", "expected_schemes": ["kcc"]}
+{"id": "hi-007", "lang": "hi", "type": "eligibility", "question": "आयुष्मान भारत स्वास्थ्य कवर", "expected_schemes": ["pm-jay"]}
+{"id": "hi-008", "lang": "hi", "type": "eligibility", "question": "पीएम-किसान आय सहायता किसे मिलती है?", "expected_schemes": ["pm-kisan"]}
+{"id": "hi-009", "lang": "hi", "type": "eligibility", "question": "छोटे किसानों के लिए पेंशन", "expected_schemes": ["pm-kmy"]}
+{"id": "hi-010", "lang": "hi", "type": "eligibility", "question": "मुख्य कमाने वाले की मृत्यु पर परिवार को सहायता", "expected_schemes": ["pm-parivar-labh"]}
+{"id": "hi-011", "lang": "hi", "type": "eligibility", "question": "छत पर सौर बिजली", "expected_schemes": ["pm-surya-ghar"]}
+{"id": "hi-012", "lang": "hi", "type": "eligibility", "question": "रेहड़ी-पटरी वालों के लिए ऋण", "expected_schemes": ["pm-svanidhi"]}
+{"id": "hi-013", "lang": "hi", "type": "eligibility", "question": "असंगठित कामगारों के लिए पेंशन", "expected_schemes": ["pm-sym", "atal-pension"]}
+{"id": "hi-014", "lang": "hi", "type": "eligibility", "question": "पारंपरिक कारीगरों के लिए सहायता", "expected_schemes": ["pm-vishwakarma"]}
+{"id": "hi-015", "lang": "hi", "type": "eligibility", "question": "प्रधानमंत्री आवास योजना ग्रामीण में घर", "expected_schemes": ["pmay-g"]}
+{"id": "hi-016", "lang": "hi", "type": "eligibility", "question": "फ़सल बीमा", "expected_schemes": ["pmfby"]}
+{"id": "hi-017", "lang": "hi", "type": "eligibility", "question": "मुफ़्त राशन किसे मिलता है?", "expected_schemes": ["pmgkay"]}
+{"id": "hi-018", "lang": "hi", "type": "eligibility", "question": "जीवन ज्योति बीमा की उम्र सीमा", "expected_schemes": ["pmjjby"]}
+{"id": "hi-019", "lang": "hi", "type": "eligibility", "question": "दुर्घटना बीमा", "expected_schemes": ["pmsby"]}
+{"id": "hi-020", "lang": "hi", "type": "eligibility", "question": "मुफ़्त एलपीजी कनेक्शन", "expected_schemes": ["pmuy"]}
+{"id": "hi-021", "lang": "hi", "type": "eligibility", "question": "अनुसूचित जाति के छात्रों के लिए छात्रवृत्ति", "expected_schemes": ["post-matric-sc", "pre-matric-sc"]}
+{"id": "hi-022", "lang": "hi", "type": "eligibility", "question": "अनुसूचित जनजाति के छात्रों की छात्रवृत्ति", "expected_schemes": ["post-matric-st", "pre-matric-st"]}
+{"id": "hi-023", "lang": "hi", "type": "eligibility", "question": "बेटी के लिए बचत खाता", "expected_schemes": ["sukanya-samriddhi"]}
+{"id": "hi-024", "lang": "hi", "type": "eligibility", "question": "गाँव में 125 दिन का काम", "expected_schemes": ["vb-g-ram-g"]}
+{"id": "hi-025", "lang": "hi", "type": "eligibility", "question": "मातृ वंदना योजना किसके लिए है?", "expected_schemes": ["pmmvy"]}
+{"id": "hi-026", "lang": "hi", "type": "unanswerable", "question": "आज पेट्रोल का दाम क्या है?", "expected_schemes": []}
+{"id": "hi-027", "lang": "hi", "type": "unanswerable", "question": "कल क्रिकेट मैच कौन जीता?", "expected_schemes": []}
+{"id": "hi-028", "lang": "hi", "type": "unanswerable", "question": "दिल्ली में कल मौसम कैसा रहेगा?", "expected_schemes": []}
+{"id": "hi-029", "lang": "hi", "type": "unanswerable", "question": "बिरयानी बनाने की विधि बताओ", "expected_schemes": []}
+{"id": "hi-030", "lang": "hi", "type": "unanswerable", "question": "पासपोर्ट का नवीनीकरण कैसे करें?", "expected_schemes": []}

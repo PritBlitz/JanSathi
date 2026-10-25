@@ -1,9 +1,49 @@
 spring:
   application:
     name: jansathi-api
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: always
+  # Local default: an H2 file database in PostgreSQL mode, so the API runs with no setup.
+  # Production: set SPRING_DATASOURCE_URL / _USERNAME / _PASSWORD to PostgreSQL (docker-compose.yml).
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:file:./data/jansathi;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+  flyway:
+    locations: classpath:db/migration
+
+server:
+  compression:
+    enabled: true
+    mime-types: application/json,application/problem+json,text/html,text/css,text/javascript,image/svg+xml
+  error:
+    include-message: never
 
 management:
   endpoints:
     web:
       exposure:
         include: health,info
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+
+jansathi:
+  # Unset: read the bundle packaged in the jar (copied from frontend/public/data at build time).
+  # Local development: JANSATHI_BUNDLE_DIR=../frontend/public/data picks up `npm run build` without a rebuild.
+  bundle-dir: ${JANSATHI_BUNDLE_DIR:}
+  preview-fallback: true
+  # Blank switches the admin API (/api/v1/admin/**) off.
+  admin-token: ${JANSATHI_ADMIN_TOKEN:}
+  cors-origins:
+    - http://localhost:5173
+    - http://localhost:4173
+  llm:
+    # none: /ask returns cited passages only. openai-compatible: Groq, Ollama, Gemini, … (see docs/ARCHITECTURE.md §6)
+    provider: ${JANSATHI_LLM_PROVIDER:none}
+    base-url: ${JANSATHI_LLM_BASE_URL:}
+    api-key: ${JANSATHI_LLM_API_KEY:}
+    model: ${JANSATHI_LLM_MODEL:}
+    timeout: 20s

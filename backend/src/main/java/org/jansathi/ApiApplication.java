@@ -2,8 +2,10 @@ package org.jansathi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
+@EnableConfigurationProperties(JansathiProperties.class)
 public class ApiApplication {
 
 	public static void main(String[] args) {
