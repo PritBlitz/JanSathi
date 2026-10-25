@@ -22,9 +22,9 @@ const placeholders = (s) => [...String(s).matchAll(/\{(\w+)\}/g)].map((m) => m[1
 
 const locales = {};
 for (const code of CODES) {
-  const file = join(root, 'web/locales', `${code}.json`);
+  const file = join(root, 'frontend/locales', `${code}.json`);
   if (!existsSync(file)) {
-    problems.push(`web/locales/${code}.json is missing`);
+    problems.push(`frontend/locales/${code}.json is missing`);
     continue;
   }
   locales[code] = flatten(JSON.parse(readFileSync(file, 'utf8')));
@@ -49,8 +49,8 @@ for (const [name, def] of Object.entries(fields)) {
 }
 
 // Every non-English locale must say which keys a native speaker has reviewed.
-const statusFile = join(root, 'web/locales/review-status.json');
-if (!existsSync(statusFile)) problems.push('web/locales/review-status.json is missing');
+const statusFile = join(root, 'frontend/locales/review-status.json');
+if (!existsSync(statusFile)) problems.push('frontend/locales/review-status.json is missing');
 
 if (problems.length) {
   console.error(problems.join('\n'));

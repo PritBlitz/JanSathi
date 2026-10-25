@@ -1,6 +1,6 @@
 # Rules engine
 
-> **Status:** the JS engine (`web/js/rules.js`) and the shared fixtures (`rules/`) are built and pass (`npm test`). The Java engine in `api/` is in progress. §1–§8 describe the design; §9 is the exact contract both engines implement.
+> **Status:** the JS engine (`frontend/js/rules.js`) and the shared fixtures (`rules/`) are built and pass (`npm test`). The Java engine in `backend/` is in progress. §1–§8 describe the design; §9 is the exact contract both engines implement.
 
 The rules engine is the **only** component that decides match results. It is deterministic, testable and explainable. The LLM never changes a result; it only explains the result and the trace the engine produces.
 
@@ -176,7 +176,7 @@ A household profile holds one record per member. The engine evaluates each schem
 
 ## 9. Implementation contract (Java and JS must match exactly)
 
-This section is normative. Both engines (`web/js/rules.js`, `api/.../rules/`) implement it, and the shared fixtures in `rules/` check it.
+This section is normative. Both engines (`frontend/js/rules.js`, `backend/.../rules/`) implement it, and the shared fixtures in `rules/` check it.
 
 **Do not use a stock json-logic evaluator for results.** Stock json-logic has no "unknown" value. Implement this small subset directly. A library may be used only to parse.
 
@@ -261,7 +261,7 @@ Every key in `expect` other than `result` is optional; only the keys present are
   "expect": { "next_question": "age" } }
 ```
 
-**`/api/v1/rules/bundle`** (identical to the static `web/data/bundle.json`):
+**`/api/v1/rules/bundle`** (identical to the static `frontend/data/bundle.json`):
 
 ```json
 { "version": "<sha256 of content>", "generated_at": "…", "include_drafts": false,

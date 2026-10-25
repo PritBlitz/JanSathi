@@ -1,6 +1,6 @@
 // Builds the static rules bundle the PWA uses offline (shape: docs/RULES_ENGINE.md §9.7).
-//   node tools/build-bundle.mjs                   -> web/data/bundle.json (published schemes only)
-//   node tools/build-bundle.mjs --include-drafts  -> web/data/bundle.preview.json (all schemes)
+//   node tools/build-bundle.mjs                   -> frontend/data/bundle.json (published schemes only)
+//   node tools/build-bundle.mjs --include-drafts  -> frontend/data/bundle.preview.json (all schemes)
 //   add --check to fail instead of writing when the file is out of date (for CI)
 // The file is rewritten only when its content changes, so generated_at stays stable.
 import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
@@ -23,7 +23,7 @@ const schemes = readdirSync(join(root, 'content/schemes'))
 
 const body = { include_drafts: includeDrafts, fields, documents, schemes };
 const version = createHash('sha256').update(JSON.stringify(body)).digest('hex');
-const outFile = join(root, 'web/data', includeDrafts ? 'bundle.preview.json' : 'bundle.json');
+const outFile = join(root, 'frontend/data', includeDrafts ? 'bundle.preview.json' : 'bundle.json');
 
 let previous = null;
 if (existsSync(outFile)) {

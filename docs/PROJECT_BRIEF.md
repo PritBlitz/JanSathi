@@ -103,12 +103,12 @@ It is a reliable discovery engine, not a chatbot:
 
 ## 7. Languages, voice and icon UI
 
-**Status:** frontend prototype built in `web/`. It has no build step; run it with `python3 -m http.server` from `web/`.
+**Status:** frontend prototype built in `frontend/`. It has no build step; run it with `python3 -m http.server` from `frontend/`.
 
 - **Languages (10):** English (en), Hindi (hi), Bengali (bn), Tamil (ta), Telugu (te), Marathi (mr), Gujarati (gu), Kannada (kn), Malayalam (ml), Punjabi (pa). Each has a BCP-47 tag `xx-IN` used for speech.
 - **i18n mechanism:**
   - Elements use `data-i18n="key"` for text and `data-i18n-attr="attr:key,attr2:key2"` for attributes such as placeholder and aria-label.
-  - Strings live in `web/locales/<code>.json`.
+  - Strings live in `frontend/locales/<code>.json`.
   - Missing keys fall back to English.
   - The language is detected from the browser and then remembered in `localStorage`.
   - Changing language also updates `<html lang>` and the page title.
@@ -150,7 +150,7 @@ Free-tier quotas change. Check current limits before depending on one, and keep 
 ## 9. Architecture (high level)
 
 ```
- PWA (web/)  ──►  FastAPI  ──►  Postgres + pgvector (Supabase)
+ PWA (frontend/)  ──►  FastAPI  ──►  Postgres + pgvector (Supabase)
    │  i18n, STT/TTS     │  /schemes /match /ask /checklist /reminders /volunteer
    │  rules (client)    ├─► Rules engine (json-logic)  ← deterministic eligibility
    │                    ├─► RAG: retrieve (pgvector) → LLM explain → cite
@@ -198,7 +198,7 @@ Out of the MVP: volunteer portal, OCR, official status integrations, WhatsApp, m
 
 | Phase | Deliverables |
 |---|---|
-| 0 ✅ | Multilingual voice-first frontend prototype (`web/`) |
+| 0 ✅ | Multilingual voice-first frontend prototype (`frontend/`) |
 | 1 | Data model, seed 30 verified schemes, FastAPI read API, scheme pages |
 | 2 | Rules engine and questionnaire, three-state matching, family mode |
 | 3 | RAG assistant (hi/en) with citations and confidence labels; evaluation set |
@@ -218,25 +218,25 @@ Out of the MVP: volunteer portal, OCR, official status integrations, WhatsApp, m
 
 ## 14. Docs to generate
 
-- `README.md` (root): pitch, features, status, quick start (run `web/`), links to the docs.
+- `README.md` (root): pitch, features, status, quick start (run `frontend/`), links to the docs.
 - `docs/ARCHITECTURE.md`: components, request flows, the diagram from §9 expanded, provider interfaces.
 - `docs/DATA_MODEL.md`: tables from §10 with columns, types, relations and a Mermaid ER diagram.
 - `docs/RULES_ENGINE.md`: json-logic rule format, three-state evaluation, rule traces, two worked examples, testing.
 - `docs/KNOWLEDGE_BASE.md`: source types, ingestion and verification workflow, re-check job, confidence labels, citation format.
 - `docs/RAG_ASSISTANT.md`: retrieval, prompt contract ("answer only from passages, cite, else say not found"), answer schema, evaluation.
-- `docs/I18N_AND_VOICE.md`: how the existing `web/` i18n works, how to add a language or key, STT/TTS behaviour and fallbacks, the translation-review process.
+- `docs/I18N_AND_VOICE.md`: how the existing `frontend/` i18n works, how to add a language or key, STT/TTS behaviour and fallbacks, the translation-review process.
 - `docs/PRIVACY_AND_SECURITY.md`: data minimisation, what is never stored, volunteer consent sessions, audit log, retention, DPDP notes.
 - `docs/ROADMAP.md`: phases from §12 as checklists.
 - `docs/CONTRIBUTING.md`: setup, coding conventions, the non-negotiable principles from §5, copy rules, PR checklist.
 - `CLAUDE.md` (root): short operating guide for AI sessions: principles from §5, repo layout, how to run and test, where docs live.
 
-Keep the docs factual about what exists now (only `web/` is built) and mark everything else as planned.
+Keep the docs factual about what exists now (only `frontend/` is built) and mark everything else as planned.
 
 ## 15. Current repo state
 
 ```
 README.md            # placeholder
-web/
+frontend/
   index.html         # icon-driven page: hero, category tiles, voice ask box, quick check
   css/styles.css     # large touch targets, Noto fonts, dark mode
   js/i18n.js         # LANGS list, locale loader, data-i18n application, persistence

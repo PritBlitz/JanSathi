@@ -42,7 +42,7 @@ question (text or speech → text)
 
 ## 3. Prompt contract
 
-The system prompt is versioned in `api/src/main/resources/prompts/assistant.vN.txt` and covered by the copy lint. Its contract:
+The system prompt is versioned in `backend/src/main/resources/prompts/assistant.vN.txt` and covered by the copy lint. Its contract:
 
 1. **Answer only from the passages provided.** Do not use outside knowledge, even if you think you know the answer.
 2. **Cite every factual sentence** with the passage id(s) it comes from, e.g. `[p3]`.

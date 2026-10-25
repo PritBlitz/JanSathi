@@ -1,6 +1,6 @@
 # Architecture
 
-> **Status:** built: the static PWA (`web/`) with the on-device rules engine, the content files (`content/`), shared rule fixtures (`rules/`) and the source re-check script (`ingest/recheck.py`). The Spring Boot API (`api/`) is in progress. Everything else on this page is the **planned** design.
+> **Status:** built: the static PWA (`frontend/`) with the on-device rules engine, the content files (`content/`), shared rule fixtures (`rules/`) and the source re-check script (`ingest/recheck.py`). The Spring Boot API (`backend/`) is in progress. Everything else on this page is the **planned** design.
 > **Backend decision (2026-10-24):** the main backend is **Spring Boot** (Java). The ML models in the stack (embeddings, IndicTrans2, Whisper, OCR) and the ingestion tools are Python-only, so they run as a separate internal Python service and a Python batch job, called through the provider interfaces in §6.
 
 ## 1. Design goals
@@ -15,7 +15,7 @@
 
 ```
                          ┌────────────────────────────────────────────────────┐
-                         │                  PWA  (web/)                       │
+                         │                  PWA  (frontend/)                       │
                          │  i18n (10 langs) · STT/TTS (Web Speech API)        │
                          │  on-device profile (IndexedDB, encrypted)          │
                          │  rules engine (json-logic-js) · service worker     │
@@ -23,7 +23,7 @@
                                          │ HTTPS / JSON
                                          ▼
 ┌────────────────────────────────────────────────────────────────────────────────┐
-│                         Spring Boot API  (api/, Java 21)                       │
+│                         Spring Boot API  (backend/, Java 21)                       │
 │                                                                                │
 │  /schemes   /schemes/{slug}   /rules/bundle   /match   /ask   /checklist       │
 │  /reminders   /reports   /volunteer/*   /admin/*  (reviewer UI)                │
@@ -64,15 +64,15 @@
 
 | Component | Language | Responsibility | Status |
 |---|---|---|---|
-| **PWA** (`web/`) | HTML/CSS/JS | UI, i18n, voice, icon tiles; later: on-device profile, client-side rule evaluation, offline cache of published schemes | Prototype |
-| **API** (`api/`) | Java 21, Spring Boot 3 | Public API: schemes, matching, assistant, checklist, reminders, reports, volunteer sessions, reviewer admin. Owns all database writes except ingestion snapshots. | Planned |
-| **Rules engine** | Java (in `api/`) + JS (in `web/`) | Evaluates json-logic rules against a profile and returns a three-state result with a trace. The same rule JSON runs in json-logic-java and json-logic-js. See [RULES_ENGINE.md](RULES_ENGINE.md). | Planned |
-| **RAG service** | Java (in `api/`) | Retrieves verified chunks, asks the LLM to explain, validates citations, attaches the confidence label. See [RAG_ASSISTANT.md](RAG_ASSISTANT.md). | Planned |
+| **PWA** (`frontend/`) | HTML/CSS/JS | UI, i18n, voice, icon tiles; later: on-device profile, client-side rule evaluation, offline cache of published schemes | Prototype |
+| **API** (`backend/`) | Java 21, Spring Boot 3 | Public API: schemes, matching, assistant, checklist, reminders, reports, volunteer sessions, reviewer admin. Owns all database writes except ingestion snapshots. | Planned |
+| **Rules engine** | Java (in `backend/`) + JS (in `frontend/`) | Evaluates json-logic rules against a profile and returns a three-state result with a trace. The same rule JSON runs in json-logic-java and json-logic-js. See [RULES_ENGINE.md](RULES_ENGINE.md). | Planned |
+| **RAG service** | Java (in `backend/`) | Retrieves verified chunks, asks the LLM to explain, validates citations, attaches the confidence label. See [RAG_ASSISTANT.md](RAG_ASSISTANT.md). | Planned |
 | **ML service** (`ml/`) | Python | Stateless HTTP wrapper around local models: embeddings, translation, STT, TTS, OCR. Internal network only; authenticated with a shared service token. | Planned |
 | **Ingestion** (`ingest/`) | Python | Fetches official pages and PDFs, extracts text, chunks and embeds, writes `source` snapshots and `chunk` rows, opens review tasks. Also runs the daily re-check. | Planned |
 | **Knowledge base** | PostgreSQL + pgvector | Schemes, rules, sources, documents, deadlines, chunks. See [DATA_MODEL.md](DATA_MODEL.md) and [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). | Planned |
-| **Reviewer UI** | Served by `api/` (`/admin`) | Verify sources, encode rules, approve translations, publish | Planned |
-| **Volunteer portal** | `api/` + `web/` | Consent-scoped, time-limited assisted sessions with an audit log. See [PRIVACY_AND_SECURITY.md](PRIVACY_AND_SECURITY.md). | Planned (Phase 5) |
+| **Reviewer UI** | Served by `backend/` (`/admin`) | Verify sources, encode rules, approve translations, publish | Planned |
+| **Volunteer portal** | `backend/` + `frontend/` | Consent-scoped, time-limited assisted sessions with an audit log. See [PRIVACY_AND_SECURITY.md](PRIVACY_AND_SECURITY.md). | Planned (Phase 5) |
 
 **Why two backend languages:** Spring Boot is the maintainer's choice for the product backend. The open-source Indic models (bge-m3, IndicTrans2, IndicWhisper, PaddleOCR) and the extraction tools (trafilatura, PyMuPDF) only have mature Python implementations. Keeping them in a small, stateless Python service means the Java side never depends on them directly, and any of them can be swapped for a hosted API by writing a new Java provider implementation.
 
@@ -201,7 +201,7 @@ The ML service's own API is versioned (`/v1/embed`, …) and documented in `ml/R
 | Build | Gradle (Kotlin DSL) |
 | Web | Spring Web MVC, Bean Validation (`jakarta.validation`) on request records |
 | Data | Spring Data JDBC (or JPA) on PostgreSQL; pgvector via the `pgvector-java` type or Spring AI `PgVectorStore` |
-| Migrations | Flyway (`api/src/main/resources/db/migration`) |
+| Migrations | Flyway (`backend/src/main/resources/db/migration`) |
 | Rules | `json-logic-java` (`io.github.jamsesso`) |
 | LLM | Spring AI (OpenAI-compatible, Ollama, Gemini) behind `LlmProvider` |
 | Security | Spring Security: anonymous public API; OAuth2/OIDC or passkeys for reviewers and volunteers; method-level role checks |
@@ -227,8 +227,8 @@ Base package: `org.jansathi` (`in.jansathi` is not allowed because `in` is a Jav
 ## 9. Planned repo layout
 
 ```
-web/        PWA (moves to SvelteKit or Next.js when routing/state are needed; same locale JSON)
-api/        Spring Boot app (Gradle)
+frontend/        PWA (moves to SvelteKit or Next.js when routing/state are needed; same locale JSON)
+backend/        Spring Boot app (Gradle)
   src/main/java/org/jansathi/
     scheme/  rules/  rag/  checklist/  reminder/  volunteer/  admin/  provider/
   src/main/resources/

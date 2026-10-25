@@ -6,6 +6,34 @@ JanSathi helps people find schemes they may qualify for, understand the rules in
 
 > JanSathi is not a government service. It never promises eligibility or approval; final decisions are always made by the government.
 
+## Start here
+
+```
+JanSathi/
+├── frontend/   The app people use. Plain HTML + CSS + JavaScript (no React, no build step),
+│               so it loads fast on cheap phones and works offline. Open index.html via a server.
+├── backend/    Java 25 + Spring Boot API (Gradle). Serves the same scheme data and matching over HTTP.
+├── content/    The knowledge base: every scheme as a JSON file, with its official sources.
+├── rules/      Test cases for the eligibility rules (both frontend and backend must pass them).
+├── ingest/     Python job that re-downloads official sources and detects changes.
+├── tools/      Node scripts: tests, validators, bundle builder, dev server.
+└── docs/       Product brief and design documents.
+```
+
+**Run the app** (needs only Node 20+; nothing to install):
+
+```bash
+npm start                # serves frontend/ on http://localhost:8000
+```
+
+**Run the backend** (needs Java 25; the Gradle wrapper downloads everything else):
+
+```bash
+npm run start:backend    # same as: cd backend && gradlew bootRun   → http://localhost:8080
+```
+
+**Check everything:** `npm run check` (data, translations, 300+ tests) and `npm run smoke` (opens the app in headless Chrome).
+
 ---
 
 ## Why
@@ -25,8 +53,8 @@ Many people who qualify for scholarships, pensions, health cover, housing or far
 
 | Feature | Status |
 |---|---|
-| 10-language UI (en, hi, bn, ta, te, mr, gu, kn, ml, pa) with voice in/out and icon tiles | Built (`web/`); 9 locales await native-speaker review |
-| Eligibility questionnaire with three results: likely eligible / not eligible / need more info, with rule traces | Built (on-device rules engine, `web/js/rules.js`) |
+| 10-language UI (en, hi, bn, ta, te, mr, gu, kn, ml, pa) with voice in/out and icon tiles | Built (`frontend/`); 9 locales await native-speaker review |
+| Eligibility questionnaire with three results: likely eligible / not eligible / need more info, with rule traces | Built (on-device rules engine, `frontend/js/rules.js`) |
 | Scheme pages with official sources, clause locators and checked/verified dates | Built; 28 central schemes, all **drafts** awaiting human review |
 | Source re-check job (hash changes → review) | Built (`ingest/recheck.py`); not yet scheduled in CI |
 | Personal document checklist with "how to get it" guidance | Built (generic, all-India guidance) |
@@ -43,18 +71,18 @@ See [docs/ROADMAP.md](docs/ROADMAP.md) for the full plan.
 
 What exists now (October 2026):
 
-- **`web/`**: a static, no-build PWA. Questionnaire, three-state results with rule traces, scheme pages with sources, document checklist, search, read-aloud and voice answers, 10 languages, offline support. All matching happens on the device; nothing about the user leaves the phone.
+- **`frontend/`**: a static, no-build PWA. Questionnaire, three-state results with rule traces, scheme pages with sources, document checklist, search, read-aloud and voice answers, 10 languages, offline support. All matching happens on the device; nothing about the user leaves the phone.
 - **`content/`**: 28 central schemes across pensions, insurance, farming, health, housing, food, work, energy, women and children, disability and scholarships (see `content/schemes/`). Every rule cites the clause of an official source it rests on, and each source has `fetched_at` and a content hash. **They are drafts:** a human reviewer has not yet set `verified_at`, so the app runs in *preview mode* and labels every result "may be outdated".
 - **`rules/`**: shared fixtures (233 cases) that the JS engine passes and the Java engine must pass too.
 - **`ingest/recheck.py`** and **`tools/`**: source re-check, content validator, copy lint (10 languages), locale parity, bundle builder, browser smoke test.
-- **`api/`** (Spring Boot) is in progress in a separate session. There is no database or AI component yet.
+- **`backend/`** (Spring Boot) is in progress in a separate session. There is no database or AI component yet.
 
 ## Quick start
 
 Requires Node 20+ (no `npm install` needed: there are no dependencies) or Python 3, and a modern browser. Chrome or Android Chrome gives the best speech support.
 
 ```bash
-npm run serve            # or: cd web && python3 -m http.server 8000
+npm start                # or: cd frontend && python3 -m http.server 8000
 # open http://localhost:8000
 
 npm run check            # content validation, copy lint, locale parity, bundle freshness, 312 unit tests

@@ -4,7 +4,7 @@ Phases from the [project brief](PROJECT_BRIEF.md#12-roadmap). ✅ = done.
 
 ## Phase 0 — Multilingual voice-first frontend prototype ✅
 
-- [x] Static, no-build PWA in `web/`: hero, category tiles, voice ask sheet, questionnaire (built 2026-10-25; the earlier prototype was never committed)
+- [x] Static, no-build PWA in `frontend/`: hero, category tiles, voice ask sheet, questionnaire (built 2026-10-25; the earlier prototype was never committed)
 - [x] 10-language UI (en, hi, bn, ta, te, mr, gu, kn, ml, pa) with `data-i18n` / `data-i18n-attr`, English fallback, saved choice
 - [x] Text-to-speech (page, section, tile) and speech-to-text with typing fallback
 - [x] Large touch targets, Noto fonts, dark mode, visible focus
@@ -15,7 +15,7 @@ Phases from the [project brief](PROJECT_BRIEF.md#12-roadmap). ✅ = done.
 
 - [x] Decide backend framework: **Spring Boot** (2026-10-24)
 - [ ] Decide the MVP state (see open questions)
-- [ ] Spring Boot skeleton (`api/`): Gradle, Flyway, Testcontainers, springdoc, Actuator
+- [ ] Spring Boot skeleton (`backend/`): Gradle, Flyway, Testcontainers, springdoc, Actuator
 - [ ] Python ML service skeleton (`ml/`) with `/v1/embed`
 - [ ] Postgres + pgvector schema and migrations ([DATA_MODEL.md](DATA_MODEL.md))
 - [ ] Ingestion: fetch + snapshot + hash, extract, chunk, embed ([KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md))
@@ -29,7 +29,7 @@ Phases from the [project brief](PROJECT_BRIEF.md#12-roadmap). ✅ = done.
 
 - [x] json-logic rule format, band evaluation and three-state combination ([RULES_ENGINE.md](RULES_ENGINE.md)) in the JS engine
 - [ ] Rule fixtures for every seeded scheme, with Java/JS parity in CI (fixtures and JS side done; Java side in progress)
-- [ ] `/rules/bundle` and on-device matching (on-device matching from the static `web/data/bundle*.json` done; API endpoint pending)
+- [ ] `/rules/bundle` and on-device matching (on-device matching from the static `frontend/data/bundle*.json` done; API endpoint pending)
 - [x] Adaptive questionnaire (tap / type / speak) driven by `next_question`
 - [x] Results screen: likely / not eligible / need more info, with rule traces read aloud
 - [ ] Family mode
@@ -101,7 +101,7 @@ Changes made while building, and why. The brief still describes the goals; these
 | Improvement | Why |
 |---|---|
 | **Content as code** (`content/*.json`, reviewed in pull requests, with the second reviewer as the PR approver) | Works before the reviewer UI and database exist, gives a full history of every rule change, and is the same shape the API imports. |
-| **Static offline bundle** (`web/data/bundle.json`) with the rules engine on the device | Matching works offline and on slow networks, and the profile never leaves the phone (principle 7). The API serves the same bundle. |
+| **Static offline bundle** (`frontend/data/bundle.json`) with the rules engine on the device | Matching works offline and on slow networks, and the profile never leaves the phone (principle 7). The API serves the same bundle. |
 | **Custom three-valued evaluator** instead of a stock json-logic library | Stock json-logic has no "unknown". Answers like "don't know" and age bands need Kleene logic and band corners to give honest "need more information" results. See RULES_ENGINE §9. |
 | **Spring Boot 4.1** rather than 3.x | Open-source support for 3.x has ended. |
 | **`govt_statement` source type** (PIB Cabinet releases, ministry replies in Parliament) | Schemes change by Cabinet decision months before revised guidelines appear (e.g. the NSAP disability pension, 14 Oct 2026). Users get the current rule, labelled `guidance`, with the source shown. |

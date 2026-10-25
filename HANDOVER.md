@@ -12,7 +12,7 @@ For the next AI session working in this repo. Read [CLAUDE.md](CLAUDE.md) and [d
 
 ## Parallel work
 
-`api/` (Spring Boot, Java engine in `api/src/main/java/org/jansathi/rules/`) is untracked and belongs to the backend session (`jansathi-20`, not running on 2026-10-25). Leave it alone; commit only your own paths (`git add <paths>`, never `-A`). The Java engine must pass the same fixtures in `rules/`, including the multi-scheme `next_question` cases (RULES_ENGINE §9.7).
+`backend/` (Spring Boot, Java engine in `backend/src/main/java/org/jansathi/rules/`) is untracked and belongs to the backend session (`jansathi-20`, not running on 2026-10-25). Leave it alone; commit only your own paths (`git add <paths>`, never `-A`). The Java engine must pass the same fixtures in `rules/`, including the multi-scheme `next_question` cases (RULES_ENGINE §9.7).
 
 ## State at the end of this session
 
@@ -20,10 +20,10 @@ For the next AI session working in this repo. Read [CLAUDE.md](CLAUDE.md) and [d
 
 | Area | What exists |
 |---|---|
-| Engine | `web/js/rules.js` implements RULES_ENGINE §9 exactly. `rules/` has 233 fixture cases (44 generic + per scheme). |
+| Engine | `frontend/js/rules.js` implements RULES_ENGINE §9 exactly. `rules/` has 233 fixture cases (44 generic + per scheme). |
 | Content | **28 central schemes** in `content/schemes/` (list in `content/README.md`), 38 profile fields, 17 document types. Every rule has a clause locator; every source except `pm-jay/nha` has `fetched_at` + hash. All `status: draft`, `verified_at: null`. |
-| Web | `web/` static PWA to DESIGN.md: hero, questionnaire (core fields then `next_question`, skip/back, exact number for straddles, voice answers), results with traces, scheme pages with numbered sources, checklist, search, ask sheet, read-aloud, offline service worker, delete-my-data. Auto **preview mode** (banner on every page) while `bundle.json` is empty. JS 17 KB / CSS 6 KB gzipped. |
-| Locales | 10 files, 259 keys each; 9 machine-authored, tracked in `web/locales/review-status.json` (Tamil hero word flagged per DESIGN §6.3). |
+| Web | `frontend/` static PWA to DESIGN.md: hero, questionnaire (core fields then `next_question`, skip/back, exact number for straddles, voice answers), results with traces, scheme pages with numbered sources, checklist, search, ask sheet, read-aloud, offline service worker, delete-my-data. Auto **preview mode** (banner on every page) while `bundle.json` is empty. JS 17 KB / CSS 6 KB gzipped. |
+| Locales | 10 files, 259 keys each; 9 machine-authored, tracked in `frontend/locales/review-status.json` (Tamil hero word flagged per DESIGN §6.3). |
 | Tools | `validate-content`, `lint-copy` (10 languages, official-name allowlist, unit-tested), `check-locales`, `build-bundle` (`--check`), `serve`, `smoke-web`, `fetch-fonts`; `ingest/recheck.py` (robots.txt, 5 s/host, `--update`, `--hash-file`, LF output). |
 
 ### Commits this session

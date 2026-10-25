@@ -1,4 +1,4 @@
-// Browser smoke test for web/: starts the static server, drives headless Chrome over the
+// Browser smoke test for frontend/: starts the static server, drives headless Chrome over the
 // DevTools protocol (no dependencies), walks the main flows and fails on console errors.
 // Usage: node tools/smoke-web.mjs [--shots DIR] [--lang hi]
 // Needs Chrome or Edge; set CHROME=/path/to/chrome if it is not found.

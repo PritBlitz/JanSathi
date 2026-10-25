@@ -1,5 +1,5 @@
 {
-  "$comment": "Profile fields that rules may read. Labels are UI strings: q.<field> and opt.<field>.<value> in web/locales/*.json. A band option sets {min,max}; 'unknown: true' options store nothing (missing).",
+  "$comment": "Profile fields that rules may read. Labels are UI strings: q.<field> and opt.<field>.<value> in frontend/locales/*.json. A band option sets {min,max}; 'unknown: true' options store nothing (missing).",
   "core": ["age", "gender", "area", "occupation"],
   "fields": {
     "age": {

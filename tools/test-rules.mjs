@@ -1,4 +1,4 @@
-// Runs the shared rule fixtures in rules/ through the JS engine (web/js/rules.js).
+// Runs the shared rule fixtures in rules/ through the JS engine (frontend/js/rules.js).
 // Usage: node --test tools/   (or npm test)
 // Fixture format: docs/RULES_ENGINE.md §9.7.
 import { test } from 'node:test';
@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { evaluateScheme, match, validateLogic } from '../web/js/rules.js';
+import { evaluateScheme, match, validateLogic } from '../frontend/js/rules.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const readJson = (p) => JSON.parse(readFileSync(join(root, p), 'utf8'));

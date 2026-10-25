@@ -1,6 +1,6 @@
 # Languages and voice
 
-> **Status:** the UI i18n and browser speech in §1–§5.2 are built (`web/js/i18n.js`, `web/js/speech.js`), with all 10 locale files and `web/locales/review-status.json`; `npm run check:locales` checks key parity. The 9 non-English locales are machine-authored and unreviewed. Server-side speech, content translation and the review tooling (§5.3, §6) are planned.
+> **Status:** the UI i18n and browser speech in §1–§5.2 are built (`frontend/js/i18n.js`, `frontend/js/speech.js`), with all 10 locale files and `frontend/locales/review-status.json`; `npm run check:locales` checks key parity. The 9 non-English locales are machine-authored and unreviewed. Server-side speech, content translation and the review tooling (§5.3, §6) are planned.
 
 ## 1. Supported languages
 
@@ -17,7 +17,7 @@
 | `ml` | Malayalam | `ml-IN` | Malayalam | Noto Sans Malayalam |
 | `pa` | Punjabi | `pa-IN` | Gurmukhi | Noto Sans Gurmukhi |
 
-The list lives in `LANGS` in `web/js/i18n.js`.
+The list lives in `LANGS` in `frontend/js/i18n.js`.
 
 ## 2. How UI i18n works
 
@@ -33,7 +33,7 @@ The list lives in `LANGS` in `web/js/i18n.js`.
 - `data-i18n-attr="attr:key,attr2:key2"` sets attributes (placeholder, aria-label, title, alt).
 - The English text in the HTML is only a fallback for the first paint; the locale file is the source.
 
-**Locale files:** `web/locales/<code>.json`, one per language, with **identical key sets**. Keys are dotted, grouped by area (`hero.*`, `tiles.*`, `ask.*`, `speech.*`, …).
+**Locale files:** `frontend/locales/<code>.json`, one per language, with **identical key sets**. Keys are dotted, grouped by area (`hero.*`, `tiles.*`, `ask.*`, `speech.*`, …).
 
 **Loading and fallback**
 
@@ -55,15 +55,15 @@ The list lives in `LANGS` in `web/js/i18n.js`.
 
 ## 4. Adding a language
 
-1. Add an entry to `LANGS` in `web/js/i18n.js` (code, native name, speech tag).
-2. Create `web/locales/<code>.json` with every key from `en.json`.
+1. Add an entry to `LANGS` in `frontend/js/i18n.js` (code, native name, speech tag).
+2. Create `frontend/locales/<code>.json` with every key from `en.json`.
 3. Add the Noto font for the script (see [DESIGN.md](../DESIGN.md#4-typography)) and check line-height.
 4. Test speech: is there a browser voice for the tag on Android Chrome and desktop Chrome? Record the result in the voice coverage table below.
 5. Get a native-speaker review (§6) before it's shown by default.
 
 ## 5. Voice
 
-### 5.1 Text-to-speech (`web/js/speech.js`)
+### 5.1 Text-to-speech (`frontend/js/speech.js`)
 
 Uses the browser `speechSynthesis` API through `speak`, `stop` and `hasVoice`.
 
@@ -102,7 +102,7 @@ The current translations of the UI strings were machine-authored and **need nati
 1. Each locale has a reviewer (volunteer or paid) who is a native speaker.
 2. Reviewers work from a sheet or PR showing key, English, current translation and screenshot context.
 3. Checks: meaning, simple wording (grade 5), the copy rules in their language, consistent terms (e.g. one word for "scheme"), and fit in the layout.
-4. Reviewed keys are recorded in `web/locales/review-status.json` (planned) with reviewer and date.
+4. Reviewed keys are recorded in `frontend/locales/review-status.json` (planned) with reviewer and date.
 
 ### Scheme content (planned, Phase 6)
 

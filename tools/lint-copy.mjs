@@ -1,5 +1,5 @@
 // Copy lint: blocks phrases that promise eligibility or approval (CLAUDE.md principle 1).
-// Checks every string in web/locales/*.json and content/**/*.json, and prompts in prompts/ if present.
+// Checks every string in frontend/locales/*.json and content/**/*.json, and prompts in prompts/ if present.
 // Usage: node tools/lint-copy.mjs   (exit 1 on any hit)
 //
 // The non-English lists were machine-authored and must be extended by native-speaker reviewers
@@ -65,7 +65,7 @@ export function lintText(text, langs = Object.keys(BANNED)) {
 
 function main() {
   const files = [
-    ...walk(join(root, 'web/locales'), ['.json']),
+    ...walk(join(root, 'frontend/locales'), ['.json']),
     ...walk(join(root, 'content'), ['.json']),
     ...walk(join(root, 'prompts'), ['.txt', '.md', '.json']),
   ];

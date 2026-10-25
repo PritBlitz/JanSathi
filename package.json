@@ -7,6 +7,9 @@
     "node": ">=20"
   },
   "scripts": {
+    "start": "node tools/serve.mjs",
+    "start:backend": "cd backend && gradlew bootRun",
+    "test:backend": "cd backend && gradlew test",
     "test": "node --test tools/test-rules.mjs tools/test-lint.mjs",
     "smoke": "node tools/smoke-web.mjs",
     "build": "node tools/build-bundle.mjs && node tools/build-bundle.mjs --include-drafts",
@@ -14,8 +17,8 @@
     "check:locales": "node tools/check-locales.mjs",
     "validate": "node tools/validate-content.mjs",
     "check": "npm run validate && npm run lint:copy && npm run check:locales && npm run check:bundle && npm test",
-    "serve": "node tools/serve.mjs",
     "check:bundle": "node tools/build-bundle.mjs --check && node tools/build-bundle.mjs --include-drafts --check",
-    "recheck": "python ingest/recheck.py"
+    "recheck": "python ingest/recheck.py",
+    "serve": "node tools/serve.mjs"
   }
 }

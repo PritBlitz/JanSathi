@@ -1,6 +1,6 @@
 # Privacy and security
 
-> **Status:** planned design. The current prototype (`web/`) stores only the chosen language in `localStorage` and sends no personal data anywhere.
+> **Status:** planned design. The current prototype (`frontend/`) stores only the chosen language in `localStorage` and sends no personal data anywhere.
 >
 > This document is an engineering design, not legal advice. Have it reviewed by someone qualified in Indian data-protection law before launch.
 

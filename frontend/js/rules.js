@@ -1,5 +1,5 @@
 // JanSathi rules engine (JS). Implements docs/RULES_ENGINE.md §9 exactly; the
-// Java engine in api/ must give identical results on the fixtures in rules/.
+// Java engine in backend/ must give identical results on the fixtures in rules/.
 // No DOM access: this module runs in the browser and in Node (tools/test-rules.mjs).
 
 const T = true;

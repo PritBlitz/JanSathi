@@ -4,7 +4,7 @@ Thanks for helping. JanSathi is used by people making real decisions about money
 
 ## 1. Setup
 
-What exists today: the static PWA (`web/`), the knowledge base as code (`content/`), shared rule fixtures (`rules/`), the source re-check job (`ingest/`) and Node tooling (`tools/`).
+What exists today: the static PWA (`frontend/`), the knowledge base as code (`content/`), shared rule fixtures (`rules/`), the source re-check job (`ingest/`) and Node tooling (`tools/`).
 
 ```bash
 git clone <repo-url>
@@ -15,7 +15,7 @@ npm run check      # run before every PR
 
 No build step and no package install: Node 20+ is the only requirement for the tooling (Python 3 for `ingest/`). To test on a phone, open the same URL from a device on your network, or use Chrome's remote debugging. Note that speech recognition requires HTTPS or `localhost`.
 
-After editing anything in `content/`, run `npm run build` and commit the regenerated `web/data/` bundles; `npm run check` fails if they are stale.
+After editing anything in `content/`, run `npm run build` and commit the regenerated `frontend/data/` bundles; `npm run check` fails if they are stale.
 
 Backend, database and AI setup will be added here as those phases land (see [ROADMAP.md](ROADMAP.md)).
 
@@ -49,7 +49,7 @@ Applies to locale files, prompts, scheme content, notifications and docs shown t
 
 ## 4. Coding conventions
 
-### Frontend (`web/`)
+### Frontend (`frontend/`)
 
 - Plain HTML, CSS and ES modules; no build step until the planned SvelteKit/Next.js move.
 - All text via `data-i18n` / `data-i18n-attr`. When you add a key, add it to **all 10** locale files (English copy is fine as a placeholder; list those keys in the PR).
@@ -58,7 +58,7 @@ Applies to locale files, prompts, scheme content, notifications and docs shown t
 - Wrap every `localStorage` access in `try/catch`; the app must work without it.
 - Check new UI in English, Hindi and the longest locale (Tamil or Malayalam), at 360 px and 1280 px, in light and dark.
 
-### Backend API (`api/`, planned)
+### Backend API (`backend/`, planned)
 
 - Java 21, Spring Boot 3, Gradle (Kotlin DSL). Base package `org.jansathi`, organised by feature (`scheme`, `rules`, `rag`, …), not by layer.
 - Request and response bodies are Java `record`s with Bean Validation annotations. Never expose database entities directly.

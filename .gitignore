@@ -6,10 +6,10 @@ Thumbs.db
 *.iml
 
 # Java / Gradle
-api/build/
-api/.gradle/
-api/bin/
-api/out/
+backend/build/
+backend/.gradle/
+backend/bin/
+backend/out/
 
 # Node
 node_modules/
