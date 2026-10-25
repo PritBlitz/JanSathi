@@ -1,0 +1,2223 @@
+[
+  {
+    "name": "exact number at limit passes",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 60
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "rules": {
+        "age_min": "pass"
+      },
+      "stale": false,
+      "label": "confirmed",
+      "missing_fields": []
+    }
+  },
+  {
+    "name": "exact number just below limit fails",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 59
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "exact number just above limit passes",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 61
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "band wholly above limit passes",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": {
+        "min": 60,
+        "max": 69
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "band wholly below limit fails",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": {
+        "min": 40,
+        "max": 59
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "missing_fields": []
+    }
+  },
+  {
+    "name": "band straddling limit is unknown and asks for the field",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": {
+        "min": 55,
+        "max": 64
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "rules": {
+        "age_min": "unknown"
+      },
+      "missing_fields": [
+        "age"
+      ]
+    }
+  },
+  {
+    "name": "band with min == max is treated as exact",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": {
+        "min": 60,
+        "max": 60
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "band upper bound equal to a <= limit passes",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "income_max",
+          "logic": {
+            "<=": [
+              {
+                "var": "annual_income"
+              },
+              250000
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "annual_income": {
+        "min": 100001,
+        "max": 250000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 249999 passes",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "income_max",
+          "logic": {
+            "<=": [
+              {
+                "var": "annual_income"
+              },
+              250000
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "annual_income": 249999
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 250000 passes",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "income_max",
+          "logic": {
+            "<=": [
+              {
+                "var": "annual_income"
+              },
+              250000
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "annual_income": 250000
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 250001 fails",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "income_max",
+          "logic": {
+            "<=": [
+              {
+                "var": "annual_income"
+              },
+              250000
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "annual_income": 250001
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "missing field is unknown",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        },
+        {
+          "code": "bpl",
+          "logic": {
+            "==": [
+              {
+                "var": "is_bpl"
+              },
+              true
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 70
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "rules": {
+        "age_min": "pass",
+        "bpl": "unknown"
+      },
+      "missing_fields": [
+        "is_bpl"
+      ]
+    }
+  },
+  {
+    "name": "empty profile lists every hard field in rule order",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "bpl",
+          "logic": {
+            "==": [
+              {
+                "var": "is_bpl"
+              },
+              true
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        },
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {},
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "is_bpl",
+        "age"
+      ]
+    }
+  },
+  {
+    "name": "confirmed hard fail beats unknown; missing_fields still listed",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        },
+        {
+          "code": "bpl",
+          "logic": {
+            "==": [
+              {
+                "var": "is_bpl"
+              },
+              true
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "missing_fields": [
+        "is_bpl"
+      ]
+    }
+  },
+  {
+    "name": "Kleene or: T or U is T",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "listed_or_70",
+          "logic": {
+            "or": [
+              {
+                ">=": [
+                  {
+                    "var": "age"
+                  },
+                  70
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "in_pmjay_list"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 75
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "rules": {
+        "listed_or_70": "pass"
+      }
+    }
+  },
+  {
+    "name": "Kleene or: F or U is U",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "listed_or_70",
+          "logic": {
+            "or": [
+              {
+                ">=": [
+                  {
+                    "var": "age"
+                  },
+                  70
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "in_pmjay_list"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 40
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "in_pmjay_list"
+      ]
+    }
+  },
+  {
+    "name": "Kleene or: F or F is F",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "listed_or_70",
+          "logic": {
+            "or": [
+              {
+                ">=": [
+                  {
+                    "var": "age"
+                  },
+                  70
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "in_pmjay_list"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 40,
+      "in_pmjay_list": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "Kleene and: F and U is F",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "both",
+          "logic": {
+            "and": [
+              {
+                ">=": [
+                  {
+                    "var": "age"
+                  },
+                  60
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "is_bpl"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "both": "fail"
+      }
+    }
+  },
+  {
+    "name": "Kleene and: T and U is U",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "both",
+          "logic": {
+            "and": [
+              {
+                ">=": [
+                  {
+                    "var": "age"
+                  },
+                  60
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "is_bpl"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 65
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "is_bpl"
+      ]
+    }
+  },
+  {
+    "name": "not of unknown stays unknown",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "not_bpl",
+          "logic": {
+            "!": [
+              {
+                "==": [
+                  {
+                    "var": "is_bpl"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {},
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "is_bpl"
+      ]
+    }
+  },
+  {
+    "name": "not of true is false",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "not_bpl",
+          "logic": {
+            "!": [
+              {
+                "==": [
+                  {
+                    "var": "is_bpl"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "!= on an enum",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "not_general",
+          "logic": {
+            "!=": [
+              {
+                "var": "social_category"
+              },
+              "general"
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "social_category": "obc"
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "in: member",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "sc_st",
+          "logic": {
+            "in": [
+              {
+                "var": "social_category"
+              },
+              [
+                "sc",
+                "st"
+              ]
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "social_category": "st"
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "in: not a member",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "sc_st",
+          "logic": {
+            "in": [
+              {
+                "var": "social_category"
+              },
+              [
+                "sc",
+                "st"
+              ]
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "social_category": "obc"
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "in: absent field is unknown",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "sc_st",
+          "logic": {
+            "in": [
+              {
+                "var": "social_category"
+              },
+              [
+                "sc",
+                "st"
+              ]
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {},
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "social_category"
+      ]
+    }
+  },
+  {
+    "name": "no type coercion: string does not equal bool",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "bpl",
+          "logic": {
+            "==": [
+              {
+                "var": "is_bpl"
+              },
+              true
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "is_bpl": "true"
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "two bands: only the straddling one is asked",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "old_and_poor",
+          "logic": {
+            "and": [
+              {
+                ">=": [
+                  {
+                    "var": "age"
+                  },
+                  60
+                ]
+              },
+              {
+                "<=": [
+                  {
+                    "var": "annual_income"
+                  },
+                  250000
+                ]
+              }
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": {
+        "min": 55,
+        "max": 64
+      },
+      "annual_income": {
+        "min": 0,
+        "max": 100000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "age"
+      ]
+    }
+  },
+  {
+    "name": "two bands both straddling: both asked, in fields.json order",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "old_and_poor",
+          "logic": {
+            "and": [
+              {
+                "<=": [
+                  {
+                    "var": "annual_income"
+                  },
+                  250000
+                ]
+              },
+              {
+                ">=": [
+                  {
+                    "var": "age"
+                  },
+                  60
+                ]
+              }
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": {
+        "min": 55,
+        "max": 64
+      },
+      "annual_income": {
+        "min": 200000,
+        "max": 300000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "age",
+        "annual_income"
+      ]
+    }
+  },
+  {
+    "name": "absent field plus straddle in one rule: both listed",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "old_or_bpl",
+          "logic": {
+            "or": [
+              {
+                ">=": [
+                  {
+                    "var": "age"
+                  },
+                  60
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "is_bpl"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": {
+        "min": 55,
+        "max": 64
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "age",
+        "is_bpl"
+      ]
+    }
+  },
+  {
+    "name": "uncertain hard rule that fails gives need more info",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "uncertain",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "rules": {
+        "age_min": "fail"
+      },
+      "missing_fields": [],
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "soft rule failing does not change the result",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        },
+        {
+          "code": "bpl_priority",
+          "logic": {
+            "==": [
+              {
+                "var": "is_bpl"
+              },
+              true
+            ]
+          },
+          "hard": false,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 65,
+      "is_bpl": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "rules": {
+        "bpl_priority": "fail"
+      }
+    }
+  },
+  {
+    "name": "soft rule unknown is not in missing_fields",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        },
+        {
+          "code": "bpl_priority",
+          "logic": {
+            "==": [
+              {
+                "var": "is_bpl"
+              },
+              true
+            ]
+          },
+          "hard": false,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 65
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "missing_fields": []
+    }
+  },
+  {
+    "name": "label is the weakest hard confidence",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        },
+        {
+          "code": "bpl",
+          "logic": {
+            "==": [
+              {
+                "var": "is_bpl"
+              },
+              true
+            ]
+          },
+          "hard": true,
+          "confidence": "guidance",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 65,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "guidance"
+    }
+  },
+  {
+    "name": "soft rule confidence does not lower the label",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        },
+        {
+          "code": "p",
+          "logic": {
+            "==": [
+              {
+                "var": "is_bpl"
+              },
+              true
+            ]
+          },
+          "hard": false,
+          "confidence": "uncertain",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 65
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "label": "confirmed",
+      "stale": false
+    }
+  },
+  {
+    "name": "draft scheme is stale and labelled uncertain",
+    "scheme": {
+      "slug": "t",
+      "status": "draft",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 65
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "unverified source is stale",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": null
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 65
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "verified exactly reverify_days ago is not stale",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-04-27"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 65
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "stale": false
+    }
+  },
+  {
+    "name": "verified reverify_days + 1 ago is stale",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-04-26"
+        }
+      ],
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ]
+    },
+    "profile": {
+      "age": 65
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "next_question: field missing in the most schemes wins",
+    "schemes": [
+      {
+        "slug": "a",
+        "status": "published",
+        "reverify_days": 180,
+        "sources": [
+          {
+            "id": "g",
+            "doc_type": "guideline",
+            "verified_at": "2026-10-01"
+          }
+        ],
+        "rules": [
+          {
+            "code": "bpl",
+            "logic": {
+              "==": [
+                {
+                  "var": "is_bpl"
+                },
+                true
+              ]
+            },
+            "hard": true,
+            "confidence": "confirmed",
+            "source": "g"
+          }
+        ]
+      },
+      {
+        "slug": "b",
+        "status": "published",
+        "reverify_days": 180,
+        "sources": [
+          {
+            "id": "g",
+            "doc_type": "guideline",
+            "verified_at": "2026-10-01"
+          }
+        ],
+        "rules": [
+          {
+            "code": "bpl",
+            "logic": {
+              "==": [
+                {
+                  "var": "is_bpl"
+                },
+                true
+              ]
+            },
+            "hard": true,
+            "confidence": "confirmed",
+            "source": "g"
+          }
+        ]
+      },
+      {
+        "slug": "c",
+        "status": "published",
+        "reverify_days": 180,
+        "sources": [
+          {
+            "id": "g",
+            "doc_type": "guideline",
+            "verified_at": "2026-10-01"
+          }
+        ],
+        "rules": [
+          {
+            "code": "sc",
+            "logic": {
+              "==": [
+                {
+                  "var": "social_category"
+                },
+                "sc"
+              ]
+            },
+            "hard": true,
+            "confidence": "confirmed",
+            "source": "g"
+          }
+        ]
+      }
+    ],
+    "profile": {},
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "next_question": "is_bpl"
+    }
+  },
+  {
+    "name": "next_question: ties broken by fields.json order",
+    "schemes": [
+      {
+        "slug": "a",
+        "status": "published",
+        "reverify_days": 180,
+        "sources": [
+          {
+            "id": "g",
+            "doc_type": "guideline",
+            "verified_at": "2026-10-01"
+          }
+        ],
+        "rules": [
+          {
+            "code": "bpl",
+            "logic": {
+              "==": [
+                {
+                  "var": "is_bpl"
+                },
+                true
+              ]
+            },
+            "hard": true,
+            "confidence": "confirmed",
+            "source": "g"
+          }
+        ]
+      },
+      {
+        "slug": "b",
+        "status": "published",
+        "reverify_days": 180,
+        "sources": [
+          {
+            "id": "g",
+            "doc_type": "guideline",
+            "verified_at": "2026-10-01"
+          }
+        ],
+        "rules": [
+          {
+            "code": "age_min",
+            "logic": {
+              ">=": [
+                {
+                  "var": "age"
+                },
+                60
+              ]
+            },
+            "hard": true,
+            "confidence": "confirmed",
+            "source": "g"
+          }
+        ]
+      }
+    ],
+    "profile": {},
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "next_question": "age"
+    }
+  },
+  {
+    "name": "next_question: skipped fields are left out",
+    "schemes": [
+      {
+        "slug": "a",
+        "status": "published",
+        "reverify_days": 180,
+        "sources": [
+          {
+            "id": "g",
+            "doc_type": "guideline",
+            "verified_at": "2026-10-01"
+          }
+        ],
+        "rules": [
+          {
+            "code": "bpl",
+            "logic": {
+              "==": [
+                {
+                  "var": "is_bpl"
+                },
+                true
+              ]
+            },
+            "hard": true,
+            "confidence": "confirmed",
+            "source": "g"
+          }
+        ]
+      },
+      {
+        "slug": "b",
+        "status": "published",
+        "reverify_days": 180,
+        "sources": [
+          {
+            "id": "g",
+            "doc_type": "guideline",
+            "verified_at": "2026-10-01"
+          }
+        ],
+        "rules": [
+          {
+            "code": "bpl",
+            "logic": {
+              "==": [
+                {
+                  "var": "is_bpl"
+                },
+                true
+              ]
+            },
+            "hard": true,
+            "confidence": "confirmed",
+            "source": "g"
+          }
+        ]
+      },
+      {
+        "slug": "c",
+        "status": "published",
+        "reverify_days": 180,
+        "sources": [
+          {
+            "id": "g",
+            "doc_type": "guideline",
+            "verified_at": "2026-10-01"
+          }
+        ],
+        "rules": [
+          {
+            "code": "age_min",
+            "logic": {
+              ">=": [
+                {
+                  "var": "age"
+                },
+                60
+              ]
+            },
+            "hard": true,
+            "confidence": "confirmed",
+            "source": "g"
+          }
+        ]
+      }
+    ],
+    "profile": {},
+    "skipped": [
+      "is_bpl"
+    ],
+    "as_of": "2026-10-24",
+    "expect": {
+      "next_question": "age"
+    }
+  },
+  {
+    "name": "next_question: NOT_ELIGIBLE schemes do not count",
+    "schemes": [
+      {
+        "slug": "a",
+        "status": "published",
+        "reverify_days": 180,
+        "sources": [
+          {
+            "id": "g",
+            "doc_type": "guideline",
+            "verified_at": "2026-10-01"
+          }
+        ],
+        "rules": [
+          {
+            "code": "age_min",
+            "logic": {
+              ">=": [
+                {
+                  "var": "age"
+                },
+                60
+              ]
+            },
+            "hard": true,
+            "confidence": "confirmed",
+            "source": "g"
+          },
+          {
+            "code": "bpl",
+            "logic": {
+              "==": [
+                {
+                  "var": "is_bpl"
+                },
+                true
+              ]
+            },
+            "hard": true,
+            "confidence": "confirmed",
+            "source": "g"
+          }
+        ]
+      },
+      {
+        "slug": "b",
+        "status": "published",
+        "reverify_days": 180,
+        "sources": [
+          {
+            "id": "g",
+            "doc_type": "guideline",
+            "verified_at": "2026-10-01"
+          }
+        ],
+        "rules": [
+          {
+            "code": "sc",
+            "logic": {
+              "==": [
+                {
+                  "var": "social_category"
+                },
+                "sc"
+              ]
+            },
+            "hard": true,
+            "confidence": "confirmed",
+            "source": "g"
+          }
+        ]
+      }
+    ],
+    "profile": {
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "next_question": "social_category"
+    }
+  },
+  {
+    "name": "next_question: null when nothing is missing",
+    "schemes": [
+      {
+        "slug": "a",
+        "status": "published",
+        "reverify_days": 180,
+        "sources": [
+          {
+            "id": "g",
+            "doc_type": "guideline",
+            "verified_at": "2026-10-01"
+          }
+        ],
+        "rules": [
+          {
+            "code": "age_min",
+            "logic": {
+              ">=": [
+                {
+                  "var": "age"
+                },
+                60
+              ]
+            },
+            "hard": true,
+            "confidence": "confirmed",
+            "source": "g"
+          }
+        ]
+      }
+    ],
+    "profile": {
+      "age": 65
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "next_question": null
+    }
+  },
+  {
+    "name": "next_question: null when everything missing is skipped",
+    "schemes": [
+      {
+        "slug": "a",
+        "status": "published",
+        "reverify_days": 180,
+        "sources": [
+          {
+            "id": "g",
+            "doc_type": "guideline",
+            "verified_at": "2026-10-01"
+          }
+        ],
+        "rules": [
+          {
+            "code": "bpl",
+            "logic": {
+              "==": [
+                {
+                  "var": "is_bpl"
+                },
+                true
+              ]
+            },
+            "hard": true,
+            "confidence": "confirmed",
+            "source": "g"
+          }
+        ]
+      }
+    ],
+    "profile": {},
+    "skipped": [
+      "is_bpl"
+    ],
+    "as_of": "2026-10-24",
+    "expect": {
+      "next_question": null
+    }
+  }
+]

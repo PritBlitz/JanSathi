@@ -1,6 +1,6 @@
 # Rules engine
 
-> **Status:** planned (Phase 2). Not implemented.
+> **Status:** the JS engine (`web/js/rules.js`) and the shared fixtures (`rules/`) are built and pass (`npm test`). The Java engine in `api/` is in progress. §1–§8 describe the design; §9 is the exact contract both engines implement.
 
 The rules engine is the **only** component that decides match results. It is deterministic, testable and explainable. The LLM never changes a result; it only explains the result and the trace the engine produces.
 
@@ -155,7 +155,7 @@ A household profile holds one record per member. The engine evaluates each schem
 
 ## 8. Testing
 
-- **Fixtures:** each scheme has `rules/<slug>/cases.yaml` with profiles and the expected result, per-rule outcomes and `missing_fields`.
+- **Fixtures:** each scheme has `rules/<slug>.cases.json` with profiles and the expected result, per-rule outcomes and `missing_fields` (format in §9.7; the YAML below is only an illustration).
 - **Required edge cases** for every rule: just below, at and just above each numeric limit (e.g. ages 59/60/61; income 249999/250000/250001); a band that straddles the limit; every referenced field missing; "prefer not to say".
 - **Parity:** CI runs the same fixtures through the Java engine (JUnit, json-logic-java) and the JS engine (json-logic-js) and fails if any outcome differs. The band-corner evaluation and three-state combination in §3 are implemented in both languages, so they are covered by the same fixtures.
 - **Monotonicity check:** the reviewer UI and CI reject rules that use non-comparison operators on banded fields.
@@ -253,6 +253,13 @@ If the chosen field is already a band in the profile, the client asks for an exa
 ```
 
 Every key in `expect` other than `result` is optional; only the keys present are checked.
+
+`_engine.cases.json` may also hold multi-scheme cases that test `next_question` (§9.6). They carry `schemes` (a list of inline schemes) in place of `scheme`, and their `expect` holds `next_question` (a field name or `null`) and, optionally, `results` (`{slug: result}`):
+
+```json
+{ "name": "…", "schemes": [{…}, {…}], "profile": {}, "skipped": ["is_bpl"], "as_of": "2026-10-24",
+  "expect": { "next_question": "age" } }
+```
 
 **`/api/v1/rules/bundle`** (identical to the static `web/data/bundle.json`):
 
