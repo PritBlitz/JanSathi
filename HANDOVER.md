@@ -1,4 +1,4 @@
-# Handover — 2026-10-24
+# Handover — 2026-10-25 (session 2, in progress)
 
 For the next AI session working in this repo. Read [CLAUDE.md](CLAUDE.md) and [docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md) first. The brief's §17 decisions log overrides the rest of the brief.
 
@@ -6,68 +6,47 @@ For the next AI session working in this repo. Read [CLAUDE.md](CLAUDE.md) and [d
 
 - **Commits:** commit step by step, but the maintainer (PritBlitz) is the **only author**. No `Co-Authored-By` trailer and no Claude attribution in commit messages. **Never push**; the maintainer pushes.
 - Build the product from the brief, and improve the idea where it helps. Explain each improvement in the docs.
+- **All data must be real and verifiable.** No demo or placeholder data. Use official sources from the internet; record the clause (`locator`), `fetched_at` and `content_hash`. Never set `verified_at` yourself: only a human reviewer does.
 - Backend is **Spring Boot**. The hero word is the brand name in each language's script (JanSathi, जनसाथी, …).
-- Visuals follow [DESIGN.md](DESIGN.md): the Voices United-style hero, Awwwards-inspired patterns, and the accessibility and performance limits.
+- Visuals follow [DESIGN.md](DESIGN.md).
+- Update this file before the session limit runs out.
 
-## Two sessions are working in parallel
+## Parallel work
 
-Another session (`jansathi-20`) is working in the same folder. Agreed split, so we don't overwrite each other:
+`api/` (Spring Boot, Java engine in `api/src/main/java/org/jansathi/rules/`) is untracked and belongs to the backend session (`jansathi-20`, not running on 2026-10-25). Leave it alone; commit only your own paths (`git add <paths>`, never `-A`). The Java engine must pass the same fixtures in `rules/`.
 
-| Owner | Paths |
-|---|---|
-| **This (frontend) session's successor** | `content/`, `tools/`, `web/`, `rules/` fixtures, `package.json`, `docs/RULES_ENGINE.md` §9, frontend docs |
-| **`jansathi-20`** | `api/` (Spring Boot 4.1.2, Java 25, Gradle, package `org.jansathi`), the Java rules engine, `.github/workflows/ci.yml`, backend docs |
+## Done this session (committed)
 
-Commit only your own paths (`git add <your paths>`, never `git add .` or `-A`). `api/` is untracked and belongs to `jansathi-20`; leave it alone. Run `ListAgents` to check whether `jansathi-20` is still active.
+1. `110af54` **JS rules engine** `web/js/rules.js` (§9 exactly), `rules/_engine.cases.json` (44 cases incl. multi-scheme `next_question`; format added to RULES_ENGINE §9.7), `tools/test-rules.mjs`, root `package.json` (no dependencies).
+2. `461af7d` **All 10 schemes checked against official sources** (see "Source findings" below), per-scheme fixtures (96 cases), `ingest/recheck.py`, new `doc_type: govt_statement`, manual-fetch sources, 7 new profile fields, `job_card` document.
+3. `383403b` **Tools:** `validate-content`, `lint-copy` (10 languages + official-name allowlist), `check-locales`, `build-bundle` (+ `--check`), `serve`. `npm run check` runs all of them; `web/data/bundle.json` is empty because nothing is published yet, `bundle.preview.json` has the 10 drafts.
 
-## Done (committed)
+## Source findings (2026-10-25)
 
-1. `aedd6f2` Docs: brief, README, CLAUDE.md, DESIGN.md, and all `docs/*.md`.
-2. `abc19c5` Repo tooling: `.gitattributes` (LF), `.editorconfig`, `.gitignore`.
-3. `1120f5c` `content/`: `fields.json` (profile fields, bands, answer options), `documents.json` (14 document types with how-to-get-it guidance in en and hi), and 10 central schemes in `schemes/*.json` (en + hi content, sources, rules, documents).
-   - Every scheme is `status: draft` with `verified_at: null`, because no human has reviewed them. Only a human sets `verified_at`.
-   - Source URLs and hashes fetched by `jansathi-20` are recorded for PM-KISAN (guidelines PDF + FAQ), SSY, the NSAP pensions (nsap.dord.gov.in) and post-matric SC.
-   - NSAP and post-matric SC rules are `guidance`: their criteria come from secondary sources only. The post-matric SC income limit may rise to ₹4.5 lakh (2026 news).
-4. **Not yet committed:** `docs/RULES_ENGINE.md` §9, the exact engine contract (three-valued logic, band corners, straddles, stale/label, `next_question`, fixture and API JSON shapes). Commit it together with this file. Both engines must follow §9.
+- **NSAP** renamed on 14 Oct 2026 to Pradhan Mantri Samajik Sahayata Yojana (PIB PRID 2323264). Old age: 60+, BPL, ₹200 (₹500 at 80+). Widow: 40+, BPL, ₹300 (₹500 at 80+); **no upper age**. Disability: **40%, from birth, ₹375 / ₹625**; revised guidelines due within three months (by mid-Jan 2027), so `igndps` has `reverify_days: 30`. Guidelines Oct 2014 are hosted on the Odisha SSEPD site (robots blocks bots → manual).
+- **PM-KISAN** guidelines unchanged (hash matches); continued 2026-27 to 2030-31 at ₹6,000 (PIB 2292460).
+- **PM-JAY** 70+ for all incomes (PIB 2053883). `nha.gov.in` disallows bots and its certificate failed revocation checks → `nha` source has no hash yet.
+- **PMAY-G** revised 10 exclusions (PIB 2080091), ₹1.20 / 1.30 lakh (PIB 2043921). Portal moved to `pmayg.dord.gov.in`.
+- **PMFBY** PIB factsheet 29 Aug 2026: tenants and sharecroppers covered, voluntary, 25 states/UTs in Kharif 2026.
+- **PMMVY** Mission Shakti guidelines (2021-22 to 2025-26): income **below** ₹8 lakh, plus e-Shram, job card and other groups. Reviewer must confirm the scheme period after March 2026.
+- **MGNREGA replaced by VB-G RAM G Act from 1 Jul 2026** (125 days; PIB 2279446 and FAQ 158511). Good candidate for a new scheme file.
+- **SSY** NSI page (portal → `guidance`). **Post-matric SC** guidelines (scanned PDF; read page images): §5.2, §5.3 ₹2.5 lakh unchanged. Reports of a ₹4.5 lakh limit are proposals only.
+- pib.gov.in answers 403 to the bot UA: those sources are `fetch: manual`; hash saved copies with `python ingest/recheck.py --hash-file`.
 
 ## Next steps (in order)
 
-1. **`rules/` fixtures + JS engine.** Write `web/js/rules.js`: an ES module with no DOM, exporting `evaluateRule`, `evaluateScheme`, `match(bundle, profile, {skipped, as_of})`, implementing §9 exactly. Add `rules/_engine.cases.json` (generic semantics: Kleene `or`, straddle, uncertain-fail, stale) and `rules/<slug>.cases.json` per scheme, with boundary cases (59/60/61, 249999/250000/250001, a straddling band, missing fields). Add `tools/test-rules.mjs` (`node --test`). Then tell `jansathi-20` so the Java engine can run the same fixtures.
-2. **`tools/`** (plus a root `package.json` with scripts; no dependencies if possible):
-   - `build-bundle.mjs`: content → `web/data/bundle.json`. Drafts are left out unless `--include-drafts`, which writes `web/data/bundle.preview.json`.
-   - `lint-copy.mjs`: banned phrases in en, hi and the other languages, checked across `web/locales`, `content`, and prompts.
-   - `check-locales.mjs`: identical key sets across all 10 locales.
-   - `validate-content.mjs`: every rule, document and deadline references an existing source; `confirmed` rules don't rest on `faq` or `secondary` sources; only allowed operators; only fields from `fields.json`.
-3. **`web/` frontend.** It doesn't exist yet: the brief's Phase 0 prototype was never in the repo. Build it to DESIGN.md:
-   - `index.html`, `css/styles.css` (tokens from DESIGN §3–5);
-   - `js/i18n.js` (LANGS, `data-i18n` / `data-i18n-attr`, English fallback, `localStorage` wrapped in try/catch, `<html lang>`);
-   - `js/speech.js` (speak / stop / listen / hasVoice, with a warning when there's no voice);
-   - `js/app.js`: hash router with these views:
-     - home: knockout hero word from `hero.display`, CTAs, "what's open now" rail, category tiles;
-     - questionnaire: core fields `age, gender, area, occupation`, then `next_question`, with a skip option and exact-number input for straddles;
-     - results: three states with rule traces and read-aloud;
-     - scheme detail: content, documents, sources with `verified_at`, stale/draft warning, "report outdated info";
-     - checklist: de-duplicated, have / don't have, how to get it;
-     - search: local keyword search for the ask box, since the assistant is Phase 3; say so honestly.
-   - Locale files: `locales/<10 codes>.json` with keys `q.<field>`, `opt.<field>.<value>`, `opt.bool.yes|no|dont_know`, `result.*`, `trust.*`, `hero.*`, `nav.*`. Non-English strings are machine-authored; record them in `locales/review-status.json`.
-   - Hero collage: a placeholder abstract SVG fill until licensed photos exist (`web/img/CREDITS.md`).
-   - PWA: `manifest.webmanifest` + `sw.js` (cache the shell and the bundle).
-   - In preview mode, draft schemes show a "Draft, not yet verified" banner.
-   - The profile stays in `localStorage` only, with a "Delete my data" button.
-4. **`ingest/recheck.py`**: fetch sources (respect robots.txt, 1 request every 5 s per host, User-Agent `JanSathi-bot (+repo URL)`; **never put the maintainer's email in it**), normalise, sha256, report changes, and `--update <slug>` to write `fetched_at` / `content_hash`. Coordinate with `jansathi-20` before CI runs it.
-5. **Docs:** update README status, the ROADMAP checkboxes, and CLAUDE.md run/test commands as features land. Record these improvements over the brief:
-   - content-as-code, with PR review as the second check;
-   - a static offline bundle;
-   - a custom three-valued evaluator;
-   - Spring Boot 4.1 (3.x community support has ended);
-   - the PM-KISAN government-job question written to include the Group D exception.
+1. **`web/` frontend** (in progress next): index.html, css (DESIGN tokens), i18n.js, speech.js, app.js (home, questionnaire, results, scheme detail, checklist, search), 10 locale files + `review-status.json`, PWA manifest + sw.js, preview mode for drafts, delete-my-data.
+2. More schemes toward ~30, each from official sources (VB-G RAM G, NFBS/PM Parivar Labh, Atal Pension, PMJJBY, PMSBY, PM-SYM, PM Ujjwala, Pre-matric SC, NMMSS, PM SVANidhi, Stand-Up India, PM Vishwakarma, JSY, …).
+3. Docs: README status, ROADMAP checkboxes (Phase 0 is marked done but `web/` did not exist), CLAUDE.md run/test commands.
+4. Tell the backend session: fixtures, `govt_statement`, `fetch: manual`, new fields.
 
 ## Open questions for the maintainer
 
-MVP state; sign-in vs anonymous; volunteer pilot partner; first reminder channel (Web Push or Telegram); whether the nav wordmark also changes script.
+MVP state; sign-in vs anonymous; volunteer pilot partner; first reminder channel (Web Push or Telegram); whether the nav wordmark also changes script; who will be the human reviewers that set `verified_at`.
 
 ## Gotchas
 
-- Bash heredocs containing `₹` or Devanagari failed in this environment. Write JSON with the Write tool, or with `node -e` and `fs`.
-- `rm` with relative `../` paths is blocked by a safety check; use absolute paths.
-- Toolchains available: Java 25, Node 24, Python 3.14, Docker (running). There is no global Gradle; use the wrapper in `api/`.
+- Bash heredocs with `₹` or Devanagari fail here; write JSON with the Write tool or Node scripts. Re-serialising `content/fields.json` with JSON.stringify expands its compact style; edit it by hand.
+- Python: use `python -I` for scripts; PDF text with `pymupdf` needs the user site, so use `python -E -P`. No OCR is installed: render scanned pages to PNG and read them.
+- `rm` with relative `../` paths is blocked; use absolute paths.
+- Toolchains: Java 25, Node 24, Python 3.14, Docker. No global Gradle; use the wrapper in `api/`.
