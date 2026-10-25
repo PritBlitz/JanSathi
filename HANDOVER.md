@@ -16,7 +16,7 @@ For the next AI session working in this repo. Read [CLAUDE.md](CLAUDE.md) and [d
 
 ## State at the end of this session
 
-`npm run check` passes (content validation, copy lint, locale parity, bundle freshness, 312 unit tests); `npm run smoke` passes (headless Chrome: flows, console errors, hero fill 93–96% in all 10 locales).
+`npm run check` passes (content validation, copy lint, locale parity, bundle freshness, 312 unit tests); `npm run smoke` passes (headless Chrome: flows, console errors, hero fill 93–96% in all 10 locales). Lighthouse mobile on the English home page: performance 97, accessibility 100, best practices 100, SEO 100 (LCP 2.1 s, CLS 0). Re-run with `npm run serve` and `npx lighthouse@12.6.0 http://localhost:8000/ --form-factor=mobile`.
 
 | Area | What exists |
 |---|---|
@@ -47,7 +47,7 @@ For the next AI session working in this repo. Read [CLAUDE.md](CLAUDE.md) and [d
 2. **`state` field + one state's schemes** (brief MVP: central + one state; the maintainer must choose the state). A `state` field would also let JSY drop its `uncertain` rule. Needs 36 state/UT labels in 10 locales.
 3. **Schedule the re-check** (GitHub Actions daily, coordinate with the backend session's `.github/workflows/ci.yml`) and wire `npm run check` into CI.
 4. Content translation beyond en/hi (other languages fall back to English with a note); Phase 6 per the brief.
-5. Not built from DESIGN: marquee, sticky storytelling, theme toggle, hero photos (abstract placeholder), Lighthouse/axe runs. Font first-load is ~150–175 KB for hi/bn/te/gu (budget 150 KB).
+5. Not built from DESIGN: marquee, sticky storytelling, theme toggle, hero photos (abstract placeholder). Font first-load is ~150–175 KB for hi/bn/te/gu (budget 150 KB). Lighthouse is not in CI yet.
 6. Tell the backend session about: multi-scheme fixtures, `govt_statement`, `fetch: manual`, the new fields and documents, `education_level` split (`up_to_class_8`, `class_9_10`).
 
 ## Open questions for the maintainer

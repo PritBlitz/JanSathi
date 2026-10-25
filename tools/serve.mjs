@@ -1,7 +1,9 @@
-// Minimal static server for web/ with correct MIME types (incl. .webmanifest).
-// Usage: node tools/serve.mjs [port]   (default 8000). `python3 -m http.server` in web/ also works.
+// Minimal static server for web/ with correct MIME types (incl. .webmanifest) and gzip,
+// so local Lighthouse runs match a production host. `python3 -m http.server` in web/ also works.
+// Usage: node tools/serve.mjs [port]   (default 8000)
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
+import { gzipSync } from 'node:zlib';
 import { join, dirname, extname, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -13,15 +15,21 @@ const TYPES = {
   '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif',
   '.woff2': 'font/woff2', '.ico': 'image/x-icon', '.txt': 'text/plain; charset=utf-8', '.md': 'text/plain; charset=utf-8',
 };
+const COMPRESSIBLE = new Set(['.html', '.js', '.mjs', '.css', '.json', '.webmanifest', '.svg', '.txt', '.md']);
 
 createServer(async (req, res) => {
   try {
-    let path = normalize(decodeURIComponent(new URL(req.url, 'http://x').pathname)).replace(/^([/\\])+/, '');
+    const path = normalize(decodeURIComponent(new URL(req.url, 'http://x').pathname)).replace(/^([/\\])+/, '');
     let file = join(webRoot, path);
     if (!file.startsWith(webRoot)) throw new Error('outside root');
     if ((await stat(file).catch(() => null))?.isDirectory()) file = join(file, 'index.html');
-    const data = await readFile(file);
-    res.writeHead(200, { 'Content-Type': TYPES[extname(file)] || 'application/octet-stream', 'Cache-Control': 'no-cache' });
+    let data = await readFile(file);
+    const headers = { 'Content-Type': TYPES[extname(file)] || 'application/octet-stream', 'Cache-Control': 'no-cache', Vary: 'Accept-Encoding' };
+    if (COMPRESSIBLE.has(extname(file)) && /\bgzip\b/.test(req.headers['accept-encoding'] || '')) {
+      data = gzipSync(data);
+      headers['Content-Encoding'] = 'gzip';
+    }
+    res.writeHead(200, headers);
     res.end(data);
   } catch {
     res.writeHead(404, { 'Content-Type': 'text/plain' });

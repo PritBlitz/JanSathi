@@ -10,6 +10,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="img/icon.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/notosans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="module" src="js/app.js"></script>
@@ -46,8 +47,8 @@
     </div>
   </header>
 
-  <div class="banner" id="preview-banner" hidden>
-    <span aria-hidden="true">⚠️</span> <span data-i18n="preview.banner"></span>
+  <div class="banner" id="preview-banner">
+    <span aria-hidden="true">⚠️</span> <span data-i18n="preview.banner">Preview: these schemes are drafts. We checked them against official sources, but a human reviewer has not yet verified them. Check with the office before you apply.</span>
   </div>
   <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
 
@@ -66,7 +67,7 @@
             <span aria-hidden="true">🎤</span> <span data-i18n="hero.cta_voice">Ask by voice</span>
           </button>
         </div>
-        <section class="rail-wrap" id="rail-wrap" aria-labelledby="rail-title" hidden>
+        <section class="rail-wrap" id="rail-wrap" aria-labelledby="rail-title">
           <div class="rail-head">
             <h2 class="kicker" id="rail-title" data-i18n="rail.title">Schemes we are checking</h2>
             <div class="rail-btns">
@@ -78,20 +79,21 @@
         </section>
       </div>
 
-      <section class="section" aria-labelledby="tiles-title">
-        <h2 class="h2" id="tiles-title" data-i18n="tiles.title">Find help for</h2>
-        <ul class="tiles" id="tiles"></ul>
-      </section>
 
       <section class="section" id="how" aria-labelledby="how-title">
         <p class="kicker" data-i18n="how.kicker">How it works</p>
         <h2 class="h1" id="how-title" data-i18n="how.title">Clear rules, official sources, your language</h2>
         <ol class="bento">
-          <li><span class="num" aria-hidden="true">1</span><h3 data-i18n="how.step1.title"></h3><p data-i18n="how.step1.body"></p></li>
-          <li><span class="num" aria-hidden="true">2</span><h3 data-i18n="how.step2.title"></h3><p data-i18n="how.step2.body"></p></li>
-          <li><span class="num" aria-hidden="true">3</span><h3 data-i18n="how.step3.title"></h3><p data-i18n="how.step3.body"></p></li>
-          <li><span class="num" aria-hidden="true">4</span><h3 data-i18n="how.step4.title"></h3><p data-i18n="how.step4.body"></p></li>
+          <li><span class="num" aria-hidden="true">1</span><h3 data-i18n="how.step1.title">Answer a few questions</h3><p data-i18n="how.step1.body">Tap, type or speak. Skip anything you are not sure about.</p></li>
+          <li><span class="num" aria-hidden="true">2</span><h3 data-i18n="how.step2.title">Rules check the schemes</h3><p data-i18n="how.step2.body">Each scheme's written rules are checked against your answers. No guessing, and no AI deciding for you.</p></li>
+          <li><span class="num" aria-hidden="true">3</span><h3 data-i18n="how.step3.title">See why</h3><p data-i18n="how.step3.body">For every scheme you see which rule fits, which does not, and what we still need to know.</p></li>
+          <li><span class="num" aria-hidden="true">4</span><h3 data-i18n="how.step4.title">Check the source</h3><p data-i18n="how.step4.body">Every fact links to the official government page or document, with the date it was checked.</p></li>
         </ol>
+      </section>
+
+      <section class="section" aria-labelledby="tiles-title">
+        <h2 class="h2" id="tiles-title" data-i18n="tiles.title">Find help for</h2>
+        <ul class="tiles" id="tiles"></ul>
       </section>
     </section>
 
@@ -110,7 +112,7 @@
       <input id="ask-input" type="search" autocomplete="off" data-i18n-attr="placeholder:search.placeholder">
       <button class="btn btn-primary" type="submit" data-i18n="search.button">Search</button>
     </form>
-    <p class="muted small" data-i18n="search.note"></p>
+    <p class="muted small" data-i18n="search.note">The assistant that answers questions in your own words is not built yet. For now this searches scheme names and descriptions.</p>
     <div id="ask-results"></div>
   </dialog>
 

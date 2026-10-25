@@ -1,7 +1,7 @@
 # JanSathi — Design System
 
 > **Status:** v0.2, draft. This is the visual and interaction spec for the JanSathi frontend. It sits alongside the product brief ([docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md)). When this file and a product rule disagree, the product rule wins (see §1).
-> **Built so far (2026-10-25):** tokens (§3–§5), the hero with per-locale width fit (§6, abstract collage placeholder until licensed photos exist), rail, tiles, bento "how it works", buttons, chips, result badges, source cards, questionnaire, ask sheet, footer and motion rules, in `web/css/styles.css`. Not built: marquee strip, sticky storytelling, big-number stats, the in-app theme toggle (system theme only). Fonts are self-hosted; Hindi, Bengali, Telugu and Gujarati first loads are about 150–175 KB, slightly over the §10 font budget.
+> **Built so far (2026-10-25):** tokens (§3–§5), the hero with per-locale width fit (§6, abstract collage placeholder until licensed photos exist), rail, tiles, bento "how it works", buttons, chips, result badges, source cards, questionnaire, ask sheet, footer and motion rules, in `web/css/styles.css`. Not built: marquee strip, sticky storytelling, big-number stats, the in-app theme toggle (system theme only). Fonts are self-hosted; an English first load fetches 2 font files (55 KB). Hindi, Bengali, Telugu and Gujarati pages add one script font, about 150–175 KB in total, slightly over the §10 font budget. Lighthouse (mobile, slow 4G, 2026-10-25, English home): performance 97, accessibility 100, best practices 100, SEO 100; LCP 2.1 s, CLS 0.
 
 ---
 

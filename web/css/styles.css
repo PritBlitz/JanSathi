@@ -143,6 +143,9 @@ main { display: block; outline: none; }
   background: var(--paper); font-size: var(--fs-label); max-width: 9.5rem;
 }
 .btn-listen { min-height: 44px; padding: 6px 16px; }
+/* Language names are written in their own scripts. Using system fonts for them means an English
+   page does not download every Indic web font (about 730 KB) just to draw the language list. */
+.lang select, .lang option, .footer-langs button { font-family: 'Noto Sans', system-ui, sans-serif; }
 .menu-btn { font-size: 1.4rem; }
 @media (max-width: 899px) {
   .btn-listen [data-i18n] { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
@@ -215,6 +218,8 @@ main { display: block; outline: none; }
 }
 [dir="rtl"] .rail { mask-image: linear-gradient(to left, #000 85%, transparent); }
 .rail > li { scroll-snap-align: start; }
+/* Space for one row of cards is reserved before the bundle arrives, so nothing below the hero jumps (CLS). */
+.rail:empty { min-height: 12rem; }
 .card-link {
   display: grid; grid-template-columns: 72px 1fr 48px; gap: 14px; align-items: center;
   padding: 16px; border-radius: var(--r-md); background: var(--surface); text-decoration: none;
@@ -334,7 +339,10 @@ details > summary { cursor: pointer; font-weight: 700; min-height: 44px; display
 /* ---------- footer ---------- */
 .footer { margin-top: var(--section); padding: 48px var(--gutter) 32px; background: var(--ink); color: var(--paper); }
 .footer a { color: var(--paper); }
-.footer-word { font-family: var(--font-display); font-size: clamp(4rem, 18vw, 14rem); line-height: 0.9; margin: 0 0 24px; text-transform: uppercase; color: var(--coral); }
+/* The footer inverts the page colours, so the wordmark needs the coral that reads on the inverted background. */
+.footer-word { font-family: var(--font-display); font-size: clamp(4rem, 18vw, 14rem); line-height: 0.9; margin: 0 0 24px; text-transform: uppercase; color: #F26B43; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .footer-word { color: #B53D1A; } }
+:root[data-theme="dark"] .footer-word { color: #B53D1A; }
 .disclaimer { font-size: var(--fs-lead); max-width: 60ch; }
 .footer-links, .footer-langs { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .footer-links a, .footer-langs button, .toggle { min-height: 48px; display: inline-flex; align-items: center; gap: 8px; }
@@ -342,11 +350,14 @@ details > summary { cursor: pointer; font-weight: 700; min-height: 44px; display
 .toggle input { width: 22px; height: 22px; }
 
 /* ---------- 9. motion ---------- */
-.anim .hero-word > span, .anim .hero-lead, .anim .hero-ctas, .anim .rail-wrap { animation: rise var(--dur-slow) var(--ease-out) both; }
+/* The hero word is the LCP element: it moves but never fades, so it is painted at once (DESIGN §10). */
+.anim .hero-word > span { animation: lift var(--dur-slow) var(--ease-out) both; }
+.anim .hero-lead, .anim .hero-ctas, .anim .rail-wrap { animation: rise var(--dur-slow) var(--ease-out) both; }
 .anim .hero-lead { animation-delay: 140ms; }
 .anim .hero-ctas { animation-delay: 200ms; }
 .anim .rail-wrap { animation-delay: 260ms; }
-.anim .hero-word.has-image > span { animation: rise var(--dur-slow) var(--ease-out) both, drift 1.2s var(--ease-out) both; }
+.anim .hero-word.has-image > span { animation: lift var(--dur-slow) var(--ease-out) both, drift 1.2s var(--ease-out) both; }
+@keyframes lift { from { transform: translateY(32px); } }
 @keyframes rise { from { opacity: 0; transform: translateY(32px); } }
 @keyframes drift { from { background-size: 106%; } }
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out); }

@@ -212,7 +212,7 @@ function renderRail() {
   $('#rail').innerHTML = list
     .map((s) => {
       const name = schemeText(s, 'name');
-      return `<li><a class="card-link" href="#/scheme/${esc(s.slug)}" aria-label="${esc(t('rail.open', { name }))}">
+      return `<li><a class="card-link" href="#/scheme/${esc(s.slug)}">
         <span class="avatar" aria-hidden="true">${esc(s.icon)}</span>
         <span><span class="card-kicker">${esc(categoryLabel(s.category))}</span>
           <span class="card-title"${langAttr(s)}>${esc(name)}</span>
@@ -860,6 +860,9 @@ async function changeLang(code) {
 
 // ---------- start ----------
 async function start() {
+  // Entrance motion only if the script arrives quickly; on a slow network the content
+  // has already been read, and re-animating it would just make it jump.
+  if (performance.now() < 1200) document.body.classList.add('anim');
   loadState();
   buildLanguageControls();
   setMotion(store.get(KEYS.motion) === '1');
@@ -875,7 +878,6 @@ async function start() {
   $('#lang-select').value = lang();
   preloadHeroImage();
   render();
-  requestAnimationFrame(() => document.body.classList.add('anim'));
   if ('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('sw.js').catch(() => {});
   window.addEventListener('offline', () => notice(t('common.offline')));
 }
