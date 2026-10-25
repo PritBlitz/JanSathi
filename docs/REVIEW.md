@@ -49,7 +49,7 @@ One file per reviewer per scheme: `content/reviews/<slug>/<reviewer>.json` (revi
 ```bash
 node tools/review.mjs          # table: version, approvals, change requests, quote check
 node tools/publish.mjs         # publish what is ready; demote what changed
-npm run build                  # rebuild frontend/data/
+npm run build                  # rebuild frontend/public/data/
 ```
 
 `publish.mjs` publishes a scheme when it has ≥ 2 `approve` reviews from different reviewers on the current version, no `changes_requested` on that version, and every quote verified. It sets `status: published`, the cited sources' `verified_at` / `verified_by`, and:

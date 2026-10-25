@@ -1,6 +1,6 @@
 # Privacy and security
 
-> **Status:** planned design. The current prototype (`frontend/`) stores only the chosen language in `localStorage` and sends no personal data anywhere.
+> **Status (2026-10-25):** built: the PWA keeps the household profile, family members (names are whatever the user types, e.g. "Mother"), checklist, language, theme and motion setting in `localStorage` only, and "Delete my data" removes all of it. Matching runs on the device. The API is stateless for profiles: `POST /match` rejects fields not in `fields.json` and nothing is stored or logged; `POST /ask` removes runs of 9+ digits (Aadhaar, bank, phone) before retrieval and before any model call, sends the model only the question and official passages, and never logs questions; `POST /reports` stores scheme, reason, a note with digit runs removed, language and bundle version (no IP, no profile) in the `report` table. The admin API (`/api/v1/admin/**`) is off unless `JANSATHI_ADMIN_TOKEN` is set, and compares the bearer token in constant time; per-person sign-in replaces it before more than a few reviewers use it. Responses carry `nosniff`, `no-referrer`, `DENY` framing and a restrictive Permissions-Policy. The volunteer portal (§4) is **planned**.
 >
 > This document is an engineering design, not legal advice. Have it reviewed by someone qualified in Indian data-protection law before launch.
 

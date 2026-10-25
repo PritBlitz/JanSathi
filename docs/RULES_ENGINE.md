@@ -1,6 +1,6 @@
 # Rules engine
 
-> **Status:** the JS engine (`frontend/js/rules.js`) and the shared fixtures (`rules/`) are built and pass (`npm test`). The Java engine in `backend/` is in progress. §1–§8 describe the design; §9 is the exact contract both engines implement.
+> **Status:** the JS engine (`frontend/src/lib/rules.js`) and the shared fixtures (`rules/`) are built and pass (`npm test`). The Java engine (`backend/src/main/java/org/jansathi/rules/RulesEngine.java`, a direct port of the JS engine on Jackson trees) passes the same fixtures (`npm run test:backend`). §1–§8 describe the design; §9 is the exact contract both engines implement.
 
 The rules engine is the **only** component that decides match results. It is deterministic, testable and explainable. The LLM never changes a result; it only explains the result and the trace the engine produces.
 
@@ -157,7 +157,7 @@ A household profile holds one record per member. The engine evaluates each schem
 
 - **Fixtures:** each scheme has `rules/<slug>.cases.json` with profiles and the expected result, per-rule outcomes and `missing_fields` (format in §9.7; the YAML below is only an illustration).
 - **Required edge cases** for every rule: just below, at and just above each numeric limit (e.g. ages 59/60/61; income 249999/250000/250001); a band that straddles the limit; every referenced field missing; "prefer not to say".
-- **Parity:** CI runs the same fixtures through the Java engine (JUnit, json-logic-java) and the JS engine (json-logic-js) and fails if any outcome differs. The band-corner evaluation and three-state combination in §3 are implemented in both languages, so they are covered by the same fixtures.
+- **Parity:** the same fixtures run through the Java engine (`RulesEngineTest`, JUnit dynamic tests) and the JS engine (`tools/test-rules.mjs`); both implement §9 directly, without a stock json-logic library. Wiring both into CI is pending. The band-corner evaluation and three-state combination in §3 are implemented in both languages, so they are covered by the same fixtures.
 - **Monotonicity check:** the reviewer UI and CI reject rules that use non-comparison operators on banded fields.
 - **Publish gate:** a rule can't be published without fixtures that pass.
 
@@ -176,7 +176,7 @@ A household profile holds one record per member. The engine evaluates each schem
 
 ## 9. Implementation contract (Java and JS must match exactly)
 
-This section is normative. Both engines (`frontend/js/rules.js`, `backend/.../rules/`) implement it, and the shared fixtures in `rules/` check it.
+This section is normative. Both engines (`frontend/src/lib/rules.js`, `backend/.../rules/`) implement it, and the shared fixtures in `rules/` check it.
 
 **Do not use a stock json-logic evaluator for results.** Stock json-logic has no "unknown" value. Implement this small subset directly. A library may be used only to parse.
 
@@ -261,7 +261,7 @@ Every key in `expect` other than `result` is optional; only the keys present are
   "expect": { "next_question": "age" } }
 ```
 
-**`/api/v1/rules/bundle`** (identical to the static `frontend/data/bundle.json`):
+**`/api/v1/rules/bundle`** (identical to the static `frontend/public/data/bundle.json`):
 
 ```json
 { "version": "<sha256 of content>", "generated_at": "…", "include_drafts": false,

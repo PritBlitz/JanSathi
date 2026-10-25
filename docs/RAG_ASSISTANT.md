@@ -1,6 +1,6 @@
 # RAG assistant
 
-> **Status:** planned (Phase 3). Not implemented. MVP languages for answers: Hindi and English.
+> **Status (2026-10-25):** built in `backend/.../assist/`: steps 1 (personal numbers removed), 3 (retrieval), 4 (gate), 5 (explain, when a model is configured), 6 (validation with one retry) and 7 (respond). The prompt is `backend/src/main/resources/prompts/assistant.v1.txt` (copy-linted). **Differences from the design below, for now:** retrieval is keyword-based (inverse document frequency, whole words, English plural folding, a 50% keyword-coverage gate) over rule passages, not pgvector over chunked sources; passages are capped at 2 per scheme; when the model is off, slow or failing, the answer is the cited passages alone (`status: sources_only`) instead of `not_found`, because those passages are official and cited; the `match` block is not returned (questions carry no profile). The model is off by default (`JANSATHI_LLM_PROVIDER=none`); any OpenAI-compatible provider works (Groq, Ollama, Gemini). Evaluation: `eval/rag/{en,hi}.jsonl` (70 items) run by `RetrievalEvalTest` for the retrieval metrics only. MVP answer languages: Hindi and English.
 
 The assistant explains schemes in plain language, using **only** passages retrieved from the verified knowledge base, and cites them. It never decides eligibility (the [rules engine](RULES_ENGINE.md) does) and never answers from model memory.
 

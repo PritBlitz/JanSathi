@@ -1,6 +1,6 @@
 # Architecture
 
-> **Status:** built: the static PWA (`frontend/`) with the on-device rules engine, the content files (`content/`), shared rule fixtures (`rules/`) and the source re-check script (`ingest/recheck.py`). The Spring Boot API (`backend/`) is in progress. Everything else on this page is the **planned** design.
+> **Status (2026-10-25):** built: the React PWA (`frontend/`) with the on-device rules engine; the content files (`content/`); shared rule fixtures (`rules/`); the source re-check script (`ingest/recheck.py`); and the Spring Boot API (`backend/`) with the Java rules engine and the endpoints marked *built* in §5, a PostgreSQL/H2 database (Flyway) for the report queue, the assistant with an optional LLM behind `LlmProvider`, CI and a Docker image. The API reads scheme content from the published bundle files. pgvector retrieval, the ML service, reminders and the volunteer portal are **planned**.
 > **Backend decision (2026-10-24):** the main backend is **Spring Boot** (Java). The ML models in the stack (embeddings, IndicTrans2, Whisper, OCR) and the ingestion tools are Python-only, so they run as a separate internal Python service and a Python batch job, called through the provider interfaces in §6.
 
 ## 1. Design goals
@@ -23,7 +23,7 @@
                                          │ HTTPS / JSON
                                          ▼
 ┌────────────────────────────────────────────────────────────────────────────────┐
-│                         Spring Boot API  (backend/, Java 21)                       │
+│                         Spring Boot API  (backend/, Java 25)                       │
 │                                                                                │
 │  /schemes   /schemes/{slug}   /rules/bundle   /match   /ask   /checklist       │
 │  /reminders   /reports   /volunteer/*   /admin/*  (reviewer UI)                │
@@ -64,9 +64,9 @@
 
 | Component | Language | Responsibility | Status |
 |---|---|---|---|
-| **PWA** (`frontend/`) | HTML/CSS/JS | UI, i18n, voice, icon tiles; later: on-device profile, client-side rule evaluation, offline cache of published schemes | Prototype |
-| **API** (`backend/`) | Java 21, Spring Boot 3 | Public API: schemes, matching, assistant, checklist, reminders, reports, volunteer sessions, reviewer admin. Owns all database writes except ingestion snapshots. | Planned |
-| **Rules engine** | Java (in `backend/`) + JS (in `frontend/`) | Evaluates json-logic rules against a profile and returns a three-state result with a trace. The same rule JSON runs in json-logic-java and json-logic-js. See [RULES_ENGINE.md](RULES_ENGINE.md). | Planned |
+| **PWA** (`frontend/`) | React 19 + Vite | UI, i18n, voice, on-device profile and checklist, client-side rule evaluation, offline cache (service worker). Uses the API when configured (`VITE_API_BASE`), else the static bundle | Built |
+| **API** (`backend/`) | Java 25, Spring Boot 4.1 | Public API: schemes, matching, assistant, checklist, reminders, reports, volunteer sessions, reviewer admin. Owns all database writes except ingestion snapshots. | Read, match, checklist, search, ask (retrieval), reports built; the rest planned |
+| **Rules engine** | Java (in `backend/`) + JS (in `frontend/`) | Evaluates json-logic rules against a profile and returns a three-state result with a trace. Both implement RULES_ENGINE §9 directly (no stock json-logic library) and pass the same fixtures. See [RULES_ENGINE.md](RULES_ENGINE.md). | Built |
 | **RAG service** | Java (in `backend/`) | Retrieves verified chunks, asks the LLM to explain, validates citations, attaches the confidence label. See [RAG_ASSISTANT.md](RAG_ASSISTANT.md). | Planned |
 | **ML service** (`ml/`) | Python | Stateless HTTP wrapper around local models: embeddings, translation, STT, TTS, OCR. Internal network only; authenticated with a shared service token. | Planned |
 | **Ingestion** (`ingest/`) | Python | Fetches official pages and PDFs, extracts text, chunks and embeds, writes `source` snapshots and `chunk` rows, opens review tasks. Also runs the daily re-check. | Planned |
@@ -123,18 +123,23 @@ for each source with scheme.status = published:
 
 Find deadlines closing within the user's chosen window (default 14 and 3 days) for schemes the user saved, plus unfinished checklist items, and send through the user's opted-in channel. ShedLock makes sure only one API instance sends. Reminders contain no personal data beyond the scheme name and date.
 
-## 5. API surface (planned)
+## 5. API surface
+
+All paths are under `/api/v1`. JSON is snake_case; errors are problem+json.
 
 | Method & path | Purpose |
 |---|---|
-| `GET /schemes?state=&category=&lang=` | List published schemes |
-| `GET /schemes/{slug}?lang=` | Scheme detail: summary, documents, deadlines, apply link, sources |
-| `GET /rules/bundle?state=` | Versioned bundle of published rules for on-device matching |
-| `POST /match` | Three-state results for a profile (or household) |
-| `POST /ask` | Cited assistant answer |
-| `POST /checklist` | De-duplicated document list for selected schemes, with how-to-obtain per state |
+| `GET /schemes?state=&category=&lang=` | List published schemes, with trust label and stale flag. **Built** |
+| `GET /categories?state=` | Scheme count per category. **Built** |
+| `GET /search?q=&lang=&state=` | Keyword search over names and descriptions. **Built** |
+| `GET /schemes/{slug}` | Scheme detail: summary, documents, deadlines, apply link, sources. **Built** |
+| `GET /rules/bundle` | The published rule bundle for on-device matching, identical to the PWA's static file; `ETag` = bundle version. **Built** (state files are served by the PWA for now) |
+| `POST /match` | Three-state results for a profile; rejects fields not in fields.json. **Built** (households planned) |
+| `POST /ask` | Cited answer: keyword retrieval → optional LLM explanation → validation (RAG_ASSISTANT §5) → `answered`, `sources_only` or `not_found`. **Built** (pgvector later) |
+| `POST /checklist` | De-duplicated document list for selected schemes, with how-to-obtain. **Built** (per-state guidance planned) |
 | `POST /reminders` / `DELETE /reminders/{id}` | Opt in / out of reminders |
-| `POST /reports` | "Report outdated info" |
+| `POST /reports` | "Report outdated info", stored in the `report` table with personal numbers removed. **Built** |
+| `GET /admin/reports`, `POST /admin/reports/{id}/resolve` | Moderation queue; bearer token (`JANSATHI_ADMIN_TOKEN`) until per-person sign-in exists. **Built** |
 | `POST /stt`, `POST /tts` | Server speech fallback (proxied to the ML service) |
 | `/volunteer/*` | Session codes, scoped profile view, audit log (Phase 5) |
 | `/admin/*` | Reviewer workflow (authenticated, role-checked) |
@@ -181,7 +186,7 @@ public interface Notifier {
 
 | Interface | Default (MVP) | Alternatives |
 |---|---|---|
-| `LlmProvider` | Groq free tier via Spring AI's OpenAI-compatible client | Gemini, local Ollama (Llama / Qwen) via Spring AI |
+| `LlmProvider` | **Built:** `none` (default) or `openai-compatible` over plain HTTP (`OpenAiCompatibleLlmProvider`): Groq, Gemini's OpenAI endpoint, local Ollama | Spring AI, if more providers are needed |
 | `Embedder` | ML service → `BAAI/bge-m3` | ML service → `intfloat/multilingual-e5` |
 | `Translator` | ML service → IndicTrans2 | — |
 | `SpeechToText` | Browser Web Speech API (client) | ML service → IndicWhisper / Whisper |
@@ -197,19 +202,19 @@ The ML service's own API is versioned (`/v1/embed`, …) and documented in `ml/R
 
 | Concern | Choice |
 |---|---|
-| Runtime | Java 21 (LTS), Spring Boot 3.x |
+| Runtime | Java 25 (LTS), Spring Boot 4.1 |
 | Build | Gradle (Kotlin DSL) |
 | Web | Spring Web MVC, Bean Validation (`jakarta.validation`) on request records |
-| Data | Spring Data JDBC (or JPA) on PostgreSQL; pgvector via the `pgvector-java` type or Spring AI `PgVectorStore` |
-| Migrations | Flyway (`backend/src/main/resources/db/migration`) |
-| Rules | `json-logic-java` (`io.github.jamsesso`) |
-| LLM | Spring AI (OpenAI-compatible, Ollama, Gemini) behind `LlmProvider` |
-| Security | Spring Security: anonymous public API; OAuth2/OIDC or passkeys for reviewers and volunteers; method-level role checks |
+| Data | **Built:** `JdbcClient` on PostgreSQL (H2 in PostgreSQL mode locally and in tests). Planned: pgvector via the `pgvector-java` type |
+| Migrations | **Built:** Flyway (`backend/src/main/resources/db/migration`), portable SQL |
+| Rules | Own §9 evaluator (`org.jansathi.rules.RulesEngine`); stock json-logic has no "unknown" |
+| LLM | **Built:** `LlmProvider` with an OpenAI-compatible client on Spring `RestClient` (timeouts; a failure degrades to cited passages) |
+| Security | **Built:** anonymous public API, shared bearer token for `/admin`, security headers. Planned: Spring Security with OAuth2/OIDC or passkeys for reviewers and volunteers |
 | Scheduling | `@Scheduled` + ShedLock |
 | Resilience | Resilience4j (timeouts, retries, circuit breakers) for providers |
 | API docs | springdoc-openapi |
 | Observability | Spring Boot Actuator, Micrometer → Grafana Cloud; Sentry SDK with PII scrubbing |
-| Tests | JUnit 5, AssertJ, Testcontainers (Postgres + pgvector), WireMock for the ML service and LLM |
+| Tests | **Built:** JUnit 5, AssertJ, MockMvc on H2, a local stub HTTP server for the LLM wire format, the retrieval evaluation. Planned: Testcontainers (Postgres + pgvector) |
 
 Base package: `org.jansathi` (`in.jansathi` is not allowed because `in` is a Java keyword).
 
@@ -217,20 +222,22 @@ Base package: `org.jansathi` (`in.jansathi` is not allowed because `in` is a Jav
 
 | Piece | Where |
 |---|---|
-| PWA | Cloudflare Pages or Vercel free tier |
+| PWA + API together | **Built:** one Docker image (`Dockerfile`; `docker compose up` adds PostgreSQL). The jar serves the PWA, so one container host is enough |
+| PWA alone | Cloudflare Pages or Vercel free tier (`npm run build:web`; set `VITE_API_BASE` at build time to use a separate API) |
 | API | Container host (e.g. Fly.io, Render, Railway, or a small VPS); ~512 MB–1 GB RAM. Optionally a GraalVM native image to cut memory and cold starts. |
 | ML service | Separate container with ≥ 4 GB RAM (more for Whisper/IndicTrans2); can scale to zero and start only when needed, since browser speech is the default |
 | Database | Supabase (Postgres + pgvector + RLS) or Neon |
-| Ingestion / re-check | GitHub Actions cron |
+| Ingestion / re-check | GitHub Actions cron (**built**: `.github/workflows/recheck.yml`, daily) |
 | Monitoring | Sentry, Grafana Cloud free tiers; no personal data in logs |
 
 ## 9. Planned repo layout
 
 ```
-frontend/        PWA (moves to SvelteKit or Next.js when routing/state are needed; same locale JSON)
+frontend/   React + Vite PWA (src/lib: rules, i18n, speech, data; src/pages, src/components)
 backend/        Spring Boot app (Gradle)
   src/main/java/org/jansathi/
-    scheme/  rules/  rag/  checklist/  reminder/  volunteer/  admin/  provider/
+    content/ scheme/ rules/ match/ checklist/ search/ assist/ report/ web/ provider/llm/   (built)
+    reminder/ volunteer/                                                           (planned)
   src/main/resources/
     application.yml
     db/migration/          Flyway SQL
@@ -238,6 +245,6 @@ backend/        Spring Boot app (Gradle)
 ml/         Python ML service (embeddings, translation, STT, TTS, OCR)
 ingest/     Python fetchers, extractors, chunker, re-check job
 rules/      shared rule fixtures (YAML), run by both the Java and JS engines
-eval/       RAG evaluation set and runner
+eval/       RAG evaluation set (eval/rag/*.jsonl; runner: backend RetrievalEvalTest)
 docs/       these docs
 ```

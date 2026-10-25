@@ -1,6 +1,6 @@
 # Data model
 
-> **Status:** planned. Nothing here is implemented. Target: PostgreSQL 15+ with `pgvector` (Supabase or Neon). Types below are Postgres types.
+> **Status (2026-10-25):** only the `report` table exists (Flyway `V1__reports.sql`, PostgreSQL in production, H2 in PostgreSQL mode locally and in tests). Schemes, rules, sources and documents are still files in `content/`, served from the generated bundle. Everything else here is **planned**. Target: PostgreSQL 15+ with `pgvector` (Supabase or Neon). Types below are Postgres types.
 
 ## 1. Conventions
 

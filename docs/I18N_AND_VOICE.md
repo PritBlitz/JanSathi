@@ -1,6 +1,6 @@
 # Languages and voice
 
-> **Status:** the UI i18n and browser speech in §1–§5.2 are built (`frontend/js/i18n.js`, `frontend/js/speech.js`), with all 10 locale files and `frontend/locales/review-status.json`; `npm run check:locales` checks key parity. The 9 non-English locales are machine-authored and unreviewed. Server-side speech, content translation and the review tooling (§5.3, §6) are planned.
+> **Status:** the UI i18n and browser speech in §1–§5.2 are built (`frontend/src/lib/i18n.js` and its React provider `i18n-context.jsx`, `frontend/src/lib/speech.js` and its hooks `use-speech.js`), with all 10 locale files and `frontend/public/locales/review-status.json`; `npm run check:locales` checks key parity. The 9 non-English locales are machine-authored and unreviewed, and 32 newer keys still hold the English text (`untranslated_keys` in `review-status.json`). Server-side speech, content translation and the review tooling (§5.3, §6) are planned.
 
 ## 1. Supported languages
 
@@ -17,29 +17,31 @@
 | `ml` | Malayalam | `ml-IN` | Malayalam | Noto Sans Malayalam |
 | `pa` | Punjabi | `pa-IN` | Gurmukhi | Noto Sans Gurmukhi |
 
-The list lives in `LANGS` in `frontend/js/i18n.js`.
+The list lives in `LANGS` in `frontend/src/lib/i18n.js`.
 
 ## 2. How UI i18n works
 
-**Marking up elements**
+**Using strings in components** (React, since 2026-10-25)
 
-```html
-<h2 data-i18n="tiles.title">Find help for</h2>
-<input data-i18n-attr="placeholder:ask.placeholder,aria-label:ask.label">
-<button data-i18n-attr="aria-label:speech.read_page">🔊</button>
+```jsx
+const { t, formatNumber } = useI18n();
+<h2>{t('tiles.title')}</h2>
+<input placeholder={t('search.placeholder')} />
+<button aria-label={t('ask.close')}><Icon name="close" /></button>
+<p>{t('tiles.count', { n: formatNumber(12) })}</p>
 ```
 
-- `data-i18n="key"` replaces the element's text content.
-- `data-i18n-attr="attr:key,attr2:key2"` sets attributes (placeholder, aria-label, title, alt).
-- The English text in the HTML is only a fallback for the first paint; the locale file is the source.
+- `t(key, vars)` returns the string for the current language and fills `{placeholders}`. Text and attributes (placeholder, aria-label, title) all go through it.
+- Changing the language re-renders the app from the `I18nProvider`; nothing is patched in the DOM.
+- The boot screen in `index.html` shows only the brand name; there is no other UI text in HTML.
 
-**Locale files:** `frontend/locales/<code>.json`, one per language, with **identical key sets**. Keys are dotted, grouped by area (`hero.*`, `tiles.*`, `ask.*`, `speech.*`, …).
+**Locale files:** `frontend/public/locales/<code>.json`, one per language, with **identical key sets**. Keys are dotted, grouped by area (`hero.*`, `tiles.*`, `ask.*`, `speech.*`, …).
 
 **Loading and fallback**
 
 1. On first visit the language is picked from `navigator.languages` (first supported match), else English.
 2. The choice is saved in `localStorage` and reused next time. If storage is unavailable (private mode), the app still works and just re-detects.
-3. The locale JSON is fetched and applied to every `data-i18n` / `data-i18n-attr` element.
+3. The locale JSON (and English, the fallback) is fetched before the app renders.
 4. Any key missing from the chosen locale falls back to `en.json`.
 5. `<html lang>` is set to the language code and the page title is updated from the locale.
 
@@ -48,22 +50,22 @@ The list lives in `LANGS` in `frontend/js/i18n.js`.
 ## 3. Adding a key
 
 1. Add the key and English text to `en.json`.
-2. Add the same key to **all nine** other locale files. If you can't translate it, copy the English and list the key in the PR so it's queued for translation. (CI will check key parity; see [CONTRIBUTING.md](CONTRIBUTING.md).)
-3. Use it via `data-i18n` / `data-i18n-attr`. Never put user-facing text directly in HTML or JS.
+2. Add the same key to **all nine** other locale files. If you can't translate it, copy the English and add the key to that locale's `untranslated_keys` in `review-status.json`, so it's queued for translation. (CI will check key parity; see [CONTRIBUTING.md](CONTRIBUTING.md).)
+3. Use it via `t('key')`. Never put user-facing text directly in JSX, HTML or JS.
 4. Run the copy rules on the English text: no "you are eligible", "you will get", "guaranteed".
 5. Check the layout with the longest translation (usually Tamil or Malayalam).
 
 ## 4. Adding a language
 
-1. Add an entry to `LANGS` in `frontend/js/i18n.js` (code, native name, speech tag).
-2. Create `frontend/locales/<code>.json` with every key from `en.json`.
+1. Add an entry to `LANGS` in `frontend/src/lib/i18n.js` (code, native name, speech tag).
+2. Create `frontend/public/locales/<code>.json` with every key from `en.json`.
 3. Add the Noto font for the script (see [DESIGN.md](../DESIGN.md#4-typography)) and check line-height.
 4. Test speech: is there a browser voice for the tag on Android Chrome and desktop Chrome? Record the result in the voice coverage table below.
 5. Get a native-speaker review (§6) before it's shown by default.
 
 ## 5. Voice
 
-### 5.1 Text-to-speech (`frontend/js/speech.js`)
+### 5.1 Text-to-speech (`frontend/src/lib/speech.js`)
 
 Uses the browser `speechSynthesis` API through `speak`, `stop` and `hasVoice`.
 
@@ -102,7 +104,7 @@ The current translations of the UI strings were machine-authored and **need nati
 1. Each locale has a reviewer (volunteer or paid) who is a native speaker.
 2. Reviewers work from a sheet or PR showing key, English, current translation and screenshot context.
 3. Checks: meaning, simple wording (grade 5), the copy rules in their language, consistent terms (e.g. one word for "scheme"), and fit in the layout.
-4. Reviewed keys are recorded in `frontend/locales/review-status.json` (planned) with reviewer and date.
+4. Reviewed keys are recorded in `frontend/public/locales/review-status.json` (planned) with reviewer and date.
 
 ### Scheme content (planned, Phase 6)
 

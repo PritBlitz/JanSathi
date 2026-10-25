@@ -68,7 +68,7 @@ Copy the shape of an existing file: [`content/schemes/pre-matric-sc.json`](../co
 ### Rules
 
 - One condition per rule. Operators: `var`, `==`, `!=`, `<`, `<=`, `>`, `>=`, `in`, `and`, `or`, `!` ([RULES_ENGINE.md](RULES_ENGINE.md) §9). Band fields (`age`, `annual_income`, `disability_percent`, `last_exam_percent`) only with `<`, `<=`, `>`, `>=`.
-- Use only fields from `content/fields.json`. Read the field's question in `frontend/locales/en.json` (`q.<field>`) and make sure the rule means the same thing.
+- Use only fields from `content/fields.json`. Read the field's question in `frontend/public/locales/en.json` (`q.<field>`) and make sure the rule means the same thing.
 - Watch the boundaries: "up to ₹2.5 lakh" is `<=`, "below ₹8 lakh" is `<`, "60 years and above" is `>=`.
 - `confidence`: `confirmed` only for gazette/guideline clauses; `guidance` for portals, government statements and FAQs; `uncertain` when the source is unclear or the profile can't express the condition fully (a failing `uncertain` rule shows "check with the office" instead of "not eligible").
 - `hard: false` only for priority or preference criteria.

@@ -1,7 +1,7 @@
 # JanSathi — Design System
 
-> **Status:** v0.2, draft. This is the visual and interaction spec for the JanSathi frontend. It sits alongside the product brief ([docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md)). When this file and a product rule disagree, the product rule wins (see §1).
-> **Built so far (2026-10-25):** tokens (§3–§5), the hero with per-locale width fit (§6, abstract collage placeholder until licensed photos exist), rail, tiles, bento "how it works", buttons, chips, result badges, source cards, questionnaire, ask sheet, footer and motion rules, in `frontend/css/styles.css`. Not built: marquee strip, sticky storytelling, big-number stats, the in-app theme toggle (system theme only). Fonts are self-hosted; an English first load fetches 2 font files (55 KB). Hindi, Bengali, Telugu and Gujarati pages add one script font, about 150–175 KB in total, slightly over the §10 font budget. Lighthouse (mobile, slow 4G, 2026-10-25, English home): performance 97, accessibility 100, best practices 100, SEO 100; LCP 2.1 s, CLS 0.
+> **Status:** v0.3, draft. This is the visual and interaction spec for the JanSathi frontend. It sits alongside the product brief ([docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md)). When this file and a product rule disagree, the product rule wins (see §1).
+> **Built so far (2026-10-25, React redesign):** the "Neel" palette (§3), type and layout tokens (§4–§5) in `frontend/src/styles/tokens.css`; the hero with per-locale width fit (§6, unchanged anatomy, abstract collage placeholder until licensed photos exist); and every §7 pattern: marquee strip, scroll-lit manifesto, big-number stats, sticky storytelling, index list, trust band, call-to-action band, full-bleed footer, plus the in-app theme switch (system / light / dark). Inner pages (questionnaire, results, scheme detail bento, checklist, search, privacy) follow §7.1. Fonts are self-hosted; an English first load fetches 2 font files (55 KB). Hindi, Bengali, Telugu and Gujarati pages add one script font, about 150–175 KB in total, slightly over the §10 font budget. Also built: family mode, office slip (print styles), "what changed", the nav that switches to the menu when a language's labels don't fit (measured, not guessed). First-load JS is about 81 KB gzipped, pages load lazily (over the §10 budget, see there). Lighthouse (mobile, slow 4G, 2026-10-25, English home, served by the jar): performance 97, accessibility 100, best practices 100, SEO 100; LCP 1.7 s, TBT 170 ms, CLS 0.
 
 ---
 
@@ -46,39 +46,50 @@ Voice of the UI copy: short sentences, grade-5 reading level, second person, act
 
 ## 3. Colour
 
-Warm off-white page, near-black ink, one coral accent (from the hero reference), plus a green and a marigold used only for status. The palette deliberately avoids saffron/white/green as a set, so the site does not read as official or political.
+**"Neel" palette (2026-10-25, replaces the coral palette).** Warm chalk page, deep indigo-black ink, **indigo** (neel, the dye) for every action, **rani pink** as the brand accent, and **lime** only on night bands. Green and marigold are kept for status only. Indigo and rani pink come from Indian textiles rather than flags, so the palette avoids saffron/white/green as a set and does not read as official or political. The maintainer found the coral palette weak; this one has more contrast and lets primary buttons use white text at AA.
 
 ### 3.1 Tokens — light (default)
 
 | Token | Hex | Use | Contrast |
 |---|---|---|---|
-| `--paper` | `#F2F0EA` | Page background | — |
+| `--paper` | `#F7F4ED` | Page background (chalk) | — |
 | `--surface` | `#FFFFFF` | Cards, sheets | — |
-| `--surface-2` | `#E6E3DA` | Sunken areas, tile backgrounds | — |
-| `--ink` | `#1B1A17` | Body and display text, outlines | 15.3 : 1 on paper |
-| `--ink-muted` | `#5E5A52` | Secondary text | 6.0 : 1 on paper, 5.4 : 1 on surface-2 |
-| `--coral` | `#F26B43` | Primary button fill, logo, decorative | **ink** text on it 5.8 : 1. Never as text colour (2.7 : 1 on paper). |
-| `--coral-text` | `#B53D1A` | Coral-coloured small text: card kickers, links | 5.1 : 1 on paper |
-| `--leaf` | `#2F6B4F` | "Likely eligible", confirmed labels | white on it 6.3 : 1; as text on paper 5.5 : 1 |
-| `--marigold` | `#F2A93B` | "Need more info" badge fill | ink on it 8.7 : 1. Never as text colour. |
+| `--surface-2` | `#ECE7DC` | Sunken areas, progress tracks | — |
+| `--line` | `#D9D3C5` | Hairlines, card borders | decorative |
+| `--ink` | `#15122E` | Body and display text, outlines | 16.5 : 1 on paper |
+| `--ink-muted` | `#57536E` | Secondary text | 6.7 : 1 on paper, 7.3 : 1 on surface, 5.9 : 1 on surface-2 |
+| `--indigo` | `#3B2FD0` | Primary buttons, links in cards, active step | white (`--on-indigo`) on it 8.4 : 1; as text on paper 7.6 : 1 |
+| `--indigo-soft` | `#E6E3FF` | Icon circles, quiet fills | ink on it 14.5 : 1 |
+| `--rani` | `#FF4F7E` | Logo, kicker dot, CTA band, mic button | ink (`--on-rani`) on it 5.8 : 1. Never as text colour (2.9 : 1 on paper). |
+| `--rani-text` | `#C2185B` | Kickers and small accent text | 5.4 : 1 on paper |
+| `--lime` | `#D7F25C` | Night bands only: marquee, footer headings, kickers | 14.5 : 1 on `--night`. Never on paper. |
+| `--night` | `#15122E` | Night bands: marquee, trust section, menu, footer | — |
+| `--leaf` | `#1F6B4A` | "Likely eligible", confirmed labels | white on it 6.4 : 1; as text on paper 5.9 : 1 |
+| `--marigold` | `#F5B23D` | "Need more info" badge fill | ink on it 9.8 : 1. Never as text colour. |
 
-**Deviation from the reference:** the Dribbble shot puts white text on its coral button. That is about 3.0 : 1 and fails WCAG AA, so our primary button uses `--ink` text on `--coral`.
+**Deviation from the reference:** the Dribbble shot puts white text on its coral button (about 3.0 : 1, fails AA). The coral is gone; the primary button is indigo with white text (8.4 : 1).
+
+**Night bands re-scope the tokens** (`.band-ink`, `.marquee`, `.footer`, the mobile menu): inside them `--paper` becomes `--night`, `--ink` `#F4F1FF`, `--ink-muted` `#B9B4D3` (9.1 : 1), `--leaf` `#7FD1A6`, `--indigo` `#9B92FF` (6.9 : 1), so every component keeps AA without a special variant.
 
 ### 3.2 Tokens — dark
 
 | Token | Hex |
 |---|---|
-| `--paper` | `#14130F` |
-| `--surface` | `#1E1C18` |
-| `--surface-2` | `#2A2722` |
-| `--ink` | `#F3EEE6` (16.1 : 1) |
-| `--ink-muted` | `#ABA59A` (7.6 : 1) |
-| `--coral` | `#FF8A66` (`--paper` text on it 8.0 : 1) |
-| `--coral-text` | `#FF8A66` (8.0 : 1) |
-| `--leaf` | `#7FC8A0` (9.5 : 1) |
-| `--marigold` | `#F2A93B` (9.3 : 1) |
+| `--paper` | `#0D0B1C` |
+| `--surface` | `#16132B` |
+| `--surface-2` | `#221E3D` |
+| `--line` | `#2E2950` |
+| `--ink` | `#F4F1FF` (17.5 : 1) |
+| `--ink-muted` | `#ADA8C6` (8.5 : 1; 7.0 : 1 on surface-2) |
+| `--indigo` | `#9B92FF` (`--on-indigo` `#0D0B1C` on it 7.4 : 1; 6.8 : 1 as text on surface) |
+| `--indigo-soft` | `#221E4A` |
+| `--rani` | `#FF5C8A` (`--on-rani` `#0D0B1C` on it 6.6 : 1) |
+| `--rani-text` | `#FF7FA3` (8.2 : 1) |
+| `--night` | `#1B1738` (a step lighter than paper so bands still read) |
+| `--leaf` | `#7FD1A6` (10.7 : 1) |
+| `--marigold` | `#F5B23D` |
 
-Define tokens on `:root`. Switch them with `@media (prefers-color-scheme: dark)` and also allow a manual override with `:root[data-theme="dark"]` / `[data-theme="light"]`.
+Define tokens on `:root`. Switch them with `@media (prefers-color-scheme: dark)` and the in-app override `:root[data-theme="dark"]` / `[data-theme="light"]` (theme button in the nav, saved on the device).
 
 ### 3.3 Semantic colours (results and trust labels)
 
@@ -91,7 +102,7 @@ Colour is **never** the only signal. Every state also has an icon and a text lab
 | Not eligible | `--ink-muted` on `--surface-2` | – in circle | `result.not_eligible` |
 | Confirmed rule | `--leaf` outline chip | shield | `trust.confirmed` |
 | Official guidance | `--ink` outline chip | document | `trust.guidance` |
-| Unverified / may be outdated | `#8A5A00` text on `#FFF4DC` (5.4 : 1) | warning triangle | `trust.unverified` |
+| Unverified / may be outdated | `#8A5A00` text on `#FFF4DC` (5.4 : 1); dark `#F2C46B` on `#2E2410` | warning triangle | `trust.unverified` |
 
 "Not eligible" is shown in a neutral style, not alarm red. It is information, not a failure on the user's part.
 
@@ -182,7 +193,7 @@ Body text is never smaller than 16 px. Default body is 18 px for our audience.
 | 1 | **Nav** | Reference: logo left, 4 uppercase links centred, globe dropdown and outlined "DONATE" pill on the right. **Ours:** waveform logo + wordmark left; 3 links centred (`SCHEMES`, `HOW IT WORKS`, `NEARBY HELP`); globe language picker; an outlined pill "🔊 LISTEN" that reads the page aloud. On mobile the links collapse into a full-screen menu; the globe and Listen buttons always stay visible. Height 88 px desktop / 64 px mobile; no background until the page scrolls, then `--paper` with a 1 px bottom border. |
 | 2 | **Knockout display word** | Reference: "VOICES / UNITED" in ultra-condensed type, centred on two lines, filled with a collage of faces. **Ours:** the brand name as **one word, written in the active language's script**: `JanSathi` in English, `जनसाथी` in Hindi, and so on (i18n key `hero.display`; full list in §6.3). It sits on one line and is sized to fill the content width (§6.5). Fill with a single collage image using `background-clip: text` and `color: transparent`. See §6.4 for the image and §6.5 for the fallback. |
 | 3 | **Lead** *(added)* | The reference shows no copy here; we need one line so the page says what JanSathi does. `--fs-lead`, `--ink-muted`, centred, max 52 ch. It must state the "official source" promise. |
-| 4 | **CTAs** | Reference: filled coral pill "DONATE" next to an outlined pill "TELL MY STORY", both about 190 × 62 px. **Ours:** filled `--coral` pill with **ink** text → questionnaire; outlined `--ink` pill with a mic icon → opens the voice ask sheet (the prototype's ask box, moved into a sheet to keep the hero clean). Both min 56 px tall, min 200 px wide, and they stack full-width under 480 px. |
+| 4 | **CTAs** | Reference: filled coral pill "DONATE" next to an outlined pill "TELL MY STORY", both about 190 × 62 px. **Ours:** filled `--indigo` pill with white text and a → arrow → questionnaire; outlined `--ink` pill with a mic icon → opens the voice ask sheet (the prototype's ask box, moved into a sheet to keep the hero clean). Both min 56 px tall, min 200 px wide, and they stack full-width under 480 px. |
 | 5 | **Card rail** | Reference: three cards along the bottom, each with a circular photo, a coral uppercase kicker, a two-line bold headline cut off with an ellipsis, and a circular outlined ↗ button; the row fades out at the right edge. **Ours:** "What's open now" cards. Kicker = scheme category (`--coral-text`); headline = a real, sourced fact such as a deadline or a document tip; ↗ → scheme detail page. Horizontal `scroll-snap` rail with a fade mask on the trailing edge (the left edge in RTL), plus previous/next buttons for keyboard and mouse users. |
 
 ### 6.3 Copy (English source strings, i18n keys)
@@ -220,7 +231,7 @@ Card text comes from scheme data, not locale files. A card is shown **only** if 
 
 - One pre-composed image (not live-tiled photos), cropped so faces fall inside the letter shapes at the desktop breakpoint, with a separate mobile crop.
 - People: a student, an older woman, a farmer, a person using a wheelchair, a mother and child, a CSC volunteer. Represent several regions and ages.
-- Use only photos with a clear licence (commissioned with signed model releases, or a free licence such as Unsplash/Pexels with no implied endorsement). Record the licence and source in `frontend/img/CREDITS.md`.
+- Use only photos with a clear licence (commissioned with signed model releases, or a free licence such as Unsplash/Pexels with no implied endorsement). Record the licence and source in `frontend/public/img/CREDITS.md`.
 - No photos of real officials, offices with government signage, or ID documents.
 - Warm grade to sit on `--paper`. AVIF → WebP → JPEG via `image-set()`; ≤ 140 KB on mobile, ≤ 260 KB on desktop.
 - The card-rail avatars are 72 px circles, ≤ 8 KB each.
@@ -246,7 +257,7 @@ Card text comes from scheme data, not locale files. A card is shown **only** if 
 
 | Reference | JanSathi | Why |
 |---|---|---|
-| White text on coral button | Ink text on coral | White is 3.0 : 1 (fails AA); ink is 5.8 : 1 |
+| White text on coral button | White text on indigo | White on the reference coral is 3.0 : 1 (fails AA); on indigo it is 8.4 : 1 |
 | No supporting copy | One-line lead under the word | The brand name alone doesn't tell a first-time user what the site does |
 | "DONATE" in the nav | "🔊 LISTEN" | Voice-first: reading the page aloud is the most important action for low-literacy users |
 | Uppercase everywhere | Uppercase for short English labels only | Uppercase has no meaning in Indic scripts |
@@ -265,36 +276,40 @@ Each pattern lists where it comes from and how we adapt it.
 | Pattern | Awwwards source idea | JanSathi adaptation |
 |---|---|---|
 | **Image-filled display type** | The hero reference | Used **once**, in the hero. Not repeated elsewhere. |
-| **Oversized section titles** | Large display type with lots of air | `--fs-h1` titles with a coral kicker above. |
-| **Bento grid** | Mixed-size cards in a tight grid | "How it works" (4 steps) and the scheme-detail overview: summary, documents, deadline, source. One column on mobile. |
-| **Sticky storytelling** | A pinned visual while text steps scroll past | "How JanSathi checks a scheme": rules → sources → explanation. `position: sticky` only, no scroll-jacking. A plain list under reduced motion or on small screens. |
-| **Marquee strip** | Infinite horizontal ticker | Scheme categories in all 10 scripts. Pauses on hover/focus, has a pause button, is `aria-hidden` (with the same content available as a list), and stops under reduced motion. |
+| **Oversized section titles** | Large display type with lots of air | `--fs-mega` section titles (`--fs-h1` on inner pages, with a 1.5 px ink rule below) and a rani kicker with a dot. |
+| **Bento grid** | Mixed-size cards in a tight grid | Scheme detail: indigo summary tile, benefit, how to apply, rules with clause citations, documents, sources on a 12-column grid. One column on mobile. |
+| **Sticky storytelling** | A pinned visual while text steps scroll past | "How it works": the title and a giant outlined step numeral stay pinned while the 4 steps scroll past; the step in view turns indigo (`IntersectionObserver`). `position: sticky` only, no scroll-jacking. A plain list under 900 px. |
+| **Marquee strip** | Infinite horizontal ticker | The 10 language names in their own scripts, lime on a slightly tilted night band, in system fonts (no extra font downloads). Pauses on hover/focus, has a pause button, is `aria-hidden` (the same list is in the footer), and stops under reduced motion. |
+| **Scroll-lit statement** | Text that lights up as it scrolls into view | The manifesto: three short lines fade from 15% to full opacity via CSS `animation-timeline: view()`. Static where unsupported or under reduced motion. |
+| **Index list** | Big editorial rows with a hover fill | Categories on the home page: icon, label, count, ↗; an indigo fill rises on hover and focus. |
 | **Numbered steps** | Large outline numerals | Questionnaire progress and document checklist. Numerals use the active locale's digits via `Intl.NumberFormat`. |
-| **Big-number stats** | Impact figures in display type | Only real figures from our own data (e.g. "30 schemes verified"). No invented or rounded-up numbers. |
+| **Big-number stats** | Impact figures in display type | Counted from the bundle at runtime: schemes, distinct official sources, rules, languages, plus a line with the number verified by a reviewer (0 today). No invented or rounded-up numbers. |
 | **Card hover lift** | Subtle translate + image zoom | Scheme cards: 4 px lift and border colour change. Same effect on `:focus-visible`. |
-| **Full-bleed footer** | Giant wordmark footer | Wordmark, "Report outdated info", privacy, language list, and the disclaimer: *"JanSathi is not a government service. Final decisions are made by the government."* |
+| **Colour bands** | Full-bleed sections in a contrasting colour | A night trust band (the three trust labels explained) and a rani call-to-action band. |
+| **Full-bleed footer** | Giant wordmark footer | Night background, a rani wordmark cropped at the bottom edge, "Report outdated info", privacy, language list, and the disclaimer: *"JanSathi is not a government service. Final decisions are made by the government."* |
 
 ### 7.1 Core components
 
-- **Button:** pill, min height 56 px (hero) / 48 px (elsewhere), 24–32 px horizontal padding, icon + label. Variants: primary (`--coral` fill, ink text), secondary (1.5 px `--ink` outline), quiet (text). Every icon-only button has an `aria-label` from i18n.
-- **Icon button:** 44 px visual circle with a 1.5 px `--ink` outline (the reference's ↗ button), inside a 48 px hit area.
-- **Category tile:** `--surface-2`, `--r-md`, icon 40 px, label below, min 96 × 96 px. Selected state: `--ink` 2 px border and a check badge (not colour alone).
-- **Story / scheme card (rail):** 72 px circular photo, `--coral-text` kicker, 2-line headline (`-webkit-line-clamp: 2`, full text in the link's accessible name), ↗ icon button. The whole card is one link.
-- **Scheme card (lists):** name, one-line benefit, result badge (§3.3), trust chip, "verified {date}" line, chevron.
+- **Button:** pill, min height 56 px (hero) / 48 px (elsewhere), 24–32 px horizontal padding, icon + label. Variants: primary (`--indigo` fill, white text; the arrow icon nudges right on hover), secondary (1.5 px `--ink` outline), quiet (text). Every icon-only button has an `aria-label` from i18n.
+- **Icon button:** 48 px circle with a 1.5 px `--ink` outline (the reference's ↗ button) that fills ink on hover. Line icons, not emoji, for UI controls (§8).
+- **Answer tile (questionnaire):** `--surface`, `--r-md`, emoji icon 40 px above the label, min 140 px tall, two columns on a 360 px phone. Hover lifts 4 px with an ink border; press fills indigo.
+- **Filter chip (scheme list):** pill with icon and label in a horizontally scrolling row; the active chip is filled ink and carries `aria-current`.
+- **Story / scheme card (rail):** 72 px circular photo (emoji on an `--indigo-soft` circle until photos exist), `--rani-text` kicker, 2-line headline (`-webkit-line-clamp: 2`, full text in the link's accessible name), ↗ icon button. The whole card is one link.
+- **Scheme card (lists):** icon circle, result badge (§3.3) and trust chip, name (the link; it covers the whole card), one-line summary, "See details →". On results: a 6 px top bar in the result colour, the rule trace and what is still missing.
 - **Result badge:** pill with icon + label, colours from §3.3.
 - **Source citation:** small card with publisher, title, `source_url` domain, published date and verified date. An outdated source shows the unverified chip and a warning line.
 - **Questionnaire step:** one question per screen, answers as large icon tiles, a mic button, and a "Skip — I'm not sure" option that leads to "Need more info" rather than blocking.
-- **Voice ask sheet:** bottom sheet with a 96 px mic button, live transcript, a typing fallback, and the answer view below.
+- **Voice ask sheet:** bottom sheet with a 112 px rani mic button (a ring pulses while listening), live transcript, a typing fallback, and the answer view below.
 - **Answer view:** answer text, trust label chip, inline numbered citations, "Read aloud" button, disclaimer line. "No official source found" is a styled empty state with a suggestion, never a blank bubble.
 
 ---
 
 ## 8. Logo, icons, illustration
 
-- **Logo mark:** a cluster of vertical coral bars of varying height, like a sound waveform (the reference uses a similar mark). For JanSathi it stands for voice. Inline SVG, `aria-hidden`; the wordmark text is the accessible name.
+- **Logo mark:** a cluster of vertical rani-pink bars of varying height, like a sound waveform (the reference uses a similar mark). For JanSathi it stands for voice. Inline SVG, `aria-hidden`; the wordmark text is the accessible name.
 - **Wordmark:** "JANSATHI" in Anton, `--ink`. A custom logotype can replace it later.
-- **Icons:** emoji today (from the prototype), to be replaced by one line-icon set with a 2 px stroke and rounded joins on a 24 px grid. Icons always come with a label; they never replace it.
-- Decorative shapes are inline SVG in `--coral` or `--marigold`, `aria-hidden`.
+- **Icons:** UI controls (arrows, mic, speaker, globe, menu, theme, trust states) use the line icons in `frontend/src/components/Icon.jsx`: 2 px stroke, rounded joins, 24 px grid. Category and answer icons are still emoji; replace them with the same line style later. Icons always come with a label; they never replace it.
+- Decorative shapes are inline SVG in `--rani`, `--indigo` or `--lime` (night bands only), `aria-hidden`.
 
 ---
 
@@ -324,10 +339,12 @@ Measured on a mid-range Android phone (Moto G-class) on throttled "Slow 4G" in L
 | LCP | ≤ 2.5 s (the LCP element is the display word; it renders in solid ink before the image arrives) |
 | CLS | ≤ 0.05 |
 | INP | ≤ 200 ms |
-| JS (gzipped, first load) | ≤ 60 KB |
+| JS (gzipped, first load) | ≤ 60 KB (**currently about 81 KB**: React and React DOM are about 58 KB of it; see below) |
 | CSS (gzipped) | ≤ 25 KB |
 | Fonts (first load) | ≤ 3 files, ≤ 150 KB total |
 | Hero collage | ≤ 140 KB mobile / ≤ 260 KB desktop |
+
+**React and the JS budget (2026-10-25):** the maintainer chose React for the frontend, which puts first-load JS over budget. Measured anyway on 2026-10-25: Lighthouse mobile performance 97, LCP 1.7 s, TBT 170 ms, so the user-facing budgets hold. Every page except home loads lazily. If LCP or INP miss their budgets later, alias `react` and `react-dom` to `preact/compat` in `vite.config.js` (no code changes). Also note: the app now renders after the locale and bundle load; the boot screen in `index.html` shows the brand word in solid ink meanwhile, so first paint does not wait for them.
 
 Animation libraries (e.g. GSAP) are allowed only if lazy-loaded after first paint and only if the budget still holds. Prefer CSS and the Web Animations API.
 
@@ -336,7 +353,7 @@ Animation libraries (e.g. GSAP) are allowed only if lazy-loaded after first pain
 ## 11. Accessibility checklist (design side)
 
 - [ ] Text contrast ≥ 4.5 : 1 (≥ 3 : 1 for 24 px+ display text); tokens in §3 already meet this.
-- [ ] Visible focus ring: 3 px `--ink` outline, 3 px offset, on every interactive element (coral is not used for focus because it is too light on paper).
+- [ ] Visible focus ring: 3 px `--ink` outline, 3 px offset, on every interactive element (rani and lime are not used for focus; on night bands and the indigo summary tile the ring switches to the light ink).
 - [ ] Touch targets ≥ 48 px.
 - [ ] State shown by icon + text + colour, never colour alone.
 - [ ] Works at 200% zoom and at 320 px width without horizontal scroll.
@@ -349,7 +366,7 @@ Animation libraries (e.g. GSAP) are allowed only if lazy-loaded after first pain
 ## 12. Process
 
 - **New screen or component:** the PR description includes (1) the Awwwards pattern it draws on, with a link to the example site; (2) screenshots in light and dark, English and one Indic language, at 360 px and 1280 px; (3) Lighthouse and axe results.
-- **Changing tokens:** change them here first, then in `frontend/css/styles.css`. Keep the names in this file and the CSS identical.
+- **Changing tokens:** change them here first, then in `frontend/src/styles/tokens.css`. Keep the names in this file and the CSS identical.
 - **Conflicts:** if an inspiration conflicts with §1's rule table, follow the rule and note the trade-off in the PR.
 
 ## 13. Open design questions

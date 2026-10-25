@@ -10,20 +10,22 @@ JanSathi helps people find schemes they may qualify for, understand the rules in
 
 ```
 JanSathi/
-├── frontend/   The app people use. Plain HTML + CSS + JavaScript (no React, no build step),
-│               so it loads fast on cheap phones and works offline. Open index.html via a server.
+├── frontend/   The app people use: React + Vite PWA. Works offline; eligibility is checked on the phone.
 ├── backend/    Java 25 + Spring Boot API (Gradle). Serves the same scheme data and matching over HTTP.
 ├── content/    The knowledge base: every scheme as a JSON file, with its official sources.
 ├── rules/      Test cases for the eligibility rules (both frontend and backend must pass them).
 ├── ingest/     Python job that re-downloads official sources and detects changes.
 ├── tools/      Node scripts: tests, validators, bundle builder, dev server.
+├── eval/       Questions that measure the assistant's retrieval (run in CI).
 └── docs/       Product brief and design documents.
 ```
 
-**Run the app** (needs only Node 20+; nothing to install):
+**Run the app** (needs Node 20.19+):
 
 ```bash
-npm start                # serves frontend/ on http://localhost:8000
+npm run setup            # once: installs React and Vite into frontend/
+npm run dev              # dev server with hot reload on http://localhost:5173
+npm start                # or: production build served on http://localhost:8000
 ```
 
 **Run the backend** (needs Java 25; the Gradle wrapper downloads everything else):
@@ -31,6 +33,8 @@ npm start                # serves frontend/ on http://localhost:8000
 ```bash
 npm run start:backend    # same as: cd backend && gradlew bootRun   → http://localhost:8080
 ```
+
+With both running, `npm run dev` sends `/api` calls to the backend (the ask sheet then shows cited rule passages). Without the backend, the app uses its built-in data. API reference: http://localhost:8080/v3/api-docs.
 
 **Check everything:** `npm run check` (data, translations, 300+ tests) and `npm run smoke` (opens the app in headless Chrome).
 
@@ -54,13 +58,16 @@ Many people who qualify for scholarships, pensions, health cover, housing or far
 | Feature | Status |
 |---|---|
 | 10-language UI (en, hi, bn, ta, te, mr, gu, kn, ml, pa) with voice in/out and icon tiles | Built (`frontend/`); 9 locales await native-speaker review |
-| Eligibility questionnaire with three results: likely eligible / not eligible / need more info, with rule traces | Built (on-device rules engine, `frontend/js/rules.js`) |
+| Eligibility questionnaire with three results: likely eligible / not eligible / need more info, with rule traces | Built (on-device rules engine, `frontend/src/lib/rules.js`) |
 | Scheme pages with official sources, clause locators and checked/verified dates | Built; 28 central schemes, all **drafts** awaiting human review |
-| Source re-check job (hash changes → review) | Built (`ingest/recheck.py`); not yet scheduled in CI |
+| Source re-check job (hash changes → review) | Built; runs daily in GitHub Actions and opens an issue when a source changes |
 | Personal document checklist with "how to get it" guidance | Built (generic, all-India guidance) |
-| Family mode and scheme stacking/conflicts | Planned (Phase 2) |
-| Cited AI assistant in Hindi and English | Planned (Phase 3); the ask box is a local keyword search for now |
-| Deadline reminders (Web Push, Telegram) | Planned (Phase 4) |
+| Family mode: household questions once, each member's own results | Built (on the device) |
+| Office slip: schemes and documents to carry, print or share | Built |
+| Scheme stacking/conflicts | Planned: no relations recorded in content yet |
+| Cited AI assistant in Hindi and English | Built: retrieval of official rule passages, an optional LLM explanation (any OpenAI-compatible provider), validation against the copy rules, and "no official source" when nothing matches. Off until a model is configured |
+| Spring Boot API: schemes, matching, rule bundle, checklist, search, assistant, reports and their moderation | Built (`backend/`), with PostgreSQL (H2 locally) and Docker |
+| Deadline reminders (Web Push, Telegram) | Planned: no deadlines recorded in content yet |
 | Volunteer portal with consent sessions and audit log | Planned (Phase 5) |
 | OCR document check | Planned (Phase 5) |
 | Nearby CSC and office map | Planned (Phase 6) |
@@ -71,22 +78,27 @@ See [docs/ROADMAP.md](docs/ROADMAP.md) for the full plan.
 
 What exists now (October 2026):
 
-- **`frontend/`**: a static, no-build PWA. Questionnaire, three-state results with rule traces, scheme pages with sources, document checklist, search, read-aloud and voice answers, 10 languages, offline support. All matching happens on the device; nothing about the user leaves the phone.
+- **`frontend/`**: a React + Vite PWA (redesigned 2026-10-25, see [DESIGN.md](DESIGN.md)). Questionnaire, three-state results with rule traces, scheme pages with sources, document checklist, search, read-aloud and voice answers, 10 languages, offline support. All matching happens on the device; nothing about the user leaves the phone.
 - **`content/`**: 28 central schemes across pensions, insurance, farming, health, housing, food, work, energy, women and children, disability and scholarships (see `content/schemes/`). Every rule cites the clause of an official source it rests on, and each source has `fetched_at` and a content hash. **They are drafts:** a human reviewer has not yet set `verified_at`, so the app runs in *preview mode* and labels every result "may be outdated".
-- **`rules/`**: shared fixtures (233 cases) that the JS engine passes and the Java engine must pass too.
+- **`rules/`**: shared fixtures (233 cases) that both the JS and the Java engine pass.
 - **`ingest/recheck.py`** and **`tools/`**: source re-check, content validator, copy lint (10 languages), locale parity, bundle builder, browser smoke test.
-- **`backend/`** (Spring Boot) is in progress in a separate session. There is no database or AI component yet.
+- **`backend/`**: Spring Boot 4.1 API under `/api/v1`: schemes, categories, match, rule bundle (ETag-cached), checklist, search, the assistant (`/ask`), outdated-info reports with an admin moderation queue, OpenAPI. Its Java rules engine gives the same results as the JS one on every fixture. Flyway migrations on PostgreSQL (H2 locally). One jar or Docker image serves the PWA and the API.
+- **CI** (`.github/workflows/`): every push runs the content checks, both engines, the API tests, the retrieval evaluation, a headless-Chrome walk-through in English and Tamil, and a Docker build; a daily job re-checks every official source.
+
+Is the idea feasible? See [docs/FEASIBILITY.md](docs/FEASIBILITY.md): yes for the technology; the real constraint is human review of content and translations.
 
 ## Quick start
 
-Requires Node 20+ (no `npm install` needed: there are no dependencies) or Python 3, and a modern browser. Chrome or Android Chrome gives the best speech support.
+Requires Node 20.19+ (the root tooling has no dependencies; `npm run setup` installs the frontend's), Java 25 for the backend, and a modern browser. Chrome or Android Chrome gives the best speech support.
 
 ```bash
-npm start                # or: cd frontend && python3 -m http.server 8000
-# open http://localhost:8000
+npm run setup && npm run dev   # open http://localhost:5173
 
 npm run check            # content validation, copy lint, locale parity, bundle freshness, 312 unit tests
-npm run smoke            # headless-Chrome walk through the app (needs Chrome or Edge)
+npm run test:backend     # Java engine on the shared fixtures, API tests, retrieval evaluation
+npm run build:jar        # one jar with the PWA and the API: java -jar backend/build/libs/api-0.0.1-SNAPSHOT.jar
+docker compose up --build   # the same with PostgreSQL (set POSTGRES_PASSWORD first)
+npm run smoke            # build, then a headless-Chrome walk through the app (needs Chrome or Edge)
 python ingest/recheck.py # re-fetch every official source and report changes
 ```
 
@@ -95,6 +107,7 @@ python ingest/recheck.py # re-fetch every official source and report changes
 | Doc | What's in it |
 |---|---|
 | [docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md) | Vision, scope and rules. The source of truth. |
+| [docs/FEASIBILITY.md](docs/FEASIBILITY.md) | Can it be built and run? Risks and recommendation |
 | [DESIGN.md](DESIGN.md) | Visual design system and the hero component |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Components, request flows, provider interfaces |
 | [docs/DATA_MODEL.md](docs/DATA_MODEL.md) | Tables, relations, ER diagram |

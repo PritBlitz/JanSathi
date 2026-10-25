@@ -9,15 +9,18 @@ What exists today: the static PWA (`frontend/`), the knowledge base as code (`co
 ```bash
 git clone <repo-url>
 cd JanSathi
-npm run serve      # open http://localhost:8000 (use Chrome or Android Chrome for speech)
+npm run setup      # once: installs the frontend's dependencies (React, Vite)
+npm run dev        # open http://localhost:5173 (use Chrome or Android Chrome for speech)
 npm run check      # run before every PR
 ```
 
-No build step and no package install: Node 20+ is the only requirement for the tooling (Python 3 for `ingest/`). To test on a phone, open the same URL from a device on your network, or use Chrome's remote debugging. Note that speech recognition requires HTTPS or `localhost`.
+Node 20.19+ for the frontend and tooling (the root tooling has no dependencies), Java 25 for `backend/` (`npm run start:backend`, `npm run test:backend`), Python 3 for `ingest/`. To test on a phone, open the same URL from a device on your network, or use Chrome's remote debugging. Note that speech recognition requires HTTPS or `localhost`.
 
-After editing anything in `content/`, run `npm run build` and commit the regenerated `frontend/data/` bundles; `npm run check` fails if they are stale.
+After editing anything in `content/`, run `npm run build` and commit the regenerated `frontend/public/data/` bundles; `npm run check` fails if they are stale.
 
-Backend, database and AI setup will be added here as those phases land (see [ROADMAP.md](ROADMAP.md)).
+The backend needs no setup: it uses an H2 file database (`backend/data/`) unless `SPRING_DATASOURCE_URL` points at PostgreSQL. `docker compose up --build` runs the whole stack with PostgreSQL. Optional: `JANSATHI_ADMIN_TOKEN` (admin API) and `JANSATHI_LLM_PROVIDER=openai-compatible` with `JANSATHI_LLM_BASE_URL`, `JANSATHI_LLM_MODEL`, `JANSATHI_LLM_API_KEY` (assistant explanations).
+
+CI (`.github/workflows/ci.yml`) runs `npm run check`, the smoke test in English and Tamil, the backend tests (engine fixtures, API, retrieval evaluation) and a Docker build. Run the same locally before a PR.
 
 ## 2. Non-negotiable principles
 
@@ -51,19 +54,21 @@ Applies to locale files, prompts, scheme content, notifications and docs shown t
 
 ### Frontend (`frontend/`)
 
-- Plain HTML, CSS and ES modules; no build step until the planned SvelteKit/Next.js move.
-- All text via `data-i18n` / `data-i18n-attr`. When you add a key, add it to **all 10** locale files (English copy is fine as a placeholder; list those keys in the PR).
+- React 19 function components and hooks, built with Vite. No other runtime dependencies without a reason in the PR (every KB counts against the budget in DESIGN §10). Hash routes (`#/scheme/slug`) so the PWA works on any static host and offline.
+- Eligibility comes only from `src/lib/rules.js`; components display results, never compute them.
+- All text via `t('key')`. When you add a key, add it to **all 10** locale files (English copy is fine as a placeholder; list it under `untranslated_keys` in `review-status.json`).
 - Follow [DESIGN.md](../DESIGN.md): use the CSS tokens, keep touch targets ≥ 48 px, respect `prefers-reduced-motion`, and stay within the performance budget.
 - Semantic HTML first; ARIA only when there's no native element. Every icon-only button has an `aria-label` from i18n.
 - Wrap every `localStorage` access in `try/catch`; the app must work without it.
 - Check new UI in English, Hindi and the longest locale (Tamil or Malayalam), at 360 px and 1280 px, in light and dark.
 
-### Backend API (`backend/`, planned)
+### Backend API (`backend/`)
 
-- Java 21, Spring Boot 3, Gradle (Kotlin DSL). Base package `org.jansathi`, organised by feature (`scheme`, `rules`, `rag`, …), not by layer.
+- Java 25, Spring Boot 4.1 (Jackson 3, `tools.jackson`), Gradle (Kotlin DSL). JSON is snake_case. Base package `org.jansathi`, organised by feature (`scheme`, `rules`, `rag`, …), not by layer.
 - Request and response bodies are Java `record`s with Bean Validation annotations. Never expose database entities directly.
 - Constructor injection only (no field `@Autowired`).
-- Formatting with Spotless + google-java-format; the build fails on unformatted code.
+- Errors are RFC 9457 problem+json (`web/ApiExceptionHandler`); messages never echo request bodies.
+- Formatting: tabs, as in the existing code (Spotless planned).
 - External services only through the provider interfaces in [ARCHITECTURE.md](ARCHITECTURE.md#6-provider-interfaces), with fakes for tests.
 - Tests: JUnit 5 + AssertJ; database tests with Testcontainers (Postgres + pgvector); WireMock for the ML service and LLM.
 - Flyway migrations are forward-only and reviewed.

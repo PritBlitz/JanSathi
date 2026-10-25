@@ -1,6 +1,6 @@
 # Knowledge base
 
-> **Status:** planned (Phases 1 and 4). Not implemented.
+> **Status (2026-10-25):** content lives as reviewed files in `content/` (not yet a database); `ingest/recheck.py` re-fetches and hashes sources and runs daily in GitHub Actions (`.github/workflows/recheck.yml`), opening an issue when a source changes; "Report outdated info" goes to the API's `report` table (`POST /api/v1/reports`, moderated via `/api/v1/admin/reports`). Chunking, embeddings and the reviewer UI are **planned**.
 
 The knowledge base is the verified, structured store of schemes, rules, documents, deadlines and their sources. Nothing reaches a user unless a human reviewer has checked it against an official source.
 

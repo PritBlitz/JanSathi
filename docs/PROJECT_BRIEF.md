@@ -103,12 +103,12 @@ It is a reliable discovery engine, not a chatbot:
 
 ## 7. Languages, voice and icon UI
 
-**Status:** frontend prototype built in `frontend/`. It has no build step; run it with `python3 -m http.server` from `frontend/`.
+**Status:** built in `frontend/` (React + Vite since 2026-10-25, see §17); run it with `npm run setup && npm run dev`.
 
 - **Languages (10):** English (en), Hindi (hi), Bengali (bn), Tamil (ta), Telugu (te), Marathi (mr), Gujarati (gu), Kannada (kn), Malayalam (ml), Punjabi (pa). Each has a BCP-47 tag `xx-IN` used for speech.
 - **i18n mechanism:**
   - Elements use `data-i18n="key"` for text and `data-i18n-attr="attr:key,attr2:key2"` for attributes such as placeholder and aria-label.
-  - Strings live in `frontend/locales/<code>.json`.
+  - Strings live in `frontend/public/locales/<code>.json`.
   - Missing keys fall back to English.
   - The language is detected from the browser and then remembered in `localStorage`.
   - Changing language also updates `<html lang>` and the page title.
@@ -263,3 +263,4 @@ These override the brief where they differ.
 |---|---|---|
 | 2026-10-24 | Backend is **Spring Boot** (Java 21). Python is used only for an internal ML service (embeddings, IndicTrans2, STT/TTS, OCR) and the ingestion job. Rules run on json-logic-java + json-logic-js. | "FastAPI (Python)" in §8, §9, §12 and open question 2 |
 | 2026-10-24 | The hero display word is the brand name written in the active language's script (JanSathi, जनसाथी, …). | — (design detail, see DESIGN.md) |
+| 2026-10-25 | Frontend is **React** (Vite build). Same locale JSON; strings go through `t('key')` instead of `data-i18n` attributes. The site is redesigned with a new palette; the hero anatomy stays. Java is 25 and Spring Boot 4.1. | "Static PWA today → SvelteKit (or Next.js)" in §7, §8; the `data-i18n` mechanism in §7 |
