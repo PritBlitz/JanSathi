@@ -1,0 +1,189 @@
+[
+  {
+    "name": "rural, kutcha house, no exclusions",
+    "profile": {
+      "area": "rural",
+      "has_pucca_house": false,
+      "household_has_vehicle_or_kcc": false,
+      "household_has_govt_employee": false,
+      "has_registered_business": false,
+      "member_earns_over_15000": false,
+      "family_pays_income_tax": false,
+      "owns_large_land": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "urban",
+    "profile": {
+      "area": "urban",
+      "has_pucca_house": false,
+      "household_has_vehicle_or_kcc": false,
+      "household_has_govt_employee": false,
+      "has_registered_business": false,
+      "member_earns_over_15000": false,
+      "family_pays_income_tax": false,
+      "owns_large_land": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "rural": "fail"
+      }
+    }
+  },
+  {
+    "name": "already has a pucca house",
+    "profile": {
+      "area": "rural",
+      "has_pucca_house": true,
+      "household_has_vehicle_or_kcc": false,
+      "household_has_govt_employee": false,
+      "has_registered_business": false,
+      "member_earns_over_15000": false,
+      "family_pays_income_tax": false,
+      "owns_large_land": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "motor vehicle or KCC of ₹50,000+",
+    "profile": {
+      "area": "rural",
+      "has_pucca_house": false,
+      "household_has_vehicle_or_kcc": true,
+      "household_has_govt_employee": false,
+      "has_registered_business": false,
+      "member_earns_over_15000": false,
+      "family_pays_income_tax": false,
+      "owns_large_land": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "government employee in the family",
+    "profile": {
+      "area": "rural",
+      "has_pucca_house": false,
+      "household_has_vehicle_or_kcc": false,
+      "household_has_govt_employee": true,
+      "has_registered_business": false,
+      "member_earns_over_15000": false,
+      "family_pays_income_tax": false,
+      "owns_large_land": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "registered business or professional tax",
+    "profile": {
+      "area": "rural",
+      "has_pucca_house": false,
+      "household_has_vehicle_or_kcc": false,
+      "household_has_govt_employee": false,
+      "has_registered_business": true,
+      "member_earns_over_15000": false,
+      "family_pays_income_tax": false,
+      "owns_large_land": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "member earns over ₹15,000 a month",
+    "profile": {
+      "area": "rural",
+      "has_pucca_house": false,
+      "household_has_vehicle_or_kcc": false,
+      "household_has_govt_employee": false,
+      "has_registered_business": false,
+      "member_earns_over_15000": true,
+      "family_pays_income_tax": false,
+      "owns_large_land": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income tax payer",
+    "profile": {
+      "area": "rural",
+      "has_pucca_house": false,
+      "household_has_vehicle_or_kcc": false,
+      "household_has_govt_employee": false,
+      "has_registered_business": false,
+      "member_earns_over_15000": false,
+      "family_pays_income_tax": true,
+      "owns_large_land": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "large land holding",
+    "profile": {
+      "area": "rural",
+      "has_pucca_house": false,
+      "household_has_vehicle_or_kcc": false,
+      "household_has_govt_employee": false,
+      "has_registered_business": false,
+      "member_earns_over_15000": false,
+      "family_pays_income_tax": false,
+      "owns_large_land": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "only area and house answered",
+    "profile": {
+      "area": "rural",
+      "has_pucca_house": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "household_has_vehicle_or_kcc",
+        "household_has_govt_employee",
+        "has_registered_business",
+        "member_earns_over_15000",
+        "family_pays_income_tax",
+        "owns_large_land"
+      ]
+    }
+  }
+]

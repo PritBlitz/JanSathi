@@ -1,84 +1,82 @@
 {
-  "slug": "igndps",
   "status": "draft",
   "level": "central",
   "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "igndps",
   "category": "disability",
   "icon": "♿",
   "ministry": {
-    "en": "Ministry of Rural Development (NSAP)",
-    "hi": "ग्रामीण विकास मंत्रालय (NSAP)"
+    "en": "Ministry of Rural Development",
+    "hi": "ग्रामीण विकास मंत्रालय"
   },
   "official_apply_url": "https://nsap.dord.gov.in/",
-  "reverify_days": 180,
+  "reverify_days": 30,
   "content": {
     "en": {
-      "name": "Disability pension (IGNDPS)",
-      "summary": "A monthly pension for people with severe disability from families below the poverty line.",
-      "benefit": "The central government pays ₹300 a month. Many states add more money on top. From age 80 the old age pension applies instead.",
-      "how_to_apply": "Apply at the gram panchayat or block office in villages, or the municipal office in towns, with your disability certificate."
+      "name": "Disability pension (PM Divyangjan Pension Yojana)",
+      "summary": "A monthly pension for people with a benchmark disability (40% or more) from households below the poverty line, from birth. It was called the Indira Gandhi National Disability Pension Scheme (IGNDPS) until October 2026.",
+      "benefit": "On 14 October 2026 the Union Cabinet approved ₹375 a month up to age 79 and ₹625 a month from age 80 (central share). Your state adds its own amount on top. The new rules start when the revised guidelines are issued, which the Cabinet said would be within three months. Until then, offices may still use the old rules: age 18 or older and 80% disability, ₹300 a month.",
+      "how_to_apply": "Apply to your state's social welfare department (gram panchayat, block or municipal office) with your disability certificate. For a child, a parent or guardian applies."
     },
     "hi": {
-      "name": "दिव्यांग पेंशन (IGNDPS)",
-      "summary": "गरीबी रेखा से नीचे के परिवारों के गंभीर दिव्यांग लोगों के लिए हर महीने पेंशन।",
-      "benefit": "केंद्र सरकार ₹300 महीना देती है। कई राज्य इसमें और पैसा जोड़ते हैं। 80 साल से वृद्धावस्था पेंशन लागू होती है।",
-      "how_to_apply": "दिव्यांगता प्रमाण पत्र के साथ गाँव में ग्राम पंचायत या ब्लॉक कार्यालय में, शहर में नगर निकाय कार्यालय में आवेदन करें।"
+      "name": "दिव्यांगजन पेंशन (प्रधानमंत्री दिव्यांगजन पेंशन योजना)",
+      "summary": "गरीबी रेखा से नीचे के परिवारों के उन लोगों के लिए हर महीने पेंशन जिनकी दिव्यांगता 40% या उससे ज़्यादा है, जन्म से। अक्टूबर 2026 तक इसका नाम इंदिरा गांधी राष्ट्रीय दिव्यांग पेंशन योजना (IGNDPS) था।",
+      "benefit": "14 अक्टूबर 2026 को केंद्रीय मंत्रिमंडल ने 79 साल की उम्र तक ₹375 महीना और 80 साल से ₹625 महीना (केंद्र का हिस्सा) मंज़ूर किया। राज्य इसमें अपनी राशि जोड़ता है। नए नियम संशोधित दिशानिर्देश जारी होने पर लागू होंगे, जो मंत्रिमंडल के अनुसार तीन महीने के भीतर आएँगे। तब तक कार्यालय पुराने नियम भी लागू कर सकते हैं: उम्र 18 साल या ज़्यादा और 80% दिव्यांगता, ₹300 महीना।",
+      "how_to_apply": "दिव्यांगता प्रमाण पत्र के साथ अपने राज्य के समाज कल्याण विभाग (ग्राम पंचायत, ब्लॉक या नगर निकाय कार्यालय) में आवेदन करें। बच्चे के लिए माता-पिता या अभिभावक आवेदन करते हैं।"
     }
   },
   "sources": [
     {
-      "id": "nsap",
+      "id": "cabinet_2026",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2323264",
+      "title": "Cabinet approves continuation of the National Social Assistance Programme for five years from 2026-27 to 2030-31",
+      "publisher": "Press Information Bureau (Cabinet)",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-10-14",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:4c5a7e907618ef2f1910030171fc676cca9e2154f83448d62c0f3f7ed7f0cf7c",
+      "verified_at": null,
+      "verified_by": null,
+      "fetch": "manual",
+      "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
+    },
+    {
+      "id": "guidelines",
+      "url": "https://ssepd.odisha.gov.in/sites/default/files/2024-04/Guideline%20on%20National%20Social%20Assistance%20Programme%20-%20NSAP.pdf",
+      "title": "National Social Assistance Programme: Guidelines (October 2014)",
+      "publisher": "Ministry of Rural Development",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2014-10",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:d53a782b3be5b935393627d0d7ead94eeb24d341153ccac69befb8cc9a994718",
+      "verified_at": null,
+      "verified_by": null,
+      "note": "Central MoRD guidelines; this copy is hosted by the Government of Odisha (SSEPD). nsap.dord.gov.in does not host the guideline text.",
+      "fetch": "manual",
+      "fetch_note": "robots.txt on this host answers 403, which means \"disallow all\" for bots. Fetched by hand; hash with ingest/recheck.py --hash-file."
+    },
+    {
+      "id": "portal",
       "url": "https://nsap.dord.gov.in/",
-      "title": "National Social Assistance Programme",
+      "title": "National Social Assistance Programme portal",
       "publisher": "Department of Rural Development",
       "doc_type": "portal",
       "lang": "en",
       "published_date": null,
-      "fetched_at": "2026-10-24",
-      "content_hash": "sha256:6d952aa16008f6ba89814a6e28a94e1361b47187f6422cdb9fb1029edabf37ac",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:3be007cf44ceb7c9951cbd7f319292bb3c9566557e10533d46132f8b6bb98136",
       "verified_at": null,
       "verified_by": null
     }
   ],
   "rules": [
-    {
-      "code": "age_min",
-      "logic": {
-        ">=": [
-          {
-            "var": "age"
-          },
-          18
-        ]
-      },
-      "hard": true,
-      "confidence": "guidance",
-      "source": "nsap",
-      "locator": "To verify: the portal does not state the criteria; current text is from secondary sources",
-      "text": {
-        "en": "Age 18 or older",
-        "hi": "उम्र 18 साल या उससे ज़्यादा"
-      }
-    },
-    {
-      "code": "age_max",
-      "logic": {
-        "<=": [
-          {
-            "var": "age"
-          },
-          79
-        ]
-      },
-      "hard": true,
-      "confidence": "guidance",
-      "source": "nsap",
-      "locator": "To verify: the portal does not state the criteria; current text is from secondary sources",
-      "text": {
-        "en": "Age 79 or younger",
-        "hi": "उम्र 79 साल या उससे कम"
-      }
-    },
     {
       "code": "disability",
       "logic": {
@@ -91,30 +89,30 @@
       },
       "hard": true,
       "confidence": "guidance",
-      "source": "nsap",
-      "locator": "To verify: the portal does not state the criteria; current text is from secondary sources",
+      "source": "cabinet_2026",
+      "locator": "Changes in disability pension, (a)",
       "text": {
-        "en": "Has a disability",
-        "hi": "दिव्यांगता है"
+        "en": "Has a disability with a disability certificate",
+        "hi": "दिव्यांगता है, और उसका प्रमाण पत्र है"
       }
     },
     {
-      "code": "disability_80",
+      "code": "benchmark_disability",
       "logic": {
         ">=": [
           {
             "var": "disability_percent"
           },
-          80
+          40
         ]
       },
       "hard": true,
       "confidence": "guidance",
-      "source": "nsap",
-      "locator": "To verify: the portal does not state the criteria; current text is from secondary sources",
+      "source": "cabinet_2026",
+      "locator": "Changes in disability pension, (a): 40% replaces 80%; revised guidelines pending",
       "text": {
-        "en": "Disability of 80% or more (severe or multiple)",
-        "hi": "80% या उससे ज़्यादा दिव्यांगता (गंभीर या एक से ज़्यादा)"
+        "en": "Disability of 40% or more",
+        "hi": "40% या उससे ज़्यादा दिव्यांगता"
       }
     },
     {
@@ -128,11 +126,11 @@
         ]
       },
       "hard": true,
-      "confidence": "guidance",
-      "source": "nsap",
-      "locator": "To verify: the portal does not state the criteria; current text is from secondary sources",
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§2.3, p. 6",
       "text": {
-        "en": "The family is below the poverty line (BPL)",
+        "en": "The household is below the poverty line (BPL)",
         "hi": "परिवार गरीबी रेखा से नीचे (बीपीएल) है"
       }
     }
@@ -141,32 +139,22 @@
     {
       "code": "disability_certificate",
       "mandatory": true,
-      "source": "nsap"
-    },
-    {
-      "code": "age_proof",
-      "mandatory": true,
-      "source": "nsap"
+      "source": "cabinet_2026"
     },
     {
       "code": "ration_card",
       "mandatory": true,
-      "source": "nsap"
-    },
-    {
-      "code": "aadhaar",
-      "mandatory": true,
-      "source": "nsap"
+      "source": "guidelines"
     },
     {
       "code": "bank_account",
       "mandatory": true,
-      "source": "nsap"
+      "source": "guidelines"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "guidelines"
     }
-  ],
-  "window": {
-    "type": "rolling"
-  },
-  "deadlines": [],
-  "relations": []
+  ]
 }

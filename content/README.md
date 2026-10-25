@@ -11,10 +11,16 @@ content/
 
 ## Status of the current files
 
-**Every scheme here is `draft`, and every source has `verified_at: null`.** The files were drafted from public knowledge of each scheme and point at the official portals, but nobody has yet checked each rule against the official text. Until a reviewer does:
+**Every scheme here is `draft`, and every source has `verified_at: null`.** On 2026-10-25 an AI session checked each rule, amount and document against the official source it cites, recorded the clause in `locator`, and filled `fetched_at` and `content_hash` (see the session log in [HANDOVER.md](../HANDOVER.md)). That check is not a human review. Until a reviewer re-checks each file against its sources and sets `verified_at`:
 
 - the production bundle and the API leave them out (only `published` schemes are served);
-- the PWA shows them only in preview mode, under a "Draft, not yet verified" warning.
+- the PWA shows them only in preview mode, under a "Draft, not yet verified" warning, and every result is labelled "may be outdated".
+
+Recent changes the files already reflect:
+
+- **NSAP pensions** were renamed on 14 Oct 2026 (Pradhan Mantri Samajik Sahayata Yojana). The disability pension moves to 40% disability with no minimum age, at ₹375 / ₹625 a month; the revised guidelines are due within three months, so `igndps` rests on the Cabinet release (`govt_statement`, `guidance`) and has `reverify_days: 30`.
+- **PMAY-G** uses the revised 10 exclusion criteria approved on 9 Aug 2024.
+- **MGNREGA** was replaced by the VB-G RAM G Act on 1 Jul 2026; job-card text says so.
 
 ## Publishing a scheme
 
@@ -22,7 +28,7 @@ content/
 2. Fill in `published_date`, `locator` and `source` references; set `fetched_at` and `content_hash` (from `python ingest/recheck.py --update <slug>`), `verified_at` (today) and `verified_by` (your reviewer id).
 3. Add or update `rules/<slug>.cases.json` with the edge cases in [docs/RULES_ENGINE.md](../docs/RULES_ENGINE.md#8-testing).
 4. Set `"status": "published"` and open a PR. **A second reviewer must approve it.** Nobody approves their own content.
-5. CI checks the copy lint, that every rule/document/deadline references a source, that `confirmed` rules don't rest on `secondary` or `faq` sources, and that the fixtures pass.
+5. CI checks the copy lint, that every rule/document/deadline references a source, that `confirmed` rules rest only on `gazette` or `guideline` sources, and that the fixtures pass (`npm run check`).
 
 ## Writing rules
 

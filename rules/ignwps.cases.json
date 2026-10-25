@@ -1,0 +1,163 @@
+[
+  {
+    "name": "widow aged 40, BPL",
+    "profile": {
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 40,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "widow aged 39",
+    "profile": {
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 39,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "widow aged 41",
+    "profile": {
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 41,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "widow aged 85: no upper age limit",
+    "profile": {
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 85,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age band 18-39",
+    "profile": {
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": {
+        "min": 18,
+        "max": 39
+      },
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age band 40-59",
+    "profile": {
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": {
+        "min": 40,
+        "max": 59
+      },
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "married woman",
+    "profile": {
+      "gender": "female",
+      "marital_status": "married",
+      "age": 45,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "widowed": "fail"
+      }
+    }
+  },
+  {
+    "name": "man",
+    "profile": {
+      "gender": "male",
+      "marital_status": "widowed",
+      "age": 45,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "female": "fail"
+      }
+    }
+  },
+  {
+    "name": "marital status not given",
+    "profile": {
+      "gender": "female",
+      "age": 45,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "marital_status"
+      ]
+    }
+  },
+  {
+    "name": "gender undisclosed",
+    "profile": {
+      "marital_status": "widowed",
+      "age": 45,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "gender"
+      ]
+    }
+  }
+]

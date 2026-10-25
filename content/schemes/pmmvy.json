@@ -1,28 +1,50 @@
 {
-  "slug": "pmmvy",
   "status": "draft",
   "level": "central",
   "state_code": null,
-  "category": "women_child",
-  "icon": "🤰",
-  "ministry": { "en": "Ministry of Women and Child Development", "hi": "महिला एवं बाल विकास मंत्रालय" },
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "pmmvy",
+  "category": "women_children",
+  "icon": "🤱",
+  "ministry": {
+    "en": "Ministry of Women and Child Development",
+    "hi": "महिला एवं बाल विकास मंत्रालय"
+  },
   "official_apply_url": "https://pmmvy.wcd.gov.in/",
-  "reverify_days": 180,
+  "reverify_days": 90,
   "content": {
     "en": {
       "name": "PM Matru Vandana Yojana (maternity support)",
-      "summary": "Money support for pregnant women and new mothers, for better rest and nutrition.",
-      "benefit": "The scheme gives ₹5,000 for the first child, in two parts, and ₹6,000 for a second child if she is a girl.",
-      "how_to_apply": "Register at your Anganwadi centre or with the ANM / health worker, or on the PMMVY website. Register early in the pregnancy."
+      "summary": "Money support for pregnant women and new mothers, so they can rest before and after the birth and eat well.",
+      "benefit": "For the first child: ₹5,000 in two instalments, ₹3,000 after registering the pregnancy and one check-up, and ₹2,000 after the birth is registered and the baby gets the first vaccines. With Janani Suraksha Yojana for a hospital birth, this comes to about ₹6,000 on average. For a second child who is a girl: ₹6,000 in one instalment after the birth.",
+      "how_to_apply": "Register at your Anganwadi centre or approved health facility, or on the PMMVY website. Apply within 730 days of the pregnancy date on your MCP card. For a second child, you must register during the pregnancy. Payment needs Aadhaar and goes to your bank or post office account."
     },
     "hi": {
       "name": "प्रधानमंत्री मातृ वंदना योजना",
-      "summary": "गर्भवती महिलाओं और नई माताओं के लिए आराम और पोषण के लिए पैसों की मदद।",
-      "benefit": "योजना में पहले बच्चे के लिए ₹5,000 दो किस्तों में, और दूसरी संतान बेटी होने पर ₹6,000 दिए जाते हैं।",
-      "how_to_apply": "अपने आंगनवाड़ी केंद्र या ANM / स्वास्थ्य कार्यकर्ता के पास, या पीएमएमवीवाई वेबसाइट पर पंजीकरण करें। गर्भावस्था में जल्दी पंजीकरण कराएँ।"
+      "summary": "गर्भवती महिलाओं और नई माताओं के लिए पैसों की मदद, ताकि वे जन्म से पहले और बाद में आराम कर सकें और अच्छा खा सकें।",
+      "benefit": "पहले बच्चे के लिए: ₹5,000 दो किस्तों में, गर्भावस्था के पंजीकरण और एक जाँच के बाद ₹3,000, और जन्म का पंजीकरण व बच्चे के पहले टीकों के बाद ₹2,000। अस्पताल में जन्म पर जननी सुरक्षा योजना के साथ यह औसतन लगभग ₹6,000 होता है। दूसरी संतान बेटी होने पर: जन्म के बाद एक किस्त में ₹6,000।",
+      "how_to_apply": "अपने आंगनवाड़ी केंद्र या मान्य स्वास्थ्य केंद्र पर, या पीएमएमवीवाई वेबसाइट पर पंजीकरण करें। MCP कार्ड पर लिखी गर्भावस्था की तारीख़ से 730 दिन के भीतर आवेदन करें। दूसरी संतान के लिए गर्भावस्था के दौरान ही पंजीकरण ज़रूरी है। भुगतान के लिए आधार चाहिए और पैसा आपके बैंक या डाकघर खाते में आता है।"
     }
   },
   "sources": [
+    {
+      "id": "guidelines",
+      "url": "https://pmmvy.wcd.gov.in/WebsiteContent/assets/pdf/Mission%20Shakti%20Guidelines%202021-22%20to%202025-26.pdf",
+      "title": "Mission Shakti Guidelines 2021-22 to 2025-26 (§2.2.6 PMMVY)",
+      "publisher": "Ministry of Women and Child Development",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2022",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:3111323d93100e3890c90281deef0af1b59de69f513781e5e636c3d6f901bcb6",
+      "verified_at": null,
+      "verified_by": null,
+      "note": "Guidelines cover 2021-22 to 2025-26 and are still the version on the PMMVY portal. A reviewer must confirm the scheme period after March 2026."
+    },
     {
       "id": "portal",
       "url": "https://pmmvy.wcd.gov.in/",
@@ -31,8 +53,8 @@
       "doc_type": "portal",
       "lang": "en",
       "published_date": null,
-      "fetched_at": null,
-      "content_hash": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:8fddbd9576a1b5a240f40cc2e1c23cd42def67a7ce777070973e65076029ec3c",
       "verified_at": null,
       "verified_by": null
     }
@@ -40,59 +62,156 @@
   "rules": [
     {
       "code": "female",
-      "logic": { "==": [{ "var": "gender" }, "female"] },
-      "hard": true,
-      "confidence": "confirmed",
-      "source": "portal",
-      "locator": null,
-      "text": { "en": "Woman", "hi": "महिला" }
-    },
-    {
-      "code": "pregnant_or_lactating",
-      "logic": { "==": [{ "var": "is_pregnant_or_lactating" }, true] },
-      "hard": true,
-      "confidence": "confirmed",
-      "source": "portal",
-      "locator": null,
-      "text": { "en": "Pregnant or breastfeeding", "hi": "गर्भवती हैं या स्तनपान करा रही हैं" }
-    },
-    {
-      "code": "not_govt_employee",
-      "logic": { "==": [{ "var": "is_govt_employee" }, false] },
-      "hard": true,
-      "confidence": "confirmed",
-      "source": "portal",
-      "locator": null,
-      "text": { "en": "Not in a regular government or PSU job", "hi": "नियमित सरकारी या सार्वजनिक उपक्रम की नौकरी में नहीं हैं" }
-    },
-    {
-      "code": "priority_group",
       "logic": {
-        "or": [
-          { "<=": [{ "var": "annual_income" }, 800000] },
-          { "in": [{ "var": "social_category" }, ["sc", "st"]] },
-          { "==": [{ "var": "is_bpl" }, true] },
-          { ">=": [{ "var": "disability_percent" }, 40] },
-          { "==": [{ "var": "in_pmjay_list" }, true] }
+        "==": [
+          {
+            "var": "gender"
+          },
+          "female"
         ]
       },
       "hard": true,
-      "confidence": "guidance",
-      "source": "portal",
-      "locator": null,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§2.2.6, p. 27",
       "text": {
-        "en": "Meets one of these: family income up to ₹8 lakh, SC or ST, BPL card, 40% or more disability, or Ayushman card",
-        "hi": "इनमें से एक: परिवार की आय ₹8 लाख तक, अनुसूचित जाति या जनजाति, बीपीएल कार्ड, 40% या ज़्यादा दिव्यांगता, या आयुष्मान कार्ड"
+        "en": "Woman",
+        "hi": "महिला"
+      }
+    },
+    {
+      "code": "pregnant_or_lactating",
+      "logic": {
+        "==": [
+          {
+            "var": "is_pregnant_or_lactating"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§2.2.6, p. 27",
+      "text": {
+        "en": "Pregnant or breastfeeding",
+        "hi": "गर्भवती हैं या स्तनपान करा रही हैं"
+      }
+    },
+    {
+      "code": "not_govt_employee",
+      "logic": {
+        "==": [
+          {
+            "var": "is_govt_employee"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§2.2.6, p. 28",
+      "text": {
+        "en": "Not in regular employment with the central or state government or a PSU",
+        "hi": "केंद्र या राज्य सरकार या सार्वजनिक उपक्रम की नियमित नौकरी में नहीं हैं"
+      }
+    },
+    {
+      "code": "disadvantaged_group",
+      "logic": {
+        "or": [
+          {
+            "in": [
+              {
+                "var": "social_category"
+              },
+              [
+                "sc",
+                "st"
+              ]
+            ]
+          },
+          {
+            ">=": [
+              {
+                "var": "disability_percent"
+              },
+              40
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "is_bpl"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "in_pmjay_list"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "has_eshram_card"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "has_job_card"
+              },
+              true
+            ]
+          },
+          {
+            "<": [
+              {
+                "var": "annual_income"
+              },
+              800000
+            ]
+          }
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§2.2.6, pp. 27-28, items i-viii",
+      "text": {
+        "en": "Belongs to a listed group: SC or ST, 40% or more disability, BPL ration card, PM-JAY card, e-Shram card, MGNREGA job card (or the new Gramin Rozgar Guarantee Card), or family income below ₹8 lakh a year. Women farmers on PM-KISAN and Anganwadi or ASHA workers also qualify.",
+        "hi": "इनमें से किसी समूह से हैं: अनुसूचित जाति या जनजाति, 40% या ज़्यादा दिव्यांगता, बीपीएल राशन कार्ड, पीएम-जेएवाई कार्ड, ई-श्रम कार्ड, मनरेगा जॉब कार्ड (या नया ग्रामीण रोज़गार गारंटी कार्ड), या परिवार की आय साल में ₹8 लाख से कम। पीएम-किसान वाली महिला किसान और आंगनवाड़ी या आशा कार्यकर्ता भी शामिल हैं।"
       }
     }
   ],
   "documents": [
-    { "code": "mcp_card", "mandatory": true, "source": "portal" },
-    { "code": "aadhaar", "mandatory": true, "source": "portal" },
-    { "code": "bank_account", "mandatory": true, "source": "portal" },
-    { "code": "birth_certificate_child", "mandatory": false, "source": "portal" }
-  ],
-  "window": { "type": "rolling" },
-  "deadlines": [],
-  "relations": []
+    {
+      "code": "mcp_card",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "birth_certificate_child",
+      "mandatory": false,
+      "source": "guidelines"
+    }
+  ]
 }

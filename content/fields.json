@@ -163,6 +163,41 @@
       "type": "bool",
       "scope": "household",
       "icon": "👧"
+    },
+    "household_has_govt_employee": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🏢"
+    },
+    "member_earns_over_15000": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "💸"
+    },
+    "household_has_vehicle_or_kcc": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🚜"
+    },
+    "owns_large_land": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🗺️"
+    },
+    "has_registered_business": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🏭"
+    },
+    "has_eshram_card": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🪪"
+    },
+    "has_job_card": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "⛏️"
     }
   }
 }

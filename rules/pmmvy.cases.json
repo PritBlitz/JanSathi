@@ -1,0 +1,265 @@
+[
+  {
+    "name": "pregnant SC woman",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "is_govt_employee": false,
+      "social_category": "sc"
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "income 799,999, no other group",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "is_govt_employee": false,
+      "social_category": "general",
+      "disability_percent": 0,
+      "is_bpl": false,
+      "in_pmjay_list": false,
+      "has_eshram_card": false,
+      "has_job_card": false,
+      "annual_income": 799999
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income exactly 800,000: the limit is \"less than ₹8 lakh\"",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "is_govt_employee": false,
+      "social_category": "general",
+      "disability_percent": 0,
+      "is_bpl": false,
+      "in_pmjay_list": false,
+      "has_eshram_card": false,
+      "has_job_card": false,
+      "annual_income": 800000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "disadvantaged_group": "fail"
+      }
+    }
+  },
+  {
+    "name": "income 800,001",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "is_govt_employee": false,
+      "social_category": "general",
+      "disability_percent": 0,
+      "is_bpl": false,
+      "in_pmjay_list": false,
+      "has_eshram_card": false,
+      "has_job_card": false,
+      "annual_income": 800001
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income band 5-8 lakh straddles the limit",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "is_govt_employee": false,
+      "social_category": "general",
+      "disability_percent": 0,
+      "is_bpl": false,
+      "in_pmjay_list": false,
+      "has_eshram_card": false,
+      "has_job_card": false,
+      "annual_income": {
+        "min": 500001,
+        "max": 800000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  },
+  {
+    "name": "income band up to 1 lakh",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "is_govt_employee": false,
+      "annual_income": {
+        "min": 0,
+        "max": 100000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "e-Shram card, high income",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "is_govt_employee": false,
+      "social_category": "general",
+      "disability_percent": 0,
+      "is_bpl": false,
+      "in_pmjay_list": false,
+      "has_eshram_card": true,
+      "has_job_card": false,
+      "annual_income": 900000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "job card",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "is_govt_employee": false,
+      "social_category": "general",
+      "disability_percent": 0,
+      "is_bpl": false,
+      "in_pmjay_list": false,
+      "has_eshram_card": false,
+      "has_job_card": true,
+      "annual_income": 900000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "40% disability",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "is_govt_employee": false,
+      "social_category": "general",
+      "disability_percent": 40,
+      "is_bpl": false,
+      "in_pmjay_list": false,
+      "has_eshram_card": false,
+      "has_job_card": false,
+      "annual_income": 900000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "39% disability only",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "is_govt_employee": false,
+      "social_category": "general",
+      "disability_percent": 39,
+      "is_bpl": false,
+      "in_pmjay_list": false,
+      "has_eshram_card": false,
+      "has_job_card": false,
+      "annual_income": 900000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "regular government employee",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "is_govt_employee": true,
+      "social_category": "sc"
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "not_govt_employee": "fail"
+      }
+    }
+  },
+  {
+    "name": "not pregnant or breastfeeding",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": false,
+      "is_govt_employee": false,
+      "social_category": "sc"
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "man",
+    "profile": {
+      "gender": "male",
+      "is_pregnant_or_lactating": true,
+      "is_govt_employee": false,
+      "social_category": "sc"
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "groups not answered",
+    "profile": {
+      "gender": "female",
+      "is_pregnant_or_lactating": true,
+      "is_govt_employee": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "rules": {
+        "disadvantaged_group": "unknown"
+      }
+    }
+  }
+]

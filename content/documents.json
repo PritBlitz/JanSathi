@@ -165,6 +165,17 @@
       "office": { "en": "Patwari / revenue office", "hi": "पटवारी / राजस्व कार्यालय" },
       "portal_url": "https://pmfby.gov.in/",
       "source": { "url": "https://pmfby.gov.in/", "publisher": "Ministry of Agriculture and Farmers Welfare", "doc_type": "portal", "verified_at": null }
+    },
+    "job_card": {
+      "icon": "⛏️",
+      "name": { "en": "Rural job card (Gramin Rozgar Guarantee Card, or MGNREGA job card)", "hi": "ग्रामीण जॉब कार्ड (ग्रामीण रोज़गार गारंटी कार्ड, या मनरेगा जॉब कार्ड)" },
+      "how_to": {
+        "en": "MGNREGA was replaced by the VB-G RAM G Act on 1 July 2026. An old MGNREGA job card stays valid if its e-KYC is done, until the new Gramin Rozgar Guarantee Card is issued. If your household has no card, an adult member can apply at the gram panchayat.",
+        "hi": "1 जुलाई 2026 से मनरेगा की जगह वीबी-जी राम जी अधिनियम आया है। पुराना मनरेगा जॉब कार्ड, अगर उसका ई-केवाईसी हो चुका है, नया ग्रामीण रोज़गार गारंटी कार्ड मिलने तक मान्य है। अगर परिवार के पास कार्ड नहीं है, तो कोई वयस्क सदस्य ग्राम पंचायत में आवेदन कर सकता है।"
+      },
+      "office": { "en": "Gram panchayat", "hi": "ग्राम पंचायत" },
+      "portal_url": null,
+      "source": { "url": "https://www.pib.gov.in/FaqDetails.aspx?ModuleId=4&NoteId=158511&lang=1&reg=3", "publisher": "Press Information Bureau (Ministry of Rural Development): VB-G RAM G Act FAQ", "doc_type": "govt_statement", "fetched_at": "2026-10-25", "verified_at": null }
     }
   }
 }

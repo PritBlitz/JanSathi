@@ -1,8 +1,13 @@
 {
-  "slug": "post-matric-sc",
   "status": "draft",
   "level": "central",
   "state_code": null,
+  "window": {
+    "type": "yearly"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "post-matric-sc",
   "category": "education",
   "icon": "🎓",
   "ministry": {
@@ -14,28 +19,42 @@
   "content": {
     "en": {
       "name": "Post-matric scholarship for SC students",
-      "summary": "A scholarship for Scheduled Caste students studying after class 10.",
-      "benefit": "The scholarship pays the compulsory fees charged by the institution and a yearly allowance. The amount depends on the course.",
-      "how_to_apply": "Apply on the National Scholarship Portal or your state's scholarship portal while applications are open for the academic year. Your institution verifies the application."
+      "summary": "A scholarship for Scheduled Caste students who have passed class 10 and study further in India.",
+      "benefit": "The scholarship pays the compulsory non-refundable fees charged by the institution and a yearly academic allowance. The amount depends on the course group. All children of a family can get it.",
+      "how_to_apply": "Apply on the scholarship portal your state uses (the National Scholarship Portal or the state portal) while applications are open for the academic year. Your state selects the scholars and your institution verifies the application. You cannot hold another scholarship or stipend at the same time; if you get two, choose one."
     },
     "hi": {
       "name": "अनुसूचित जाति के छात्रों के लिए पोस्ट-मैट्रिक छात्रवृत्ति",
-      "summary": "कक्षा 10 के बाद पढ़ने वाले अनुसूचित जाति के छात्रों के लिए छात्रवृत्ति।",
-      "benefit": "छात्रवृत्ति संस्थान की अनिवार्य फ़ीस और सालाना भत्ता देती है। राशि कोर्स पर निर्भर करती है।",
-      "how_to_apply": "शैक्षणिक वर्ष के लिए आवेदन खुले हों तब राष्ट्रीय छात्रवृत्ति पोर्टल या अपने राज्य के छात्रवृत्ति पोर्टल पर आवेदन करें। आपका संस्थान आवेदन की जाँच करता है।"
+      "summary": "कक्षा 10 पास करके भारत में आगे पढ़ने वाले अनुसूचित जाति के छात्रों के लिए छात्रवृत्ति।",
+      "benefit": "छात्रवृत्ति संस्थान की अनिवार्य, वापस न होने वाली फ़ीस और सालाना शैक्षणिक भत्ता देती है। राशि कोर्स के समूह पर निर्भर करती है। परिवार के सभी बच्चे इसे ले सकते हैं।",
+      "how_to_apply": "शैक्षणिक वर्ष के लिए आवेदन खुले हों तब अपने राज्य के छात्रवृत्ति पोर्टल (राष्ट्रीय छात्रवृत्ति पोर्टल या राज्य पोर्टल) पर आवेदन करें। राज्य छात्रों का चयन करता है और आपका संस्थान आवेदन की जाँच करता है। एक साथ कोई दूसरी छात्रवृत्ति या वज़ीफ़ा नहीं ले सकते; दो मिलें तो एक चुनें।"
     }
   },
   "sources": [
     {
+      "id": "guidelines",
+      "url": "https://socialjustice.gov.in/writereaddata/UploadFile/PMS_for_SCs_Scheme_Guidelines.pdf",
+      "title": "Post Matric Scholarship for SCs: Scheme Guidelines (with effect from 2020-21, revised March 2021)",
+      "publisher": "Department of Social Justice and Empowerment",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2021-03",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:cf73697baff4d7ebaf5919363296479b501ea9efc146a27de50623a9472cfa57",
+      "verified_at": null,
+      "verified_by": null,
+      "note": "Scanned PDF without a text layer; clauses were read from the page images."
+    },
+    {
       "id": "msje",
       "url": "https://socialjustice.gov.in/schemes/25",
-      "title": "Post Matric Scholarship for Scheduled Caste Students",
-      "publisher": "Ministry of Social Justice and Empowerment",
+      "title": "Post-Matric Scholarship for SC students",
+      "publisher": "Department of Social Justice and Empowerment",
       "doc_type": "portal",
       "lang": "en",
       "published_date": null,
-      "fetched_at": "2026-10-24",
-      "content_hash": "sha256:7bb50ca8a9087a2114cd97939b1ab47aadea7bac1ea312eac54a92fdeeef4ac2",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:720f07546e93fb08da7acc4a310e211252fbeb24f37d75ef22479a158569e45b",
       "verified_at": null,
       "verified_by": null
     },
@@ -47,8 +66,8 @@
       "doc_type": "portal",
       "lang": "en",
       "published_date": null,
-      "fetched_at": null,
-      "content_hash": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc",
       "verified_at": null,
       "verified_by": null
     }
@@ -65,9 +84,9 @@
         ]
       },
       "hard": true,
-      "confidence": "guidance",
-      "source": "msje",
-      "locator": "To verify against the scheme guidelines",
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§5.2, p. 5",
       "text": {
         "en": "Belongs to a Scheduled Caste",
         "hi": "अनुसूचित जाति से हैं"
@@ -89,12 +108,12 @@
         ]
       },
       "hard": true,
-      "confidence": "guidance",
-      "source": "msje",
-      "locator": "To verify against the scheme guidelines",
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§5.2 and §3(d), pp. 3, 5",
       "text": {
-        "en": "Studying after class 10 (class 11 or higher)",
-        "hi": "कक्षा 10 के बाद पढ़ाई (कक्षा 11 या ऊपर)"
+        "en": "Has passed class 10 and is studying further",
+        "hi": "कक्षा 10 पास है और आगे पढ़ रहे हैं"
       }
     },
     {
@@ -108,12 +127,12 @@
         ]
       },
       "hard": true,
-      "confidence": "guidance",
-      "source": "msje",
-      "locator": "To verify: 2026 news reports say the limit may be raised to ₹4.5 lakh",
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§5.3, p. 5",
       "text": {
-        "en": "Family income up to ₹2.5 lakh a year",
-        "hi": "परिवार की आय साल में ₹2.5 लाख तक"
+        "en": "Parents' or guardian's income from all sources is up to ₹2.5 lakh a year",
+        "hi": "माता-पिता या अभिभावक की सभी स्रोतों से आय साल में ₹2.5 लाख तक है"
       }
     }
   ],
@@ -121,12 +140,12 @@
     {
       "code": "caste_certificate",
       "mandatory": true,
-      "source": "nsp"
+      "source": "guidelines"
     },
     {
       "code": "income_certificate",
       "mandatory": true,
-      "source": "nsp"
+      "source": "guidelines"
     },
     {
       "code": "marksheet",
@@ -141,7 +160,7 @@
     {
       "code": "aadhaar",
       "mandatory": true,
-      "source": "nsp"
+      "source": "guidelines"
     },
     {
       "code": "bank_account",
@@ -153,10 +172,5 @@
       "mandatory": false,
       "source": "nsp"
     }
-  ],
-  "window": {
-    "type": "yearly"
-  },
-  "deadlines": [],
-  "relations": []
+  ]
 }

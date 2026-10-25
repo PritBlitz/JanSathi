@@ -1,0 +1,38 @@
+[
+  {
+    "name": "has a daughter under 10",
+    "profile": {
+      "has_daughter_under_10": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "no daughter under 10",
+    "profile": {
+      "has_daughter_under_10": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "not answered",
+    "profile": {},
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "has_daughter_under_10"
+      ]
+    }
+  }
+]

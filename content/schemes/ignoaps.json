@@ -1,41 +1,77 @@
 {
-  "slug": "ignoaps",
   "status": "draft",
   "level": "central",
   "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "ignoaps",
   "category": "pension",
   "icon": "👵",
   "ministry": {
-    "en": "Ministry of Rural Development (NSAP)",
-    "hi": "ग्रामीण विकास मंत्रालय (NSAP)"
+    "en": "Ministry of Rural Development",
+    "hi": "ग्रामीण विकास मंत्रालय"
   },
   "official_apply_url": "https://nsap.dord.gov.in/",
   "reverify_days": 180,
   "content": {
     "en": {
-      "name": "Old age pension (IGNOAPS)",
-      "summary": "A monthly pension for older people from families below the poverty line.",
-      "benefit": "The central government pays ₹200 a month for ages 60 to 79 and ₹500 a month from age 80. Most states add more money on top.",
-      "how_to_apply": "Apply at the gram panchayat or block office in villages, or the municipal office in towns. Many states also have an online pension portal."
+      "name": "Old age pension (PM Vridhavastha Pension Yojana)",
+      "summary": "A monthly pension for people aged 60 or older from households below the poverty line. It was called the Indira Gandhi National Old Age Pension Scheme (IGNOAPS) until October 2026.",
+      "benefit": "The central government pays ₹200 a month from age 60 to 79, and ₹500 a month from age 80. Your state adds its own amount on top, so the total is different in each state.",
+      "how_to_apply": "Apply to your state's social welfare department: at the gram panchayat or block office in villages, or the municipal office in towns. Many states also have an online pension portal. If your name is not on the BPL list but you meet the conditions, the guidelines say you should not be left out: ask the office to check."
     },
     "hi": {
-      "name": "वृद्धावस्था पेंशन (IGNOAPS)",
-      "summary": "गरीबी रेखा से नीचे के परिवारों के बुज़ुर्गों के लिए हर महीने पेंशन।",
-      "benefit": "केंद्र सरकार 60 से 79 साल की उम्र में ₹200 महीना और 80 साल से ₹500 महीना देती है। ज़्यादातर राज्य इसमें और पैसा जोड़ते हैं।",
-      "how_to_apply": "गाँव में ग्राम पंचायत या ब्लॉक कार्यालय में, शहर में नगर निकाय कार्यालय में आवेदन करें। कई राज्यों में ऑनलाइन पेंशन पोर्टल भी है।"
+      "name": "वृद्धावस्था पेंशन (प्रधानमंत्री वृद्धावस्था पेंशन योजना)",
+      "summary": "गरीबी रेखा से नीचे के परिवारों के 60 साल या उससे ज़्यादा उम्र के लोगों के लिए हर महीने पेंशन। अक्टूबर 2026 तक इसका नाम इंदिरा गांधी राष्ट्रीय वृद्धावस्था पेंशन योजना (IGNOAPS) था।",
+      "benefit": "केंद्र सरकार 60 से 79 साल की उम्र में ₹200 महीना और 80 साल से ₹500 महीना देती है। राज्य इसमें अपनी राशि जोड़ता है, इसलिए कुल राशि हर राज्य में अलग है।",
+      "how_to_apply": "अपने राज्य के समाज कल्याण विभाग में आवेदन करें: गाँव में ग्राम पंचायत या ब्लॉक कार्यालय में, शहर में नगर निकाय कार्यालय में। कई राज्यों में ऑनलाइन पेंशन पोर्टल भी है। अगर आपका नाम बीपीएल सूची में नहीं है पर आप शर्तें पूरी करते हैं, तो दिशानिर्देशों के अनुसार आपको छोड़ा नहीं जाना चाहिए: कार्यालय से जाँच करने को कहें।"
     }
   },
   "sources": [
     {
-      "id": "nsap",
+      "id": "guidelines",
+      "url": "https://ssepd.odisha.gov.in/sites/default/files/2024-04/Guideline%20on%20National%20Social%20Assistance%20Programme%20-%20NSAP.pdf",
+      "title": "National Social Assistance Programme: Guidelines (October 2014)",
+      "publisher": "Ministry of Rural Development",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2014-10",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:d53a782b3be5b935393627d0d7ead94eeb24d341153ccac69befb8cc9a994718",
+      "verified_at": null,
+      "verified_by": null,
+      "note": "Central MoRD guidelines; this copy is hosted by the Government of Odisha (SSEPD). nsap.dord.gov.in does not host the guideline text.",
+      "fetch": "manual",
+      "fetch_note": "robots.txt on this host answers 403, which means \"disallow all\" for bots. Fetched by hand; hash with ingest/recheck.py --hash-file."
+    },
+    {
+      "id": "cabinet_2026",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2323264",
+      "title": "Cabinet approves continuation of the National Social Assistance Programme for five years from 2026-27 to 2030-31",
+      "publisher": "Press Information Bureau (Cabinet)",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-10-14",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:4c5a7e907618ef2f1910030171fc676cca9e2154f83448d62c0f3f7ed7f0cf7c",
+      "verified_at": null,
+      "verified_by": null,
+      "fetch": "manual",
+      "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
+    },
+    {
+      "id": "portal",
       "url": "https://nsap.dord.gov.in/",
-      "title": "National Social Assistance Programme",
+      "title": "National Social Assistance Programme portal",
       "publisher": "Department of Rural Development",
       "doc_type": "portal",
       "lang": "en",
       "published_date": null,
-      "fetched_at": "2026-10-24",
-      "content_hash": "sha256:6d952aa16008f6ba89814a6e28a94e1361b47187f6422cdb9fb1029edabf37ac",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:3be007cf44ceb7c9951cbd7f319292bb3c9566557e10533d46132f8b6bb98136",
       "verified_at": null,
       "verified_by": null
     }
@@ -52,9 +88,9 @@
         ]
       },
       "hard": true,
-      "confidence": "guidance",
-      "source": "nsap",
-      "locator": "To verify: the portal does not state the criteria; current text is from secondary sources",
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§2.3, p. 6",
       "text": {
         "en": "Age 60 or older",
         "hi": "उम्र 60 साल या उससे ज़्यादा"
@@ -71,11 +107,11 @@
         ]
       },
       "hard": true,
-      "confidence": "guidance",
-      "source": "nsap",
-      "locator": "To verify: the portal does not state the criteria; current text is from secondary sources",
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§2.3, p. 6",
       "text": {
-        "en": "The family is below the poverty line (BPL)",
+        "en": "The household is below the poverty line (BPL)",
         "hi": "परिवार गरीबी रेखा से नीचे (बीपीएल) है"
       }
     }
@@ -84,32 +120,22 @@
     {
       "code": "age_proof",
       "mandatory": true,
-      "source": "nsap"
+      "source": "guidelines"
     },
     {
       "code": "ration_card",
       "mandatory": true,
-      "source": "nsap"
-    },
-    {
-      "code": "aadhaar",
-      "mandatory": true,
-      "source": "nsap"
+      "source": "guidelines"
     },
     {
       "code": "bank_account",
       "mandatory": true,
-      "source": "nsap"
+      "source": "guidelines"
     },
     {
-      "code": "photo",
-      "mandatory": false,
-      "source": "nsap"
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "guidelines"
     }
-  ],
-  "window": {
-    "type": "rolling"
-  },
-  "deadlines": [],
-  "relations": []
+  ]
 }

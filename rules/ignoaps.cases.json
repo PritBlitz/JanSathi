@@ -1,0 +1,137 @@
+[
+  {
+    "name": "age 60, BPL (draft scheme is stale)",
+    "profile": {
+      "age": 60,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "missing_fields": [],
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "age 59, BPL",
+    "profile": {
+      "age": 59,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "age 61, BPL",
+    "profile": {
+      "age": 61,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age band 60-69, BPL",
+    "profile": {
+      "age": {
+        "min": 60,
+        "max": 69
+      },
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age band 55-64 straddles 60",
+    "profile": {
+      "age": {
+        "min": 55,
+        "max": 64
+      },
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "age"
+      ]
+    }
+  },
+  {
+    "name": "BPL not known",
+    "profile": {
+      "age": {
+        "min": 70,
+        "max": 79
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "is_bpl"
+      ]
+    }
+  },
+  {
+    "name": "not BPL",
+    "profile": {
+      "age": 65,
+      "is_bpl": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "bpl": "fail"
+      }
+    }
+  },
+  {
+    "name": "age 80 plus, BPL",
+    "profile": {
+      "age": {
+        "min": 80,
+        "max": 120
+      },
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "nothing answered",
+    "profile": {},
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "age",
+        "is_bpl"
+      ]
+    }
+  }
+]

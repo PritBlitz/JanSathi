@@ -1,0 +1,155 @@
+[
+  {
+    "name": "40% disability, BPL, adult",
+    "profile": {
+      "disability": true,
+      "is_bpl": true,
+      "age": 30,
+      "disability_percent": 40
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "39% disability",
+    "profile": {
+      "disability": true,
+      "is_bpl": true,
+      "age": 30,
+      "disability_percent": 39
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "benchmark_disability": "fail"
+      }
+    }
+  },
+  {
+    "name": "41% disability",
+    "profile": {
+      "disability": true,
+      "is_bpl": true,
+      "age": 30,
+      "disability_percent": 41
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "child aged 5: no minimum age after the 2026 decision",
+    "profile": {
+      "disability": true,
+      "is_bpl": true,
+      "age": 5,
+      "disability_percent": 60
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "aged 85: no upper age limit",
+    "profile": {
+      "disability": true,
+      "is_bpl": true,
+      "age": 85,
+      "disability_percent": 80
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "disability band 40-79",
+    "profile": {
+      "disability": true,
+      "is_bpl": true,
+      "disability_percent": {
+        "min": 40,
+        "max": 79
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "disability band under 40",
+    "profile": {
+      "disability": true,
+      "is_bpl": true,
+      "disability_percent": {
+        "min": 0,
+        "max": 39
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "no disability",
+    "profile": {
+      "disability": false,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "missing_fields": [
+        "disability_percent"
+      ]
+    }
+  },
+  {
+    "name": "percentage not known",
+    "profile": {
+      "disability": true,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "disability_percent"
+      ]
+    }
+  },
+  {
+    "name": "not BPL",
+    "profile": {
+      "disability": true,
+      "is_bpl": false,
+      "disability_percent": 90
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "bpl": "fail"
+      }
+    }
+  }
+]

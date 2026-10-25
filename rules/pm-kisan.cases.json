@@ -1,0 +1,117 @@
+[
+  {
+    "name": "land-owning family, no exclusions",
+    "profile": {
+      "owns_farmland": true,
+      "family_pays_income_tax": false,
+      "family_has_govt_job": false,
+      "family_has_registered_professional": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "no land in the family name",
+    "profile": {
+      "owns_farmland": false,
+      "family_pays_income_tax": false,
+      "family_has_govt_job": false,
+      "family_has_registered_professional": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "owns_farmland": "fail"
+      }
+    }
+  },
+  {
+    "name": "someone paid income tax",
+    "profile": {
+      "owns_farmland": true,
+      "family_pays_income_tax": true,
+      "family_has_govt_job": false,
+      "family_has_registered_professional": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "no_income_tax": "fail"
+      }
+    }
+  },
+  {
+    "name": "government job above Group D",
+    "profile": {
+      "owns_farmland": true,
+      "family_pays_income_tax": false,
+      "family_has_govt_job": true,
+      "family_has_registered_professional": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "no_govt_job": "fail"
+      }
+    }
+  },
+  {
+    "name": "registered professional in the family",
+    "profile": {
+      "owns_farmland": true,
+      "family_pays_income_tax": false,
+      "family_has_govt_job": false,
+      "family_has_registered_professional": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "government job question skipped",
+    "profile": {
+      "owns_farmland": true,
+      "family_pays_income_tax": false,
+      "family_has_registered_professional": false
+    },
+    "skipped": [
+      "family_has_govt_job"
+    ],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "family_has_govt_job"
+      ]
+    }
+  },
+  {
+    "name": "only land answered",
+    "profile": {
+      "owns_farmland": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "family_pays_income_tax",
+        "family_has_govt_job",
+        "family_has_registered_professional"
+      ]
+    }
+  }
+]

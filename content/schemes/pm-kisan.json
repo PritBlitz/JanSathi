@@ -1,8 +1,13 @@
 {
-  "slug": "pm-kisan",
   "status": "draft",
   "level": "central",
   "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "pm-kisan",
   "category": "agriculture",
   "icon": "🌾",
   "ministry": {
@@ -14,27 +19,27 @@
   "content": {
     "en": {
       "name": "PM-KISAN (farmer income support)",
-      "summary": "Money support for farmer families who own farm land.",
-      "benefit": "The scheme gives ₹6,000 a year to eligible farmer families, in three parts of ₹2,000, straight into the bank account.",
-      "how_to_apply": "Register on the PM-KISAN website (New Farmer Registration) or at a Common Service Centre. Aadhaar e-KYC is needed. Your state checks the land records before payment starts. Families with a member who holds a constitutional post or is a minister, MP, MLA or mayor are not covered."
+      "summary": "Money support for farmer families who own farm land in their name. Here \"family\" means husband, wife and children under 18.",
+      "benefit": "The scheme gives ₹6,000 a year to eligible farmer families, in three instalments of ₹2,000 every four months, straight into the bank account. The Union Cabinet continued the scheme from 2026-27 to 2030-31.",
+      "how_to_apply": "Register on the PM-KISAN website (New Farmer Registration) or at a Common Service Centre. Aadhaar is needed. Your state checks the land records before payment starts. Families with a member who holds or held a constitutional post, or is or was a minister, MP, MLA, MLC, mayor or district panchayat chairperson, are not covered. Institutional land holders and NRI families are not covered."
     },
     "hi": {
       "name": "पीएम-किसान (किसान आय सहायता)",
-      "summary": "खेती की ज़मीन वाले किसान परिवारों के लिए पैसों की मदद।",
-      "benefit": "इस योजना में पात्र किसान परिवारों को साल में ₹6,000 दिए जाते हैं, ₹2,000 की तीन किस्तों में, सीधे बैंक खाते में।",
-      "how_to_apply": "पीएम-किसान वेबसाइट पर (नया किसान पंजीकरण) या कॉमन सर्विस सेंटर पर पंजीकरण करें। आधार ई-केवाईसी ज़रूरी है। भुगतान से पहले राज्य ज़मीन के रिकॉर्ड जाँचता है। जिन परिवारों में कोई संवैधानिक पद पर है, या मंत्री, सांसद, विधायक या महापौर है, वे इसमें शामिल नहीं हैं।"
+      "summary": "जिन किसान परिवारों के नाम पर खेती की ज़मीन है, उनके लिए पैसों की मदद। यहाँ \"परिवार\" का मतलब पति, पत्नी और 18 साल से कम उम्र के बच्चे है।",
+      "benefit": "इस योजना में पात्र किसान परिवारों को साल में ₹6,000 दिए जाते हैं, हर चार महीने में ₹2,000 की तीन किस्तों में, सीधे बैंक खाते में। केंद्रीय मंत्रिमंडल ने योजना को 2026-27 से 2030-31 तक जारी रखा है।",
+      "how_to_apply": "पीएम-किसान वेबसाइट पर (नया किसान पंजीकरण) या कॉमन सर्विस सेंटर पर पंजीकरण करें। आधार ज़रूरी है। भुगतान से पहले राज्य ज़मीन के रिकॉर्ड जाँचता है। जिन परिवारों में कोई अभी या पहले संवैधानिक पद पर रहा है, या मंत्री, सांसद, विधायक, विधान परिषद सदस्य, महापौर या ज़िला पंचायत अध्यक्ष है या रहा है, वे शामिल नहीं हैं। संस्थागत भूमिधारक और अनिवासी भारतीय (NRI) परिवार शामिल नहीं हैं।"
     }
   },
   "sources": [
     {
       "id": "guidelines",
       "url": "https://pmkisan.gov.in/Documents/RevisedPM-KISANOperationalGuidelines(English).pdf",
-      "title": "PM-KISAN Operational Guidelines (revised)",
+      "title": "PM-KISAN Operational Guidelines (revised as on 29.03.2020)",
       "publisher": "Department of Agriculture and Farmers Welfare",
       "doc_type": "guideline",
       "lang": "en",
-      "published_date": null,
-      "fetched_at": "2026-10-24",
+      "published_date": "2020-03-29",
+      "fetched_at": "2026-10-25",
       "content_hash": "sha256:ae82cac83f61a5fa5049387a7c13e00c6d55cef0e9163deb5497dc86c86d697f",
       "verified_at": null,
       "verified_by": null
@@ -47,10 +52,25 @@
       "doc_type": "faq",
       "lang": "en",
       "published_date": null,
-      "fetched_at": "2026-10-24",
+      "fetched_at": "2026-10-25",
       "content_hash": "sha256:95d4e2892b4b351e599bf903f8c6f89b20d4b74831eb8f1a0e61a2a66771ff86",
       "verified_at": null,
       "verified_by": null
+    },
+    {
+      "id": "cabinet_2026",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2292460",
+      "title": "Cabinet approves continuation of the PM-KISAN Scheme from 2026-27 to 2030-31",
+      "publisher": "Press Information Bureau (Ministry of Agriculture and Farmers Welfare)",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-07-31",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:cbbef24be1f7febe001d681f301d163d7f3f22a3fcdac5c792cb8daf677c0100",
+      "verified_at": null,
+      "verified_by": null,
+      "fetch": "manual",
+      "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
     },
     {
       "id": "portal",
@@ -60,8 +80,8 @@
       "doc_type": "portal",
       "lang": "en",
       "published_date": null,
-      "fetched_at": null,
-      "content_hash": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:d69ddd8ee1cb1e4a671c759f609b6be3558f5227147fc4ca090c0e1a72463abc",
       "verified_at": null,
       "verified_by": null
     }
@@ -101,8 +121,8 @@
       "source": "guidelines",
       "locator": "Para 4.1(b)(v)",
       "text": {
-        "en": "No one in the family paid income tax last year",
-        "hi": "पिछले साल परिवार में किसी ने आयकर नहीं भरा"
+        "en": "No one in the family paid income tax in the last assessment year",
+        "hi": "पिछले कर निर्धारण वर्ष में परिवार में किसी ने आयकर नहीं भरा"
       }
     },
     {
@@ -120,8 +140,8 @@
       "source": "guidelines",
       "locator": "Para 4.1(b)(iii)-(iv)",
       "text": {
-        "en": "No one in the family has a government or PSU job above Group D / Class IV, or a government pension of ₹10,000 or more a month",
-        "hi": "परिवार में किसी के पास ग्रुप डी / चतुर्थ श्रेणी से ऊपर की सरकारी या सार्वजनिक उपक्रम की नौकरी, या ₹10,000 या ज़्यादा महीने की सरकारी पेंशन नहीं है"
+        "en": "No one in the family has (or retired from) a government or PSU job above Group D / Class IV / MTS, or gets a pension of ₹10,000 or more a month",
+        "hi": "परिवार में किसी के पास ग्रुप डी / चतुर्थ श्रेणी / MTS से ऊपर की सरकारी या सार्वजनिक उपक्रम की नौकरी नहीं है (न ही वहाँ से रिटायर हुआ है), न ही किसी को ₹10,000 या ज़्यादा महीने की पेंशन मिलती है"
       }
     },
     {
@@ -139,7 +159,7 @@
       "source": "guidelines",
       "locator": "Para 4.1(b)(vi)",
       "text": {
-        "en": "No one in the family works as a registered doctor, engineer, lawyer, chartered accountant or architect",
+        "en": "No one in the family practises as a registered doctor, engineer, lawyer, chartered accountant or architect",
         "hi": "परिवार में कोई पंजीकृत डॉक्टर, इंजीनियर, वकील, चार्टर्ड अकाउंटेंट या आर्किटेक्ट के रूप में काम नहीं करता"
       }
     }
@@ -160,10 +180,5 @@
       "mandatory": true,
       "source": "guidelines"
     }
-  ],
-  "window": {
-    "type": "rolling"
-  },
-  "deadlines": [],
-  "relations": []
+  ]
 }

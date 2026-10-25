@@ -1,0 +1,127 @@
+[
+  {
+    "name": "aged 70, not on the list",
+    "profile": {
+      "age": 70,
+      "in_pmjay_list": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "aged 69, not on the list",
+    "profile": {
+      "age": 69,
+      "in_pmjay_list": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "aged 71, list unknown",
+    "profile": {
+      "age": 71
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "aged 69, list unknown",
+    "profile": {
+      "age": 69
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "in_pmjay_list"
+      ]
+    }
+  },
+  {
+    "name": "young, family on the list",
+    "profile": {
+      "age": 30,
+      "in_pmjay_list": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age band 70-79",
+    "profile": {
+      "age": {
+        "min": 70,
+        "max": 79
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age band 60-69, not listed",
+    "profile": {
+      "age": {
+        "min": 60,
+        "max": 69
+      },
+      "in_pmjay_list": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age band 65-74 straddles 70, list unknown",
+    "profile": {
+      "age": {
+        "min": 65,
+        "max": 74
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "age",
+        "in_pmjay_list"
+      ]
+    }
+  },
+  {
+    "name": "age band 65-74, listed",
+    "profile": {
+      "age": {
+        "min": 65,
+        "max": 74
+      },
+      "in_pmjay_list": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  }
+]

@@ -114,7 +114,7 @@ erDiagram
 | `scheme_id` | uuid FK → scheme | |
 | `url` | text | canonical official URL |
 | `title`, `publisher` | text | |
-| `doc_type` | `source_doc_type` | `gazette` / `guideline` / `faq` / `portal` / `secondary` |
+| `doc_type` | `source_doc_type` | `gazette` / `guideline` / `govt_statement` / `faq` / `portal` / `secondary` |
 | `lang` | text | language of the original |
 | `published_date` | date null | date on the document |
 | `fetched_at` | timestamptz | last successful fetch |
@@ -256,7 +256,7 @@ Append-only. `id`, `session_id`, `actor` (volunteer id or `user`), `action` (`vi
 ```sql
 create type scheme_level    as enum ('central', 'state');
 create type scheme_status   as enum ('draft', 'published', 'needs_review', 'archived');
-create type source_doc_type as enum ('gazette', 'guideline', 'faq', 'portal', 'secondary');
+create type source_doc_type as enum ('gazette', 'guideline', 'govt_statement', 'faq', 'portal', 'secondary');
 create type confidence      as enum ('confirmed', 'guidance', 'uncertain');
 create type relation_kind   as enum ('stacks_with', 'excludes');
 ```

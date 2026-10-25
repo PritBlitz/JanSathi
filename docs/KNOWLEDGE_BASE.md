@@ -12,9 +12,12 @@ The knowledge base is the verified, structured store of schemes, rules, document
 | `guideline` | Official scheme guidelines / operational manual from the ministry or department | Guidelines PDF | Yes |
 | `faq` | Official FAQ or help page from the scheme owner | FAQ on the scheme portal | No — `guidance` at most |
 | `portal` | The official application portal's own text | National Scholarship Portal pages | Yes, for process facts (how to apply, documents, dates); `guidance` for eligibility |
+| `govt_statement` | An official Government of India statement that is not the scheme's own guideline: a Cabinet decision or ministry release on pib.gov.in, a written reply in Parliament | "Cabinet approves …" on PIB | No, `guidance` at most. Used for recent changes before the revised guidelines are out, and for facts no guideline states. |
 | `secondary` | Anything not published by the scheme owner: news, NGO explainers, aggregators | — | No. Used only to *find* official sources; never cited to users as the basis of a fact. |
 
-**Preferred order:** gazette > guideline > portal > faq. Where an official open-data source exists (e.g. data.gov.in, or myScheme where its terms permit), prefer it to scraping.
+**Preferred order:** gazette > guideline > portal > govt_statement > faq.
+
+**Manual fetch.** Some official hosts block automated clients (pib.gov.in answers 403 to a bot User-Agent; some state sites disallow all bots in `robots.txt`). The re-check job respects that. Such a source carries `"fetch": "manual"` and a `fetch_note`; a reviewer opens it in a browser, saves the page and records its hash with `python ingest/recheck.py --hash-file <saved file>`. Where an official open-data source exists (e.g. data.gov.in, or myScheme where its terms permit), prefer it to scraping.
 
 ## 2. Ingestion and verification workflow
 
