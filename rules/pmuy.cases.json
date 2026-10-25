@@ -1,0 +1,120 @@
+[
+  {
+    "name": "adult SC woman, no LPG",
+    "profile": {
+      "gender": "female",
+      "household_has_lpg": false,
+      "age": 30,
+      "social_category": "sc"
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "age 18, Antyodaya/BPL card",
+    "profile": {
+      "gender": "female",
+      "household_has_lpg": false,
+      "age": 18,
+      "social_category": "general",
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 17",
+    "profile": {
+      "gender": "female",
+      "household_has_lpg": false,
+      "age": 17,
+      "social_category": "st"
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "man",
+    "profile": {
+      "gender": "male",
+      "household_has_lpg": false,
+      "age": 30,
+      "social_category": "sc"
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "female": "fail"
+      }
+    }
+  },
+  {
+    "name": "household already has LPG",
+    "profile": {
+      "gender": "female",
+      "household_has_lpg": true,
+      "age": 30,
+      "social_category": "sc"
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "no_lpg": "fail"
+      }
+    }
+  },
+  {
+    "name": "not in a listed group we can check: uncertain rule, so check with the office",
+    "profile": {
+      "gender": "female",
+      "household_has_lpg": false,
+      "age": 30,
+      "social_category": "general",
+      "is_bpl": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "rules": {
+        "listed_group": "fail"
+      },
+      "missing_fields": []
+    }
+  },
+  {
+    "name": "group not known",
+    "profile": {
+      "gender": "female",
+      "household_has_lpg": false,
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "social_category",
+        "is_bpl"
+      ]
+    }
+  }
+]

@@ -1,0 +1,97 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "pmjjby",
+  "category": "insurance",
+  "icon": "🛡️",
+  "ministry": {
+    "en": "Ministry of Finance (Department of Financial Services)",
+    "hi": "वित्त मंत्रालय (वित्तीय सेवा विभाग)"
+  },
+  "official_apply_url": "https://financialservices.gov.in/pradhan-mantri-jeevan-jyoti-bima-yojana-pmjjby",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "PM Jeevan Jyoti Bima Yojana (life insurance)",
+      "summary": "Low-cost life insurance for people aged 18 to 50 who have a bank account.",
+      "benefit": "If the insured person dies from any cause, the family receives ₹2 lakh. The premium is ₹436 a year, taken from your bank account. Cover runs from 1 June to 31 May and is renewed every year.",
+      "how_to_apply": "Ask at the bank or post office where you have a savings account, or join through your bank's app or net banking. Give consent for the premium to be taken from your account each year."
+    },
+    "hi": {
+      "name": "प्रधानमंत्री जीवन ज्योति बीमा योजना (जीवन बीमा)",
+      "summary": "बैंक खाते वाले 18 से 50 साल के लोगों के लिए कम कीमत का जीवन बीमा।",
+      "benefit": "बीमित व्यक्ति की किसी भी कारण से मृत्यु होने पर परिवार को ₹2 लाख मिलते हैं। प्रीमियम साल में ₹436 है, जो आपके बैंक खाते से कटता है। कवर 1 जून से 31 मई तक चलता है और हर साल नवीनीकृत होता है।",
+      "how_to_apply": "जिस बैंक या डाकघर में आपका बचत खाता है, वहाँ पूछें, या बैंक के ऐप या नेट बैंकिंग से जुड़ें। हर साल खाते से प्रीमियम कटने की सहमति दें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "dfs",
+      "url": "https://financialservices.gov.in/pradhan-mantri-jeevan-jyoti-bima-yojana-pmjjby",
+      "title": "Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY)",
+      "publisher": "Department of Financial Services",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:31920a0bcafb3b3441c46e43aafdc96c46fc56759f31d65ef4b094e4c41dcd7d",
+      "verified_at": null,
+      "verified_by": null,
+      "fetch": "manual",
+      "fetch_note": "robots.txt on financialservices.gov.in disallows bots. Fetched by hand; hash with ingest/recheck.py --hash-file."
+    }
+  ],
+  "rules": [
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          18
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dfs",
+      "locator": "Scheme page, para 1",
+      "text": {
+        "en": "Age 18 or older",
+        "hi": "उम्र 18 साल या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "age_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "age"
+          },
+          50
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dfs",
+      "locator": "Scheme page, para 1",
+      "text": {
+        "en": "Age 50 or younger",
+        "hi": "उम्र 50 साल या उससे कम"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "dfs"
+    }
+  ]
+}

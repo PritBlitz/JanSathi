@@ -148,7 +148,8 @@ try {
   }
   check(steps > 4 && steps < 40, `questionnaire ends after ${steps} answers`);
   await go('#/results');
-  check(await waitFor(`document.querySelectorAll('.results-group .card').length === 10`), 'results show all 10 schemes');
+  const total = await evaluate(`fetch('data/bundle.preview.json').then((r) => r.json()).then((b) => b.schemes.length)`);
+  check(await waitFor(`document.querySelectorAll('.results-group .card').length === ${total}`), `results show all ${total} schemes`);
   check(await evaluate(`document.querySelectorAll('.trace li').length > 10`), 'results show rule traces');
   await shot('results', 1280);
 

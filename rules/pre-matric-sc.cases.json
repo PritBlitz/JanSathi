@@ -1,0 +1,126 @@
+[
+  {
+    "name": "SC student in class 9-10, income 249,999",
+    "profile": {
+      "social_category": "sc",
+      "education_level": "class_9_10",
+      "annual_income": 249999
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "income exactly 250,000",
+    "profile": {
+      "social_category": "sc",
+      "education_level": "class_9_10",
+      "annual_income": 250000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 250,001",
+    "profile": {
+      "social_category": "sc",
+      "education_level": "class_9_10",
+      "annual_income": 250001
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "income band up to 1 lakh",
+    "profile": {
+      "social_category": "sc",
+      "education_level": "class_9_10",
+      "annual_income": {
+        "min": 0,
+        "max": 100000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income band 2-3 lakh straddles the limit",
+    "profile": {
+      "social_category": "sc",
+      "education_level": "class_9_10",
+      "annual_income": {
+        "min": 200000,
+        "max": 300000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  },
+  {
+    "name": "class 8 or below",
+    "profile": {
+      "social_category": "sc",
+      "education_level": "up_to_class_8",
+      "annual_income": 90000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "class_9_10": "fail"
+      }
+    }
+  },
+  {
+    "name": "class 11-12 is post-matric",
+    "profile": {
+      "social_category": "sc",
+      "education_level": "class_11_12",
+      "annual_income": 90000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "not SC",
+    "profile": {
+      "social_category": "st",
+      "education_level": "class_9_10",
+      "annual_income": 90000
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "category_sc": "fail"
+      }
+    }
+  }
+]

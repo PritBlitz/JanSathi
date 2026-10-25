@@ -1,0 +1,120 @@
+[
+  {
+    "name": "age 18",
+    "profile": {
+      "age": 18,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "age 17",
+    "profile": {
+      "age": 17,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "age 40",
+    "profile": {
+      "age": 40,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 41",
+    "profile": {
+      "age": 41,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "age band 18-39",
+    "profile": {
+      "age": {
+        "min": 18,
+        "max": 39
+      },
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age band 40-59 straddles 40",
+    "profile": {
+      "age": {
+        "min": 40,
+        "max": 59
+      },
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "age"
+      ]
+    }
+  },
+  {
+    "name": "income tax payer",
+    "profile": {
+      "age": 30,
+      "pays_income_tax": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "no_income_tax": "fail"
+      }
+    }
+  },
+  {
+    "name": "tax status not given",
+    "profile": {
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "pays_income_tax"
+      ]
+    }
+  }
+]

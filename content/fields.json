@@ -78,7 +78,8 @@
       "type": "enum",
       "scope": "member",
       "options": [
-        { "value": "up_to_class_10", "icon": "📗" },
+        { "value": "up_to_class_8", "icon": "📗" },
+        { "value": "class_9_10", "icon": "📗" },
         { "value": "class_11_12", "icon": "📘" },
         { "value": "diploma", "icon": "🛠️" },
         { "value": "ug", "icon": "🎓" },
@@ -198,6 +199,31 @@
       "type": "bool",
       "scope": "household",
       "icon": "⛏️"
+    },
+    "pays_income_tax": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🧮"
+    },
+    "has_formal_pension_cover": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🗂️"
+    },
+    "personal_income_over_15000": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "💸"
+    },
+    "household_has_lpg": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🔥"
+    },
+    "breadwinner_died_18_59": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🕯️"
     }
   }
 }

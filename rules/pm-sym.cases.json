@@ -1,0 +1,130 @@
+[
+  {
+    "name": "age 18",
+    "profile": {
+      "age": 18,
+      "personal_income_over_15000": false,
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "age 17",
+    "profile": {
+      "age": 17,
+      "personal_income_over_15000": false,
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "age 40",
+    "profile": {
+      "age": 40,
+      "personal_income_over_15000": false,
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 41",
+    "profile": {
+      "age": 41,
+      "personal_income_over_15000": false,
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "earns over ₹15,000 a month",
+    "profile": {
+      "age": 30,
+      "personal_income_over_15000": true,
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "covered by EPF/ESIC/NPS or another pension",
+    "profile": {
+      "age": 30,
+      "personal_income_over_15000": false,
+      "has_formal_pension_cover": true,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "no_formal_cover": "fail"
+      }
+    }
+  },
+  {
+    "name": "income tax payer",
+    "profile": {
+      "age": 30,
+      "personal_income_over_15000": false,
+      "has_formal_pension_cover": false,
+      "pays_income_tax": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "only age answered",
+    "profile": {
+      "age": 30
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "personal_income_over_15000",
+        "has_formal_pension_cover",
+        "pays_income_tax"
+      ]
+    }
+  }
+]

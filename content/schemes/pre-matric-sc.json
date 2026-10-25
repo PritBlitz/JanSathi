@@ -1,0 +1,143 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "yearly"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "pre-matric-sc",
+  "category": "education",
+  "icon": "📚",
+  "ministry": {
+    "en": "Ministry of Social Justice and Empowerment",
+    "hi": "सामाजिक न्याय एवं अधिकारिता मंत्रालय"
+  },
+  "official_apply_url": "https://scholarships.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Pre-matric scholarship for SC students (class 9 and 10)",
+      "summary": "A yearly scholarship for Scheduled Caste students studying full time in class 9 or 10.",
+      "benefit": "₹3,500 a year for day scholars and ₹7,000 a year for students living in a hostel.",
+      "how_to_apply": "Applications open on the National Scholarship Portal (NSP) every April. After registering there, you complete the application on your state's portal. You cannot hold another scholarship for the same studies. The current guidelines cover 2021-22 to 2025-26; check the portal for this year's rules."
+    },
+    "hi": {
+      "name": "अनुसूचित जाति के छात्रों के लिए प्री-मैट्रिक छात्रवृत्ति (कक्षा 9 और 10)",
+      "summary": "कक्षा 9 या 10 में पूरे समय पढ़ने वाले अनुसूचित जाति के छात्रों के लिए सालाना छात्रवृत्ति।",
+      "benefit": "घर से पढ़ने वाले छात्रों को साल में ₹3,500, और छात्रावास में रहने वाले छात्रों को साल में ₹7,000।",
+      "how_to_apply": "हर साल अप्रैल में राष्ट्रीय छात्रवृत्ति पोर्टल (NSP) पर आवेदन खुलते हैं। वहाँ पंजीकरण के बाद अपने राज्य के पोर्टल पर आवेदन पूरा करें। उसी पढ़ाई के लिए दूसरी छात्रवृत्ति नहीं ले सकते। मौजूदा दिशानिर्देश 2021-22 से 2025-26 तक के हैं; इस साल के नियम पोर्टल पर देखें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "guidelines",
+      "url": "https://socialjustice.gov.in/public/ckeditor/upload/90101653029266.pdf",
+      "title": "Guidelines: Pre-Matric Scholarships Scheme for Scheduled Castes & Others (2021-22 to 2025-26)",
+      "publisher": "Department of Social Justice and Empowerment",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2022-03",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:f26190bcb074695a4e2b72584b8a4c7f4e8478a8c9ed25f92cb3f5f35e36c1ba",
+      "verified_at": null,
+      "verified_by": null,
+      "note": "Guidelines cover 2021-22 to 2025-26. A reviewer must confirm the scheme period after March 2026."
+    },
+    {
+      "id": "msje",
+      "url": "https://socialjustice.gov.in/schemes/23",
+      "title": "Pre-Matric Scholarships Scheme for Scheduled Castes & Others",
+      "publisher": "Department of Social Justice and Empowerment",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:2389b08b2300d56719eb0da14cc9a1c4375084aeafe8c35d8995e5dde0ef365d",
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "category_sc",
+      "logic": {
+        "==": [
+          {
+            "var": "social_category"
+          },
+          "sc"
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§4.2.1, p. 3",
+      "text": {
+        "en": "Belongs to a Scheduled Caste",
+        "hi": "अनुसूचित जाति से हैं"
+      }
+    },
+    {
+      "code": "class_9_10",
+      "logic": {
+        "==": [
+          {
+            "var": "education_level"
+          },
+          "class_9_10"
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§4.2.1, p. 3",
+      "text": {
+        "en": "Studying full time in class 9 or 10",
+        "hi": "कक्षा 9 या 10 में पूरे समय पढ़ रहे हैं"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          250000
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§4.2.1, p. 3",
+      "text": {
+        "en": "Parents' or guardian's income is up to ₹2.5 lakh a year",
+        "hi": "माता-पिता या अभिभावक की आय साल में ₹2.5 लाख तक है"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "caste_certificate",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "msje"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "msje"
+    }
+  ]
+}

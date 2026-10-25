@@ -1,0 +1,60 @@
+[
+  {
+    "name": "BPL household, main earner died aged 18-59",
+    "profile": {
+      "breadwinner_died_18_59": true,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "no such death",
+    "profile": {
+      "breadwinner_died_18_59": false,
+      "is_bpl": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "breadwinner_died": "fail"
+      }
+    }
+  },
+  {
+    "name": "not BPL",
+    "profile": {
+      "breadwinner_died_18_59": true,
+      "is_bpl": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "bpl": "fail"
+      }
+    }
+  },
+  {
+    "name": "BPL not known",
+    "profile": {
+      "breadwinner_died_18_59": true
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "is_bpl"
+      ]
+    }
+  }
+]

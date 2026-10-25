@@ -1,0 +1,158 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "pmuy",
+  "category": "energy",
+  "icon": "🔥",
+  "ministry": {
+    "en": "Ministry of Petroleum and Natural Gas",
+    "hi": "पेट्रोलियम एवं प्राकृतिक गैस मंत्रालय"
+  },
+  "official_apply_url": "https://pmuy.gov.in/",
+  "reverify_days": 60,
+  "content": {
+    "en": {
+      "name": "PM Ujjwala Yojana (free LPG connection)",
+      "summary": "A deposit-free LPG cooking gas connection for an adult woman from a poor household that has no LPG connection.",
+      "benefit": "The Government of India pays ₹1,600 for the connection (₹1,150 for a 5 kg cylinder), covering the cylinder deposit, regulator, hose, card and installation. The oil companies also give the first refill and a stove free.",
+      "how_to_apply": "Apply online on the PMUY website or at your nearest LPG distributor, with your ration card (or a self-declaration if you are a migrant), Aadhaar for you and the adult family members, and your bank account. The latest extension of 25 lakh connections was almost fully given out by 23 September 2026 (10.57 crore of 10.6 crore), so ask your distributor whether new connections are still available."
+    },
+    "hi": {
+      "name": "प्रधानमंत्री उज्ज्वला योजना (मुफ़्त एलपीजी कनेक्शन)",
+      "summary": "जिस गरीब परिवार के पास एलपीजी कनेक्शन नहीं है, उसकी वयस्क महिला के लिए बिना जमा राशि का रसोई गैस कनेक्शन।",
+      "benefit": "कनेक्शन के लिए भारत सरकार ₹1,600 देती है (5 किलो सिलेंडर के लिए ₹1,150), जिसमें सिलेंडर की जमा राशि, रेगुलेटर, पाइप, कार्ड और लगाने का ख़र्च शामिल है। तेल कंपनियाँ पहली रिफ़िल और चूल्हा भी मुफ़्त देती हैं।",
+      "how_to_apply": "पीएमयूवाई वेबसाइट पर या पास के एलपीजी वितरक के पास राशन कार्ड (प्रवासी हों तो स्व-घोषणा), अपना और परिवार के वयस्क सदस्यों का आधार, और बैंक खाते के साथ आवेदन करें। 25 लाख कनेक्शन का नया विस्तार 23 सितंबर 2026 तक लगभग पूरा बँट चुका था (10.6 करोड़ में से 10.57 करोड़), इसलिए वितरक से पूछें कि नए कनेक्शन अभी मिल रहे हैं या नहीं।"
+    }
+  },
+  "sources": [
+    {
+      "id": "portal",
+      "url": "https://pmuy.gov.in/about.html",
+      "title": "About PMUY: eligibility, documents and benefits",
+      "publisher": "Ministry of Petroleum and Natural Gas (IOCL, BPCL, HPCL)",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:50dc812aa0bb49f8f56454dca4784a44eab220a40b8d8b8719467c56a5cd74aa",
+      "verified_at": null,
+      "verified_by": null
+    }
+  ],
+  "rules": [
+    {
+      "code": "female",
+      "logic": {
+        "==": [
+          {
+            "var": "gender"
+          },
+          "female"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "portal",
+      "locator": "Eligibility Criteria",
+      "text": {
+        "en": "Woman",
+        "hi": "महिला"
+      }
+    },
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          18
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "portal",
+      "locator": "Eligibility Criteria",
+      "text": {
+        "en": "Age 18 or older",
+        "hi": "उम्र 18 साल या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "no_lpg",
+      "logic": {
+        "==": [
+          {
+            "var": "household_has_lpg"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "portal",
+      "locator": "Eligibility Criteria",
+      "text": {
+        "en": "The household has no LPG connection",
+        "hi": "परिवार के पास कोई एलपीजी कनेक्शन नहीं है"
+      }
+    },
+    {
+      "code": "listed_group",
+      "logic": {
+        "or": [
+          {
+            "in": [
+              {
+                "var": "social_category"
+              },
+              [
+                "sc",
+                "st"
+              ]
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "is_bpl"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "portal",
+      "locator": "Eligibility Criteria: also PMAY-G, most backward classes, tea garden tribes, forest dwellers, island residents, SECC list, and the 14-point poverty declaration",
+      "text": {
+        "en": "Belongs to a listed group: SC or ST household, Antyodaya card, PMAY-G house, most backward classes, tea garden tribes, forest dwellers, island residents, SECC list, or a poor household by the 14-point declaration",
+        "hi": "इनमें से किसी समूह से हैं: अनुसूचित जाति या जनजाति परिवार, अंत्योदय कार्ड, पीएमएवाई-जी घर, अति पिछड़ा वर्ग, चाय बागान जनजाति, वनवासी, द्वीप निवासी, SECC सूची, या 14 बिंदु घोषणा के अनुसार गरीब परिवार"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "ration_card",
+      "mandatory": true,
+      "source": "portal"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "portal"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "portal"
+    }
+  ]
+}

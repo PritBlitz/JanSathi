@@ -5,7 +5,10 @@ import { speak, stop, listen, hasVoice, canSpeak, canListen, onSpeakingChange } 
 import { match, toBand } from './rules.js';
 
 const KEYS = { profile: 'jansathi.profile', checklist: 'jansathi.checklist', motion: 'jansathi.motion', preview: 'jansathi.preview' };
-const CATEGORY_ICONS = { pension: '👵', agriculture: '🌾', health: '🏥', housing: '🏠', education: '🎓', women_children: '🤱', disability: '♿' };
+const CATEGORY_ICONS = {
+  pension: '👵', agriculture: '🌾', health: '🏥', housing: '🏠', education: '🎓', women_children: '🤱', disability: '♿',
+  insurance: '🛡️', employment: '⛏️', energy: '🔥', family_support: '🤝',
+};
 const REPORT_URL = 'https://github.com/PritBlitz/JanSathi/issues/new';
 
 const state = {

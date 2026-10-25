@@ -1,0 +1,71 @@
+[
+  {
+    "name": "rural adult",
+    "profile": {
+      "area": "rural",
+      "age": 35
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "rural, age 18",
+    "profile": {
+      "area": "rural",
+      "age": 18
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "rural, age 17",
+    "profile": {
+      "area": "rural",
+      "age": 17
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "urban",
+    "profile": {
+      "area": "urban",
+      "age": 35
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "rural": "fail"
+      }
+    }
+  },
+  {
+    "name": "nothing answered",
+    "profile": {},
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "area",
+        "age"
+      ]
+    }
+  }
+]

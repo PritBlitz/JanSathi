@@ -108,10 +108,10 @@
     }
   },
   {
-    "name": "still in class 10 or below",
+    "name": "still in class 9 or 10",
     "profile": {
       "social_category": "sc",
-      "education_level": "up_to_class_10",
+      "education_level": "class_9_10",
       "annual_income": 90000
     },
     "skipped": [],

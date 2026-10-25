@@ -1,0 +1,128 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "pm-parivar-labh",
+  "category": "family_support",
+  "icon": "🤝",
+  "ministry": {
+    "en": "Ministry of Rural Development",
+    "hi": "ग्रामीण विकास मंत्रालय"
+  },
+  "official_apply_url": "https://nsap.dord.gov.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "Family benefit on death of the main earner (PM Parivar Labh Yojana)",
+      "summary": "A one-time payment to a household below the poverty line when its main earner dies. It was called the National Family Benefit Scheme (NFBS) until October 2026.",
+      "benefit": "₹20,000 is paid once to the household, for any death (natural or otherwise) of the main earner while aged above 18 and below 60. A woman who runs the home also counts as a main earner. The money goes to the person found to be the new head of the household after a local inquiry.",
+      "how_to_apply": "Apply to your state's social welfare department (gram panchayat, block or municipal office) with the death certificate. Here the household means the spouse, minor children, unmarried daughters and dependent parents."
+    },
+    "hi": {
+      "name": "मुख्य कमाने वाले की मृत्यु पर पारिवारिक सहायता (प्रधानमंत्री परिवार लाभ योजना)",
+      "summary": "गरीबी रेखा से नीचे के परिवार को उसके मुख्य कमाने वाले सदस्य की मृत्यु पर एक बार की सहायता। अक्टूबर 2026 तक इसका नाम राष्ट्रीय परिवार लाभ योजना (NFBS) था।",
+      "benefit": "मुख्य कमाने वाले की 18 से ज़्यादा और 60 से कम उम्र में किसी भी कारण (स्वाभाविक या अन्य) से मृत्यु होने पर परिवार को एक बार ₹20,000 दिए जाते हैं। घर संभालने वाली महिला भी मुख्य कमाने वाली मानी जाती है। पैसा उस व्यक्ति को मिलता है जो स्थानीय जाँच के बाद परिवार का नया मुखिया पाया जाता है।",
+      "how_to_apply": "मृत्यु प्रमाण पत्र के साथ अपने राज्य के समाज कल्याण विभाग (ग्राम पंचायत, ब्लॉक या नगर निकाय कार्यालय) में आवेदन करें। यहाँ परिवार का मतलब पति या पत्नी, नाबालिग बच्चे, अविवाहित बेटियाँ और आश्रित माता-पिता है।"
+    }
+  },
+  "sources": [
+    {
+      "id": "guidelines",
+      "url": "https://ssepd.odisha.gov.in/sites/default/files/2024-04/Guideline%20on%20National%20Social%20Assistance%20Programme%20-%20NSAP.pdf",
+      "title": "National Social Assistance Programme: Guidelines (October 2014)",
+      "publisher": "Ministry of Rural Development",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2014-10",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:d53a782b3be5b935393627d0d7ead94eeb24d341153ccac69befb8cc9a994718",
+      "verified_at": null,
+      "verified_by": null,
+      "note": "Central MoRD guidelines; this copy is hosted by the Government of Odisha (SSEPD).",
+      "fetch": "manual",
+      "fetch_note": "robots.txt on this host answers 403, which means \"disallow all\" for bots. Fetched by hand; hash with ingest/recheck.py --hash-file."
+    },
+    {
+      "id": "cabinet_2026",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2323264",
+      "title": "Cabinet approves continuation of the National Social Assistance Programme for five years from 2026-27 to 2030-31",
+      "publisher": "Press Information Bureau (Cabinet)",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-10-14",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:4c5a7e907618ef2f1910030171fc676cca9e2154f83448d62c0f3f7ed7f0cf7c",
+      "verified_at": null,
+      "verified_by": null,
+      "fetch": "manual",
+      "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
+    }
+  ],
+  "rules": [
+    {
+      "code": "breadwinner_died",
+      "logic": {
+        "==": [
+          {
+            "var": "breadwinner_died_18_59"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§2.3, p. 7",
+      "text": {
+        "en": "The household's main earner died while aged above 18 and below 60",
+        "hi": "परिवार के मुख्य कमाने वाले की मृत्यु 18 से ज़्यादा और 60 से कम उम्र में हुई"
+      }
+    },
+    {
+      "code": "bpl",
+      "logic": {
+        "==": [
+          {
+            "var": "is_bpl"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§2.3, p. 6",
+      "text": {
+        "en": "The household is below the poverty line (BPL)",
+        "hi": "परिवार गरीबी रेखा से नीचे (बीपीएल) है"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "death_certificate",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "ration_card",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": false,
+      "source": "guidelines"
+    }
+  ]
+}

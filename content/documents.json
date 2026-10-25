@@ -100,6 +100,17 @@
       "portal_url": "https://crsorgi.gov.in/",
       "source": { "url": "https://crsorgi.gov.in/", "publisher": "Office of the Registrar General, India", "doc_type": "portal", "verified_at": null }
     },
+    "death_certificate": {
+      "icon": "📄",
+      "name": { "en": "Death certificate of the family member", "hi": "परिवार के सदस्य का मृत्यु प्रमाण पत्र" },
+      "how_to": {
+        "en": "Get it from the gram panchayat or the municipal birth and death registrar where the death was registered.",
+        "hi": "जहाँ मृत्यु का पंजीकरण हुआ, उस ग्राम पंचायत या नगर निकाय के जन्म-मृत्यु रजिस्ट्रार से बनवाएँ।"
+      },
+      "office": { "en": "Gram panchayat / municipal registrar", "hi": "ग्राम पंचायत / नगर निकाय रजिस्ट्रार" },
+      "portal_url": "https://crsorgi.gov.in/",
+      "source": { "url": "https://crsorgi.gov.in/", "publisher": "Office of the Registrar General, India", "doc_type": "portal", "verified_at": null }
+    },
     "birth_certificate_child": {
       "icon": "👶",
       "name": { "en": "Child's birth certificate", "hi": "बच्चे का जन्म प्रमाण पत्र" },

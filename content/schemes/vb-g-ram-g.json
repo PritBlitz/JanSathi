@@ -1,0 +1,122 @@
+{
+  "status": "draft",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "slug": "vb-g-ram-g",
+  "category": "employment",
+  "icon": "⛏️",
+  "ministry": {
+    "en": "Ministry of Rural Development",
+    "hi": "ग्रामीण विकास मंत्रालय"
+  },
+  "official_apply_url": "https://www.dord.gov.in/",
+  "reverify_days": 60,
+  "content": {
+    "en": {
+      "name": "VB-G RAM G (125 days of rural work)",
+      "summary": "A legal right to paid work for rural households. It replaced MGNREGA on 1 July 2026.",
+      "benefit": "Every rural household whose adult members are willing to do unskilled manual work can get up to 125 days of work in a financial year. Work must be given within 15 days of asking, or the state pays an unemployment allowance. Wages are paid into your bank or post office account every week, or within 15 days. Until new wage rates are notified, the old MGNREGA wage rates apply. Work within 5 km of your village where possible; beyond that, 10% extra is paid. States pause work during notified peak farming seasons.",
+      "how_to_apply": "An adult member applies at the gram panchayat with the names, ages and address of the household for a Gramin Rozgar Guarantee Card. Old MGNREGA job cards with e-KYC done stay valid until the new card is issued. Then ask for work at the gram panchayat, by speaking, in writing (form 6) or online."
+    },
+    "hi": {
+      "name": "वीबी-जी राम जी (ग्रामीण काम के 125 दिन)",
+      "summary": "ग्रामीण परिवारों के लिए मज़दूरी वाले काम का क़ानूनी अधिकार। 1 जुलाई 2026 से इसने मनरेगा की जगह ली है।",
+      "benefit": "जिस ग्रामीण परिवार के वयस्क सदस्य अकुशल शारीरिक काम करना चाहते हैं, उसे वित्त वर्ष में 125 दिन तक काम मिल सकता है। माँगने के 15 दिन के भीतर काम देना होता है, नहीं तो राज्य बेरोज़गारी भत्ता देता है। मज़दूरी हर हफ़्ते, या 15 दिन के भीतर, आपके बैंक या डाकघर खाते में आती है। नई मज़दूरी दरें आने तक मनरेगा की पुरानी दरें लागू हैं। जहाँ तक हो सके काम गाँव से 5 किलोमीटर के भीतर; उससे दूर हो तो 10% ज़्यादा। खेती के मुख्य मौसम में राज्य काम रोकते हैं।",
+      "how_to_apply": "परिवार का कोई वयस्क सदस्य ग्राम पंचायत में परिवार के नाम, उम्र और पता देकर ग्रामीण रोज़गार गारंटी कार्ड के लिए आवेदन करता है। ई-केवाईसी वाले पुराने मनरेगा जॉब कार्ड नया कार्ड मिलने तक मान्य हैं। फिर ग्राम पंचायत में बोलकर, लिखकर (फ़ॉर्म 6) या ऑनलाइन काम माँगें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "faq",
+      "url": "https://www.pib.gov.in/FaqDetails.aspx?ModuleId=4&NoteId=158511&lang=1&reg=3",
+      "title": "Viksit Bharat-G RAM G Act, 2025: Frequently Asked Questions",
+      "publisher": "Press Information Bureau (Ministry of Rural Development)",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-05-11",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:c7fea166fce00b12ffc6cd4225cf38f687a92765f39b5f950cf42404030bd5dd",
+      "verified_at": null,
+      "verified_by": null,
+      "fetch": "manual",
+      "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
+    },
+    {
+      "id": "commencement",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2279446",
+      "title": "VB-G RAM G Act to come into force from July 1, 2026",
+      "publisher": "Press Information Bureau (Ministry of Rural Development)",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-06-30",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:059ba7791132c07139f32fd3dafabea67bb9a79ad7270f9f9a4d96c4ae94678a",
+      "verified_at": null,
+      "verified_by": null,
+      "fetch": "manual",
+      "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
+    }
+  ],
+  "rules": [
+    {
+      "code": "rural",
+      "logic": {
+        "==": [
+          {
+            "var": "area"
+          },
+          "rural"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "faq",
+      "locator": "Who is eligible for employment under this Act?",
+      "text": {
+        "en": "Lives in a village (rural area)",
+        "hi": "गाँव (ग्रामीण क्षेत्र) में रहते हैं"
+      }
+    },
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          18
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "faq",
+      "locator": "Who is eligible for employment under this Act? (adult members)",
+      "text": {
+        "en": "Age 18 or older",
+        "hi": "उम्र 18 साल या उससे ज़्यादा"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "code": "job_card",
+      "mandatory": true,
+      "source": "faq"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "faq"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": false,
+      "source": "commencement"
+    }
+  ]
+}
