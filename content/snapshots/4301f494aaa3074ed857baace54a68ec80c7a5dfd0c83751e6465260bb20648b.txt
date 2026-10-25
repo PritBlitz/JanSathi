@@ -1,0 +1,116 @@
+[page 1]
+ANNEXURE- I 
+CRITERIA AND DETAILS OF INCENTIVES AVAILABLE TO INDIVIDUALS UNDER 
+SOLAR SCHEMES OF MNRE 
+  
+1) PM - Surya Ghar: Muft Bijli Yojana 
+Criteria: 
+Any consumer tagged to a particular residential power connection of the local DISCOM, is eligible 
+to take benefit under the scheme and can install RTS system on a roof/terrace/balcony or on top of 
+elevated structures. 
+Incentive: 
+The details of the CFA pattern under this component are as follows: 
+  
+Sr. 
+No. 
+Type of Residential 
+Segment 
+CFA 
+CFA 
+(Special Category) 
+1 
+Residential Sector (first 2 
+kWp of RTS capacity or 
+part thereof) 
+Rs 30,000/kWp 
+Rs 33,000/kWp 
+2 
+Residential Sector (with 
+additional RTS capacity 
+of 1 kWp or part thereof) 
+Rs 18,000/kWp 
+Rs 19,800/kWp 
+3 
+Residential Sector 
+(additional RTS capacity 
+beyond 3 kWp) 
+No additional 
+CFA 
+No additional CFA 
+4 
+Group Housing Societies/ 
+Residential Welfare 
+Associations 
+(GHS/RWA) etc, for 
+common facilities 
+including EV charging 
+up to 500 kWp (@3 kWp 
+per house) 
+Rs 18,000/kWp 
+Rs 19,800/kWp 
+2) PM-KUSUM scheme 
+
+[page 2]
+Component A: Setting up of 10,000 MW of Decentralized Ground/Stilt Mounted Solar Power 
+Plants 
+Criteria: 
+ 
+The farmer should have his own land, preferably within the 5 km radius of 
+Distributed Sub Station. 
+Incentive: 
+Procurement Based Incentive (PBI) to the DISCOMs @ 40 paise/kWh or Rs.6.60 lakhs/MW/year, 
+whichever is lower, for buying solar power under this scheme. The PBI is given to the DISCOMs 
+for a period of five years from the Commercial Operation Date of the plant. Therefore, the total 
+PBI payable to DISCOMs is up to Rs. 33 Lakh per MW. 
+Component B: Installation of 14.00 Lakh Stand-alone Solar Pumps 
+Criteria: 
+ 
+Standalone solar pump should be installed for irrigation purpose. 
+ 
+The land where farmer want to install solar pumps should not have a grid connected 
+agriculture pump. 
+ 
+Installation of new standalone solar pump is not allowed in Dark Zone area. However 
+existing standalone diesel pumps, can be converted into standalone solar pumps in 
+these areas provided they use micro irrigation techniques to save water. 
+ 
+The size of pump would be selected on the basis of water table in the area, land 
+covered and quantity of water required for irrigation. 
+Incentive: 
+CFA of 30% of the benchmark cost or the tender cost, whichever is lower, of the stand-alone solar 
+agriculture pump is provided. However, in North Eastern States, Sikkim, Jammu & Kashmir, 
+Ladakh, Himachal Pradesh and Uttarakhand, Lakshadweep and A&N Islands, CFA of 50% of the 
+benchmark cost or the tender cost, whichever is lower, of the stand-alone solar pump is provided. 
+Component B can also be implemented without State share of 30%. The Central Financial 
+Assistance will continue to remain 30% and rest 70% will be borne by the farmer. 
+Component C: Solarisation of 35 Lakh Grid Connected Agriculture Pumps including 
+through feeder level solarisation 
+Criteria: 
+a. Individual Pump Solarization (IPS): 
+ 
+The beneficiary should have grid connected agriculture pumps for irrigation 
+ 
+In case of dark zones/black zones only existing grid connected pumps will be 
+solarized, provided they use micro irrigation techniques to save water. 
+ 
+Solar PV capacity up to two times of pump capacity in kW is allowed, so that the 
+farmer will be able to use the generated solar power to meet the irrigation needs and 
+get additional income by selling surplus solar power to DISCOMs. 
+
+[page 3]
+(b) Feeder Level Solarization (FLS): 
+ 
+States are supported for solarization of agricultural feeder or mixed feeders. 
+ 
+Beneficiary can lease their land for installation of solar power plant to get lease rent. 
+  
+Incentive presently eligible as per the Scheme 
+(a) Individual Pump Solarization (IPS): 
+CFA of 30% of the benchmark cost or the tender cost, whichever is lower, of the solar PV 
+component will be provided. However, in North Eastern States, Sikkim, Jammu & Kashmir, 
+Ladakh, Himachal Pradesh and Uttarakhand, Lakshadweep and A&N Islands, CFA of 50% of the 
+benchmark cost or the tender cost, whichever is lower, of the solar PV component is provided. 
+Component C (IPS) can also be implemented without State share of 30%. The Central Financial 
+Assistance will continue to remain 30% and rest 70% will be borne by the farmer. 
+  
+ 
