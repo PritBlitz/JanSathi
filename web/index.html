@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>JanSathi: government schemes in your language</title>
+  <meta name="description" content="Find government schemes you may qualify for, in your language. Every answer links to an official source.">
+  <meta name="theme-color" content="#F2F0EA" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#14130F" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="nav.skip">Skip to main content</a>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#/" data-i18n-attr="aria-label:nav.home" aria-label="JanSathi home">
+      <svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true" focusable="false">
+        <rect x="1" y="10" width="4" height="8" rx="2"/><rect x="7" y="5" width="4" height="18" rx="2"/>
+        <rect x="13" y="1" width="4" height="26" rx="2"/><rect x="19" y="7" width="4" height="14" rx="2"/><rect x="25" y="11" width="2.5" height="6" rx="1.25"/>
+      </svg>
+      <span class="brand-word">JanSathi</span>
+    </a>
+    <nav class="nav-links" id="nav-links" data-i18n-attr="aria-label:nav.main" aria-label="Main">
+      <a href="#/schemes" data-i18n="nav.schemes">Schemes</a>
+      <a href="#/how" data-i18n="nav.how">How it works</a>
+      <a href="#/help" data-i18n="nav.help">Nearby help</a>
+      <a href="#/checklist" data-i18n="nav.checklist">My checklist</a>
+    </nav>
+    <div class="nav-tools">
+      <label class="lang">
+        <span class="globe" aria-hidden="true">🌐</span>
+        <span class="visually-hidden" data-i18n="nav.language">Language</span>
+        <select id="lang-select"></select>
+      </label>
+      <button class="btn btn-outline btn-listen" id="listen" type="button" aria-pressed="false">
+        <span aria-hidden="true">🔊</span> <span data-i18n="nav.listen">Listen</span>
+      </button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links" data-i18n-attr="aria-label:nav.menu" aria-label="Menu">
+        <span aria-hidden="true">☰</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="banner" id="preview-banner" hidden>
+    <span aria-hidden="true">⚠️</span> <span data-i18n="preview.banner"></span>
+  </div>
+  <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
+
+  <main id="main" tabindex="-1">
+    <section class="view" id="home" data-view="home">
+      <div class="hero">
+        <div class="hero-word-wrap">
+          <h1 class="hero-word" data-i18n-attr="aria-label:hero.display_label" aria-label="JanSathi: find government schemes you may qualify for">
+            <span data-i18n="hero.display" aria-hidden="true">JanSathi</span>
+          </h1>
+        </div>
+        <p class="hero-lead" data-i18n="hero.lead">Government schemes, explained simply in your language. Every answer links to an official source.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary btn-hero" href="#/check" data-i18n="hero.cta_primary">Check what I may qualify for</a>
+          <button class="btn btn-outline btn-hero" type="button" data-action="ask">
+            <span aria-hidden="true">🎤</span> <span data-i18n="hero.cta_voice">Ask by voice</span>
+          </button>
+        </div>
+        <section class="rail-wrap" id="rail-wrap" aria-labelledby="rail-title" hidden>
+          <div class="rail-head">
+            <h2 class="kicker" id="rail-title" data-i18n="rail.title">Schemes we are checking</h2>
+            <div class="rail-btns">
+              <button class="icon-btn" type="button" data-rail="-1" data-i18n-attr="aria-label:rail.prev" aria-label="Previous"><span aria-hidden="true">←</span></button>
+              <button class="icon-btn" type="button" data-rail="1" data-i18n-attr="aria-label:rail.next" aria-label="Next"><span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+          <ul class="rail" id="rail"></ul>
+        </section>
+      </div>
+
+      <section class="section" aria-labelledby="tiles-title">
+        <h2 class="h2" id="tiles-title" data-i18n="tiles.title">Find help for</h2>
+        <ul class="tiles" id="tiles"></ul>
+      </section>
+
+      <section class="section" id="how" aria-labelledby="how-title">
+        <p class="kicker" data-i18n="how.kicker">How it works</p>
+        <h2 class="h1" id="how-title" data-i18n="how.title">Clear rules, official sources, your language</h2>
+        <ol class="bento">
+          <li><span class="num" aria-hidden="true">1</span><h3 data-i18n="how.step1.title"></h3><p data-i18n="how.step1.body"></p></li>
+          <li><span class="num" aria-hidden="true">2</span><h3 data-i18n="how.step2.title"></h3><p data-i18n="how.step2.body"></p></li>
+          <li><span class="num" aria-hidden="true">3</span><h3 data-i18n="how.step3.title"></h3><p data-i18n="how.step3.body"></p></li>
+          <li><span class="num" aria-hidden="true">4</span><h3 data-i18n="how.step4.title"></h3><p data-i18n="how.step4.body"></p></li>
+        </ol>
+      </section>
+    </section>
+
+    <div class="view" id="view" data-view="other" hidden></div>
+  </main>
+
+  <dialog class="sheet" id="ask-sheet" aria-labelledby="ask-title">
+    <div class="sheet-head">
+      <h2 class="h2" id="ask-title" data-i18n="ask.title">Ask by voice</h2>
+      <button class="icon-btn" type="button" data-action="close-ask" data-i18n-attr="aria-label:ask.close" aria-label="Close"><span aria-hidden="true">✕</span></button>
+    </div>
+    <button class="mic-big" id="ask-mic" type="button" data-i18n-attr="aria-label:ask.mic" aria-label="Start speaking"><span aria-hidden="true">🎤</span></button>
+    <p class="ask-status" id="ask-status" role="status" aria-live="polite"></p>
+    <form class="search-form" id="ask-form" role="search">
+      <label class="visually-hidden" for="ask-input" data-i18n="search.label">Search scheme names and descriptions</label>
+      <input id="ask-input" type="search" autocomplete="off" data-i18n-attr="placeholder:search.placeholder">
+      <button class="btn btn-primary" type="submit" data-i18n="search.button">Search</button>
+    </form>
+    <p class="muted small" data-i18n="search.note"></p>
+    <div id="ask-results"></div>
+  </dialog>
+
+  <footer class="footer">
+    <p class="footer-word" aria-hidden="true">JanSathi</p>
+    <p class="disclaimer" data-i18n="footer.disclaimer">JanSathi is not a government service. Final decisions are made by the government.</p>
+    <ul class="footer-links">
+      <li><a href="#/privacy" data-i18n="footer.privacy">Your data</a></li>
+      <li><a href="https://github.com/PritBlitz/JanSathi" rel="noopener" data-i18n="footer.source">Source code</a></li>
+      <li><label class="toggle"><input type="checkbox" id="reduce-motion"> <span data-i18n="footer.reduce_motion">Reduce motion</span></label></li>
+    </ul>
+    <ul class="footer-langs" id="footer-langs" data-i18n-attr="aria-label:nav.language" aria-label="Language"></ul>
+  </footer>
+</body>
+</html>

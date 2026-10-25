@@ -1,0 +1,16 @@
+{
+  "$comment": "Native-speaker review status of each locale (docs/I18N_AND_VOICE.md §6). 'machine' = written by an AI session, not yet reviewed. When a reviewer checks keys, list them in reviewed_keys with the reviewer id and date. The copy lint's banned-phrase list for each language must also be checked by the reviewer.",
+  "en": { "status": "source", "reviewer": null, "reviewed_at": null, "reviewed_keys": [] },
+  "hi": { "status": "machine", "authored": "2026-10-25", "reviewer": null, "reviewed_at": null, "reviewed_keys": [] },
+  "bn": { "status": "machine", "authored": "2026-10-25", "reviewer": null, "reviewed_at": null, "reviewed_keys": [] },
+  "ta": {
+    "status": "machine", "authored": "2026-10-25", "reviewer": null, "reviewed_at": null, "reviewed_keys": [],
+    "notes": "hero.display uses the DESIGN.md starting value ஜனசாத்தி. DESIGN §6.3: the reviewer must confirm it cannot be read as சாதி (caste), or switch the Tamil hero to the Latin JanSathi."
+  },
+  "te": { "status": "machine", "authored": "2026-10-25", "reviewer": null, "reviewed_at": null, "reviewed_keys": [] },
+  "mr": { "status": "machine", "authored": "2026-10-25", "reviewer": null, "reviewed_at": null, "reviewed_keys": [] },
+  "gu": { "status": "machine", "authored": "2026-10-25", "reviewer": null, "reviewed_at": null, "reviewed_keys": [] },
+  "kn": { "status": "machine", "authored": "2026-10-25", "reviewer": null, "reviewed_at": null, "reviewed_keys": [] },
+  "ml": { "status": "machine", "authored": "2026-10-25", "reviewer": null, "reviewed_at": null, "reviewed_keys": [] },
+  "pa": { "status": "machine", "authored": "2026-10-25", "reviewer": null, "reviewed_at": null, "reviewed_keys": [] }
+}

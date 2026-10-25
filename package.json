@@ -7,7 +7,8 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "node --test tools/test-rules.mjs",
+    "test": "node --test tools/test-rules.mjs tools/test-lint.mjs",
+    "smoke": "node tools/smoke-web.mjs",
     "build": "node tools/build-bundle.mjs && node tools/build-bundle.mjs --include-drafts",
     "lint:copy": "node tools/lint-copy.mjs",
     "check:locales": "node tools/check-locales.mjs",

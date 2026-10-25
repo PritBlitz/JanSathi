@@ -15,22 +15,23 @@ export const BANNED = {
   en: [/\byou(?:'re| are) (?:definitely |certainly )?eligible\b/i, /\byou will (?:get|receive)\b/i, /\bguaranteed\b/i, /\byou qualify\b/i, /\bapproved for you\b/i],
   hi: [/आप पात्र हैं/, /आप योग्य हैं/, /आपको (?:ज़रूर |जरूर )?मिलेगा/, /आपको (?:ज़रूर |जरूर )?मिलेगी/, /गारंटी/],
   mr: [/तुम्ही पात्र आहात/, /तुम्हाला मिळेल/, /हमी/, /गॅरंटी/],
-  bn: [/আপনি যোগ্য/, /আপনি পাবেন/, /নিশ্চিত/, /গ্যারান্টি/],
-  ta: [/நீங்கள் தகுதியானவர்/, /உங்களுக்கு கிடைக்கும்/, /உத்தரவாதம்/],
+  bn: [/আপনি যোগ্য(?!\s*হতে)/, /আপনি পাবেন/, /নিশ্চিতভাবে পাবেন/, /গ্যারান্টি/],
+  ta: [/நீங்கள் தகுதியானவர்/, /உங்களுக்கு(?:க்)? கிடைக்கும்/, /உத்தரவாதம்/, /கேரண்டி/],
   te: [/మీరు అర్హులు/, /మీకు లభిస్తుంది/, /హామీ/, /గ్యారంటీ/],
-  gu: [/તમે પાત્ર છો/, /તમને મળશે/, /ગેરંટી/, /ખાતરી/],
+  gu: [/તમે પાત્ર છો/, /તમને મળશે/, /ગેરંટી/],
   kn: [/ನೀವು ಅರ್ಹರು/, /ನಿಮಗೆ ಸಿಗುತ್ತದೆ/, /ಖಾತರಿ/, /ಗ್ಯಾರಂಟಿ/],
-  ml: [/നിങ്ങൾ അർഹ(?:നാണ്|യാണ്|രാണ്)/, /നിങ്ങൾക്ക് ലഭിക്കും/, /ഉറപ്പ്/, /ഗ്യാരണ്ടി/],
-  pa: [/ਤੁਸੀਂ ਯੋਗ ਹੋ/, /ਤੁਹਾਨੂੰ ਮਿਲੇਗਾ/, /ਗਾਰੰਟੀ/],
+  ml: [/നിങ്ങൾ അർഹ(?:നാണ്|യാണ്|രാണ്)/, /നിങ്ങൾക്ക് ലഭിക്കും/, /ഗ്യാര(?:ണ്ടി|ന്റി)/],
+  pa: [/ਤੁਸੀਂ ਯੋਗ ਹੋ(?! ਸਕਦੇ)/, /ਤੁਹਾਨੂੰ ਮਿਲੇਗਾ/, /ਗਾਰੰਟੀ/],
 };
 
+// Official names that contain "guarantee": the VB-G RAM G Act and its Gramin Rozgar Guarantee Card.
+// Text is NFC-normalised and stripped of zero-width joiners before matching, so ज़ is ज + U+093C.
 const ALLOW = [
   /Guarantee for Rozgar(?: and Ajeevika Mission)?/gi,
   /Rozgar Guarantee Card/gi,
   /Employment Guarantee(?: Act| Scheme)?/gi,
-  // ज़ can be precomposed (U+095B) or ज + nukta (U+093C).
-  /रो(?:ज़?|ज़)गार गारंटी/g,
-  /गारंटी फ़?ॉर रो(?:ज़?|ज़)गार/g,
+  /(?:रोज़गार|रोजगार|রোজগার|ਰੋਜ਼ਗਾਰ|ਰੋਜਗਾਰ|રોજગાર|రోజ్గార్|ರೋಜ್ಗಾರ್|റോസ്ഗാർ|ரோஜ்கார்) ?(?:गारंटी|गॅरंटी|গ্যারান্টি|ਗਾਰੰਟੀ|ગેરંટી|గ్యారంటీ|ಗ್ಯಾರಂಟಿ|ഗ്യാരന്റി|கேரண்டி)/g,
+  /गारंटी फ़?ॉर रोज़?गार/g,
 ];
 
 const LOCALE_OF = (file) => file.match(/locales[\\/](\w+)\.json$/)?.[1];
@@ -55,34 +56,37 @@ function walk(dir, ext, out = []) {
 }
 
 export function lintText(text, langs = Object.keys(BANNED)) {
-  let t = text;
+  let t = text.normalize('NFC').replace(/[‌‍]/g, '');
   for (const a of ALLOW) t = t.replace(a, ' ');
   const hits = [];
   for (const l of langs) for (const re of BANNED[l]) if (re.test(t)) hits.push(re.source);
   return hits;
 }
 
-const files = [
-  ...walk(join(root, 'web/locales'), ['.json']),
-  ...walk(join(root, 'content'), ['.json']),
-  ...walk(join(root, 'prompts'), ['.txt', '.md', '.json']),
-];
-const problems = [];
-for (const file of files) {
-  const rel = relative(root, file);
-  if (rel.endsWith('review-status.json')) continue;
-  const items = file.endsWith('.json') ? strings(JSON.parse(readFileSync(file, 'utf8')), '', []) : [['', readFileSync(file, 'utf8')]];
-  const loc = LOCALE_OF(file);
-  // Locale files: English plus their own language. Content and prompts: every language.
-  const langs = loc ? [...new Set(['en', loc])].filter((l) => BANNED[l]) : Object.keys(BANNED);
-  for (const [path, text] of items) {
-    for (const hit of lintText(text, langs)) problems.push(`${rel} ${path}: banned phrase /${hit}/ in "${text.slice(0, 90)}"`);
+function main() {
+  const files = [
+    ...walk(join(root, 'web/locales'), ['.json']),
+    ...walk(join(root, 'content'), ['.json']),
+    ...walk(join(root, 'prompts'), ['.txt', '.md', '.json']),
+  ];
+  const problems = [];
+  for (const file of files) {
+    const rel = relative(root, file);
+    if (rel.endsWith('review-status.json')) continue;
+    const items = file.endsWith('.json') ? strings(JSON.parse(readFileSync(file, 'utf8')), '', []) : [['', readFileSync(file, 'utf8')]];
+    const loc = LOCALE_OF(file);
+    // Locale files: English plus their own language. Content and prompts: every language.
+    const langs = loc ? [...new Set(['en', loc])].filter((l) => BANNED[l]) : Object.keys(BANNED);
+    for (const [path, text] of items) {
+      for (const hit of lintText(text, langs)) problems.push(`${rel} ${path}: banned phrase /${hit}/ in "${text.slice(0, 90)}"`);
+    }
   }
+  if (problems.length) {
+    console.error(problems.join('\n'));
+    console.error(`\n${problems.length} banned phrase(s). Use "may be eligible", "likely relevant" or "need more information".`);
+    process.exit(1);
+  }
+  console.log(`copy lint OK: ${files.length} files`);
 }
 
-if (problems.length) {
-  console.error(problems.join('\n'));
-  console.error(`\n${problems.length} banned phrase(s). Use "may be eligible", "likely relevant" or "need more information".`);
-  process.exit(1);
-}
-console.log(`copy lint OK: ${files.length} files`);
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) main();

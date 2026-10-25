@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice">
+  <!-- Abstract placeholder fill for the hero word until licensed photographs exist (see CREDITS.md).
+       Graded dark so every letter reads as a solid shape on the paper colour (DESIGN 6.5). -->
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2A1A12"/><stop offset="0.5" stop-color="#3A2418"/><stop offset="1" stop-color="#1B1A17"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="600" fill="url(#g)"/>
+  <circle cx="180" cy="420" r="260" fill="#B53D1A"/>
+  <circle cx="560" cy="120" r="210" fill="#7A3A12"/>
+  <circle cx="900" cy="470" r="240" fill="#2F6B4F"/>
+  <circle cx="1240" cy="140" r="230" fill="#9A4A16"/>
+  <circle cx="1500" cy="480" r="200" fill="#B53D1A"/>
+  <rect x="680" y="200" width="300" height="300" rx="150" fill="#5E3A1E"/>
+  <rect x="300" y="-80" width="180" height="420" rx="90" fill="#1F4A37"/>
+  <rect x="1060" y="300" width="200" height="380" rx="100" fill="#6B2E14"/>
+</svg>
