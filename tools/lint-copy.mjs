@@ -1,5 +1,5 @@
 // Copy lint: blocks phrases that promise eligibility or approval (CLAUDE.md principle 1).
-// Checks every string in frontend/locales/*.json and content/**/*.json, and prompts in prompts/ if present.
+// Checks every string in frontend/public/locales/*.json and content/**/*.json, and the assistant prompts in backend/src/main/resources/prompts/.
 // Usage: node tools/lint-copy.mjs   (exit 1 on any hit)
 //
 // The non-English lists were machine-authored and must be extended by native-speaker reviewers
@@ -11,28 +11,10 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
-export const BANNED = {
-  en: [/\byou(?:'re| are) (?:definitely |certainly )?eligible\b/i, /\byou will (?:get|receive)\b/i, /\bguaranteed\b/i, /\byou qualify\b/i, /\bapproved for you\b/i],
-  hi: [/आप पात्र हैं/, /आप योग्य हैं/, /आपको (?:ज़रूर |जरूर )?मिलेगा/, /आपको (?:ज़रूर |जरूर )?मिलेगी/, /गारंटी/],
-  mr: [/तुम्ही पात्र आहात/, /तुम्हाला मिळेल/, /हमी/, /गॅरंटी/],
-  bn: [/আপনি যোগ্য(?!\s*হতে)/, /আপনি পাবেন/, /নিশ্চিতভাবে পাবেন/, /গ্যারান্টি/],
-  ta: [/நீங்கள் தகுதியானவர்/, /உங்களுக்கு(?:க்)? கிடைக்கும்/, /உத்தரவாதம்/, /கேரண்டி/],
-  te: [/మీరు అర్హులు/, /మీకు లభిస్తుంది/, /హామీ/, /గ్యారంటీ/],
-  gu: [/તમે પાત્ર છો/, /તમને મળશે/, /ગેરંટી/],
-  kn: [/ನೀವು ಅರ್ಹರು/, /ನಿಮಗೆ ಸಿಗುತ್ತದೆ/, /ಖಾತರಿ/, /ಗ್ಯಾರಂಟಿ/],
-  ml: [/നിങ്ങൾ അർഹ(?:നാണ്|യാണ്|രാണ്)/, /നിങ്ങൾക്ക് ലഭിക്കും/, /ഗ്യാര(?:ണ്ടി|ന്റി)/],
-  pa: [/ਤੁਸੀਂ ਯੋਗ ਹੋ(?! ਸਕਦੇ)/, /ਤੁਹਾਨੂੰ ਮਿਲੇਗਾ/, /ਗਾਰੰਟੀ/],
-};
-
-// Official names that contain "guarantee": the VB-G RAM G Act and its Gramin Rozgar Guarantee Card.
-// Text is NFC-normalised and stripped of zero-width joiners before matching, so ज़ is ज + U+093C.
-const ALLOW = [
-  /Guarantee for Rozgar(?: and Ajeevika Mission)?/gi,
-  /Rozgar Guarantee Card/gi,
-  /Employment Guarantee(?: Act| Scheme)?/gi,
-  /(?:रोज़गार|रोजगार|রোজগার|ਰੋਜ਼ਗਾਰ|ਰੋਜਗਾਰ|રોજગાર|రోజ్గార్|ರೋಜ್ಗಾರ್|റോസ്ഗാർ|ரோஜ்கார்) ?(?:गारंटी|गॅरंटी|গ্যারান্টি|ਗਾਰੰਟੀ|ગેરંટી|గ్యారంటీ|ಗ್ಯಾರಂಟಿ|ഗ്യാരന്റി|கேரண்டி)/g,
-  /गारंटी फ़?ॉर रोज़?गार/g,
-];
+// The lists live in banned-phrases.json, shared with the API's answer validator.
+const PHRASES = JSON.parse(readFileSync(join(root, 'tools/banned-phrases.json'), 'utf8'));
+export const BANNED = Object.fromEntries(Object.entries(PHRASES.banned).map(([l, list]) => [l, list.map((p) => new RegExp(p.pattern, p.flags))]));
+const ALLOW = PHRASES.allow.map((p) => new RegExp(p.pattern, `g${p.flags}`));
 
 const LOCALE_OF = (file) => file.match(/locales[\\/](\w+)\.json$/)?.[1];
 
@@ -65,9 +47,9 @@ export function lintText(text, langs = Object.keys(BANNED)) {
 
 function main() {
   const files = [
-    ...walk(join(root, 'frontend/locales'), ['.json']),
+    ...walk(join(root, 'frontend/public/locales'), ['.json']),
     ...walk(join(root, 'content'), ['.json']),
-    ...walk(join(root, 'prompts'), ['.txt', '.md', '.json']),
+    ...walk(join(root, 'backend/src/main/resources/prompts'), ['.txt', '.md']),
   ];
   const problems = [];
   for (const file of files) {

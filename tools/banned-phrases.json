@@ -1,0 +1,203 @@
+{
+  "$comment": "Phrases that promise eligibility or approval (CLAUDE.md principle 1), per language, as regular expressions. Used by tools/lint-copy.mjs and by the API when it validates assistant answers. flags: \"i\" = ignore case. allow: official names stripped before matching. The non-English lists were machine-authored; native-speaker reviewers must extend them.",
+  "banned": {
+    "en": [
+      {
+        "pattern": "\\byou(?:'re| are) (?:definitely |certainly )?eligible\\b",
+        "flags": "i"
+      },
+      {
+        "pattern": "\\byou will (?:get|receive)\\b",
+        "flags": "i"
+      },
+      {
+        "pattern": "\\bguaranteed\\b",
+        "flags": "i"
+      },
+      {
+        "pattern": "\\byou qualify\\b",
+        "flags": "i"
+      },
+      {
+        "pattern": "\\bapproved for you\\b",
+        "flags": "i"
+      }
+    ],
+    "hi": [
+      {
+        "pattern": "आप पात्र हैं",
+        "flags": ""
+      },
+      {
+        "pattern": "आप योग्य हैं",
+        "flags": ""
+      },
+      {
+        "pattern": "आपको (?:ज़रूर |जरूर )?मिलेगा",
+        "flags": ""
+      },
+      {
+        "pattern": "आपको (?:ज़रूर |जरूर )?मिलेगी",
+        "flags": ""
+      },
+      {
+        "pattern": "गारंटी",
+        "flags": ""
+      }
+    ],
+    "mr": [
+      {
+        "pattern": "तुम्ही पात्र आहात",
+        "flags": ""
+      },
+      {
+        "pattern": "तुम्हाला मिळेल",
+        "flags": ""
+      },
+      {
+        "pattern": "हमी",
+        "flags": ""
+      },
+      {
+        "pattern": "गॅरंटी",
+        "flags": ""
+      }
+    ],
+    "bn": [
+      {
+        "pattern": "আপনি যোগ্য(?!\\s*হতে)",
+        "flags": ""
+      },
+      {
+        "pattern": "আপনি পাবেন",
+        "flags": ""
+      },
+      {
+        "pattern": "নিশ্চিতভাবে পাবেন",
+        "flags": ""
+      },
+      {
+        "pattern": "গ্যারান্টি",
+        "flags": ""
+      }
+    ],
+    "ta": [
+      {
+        "pattern": "நீங்கள் தகுதியானவர்",
+        "flags": ""
+      },
+      {
+        "pattern": "உங்களுக்கு(?:க்)? கிடைக்கும்",
+        "flags": ""
+      },
+      {
+        "pattern": "உத்தரவாதம்",
+        "flags": ""
+      },
+      {
+        "pattern": "கேரண்டி",
+        "flags": ""
+      }
+    ],
+    "te": [
+      {
+        "pattern": "మీరు అర్హులు",
+        "flags": ""
+      },
+      {
+        "pattern": "మీకు లభిస్తుంది",
+        "flags": ""
+      },
+      {
+        "pattern": "హామీ",
+        "flags": ""
+      },
+      {
+        "pattern": "గ్యారంటీ",
+        "flags": ""
+      }
+    ],
+    "gu": [
+      {
+        "pattern": "તમે પાત્ર છો",
+        "flags": ""
+      },
+      {
+        "pattern": "તમને મળશે",
+        "flags": ""
+      },
+      {
+        "pattern": "ગેરંટી",
+        "flags": ""
+      }
+    ],
+    "kn": [
+      {
+        "pattern": "ನೀವು ಅರ್ಹರು",
+        "flags": ""
+      },
+      {
+        "pattern": "ನಿಮಗೆ ಸಿಗುತ್ತದೆ",
+        "flags": ""
+      },
+      {
+        "pattern": "ಖಾತರಿ",
+        "flags": ""
+      },
+      {
+        "pattern": "ಗ್ಯಾರಂಟಿ",
+        "flags": ""
+      }
+    ],
+    "ml": [
+      {
+        "pattern": "നിങ്ങൾ അർഹ(?:നാണ്|യാണ്|രാണ്)",
+        "flags": ""
+      },
+      {
+        "pattern": "നിങ്ങൾക്ക് ലഭിക്കും",
+        "flags": ""
+      },
+      {
+        "pattern": "ഗ്യാര(?:ണ്ടി|ന്റി)",
+        "flags": ""
+      }
+    ],
+    "pa": [
+      {
+        "pattern": "ਤੁਸੀਂ ਯੋਗ ਹੋ(?! ਸਕਦੇ)",
+        "flags": ""
+      },
+      {
+        "pattern": "ਤੁਹਾਨੂੰ ਮਿਲੇਗਾ",
+        "flags": ""
+      },
+      {
+        "pattern": "ਗਾਰੰਟੀ",
+        "flags": ""
+      }
+    ]
+  },
+  "allow": [
+    {
+      "pattern": "Guarantee for Rozgar(?: and Ajeevika Mission)?",
+      "flags": "i"
+    },
+    {
+      "pattern": "Rozgar Guarantee Card",
+      "flags": "i"
+    },
+    {
+      "pattern": "Employment Guarantee(?: Act| Scheme)?",
+      "flags": "i"
+    },
+    {
+      "pattern": "(?:रोज़गार|रोजगार|রোজগার|ਰੋਜ਼ਗਾਰ|ਰੋਜਗਾਰ|રોજગાર|రోజ్గార్|ರೋಜ್ಗಾರ್|റോസ്ഗാർ|ரோஜ்கார்) ?(?:गारंटी|गॅरंटी|গ্যারান্টি|ਗਾਰੰਟੀ|ગેરંટી|గ్యారంటీ|ಗ್ಯಾರಂಟಿ|ഗ്യാരന്റി|கேரண்டி)",
+      "flags": ""
+    },
+    {
+      "pattern": "गारंटी फ़?ॉर रोज़?गार",
+      "flags": ""
+    }
+  ]
+}

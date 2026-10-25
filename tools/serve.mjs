@@ -1,13 +1,19 @@
-// Minimal static server for frontend/ with correct MIME types (incl. .webmanifest) and gzip,
-// so local Lighthouse runs match a production host. `python3 -m http.server` in frontend/ also works.
+// Minimal static server for the built PWA (frontend/dist, from `npm run build:web`) with correct
+// MIME types (incl. .webmanifest) and gzip, so local Lighthouse runs match a production host.
+// For development with hot reload use `npm run dev` (Vite) instead.
 // Usage: node tools/serve.mjs [port]   (default 8000)
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { join, dirname, extname, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const webRoot = join(dirname(fileURLToPath(import.meta.url)), '..', 'frontend');
+const webRoot = join(dirname(fileURLToPath(import.meta.url)), '..', 'frontend', 'dist');
+if (!existsSync(join(webRoot, 'index.html'))) {
+  console.error('frontend/dist is missing: run npm run build:web first');
+  process.exit(1);
+}
 const port = Number(process.argv[2]) || 8000;
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8',
@@ -35,4 +41,4 @@ createServer(async (req, res) => {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('Not found');
   }
-}).listen(port, () => console.log(`JanSathi frontend/ on http://localhost:${port}`));
+}).listen(port, () => console.log(`JanSathi frontend/dist on http://localhost:${port}`));

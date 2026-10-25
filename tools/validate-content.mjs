@@ -4,7 +4,7 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validateLogic } from '../frontend/js/rules.js';
+import { validateLogic } from '../frontend/src/lib/rules.js';
 import { verifyQuotes, reviewStatus } from './lib/quality.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
