@@ -60,6 +60,7 @@
       "confidence": "guidance",
       "source": "mota",
       "locator": "Post Matric Scholarship Scheme: salient features",
+      "quote": "check eligibility verification and disbursement of scholarship to eligible ST students directly to their bank accounts through DBT",
       "text": {
         "en": "Belongs to a Scheduled Tribe",
         "hi": "अनुसूचित जनजाति से हैं"
@@ -84,6 +85,7 @@
       "confidence": "guidance",
       "source": "mota",
       "locator": "Post Matric Scholarship Scheme: salient features",
+      "quote": "Applicable to students who are pursuing any recognized course from a recognized institution for which qualification is Matriculation/Class X or above.",
       "text": {
         "en": "Has passed class 10 and is studying further",
         "hi": "कक्षा 10 पास है और आगे पढ़ रहे हैं"
@@ -103,10 +105,18 @@
       "confidence": "guidance",
       "source": "mota",
       "locator": "Post Matric Scholarship Scheme: salient features",
+      "quote": "Parental income from all sources should not exceed Rs.2.50 lakhs per annum.",
       "text": {
         "en": "Parents' income is up to ₹2.5 lakh a year",
         "hi": "माता-पिता की आय साल में ₹2.5 लाख तक है"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "mota",
+      "quote": "First is payment of compulsory fees charged by educational institutions subject to the limit fixed by the concerned State. Second is payment of Maintenance amount varying from Rs .230 to Rs.1200 per month, depending upon the course of study pursued by the student."
     }
   ],
   "documents": [

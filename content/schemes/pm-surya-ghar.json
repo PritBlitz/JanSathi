@@ -20,13 +20,13 @@
     "en": {
       "name": "PM Surya Ghar: Muft Bijli Yojana (rooftop solar)",
       "summary": "A subsidy to put solar panels on the roof, terrace or balcony of your home, so you can get up to 300 units of electricity a month free.",
-      "benefit": "The central subsidy is ₹30,000 per kW for the first 2 kW and ₹18,000 for the third kW, so ₹30,000 for 1 kW, ₹60,000 for 2 kW and ₹78,000 for 3 kW or more. Special category states get ₹33,000 and ₹19,800 per kW. Collateral-free loans of around 7% are available for systems up to 3 kW. Extra power can be sold to the electricity company. The scheme aims to reach 1 crore homes by 2026-27; 51.58 lakh homes had it by 12 August 2026.",
+      "benefit": "The central subsidy is ₹30,000 per kW for the first 2 kW and ₹18,000 for the third kW, so ₹30,000 for 1 kW, ₹60,000 for 2 kW and ₹78,000 for 3 kW or more. Special category states get ₹33,000 and ₹19,800 per kW. Low-interest loans without collateral are available for systems up to 3 kW (5.75% a year in August 2026). Extra power can be sold to the electricity company. The scheme aims to reach 1 crore homes; over 50 lakh homes had rooftop solar under it by August 2026.",
       "how_to_apply": "Register on the PM Surya Ghar national portal with your electricity connection details, choose a registered vendor, and apply for the subsidy there. The subsidy is paid into your bank account after the system is installed and inspected."
     },
     "hi": {
       "name": "पीएम सूर्य घर: मुफ़्त बिजली योजना (छत पर सौर)",
       "summary": "घर की छत, छज्जे या बालकनी पर सौर पैनल लगाने के लिए सब्सिडी, ताकि हर महीने 300 यूनिट तक बिजली मुफ़्त मिल सके।",
-      "benefit": "केंद्र की सब्सिडी पहले 2 किलोवाट के लिए ₹30,000 प्रति किलोवाट और तीसरे किलोवाट के लिए ₹18,000 है, यानी 1 किलोवाट पर ₹30,000, 2 किलोवाट पर ₹60,000 और 3 किलोवाट या ज़्यादा पर ₹78,000। विशेष श्रेणी राज्यों में ₹33,000 और ₹19,800 प्रति किलोवाट। 3 किलोवाट तक के लिए लगभग 7% पर बिना गिरवी का ऋण मिलता है। बची हुई बिजली बिजली कंपनी को बेची जा सकती है। योजना का लक्ष्य 2026-27 तक 1 करोड़ घर है; 12 अगस्त 2026 तक 51.58 लाख घरों में लग चुका था।",
+      "benefit": "केंद्र की सब्सिडी पहले 2 किलोवाट के लिए ₹30,000 प्रति किलोवाट और तीसरे किलोवाट के लिए ₹18,000 है, यानी 1 किलोवाट पर ₹30,000, 2 किलोवाट पर ₹60,000 और 3 किलोवाट या ज़्यादा पर ₹78,000। विशेष श्रेणी राज्यों में ₹33,000 और ₹19,800 प्रति किलोवाट। 3 किलोवाट तक के सिस्टम के लिए बिना गिरवी का कम ब्याज वाला ऋण मिलता है (अगस्त 2026 में 5.75% सालाना)। बची हुई बिजली बिजली कंपनी को बेची जा सकती है। योजना का लक्ष्य 1 करोड़ घर है; अगस्त 2026 तक इसके तहत 50 लाख से ज़्यादा घरों की छत पर सौर लग चुका था।",
       "how_to_apply": "बिजली कनेक्शन की जानकारी के साथ पीएम सूर्य घर राष्ट्रीय पोर्टल पर पंजीकरण करें, पंजीकृत विक्रेता चुनें और वहीं सब्सिडी के लिए आवेदन करें। सिस्टम लगने और जाँच के बाद सब्सिडी आपके बैंक खाते में आती है।"
     }
   },
@@ -106,7 +106,45 @@
       "text": {
         "en": "The household has its own home (residential) electricity connection",
         "hi": "परिवार के पास घर का अपना (आवासीय) बिजली कनेक्शन है"
-      }
+      },
+      "quote": "Any consumer tagged to a particular residential power connection of the local DISCOM, is eligible to take benefit under the scheme"
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "cabinet_2024",
+      "quote": "At current benchmark prices, this will mean Rs 30,000 subsidy for 1 kW system, Rs 60,000 for 2 kW systems and Rs 78,000 for 3 kW systems or higher."
+    },
+    {
+      "about": "amount",
+      "source": "criteria",
+      "quote": "Residential Sector (first 2 kWp of RTS capacity or part thereof) Rs 30,000/kWp Rs 33,000/kWp"
+    },
+    {
+      "about": "amount",
+      "source": "criteria",
+      "quote": "Residential Sector (with additional RTS capacity of 1 kWp or part thereof) Rs 18,000/kWp Rs 19,800/kWp"
+    },
+    {
+      "about": "benefit",
+      "source": "cabinet_2024",
+      "quote": "Households will be able to access collateral-free low-interest loan products of around 7% at present for installation of residential RTS systems up to 3 kW."
+    },
+    {
+      "about": "amount",
+      "source": "progress_2026",
+      "quote": "Concessional loans at 5.75 percent, benchmarked to the Repo rate plus 50 basis points"
+    },
+    {
+      "about": "benefit",
+      "source": "cabinet_2024",
+      "quote": "earn additional income through sale of surplus power to DISCOMs"
+    },
+    {
+      "about": "benefit",
+      "source": "progress_2026",
+      "quote": "has crossed a landmark milestone with over 50.06 lakh households now benefiting from rooftop solar installations across the country"
     }
   ],
   "documents": [

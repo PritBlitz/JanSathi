@@ -74,6 +74,7 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "§2.2.6, p. 27",
+      "quote": "maternity benefit of not less than rupees five thousand, in two instalments will be provided to women belonging to socially and economically disadvantaged sections of society",
       "text": {
         "en": "Woman",
         "hi": "महिला"
@@ -93,6 +94,7 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "§2.2.6, p. 27",
+      "quote": "provides for financial support for pregnant and lactating mothers is to improve the health and nutrition for mother and child",
       "text": {
         "en": "Pregnant or breastfeeding",
         "hi": "गर्भवती हैं या स्तनपान करा रही हैं"
@@ -112,6 +114,7 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "§2.2.6, p. 28",
+      "quote": "all pregnant women and lactating mothers in regular employment with the central Government or State Government or public Sector Undertaking or those who are in receipt of similar benefits under any law for the time being in force shall not be entitled to benefits under PMMVY.",
       "text": {
         "en": "Not in regular employment with the central or state government or a PSU",
         "hi": "केंद्र या राज्य सरकार या सार्वजनिक उपक्रम की नियमित नौकरी में नहीं हैं"
@@ -183,13 +186,51 @@
         ]
       },
       "hard": true,
-      "confidence": "confirmed",
+      "confidence": "uncertain",
       "source": "guidelines",
-      "locator": "§2.2.6, pp. 27-28, items i-viii",
+      "locator": "§2.2.6, pp. 27-28, items i-x",
+      "quote": "The criteria for determining socially and economically disadvantaged sections of society will be the following: i. Women belonging to scheduled castes and scheduled tribes; ii. Women who are partially (40%) or fully disabled (Divyang Jan) iii. Women holder of BPL ration Card",
       "text": {
-        "en": "Belongs to a listed group: SC or ST, 40% or more disability, BPL ration card, PM-JAY card, e-Shram card, MGNREGA job card (or the new Gramin Rozgar Guarantee Card), or family income below ₹8 lakh a year. Women farmers on PM-KISAN and Anganwadi or ASHA workers also qualify.",
-        "hi": "इनमें से किसी समूह से हैं: अनुसूचित जाति या जनजाति, 40% या ज़्यादा दिव्यांगता, बीपीएल राशन कार्ड, पीएम-जेएवाई कार्ड, ई-श्रम कार्ड, मनरेगा जॉब कार्ड (या नया ग्रामीण रोज़गार गारंटी कार्ड), या परिवार की आय साल में ₹8 लाख से कम। पीएम-किसान वाली महिला किसान और आंगनवाड़ी या आशा कार्यकर्ता भी शामिल हैं।"
+        "en": "Belongs to a listed group: SC or ST, 40% or more disability, BPL ration card, PM-JAY card, e-Shram card, MGNREGA job card, or family income below ₹8 lakh a year. Women farmers on PM-KISAN and pregnant or breastfeeding Anganwadi or ASHA workers are also listed. This app cannot check those groups, so ask the office.",
+        "hi": "इनमें से किसी समूह से हैं: अनुसूचित जाति या जनजाति, 40% या ज़्यादा दिव्यांगता, बीपीएल राशन कार्ड, पीएम-जेएवाई कार्ड, ई-श्रम कार्ड, मनरेगा जॉब कार्ड, या परिवार की आय साल में ₹8 लाख से कम। पीएम-किसान वाली महिला किसान और गर्भवती या स्तनपान कराने वाली आंगनवाड़ी या आशा कार्यकर्ता भी सूची में हैं। ऐप इन समूहों की जाँच नहीं कर सकता, इसलिए कार्यालय से पूछें।"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "In case of the first child the amount of ₹5000 in two instalments and for the second child, the benefit of ₹6000 will be provided subject to second child is a girl child in one instalment after the birth."
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "On registration of pregnancy and at least one Ante-natal check-up within 6 months from LMP date at the Anganwadi Centre (AWC)/ approved Health facilities may be identified by the respective administering State /UT ₹ 3,000/-"
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Child has received first cycle of BCG, OPV,DPT and Hepatitis-B or its equivalent/substitute ₹ 2,000/-"
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "The eligible beneficiaries would receive the remaining cash incentives as per approved norms towards maternity benefit under Janani Suraksha Yojana (JSY) after institutional delivery"
+    },
+    {
+      "about": "benefit",
+      "source": "guidelines",
+      "quote": "However, for availing benefits for second child, registration during the pregnancy shall be mandatory."
+    },
+    {
+      "about": "benefit",
+      "source": "guidelines",
+      "quote": "An eligible beneficiary can apply, at any point of time but not later than 730 days of pregnancy. LMP registered in the MCP card will be the date of pregnancy to be considered in this respect."
+    },
+    {
+      "about": "benefit",
+      "source": "guidelines",
+      "quote": "The funds to the beneficiaries under PMMVY will be transferred directly to their Bank/Post Office account in Direct Benefit Transfer Mode."
     }
   ],
   "documents": [

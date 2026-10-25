@@ -87,12 +87,35 @@
       },
       "hard": true,
       "confidence": "guidance",
-      "source": "cabinet_2023",
-      "locator": "Paras 1 and 4",
+      "source": "nfsa_act",
+      "locator": "Section 3(1) and first proviso",
+      "quote": "Every person belonging to priority households, identified under sub-section (1) of section 10, shall be entitled to receive five kilograms of foodgrains per person per month",
       "text": {
         "en": "The family has an NFSA ration card (Antyodaya or Priority Household)",
         "hi": "परिवार के पास NFSA राशन कार्ड (अंत्योदय या प्राथमिकता परिवार) है"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "nfsa_act",
+      "quote": "shall be entitled to receive five kilograms of foodgrains per person per month"
+    },
+    {
+      "about": "amount",
+      "source": "nfsa_act",
+      "quote": "Provided that the households covered under Antyodaya Anna Yojana shall, to such extent as may be specified by the Central Government for each State in the said scheme, be entitled to thirty-five kilograms of foodgrains per household per month"
+    },
+    {
+      "about": "benefit",
+      "source": "cabinet_2023",
+      "quote": "the Central government will provide free food grains to about 81.35 crore beneficiaries under the Pradhan Mantri Garib Kalyan Anna Yojana (PMGKAY) for a period of five years with effect from 1 st January, 2024."
+    },
+    {
+      "about": "benefit",
+      "source": "cabinet_2023",
+      "quote": "allowing beneficiaries to lift free of cost food-grains from any fair price shop in the country under the ONORC-One Nation One Ration Card- initiative"
     }
   ],
   "documents": [

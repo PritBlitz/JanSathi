@@ -36,7 +36,7 @@
     }
   },
   {
-    "name": "income exactly 800,000: the limit is \"less than ₹8 lakh\"",
+    "name": "income exactly 800,000: the limit is \"less than ₹8 lakh\" (uncertain rule: check with the office)",
     "profile": {
       "gender": "female",
       "is_pregnant_or_lactating": true,
@@ -52,14 +52,14 @@
     "skipped": [],
     "as_of": "2026-10-25",
     "expect": {
-      "result": "NOT_ELIGIBLE",
+      "result": "NEED_MORE_INFO",
       "rules": {
         "disadvantaged_group": "fail"
       }
     }
   },
   {
-    "name": "income 800,001",
+    "name": "income 800,001 (uncertain rule: check with the office)",
     "profile": {
       "gender": "female",
       "is_pregnant_or_lactating": true,
@@ -75,7 +75,10 @@
     "skipped": [],
     "as_of": "2026-10-25",
     "expect": {
-      "result": "NOT_ELIGIBLE"
+      "result": "NEED_MORE_INFO",
+      "rules": {
+        "disadvantaged_group": "fail"
+      }
     }
   },
   {
@@ -182,7 +185,7 @@
     }
   },
   {
-    "name": "39% disability only",
+    "name": "39% disability only (uncertain rule: check with the office)",
     "profile": {
       "gender": "female",
       "is_pregnant_or_lactating": true,
@@ -198,7 +201,10 @@
     "skipped": [],
     "as_of": "2026-10-25",
     "expect": {
-      "result": "NOT_ELIGIBLE"
+      "result": "NEED_MORE_INFO",
+      "rules": {
+        "disadvantaged_group": "fail"
+      }
     }
   },
   {

@@ -81,7 +81,8 @@
       "text": {
         "en": "The household's main earner died while aged above 18 and below 60",
         "hi": "परिवार के मुख्य कमाने वाले की मृत्यु 18 से ज़्यादा और 60 से कम उम्र में हुई"
-      }
+      },
+      "quote": "The death of such a bread-winner should have occurred whilst he/she is more than 18 years of age and less than 60 years of age."
     },
     {
       "code": "bpl",
@@ -100,7 +101,20 @@
       "text": {
         "en": "The household is below the poverty line (BPL)",
         "hi": "परिवार गरीबी रेखा से नीचे (बीपीएल) है"
-      }
+      },
+      "quote": "The assistance under the sub-schemes of NSAP are applicable for persons belonging to Below Poverty Line (BPL) category."
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Rs. 20000/- will be given as a lumpsum assistance to the bereaved household in the event of death of the bread-winner."
+    },
+    {
+      "about": "benefit",
+      "source": "cabinet_2026",
+      "quote": "Pension schemes for old aged & widows and family benefit scheme will continue in its existing form."
     }
   ],
   "documents": [

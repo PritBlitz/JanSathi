@@ -20,13 +20,13 @@
     "en": {
       "name": "Atal Pension Yojana (pension for workers)",
       "summary": "A pension savings scheme you join through your bank, mainly for workers in the unorganised sector. You can join between age 18 and 40.",
-      "benefit": "From age 60 you receive a fixed pension of ₹1,000, ₹2,000, ₹3,000, ₹4,000 or ₹5,000 a month, depending on how much you pay in and the age you join. If returns are lower than expected, the central government pays the difference. After your death, your spouse receives the pension, and then your nominee gets the saved amount.",
+      "benefit": "From age 60 the scheme pays a fixed minimum pension of ₹1,000, ₹2,000, ₹3,000, ₹4,000 or ₹5,000 a month, depending on how much is paid in and the age of joining. If returns are lower than expected, the central government pays the difference. After your death, your spouse receives the pension, and then your nominee gets the saved amount.",
       "how_to_apply": "Ask at your bank or post office where you have a savings account, or use your bank's app or net banking. Contributions are taken from your account every month, quarter or half year, for at least 20 years. People who pay income tax cannot join (since 1 October 2022)."
     },
     "hi": {
       "name": "अटल पेंशन योजना (कामगारों के लिए पेंशन)",
       "summary": "पेंशन बचत योजना जिसमें आप अपने बैंक से जुड़ते हैं, ख़ासकर असंगठित क्षेत्र के कामगारों के लिए। 18 से 40 साल की उम्र में जुड़ सकते हैं।",
-      "benefit": "60 साल की उम्र से आपको हर महीने ₹1,000, ₹2,000, ₹3,000, ₹4,000 या ₹5,000 की तय पेंशन मिलती है, यह इस पर निर्भर है कि आप कितना जमा करते हैं और किस उम्र में जुड़ते हैं। अगर कमाई उम्मीद से कम रहे, तो अंतर केंद्र सरकार भरती है। आपकी मृत्यु के बाद पति या पत्नी को पेंशन मिलती है, और फिर नामांकित व्यक्ति को जमा राशि।",
+      "benefit": "60 साल की उम्र से योजना हर महीने ₹1,000, ₹2,000, ₹3,000, ₹4,000 या ₹5,000 की तय न्यूनतम पेंशन देती है, यह इस पर निर्भर है कि कितना जमा किया गया और किस उम्र में जुड़े। अगर कमाई उम्मीद से कम रहे, तो अंतर केंद्र सरकार भरती है। आपकी मृत्यु के बाद पति या पत्नी को पेंशन मिलती है, और फिर नामांकित व्यक्ति को जमा राशि।",
       "how_to_apply": "जिस बैंक या डाकघर में आपका बचत खाता है, वहाँ पूछें, या बैंक के ऐप या नेट बैंकिंग से जुड़ें। पैसा हर महीने, तिमाही या छमाही आपके खाते से कटता है, कम से कम 20 साल तक। आयकर भरने वाले लोग नहीं जुड़ सकते (1 अक्टूबर 2022 से)।"
     }
   },
@@ -75,6 +75,7 @@
       "confidence": "guidance",
       "source": "dfs",
       "locator": "Scheme page, para 2",
+      "quote": "The minimum age of joining APY is 18 years and maximum age is 40 years.",
       "text": {
         "en": "Age 18 or older",
         "hi": "उम्र 18 साल या उससे ज़्यादा"
@@ -94,6 +95,7 @@
       "confidence": "guidance",
       "source": "dfs",
       "locator": "Scheme page, para 2",
+      "quote": "The minimum age of joining APY is 18 years and maximum age is 40 years.",
       "text": {
         "en": "Age 40 or younger",
         "hi": "उम्र 40 साल या उससे कम"
@@ -113,10 +115,28 @@
       "confidence": "guidance",
       "source": "pib_2025",
       "locator": "Eligibility Criteria table, p. 2",
+      "quote": "With effect from 1st October 2022, individuals paying income tax are not eligible to join the scheme.",
       "text": {
         "en": "Does not pay income tax",
         "hi": "आयकर नहीं भरते"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "dfs",
+      "quote": "Under APY, the subscribers would receive the fixed minimum pension of Rs. 1000 per month, Rs. 2000 per month, Rs. 3000 per month, Rs. 4000 per month and Rs. 5000 per month at the age of 60 years depending on their contributions, which itself would be based on the age of joining APY."
+    },
+    {
+      "about": "benefit",
+      "source": "dfs",
+      "quote": "the Central Government would fund such inadequacy. Alternatively, if the returns on investment are higher, the subscribers would get enhanced pensionary benefits."
+    },
+    {
+      "about": "benefit",
+      "source": "pib_2025",
+      "quote": "In case of death of subscriber, spouse receives the pension; nominee gets corpus"
     }
   ],
   "documents": [

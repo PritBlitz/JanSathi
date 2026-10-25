@@ -19,13 +19,13 @@
   "content": {
     "en": {
       "name": "PM Fasal Bima Yojana (crop insurance)",
-      "summary": "Low-cost insurance for crops lost to bad weather, pests or disease. Owner farmers, tenant farmers and sharecroppers can join. Joining is voluntary.",
+      "summary": "Low-cost insurance for crops lost to bad weather, pests or disease. Owner farmers, tenant farmers and sharecroppers can join. Farmers without a crop loan can join if they choose. For farmers with a crop loan, the bank takes the premium from the loan.",
       "benefit": "The farmer pays at most 2% of the insured amount for kharif food and oilseed crops, 1.5% for rabi food and oilseed crops, and 5% for commercial and horticulture crops. The central and state governments pay the rest of the premium.",
       "how_to_apply": "Enrol through your bank, a Common Service Centre, the insurance company or the PMFBY website before your state's last date for the season. Only notified crops in notified areas are covered. In Kharif 2026, 25 states and union territories run the scheme, so check whether your state does. Tenant farmers and sharecroppers need the tenancy or sowing document your state asks for."
     },
     "hi": {
       "name": "प्रधानमंत्री फ़सल बीमा योजना",
-      "summary": "ख़राब मौसम, कीड़ों या बीमारी से फ़सल के नुकसान के लिए कम कीमत का बीमा। ज़मीन के मालिक किसान, किरायेदार किसान और बटाईदार जुड़ सकते हैं। जुड़ना अपनी मर्ज़ी से है।",
+      "summary": "ख़राब मौसम, कीड़ों या बीमारी से फ़सल के नुकसान के लिए कम कीमत का बीमा। ज़मीन के मालिक किसान, किरायेदार किसान और बटाईदार जुड़ सकते हैं। जिन किसानों पर फ़सल ऋण नहीं है, वे चाहें तो जुड़ सकते हैं। फ़सल ऋण वाले किसानों का प्रीमियम बैंक ऋण की राशि से काटता है।",
       "benefit": "किसान ख़रीफ़ की खाद्य और तिलहन फ़सलों के लिए बीमा राशि का ज़्यादा से ज़्यादा 2%, रबी की खाद्य और तिलहन फ़सलों के लिए 1.5%, और व्यावसायिक व बागवानी फ़सलों के लिए 5% देता है। बाकी प्रीमियम केंद्र और राज्य सरकार देती हैं।",
       "how_to_apply": "सीज़न के लिए अपने राज्य की आख़िरी तारीख़ से पहले बैंक, कॉमन सर्विस सेंटर, बीमा कंपनी या पीएमएफ़बीवाई वेबसाइट से नामांकन करें। केवल अधिसूचित क्षेत्रों की अधिसूचित फ़सलें कवर होती हैं। ख़रीफ़ 2026 में 25 राज्य और केंद्र शासित प्रदेश यह योजना चला रहे हैं, इसलिए देखें कि आपका राज्य इसमें है या नहीं। किरायेदार किसानों और बटाईदारों को राज्य का माँगा गया किरायेदारी या बुवाई का दस्तावेज़ चाहिए।"
     }
@@ -73,10 +73,43 @@
       "confidence": "guidance",
       "source": "factsheet_2026",
       "locator": "Inclusive Coverage of Farmers, p. 2",
+      "quote": "PMFBY provides inclusive crop insurance coverage to farmers, including tenant farmers and sharecroppers, subject to prescribed eligibility conditions.",
       "text": {
         "en": "Grows crops (as owner, tenant or sharecropper)",
         "hi": "फ़सल उगाते हैं (मालिक, किरायेदार या बटाईदार के रूप में)"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "factsheet_2026",
+      "quote": "Farmers pay a maximum premium of 2% for Kharif and 1.5% for Rabi foodgrain and oilseed crops. For commercial and horticultural crops, the maximum premium is 5%."
+    },
+    {
+      "about": "benefit",
+      "source": "factsheet_2026",
+      "quote": "The Central & State Governments subsidizes the remaining premium in 50:50 proportion."
+    },
+    {
+      "about": "benefit",
+      "source": "factsheet_2026",
+      "quote": "Non-loanee farmers are those without crop loans or with non-standard Kisan Credit Card (KCC)-linked loans. They can voluntarily enroll under PMFBY for crop insurance coverage."
+    },
+    {
+      "about": "benefit",
+      "source": "factsheet_2026",
+      "quote": "Their premiums are automatically deducted from the loan amount by the respective banks."
+    },
+    {
+      "about": "benefit",
+      "source": "factsheet_2026",
+      "quote": "PMFBY is currently being implemented by 25 States and Union Territories in Kharif 2026."
+    },
+    {
+      "about": "benefit",
+      "source": "factsheet_2026",
+      "quote": "crop losses in non-notified areas, outside the covered crop lifecycle (i.e., before sowing and after removal of the crop from the field), and losses caused by negligence or man-made or preventable risks are not covered."
     }
   ],
   "documents": [

@@ -20,13 +20,13 @@
     "en": {
       "name": "Post-matric scholarship for SC students",
       "summary": "A scholarship for Scheduled Caste students who have passed class 10 and study further in India.",
-      "benefit": "The scholarship pays the compulsory non-refundable fees charged by the institution and a yearly academic allowance. The amount depends on the course group. All children of a family can get it.",
+      "benefit": "The scholarship pays the compulsory non-refundable fees charged by the institution and a yearly academic allowance. The amount depends on the course group. Students with a disability get 10% more allowance. All children of a family can get it.",
       "how_to_apply": "Apply on the scholarship portal your state uses (the National Scholarship Portal or the state portal) while applications are open for the academic year. Your state selects the scholars and your institution verifies the application. You cannot hold another scholarship or stipend at the same time; if you get two, choose one."
     },
     "hi": {
       "name": "अनुसूचित जाति के छात्रों के लिए पोस्ट-मैट्रिक छात्रवृत्ति",
       "summary": "कक्षा 10 पास करके भारत में आगे पढ़ने वाले अनुसूचित जाति के छात्रों के लिए छात्रवृत्ति।",
-      "benefit": "छात्रवृत्ति संस्थान की अनिवार्य, वापस न होने वाली फ़ीस और सालाना शैक्षणिक भत्ता देती है। राशि कोर्स के समूह पर निर्भर करती है। परिवार के सभी बच्चे इसे ले सकते हैं।",
+      "benefit": "छात्रवृत्ति संस्थान की अनिवार्य, वापस न होने वाली फ़ीस और सालाना शैक्षणिक भत्ता देती है। राशि कोर्स के समूह पर निर्भर करती है। दिव्यांग छात्रों को 10% ज़्यादा भत्ता मिलता है। परिवार के सभी बच्चे इसे ले सकते हैं।",
       "how_to_apply": "शैक्षणिक वर्ष के लिए आवेदन खुले हों तब अपने राज्य के छात्रवृत्ति पोर्टल (राष्ट्रीय छात्रवृत्ति पोर्टल या राज्य पोर्टल) पर आवेदन करें। राज्य छात्रों का चयन करता है और आपका संस्थान आवेदन की जाँच करता है। एक साथ कोई दूसरी छात्रवृत्ति या वज़ीफ़ा नहीं ले सकते; दो मिलें तो एक चुनें।"
     }
   },
@@ -44,6 +44,20 @@
       "verified_at": null,
       "verified_by": null,
       "note": "Scanned PDF without a text layer; clauses were read from the page images."
+    },
+    {
+      "id": "guidelines_text",
+      "url": "https://socialwelfare.goa.gov.in/wp-content/uploads/2024/07/Guidelines-to-post-matric-scholaships-to-the-students-belonging-to-scheduled-castes-for-students-in-India-2020-2021-to-2025-26_0001.pdf",
+      "title": "Guidelines: Post Matric Scholarships to the Students belonging to Scheduled Castes for Studies in India (2020-21 to 2025-26), Ministry of Social Justice and Empowerment, March 2021 (copy with a text layer)",
+      "publisher": "Department of Social Welfare, Government of Goa (copy of the Government of India guidelines)",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2021-03",
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:d726e2c8a16dcf572b050a014df9551414781bdc8b0268e7f3fcd5374a2c9f22",
+      "verified_at": null,
+      "verified_by": null,
+      "note": "Same March 2021 Government of India guidelines as the 'guidelines' source, scanned with an OCR text layer, so quotes can be checked. The OCR text has some errors, and the academic allowance table is garbled in the text layer."
     },
     {
       "id": "msje",
@@ -85,8 +99,9 @@
       },
       "hard": true,
       "confidence": "confirmed",
-      "source": "guidelines",
+      "source": "guidelines_text",
       "locator": "§5.2, p. 5",
+      "quote": "Only those candidates who belong to Scheduled Castes so specified in relation to the State/Union Territory to which the applicant actually belongs",
       "text": {
         "en": "Belongs to a Scheduled Caste",
         "hi": "अनुसूचित जाति से हैं"
@@ -109,8 +124,9 @@
       },
       "hard": true,
       "confidence": "confirmed",
-      "source": "guidelines",
+      "source": "guidelines_text",
       "locator": "§5.2 and §3(d), pp. 3, 5",
+      "quote": "who have passed the Matriculation or Higher Secondary or any higher examination of a recognized University or Board of Secondary Education will be eligible",
       "text": {
         "en": "Has passed class 10 and is studying further",
         "hi": "कक्षा 10 पास है और आगे पढ़ रहे हैं"
@@ -128,12 +144,35 @@
       },
       "hard": true,
       "confidence": "confirmed",
-      "source": "guidelines",
+      "source": "guidelines_text",
       "locator": "§5.3, p. 5",
+      "quote": "sources does not exceed Rs. 2,50,000/- (Rupees Two lakh Fifty thousand only) during the last Financial Year.",
       "text": {
         "en": "Parents' or guardian's income from all sources is up to ₹2.5 lakh a year",
         "hi": "माता-पिता या अभिभावक की सभी स्रोतों से आय साल में ₹2.5 लाख तक है"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "benefit",
+      "source": "guidelines_text",
+      "quote": "Compulsory non-refundable fees including tuition fee, as fixed by the Fee Fixation/Rationalization Committee of the State Government"
+    },
+    {
+      "about": "benefit",
+      "source": "guidelines_text",
+      "quote": "All the children of any parent/guardian will be entitled to receive benefits of the scheme."
+    },
+    {
+      "about": "amount",
+      "source": "guidelines_text",
+      "quote": "Ten percent extra allowances shall be provided for Divyang students."
+    },
+    {
+      "about": "benefit",
+      "source": "guidelines_text",
+      "quote": "A scholarship holder under this scheme will not hold any other scholarship/stipend."
     }
   ],
   "documents": [

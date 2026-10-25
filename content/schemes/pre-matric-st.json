@@ -60,6 +60,7 @@
       "confidence": "guidance",
       "source": "mota",
       "locator": "Pre Matric Scholarship Scheme: main features",
+      "quote": "check eligibility verification and disbursement of scholarship to eligible ST students directly to their bank accounts through DBT",
       "text": {
         "en": "Belongs to a Scheduled Tribe",
         "hi": "अनुसूचित जनजाति से हैं"
@@ -79,6 +80,7 @@
       "confidence": "guidance",
       "source": "mota",
       "locator": "Pre Matric Scholarship Scheme: main features",
+      "quote": "Applicable to students who are studying in Classes IX – X.",
       "text": {
         "en": "Studying in class 9 or 10",
         "hi": "कक्षा 9 या 10 में पढ़ रहे हैं"
@@ -98,10 +100,18 @@
       "confidence": "guidance",
       "source": "mota",
       "locator": "Pre Matric Scholarship Scheme: main features",
+      "quote": "Parental income from all sources should not exceed Rs.2.50 lakhs per annum.",
       "text": {
         "en": "Parents' income is up to ₹2.5 lakh a year",
         "hi": "माता-पिता की आय साल में ₹2.5 लाख तक है"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "mota",
+      "quote": "Scholarships are paid @ Rs.225/- per month for Day Scholars and @ Rs.525/- per month for Hostellers, for a period of 10 months in a year."
     }
   ],
   "documents": [

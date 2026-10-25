@@ -20,14 +20,14 @@
     "en": {
       "name": "PM Suraksha Bima Yojana (accident insurance)",
       "summary": "Low-cost accident insurance for people aged 18 to 70 who have a bank account.",
-      "benefit": "For death or permanent total disability from an accident, ₹2 lakh is paid. For permanent partial disability, ₹1 lakh. The premium is ₹20 a year, taken from your bank account. Cover runs from 1 June to 31 May and is renewed every year.",
-      "how_to_apply": "Ask at the bank or post office where you have a savings account, or join through your bank's app or net banking. Give consent for the premium to be taken from your account each year."
+      "benefit": "For death or permanent total disability from an accident, ₹2 lakh is paid. For partial disability, ₹1 lakh. The premium is ₹20 a year, taken from your bank account. Cover runs from 1 June to 31 May and can be renewed every year.",
+      "how_to_apply": "Ask at the bank where you have a savings account. Joining is linked to your bank account, and you agree to let the bank take the premium from your account each year."
     },
     "hi": {
       "name": "प्रधानमंत्री सुरक्षा बीमा योजना (दुर्घटना बीमा)",
       "summary": "बैंक खाते वाले 18 से 70 साल के लोगों के लिए कम कीमत का दुर्घटना बीमा।",
-      "benefit": "दुर्घटना में मृत्यु या पूरी स्थायी दिव्यांगता पर ₹2 लाख मिलते हैं। आंशिक स्थायी दिव्यांगता पर ₹1 लाख। प्रीमियम साल में ₹20 है, जो आपके बैंक खाते से कटता है। कवर 1 जून से 31 मई तक चलता है और हर साल नवीनीकृत होता है।",
-      "how_to_apply": "जिस बैंक या डाकघर में आपका बचत खाता है, वहाँ पूछें, या बैंक के ऐप या नेट बैंकिंग से जुड़ें। हर साल खाते से प्रीमियम कटने की सहमति दें।"
+      "benefit": "दुर्घटना में मृत्यु या पूरी स्थायी दिव्यांगता पर ₹2 लाख मिलते हैं। आंशिक दिव्यांगता पर ₹1 लाख। प्रीमियम साल में ₹20 है, जो आपके बैंक खाते से कटता है। कवर 1 जून से 31 मई तक चलता है और हर साल नवीनीकृत किया जा सकता है।",
+      "how_to_apply": "जिस बैंक में आपका बचत खाता है, वहाँ पूछें। जुड़ना आपके बैंक खाते से जुड़ा है, और आप बैंक को हर साल खाते से प्रीमियम काटने की सहमति देते हैं।"
     }
   },
   "sources": [
@@ -62,6 +62,7 @@
       "confidence": "guidance",
       "source": "dfs",
       "locator": "Scheme page, para 1",
+      "quote": "is available to people in the age group of 18 to 70 years having a bank account and who give their consent to join and enable auto-debit",
       "text": {
         "en": "Age 18 or older",
         "hi": "उम्र 18 साल या उससे ज़्यादा"
@@ -81,10 +82,38 @@
       "confidence": "guidance",
       "source": "dfs",
       "locator": "Scheme page, para 1",
+      "quote": "is available to people in the age group of 18 to 70 years having a bank account and who give their consent to join and enable auto-debit",
       "text": {
         "en": "Age 70 or younger",
         "hi": "उम्र 70 साल या उससे कम"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "dfs",
+      "quote": "Benefit of Rs. 2 Lakh payable on death or permanent total disability and Rs. 1 Lakh on partial disability."
+    },
+    {
+      "about": "amount",
+      "source": "dfs",
+      "quote": "Annual premium is Rs 20 per year;"
+    },
+    {
+      "about": "benefit",
+      "source": "dfs",
+      "quote": "Risk Cover period: 1st June to 31st May;"
+    },
+    {
+      "about": "benefit",
+      "source": "dfs",
+      "quote": "is a one-year personal accident insurance Scheme, renewable from year to year"
+    },
+    {
+      "about": "benefit",
+      "source": "dfs",
+      "quote": "premium payment through auto-debit from the bank account of the subscriber"
     }
   ],
   "documents": [

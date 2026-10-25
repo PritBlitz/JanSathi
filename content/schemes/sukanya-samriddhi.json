@@ -20,13 +20,13 @@
     "en": {
       "name": "Sukanya Samriddhi (savings for a daughter)",
       "summary": "A government savings account for a girl under 10, opened by a parent or guardian at a post office or an authorised bank.",
-      "benefit": "Deposits of ₹250 to ₹1.5 lakh a year earn an interest rate set by the government every quarter. Deposits get a tax deduction under section 80C and the interest is tax-free. Money can be taken out for her higher education. The account matures 21 years after it is opened, or can be closed early for her marriage after she turns 18. Only one account per girl.",
+      "benefit": "Deposits of ₹250 to ₹1.5 lakh a year earn interest at the rate the government sets. Deposits get a tax deduction under section 80C and the interest is tax-free. Money can be taken out for her higher education. The account matures 21 years after it is opened, or can be closed early for her marriage after she turns 18. Only one account per girl.",
       "how_to_apply": "Open the account at a post office or an authorised bank, with the girl's birth certificate and the parent's identity and address proof."
     },
     "hi": {
       "name": "सुकन्या समृद्धि (बेटी के लिए बचत)",
       "summary": "10 साल से कम उम्र की बेटी के लिए सरकारी बचत खाता, जिसे माता-पिता या अभिभावक डाकघर या अधिकृत बैंक में खोलते हैं।",
-      "benefit": "साल में ₹250 से ₹1.5 लाख तक जमा पर सरकार हर तिमाही ब्याज दर तय करती है। जमा पर धारा 80C में टैक्स छूट है और ब्याज टैक्स-फ़्री है। उसकी उच्च शिक्षा के लिए पैसा निकाला जा सकता है। खाता खुलने के 21 साल बाद पूरा होता है, या 18 साल के बाद उसकी शादी के लिए पहले बंद किया जा सकता है। हर बेटी का केवल एक खाता।",
+      "benefit": "साल में ₹250 से ₹1.5 लाख तक जमा पर सरकार की तय दर से ब्याज मिलता है। जमा पर धारा 80C में टैक्स छूट है और ब्याज टैक्स-फ़्री है। उसकी उच्च शिक्षा के लिए पैसा निकाला जा सकता है। खाता खुलने के 21 साल बाद पूरा होता है, या 18 साल के बाद उसकी शादी के लिए पहले बंद किया जा सकता है। हर बेटी का केवल एक खाता।",
       "how_to_apply": "बेटी के जन्म प्रमाण पत्र और माता-पिता के पहचान और पते के प्रमाण के साथ डाकघर या अधिकृत बैंक में खाता खोलें।"
     }
   },
@@ -60,10 +60,48 @@
       "confidence": "guidance",
       "source": "nsi",
       "locator": "Introduction, item 2",
+      "quote": "Account can be opened in the name of a girl child till she attains the age of 10 years.",
       "text": {
         "en": "Has a daughter younger than 10 (the account is opened in her name)",
         "hi": "10 साल से कम उम्र की बेटी है (खाता उसके नाम पर खुलता है)"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "nsi",
+      "quote": "Minimum deposit ₹ 250/- Maximum deposit ₹ 1.5 Lakh in a financial year."
+    },
+    {
+      "about": "benefit",
+      "source": "nsi",
+      "quote": "Deposit qualifies for deduction under Sec.80-C of I.T.Act."
+    },
+    {
+      "about": "benefit",
+      "source": "nsi",
+      "quote": "Interest earned in the account is free from Income Tax under Section -10 of I.T.Act."
+    },
+    {
+      "about": "benefit",
+      "source": "nsi",
+      "quote": "Withdrawal shall be allowed for the purpose of higher education of the Account holder to meet education expenses."
+    },
+    {
+      "about": "benefit",
+      "source": "nsi",
+      "quote": "The account shall mature on completion of a period of 21 years from the date of opening of account."
+    },
+    {
+      "about": "benefit",
+      "source": "nsi",
+      "quote": "The account can be prematurely closed in case of marriage of girl child after her attaining the age of 18 years."
+    },
+    {
+      "about": "benefit",
+      "source": "nsi",
+      "quote": "Only one account can be opened in the name of a girl child."
     }
   ],
   "documents": [

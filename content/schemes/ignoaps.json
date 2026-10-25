@@ -91,6 +91,7 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "§2.3, p. 6",
+      "quote": "The eligible age for IGNOAPS is 60 years.",
       "text": {
         "en": "Age 60 or older",
         "hi": "उम्र 60 साल या उससे ज़्यादा"
@@ -110,10 +111,23 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "§2.3, p. 6",
+      "quote": "The assistance under the sub-schemes of NSAP are applicable for persons belonging to Below Poverty Line (BPL) category.",
       "text": {
         "en": "The household is below the poverty line (BPL)",
         "hi": "परिवार गरीबी रेखा से नीचे (बीपीएल) है"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "The pension is Rs.200 p.m. for persons between 60 years and 79 years. For persons who are 80 years and above the pension is Rs.500/- per month."
+    },
+    {
+      "about": "benefit",
+      "source": "cabinet_2026",
+      "quote": "Pension schemes for old aged & widows and family benefit scheme will continue in its existing form."
     }
   ],
   "documents": [

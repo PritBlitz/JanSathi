@@ -20,7 +20,7 @@
     "en": {
       "name": "PM SVANidhi (loans for street vendors)",
       "summary": "Small working-capital loans without collateral for street vendors in towns, census towns and peri-urban areas. Lending is open until 31 March 2030.",
-      "benefit": "A first loan of up to ₹15,000 (repay in 12 months). If you repay on time or early, a second loan of up to ₹25,000 (18 months), then a third of up to ₹50,000 (36 months). You get an interest subsidy of 7% a year, credited every quarter, and there is no penalty for repaying early. After repaying the second loan you can get a UPI-linked credit card.",
+      "benefit": "A first loan of up to ₹15,000 (to repay in 12 months). A vendor who repays on time or early can then apply for a second loan of up to ₹25,000 (18 months), then a third of up to ₹50,000 (36 months). The scheme pays an interest subsidy of 7% a year into the borrower's account every quarter, and there is no penalty for repaying early. After repaying the second loan, a vendor can apply for a UPI-linked RuPay credit card.",
       "how_to_apply": "You need a Certificate of Vending, vendor ID card or a Letter of Recommendation. In statutory towns the town vending committee or urban local body gives it; in census towns and peri-urban areas the Block Development Office does, within 15 days of applying. Then apply through a bank, a Common Service Centre or the PM SVANidhi portal."
     },
     "hi": {
@@ -78,7 +78,35 @@
       "text": {
         "en": "Sells goods or food on the street (with a vending certificate, ID or recommendation letter)",
         "hi": "गली में सामान या खाना बेचते हैं (वेंडिंग प्रमाण पत्र, पहचान पत्र या सिफ़ारिश पत्र के साथ)"
-      }
+      },
+      "quote": "The target beneficiaries of the scheme are street vendors vending in various city-regions."
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "1st tranche loan of up to ₹15,000 to be repaid in 12 months"
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "2nd tranche loan of up to ₹25,000 to be repaid in 18 months and 3. 3rd tranche loan of up to ₹50,000 to be repaid in 36 months"
+    },
+    {
+      "about": "benefit",
+      "source": "guidelines",
+      "quote": "Upon timely or early repayment of a tranche, vendors will be eligible for the next tranche of working capital term loans, with the enhanced limit. For repayment before the scheduled date, no prepayment penalty will be charged from the vendor."
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "The vendors, availing loan under the scheme, are eligible to get an interest subsidy at 7% per annum. The interest subsidy amount will be credited into the borrower’s account quarterly."
+    },
+    {
+      "about": "benefit",
+      "source": "guidelines",
+      "quote": "A UPI linked RuPay Credit Card will be available as an additional facility for PM SVANidhi beneficiaries who have successfully repaid their 2nd tranche loan"
     }
   ],
   "documents": [

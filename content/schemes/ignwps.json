@@ -91,6 +91,7 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "§2.3, p. 6",
+      "quote": "Indira Gandhi National Widow Pension Scheme (IGNWPS): The eligible age is 40 years and the pension is Rs.300 per month.",
       "text": {
         "en": "Woman",
         "hi": "महिला"
@@ -110,6 +111,7 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "§2.3, p. 6",
+      "quote": "Indira Gandhi National Widow Pension Scheme (IGNWPS): The eligible age is 40 years and the pension is Rs.300 per month.",
       "text": {
         "en": "Widow",
         "hi": "विधवा"
@@ -129,6 +131,7 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "§2.3, p. 6",
+      "quote": "The eligible age is 40 years and the pension is Rs.300 per month.",
       "text": {
         "en": "Age 40 or older",
         "hi": "उम्र 40 साल या उससे ज़्यादा"
@@ -148,10 +151,23 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "§2.3, p. 6",
+      "quote": "The assistance under the sub-schemes of NSAP are applicable for persons belonging to Below Poverty Line (BPL) category.",
       "text": {
         "en": "The household is below the poverty line (BPL)",
         "hi": "परिवार गरीबी रेखा से नीचे (बीपीएल) है"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "The eligible age is 40 years and the pension is Rs.300 per month. After attaining the age of 80 years, the beneficiary will get Rs.500/- per month."
+    },
+    {
+      "about": "benefit",
+      "source": "cabinet_2026",
+      "quote": "Pension schemes for old aged & widows and family benefit scheme will continue in its existing form."
     }
   ],
   "documents": [

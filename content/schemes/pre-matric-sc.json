@@ -20,13 +20,13 @@
     "en": {
       "name": "Pre-matric scholarship for SC students (class 9 and 10)",
       "summary": "A yearly scholarship for Scheduled Caste students studying full time in class 9 or 10.",
-      "benefit": "₹3,500 a year for day scholars and ₹7,000 a year for students living in a hostel.",
+      "benefit": "₹3,500 a year for day scholars and ₹7,000 a year for students living in a hostel. Students with a disability get 10% more.",
       "how_to_apply": "Applications open on the National Scholarship Portal (NSP) every April. After registering there, you complete the application on your state's portal. You cannot hold another scholarship for the same studies. The current guidelines cover 2021-22 to 2025-26; check the portal for this year's rules."
     },
     "hi": {
       "name": "अनुसूचित जाति के छात्रों के लिए प्री-मैट्रिक छात्रवृत्ति (कक्षा 9 और 10)",
       "summary": "कक्षा 9 या 10 में पूरे समय पढ़ने वाले अनुसूचित जाति के छात्रों के लिए सालाना छात्रवृत्ति।",
-      "benefit": "घर से पढ़ने वाले छात्रों को साल में ₹3,500, और छात्रावास में रहने वाले छात्रों को साल में ₹7,000।",
+      "benefit": "घर से पढ़ने वाले छात्रों को साल में ₹3,500, और छात्रावास में रहने वाले छात्रों को साल में ₹7,000। दिव्यांग छात्रों को 10% ज़्यादा।",
       "how_to_apply": "हर साल अप्रैल में राष्ट्रीय छात्रवृत्ति पोर्टल (NSP) पर आवेदन खुलते हैं। वहाँ पंजीकरण के बाद अपने राज्य के पोर्टल पर आवेदन पूरा करें। उसी पढ़ाई के लिए दूसरी छात्रवृत्ति नहीं ले सकते। मौजूदा दिशानिर्देश 2021-22 से 2025-26 तक के हैं; इस साल के नियम पोर्टल पर देखें।"
     }
   },
@@ -74,6 +74,7 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "§4.2.1, p. 3",
+      "quote": "They should belong to a Scheduled Caste.",
       "text": {
         "en": "Belongs to a Scheduled Caste",
         "hi": "अनुसूचित जाति से हैं"
@@ -93,6 +94,7 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "§4.2.1, p. 3",
+      "quote": "The students should be studying in class IX and X on a full time basis.",
       "text": {
         "en": "Studying full time in class 9 or 10",
         "hi": "कक्षा 9 या 10 में पूरे समय पढ़ रहे हैं"
@@ -112,10 +114,23 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "§4.2.1, p. 3",
+      "quote": "Their Parent/Guardian's income should not exceed Rs. 2.50 lakh per annum.",
       "text": {
         "en": "Parents' or guardian's income is up to ₹2.5 lakh a year",
         "hi": "माता-पिता या अभिभावक की आय साल में ₹2.5 लाख तक है"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Day Scholar- Rs. 3500 per annum Hosteller - Component 1- Rs. 7000 per annum"
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "In addition, a 10% extra allowance shall be given to Divyang (Disabled) students."
     }
   ],
   "documents": [

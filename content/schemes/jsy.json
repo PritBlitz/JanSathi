@@ -60,6 +60,7 @@
       "confidence": "guidance",
       "source": "nhm",
       "locator": "Eligibility for Cash Assistance",
+      "quote": "The scheme focuses on poor pregnant woman with a special dispensation for states that have low institutional delivery rates",
       "text": {
         "en": "Woman",
         "hi": "महिला"
@@ -79,6 +80,7 @@
       "confidence": "guidance",
       "source": "nhm",
       "locator": "Eligibility for Cash Assistance",
+      "quote": "All pregnant women delivering in government health centres",
       "text": {
         "en": "Pregnant (or has just given birth)",
         "hi": "गर्भवती हैं (या अभी प्रसव हुआ है)"
@@ -88,6 +90,25 @@
       "code": "state_group",
       "logic": {
         "or": [
+          {
+            "in": [
+              {
+                "var": "state"
+              },
+              [
+                "up",
+                "uk",
+                "br",
+                "jh",
+                "mp",
+                "cg",
+                "as",
+                "rj",
+                "od",
+                "jk"
+              ]
+            ]
+          },
           {
             "in": [
               {
@@ -110,13 +131,31 @@
         ]
       },
       "hard": true,
-      "confidence": "uncertain",
+      "confidence": "guidance",
       "source": "nhm",
-      "locator": "Eligibility for Cash Assistance: LPS all women; HPS BPL/SC/ST",
+      "locator": "Important Features of JSY (list of Low Performing States) and Eligibility for Cash Assistance table: LPS all women; HPS BPL/SC/ST",
+      "quote": "LPS All pregnant women delivering in government health centres, such as Sub Centers (SCs)/Primary Health Centers (PHCs)/Community Health Centers (CHCs)/First Referral Units (FRUs)/general wards of district or state hospitals HPS All BPL/Scheduled Caste/Scheduled Tribe (SC/ST) women delivering in a government health centre",
       "text": {
-        "en": "BPL, SC or ST, or lives in a Low Performing State (where every woman delivering in a government facility qualifies)",
-        "hi": "बीपीएल, अनुसूचित जाति या जनजाति, या कम प्रदर्शन वाले राज्य में रहती हैं (जहाँ सरकारी केंद्र में प्रसव कराने वाली हर महिला शामिल है)"
+        "en": "Lives in a Low Performing State (UP, Uttarakhand, Bihar, Jharkhand, MP, Chhattisgarh, Assam, Rajasthan, Odisha, J&K), or is BPL, SC or ST",
+        "hi": "कम प्रदर्शन वाले राज्य (यूपी, उत्तराखंड, बिहार, झारखंड, एमपी, छत्तीसगढ़, असम, राजस्थान, ओडिशा, जम्मू-कश्मीर) में रहती हैं, या बीपीएल, अनुसूचित जाति या जनजाति से हैं"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "benefit",
+      "source": "nhm",
+      "quote": "namely, the states of Uttar Pradesh, Uttarakhand, Bihar, Jharkhand, Madhya Pradesh, Chhattisgarh, Assam, Rajasthan, Orissa, and Jammu and Kashmir. While these states have been named Low Performing States (LPS), the remaining states have been named High Performing states (HPS)."
+    },
+    {
+      "about": "amount",
+      "source": "nhm",
+      "quote": "Mother’s package ASHA’s package** (Amount in Rs.) LPS 1400 600 2000 1000 400 1400 HPS 700 600 1300 600 400 1000"
+    },
+    {
+      "about": "benefit",
+      "source": "nhm",
+      "quote": "LPS & HPS BPL/SC/ST women in accredited private institutions"
     }
   ],
   "documents": [

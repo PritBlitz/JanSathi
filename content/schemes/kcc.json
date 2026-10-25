@@ -60,10 +60,38 @@
       "confidence": "guidance",
       "source": "pib_2026",
       "locator": "Eligible Beneficiaries, pp. 2-3",
+      "quote": "It extends coverage to: individual farmers and joint borrowers who are owner-cultivators, tenant farmers, oral lessees, and sharecroppers.",
       "text": {
         "en": "Farms (as owner, tenant, oral lessee or sharecropper), or does dairy, poultry or fisheries work",
         "hi": "खेती करते हैं (मालिक, किरायेदार, मौखिक पट्टेदार या बटाईदार के रूप में), या डेयरी, मुर्गी पालन या मछली पालन का काम करते हैं"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "pib_2026",
+      "quote": "Short-term agri-loans up to Rs 3 lakh are available at 7% interest, with an additional 3% subvention for timely repayment, reducing the effective rate to 4%."
+    },
+    {
+      "about": "amount",
+      "source": "pib_2026",
+      "quote": "the crop loan limit under MISS, which has been raised from Rs 3 lakh to Rs 5 lakh."
+    },
+    {
+      "about": "amount",
+      "source": "pib_2026",
+      "quote": "the credit limit for fisheries and allied activities has been increased from Rs 2 lakh to Rs 5 lakh"
+    },
+    {
+      "about": "amount",
+      "source": "pib_2026",
+      "quote": "the collateral-free credit limit has increased from Rs 1.6 lakh to Rs 2 lakh per borrower, effective from 1 January 2025."
+    },
+    {
+      "about": "benefit",
+      "source": "pib_2026",
+      "quote": "The revised KCC offers a RuPay-enabled card with flexible withdrawals, digital payments, and one-time documentation"
     }
   ],
   "documents": [

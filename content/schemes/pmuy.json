@@ -21,13 +21,13 @@
       "name": "PM Ujjwala Yojana (free LPG connection)",
       "summary": "A deposit-free LPG cooking gas connection for an adult woman from a poor household that has no LPG connection.",
       "benefit": "The Government of India pays ₹1,600 for the connection (₹1,150 for a 5 kg cylinder), covering the cylinder deposit, regulator, hose, card and installation. The oil companies also give the first refill and a stove free.",
-      "how_to_apply": "Apply online on the PMUY website or at your nearest LPG distributor, with your ration card (or a self-declaration if you are a migrant), Aadhaar for you and the adult family members, and your bank account. The latest extension of 25 lakh connections was almost fully given out by 23 September 2026 (10.57 crore of 10.6 crore), so ask your distributor whether new connections are still available."
+      "how_to_apply": "Apply online on the PMUY website or at your nearest LPG distributor, with your ration card (or a self-declaration if you are a migrant), Aadhaar for you and the adult family members, and your bank account. The government approved 25 lakh more connections, taking the total target to 10.6 crore, and these are being given out now. Ask your distributor whether new connections are still available."
     },
     "hi": {
       "name": "प्रधानमंत्री उज्ज्वला योजना (मुफ़्त एलपीजी कनेक्शन)",
       "summary": "जिस गरीब परिवार के पास एलपीजी कनेक्शन नहीं है, उसकी वयस्क महिला के लिए बिना जमा राशि का रसोई गैस कनेक्शन।",
       "benefit": "कनेक्शन के लिए भारत सरकार ₹1,600 देती है (5 किलो सिलेंडर के लिए ₹1,150), जिसमें सिलेंडर की जमा राशि, रेगुलेटर, पाइप, कार्ड और लगाने का ख़र्च शामिल है। तेल कंपनियाँ पहली रिफ़िल और चूल्हा भी मुफ़्त देती हैं।",
-      "how_to_apply": "पीएमयूवाई वेबसाइट पर या पास के एलपीजी वितरक के पास राशन कार्ड (प्रवासी हों तो स्व-घोषणा), अपना और परिवार के वयस्क सदस्यों का आधार, और बैंक खाते के साथ आवेदन करें। 25 लाख कनेक्शन का नया विस्तार 23 सितंबर 2026 तक लगभग पूरा बँट चुका था (10.6 करोड़ में से 10.57 करोड़), इसलिए वितरक से पूछें कि नए कनेक्शन अभी मिल रहे हैं या नहीं।"
+      "how_to_apply": "पीएमयूवाई वेबसाइट पर या पास के एलपीजी वितरक के पास राशन कार्ड (प्रवासी हों तो स्व-घोषणा), अपना और परिवार के वयस्क सदस्यों का आधार, और बैंक खाते के साथ आवेदन करें। सरकार ने 25 लाख और कनेक्शन मंज़ूर किए, जिससे कुल लक्ष्य 10.6 करोड़ हो गया, और ये कनेक्शन अभी दिए जा रहे हैं। वितरक से पूछें कि नए कनेक्शन अभी मिल रहे हैं या नहीं।"
     }
   },
   "sources": [
@@ -60,6 +60,7 @@
       "confidence": "guidance",
       "source": "portal",
       "locator": "Eligibility Criteria",
+      "quote": "Adult woman belonging to any of the following categories.",
       "text": {
         "en": "Woman",
         "hi": "महिला"
@@ -79,6 +80,7 @@
       "confidence": "guidance",
       "source": "portal",
       "locator": "Eligibility Criteria",
+      "quote": "Applicant must have attained 18 years of age.",
       "text": {
         "en": "Age 18 or older",
         "hi": "उम्र 18 साल या उससे ज़्यादा"
@@ -98,6 +100,7 @@
       "confidence": "guidance",
       "source": "portal",
       "locator": "Eligibility Criteria",
+      "quote": "There should not be any other LPG connections in the same household.",
       "text": {
         "en": "The household has no LPG connection",
         "hi": "परिवार के पास कोई एलपीजी कनेक्शन नहीं है"
@@ -132,10 +135,33 @@
       "confidence": "uncertain",
       "source": "portal",
       "locator": "Eligibility Criteria: also PMAY-G, most backward classes, tea garden tribes, forest dwellers, island residents, SECC list, and the 14-point poverty declaration",
+      "quote": "SC Households ST Households Pradhan Mantri Awas Yojana (Gramin) Most Backward Classes Antyodaya Anna Yojana (AAY) Tea and Ex- Tea Garden tribes Forest Dwellers People residing in Islands and River Islands SECC Households (AHL TIN) Poor Household as per 14-point declaration",
       "text": {
         "en": "Belongs to a listed group: SC or ST household, Antyodaya card, PMAY-G house, most backward classes, tea garden tribes, forest dwellers, island residents, SECC list, or a poor household by the 14-point declaration",
         "hi": "इनमें से किसी समूह से हैं: अनुसूचित जाति या जनजाति परिवार, अंत्योदय कार्ड, पीएमएवाई-जी घर, अति पिछड़ा वर्ग, चाय बागान जनजाति, वनवासी, द्वीप निवासी, SECC सूची, या 14 बिंदु घोषणा के अनुसार गरीब परिवार"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "portal",
+      "quote": "Cash assistance for PMUY connections is provided by Government of India - Rs. 1600 (for a connection 14.2kg cylinder/ Rs. 1150 for a 5 kg cylinder)."
+    },
+    {
+      "about": "benefit",
+      "source": "portal",
+      "quote": "Security Deposit of Cylinder – Rs. 1250 for 14.2 kg cylinder/ Rs. 800 for 5 kg cylinder Pressure Regulator – Rs. 150 LPG Hose – Rs. 100 Domestic Gas Consumer Card – Rs. 25 Inspection/ Installation/ Demonstration charges – Rs. 75"
+    },
+    {
+      "about": "benefit",
+      "source": "portal",
+      "quote": "Additionally, All PMUY beneficiaries will be provided with first LPG refill and Stove (hotplate) both free of cost along with their deposit free connection by the Oil Marketing Companies (OMCs)."
+    },
+    {
+      "about": "benefit",
+      "source": "portal",
+      "quote": "Government of India has approved the release of an additional 25 lakh LPG connections under PMUY Scheme, taking the overall target under the scheme to 10.6 Crore connections. These connections are currently being released."
     }
   ],
   "documents": [

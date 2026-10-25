@@ -20,13 +20,13 @@
     "en": {
       "name": "Post-matric scholarship for OBC, EBC and DNT students (PM-YASASVI)",
       "summary": "A scholarship for students from Other Backward Classes, Economically Backward Classes and Denotified Tribes who have passed class 10 and study further.",
-      "benefit": "The scholarship pays an academic allowance and fees as set out in the scheme for each course group. Your state may add more. Only two boys of the same parents can get it; there is no such limit for girls.",
+      "benefit": "The scholarship pays a yearly academic allowance and tuition fee. The amount depends on the course group: ₹20,000 a year for degree and post-graduate professional courses, ₹13,000 for other professional courses, ₹8,000 for other graduate and post-graduate courses, and ₹5,000 for courses after class 10 that are not degrees (such as class 11-12, ITI and polytechnic). Your state may add more. Only two boys of the same parents can get it; there is no such limit for girls.",
       "how_to_apply": "Apply on your state's scholarship portal or the National Scholarship Portal. Get an income certificate once, at admission. You cannot hold another scholarship at the same time. The current guidelines cover 2021-22 to 2025-26; check the portal for this year's rules."
     },
     "hi": {
       "name": "अन्य पिछड़ा वर्ग, आर्थिक रूप से पिछड़ा वर्ग और विमुक्त जनजाति छात्रों के लिए पोस्ट-मैट्रिक छात्रवृत्ति (पीएम-यशस्वी)",
       "summary": "कक्षा 10 पास करके आगे पढ़ने वाले अन्य पिछड़ा वर्ग, आर्थिक रूप से पिछड़ा वर्ग और विमुक्त जनजाति के छात्रों के लिए छात्रवृत्ति।",
-      "benefit": "छात्रवृत्ति हर कोर्स समूह के लिए योजना में तय शैक्षणिक भत्ता और फ़ीस देती है। राज्य इसमें और जोड़ सकता है। एक ही माता-पिता के केवल दो बेटों को मिलती है; बेटियों के लिए ऐसी कोई सीमा नहीं है।",
+      "benefit": "छात्रवृत्ति सालाना शैक्षणिक भत्ता और ट्यूशन फ़ीस देती है। राशि कोर्स के समूह पर निर्भर है: डिग्री और स्नातकोत्तर स्तर के प्रोफ़ेशनल कोर्स के लिए साल में ₹20,000, दूसरे प्रोफ़ेशनल कोर्स के लिए ₹13,000, बाकी स्नातक और स्नातकोत्तर कोर्स के लिए ₹8,000, और कक्षा 10 के बाद के ऐसे कोर्स जो डिग्री नहीं हैं (जैसे कक्षा 11-12, आईटीआई और पॉलिटेक्निक) के लिए ₹5,000। राज्य इसमें और जोड़ सकता है। एक ही माता-पिता के केवल दो बेटों को मिलती है; बेटियों के लिए ऐसी कोई सीमा नहीं है।",
       "how_to_apply": "अपने राज्य के छात्रवृत्ति पोर्टल या राष्ट्रीय छात्रवृत्ति पोर्टल पर आवेदन करें। आय प्रमाण पत्र एक बार, दाख़िले के समय बनवाएँ। एक साथ दूसरी छात्रवृत्ति नहीं ले सकते। मौजूदा दिशानिर्देश 2021-22 से 2025-26 तक के हैं; इस साल के नियम पोर्टल पर देखें।"
     }
   },
@@ -74,6 +74,7 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "Post-matric component, Conditions of Eligibility (i), p. 14",
+      "quote": "The scholarships will be open to Indian nationals belonging to OBCs, EBCs and DNTs, as notified by the Central Govt./State Govt./ UT Admin.",
       "text": {
         "en": "Belongs to an Other Backward Class (OBC). Economically backward (EBC) and denotified tribe (DNT) students can also apply: check with the office.",
         "hi": "अन्य पिछड़ा वर्ग (OBC) से हैं। आर्थिक रूप से पिछड़े (EBC) और विमुक्त जनजाति (DNT) के छात्र भी आवेदन कर सकते हैं: कार्यालय से पूछें।"
@@ -98,6 +99,7 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "Conditions of Eligibility (iii), p. 14",
+      "quote": "passed the Matriculation or Higher secondary or any higher examination of a recognized University or Board of Secondary Education will be eligible",
       "text": {
         "en": "Has passed class 10 and is studying further",
         "hi": "कक्षा 10 पास है और आगे पढ़ रहे हैं"
@@ -117,10 +119,43 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "Conditions of Eligibility (xiv)-(xv), p. 15",
+      "quote": "Unemployed students whose parents/guardians income from all sources does not exceed Rs. 2.50 lakh per annum will be entitled for the scholarship under the scheme.",
       "text": {
         "en": "Parents' or guardian's income is up to ₹2.5 lakh a year",
         "hi": "माता-पिता या अभिभावक की आय साल में ₹2.5 लाख तक है"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Group 1: Degree and Post Graduate level professional courses 10000 10000 20000"
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Group 2: Other Professional Courses leading to Degree, Diploma, Certificate 8000 5000 13000"
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Group 3: Graduate and Post Graduate courses not covered under Group I & Group II 6000 2000 8000"
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Group 4: All post-matriculation (Post Class X level) non-degree courses 5000 0 5000"
+    },
+    {
+      "about": "benefit",
+      "source": "guidelines",
+      "quote": "The State Governments may, if they so decide, top up the academic allowance from their own resources."
+    },
+    {
+      "about": "benefit",
+      "source": "guidelines",
+      "quote": "Only two boys of the same parents/guardian will be entitled to receive scholarships. This restriction will, however, not apply to girls."
     }
   ],
   "documents": [

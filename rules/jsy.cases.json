@@ -28,7 +28,7 @@
     }
   },
   {
-    "name": "pregnant, general, not BPL: depends on the state, so check with the office",
+    "name": "pregnant, general, not BPL, state unknown: asks for the state",
     "profile": {
       "gender": "female",
       "is_pregnant_or_lactating": true,
@@ -40,9 +40,62 @@
     "expect": {
       "result": "NEED_MORE_INFO",
       "rules": {
-        "state_group": "fail"
+        "state_group": "unknown"
       },
-      "missing_fields": []
+      "missing_fields": [
+        "state"
+      ]
+    }
+  },
+  {
+    "name": "pregnant, general, not BPL, in a Low Performing State (Bihar)",
+    "profile": {
+      "gender": "female",
+      "state": "br",
+      "is_pregnant_or_lactating": true,
+      "social_category": "general",
+      "is_bpl": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "rules": {
+        "state_group": "pass"
+      }
+    }
+  },
+  {
+    "name": "pregnant, general, not BPL, in a High Performing State (Karnataka)",
+    "profile": {
+      "gender": "female",
+      "state": "ka",
+      "is_pregnant_or_lactating": true,
+      "social_category": "general",
+      "is_bpl": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "state_group": "fail"
+      }
+    }
+  },
+  {
+    "name": "pregnant ST woman in a High Performing State (Kerala)",
+    "profile": {
+      "gender": "female",
+      "state": "kl",
+      "is_pregnant_or_lactating": true,
+      "social_category": "st",
+      "is_bpl": false
+    },
+    "skipped": [],
+    "as_of": "2026-10-25",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
     }
   },
   {
@@ -85,6 +138,7 @@
     "expect": {
       "result": "NEED_MORE_INFO",
       "missing_fields": [
+        "state",
         "social_category",
         "is_bpl"
       ]

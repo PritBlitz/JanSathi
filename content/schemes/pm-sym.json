@@ -20,13 +20,13 @@
     "en": {
       "name": "PM Shram Yogi Maandhan (pension for unorganised workers)",
       "summary": "A pension scheme for workers in the unorganised sector, such as street vendors, domestic workers, construction and farm workers, who earn up to ₹15,000 a month and are aged 18 to 40.",
-      "benefit": "From age 60 you receive a pension of at least ₹3,000 a month. You pay a small monthly amount that depends on your age when you join, and the Government of India pays the same amount again. If you die after the pension starts, your spouse receives half of it.",
+      "benefit": "From age 60, the scheme gives a pension of at least ₹3,000 a month. The worker pays a small monthly amount (₹55 to ₹200, depending on age at joining), and the Government of India pays the same amount. If the worker dies after age 60, the spouse can get half of the pension as family pension.",
       "how_to_apply": "Register at a Common Service Centre (CSC) or on the Maandhan portal with your Aadhaar, a savings or Jan Dhan bank account with IFSC, and your mobile number."
     },
     "hi": {
       "name": "प्रधानमंत्री श्रम योगी मानधन (असंगठित कामगारों के लिए पेंशन)",
       "summary": "असंगठित क्षेत्र के कामगारों के लिए पेंशन योजना, जैसे रेहड़ी-पटरी वाले, घरेलू कामगार, निर्माण और खेत मज़दूर, जो महीने में ₹15,000 तक कमाते हैं और 18 से 40 साल के हैं।",
-      "benefit": "60 साल की उम्र से आपको हर महीने कम से कम ₹3,000 पेंशन मिलती है। आप हर महीने छोटी राशि जमा करते हैं, जो जुड़ते समय की उम्र पर निर्भर है, और भारत सरकार उतनी ही राशि और जमा करती है। पेंशन शुरू होने के बाद आपकी मृत्यु होने पर पति या पत्नी को उसका आधा मिलता है।",
+      "benefit": "60 साल की उम्र से योजना हर महीने कम से कम ₹3,000 पेंशन देती है। कामगार हर महीने छोटी राशि (जुड़ते समय की उम्र के हिसाब से ₹55 से ₹200) जमा करता है, और भारत सरकार उतनी ही राशि जमा करती है। 60 साल के बाद कामगार की मृत्यु होने पर पति या पत्नी को पेंशन का आधा हिस्सा पारिवारिक पेंशन के रूप में मिल सकता है।",
       "how_to_apply": "आधार, IFSC वाला बचत या जन धन बैंक खाता और मोबाइल नंबर लेकर कॉमन सर्विस सेंटर (CSC) पर या मानधन पोर्टल पर पंजीकरण करें।"
     }
   },
@@ -78,7 +78,8 @@
       "text": {
         "en": "Age 18 or older",
         "hi": "उम्र 18 साल या उससे ज़्यादा"
-      }
+      },
+      "quote": "Age Requirement: 18 to 40 years."
     },
     {
       "code": "age_max",
@@ -97,7 +98,8 @@
       "text": {
         "en": "Age 40 or younger",
         "hi": "उम्र 40 साल या उससे कम"
-      }
+      },
+      "quote": "Age Requirement: 18 to 40 years."
     },
     {
       "code": "income_max",
@@ -116,7 +118,8 @@
       "text": {
         "en": "Earns ₹15,000 a month or less",
         "hi": "महीने में ₹15,000 या उससे कम कमाते हैं"
-      }
+      },
+      "quote": "Income Limit: Monthly income should be ₹15,000 or less."
     },
     {
       "code": "no_formal_cover",
@@ -135,7 +138,8 @@
       "text": {
         "en": "Not covered by EPF, ESIC or NPS, and gets no other government pension",
         "hi": "EPF, ESIC या NPS में नहीं हैं, और कोई दूसरी सरकारी पेंशन नहीं मिलती"
-      }
+      },
+      "quote": "Should not be covered under the Employees’ Provident Fund (EPF), Employees’ State Insurance Corporation (ESIC), or National Pension Scheme (NPS).Should not be an income taxpayer.Should not be receiving benefits from any other government pension scheme."
     },
     {
       "code": "no_income_tax",
@@ -154,7 +158,25 @@
       "text": {
         "en": "Does not pay income tax",
         "hi": "आयकर नहीं भरते"
-      }
+      },
+      "quote": "Exclusion Criteria: Should not be covered under the Employees’ Provident Fund (EPF), Employees’ State Insurance Corporation (ESIC), or National Pension Scheme (NPS).Should not be an income taxpayer."
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "mole_2025",
+      "quote": "Minimum Assured Pension: ₹3,000 per month after 60 years of age."
+    },
+    {
+      "about": "benefit",
+      "source": "mole_2025",
+      "quote": "Government Contribution: The Government of India matches the worker’s contribution on a 1:1 basis."
+    },
+    {
+      "about": "amount",
+      "source": "mole_2025",
+      "quote": "Death After 60 Years: The spouse receives 50% of the pension as a family pension."
     }
   ],
   "documents": [

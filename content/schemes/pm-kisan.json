@@ -104,7 +104,8 @@
       "text": {
         "en": "The family owns farm land in its name",
         "hi": "परिवार के नाम पर खेती की ज़मीन है"
-      }
+      },
+      "quote": "a family comprising of husband, wife and minor children who owns cultivable land as per land records of the concerned State/UT"
     },
     {
       "code": "no_income_tax",
@@ -123,7 +124,8 @@
       "text": {
         "en": "No one in the family paid income tax in the last assessment year",
         "hi": "पिछले कर निर्धारण वर्ष में परिवार में किसी ने आयकर नहीं भरा"
-      }
+      },
+      "quote": "All Persons who paid Income Tax in last assessment year."
     },
     {
       "code": "no_govt_job",
@@ -142,7 +144,8 @@
       "text": {
         "en": "No one in the family has (or retired from) a government or PSU job above Group D / Class IV / MTS, or gets a pension of ₹10,000 or more a month",
         "hi": "परिवार में किसी के पास ग्रुप डी / चतुर्थ श्रेणी / MTS से ऊपर की सरकारी या सार्वजनिक उपक्रम की नौकरी नहीं है (न ही वहाँ से रिटायर हुआ है), न ही किसी को ₹10,000 या ज़्यादा महीने की पेंशन मिलती है"
-      }
+      },
+      "quote": "All serving or retired officers and employees of Central / State Government Ministries / Offices / Departments and their field units, Central or State PSEs"
     },
     {
       "code": "no_professional",
@@ -161,7 +164,20 @@
       "text": {
         "en": "No one in the family practises as a registered doctor, engineer, lawyer, chartered accountant or architect",
         "hi": "परिवार में कोई पंजीकृत डॉक्टर, इंजीनियर, वकील, चार्टर्ड अकाउंटेंट या आर्किटेक्ट के रूप में काम नहीं करता"
-      }
+      },
+      "quote": "Professionals like Doctors, Engineers, Lawyers, Chartered Accountants, and Architects registered with Professional bodies and carrying out profession by undertaking practices."
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "The financial benefit of Rs.6000/- per year is to be released to the eligible farmers in three installments of Rs.2000/- each every 4-month / trimester"
+    },
+    {
+      "about": "benefit",
+      "source": "cabinet_2026",
+      "quote": "has approved continuation of the Pradhan Mantri Kisan Samman Nidhi (PM-KISAN) Scheme from 2026–27 to 2030–31"
     }
   ],
   "documents": [

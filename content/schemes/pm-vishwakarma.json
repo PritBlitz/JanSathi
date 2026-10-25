@@ -32,6 +32,19 @@
   },
   "sources": [
     {
+      "id": "guidelines",
+      "url": "https://pmvishwakarma.gov.in/CDN/MiscFiles/eng_v30.0_PM_Vishwakarma_Guidelines_final.pdf",
+      "title": "PM Vishwakarma: Guidelines for Implementation",
+      "publisher": "Ministry of Micro, Small and Medium Enterprises",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:bea3f55ade5f124ec2eb3be6ec710539aa76b8355d61e8d5e3a773273cd46ebe",
+      "verified_at": null,
+      "verified_by": null
+    },
+    {
       "id": "pib_2025",
       "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/sep/doc2025916638501.pdf",
       "title": "PM Vishwakarma Scheme: Honouring Heritage, Powering Progress",
@@ -70,13 +83,14 @@
         ]
       },
       "hard": true,
-      "confidence": "guidance",
-      "source": "pib_2025",
-      "locator": "Eligibility conditions, p. 3",
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "Para 4 Eligibility, p. 25",
       "text": {
         "en": "Works on their own, with hands and tools, in one of the 18 traditional trades",
         "hi": "18 पारंपरिक कामों में से किसी एक में अपने बल पर, हाथ और औज़ारों से काम करते हैं"
-      }
+      },
+      "quote": "An artisan or craftsperson working with hands and tools and engaged in one of the family-based traditional trades specified in Para 2.3, in the unorganized or informal sector, on self-employment basis"
     },
     {
       "code": "age_min",
@@ -89,13 +103,14 @@
         ]
       },
       "hard": true,
-      "confidence": "guidance",
-      "source": "pib_2025",
-      "locator": "Eligibility conditions, p. 3",
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "Para 4(i), p. 25",
       "text": {
         "en": "Age 18 or older",
         "hi": "उम्र 18 साल या उससे ज़्यादा"
-      }
+      },
+      "quote": "The minimum age of the beneficiary should be 18 years on the date of registration."
     },
     {
       "code": "no_recent_loan",
@@ -108,13 +123,14 @@
         ]
       },
       "hard": true,
-      "confidence": "guidance",
-      "source": "pib_2025",
-      "locator": "Eligibility conditions, p. 3",
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "Para 4(ii), p. 25",
       "text": {
         "en": "No government self-employment loan in the last 5 years (fully repaid Mudra or PM SVANidhi loans are fine)",
         "hi": "पिछले 5 साल में कोई सरकारी स्वरोज़गार ऋण नहीं (पूरा चुकाया मुद्रा या पीएम स्वनिधि ऋण चलेगा)"
-      }
+      },
+      "quote": "should not have availed loans under similar credit-based schemes of Central Government or State Government for self-employment/ business development, e.g. PMEGP, PM SVANidhi, MUDRA, in the past 5 years. However, the beneficiaries of MUDRA and SVANidhi who have fully repaid their loan, will be eligible under PM Vishwakarma."
     },
     {
       "code": "no_govt_employee",
@@ -127,13 +143,51 @@
         ]
       },
       "hard": true,
-      "confidence": "guidance",
-      "source": "pib_2025",
-      "locator": "Eligibility conditions, p. 3",
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "Para 4(iv), p. 25",
       "text": {
         "en": "No one in the family works in government service",
         "hi": "परिवार में कोई सरकारी नौकरी में नहीं है"
-      }
+      },
+      "quote": "A person in government service and his/her family members shall not be eligible under the Scheme."
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Each beneficiary will be eligible to receive a training stipend of Rs. 500 per day while undergoing the Basic and Advanced Training programmes."
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "A toolkit incentive of upto Rs. 15,000 will be provided to the beneficiary after Skill Assessment at the start of Basic Training."
+    },
+    {
+      "about": "amount",
+      "source": "scheme",
+      "quote": "Upto Rs 1 lakh (First Tranche for 18 months repayment) Upto Rs 2 lakh (Second Tranche for 30 months repayment)"
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Concessional rate of interest chargeable to beneficiaries for loan will be fixed at 5%."
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "An amount of Re. 1 per eligible digital transaction (upto maximum 100 eligible transactions monthly) will be credited to the beneficiary’s bank account"
+    },
+    {
+      "about": "benefit",
+      "source": "scheme",
+      "quote": "(a) Skill Identification followed by 5 days Basic Training (b) 15 days or more Advanced Training"
+    },
+    {
+      "about": "benefit",
+      "source": "pib_2025",
+      "quote": "Artisan and craftspersons are provided with the PM Vishwakarma certificate and ID Cards"
     }
   ],
   "documents": [

@@ -91,6 +91,7 @@
       "confidence": "guidance",
       "source": "cabinet_2026",
       "locator": "Changes in disability pension, (a)",
+      "quote": "Rights of Persons with Disability Act 2016 has necessitated changes in the eligibility criteria for disability pension and linked it to the ‘Benchmark Disability’ of 40%.",
       "text": {
         "en": "Has a disability with a disability certificate",
         "hi": "दिव्यांगता है, और उसका प्रमाण पत्र है"
@@ -110,6 +111,7 @@
       "confidence": "guidance",
       "source": "cabinet_2026",
       "locator": "Changes in disability pension, (a): 40% replaces 80%; revised guidelines pending",
+      "quote": "The criteria for benchmark disability under the scheme will be 40% against 80% at present.",
       "text": {
         "en": "Disability of 40% or more",
         "hi": "40% या उससे ज़्यादा दिव्यांगता"
@@ -129,10 +131,33 @@
       "confidence": "confirmed",
       "source": "guidelines",
       "locator": "§2.3, p. 6",
+      "quote": "The assistance under the sub-schemes of NSAP are applicable for persons belonging to Below Poverty Line (BPL) category.",
       "text": {
         "en": "The household is below the poverty line (BPL)",
         "hi": "परिवार गरीबी रेखा से नीचे (बीपीएल) है"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "cabinet_2026",
+      "quote": "Amount of assistance under divyangjan pension scheme will now be Rs.375/- for the age group of 0-79 yrs and Rs.625/- for 80 yrs and above."
+    },
+    {
+      "about": "benefit",
+      "source": "cabinet_2026",
+      "quote": "Minimum age criterion for the disability pension will now be since birth."
+    },
+    {
+      "about": "benefit",
+      "source": "cabinet_2026",
+      "quote": "Guidelines consisting of the change in eligibility criteria, no. of beneficiaries and rate of assistance under divyangjan pension will be issued and implemented within three months."
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "The eligible age for the pensioner is 18 years and above and the disability level has to be 80%. The amount is Rs.300 per month"
     }
   ],
   "documents": [

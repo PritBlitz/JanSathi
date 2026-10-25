@@ -20,13 +20,13 @@
     "en": {
       "name": "VB-G RAM G (125 days of rural work)",
       "summary": "A legal right to paid work for rural households. It replaced MGNREGA on 1 July 2026.",
-      "benefit": "Every rural household whose adult members are willing to do unskilled manual work can get up to 125 days of work in a financial year. Work must be given within 15 days of asking, or the state pays an unemployment allowance. Wages are paid into your bank or post office account every week, or within 15 days. Until new wage rates are notified, the old MGNREGA wage rates apply. Work within 5 km of your village where possible; beyond that, 10% extra is paid. States pause work during notified peak farming seasons.",
+      "benefit": "Every rural household whose adult members are willing to do unskilled manual work can get up to 125 days of work in a financial year. Work must be given within 15 days of asking, or the state pays an unemployment allowance. Wages are paid into your bank or post office account every week, or at the latest 15 days after the attendance roll for the work is closed. Until new wage rates are notified, the old MGNREGA wage rates apply. Work within 5 km of your village where possible; beyond that, 10% extra is paid. States pause work during notified peak farming seasons.",
       "how_to_apply": "An adult member applies at the gram panchayat with the names, ages and address of the household for a Gramin Rozgar Guarantee Card. Old MGNREGA job cards with e-KYC done stay valid until the new card is issued. Then ask for work at the gram panchayat, by speaking, in writing (form 6) or online."
     },
     "hi": {
       "name": "वीबी-जी राम जी (ग्रामीण काम के 125 दिन)",
       "summary": "ग्रामीण परिवारों के लिए मज़दूरी वाले काम का क़ानूनी अधिकार। 1 जुलाई 2026 से इसने मनरेगा की जगह ली है।",
-      "benefit": "जिस ग्रामीण परिवार के वयस्क सदस्य अकुशल शारीरिक काम करना चाहते हैं, उसे वित्त वर्ष में 125 दिन तक काम मिल सकता है। माँगने के 15 दिन के भीतर काम देना होता है, नहीं तो राज्य बेरोज़गारी भत्ता देता है। मज़दूरी हर हफ़्ते, या 15 दिन के भीतर, आपके बैंक या डाकघर खाते में आती है। नई मज़दूरी दरें आने तक मनरेगा की पुरानी दरें लागू हैं। जहाँ तक हो सके काम गाँव से 5 किलोमीटर के भीतर; उससे दूर हो तो 10% ज़्यादा। खेती के मुख्य मौसम में राज्य काम रोकते हैं।",
+      "benefit": "जिस ग्रामीण परिवार के वयस्क सदस्य अकुशल शारीरिक काम करना चाहते हैं, उसे वित्त वर्ष में 125 दिन तक काम मिल सकता है। माँगने के 15 दिन के भीतर काम देना होता है, नहीं तो राज्य बेरोज़गारी भत्ता देता है। मज़दूरी हर हफ़्ते, या काम की हाज़िरी सूची बंद होने के ज़्यादा से ज़्यादा 15 दिन बाद, आपके बैंक या डाकघर खाते में आती है। नई मज़दूरी दरें आने तक मनरेगा की पुरानी दरें लागू हैं। जहाँ तक हो सके काम गाँव से 5 किलोमीटर के भीतर; उससे दूर हो तो 10% ज़्यादा। खेती के मुख्य मौसम में राज्य काम रोकते हैं।",
       "how_to_apply": "परिवार का कोई वयस्क सदस्य ग्राम पंचायत में परिवार के नाम, उम्र और पता देकर ग्रामीण रोज़गार गारंटी कार्ड के लिए आवेदन करता है। ई-केवाईसी वाले पुराने मनरेगा जॉब कार्ड नया कार्ड मिलने तक मान्य हैं। फिर ग्राम पंचायत में बोलकर, लिखकर (फ़ॉर्म 6) या ऑनलाइन काम माँगें।"
     }
   },
@@ -77,6 +77,7 @@
       "confidence": "guidance",
       "source": "faq",
       "locator": "Who is eligible for employment under this Act?",
+      "quote": "Every rural household whose adult members volunteer to undertake unskilled manual work shall be eligible for employment under this Act.",
       "text": {
         "en": "Lives in a village (rural area)",
         "hi": "गाँव (ग्रामीण क्षेत्र) में रहते हैं"
@@ -96,10 +97,58 @@
       "confidence": "guidance",
       "source": "faq",
       "locator": "Who is eligible for employment under this Act? (adult members)",
+      "quote": "Adult members of rural areas may demand employment through the Gram Panchayat.",
       "text": {
         "en": "Age 18 or older",
         "hi": "उम्र 18 साल या उससे ज़्यादा"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "benefit",
+      "source": "faq",
+      "quote": "The Act guarantees 125 days of wage employment in a financial year to every eligible rural household whose adult members volunteer to undertake unskilled manual work."
+    },
+    {
+      "about": "benefit",
+      "source": "faq",
+      "quote": "Employment must be provided within 15 days from the date of application."
+    },
+    {
+      "about": "amount",
+      "source": "faq",
+      "quote": "unemployment allowance shall be payable by the State Government, at not less than one-fourth of the notified wage rate for the first thirty days during the financial year and not less than one-half of the notified wage rate for the remaining period."
+    },
+    {
+      "about": "amount",
+      "source": "faq",
+      "quote": "Until new Wage Rates are notified under the Act, the existing Mahatma Gandhi NREGA wage rates shall continue to apply."
+    },
+    {
+      "about": "benefit",
+      "source": "faq",
+      "quote": "Wages shall be paid weekly or in any case not later than a fortnight after closure of muster roll."
+    },
+    {
+      "about": "benefit",
+      "source": "faq",
+      "quote": "Wages are paid directly to the individual accounts of the workers in Banks or Post Offices through Direct Benefit Transfer."
+    },
+    {
+      "about": "amount",
+      "source": "faq",
+      "quote": "If provided beyond that (but within the Block), workers are paid an extra 10% of the wage rate for transport and living expenses."
+    },
+    {
+      "about": "benefit",
+      "source": "faq",
+      "quote": "the State Governments shall notify a period covering peak agriculture seasons during which works under the Act shall not be undertaken."
+    },
+    {
+      "about": "benefit",
+      "source": "commencement",
+      "quote": "will come into force across rural India with effect from July 1, 2026"
     }
   ],
   "documents": [

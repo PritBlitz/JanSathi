@@ -20,13 +20,13 @@
     "en": {
       "name": "Ayushman Bharat PM-JAY (health cover)",
       "summary": "Free hospital treatment at listed hospitals for families on the scheme list, and for every person aged 70 or older whatever their income.",
-      "benefit": "Health cover of up to ₹5 lakh per family per year for hospital treatment at listed government and private hospitals. A person aged 70 or older gets cover of up to ₹5 lakh a year; if their family is already on the list, this is an extra top-up just for them.",
+      "benefit": "Health cover of up to ₹5 lakh per family per year for hospital treatment at listed government and private hospitals. People aged 70 or older can be covered whatever their income: up to ₹5 lakh a year on a family basis. If their family is already on the list, they can get an extra top-up of up to ₹5 lakh a year just for themselves, not shared with younger family members.",
       "how_to_apply": "Check whether your family is on the list on the official beneficiary website, at a Common Service Centre, or at a listed hospital. People aged 70 or older can apply for the Ayushman Vay Vandana card on the Ayushman app, the beneficiary website, a listed hospital or a CSC. Those already in CGHS, ECHS or CAPF schemes can keep that scheme or choose PM-JAY."
     },
     "hi": {
       "name": "आयुष्मान भारत पीएम-जेएवाई (स्वास्थ्य कवर)",
       "summary": "योजना की सूची वाले परिवारों के लिए, और 70 साल या उससे ज़्यादा उम्र के हर व्यक्ति के लिए आय से फ़र्क पड़े बिना, सूचीबद्ध अस्पतालों में मुफ़्त इलाज।",
-      "benefit": "सूचीबद्ध सरकारी और निजी अस्पतालों में इलाज के लिए हर परिवार को साल में ₹5 लाख तक का स्वास्थ्य कवर। 70 साल या उससे ज़्यादा उम्र के व्यक्ति को साल में ₹5 लाख तक का कवर; अगर परिवार पहले से सूची में है, तो यह सिर्फ़ उनके लिए अतिरिक्त कवर है।",
+      "benefit": "सूचीबद्ध सरकारी और निजी अस्पतालों में अस्पताल में इलाज के लिए प्रति परिवार साल में ₹5 लाख तक का स्वास्थ्य कवर। 70 साल या उससे ज़्यादा उम्र के लोग, किसी भी आय के हों, शामिल हो सकते हैं: परिवार के आधार पर साल में ₹5 लाख तक का कवर। अगर उनका परिवार पहले से सूची में है, तो उन्हें सिर्फ़ अपने लिए साल में ₹5 लाख तक का अतिरिक्त टॉप-अप कवर मिल सकता है, जो परिवार के कम उम्र के सदस्यों के साथ साझा नहीं होता।",
       "how_to_apply": "आधिकारिक लाभार्थी वेबसाइट पर, कॉमन सर्विस सेंटर पर, या सूचीबद्ध अस्पताल में देखें कि आपका परिवार सूची में है या नहीं। 70 साल या उससे ज़्यादा उम्र के लोग आयुष्मान ऐप, लाभार्थी वेबसाइट, सूचीबद्ध अस्पताल या CSC पर आयुष्मान वय वंदना कार्ड के लिए आवेदन कर सकते हैं। जो पहले से CGHS, ECHS या CAPF योजना में हैं, वे वही योजना रख सकते हैं या पीएम-जेएवाई चुन सकते हैं।"
     }
   },
@@ -102,10 +102,28 @@
       "confidence": "guidance",
       "source": "cabinet_70plus",
       "locator": "Paras 1-2",
+      "quote": "With this approval, all senior citizens of the age 70 years and above irrespective of their socio- economic status would be eligible to avail the benefits of AB PM-JAY.",
       "text": {
         "en": "Aged 70 or older, or the family is on the PM-JAY list",
         "hi": "70 साल या उससे ज़्यादा उम्र, या परिवार पीएम-जेएवाई सूची में है"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "cabinet_70plus",
+      "quote": "AB PM-JAY is the world’s largest publicly funded health assurance scheme which provides health cover of Rs. 5 lakh per family per year for secondary and tertiary care hospitalization"
+    },
+    {
+      "about": "amount",
+      "source": "cabinet_70plus",
+      "quote": "The senior citizens of the age 70 years and above belonging to families already covered under AB PM-JAY will get an additional top-up cover upto ₹5 lakh per year for themselves (which they do not have to share with the other members of the family who are below the age of 70 years). All other senior citizens of the age 70 years and above will get a cover upto ₹5 lakh per year on a family basis."
+    },
+    {
+      "about": "benefit",
+      "source": "cabinet_70plus",
+      "quote": "All members of the eligible families irrespective of age are covered under the scheme."
     }
   ],
   "documents": [

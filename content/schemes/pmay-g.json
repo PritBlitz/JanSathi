@@ -20,13 +20,13 @@
     "en": {
       "name": "PM Awaas Yojana – Gramin (rural housing)",
       "summary": "Help to build a pucca house for village families who have no house, or live in a kutcha house with at most two rooms.",
-      "benefit": "The scheme gives ₹1.20 lakh to build a pucca house in plain areas, and ₹1.30 lakh in North Eastern states, Himachal Pradesh, Uttarakhand, Jammu & Kashmir and Ladakh. The 2022 framework also gives ₹12,000 for a toilet through Swachh Bharat Mission – Gramin, and 90 or 95 days of paid work under MGNREGS while building. MGNREGS was replaced by the VB-G RAM G Act on 1 July 2026, so ask your block office how the paid work is given now.",
+      "benefit": "The scheme gives ₹1.20 lakh to build a pucca house in plain areas, and ₹1.30 lakh in North Eastern states, Himachal Pradesh, Uttarakhand, Jammu & Kashmir and Ladakh. The 2022 framework also gives ₹12,000 for a toilet through Swachh Bharat Mission – Gramin, and 90 or 95 days of paid work under MGNREGS while building. Rural paid work moved to the new VB-G RAM G Act on 1 July 2026, so ask your block office how the paid work is given now.",
       "how_to_apply": "Families are chosen from the Awaas+ survey list (updated with the Awaas+ 2024 app) and the SECC 2011 list, and checked by the gram sabha. Ask at your gram panchayat or block office whether your family is on the list. The survey also leaves out households that pay professional tax or run a non-farm business registered with the government."
     },
     "hi": {
       "name": "प्रधानमंत्री आवास योजना – ग्रामीण",
       "summary": "जिन गाँव के परिवारों के पास घर नहीं है, या जो दो कमरों तक के कच्चे घर में रहते हैं, उन्हें पक्का घर बनाने में मदद।",
-      "benefit": "मैदानी इलाकों में पक्का घर बनाने के लिए ₹1.20 लाख, और पूर्वोत्तर राज्यों, हिमाचल प्रदेश, उत्तराखंड, जम्मू-कश्मीर और लद्दाख में ₹1.30 लाख दिए जाते हैं। 2022 के ढाँचे में स्वच्छ भारत मिशन – ग्रामीण से शौचालय के लिए ₹12,000, और घर बनाते समय मनरेगा में 90 या 95 दिन का मज़दूरी वाला काम भी है। 1 जुलाई 2026 से मनरेगा की जगह वीबी-जी राम जी अधिनियम आया है, इसलिए ब्लॉक कार्यालय से पूछें कि मज़दूरी वाला काम अब कैसे मिलता है।",
+      "benefit": "मैदानी इलाकों में पक्का घर बनाने के लिए ₹1.20 लाख, और पूर्वोत्तर राज्यों, हिमाचल प्रदेश, उत्तराखंड, जम्मू-कश्मीर और लद्दाख में ₹1.30 लाख दिए जाते हैं। 2022 के ढाँचे में स्वच्छ भारत मिशन – ग्रामीण से शौचालय के लिए ₹12,000, और घर बनाते समय मनरेगा में 90 या 95 दिन का मज़दूरी वाला काम भी है। 1 जुलाई 2026 से ग्रामीण मज़दूरी वाला काम नए वीबी-जी राम जी अधिनियम के तहत है, इसलिए ब्लॉक कार्यालय से पूछें कि मज़दूरी वाला काम अब कैसे मिलता है।",
       "how_to_apply": "परिवारों को आवास+ सर्वे सूची (आवास+ 2024 ऐप से अपडेट) और SECC 2011 सूची से चुना जाता है और ग्राम सभा जाँच करती है। अपनी ग्राम पंचायत या ब्लॉक कार्यालय में पूछें कि आपका परिवार सूची में है या नहीं। सर्वे उन परिवारों को भी बाहर रखता है जो व्यवसाय कर भरते हैं या सरकार में पंजीकृत गैर-कृषि व्यवसाय चलाते हैं।"
     }
   },
@@ -117,7 +117,8 @@
       "hard": true,
       "confidence": "confirmed",
       "source": "framework",
-      "locator": "Ch. 2",
+      "locator": "Para 2.1.1 (Aim and Objective)",
+      "quote": "PMAY-G aims to provide pucca houses with basic amenities to all eligible houseless households and households living in kutcha and dilapidated house in rural areas",
       "text": {
         "en": "Lives in a village (rural area)",
         "hi": "गाँव (ग्रामीण क्षेत्र) में रहते हैं"
@@ -137,6 +138,7 @@
       "confidence": "guidance",
       "source": "exclusions_2024",
       "locator": "Step 1",
+      "quote": "Step 1: Exclusion of pucca houses- All households living in houses with pucca roof and/or pucca wall and households living in houses with more than 2 rooms are filtered out.",
       "text": {
         "en": "The family has no house, or lives in a house without a pucca roof or wall and with at most two rooms",
         "hi": "परिवार के पास घर नहीं है, या ऐसे घर में रहता है जिसकी छत या दीवार पक्की नहीं है और जिसमें दो कमरों तक हैं"
@@ -156,6 +158,7 @@
       "confidence": "guidance",
       "source": "exclusions_2024",
       "locator": "Step 2: items 1-3",
+      "quote": "Motorised three/four-wheeler Mechanised three/ four-wheeler agricultural equipment Kisan Credit Card with credit limit of Rs. 50,000 or above",
       "text": {
         "en": "The family has no motorised 3- or 4-wheeler, no mechanised 3- or 4-wheeler farm machine, and no Kisan Credit Card with a limit of ₹50,000 or more",
         "hi": "परिवार के पास मोटर वाला तीन या चार पहिया वाहन, मशीन वाला तीन या चार पहिया खेती का उपकरण, या ₹50,000 या ज़्यादा सीमा वाला किसान क्रेडिट कार्ड नहीं है"
@@ -175,6 +178,7 @@
       "confidence": "guidance",
       "source": "exclusions_2024",
       "locator": "Step 2: item 4",
+      "quote": "Household with any member as a Government employee",
       "text": {
         "en": "No one in the family is a government employee",
         "hi": "परिवार में कोई सरकारी कर्मचारी नहीं है"
@@ -194,6 +198,7 @@
       "confidence": "guidance",
       "source": "exclusions_2024",
       "locator": "Step 2: items 5 and 8",
+      "quote": "Households with non-agricultural enterprises registered with the Government Any member of the family earning more than Rs.15,000 per month Paying income tax Paying professional tax",
       "text": {
         "en": "The family runs no non-farm business registered with the government and pays no professional tax",
         "hi": "परिवार सरकार में पंजीकृत कोई गैर-कृषि व्यवसाय नहीं चलाता और व्यवसाय कर नहीं भरता"
@@ -213,6 +218,7 @@
       "confidence": "guidance",
       "source": "exclusions_2024",
       "locator": "Step 2: item 6",
+      "quote": "Any member of the family earning more than Rs.15,000 per month",
       "text": {
         "en": "No one in the family earns more than ₹15,000 a month",
         "hi": "परिवार में कोई भी ₹15,000 महीने से ज़्यादा नहीं कमाता"
@@ -232,6 +238,7 @@
       "confidence": "guidance",
       "source": "exclusions_2024",
       "locator": "Step 2: item 7",
+      "quote": "Any member of the family earning more than Rs.15,000 per month Paying income tax",
       "text": {
         "en": "No one in the family pays income tax",
         "hi": "परिवार में कोई आयकर नहीं भरता"
@@ -251,10 +258,43 @@
       "confidence": "guidance",
       "source": "exclusions_2024",
       "locator": "Step 2: items 9-10",
+      "quote": "Own 2.5 acres or more of irrigated land Own 5 acres or more of unirrigated land.",
       "text": {
         "en": "The family owns less than 2.5 acres of irrigated land and less than 5 acres of unirrigated land",
         "hi": "परिवार के पास 2.5 एकड़ से कम सिंचित ज़मीन और 5 एकड़ से कम असिंचित ज़मीन है"
       }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "cabinet_2024",
+      "quote": "Unit cost of assistance to beneficiaries to continue at existing rates of Rs.1.20 lakh in plain areas and Rs.1.30 lakh in North Eastern Region/ Hill States."
+    },
+    {
+      "about": "benefit",
+      "source": "framework",
+      "quote": "The States of Himachal Pradesh and Uttarakhand and Union Territories of Jammu and Kashmir & Ladakh are included underthe category of “Hill States”."
+    },
+    {
+      "about": "amount",
+      "source": "framework",
+      "quote": "Houses sanctioned under PMAY-G are also eligible to receive assistance of Rs. 12,000/- for the construction of a toilet from the Swachh Bharat Mission (G), MGNREGS or any other dedicated source of financing."
+    },
+    {
+      "about": "benefit",
+      "source": "framework",
+      "quote": "Provision of 90/95 persondays of un-skilled wage labour under MGNREGS for construction of house, over and above the unit assistance."
+    },
+    {
+      "about": "benefit",
+      "source": "vbgramg",
+      "quote": "Guarantee for Rozgar and Ajeevika Mission (Gramin) [VB-G RAM G] Act, 2025 will come into force across rural India with effect from July 1, 2026"
+    },
+    {
+      "about": "benefit",
+      "source": "vbgramg",
+      "quote": "existing e-KYC verified job cards will remain valid until the issuance of the new Gramin Rozgar Guarantee Cards"
     }
   ],
   "documents": [
