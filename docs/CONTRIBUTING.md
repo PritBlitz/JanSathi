@@ -4,16 +4,18 @@ Thanks for helping. JanSathi is used by people making real decisions about money
 
 ## 1. Setup
 
-What exists today is the static frontend prototype.
+What exists today: the static PWA (`web/`), the knowledge base as code (`content/`), shared rule fixtures (`rules/`), the source re-check job (`ingest/`) and Node tooling (`tools/`).
 
 ```bash
 git clone <repo-url>
-cd JanSathi/web
-python3 -m http.server 8000
-# open http://localhost:8000 (use Chrome or Android Chrome for speech)
+cd JanSathi
+npm run serve      # open http://localhost:8000 (use Chrome or Android Chrome for speech)
+npm run check      # run before every PR
 ```
 
-No build step, no package install. To test on a phone, open the same URL from a device on your network, or use Chrome's remote debugging. Note that speech recognition requires HTTPS or `localhost`.
+No build step and no package install: Node 20+ is the only requirement for the tooling (Python 3 for `ingest/`). To test on a phone, open the same URL from a device on your network, or use Chrome's remote debugging. Note that speech recognition requires HTTPS or `localhost`.
+
+After editing anything in `content/`, run `npm run build` and commit the regenerated `web/data/` bundles; `npm run check` fails if they are stale.
 
 Backend, database and AI setup will be added here as those phases land (see [ROADMAP.md](ROADMAP.md)).
 

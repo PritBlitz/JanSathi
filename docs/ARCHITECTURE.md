@@ -1,6 +1,6 @@
 # Architecture
 
-> **Status:** only the frontend prototype (`web/`) exists. Everything else on this page is the **planned** design.
+> **Status:** built: the static PWA (`web/`) with the on-device rules engine, the content files (`content/`), shared rule fixtures (`rules/`) and the source re-check script (`ingest/recheck.py`). The Spring Boot API (`api/`) is in progress. Everything else on this page is the **planned** design.
 > **Backend decision (2026-10-24):** the main backend is **Spring Boot** (Java). The ML models in the stack (embeddings, IndicTrans2, Whisper, OCR) and the ingestion tools are Python-only, so they run as a separate internal Python service and a Python batch job, called through the provider interfaces in §6.
 
 ## 1. Design goals

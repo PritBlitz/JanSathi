@@ -25,12 +25,13 @@ Many people who qualify for scholarships, pensions, health cover, housing or far
 
 | Feature | Status |
 |---|---|
-| 10-language UI (en, hi, bn, ta, te, mr, gu, kn, ml, pa) with voice in/out and icon tiles | Phase 0 prototype |
-| Eligibility questionnaire with three results: likely eligible / not eligible / need more info | Planned (Phase 2) |
+| 10-language UI (en, hi, bn, ta, te, mr, gu, kn, ml, pa) with voice in/out and icon tiles | Built (`web/`); 9 locales await native-speaker review |
+| Eligibility questionnaire with three results: likely eligible / not eligible / need more info, with rule traces | Built (on-device rules engine, `web/js/rules.js`) |
+| Scheme pages with official sources, clause locators and checked/verified dates | Built; 10 central schemes, all **drafts** awaiting human review |
+| Source re-check job (hash changes → review) | Built (`ingest/recheck.py`); not yet scheduled in CI |
+| Personal document checklist with "how to get it" guidance | Built (generic, all-India guidance) |
 | Family mode and scheme stacking/conflicts | Planned (Phase 2) |
-| Verified knowledge base with source re-checks and outdated-info warnings | Planned (Phases 1, 4) |
-| Cited AI assistant in Hindi and English | Planned (Phase 3) |
-| Personal document checklist with "how to get it" guidance | Planned (Phase 4) |
+| Cited AI assistant in Hindi and English | Planned (Phase 3); the ask box is a local keyword search for now |
 | Deadline reminders (Web Push, Telegram) | Planned (Phase 4) |
 | Volunteer portal with consent sessions and audit log | Planned (Phase 5) |
 | OCR document check | Planned (Phase 5) |
@@ -40,16 +41,25 @@ See [docs/ROADMAP.md](docs/ROADMAP.md) for the full plan.
 
 ## Status
 
-Phase 0: a static, no-build frontend prototype (`web/`) with the multilingual voice-first UI. Its category tiles and quick check are placeholders and are not yet connected to data. There is no backend, database or AI component yet. Everything else in the docs is the planned design.
+What exists now (October 2026):
 
-## Quick start (frontend prototype)
+- **`web/`**: a static, no-build PWA. Questionnaire, three-state results with rule traces, scheme pages with sources, document checklist, search, read-aloud and voice answers, 10 languages, offline support. All matching happens on the device; nothing about the user leaves the phone.
+- **`content/`**: 10 central schemes (pensions, PM-KISAN, PM-JAY, PMAY-G, PMFBY, PMMVY, Sukanya Samriddhi, post-matric SC scholarship). Every rule cites the clause of an official source it rests on, and each source has `fetched_at` and a content hash. **They are drafts:** a human reviewer has not yet set `verified_at`, so the app runs in *preview mode* and labels every result "may be outdated".
+- **`rules/`**: shared fixtures (140 cases) that the JS engine passes and the Java engine must pass too.
+- **`ingest/recheck.py`** and **`tools/`**: source re-check, content validator, copy lint (10 languages), locale parity, bundle builder, browser smoke test.
+- **`api/`** (Spring Boot) is in progress in a separate session. There is no database or AI component yet.
 
-Requires Python 3 (only for the local web server) and a modern browser. Chrome or Android Chrome gives the best speech support.
+## Quick start
+
+Requires Node 20+ (no `npm install` needed: there are no dependencies) or Python 3, and a modern browser. Chrome or Android Chrome gives the best speech support.
 
 ```bash
-cd web
-python3 -m http.server 8000
+npm run serve            # or: cd web && python3 -m http.server 8000
 # open http://localhost:8000
+
+npm run check            # content validation, copy lint, locale parity, bundle freshness, 173 unit tests
+npm run smoke            # headless-Chrome walk through the app (needs Chrome or Edge)
+python ingest/recheck.py # re-fetch every official source and report changes
 ```
 
 ## Documentation

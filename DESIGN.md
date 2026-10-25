@@ -1,7 +1,7 @@
 # JanSathi — Design System
 
 > **Status:** v0.2, draft. This is the visual and interaction spec for the JanSathi frontend. It sits alongside the product brief ([docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md)). When this file and a product rule disagree, the product rule wins (see §1).
-> **Built so far:** nothing in this document is implemented yet.
+> **Built so far (2026-10-25):** tokens (§3–§5), the hero with per-locale width fit (§6, abstract collage placeholder until licensed photos exist), rail, tiles, bento "how it works", buttons, chips, result badges, source cards, questionnaire, ask sheet, footer and motion rules, in `web/css/styles.css`. Not built: marquee strip, sticky storytelling, big-number stats, the in-app theme toggle (system theme only). Fonts are self-hosted; Hindi, Bengali, Telugu and Gujarati first loads are about 150–175 KB, slightly over the §10 font budget.
 
 ---
 

@@ -4,12 +4,12 @@ Phases from the [project brief](PROJECT_BRIEF.md#12-roadmap). ✅ = done.
 
 ## Phase 0 — Multilingual voice-first frontend prototype ✅
 
-- [x] Static, no-build PWA page in `web/`: hero, category tiles, voice ask box, quick check
+- [x] Static, no-build PWA in `web/`: hero, category tiles, voice ask sheet, questionnaire (built 2026-10-25; the earlier prototype was never committed)
 - [x] 10-language UI (en, hi, bn, ta, te, mr, gu, kn, ml, pa) with `data-i18n` / `data-i18n-attr`, English fallback, saved choice
 - [x] Text-to-speech (page, section, tile) and speech-to-text with typing fallback
 - [x] Large touch targets, Noto fonts, dark mode, visible focus
 - [ ] Native-speaker review of all nine non-English locales
-- [ ] Rebuild the hero and visuals to [DESIGN.md](../DESIGN.md)
+- [x] Rebuild the hero and visuals to [DESIGN.md](../DESIGN.md) (abstract collage placeholder until licensed photos exist)
 
 ## Phase 1 — Knowledge base and read API
 
@@ -20,18 +20,18 @@ Phases from the [project brief](PROJECT_BRIEF.md#12-roadmap). ✅ = done.
 - [ ] Postgres + pgvector schema and migrations ([DATA_MODEL.md](DATA_MODEL.md))
 - [ ] Ingestion: fetch + snapshot + hash, extract, chunk, embed ([KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md))
 - [ ] Reviewer UI (minimal): source verification, scheme content, two-reviewer publish
-- [ ] Seed ~30 verified schemes (central + one state) with en + hi content
+- [ ] Seed ~30 verified schemes (central + one state) with en + hi content. **10 central schemes drafted and checked against official sources (2026-10-25); human review pending.**
 - [ ] Spring Boot read API: `/schemes`, `/schemes/{slug}`
-- [ ] Scheme detail page: summary, documents, deadlines, apply link, sources with `verified_at`
-- [ ] Copy lint and locale key-parity checks in CI
+- [x] Scheme detail page: summary, documents, apply link, sources with `verified_at` (deadlines: none recorded yet)
+- [ ] Copy lint and locale key-parity checks in CI (scripts built: `npm run check`; CI wiring pending)
 
 ## Phase 2 — Rules engine and matching
 
-- [ ] json-logic rule format, band evaluation and three-state combination ([RULES_ENGINE.md](RULES_ENGINE.md))
-- [ ] Rule fixtures for every seeded scheme, with Java/JS parity in CI
-- [ ] `/rules/bundle` and on-device matching
-- [ ] Adaptive questionnaire (tap / type / speak) driven by `next_question`
-- [ ] Results screen: likely / not eligible / need more info, with rule traces read aloud
+- [x] json-logic rule format, band evaluation and three-state combination ([RULES_ENGINE.md](RULES_ENGINE.md)) in the JS engine
+- [ ] Rule fixtures for every seeded scheme, with Java/JS parity in CI (fixtures and JS side done; Java side in progress)
+- [ ] `/rules/bundle` and on-device matching (on-device matching from the static `web/data/bundle*.json` done; API endpoint pending)
+- [x] Adaptive questionnaire (tap / type / speak) driven by `next_question`
+- [x] Results screen: likely / not eligible / need more info, with rule traces read aloud
 - [ ] Family mode
 - [ ] Stacking and conflict notes
 
@@ -46,12 +46,12 @@ Phases from the [project brief](PROJECT_BRIEF.md#12-roadmap). ✅ = done.
 
 ## Phase 4 — Checklist, reminders, re-checks
 
-- [ ] De-duplicated document checklist with have / don't have
+- [x] De-duplicated document checklist with have / don't have
 - [ ] State-specific "how to get it" for each document
 - [ ] Deadline and checklist reminders: first channel (Web Push or Telegram — see open questions)
-- [ ] Daily source re-check job → `needs_review` and stale warnings
+- [ ] Daily source re-check job → `needs_review` and stale warnings (`ingest/recheck.py` built; scheduling pending)
 - [ ] Re-verification interval tasks
-- [ ] "Report outdated info" and the moderation queue
+- [ ] "Report outdated info" and the moderation queue (button opens a GitHub issue for now; queue pending)
 
 ## Phase 5 — Volunteer portal and OCR
 
@@ -93,3 +93,18 @@ Decisions needed from the maintainer:
 |---|---|
 | 2026-10-24 | Backend is **Spring Boot** (Java 21). Python only for the internal ML service and ingestion. See [ARCHITECTURE.md](ARCHITECTURE.md). |
 | 2026-10-24 | Hero display word is the brand name **localised per language** (JanSathi, जनसाथी, …). See [DESIGN.md](../DESIGN.md#6-hero-component). |
+
+## Improvements over the brief
+
+Changes made while building, and why. The brief still describes the goals; these describe how we got there.
+
+| Improvement | Why |
+|---|---|
+| **Content as code** (`content/*.json`, reviewed in pull requests, with the second reviewer as the PR approver) | Works before the reviewer UI and database exist, gives a full history of every rule change, and is the same shape the API imports. |
+| **Static offline bundle** (`web/data/bundle.json`) with the rules engine on the device | Matching works offline and on slow networks, and the profile never leaves the phone (principle 7). The API serves the same bundle. |
+| **Custom three-valued evaluator** instead of a stock json-logic library | Stock json-logic has no "unknown". Answers like "don't know" and age bands need Kleene logic and band corners to give honest "need more information" results. See RULES_ENGINE §9. |
+| **Spring Boot 4.1** rather than 3.x | Open-source support for 3.x has ended. |
+| **`govt_statement` source type** (PIB Cabinet releases, ministry replies in Parliament) | Schemes change by Cabinet decision months before revised guidelines appear (e.g. the NSAP disability pension, 14 Oct 2026). Users get the current rule, labelled `guidance`, with the source shown. |
+| **Manual-fetch sources** | Some official hosts block bots. The re-check job respects robots.txt and records such sources for a reviewer to hash by hand. |
+| **PM-KISAN government-job question includes the Group D exception** | The guidelines exclude only jobs above Group D / Class IV / MTS; a plain "government job?" question would wrongly exclude eligible families. |
+| **Exact-number follow-up for straddling bands** | When a limit falls inside the chosen band (e.g. income 5–8 lakh against "below ₹8 lakh"), the app asks for the exact figure instead of guessing. |

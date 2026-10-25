@@ -1,6 +1,6 @@
 # Languages and voice
 
-> **Status:** the UI i18n and browser speech described in §1–§4 are part of the Phase 0 frontend prototype (`web/`). Server-side speech, content translation and the review tooling (§5–§6) are planned.
+> **Status:** the UI i18n and browser speech in §1–§5.2 are built (`web/js/i18n.js`, `web/js/speech.js`), with all 10 locale files and `web/locales/review-status.json`; `npm run check:locales` checks key parity. The 9 non-English locales are machine-authored and unreviewed. Server-side speech, content translation and the review tooling (§5.3, §6) are planned.
 
 ## 1. Supported languages
 
