@@ -27,7 +27,7 @@ Many people who qualify for scholarships, pensions, health cover, housing or far
 |---|---|
 | 10-language UI (en, hi, bn, ta, te, mr, gu, kn, ml, pa) with voice in/out and icon tiles | Built (`web/`); 9 locales await native-speaker review |
 | Eligibility questionnaire with three results: likely eligible / not eligible / need more info, with rule traces | Built (on-device rules engine, `web/js/rules.js`) |
-| Scheme pages with official sources, clause locators and checked/verified dates | Built; 10 central schemes, all **drafts** awaiting human review |
+| Scheme pages with official sources, clause locators and checked/verified dates | Built; 28 central schemes, all **drafts** awaiting human review |
 | Source re-check job (hash changes → review) | Built (`ingest/recheck.py`); not yet scheduled in CI |
 | Personal document checklist with "how to get it" guidance | Built (generic, all-India guidance) |
 | Family mode and scheme stacking/conflicts | Planned (Phase 2) |
@@ -44,8 +44,8 @@ See [docs/ROADMAP.md](docs/ROADMAP.md) for the full plan.
 What exists now (October 2026):
 
 - **`web/`**: a static, no-build PWA. Questionnaire, three-state results with rule traces, scheme pages with sources, document checklist, search, read-aloud and voice answers, 10 languages, offline support. All matching happens on the device; nothing about the user leaves the phone.
-- **`content/`**: 10 central schemes (pensions, PM-KISAN, PM-JAY, PMAY-G, PMFBY, PMMVY, Sukanya Samriddhi, post-matric SC scholarship). Every rule cites the clause of an official source it rests on, and each source has `fetched_at` and a content hash. **They are drafts:** a human reviewer has not yet set `verified_at`, so the app runs in *preview mode* and labels every result "may be outdated".
-- **`rules/`**: shared fixtures (140 cases) that the JS engine passes and the Java engine must pass too.
+- **`content/`**: 28 central schemes across pensions, insurance, farming, health, housing, food, work, energy, women and children, disability and scholarships (see `content/schemes/`). Every rule cites the clause of an official source it rests on, and each source has `fetched_at` and a content hash. **They are drafts:** a human reviewer has not yet set `verified_at`, so the app runs in *preview mode* and labels every result "may be outdated".
+- **`rules/`**: shared fixtures (233 cases) that the JS engine passes and the Java engine must pass too.
 - **`ingest/recheck.py`** and **`tools/`**: source re-check, content validator, copy lint (10 languages), locale parity, bundle builder, browser smoke test.
 - **`api/`** (Spring Boot) is in progress in a separate session. There is no database or AI component yet.
 
@@ -57,7 +57,7 @@ Requires Node 20+ (no `npm install` needed: there are no dependencies) or Python
 npm run serve            # or: cd web && python3 -m http.server 8000
 # open http://localhost:8000
 
-npm run check            # content validation, copy lint, locale parity, bundle freshness, 173 unit tests
+npm run check            # content validation, copy lint, locale parity, bundle freshness, 312 unit tests
 npm run smoke            # headless-Chrome walk through the app (needs Chrome or Edge)
 python ingest/recheck.py # re-fetch every official source and report changes
 ```

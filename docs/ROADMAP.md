@@ -20,7 +20,7 @@ Phases from the [project brief](PROJECT_BRIEF.md#12-roadmap). ✅ = done.
 - [ ] Postgres + pgvector schema and migrations ([DATA_MODEL.md](DATA_MODEL.md))
 - [ ] Ingestion: fetch + snapshot + hash, extract, chunk, embed ([KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md))
 - [ ] Reviewer UI (minimal): source verification, scheme content, two-reviewer publish
-- [ ] Seed ~30 verified schemes (central + one state) with en + hi content. **10 central schemes drafted and checked against official sources (2026-10-25); human review pending.**
+- [ ] Seed ~30 verified schemes (central + one state) with en + hi content. **28 central schemes drafted and checked against official sources (2026-10-25); human review pending. MVP state not yet chosen.**
 - [ ] Spring Boot read API: `/schemes`, `/schemes/{slug}`
 - [x] Scheme detail page: summary, documents, apply link, sources with `verified_at` (deadlines: none recorded yet)
 - [ ] Copy lint and locale key-parity checks in CI (scripts built: `npm run check`; CI wiring pending)

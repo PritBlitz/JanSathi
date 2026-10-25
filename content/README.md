@@ -20,7 +20,13 @@ Recent changes the files already reflect:
 
 - **NSAP pensions** were renamed on 14 Oct 2026 (Pradhan Mantri Samajik Sahayata Yojana). The disability pension moves to 40% disability with no minimum age, at ₹375 / ₹625 a month; the revised guidelines are due within three months, so `igndps` rests on the Cabinet release (`govt_statement`, `guidance`) and has `reverify_days: 30`.
 - **PMAY-G** uses the revised 10 exclusion criteria approved on 9 Aug 2024.
-- **MGNREGA** was replaced by the VB-G RAM G Act on 1 Jul 2026; job-card text says so.
+- **MGNREGA** was replaced by the VB-G RAM G Act on 1 Jul 2026 (`vb-g-ram-g`); job-card text says so.
+- **Guideline periods that ended in March 2026** (PMMVY/Mission Shakti, pre-matric SC, PM-YASASVI): the files say so and a reviewer must confirm the current period.
+- **Left out on purpose:** Stand-Up India (no extension beyond 2025 found) and NMMSS (needs class 8 at a government school, class 7 marks and a selection test, which the questionnaire cannot capture).
+
+## Schemes (28)
+
+Pensions: `ignoaps`, `ignwps`, `igndps`, `atal-pension`, `pm-sym`, `pm-kmy`. Insurance: `pmjjby`, `pmsby`. Farming: `pm-kisan`, `pmfby`, `kcc`. Health: `pm-jay`. Housing: `pmay-g`. Food: `pmgkay`. Work and livelihoods: `vb-g-ram-g`, `pm-vishwakarma`, `pm-svanidhi`. Energy: `pmuy`, `pm-surya-ghar`. Family support: `pm-parivar-labh`. Women and children: `pmmvy`, `jsy`, `sukanya-samriddhi`. Scholarships: `pre-matric-sc`, `post-matric-sc`, `pre-matric-st`, `post-matric-st`, `post-matric-obc`.
 
 ## Publishing a scheme
 
