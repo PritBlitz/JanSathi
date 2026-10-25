@@ -1,6 +1,6 @@
 {
   "$comment": "Profile fields that rules may read. Labels are UI strings: q.<field> and opt.<field>.<value> in frontend/locales/*.json. A band option sets {min,max}; 'unknown: true' options store nothing (missing).",
-  "core": ["age", "gender", "area", "occupation"],
+  "core": ["age", "gender", "state", "area", "occupation"],
   "fields": {
     "age": {
       "type": "band",
@@ -32,6 +32,48 @@
       "options": [
         { "value": "rural", "icon": "🏡" },
         { "value": "urban", "icon": "🏙️" }
+      ]
+    },
+    "state": {
+      "type": "enum",
+      "scope": "household",
+      "options": [
+        { "value": "an", "icon": "📍" },
+        { "value": "ap", "icon": "📍" },
+        { "value": "ar", "icon": "📍" },
+        { "value": "as", "icon": "📍" },
+        { "value": "br", "icon": "📍" },
+        { "value": "ch", "icon": "📍" },
+        { "value": "cg", "icon": "📍" },
+        { "value": "dh", "icon": "📍" },
+        { "value": "dl", "icon": "📍" },
+        { "value": "ga", "icon": "📍" },
+        { "value": "gj", "icon": "📍" },
+        { "value": "hr", "icon": "📍" },
+        { "value": "hp", "icon": "📍" },
+        { "value": "jk", "icon": "📍" },
+        { "value": "jh", "icon": "📍" },
+        { "value": "ka", "icon": "📍" },
+        { "value": "kl", "icon": "📍" },
+        { "value": "la", "icon": "📍" },
+        { "value": "ld", "icon": "📍" },
+        { "value": "mp", "icon": "📍" },
+        { "value": "mh", "icon": "📍" },
+        { "value": "mn", "icon": "📍" },
+        { "value": "ml", "icon": "📍" },
+        { "value": "mz", "icon": "📍" },
+        { "value": "nl", "icon": "📍" },
+        { "value": "od", "icon": "📍" },
+        { "value": "py", "icon": "📍" },
+        { "value": "pb", "icon": "📍" },
+        { "value": "rj", "icon": "📍" },
+        { "value": "sk", "icon": "📍" },
+        { "value": "tn", "icon": "📍" },
+        { "value": "tg", "icon": "📍" },
+        { "value": "tr", "icon": "📍" },
+        { "value": "up", "icon": "📍" },
+        { "value": "uk", "icon": "📍" },
+        { "value": "wb", "icon": "📍" }
       ]
     },
     "occupation": {
@@ -254,6 +296,30 @@
       "type": "bool",
       "scope": "household",
       "icon": "📏"
+    },
+    "is_registered_construction_worker": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "👷"
+    },
+    "last_exam_percent": {
+      "type": "band",
+      "scope": "member",
+      "allowExact": true,
+      "unit": "percent",
+      "options": [
+        { "value": "under_50", "icon": "📝", "band": { "min": 0, "max": 49 } },
+        { "value": "50_59", "icon": "📝", "band": { "min": 50, "max": 59 } },
+        { "value": "60_74", "icon": "📝", "band": { "min": 60, "max": 74 } },
+        { "value": "75_89", "icon": "📝", "band": { "min": 75, "max": 89 } },
+        { "value": "90_plus", "icon": "📝", "band": { "min": 90, "max": 100 } },
+        { "value": "dont_know", "icon": "🤷", "unknown": true }
+      ]
+    },
+    "is_minority": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "👥"
     }
   }
 }

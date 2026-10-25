@@ -12,9 +12,12 @@ Usage:
                                            # write fetched_at + content_hash for that scheme
   python ingest/recheck.py --hash-file page.html
                                            # hash a copy you fetched by hand (same normalisation)
+  add --snapshot to any of these to save the extracted text to content/snapshots/<hash>.txt
+  (PDF text needs PyMuPDF: run with `python -E -P` so the user site-packages are visible)
 
 Exit code: 0 if nothing changed, 1 if any source changed or failed, 2 on usage errors.
-Only the standard library is used. This job never sets verified_at: only a human reviewer does.
+Only the standard library is needed (PyMuPDF is optional, for PDF snapshots). This job never
+sets verified_at: tools/publish.mjs does, after two independent reviews (docs/REVIEW.md).
 """
 from __future__ import annotations
 
@@ -35,6 +38,7 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMES = ROOT / "content" / "schemes"
 REPORTS = ROOT / "ingest" / "reports"
+SNAPSHOTS = ROOT / "content" / "snapshots"
 USER_AGENT = "JanSathi-bot/0.1 (+https://github.com/PritBlitz/JanSathi)"
 DELAY_SECONDS = 5.0
 TIMEOUT = 60
@@ -62,12 +66,42 @@ def normalise_html(raw: str) -> str:
 
 def content_hash(body: bytes, content_type: str) -> str:
     """PDFs and other binaries: hash of the bytes. HTML: hash of the normalised visible text."""
-    is_html = "html" in content_type or body[:512].lstrip().lower().startswith((b"<!doctype html", b"<html"))
-    if is_html:
+    if is_html(body, content_type):
         data = normalise_html(body.decode("utf-8", errors="replace")).encode("utf-8")
     else:
         data = body
     return "sha256:" + hashlib.sha256(data).hexdigest()
+
+
+def is_html(body: bytes, content_type: str) -> bool:
+    return "html" in content_type or body[:512].lstrip().lower().startswith((b"<!doctype html", b"<html"))
+
+
+def extract_text(body: bytes, content_type: str) -> str | None:
+    """Readable text of a source, used for snapshots and quote checks. None if it can't be extracted."""
+    if is_html(body, content_type):
+        return normalise_html(body.decode("utf-8", errors="replace"))
+    if body[:5] == b"%PDF-":
+        try:
+            import pymupdf  # optional
+        except ImportError:
+            return None
+        with pymupdf.open(stream=body, filetype="pdf") as doc:
+            return "\n".join(f"[page {i + 1}]\n{page.get_text()}" for i, page in enumerate(doc))
+    try:
+        return body.decode("utf-8")
+    except UnicodeDecodeError:
+        return None
+
+
+def save_snapshot(hash_value: str, body: bytes, content_type: str) -> str:
+    text = extract_text(body, content_type)
+    if text is None:
+        return "no text (scanned PDF or PyMuPDF missing)"
+    SNAPSHOTS.mkdir(parents=True, exist_ok=True)
+    out = SNAPSHOTS / f"{hash_value.split(':', 1)[1]}.txt"
+    out.write_text(text, encoding="utf-8", newline="\n")
+    return str(out.relative_to(ROOT))
 
 
 def robots_allows(url: str) -> bool:
@@ -100,7 +134,7 @@ def fetch(url: str) -> tuple[bytes, str]:
         return resp.read(), resp.headers.get("Content-Type", "")
 
 
-def check_source(src: dict) -> dict:
+def check_source(src: dict, snapshot: bool = False) -> dict:
     url = src.get("url")
     result = {"id": src.get("id"), "url": url, "recorded": src.get("content_hash")}
     if not url:
@@ -116,6 +150,8 @@ def check_source(src: dict) -> dict:
     except Exception as e:  # network, TLS, timeout
         return {**result, "status": "failed", "error": str(e)[:200]}
     new = content_hash(body, ctype)
+    if snapshot:
+        result["snapshot"] = save_snapshot(new, body, ctype)
     if not src.get("content_hash"):
         status = "new"
     elif new == src["content_hash"]:
@@ -137,12 +173,16 @@ def main() -> int:
     ap.add_argument("slugs", nargs="*", help="schemes to check (default: all)")
     ap.add_argument("--update", metavar="SLUG", help="write fetched_at and content_hash for this scheme")
     ap.add_argument("--hash-file", metavar="PATH", help="print the content hash of a local file and exit")
+    ap.add_argument("--snapshot", action="store_true", help="save extracted text to content/snapshots/<hash>.txt")
     args = ap.parse_args()
 
     if args.hash_file:
         body = Path(args.hash_file).read_bytes()
         ctype = "text/html" if args.hash_file.lower().endswith((".html", ".htm")) else ""
-        print(content_hash(body, ctype))
+        h = content_hash(body, ctype)
+        print(h)
+        if args.snapshot:
+            print(save_snapshot(h, body, ctype), file=sys.stderr)
         return 0
 
     slugs = [args.update] if args.update else (args.slugs or sorted(p.stem for p in SCHEMES.glob("*.json")))
@@ -152,7 +192,7 @@ def main() -> int:
 
     for slug in slugs:
         path, scheme = load(slug)
-        results = [check_source(s) for s in scheme.get("sources", [])]
+        results = [check_source(s, args.snapshot) for s in scheme.get("sources", [])]
         report["schemes"][slug] = results
         for r in results:
             mark = {"unchanged": "ok", "new": "new", "manual": "manual"}.get(r["status"], "!!")
