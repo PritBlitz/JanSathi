@@ -20,13 +20,13 @@
     "en": {
       "name": "Disability pension (PM Divyangjan Pension Yojana)",
       "summary": "A monthly pension for people with a benchmark disability (40% or more) from households below the poverty line, from birth. It was called the Indira Gandhi National Disability Pension Scheme (IGNDPS) until October 2026.",
-      "benefit": "On 14 October 2026 the Union Cabinet approved ₹375 a month up to age 79 and ₹625 a month from age 80 (central share). Your state adds its own amount on top. The new rules start when the revised guidelines are issued, which the Cabinet said would be within three months. Until then, offices may still use the old rules: age 18 or older and 80% disability, ₹300 a month.",
+      "benefit": "On 14 October 2026 the Union Cabinet approved ₹375 a month up to age 79 and ₹625 a month from age 80 (central share). The state adds its own amount on top. The new rules start when the revised guidelines are issued, which the Cabinet said would be within three months. Until then, offices may still use the old rules: age 18 or older and 80% disability, ₹300 a month (₹500 a month from age 80).",
       "how_to_apply": "Apply to your state's social welfare department (gram panchayat, block or municipal office) with your disability certificate. For a child, a parent or guardian applies."
     },
     "hi": {
       "name": "दिव्यांगजन पेंशन (प्रधानमंत्री दिव्यांगजन पेंशन योजना)",
       "summary": "गरीबी रेखा से नीचे के परिवारों के उन लोगों के लिए हर महीने पेंशन जिनकी दिव्यांगता 40% या उससे ज़्यादा है, जन्म से। अक्टूबर 2026 तक इसका नाम इंदिरा गांधी राष्ट्रीय दिव्यांग पेंशन योजना (IGNDPS) था।",
-      "benefit": "14 अक्टूबर 2026 को केंद्रीय मंत्रिमंडल ने 79 साल की उम्र तक ₹375 महीना और 80 साल से ₹625 महीना (केंद्र का हिस्सा) मंज़ूर किया। राज्य इसमें अपनी राशि जोड़ता है। नए नियम संशोधित दिशानिर्देश जारी होने पर लागू होंगे, जो मंत्रिमंडल के अनुसार तीन महीने के भीतर आएँगे। तब तक कार्यालय पुराने नियम भी लागू कर सकते हैं: उम्र 18 साल या ज़्यादा और 80% दिव्यांगता, ₹300 महीना।",
+      "benefit": "14 अक्टूबर 2026 को केंद्रीय मंत्रिमंडल ने 79 साल की उम्र तक ₹375 महीना और 80 साल से ₹625 महीना (केंद्र का हिस्सा) मंज़ूर किया। राज्य इसमें अपनी राशि जोड़ता है। नए नियम संशोधित दिशानिर्देश जारी होने पर लागू होंगे, जो मंत्रिमंडल के अनुसार तीन महीने के भीतर आएँगे। तब तक कार्यालय पुराने नियम भी लागू कर सकते हैं: उम्र 18 साल या ज़्यादा और 80% दिव्यांगता, ₹300 महीना (80 साल से ₹500 महीना)।",
       "how_to_apply": "दिव्यांगता प्रमाण पत्र के साथ अपने राज्य के समाज कल्याण विभाग (ग्राम पंचायत, ब्लॉक या नगर निकाय कार्यालय) में आवेदन करें। बच्चे के लिए माता-पिता या अभिभावक आवेदन करते हैं।"
     }
   },
@@ -93,8 +93,8 @@
       "locator": "Changes in disability pension, (a)",
       "quote": "Rights of Persons with Disability Act 2016 has necessitated changes in the eligibility criteria for disability pension and linked it to the ‘Benchmark Disability’ of 40%.",
       "text": {
-        "en": "Has a disability with a disability certificate",
-        "hi": "दिव्यांगता है, और उसका प्रमाण पत्र है"
+        "en": "Has a disability",
+        "hi": "दिव्यांगता है"
       }
     },
     {
@@ -157,7 +157,7 @@
     {
       "about": "amount",
       "source": "guidelines",
-      "quote": "The eligible age for the pensioner is 18 years and above and the disability level has to be 80%. The amount is Rs.300 per month"
+      "quote": "The eligible age for the pensioner is 18 years and above and the disability level has to be 80%. The amount is Rs.300 per month and after attaining the age of 80 years, the beneficiary will get Rs.500/- per month."
     }
   ],
   "documents": [
@@ -168,17 +168,17 @@
     },
     {
       "code": "ration_card",
-      "mandatory": true,
+      "mandatory": false,
       "source": "guidelines"
     },
     {
       "code": "bank_account",
-      "mandatory": true,
+      "mandatory": false,
       "source": "guidelines"
     },
     {
       "code": "aadhaar",
-      "mandatory": true,
+      "mandatory": false,
       "source": "guidelines"
     }
   ]

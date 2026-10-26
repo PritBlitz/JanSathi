@@ -20,7 +20,10 @@
     "skipped": [],
     "as_of": "2026-10-25",
     "expect": {
-      "result": "NOT_ELIGIBLE"
+      "result": "NEED_MORE_INFO",
+      "rules": {
+        "farmer": "fail"
+      }
     }
   },
   {

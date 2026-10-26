@@ -125,12 +125,12 @@
     },
     {
       "code": "ration_card",
-      "mandatory": true,
+      "mandatory": false,
       "source": "guidelines"
     },
     {
       "code": "bank_account",
-      "mandatory": true,
+      "mandatory": false,
       "source": "guidelines"
     },
     {

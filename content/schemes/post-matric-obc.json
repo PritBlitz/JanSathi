@@ -71,13 +71,13 @@
         ]
       },
       "hard": true,
-      "confidence": "confirmed",
+      "confidence": "uncertain",
       "source": "guidelines",
       "locator": "Post-matric component, Conditions of Eligibility (i), p. 14",
       "quote": "The scholarships will be open to Indian nationals belonging to OBCs, EBCs and DNTs, as notified by the Central Govt./State Govt./ UT Admin.",
       "text": {
-        "en": "Belongs to an Other Backward Class (OBC). Economically backward (EBC) and denotified tribe (DNT) students can also apply: check with the office.",
-        "hi": "अन्य पिछड़ा वर्ग (OBC) से हैं। आर्थिक रूप से पिछड़े (EBC) और विमुक्त जनजाति (DNT) के छात्र भी आवेदन कर सकते हैं: कार्यालय से पूछें।"
+        "en": "Belongs to an Other Backward Class (OBC). Students from Economically Backward Classes (EBC) or Denotified Tribes (DNT) who are not SC, ST or OBC may also be eligible: check with the office.",
+        "hi": "अन्य पिछड़ा वर्ग (OBC) से हैं। आर्थिक रूप से पिछड़े वर्ग (EBC) या विमुक्त जनजाति (DNT) के वे छात्र जो SC, ST या OBC नहीं हैं, वे भी पात्र हो सकते हैं: कार्यालय से पूछें।"
       }
     },
     {
@@ -177,12 +177,12 @@
     {
       "code": "aadhaar",
       "mandatory": true,
-      "source": "msje"
+      "source": "guidelines"
     },
     {
       "code": "bank_account",
       "mandatory": true,
-      "source": "msje"
+      "source": "guidelines"
     }
   ]
 }

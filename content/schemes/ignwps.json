@@ -20,7 +20,7 @@
     "en": {
       "name": "Widow pension (PM Vidhawa Pension Yojana)",
       "summary": "A monthly pension for widows aged 40 or older from households below the poverty line. It was called the Indira Gandhi National Widow Pension Scheme (IGNWPS) until October 2026.",
-      "benefit": "The central government pays ₹300 a month, and ₹500 a month from age 80. Your state adds its own amount on top, so the total is different in each state.",
+      "benefit": "The central government pays ₹300 a month, and ₹500 a month from age 80. The state adds its own amount on top, so the total is different in each state.",
       "how_to_apply": "Apply to your state's social welfare department: at the gram panchayat or block office in villages, or the municipal office in towns. Many states also have an online pension portal. If your name is not on the BPL list but you meet the conditions, the guidelines say you should not be left out: ask the office to check. Take your husband's death certificate."
     },
     "hi": {
@@ -183,17 +183,17 @@
     },
     {
       "code": "ration_card",
-      "mandatory": true,
+      "mandatory": false,
       "source": "guidelines"
     },
     {
       "code": "bank_account",
-      "mandatory": true,
+      "mandatory": false,
       "source": "guidelines"
     },
     {
       "code": "aadhaar",
-      "mandatory": true,
+      "mandatory": false,
       "source": "guidelines"
     }
   ]

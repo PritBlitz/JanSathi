@@ -19,15 +19,15 @@
   "content": {
     "en": {
       "name": "Kisan Credit Card (farm loans)",
-      "summary": "A bank credit card for farmers to get short-term loans for crops and for allied work such as dairy, poultry and fisheries. Owner farmers, tenant farmers, oral lessees, sharecroppers and farmer groups can get one.",
-      "benefit": "Short-term farm loans of up to ₹3 lakh at 7% interest, with 3% back for repaying on time, so the effective rate is 4%. In 2025-26 the government raised the crop loan limit under the interest subvention scheme from ₹3 lakh to ₹5 lakh, raised the limit for fisheries and allied work to ₹5 lakh, and raised collateral-free credit to ₹2 lakh per borrower (from 1 January 2025). The card is a RuPay card.",
-      "how_to_apply": "Apply at any bank branch (commercial, regional rural or cooperative bank) with your identity proof and land records, or a tenancy or sowing document if you farm someone else's land. PM-KISAN beneficiaries can also apply through the PM-KISAN portal."
+      "summary": "A bank credit card for farmers to get short-term loans for crops and for allied work such as dairy, poultry and fisheries. The scheme covers owner farmers, tenant farmers, oral lessees, sharecroppers and farmer groups.",
+      "benefit": "Short-term farm loans of up to ₹3 lakh a year at 7% interest. Farmers who repay on time get 3% back, so the effective rate is 4% (2025-26). For farmers who work only in dairy, fisheries, animal husbandry or bee keeping, this interest help covers up to ₹2 lakh. Collateral-free credit is up to ₹2 lakh per borrower (from 1 January 2025). The card is a RuPay card.",
+      "how_to_apply": "Apply at any bank branch (commercial, regional rural or cooperative bank). The form asks for copies of land records and details of the crops grown. PM-KISAN beneficiaries can also apply through the PM-KISAN portal."
     },
     "hi": {
       "name": "किसान क्रेडिट कार्ड (खेती के लिए ऋण)",
-      "summary": "फ़सलों और डेयरी, मुर्गी पालन और मछली पालन जैसे कामों के लिए छोटी अवधि का ऋण लेने के लिए किसानों का बैंक क्रेडिट कार्ड। ज़मीन के मालिक किसान, किरायेदार किसान, मौखिक पट्टेदार, बटाईदार और किसान समूह इसे ले सकते हैं।",
-      "benefit": "₹3 लाख तक का छोटी अवधि का खेती ऋण 7% ब्याज पर, समय पर चुकाने पर 3% वापस, यानी असल दर 4%। 2025-26 में सरकार ने ब्याज सब्सिडी योजना में फ़सल ऋण की सीमा ₹3 लाख से ₹5 लाख की, मछली पालन और संबंधित कामों की सीमा ₹5 लाख की, और बिना गिरवी के ऋण की सीमा प्रति व्यक्ति ₹2 लाख की (1 जनवरी 2025 से)। कार्ड रुपे कार्ड है।",
-      "how_to_apply": "पहचान पत्र और भूमि रिकॉर्ड के साथ, या किसी और की ज़मीन पर खेती करते हैं तो किरायेदारी या बुवाई के दस्तावेज़ के साथ, किसी भी बैंक शाखा (व्यावसायिक, क्षेत्रीय ग्रामीण या सहकारी बैंक) में आवेदन करें। पीएम-किसान लाभार्थी पीएम-किसान पोर्टल से भी आवेदन कर सकते हैं।"
+      "summary": "फ़सलों और डेयरी, मुर्गी पालन और मछली पालन जैसे कामों के लिए छोटी अवधि का ऋण लेने के लिए किसानों का बैंक क्रेडिट कार्ड। योजना में ज़मीन के मालिक किसान, किरायेदार किसान, मौखिक पट्टेदार, बटाईदार और किसान समूह शामिल हैं।",
+      "benefit": "₹3 लाख प्रति वर्ष तक का छोटी अवधि का खेती ऋण 7% ब्याज पर। समय पर चुकाने वाले किसानों को 3% वापस मिलता है, यानी असल दर 4% (2025-26)। जो किसान सिर्फ़ डेयरी, मछली पालन, पशुपालन या मधुमक्खी पालन करते हैं, उनके लिए यह ब्याज मदद ₹2 लाख तक है। बिना गिरवी के ऋण की सीमा प्रति व्यक्ति ₹2 लाख है (1 जनवरी 2025 से)। कार्ड रुपे कार्ड है।",
+      "how_to_apply": "किसी भी बैंक शाखा (व्यावसायिक, क्षेत्रीय ग्रामीण या सहकारी बैंक) में आवेदन करें। फ़ॉर्म में भूमि रिकॉर्ड की प्रतियाँ और उगाई गई फ़सलों की जानकारी माँगी जाती है। पीएम-किसान लाभार्थी पीएम-किसान पोर्टल से भी आवेदन कर सकते हैं।"
     }
   },
   "sources": [
@@ -43,6 +43,21 @@
       "content_hash": "sha256:59186de69287b83f2d59fdd0e2fc7cc22c1e8a154ebbdf8353dbf65babd1538a",
       "verified_at": null,
       "verified_by": null
+    },
+    {
+      "id": "rbi_miss_2025_26",
+      "url": "https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=13270&Mode=0",
+      "title": "Modified Interest Subvention Scheme for Short Term Loans for Agriculture and Allied Activities availed through Kisan Credit Card (KCC) during the financial year 2025-26 (RBI/2025-26/193)",
+      "publisher": "Reserve Bank of India",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2026-01-13",
+      "fetched_at": "2026-10-26",
+      "content_hash": "sha256:7059b323177d84b486b219dcc3fc6f1f3cf8c02445265a7955f2a02f8a9e46fc",
+      "verified_at": null,
+      "verified_by": null,
+      "fetch": "manual",
+      "fetch_note": "rbi.org.in answers robots.txt with an 'Unauthorised Access' page for automated clients. Fetched by hand; hash with ingest/recheck.py --hash-file."
     }
   ],
   "rules": [
@@ -57,13 +72,13 @@
         ]
       },
       "hard": true,
-      "confidence": "guidance",
+      "confidence": "uncertain",
       "source": "pib_2026",
       "locator": "Eligible Beneficiaries, pp. 2-3",
       "quote": "It extends coverage to: individual farmers and joint borrowers who are owner-cultivators, tenant farmers, oral lessees, and sharecroppers.",
       "text": {
-        "en": "Farms (as owner, tenant, oral lessee or sharecropper), or does dairy, poultry or fisheries work",
-        "hi": "खेती करते हैं (मालिक, किरायेदार, मौखिक पट्टेदार या बटाईदार के रूप में), या डेयरी, मुर्गी पालन या मछली पालन का काम करते हैं"
+        "en": "Works as a farmer (owner, tenant, oral lessee or sharecropper). People in dairy, poultry or fisheries work should check with the bank.",
+        "hi": "किसान के रूप में काम करते हैं (मालिक, किरायेदार, मौखिक पट्टेदार या बटाईदार)। डेयरी, मुर्गी पालन या मछली पालन का काम करने वाले बैंक से पूछें।"
       }
     }
   ],
@@ -75,13 +90,13 @@
     },
     {
       "about": "amount",
-      "source": "pib_2026",
-      "quote": "the crop loan limit under MISS, which has been raised from Rs 3 lakh to Rs 5 lakh."
+      "source": "rbi_miss_2025_26",
+      "quote": "Interest subvention and prompt repayment incentive benefits on short term crop loans and short term loans for allied activities will be available on an overall limit of ₹3 lakh per annum subject to a maximum sub-limit of ₹2 lakh per farmer in respect of those farmers involved only in activities related to animal husbandry, dairy, fisheries, bee keeping etc."
     },
     {
       "about": "amount",
-      "source": "pib_2026",
-      "quote": "the credit limit for fisheries and allied activities has been increased from Rs 2 lakh to Rs 5 lakh"
+      "source": "rbi_miss_2025_26",
+      "quote": "the farmers repaying promptly as above would get short term crop loans and/or short term loans for allied activities including animal husbandry, dairy, fisheries, bee keeping etc. @ 4% per annum during the financial year 2025-26"
     },
     {
       "about": "amount",
@@ -92,21 +107,21 @@
       "about": "benefit",
       "source": "pib_2026",
       "quote": "The revised KCC offers a RuPay-enabled card with flexible withdrawals, digital payments, and one-time documentation"
+    },
+    {
+      "about": "documents",
+      "source": "pib_2026",
+      "quote": "farmers are required to submit copies of land records and information on the crops cultivated"
     }
   ],
   "documents": [
     {
       "code": "aadhaar",
-      "mandatory": true,
-      "source": "pib_2026"
-    },
-    {
-      "code": "land_records",
       "mandatory": false,
       "source": "pib_2026"
     },
     {
-      "code": "sowing_certificate",
+      "code": "land_records",
       "mandatory": false,
       "source": "pib_2026"
     }
