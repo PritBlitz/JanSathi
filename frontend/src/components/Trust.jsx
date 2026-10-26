@@ -25,6 +25,19 @@ export function TrustChip({ label }) {
   );
 }
 
+/** Who checked a published scheme (docs/REVIEW.md §5). AI-only reviews say so plainly. */
+export function CheckedChip({ scheme }) {
+  const { t, formatDate } = useI18n();
+  const v = scheme.verification;
+  if (!v || scheme.status !== 'published') return null;
+  const ai = v.method === 'ai-dual-review';
+  return (
+    <span className={`chip ${ai ? 'chip-ai' : 'chip-confirmed'}`}>
+      <Icon name={ai ? 'doc' : 'shield'} size={16} /> {t(ai ? 'trust.ai_checked' : 'source.verified', { date: formatDate(v.date) })}
+    </span>
+  );
+}
+
 export function Warn({ children }) {
   return (
     <p className="warn">

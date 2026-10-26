@@ -23,6 +23,8 @@ const PATHS = {
   pause: 'M8 5v14M16 5v14',
   play: 'M7 5l12 7-12 7V5z',
   list: 'M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01',
+  user: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0',
+  chat: 'M4 5h16v11H9l-5 4V5z',
 };
 
 export function Icon({ name, size = 22, className = '' }) {

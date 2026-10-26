@@ -252,3 +252,4 @@ main { min-height: 60vh; }
 @media (forced-colors: active) {
   .badge, .chip, .mark { border: 1px solid CanvasText; }
 }
+.chip-ai { color: var(--indigo); }

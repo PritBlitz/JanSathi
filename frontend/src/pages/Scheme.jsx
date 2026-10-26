@@ -3,7 +3,7 @@
 import { Icon } from '../components/Icon.jsx';
 import { Reveal } from '../components/Reveal.jsx';
 import { SourceCard, EmptyState } from '../components/SchemeParts.jsx';
-import { Mark, ResultBadge, TrustChip, Warn } from '../components/Trust.jsx';
+import { CheckedChip, Mark, ResultBadge, TrustChip, Warn } from '../components/Trust.jsx';
 import { useI18n } from '../lib/i18n-context.jsx';
 import { useApp } from '../lib/app-state.jsx';
 import { useSay } from '../lib/use-speech.js';
@@ -90,7 +90,9 @@ export function Scheme({ slug }) {
         <div className="badges">
           {answered && <ResultBadge result={r.result} />}
           <TrustChip label={r.label} />
+          <CheckedChip scheme={s} />
         </div>
+        {s.verification?.method === 'ai-dual-review' && <Warn>{t('trust.ai_checked_long', { date: formatDate(s.verification.date) })}</Warn>}
         {s.status !== 'published' ? <Warn>{t('trust.draft_warning')}</Warn> : r.stale && <Warn>{t('trust.stale_warning')}</Warn>}
         {inEnglish(s, lang) && <p className="small muted">{t('detail.in_english')}</p>}
         <div className="actions">

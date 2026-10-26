@@ -8,10 +8,12 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { match } from './rules.js';
 import { store } from './i18n.js';
 import { loadStateSchemes } from './data.js';
+import { useSession } from './session.jsx';
 
 export const KEYS = { profile: 'jansathi.profile', checklist: 'jansathi.checklist', motion: 'jansathi.motion', theme: 'jansathi.theme' };
 const today = () => new Date().toISOString().slice(0, 10);
 const newId = () => Math.random().toString(36).slice(2, 10);
+const hasAnswers = (h) => h && (h.members || []).some((m) => Object.keys(m.profile || {}).length || (m.skipped || []).length) || (h?.checklist?.schemes || []).length > 0;
 const emptyMember = (name = null) => ({ id: newId(), name, profile: {}, skipped: [], history: [] });
 
 function readJson(key) {
@@ -42,12 +44,51 @@ export function AppProvider({ data, children }) {
   const noticeTimer = useRef();
   const [voiceMode, setVoiceMode] = useState(false);
   const [stateSchemes, setStateSchemes] = useState({});
+  const session = useSession();
+  const syncTimer = useRef();
+  const savedRef = useRef(saved);
+  savedRef.current = saved;
 
-  const persist = useCallback((next) => {
-    setSaved(next);
+  const writeLocal = (next) => {
     store.set(KEYS.profile, JSON.stringify({ version: 2, members: next.members, active: next.active }));
     store.set(KEYS.checklist, JSON.stringify(next.checklist));
+  };
+
+  // Signed in: the household is also saved (encrypted) on the server, so the guide and any helper
+  // the person shares with see the same answers. Changes are pushed after a short pause.
+  const persist = useCallback(
+    (next) => {
+      setSaved(next);
+      writeLocal(next);
+      if (session?.signedIn) {
+        clearTimeout(syncTimer.current);
+        syncTimer.current = setTimeout(() => session.call('/me/household', { method: 'PUT', body: next }).catch(() => {}), 800);
+      }
+    },
+    [session],
+  );
+
+  /** Takes the household the server returned (after the guide saved answers). */
+  const replaceHousehold = useCallback((h) => {
+    if (!h?.members?.length) return;
+    const next = { members: h.members, active: h.active, checklist: h.checklist || { schemes: [], have: {} } };
+    setSaved(next);
+    writeLocal(next);
   }, []);
+
+  // On sign-in: use the saved household if there is one, else upload what is on this device.
+  const userId = session?.user?.id;
+  useEffect(() => {
+    if (!userId) return;
+    session
+      .call('/me/household')
+      .then((server) => {
+        if (hasAnswers(server)) replaceHousehold(server);
+        else session.call('/me/household', { method: 'PUT', body: savedRef.current }).catch(() => {});
+      })
+      .catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId]);
 
   const showNotice = useCallback((msg, ms = 6000) => {
     setNotice(msg);
@@ -172,6 +213,7 @@ export function AppProvider({ data, children }) {
       skip,
       back,
       addMember,
+      replaceHousehold,
       setActive: (id) => persist({ ...saved, active: id }),
       removeMember(id) {
         if (members.length < 2) return;
@@ -190,7 +232,7 @@ export function AppProvider({ data, children }) {
         setSaved({ members: [m], active: m.id, checklist: { schemes: [], have: {} } });
       },
     };
-  }, [saved, bundle, preview, source, persist, voiceMode, notice, showNotice, stateSchemes, stateCode]);
+  }, [saved, bundle, preview, source, persist, replaceHousehold, voiceMode, notice, showNotice, stateSchemes, stateCode]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

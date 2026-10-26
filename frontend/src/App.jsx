@@ -22,6 +22,10 @@ const Family = named(() => import('./pages/Family.jsx'), 'Family');
 const Slip = named(() => import('./pages/Slip.jsx'), 'Slip');
 const Changes = named(() => import('./pages/Changes.jsx'), 'Changes');
 const AskSheet = named(() => import('./components/AskSheet.jsx'), 'AskSheet');
+const SignIn = named(() => import('./pages/SignIn.jsx'), 'SignIn');
+const Guide = named(() => import('./pages/Guide.jsx'), 'Guide');
+const Account = named(() => import('./pages/Account.jsx'), 'Account');
+const Helper = named(() => import('./pages/Helper.jsx'), 'Helper');
 
 function Page({ route, onAsk }) {
   switch (route.name) {
@@ -43,6 +47,14 @@ function Page({ route, onAsk }) {
       return <Slip />;
     case 'changes':
       return <Changes />;
+    case 'login':
+      return <SignIn next={route.query.get('next')} />;
+    case 'guide':
+      return <Guide />;
+    case 'account':
+      return <Account />;
+    case 'helper':
+      return <Helper caseId={route.arg} />;
     case 'help':
       return <Help />;
     case 'privacy':

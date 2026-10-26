@@ -1,6 +1,6 @@
 // Building blocks for scheme lists, results and the detail page.
 import { Icon } from './Icon.jsx';
-import { Mark, ResultBadge, TrustChip, Warn, RESULT_KEY } from './Trust.jsx';
+import { CheckedChip, Mark, ResultBadge, TrustChip, Warn, RESULT_KEY } from './Trust.jsx';
 import { Reveal } from './Reveal.jsx';
 import { useI18n } from '../lib/i18n-context.jsx';
 import { useApp } from '../lib/app-state.jsx';
@@ -68,6 +68,7 @@ export function SchemeCard({ scheme: s, result: r, showTrace = false }) {
         <div className="badges">
           {answered && <ResultBadge result={r.result} />}
           <TrustChip label={r.label} />
+          <CheckedChip scheme={s} />
         </div>
       </div>
       <h3 {...langProps(s, lang)}>

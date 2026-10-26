@@ -211,3 +211,70 @@ details > p { margin: 4px 0 8px; }
 .answer .muted { color: inherit; opacity: 0.9; }
 .answer-text { font-size: 1.1875rem; font-weight: 600; line-height: 1.5; margin: 0 0 8px; }
 .passage-id { font-weight: 800; color: var(--indigo); margin-inline-end: 8px; }
+
+/* ---------- sign in ---------- */
+.auth-form { display: grid; gap: 10px; max-width: 560px; }
+.auth-form .search-form { margin: 0; align-items: center; }
+.phone-prefix { font-weight: 800; font-size: 1.125rem; padding-inline-end: 4px; }
+.auth-form input { letter-spacing: 0.08em; font-size: 1.25rem; }
+
+/* ---------- Saathi: chat ---------- */
+.guide-page { max-width: 900px; }
+.guide-ai-note { display: flex; gap: 8px; align-items: center; margin-top: -16px; }
+.chat { display: grid; gap: 12px; margin: 24px 0; }
+.bubble { max-width: min(92%, 640px); padding: 14px 18px; border-radius: 22px; display: grid; gap: 8px; }
+.bubble p { margin: 0; }
+.bubble-user { justify-self: end; background: var(--indigo); color: var(--on-indigo); border-bottom-right-radius: 6px; }
+.bubble-guide { justify-self: start; background: var(--surface); border: 1.5px solid var(--line); border-bottom-left-radius: 6px; }
+.bubble-busy { color: var(--ink-muted); font-style: italic; }
+.bubble-read { justify-self: start; margin-inline-start: -12px; }
+.bubble-sources summary { font-size: var(--fs-label); }
+.bubble-sources ol { display: grid; gap: 8px; padding-inline-start: 20px; list-style: decimal; font-size: var(--fs-label); }
+.bubble-schemes { margin-top: 4px; }
+.chat-small .bubble { max-width: 100%; }
+.saved-chip {
+  display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; justify-self: start;
+  padding: 2px 4px 2px 12px; border-radius: var(--r-pill); background: var(--indigo-soft); font-size: var(--fs-label); font-weight: 700;
+}
+.question-card { border-radius: var(--r-lg); background: var(--surface); border: 2px solid var(--ink); padding: clamp(20px, 3vw, 28px); margin-bottom: 16px; }
+.question-card-title { font-size: clamp(1.375rem, 1.5vw + 1rem, 2rem); font-weight: 800; }
+.quick-replies { display: flex; flex-wrap: wrap; gap: 8px; }
+.quick-replies .filter-chip { cursor: pointer; font: inherit; font-weight: 700; color: inherit; min-height: 52px; }
+.quick-replies .filter-chip:hover { background: var(--indigo); color: var(--on-indigo); border-color: var(--indigo); }
+.chat-input { position: sticky; bottom: 12px; z-index: 5; padding: 8px; border-radius: var(--r-pill); background: color-mix(in srgb, var(--paper) 90%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.icon-btn.is-listening { background: var(--rani); border-color: var(--rani); color: var(--on-rani); }
+.icon-btn.is-signed-in { background: var(--ink); color: var(--paper); }
+
+/* ---------- account ---------- */
+.account-section { margin-bottom: 32px; }
+.share-scopes { border: 0; padding: 0; margin: 0 0 16px; display: grid; gap: 4px; }
+.select, .note-form textarea {
+  min-height: 52px; padding: 10px 16px; border-radius: var(--r-sm); border: 1.5px solid var(--ink); background: var(--surface); font-size: 1.0625rem;
+}
+.select { display: block; margin: 8px 0 4px; }
+.share-code { margin-top: 20px; padding: 20px; border-radius: var(--r-md); background: var(--indigo-soft); }
+.share-code-value { font-family: var(--font-display); font-size: clamp(3rem, 10vw, 5rem); letter-spacing: 0.12em; line-height: 1; margin: 8px 0; }
+.household-list li .btn { grid-row: 1 / span 2; grid-column: 2; }
+.note-list { display: grid; gap: 10px; margin-bottom: 16px; }
+.note { padding: 14px 18px; border-radius: var(--r-md); background: var(--surface); border-inline-start: 4px solid var(--rani); }
+.note p { margin: 0; }
+.audit-list { display: grid; border-top: 1.5px solid var(--ink); }
+.audit-list li { display: grid; grid-template-columns: minmax(110px, auto) 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+
+/* ---------- helper portal ---------- */
+.case-list { display: grid; gap: 10px; }
+.case-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 20px; border-radius: var(--r-md); background: var(--surface); border: 1.5px solid var(--line); }
+.case-row p { margin: 0; }
+.helper-member { margin-bottom: 16px; display: grid; gap: 12px; }
+.answer-list { display: grid; gap: 0; margin: 0; border-top: 1px solid var(--line); }
+.answer-list > div { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.answer-list dt { color: var(--ink-muted); }
+.answer-list dd { margin: 0; font-weight: 700; text-align: end; }
+.helper-group { display: grid; gap: 8px; justify-items: start; }
+.helper-group ul { display: grid; gap: 6px; padding-inline-start: 4px; }
+.note-form { display: grid; gap: 10px; }
+.note-form textarea { min-height: 96px; font: inherit; }
+/* One row on every width, so the sticky bar never covers the question card. */
+.chat-input { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 6px; margin-top: 8px; }
+.chat-input input { min-width: 0; flex: none; }
+.chat-input .btn { padding-inline: 18px; }

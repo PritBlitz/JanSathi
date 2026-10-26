@@ -24,7 +24,9 @@ function observe(el) {
 
 export function Reveal({ as: Tag = 'div', className = '', delay = 0, children, ...rest }) {
   const ref = useRef(null);
-  useEffect(() => observe(ref.current), []);
+  useEffect(() => {
+    observe(ref.current);
+  }, []);
   return (
     <Tag ref={ref} className={`reveal ${className}`} style={delay ? { '--delay': `${delay}ms` } : undefined} {...rest}>
       {children}

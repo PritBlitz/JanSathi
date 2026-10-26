@@ -183,7 +183,9 @@ public class GuideService {
 			save(user.id(), "user", message);
 		}
 
-		Result result = llm.enabled() && !conversation.isEmpty()
+		// The model runs only for something new the person said or tapped; a bare call just
+		// returns the current question (the app uses it to refresh after an undo).
+		Result result = llm.enabled() && !message.isEmpty()
 				? converse(prompt(PROMPT, l), conversation, session)
 				: new Result(null, llm.enabled() ? null : "no_model", null);
 		if (result.text() != null) {

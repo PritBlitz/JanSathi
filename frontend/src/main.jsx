@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './App.jsx';
 import { AppProvider, KEYS } from './lib/app-state.jsx';
+import { SessionProvider } from './lib/session.jsx';
 import { I18nProvider, loadAll } from './lib/i18n-context.jsx';
 import { detectLang, store } from './lib/i18n.js';
 import { loadBundle } from './lib/data.js';
@@ -25,9 +26,11 @@ async function start() {
   createRoot(document.getElementById('root')).render(
     <StrictMode>
       <I18nProvider initial={i18n}>
-        <AppProvider data={data}>
-          <App />
-        </AppProvider>
+        <SessionProvider>
+          <AppProvider data={data}>
+            <App />
+          </AppProvider>
+        </SessionProvider>
       </I18nProvider>
     </StrictMode>,
   );

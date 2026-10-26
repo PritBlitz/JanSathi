@@ -1,6 +1,6 @@
 // Browser smoke test for the built PWA (frontend/dist): starts the static server, drives headless Chrome over the
 // DevTools protocol (no dependencies), walks the main flows and fails on console errors.
-// Usage: node tools/smoke-web.mjs [--shots DIR] [--lang hi] [--scheme light|dark] [--url http://localhost:8080/]
+// Usage: node tools/smoke-web.mjs [--shots DIR] [--lang hi] [--scheme light|dark] [--url http://localhost:8080/ [--admin-token T]]
 // Needs Chrome or Edge; set CHROME=/path/to/chrome if it is not found.
 import { spawn } from 'node:child_process';
 import { existsSync, mkdirSync, writeFileSync, mkdtempSync } from 'node:fs';
@@ -224,6 +224,66 @@ try {
     check(ratio > 0.8 && ratio <= 1.0, `hero word fills ${Math.round(ratio * 100)}% of the width in ${code}`);
   }
   console.log(`hero fill ratios: ${fits.join(', ')}`);
+  await evaluate(`document.querySelector('.footer-langs button[lang="en"]').click()`);
+  await waitFor(`document.documentElement.lang === 'en'`);
+
+  // Accounts, Saathi and the helper portal: only against a running API (--url) with --admin-token.
+  const adminToken = args.includes('--admin-token') ? args[args.indexOf('--admin-token') + 1] : null;
+  if (urlArg && adminToken) {
+    const setInput = (sel, val) =>
+      `(() => { const i = document.querySelector('${sel}'); Object.getOwnPropertyDescriptor(Object.getPrototypeOf(i), 'value').set.call(i, ${JSON.stringify(val)}); i.dispatchEvent(new Event('input', { bubbles: true })); })()`;
+    const signIn = async (phone) => {
+      await go('#/login?next=%23%2Fguide');
+      await waitFor(`!!document.querySelector('#phone')`);
+      await evaluate(setInput('#phone', phone));
+      await evaluate(`document.querySelector('#phone').form.requestSubmit()`);
+      // The dev SMS stand-in shows the code; without it (or when rate-limited) sign-in can't go on.
+      if (!(await waitFor(`!!document.querySelector('.auth-form .warn')`))) return false;
+      const code = await evaluate(`document.querySelector('.auth-form .warn').textContent.match(/\\d{6}/)[0]`);
+      await evaluate(setInput('#code', code));
+      await evaluate(`document.querySelector('#code').form.requestSubmit()`);
+      return waitFor(`location.hash.startsWith('#/guide')`);
+    };
+    const signOut = async () => {
+      await go('#/account');
+      await waitFor(`!!document.querySelector('.account-page')`);
+      await evaluate(`[...document.querySelectorAll('.account-page .btn-outline')].find((b) => b.closest('.page-head')).click()`);
+      await waitFor(`!localStorage.getItem('jansathi.session')`);
+    };
+    const person = `98765${String(Date.now()).slice(-5)}`;
+    const helperPhone = `98764${String(Date.now()).slice(-5)}`;
+
+    check(await signIn(person), 'person signs in with a one-time code');
+    const asked = await waitFor(`document.querySelectorAll('.question-card .quick-replies button').length >= 2`);
+    const pageText = asked ? '' : await evaluate(`(document.querySelector('main')?.innerText || '').slice(0, 300).replace(/\\s+/g, ' ')`);
+    check(asked, `Saathi asks the first question with tap-to-answer options ${pageText} ${asked ? '' : consoleErrors.join(' | ')}`);
+    await evaluate(`document.querySelectorAll('.question-card .quick-replies button')[1].click()`);
+    check(await waitFor(`!!document.querySelector('.saved-chip')`), 'a tapped answer is saved and shown with undo');
+    await shot('guide', 360);
+
+    await go('#/account');
+    await waitFor(`!!document.querySelector('.share-scopes')`);
+    await evaluate(`[...document.querySelectorAll('#share-title ~ .actions .btn-primary, .account-section .actions .btn-primary')].pop().click()`);
+    check(await waitFor(`/^[A-Z2-9]{6}$/.test(document.querySelector('.share-code-value')?.textContent || '')`), 'person makes a share code');
+    const shareCode = await evaluate(`document.querySelector('.share-code-value').textContent`);
+    await shot('account', 1280);
+    await signOut();
+
+    const reg = await evaluate(`fetch('api/v1/admin/volunteers', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ${adminToken}' }, body: JSON.stringify({ phone: '${helperPhone}', name: 'Smoke Helper', organisation: 'Test CSC' }) }).then((r) => r.status)`);
+    check(reg === 200, 'admin registers a helper');
+    check(await signIn(helperPhone), 'helper signs in');
+    await go('#/helper');
+    await waitFor(`!!document.querySelector('#helper-code')`);
+    await evaluate(setInput('#helper-code', shareCode));
+    await evaluate(`document.querySelector('#helper-code').form.requestSubmit()`);
+    check(await waitFor(`location.hash.startsWith('#/helper/') && document.querySelectorAll('.answer-list > div').length >= 1`), 'helper opens the case by code and sees the answers');
+    await shot('helper-case', 1280);
+    await signOut();
+
+    await signIn(person);
+    await go('#/account');
+    check(await waitFor(`[...document.querySelectorAll('.audit-list li')].some((li) => li.textContent.includes('Smoke Helper'))`), "the person sees the helper's visit in their audit log");
+  }
 
   // A key on screen means a missing translation (t() falls back to the key itself).
   const untranslated = await evaluate(`fetch('locales/en.json').then((r) => r.json()).then((en) => { const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); const out = []; while (w.nextNode()) { const s = w.currentNode.textContent.trim(); if (s && s in en) out.push(s); } return out; })`);

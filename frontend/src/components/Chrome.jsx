@@ -3,12 +3,14 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { BrandMark, Icon } from './Icon.jsx';
 import { useI18n } from '../lib/i18n-context.jsx';
 import { useApp, KEYS } from '../lib/app-state.jsx';
+import { useSession } from '../lib/session.jsx';
 import { LANGS, store } from '../lib/i18n.js';
 import { useSay, useSpeaking } from '../lib/use-speech.js';
 import { stop } from '../lib/speech.js';
 import { readableText } from '../lib/text.js';
 
 const NAV = [
+  { href: '#/guide', key: 'nav.guide', route: 'guide', needsApi: true },
   { href: '#/schemes', key: 'nav.schemes', route: 'schemes' },
   { href: '#/how', key: 'nav.how', route: 'how' },
   { href: '#/family', key: 'nav.family', route: 'family' },
@@ -20,8 +22,11 @@ const NAV = [
 /** Nav entries to show: 'What changed' only when content records a change. */
 function useNav() {
   const { bundle } = useApp();
+  const session = useSession();
   const hasChanges = bundle.schemes.some((s) => s.changes?.length);
-  return NAV.filter((n) => !n.ifChanges || hasChanges);
+  const items = NAV.filter((n) => (!n.ifChanges || hasChanges) && (!n.needsApi || session.available));
+  if (session.user?.role === 'volunteer') items.push({ href: '#/helper', key: 'nav.helper', route: 'helper' });
+  return items;
 }
 
 const THEMES = ['system', 'light', 'dark'];
@@ -112,6 +117,25 @@ function useCompact(inner, lang, items) {
   return compact;
 }
 
+/** Sign in, or my account once signed in. Hidden when there is no API to sign in to. */
+function AccountButton({ route }) {
+  const { t } = useI18n();
+  const session = useSession();
+  if (!session.available) return null;
+  const label = t(session.signedIn ? 'nav.account' : 'nav.sign_in');
+  return (
+    <a
+      className={`icon-btn ${session.signedIn ? 'is-signed-in' : ''}`}
+      href={session.signedIn ? '#/account' : '#/login'}
+      aria-label={label}
+      title={label}
+      aria-current={route.name === 'account' || route.name === 'login' ? 'page' : undefined}
+    >
+      <Icon name="user" />
+    </a>
+  );
+}
+
 export function Nav({ route }) {
   const { t, lang } = useI18n();
   const { setVoiceMode } = useApp();
@@ -129,7 +153,9 @@ export function Nav({ route }) {
     window.addEventListener('scroll', on, { passive: true });
     return () => window.removeEventListener('scroll', on);
   }, []);
-  useEffect(() => setOpen(false), [route.name, route.arg]);
+  useEffect(() => {
+    setOpen(false);
+  }, [route.name, route.arg]);
   useEffect(() => {
     // A class, not html:has(): :has() on the root makes every style change re-check it.
     document.documentElement.classList.toggle('menu-lock', open);
@@ -161,6 +187,7 @@ export function Nav({ route }) {
             <LanguageSelect />
           </div>
           <ThemeButton />
+          <AccountButton route={route} />
           <button
             className="btn btn-outline btn-listen"
             type="button"
