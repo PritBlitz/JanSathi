@@ -33,7 +33,7 @@ public class LlmConfig {
 		}
 
 		@Override
-		public Completion complete(String system, List<Message> messages, CompletionOptions options) {
+		public Turn chat(String system, List<Message> messages, List<Tool> tools, CompletionOptions options) {
 			throw new LlmException("No LLM provider is configured", null);
 		}
 	};

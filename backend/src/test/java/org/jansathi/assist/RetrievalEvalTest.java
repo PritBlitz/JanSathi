@@ -38,7 +38,7 @@ class RetrievalEvalTest {
 	private static final Path EVAL = Path.of(System.getProperty("jansathi.repoRoot", "..")).resolve("eval/rag");
 
 	private final Retriever retriever =
-			new Retriever(new BundleRepository(new JansathiProperties(null, true, List.of(), null, null), JSON));
+			new Retriever(new BundleRepository(new JansathiProperties(null, true, List.of(), null, null, null, null), JSON));
 
 	private record Score(String lang, int answerable, int hits, int unanswerable, int refusals, List<String> misses) {}
 

@@ -61,7 +61,7 @@ public class Retriever {
 	private record Candidate(Passage passage, double score) {}
 
 	/** Removes personal numbers before the question is used for anything. */
-	static String redact(String question) {
+	public static String redact(String question) {
 		return PERSONAL_NUMBER.matcher(question).replaceAll(" ");
 	}
 

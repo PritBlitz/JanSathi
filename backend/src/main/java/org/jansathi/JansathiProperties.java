@@ -14,14 +14,30 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @param corsOrigins browser origins allowed to call the API (the frontend dev server, the PWA host)
  * @param adminToken shared bearer token for {@code /api/v1/admin/**}; blank switches the admin API off
  * @param llm the language model that explains retrieved passages (docs/RAG_ASSISTANT.md)
+ * @param secret server secret for keyed hashes and encryption at rest ({@code JANSATHI_SECRET})
+ * @param sms how one-time codes reach the phone
  */
 @ConfigurationProperties("jansathi")
-public record JansathiProperties(Path bundleDir, boolean previewFallback, List<String> corsOrigins, String adminToken, Llm llm) {
+public record JansathiProperties(
+		Path bundleDir, boolean previewFallback, List<String> corsOrigins, String adminToken, Llm llm, String secret, Sms sms) {
 
 	public JansathiProperties {
 		bundleDir = bundleDir == null || bundleDir.toString().isBlank() ? null : bundleDir;
 		corsOrigins = corsOrigins == null ? List.of() : List.copyOf(corsOrigins);
 		llm = llm == null ? new Llm(null, null, null, null, null) : llm;
+		sms = sms == null ? new Sms(null) : sms;
+	}
+
+	/**
+	 * @param provider {@code dev} (default): the code is returned in the API response and shown on
+	 *     screen, for development and demos only. A real SMS provider is added as another
+	 *     {@code SmsSender} implementation.
+	 */
+	public record Sms(String provider) {
+
+		public Sms {
+			provider = provider == null || provider.isBlank() ? "dev" : provider;
+		}
 	}
 
 	/**

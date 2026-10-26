@@ -41,6 +41,11 @@ tasks.processResources {
 	from(rootDir.parentFile.resolve("frontend/public/data")) {
 		into("bundle")
 	}
+	// UI strings, so the AI guide asks questions with the same wording as the app.
+	from(rootDir.parentFile.resolve("frontend/public/locales")) {
+		into("locales")
+		exclude("review-status.json")
+	}
 	// Same banned-phrase lists as the copy lint, for validating assistant answers.
 	from(rootDir.parentFile.resolve("tools/banned-phrases.json")) {
 		into("copy")

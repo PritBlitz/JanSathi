@@ -19,7 +19,7 @@ class AssistServiceTest {
 
 	private static final ObjectMapper JSON = JsonMapper.builder().build();
 	private final BundleRepository bundles =
-			new BundleRepository(new JansathiProperties(null, true, List.of(), null, null), JSON);
+			new BundleRepository(new JansathiProperties(null, true, List.of(), null, null, null, null), JSON);
 	private final Retriever retriever = new Retriever(bundles);
 	private final AnswerValidator validator = new AnswerValidator(JSON, new CopyRules(JSON));
 
@@ -44,14 +44,14 @@ class AssistServiceTest {
 		}
 
 		@Override
-		public Completion complete(String system, List<Message> messages, CompletionOptions options) {
+		public Turn chat(String system, List<Message> messages, List<Tool> tools, CompletionOptions options) {
 			calls++;
 			assertThat(system).doesNotContain("{lang}");
 			Object next = replies.pop();
 			if (next instanceof RuntimeException e) {
 				throw e;
 			}
-			return new Completion((String) next, "scripted");
+			return new Turn((String) next, List.of(), "scripted");
 		}
 	}
 

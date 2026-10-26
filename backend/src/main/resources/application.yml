@@ -35,6 +35,12 @@ jansathi:
   # Local development: JANSATHI_BUNDLE_DIR=../frontend/public/data picks up `npm run build` without a rebuild.
   bundle-dir: ${JANSATHI_BUNDLE_DIR:}
   preview-fallback: true
+  # Keys for phone hashes and encryption at rest. Set a long random value in production and keep it:
+  # changing it makes saved accounts and data unreadable. Blank (local dev): a random key per start.
+  secret: ${JANSATHI_SECRET:}
+  sms:
+    # dev: no SMS is sent; the sign-in code is shown on screen. Replace before launch.
+    provider: ${JANSATHI_SMS_PROVIDER:dev}
   # Blank switches the admin API (/api/v1/admin/**) off.
   admin-token: ${JANSATHI_ADMIN_TOKEN:}
   cors-origins:
