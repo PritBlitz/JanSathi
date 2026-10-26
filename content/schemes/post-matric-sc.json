@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": "2021-03",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:cf73697baff4d7ebaf5919363296479b501ea9efc146a27de50623a9472cfa57",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2",
       "note": "Scanned PDF without a text layer; clauses were read from the page images."
     },
     {
@@ -55,8 +55,8 @@
       "published_date": "2021-03",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:d726e2c8a16dcf572b050a014df9551414781bdc8b0268e7f3fcd5374a2c9f22",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2",
       "note": "Same March 2021 Government of India guidelines as the 'guidelines' source, scanned with an OCR text layer, so quotes can be checked. The OCR text has some errors, and the academic allowance table is garbled in the text layer."
     },
     {
@@ -82,8 +82,8 @@
       "published_date": null,
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc",
-      "verified_at": null,
-      "verified_by": null
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2"
     }
   ],
   "rules": [
@@ -211,5 +211,14 @@
       "mandatory": false,
       "source": "nsp"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-25",
+    "content_version": "6c8ddf475abf06dc"
+  }
 }

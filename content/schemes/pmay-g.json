@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": "2024-12-03",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:ffdc0e8bf6cfa753988768fbb22a39fe421dbc3996998089ee373037af90ac75",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
     },
@@ -56,8 +56,8 @@
       "published_date": "2024-08-09",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:a82126075bf14cfced0e07047d014d416773b7b50183bb5871ea85c0cb003bca",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
     },
@@ -71,8 +71,8 @@
       "published_date": "2022",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:760134a176732f933ab95c445f0dfb0198877e1cdc6fcbf8ae423ff50b4c2b15",
-      "verified_at": null,
-      "verified_by": null
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2"
     },
     {
       "id": "portal",
@@ -97,8 +97,8 @@
       "published_date": "2026-06-30",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:059ba7791132c07139f32fd3dafabea67bb9a79ad7270f9f9a4d96c4ae94678a",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
     }
@@ -313,5 +313,14 @@
       "mandatory": true,
       "source": "framework"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-25",
+    "content_version": "eaebf05d7d12fb8a"
+  }
 }

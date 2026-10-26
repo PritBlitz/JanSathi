@@ -19,7 +19,7 @@ class AssistServiceTest {
 
 	private static final ObjectMapper JSON = JsonMapper.builder().build();
 	private final BundleRepository bundles =
-			new BundleRepository(new JansathiProperties(null, true, List.of(), null, null, null, null), JSON);
+			new BundleRepository(new JansathiProperties(null, true, true, List.of(), null, null, null, null), JSON);
 	private final Retriever retriever = new Retriever(bundles);
 	private final AnswerValidator validator = new AnswerValidator(JSON, new CopyRules(JSON));
 

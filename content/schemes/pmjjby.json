@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": null,
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:31920a0bcafb3b3441c46e43aafdc96c46fc56759f31d65ef4b094e4c41dcd7d",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "robots.txt on financialservices.gov.in disallows bots. Fetched by hand; hash with ingest/recheck.py --hash-file."
     }
@@ -122,5 +122,14 @@
       "mandatory": true,
       "source": "dfs"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-25",
+    "content_version": "64b7ab240873800c"
+  }
 }

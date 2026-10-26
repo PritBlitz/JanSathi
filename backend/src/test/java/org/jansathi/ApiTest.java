@@ -40,9 +40,11 @@ class ApiTest {
 				.andExpect(jsonPath("$.version").isString())
 				.andExpect(jsonPath("$.schemes.length()").value(28))
 				.andExpect(jsonPath("$.schemes[0].slug").isString())
-				// Drafts are never presented as verified.
-				.andExpect(jsonPath("$.schemes[0].stale").value(true))
-				.andExpect(jsonPath("$.schemes[0].label").value("uncertain"));
+				// Drafts are never presented as verified (kcc is under its second review).
+				.andExpect(jsonPath("$.schemes[?(@.slug == 'kcc')].stale").value(org.hamcrest.Matchers.contains(true)))
+				.andExpect(jsonPath("$.schemes[?(@.slug == 'kcc')].label").value(org.hamcrest.Matchers.contains("uncertain")))
+				// Published after two independent reviews: sources verified, not stale.
+				.andExpect(jsonPath("$.schemes[?(@.slug == 'pm-kisan')].stale").value(org.hamcrest.Matchers.contains(false)));
 	}
 
 	@Test

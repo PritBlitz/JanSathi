@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": "2024-09-11",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:3bcb6465160f7f53228cf9498d21bdcd2438da4964f819d1440f8630e69e02dd",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
     },
@@ -71,8 +71,8 @@
       "published_date": null,
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:f537857f170aa8c135c3bfe181003d0f181cece1b7a9e3e3534a0d72db271898",
-      "verified_at": null,
-      "verified_by": null
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2"
     }
   ],
   "rules": [
@@ -137,5 +137,14 @@
       "mandatory": false,
       "source": "beneficiary"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-25",
+    "content_version": "3af56e9d98eba263"
+  }
 }

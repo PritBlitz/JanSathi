@@ -35,6 +35,8 @@ jansathi:
   # Local development: JANSATHI_BUNDLE_DIR=../frontend/public/data picks up `npm run build` without a rebuild.
   bundle-dir: ${JANSATHI_BUNDLE_DIR:}
   preview-fallback: true
+  # Staging and tests only: serve drafts even when schemes are published.
+  include-drafts: ${JANSATHI_INCLUDE_DRAFTS:false}
   # Keys for phone hashes and encryption at rest. Set a long random value in production and keep it:
   # changing it makes saved accounts and data unreadable. Blank (local dev): a random key per start.
   secret: ${JANSATHI_SECRET:}

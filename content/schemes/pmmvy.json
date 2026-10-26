@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": "2022",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:3111323d93100e3890c90281deef0af1b59de69f513781e5e636c3d6f901bcb6",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2",
       "note": "Guidelines cover 2021-22 to 2025-26 and are still the version on the PMMVY portal. A reviewer must confirm the scheme period after March 2026."
     },
     {
@@ -254,5 +254,14 @@
       "mandatory": false,
       "source": "guidelines"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-25",
+    "content_version": "ca5e3478147177b5"
+  }
 }

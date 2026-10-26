@@ -46,9 +46,9 @@ public class BundleRepository {
 
 	/** Re-reads the bundle files; call after {@code npm run build} when serving from a directory. */
 	public synchronized ContentBundle reload() {
-		ContentBundle published = load("", false);
+		ContentBundle published = properties.includeDrafts() ? null : load("", false);
 		ContentBundle chosen = published;
-		if (published.centralSchemes().isEmpty() && published.stateSchemes().isEmpty() && properties.previewFallback()) {
+		if (published == null || (published.centralSchemes().isEmpty() && published.stateSchemes().isEmpty() && properties.previewFallback())) {
 			chosen = load(".preview", true);
 		}
 		current = chosen;

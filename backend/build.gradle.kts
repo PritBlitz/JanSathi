@@ -60,6 +60,8 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 	// Shared fixtures and content live outside the Gradle project.
 	systemProperty("jansathi.repoRoot", rootDir.parentFile.absolutePath)
+	// Tests run on every scheme, published or not, so publishing never changes test results.
+	systemProperty("jansathi.include-drafts", "true")
 	// Tests never touch the local file database.
 	systemProperty("spring.datasource.url", "jdbc:h2:mem:test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1")
 }

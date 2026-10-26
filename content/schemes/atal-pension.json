@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": null,
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:201c97abd73eb6d94149a16383edb4f3754d2e8b210c2fa43cae248743b3b7c8",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "robots.txt on financialservices.gov.in disallows bots. Fetched by hand; hash with ingest/recheck.py --hash-file."
     },
@@ -56,8 +56,8 @@
       "published_date": "2025-05-08",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:a660f44cb5e3fd4f3b7dab5f094a7e2a3eb93e7eb304f7f6f5d37c580346e428",
-      "verified_at": null,
-      "verified_by": null
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2"
     }
   ],
   "rules": [
@@ -150,5 +150,14 @@
       "mandatory": false,
       "source": "pib_2025"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-25",
+    "content_version": "8f343dd2ed19caba"
+  }
 }

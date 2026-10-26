@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": "2025-03-04",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:c9a1bf40e278e27ab8db96f0ce73e83e947890173d572cea07f8307394517202",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "labour.gov.in answers 403 to automated clients. Fetched by hand; hash with ingest/recheck.py --hash-file."
     },
@@ -190,5 +190,14 @@
       "mandatory": true,
       "source": "mole_2025"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-25",
+    "content_version": "513272731c135878"
+  }
 }

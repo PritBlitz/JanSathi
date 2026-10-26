@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": "2026-01",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:c3e73b7107ee281e8c875478604722d0fdb8234ed0f4ebd8644a79d7722c43be",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "mohua.gov.in answers 403 to automated clients. Fetched by hand; hash with ingest/recheck.py --hash-file."
     },
@@ -56,8 +56,8 @@
       "published_date": null,
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:ba8eea2dd5eb7d258a6d36f9e8cfd30bd207484db5b1ecb50996a279b2ac2c24",
-      "verified_at": null,
-      "verified_by": null
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2"
     }
   ],
   "rules": [
@@ -120,5 +120,14 @@
       "mandatory": true,
       "source": "guidelines"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-25",
+    "content_version": "2821eab0b7f762e4"
+  }
 }

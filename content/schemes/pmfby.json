@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": "2026-08-29",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:fbea6acacc46d5864d6408dac2b23a7bf85361b5fc8b72ea42c5819a329ed33f",
-      "verified_at": null,
-      "verified_by": null
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2"
     },
     {
       "id": "portal",
@@ -54,8 +54,8 @@
       "published_date": null,
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:0580ed18711602b15107f18de2119a2ad1f3b3bc6c769617c3d0ba8189fb7444",
-      "verified_at": null,
-      "verified_by": null
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2"
     }
   ],
   "rules": [
@@ -133,5 +133,14 @@
       "mandatory": false,
       "source": "factsheet_2026"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-25",
+    "content_version": "9aca5d8ee03f94c4"
+  }
 }

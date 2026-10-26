@@ -131,8 +131,10 @@ try {
   }
   check(await waitFor(`document.querySelector('.hero-word').classList.contains('has-image')`), 'hero word gets the collage fill');
   check(await evaluate(`getComputedStyle(document.querySelector('.hero-word > span')).backgroundImage.includes('collage')`), 'collage is the background of the hero word');
-  check(await evaluate(`!!document.querySelector('.banner')`), 'preview banner is shown (no published schemes yet)');
-  check(await evaluate(`document.querySelectorAll('.rail .rail-card').length >= 10`), 'rail lists the draft schemes');
+  // Preview mode (drafts, with a banner) only while nothing is published.
+  const published = await evaluate(`fetch('data/bundle.json').then((r) => r.json()).then((b) => b.schemes.length)`);
+  check(await evaluate(`!!document.querySelector('.banner')`) === (published === 0), `preview banner ${published ? 'is hidden (schemes are published)' : 'is shown (no published schemes yet)'}`);
+  check(await evaluate(`document.querySelectorAll('.rail .rail-card').length >= 10`), 'rail lists the schemes');
   { const o = await overflow(); check(!o, `no horizontal scroll at 1280 ${o}`); }
   check(await evaluate(`!!document.querySelector('.marquee') && !!document.querySelector('.stats .stat-num') && !!document.querySelector('.how-steps li')`), 'home shows marquee, stats and how-it-works');
   await evaluate(`document.querySelector('.marquee-btn').click()`);
@@ -169,14 +171,14 @@ try {
   }
   check(steps > 4 && steps < 40, `questionnaire ends after ${steps} answers`);
   await go('#/results');
-  const total = await evaluate(`fetch('data/bundle.preview.json').then((r) => r.json()).then((b) => b.schemes.length)`);
+  const total = published || (await evaluate(`fetch('data/bundle.preview.json').then((r) => r.json()).then((b) => b.schemes.length)`));
   check(await waitFor(`document.querySelectorAll('.results-group .scheme-card').length === ${total}`), `results show all ${total} schemes`);
   check(await evaluate(`document.querySelectorAll('.trace li').length > 10`), 'results show rule traces');
   await shot('results', 1280);
 
-  await go('#/scheme/igndps');
+  await go(`#/scheme/${published ? 'pm-kisan' : 'igndps'}`);
   check(await waitFor(`document.querySelectorAll('.source-card').length >= 2`), 'scheme detail lists sources');
-  check(await evaluate(`!!document.querySelector('.warn')`), 'scheme detail shows the draft warning');
+  check(await evaluate(`!!document.querySelector('.warn')`), 'scheme detail says who checked it (draft or AI-review notice)');
   await evaluate(`document.querySelector('.panel-docs .btn-block').click()`);
   await shot('detail', 1280);
   await go('#/checklist');

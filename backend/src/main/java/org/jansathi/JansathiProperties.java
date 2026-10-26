@@ -11,6 +11,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @param bundleDir directory holding bundle.json, bundle.preview.json and states/ (written by
  *     tools/build-bundle.mjs); null reads the copy packaged in the jar under {@code bundle/}
  * @param previewFallback serve draft schemes, flagged as preview, while no scheme is published
+ * @param includeDrafts always serve the draft bundle (staging, tests); never in production
  * @param corsOrigins browser origins allowed to call the API (the frontend dev server, the PWA host)
  * @param adminToken shared bearer token for {@code /api/v1/admin/**}; blank switches the admin API off
  * @param llm the language model that explains retrieved passages (docs/RAG_ASSISTANT.md)
@@ -19,7 +20,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties("jansathi")
 public record JansathiProperties(
-		Path bundleDir, boolean previewFallback, List<String> corsOrigins, String adminToken, Llm llm, String secret, Sms sms) {
+		Path bundleDir, boolean previewFallback, boolean includeDrafts, List<String> corsOrigins, String adminToken, Llm llm, String secret, Sms sms) {
 
 	public JansathiProperties {
 		bundleDir = bundleDir == null || bundleDir.toString().isBlank() ? null : bundleDir;

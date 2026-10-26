@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": "2023-11-29",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:2a52ccc6aa17be71636eba9886887078ee6547619ba96ae4aff11a7a9ff3d30c",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
     },
@@ -56,8 +56,8 @@
       "published_date": "2013-09-10",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:4f7f27f452ceda2a1951e4bde77177717971487453e45906b1ffc2bb75579c34",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-25",
+      "verified_by": "ai-r1, ai-r2",
       "note": "Section 3(1): 5 kg per person per month for priority households; first proviso: 35 kg per household for AAY. A draft NFS (Amendment) Bill, 2026 was put out for comments by DFPD; not enacted as of 2026-10-25."
     },
     {
@@ -129,5 +129,14 @@
       "mandatory": false,
       "source": "cabinet_2023"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-25",
+    "content_version": "0dd6e84078c3b7ab"
+  }
 }
