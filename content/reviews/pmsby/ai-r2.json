@@ -1,0 +1,16 @@
+{
+  "slug": "pmsby",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "c257d9534b98b35c",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "dfs", "content_hash": "sha256:e8adb56f4120169f52f174566d50b12138024e9fb39cb620e472c7bb2447618e", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search (PIB, DFS, press) for 2025-2026 PMSBY changes: last premium revision 1 June 2022 (Rs 12 to Rs 20); PIB material of May 2025 still lists Rs 20 / Rs 2 lakh. No 2026 notification of a premium or cover change found.",
+  "findings": [
+    { "target": "content.en.benefit", "severity": "minor", "note": "Matches the DFS page. Under the scheme rules the Rs 1 lakh is for permanent partial disability (e.g. loss of one eye/limb); 'partial disability' alone may make people expect payment for temporary injuries. The cited page itself only says 'partial disability'.", "suggestion": "Optional: say 'permanent partial disability' if a source (PMSBY rules on jansuraksha.gov.in) is added." },
+    { "target": "rules", "severity": "minor", "note": "Age 18-70 inclusive (>=18, <=70) matches 'age group of 18 to 70 years'; guidance fits a portal source; fixtures cover 17/18/70/71 and the straddling band. Bank account and consent have no field and are covered by documents and how_to_apply.", "suggestion": "None required." }
+  ]
+}

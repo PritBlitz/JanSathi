@@ -1,0 +1,21 @@
+{
+  "slug": "post-matric-sc",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "6c8ddf475abf06dc",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:cf73697baff4d7ebaf5919363296479b501ea9efc146a27de50623a9472cfa57", "method": "snapshot" },
+    { "id": "guidelines_text", "content_hash": "sha256:d726e2c8a16dcf572b050a014df9551414781bdc8b0268e7f3fcd5374a2c9f22", "method": "snapshot" },
+    { "id": "msje", "content_hash": "sha256:720f07546e93fb08da7acc4a310e211252fbeb24f37d75ef22479a158569e45b", "method": "snapshot" },
+    { "id": "nsp", "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search (socialjustice.gov.in, PIB, NSP, press) for 2025-2026 PMS-SC changes: press reports say MoSJE has proposed raising the income limit to Rs 4.5 lakh with a course-fee cap and a revised funding pattern, but I found no notification or Cabinet approval; Rs 2.5 lakh remains the notified limit. No 2026-31 continuation approval found; 15th-FC schemes were extended on the same terms to 30 Sep 2026 or approval. The guidelines (2020-21 to 2025-26) are still the ones on the MSJE scheme page, and 2026-27 applications are open on state portals/NSP, so the expired period is minor.",
+  "findings": [
+    { "target": "rule:income_max", "severity": "minor", "note": "<= 250000 matches 'does not exceed Rs. 2,50,000/-'. A proposal to raise it to Rs 4.5 lakh is pending; if notified, this rule and its fixtures must change.", "suggestion": "Keep reverify_days short (90) and watch MoSJE/PIB." },
+    { "target": "sources:guidelines", "severity": "minor", "note": "Scheme period in the guidelines is 2020-21 to 2025-26 (para 'continued upto the financial year 2025-26'). No replacement published yet.", "suggestion": "Re-check for 2026-31 guidelines." },
+    { "target": "sources:guidelines_text", "severity": "minor", "note": "Hosted on socialwelfare.goa.gov.in (a state government site) as a copy of the GoI guidelines; acceptable as official, and the MSJE page (msje snapshot) confirms the 'revised in March 2021' guidelines are current.", "suggestion": "None required." },
+    { "target": "documents", "severity": "minor", "note": "caste_certificate, income_certificate and aadhaar cite 'guidelines' (scanned, 188-byte snapshot, no text); marksheet, fee_receipt, bank_account and photo cite 'nsp', whose snapshot is only page chrome. guidelines_text supports most of them (line 422: marksheets, caste certificate, income certificate; line 274: Aadhaar-linked bank account).", "suggestion": "Re-point caste_certificate, income_certificate, aadhaar, marksheet and bank_account to guidelines_text; keep fee_receipt/photo only if a text source lists them." }
+  ]
+}

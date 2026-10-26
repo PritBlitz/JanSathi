@@ -1,0 +1,51 @@
+{
+  "slug": "pm-surya-ghar",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "b9a8b1cefe2c7562",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "criteria",
+      "content_hash": "sha256:4301f494aaa3074ed857baace54a68ec80c7a5dfd0c83751e6465260bb20648b",
+      "method": "snapshot"
+    },
+    {
+      "id": "cabinet_2024",
+      "content_hash": "sha256:c7ca06f6a3e9216f7685b460f2cb77168507e007de37d747bd378774a4907aa0",
+      "method": "snapshot"
+    },
+    {
+      "id": "progress_2026",
+      "content_hash": "sha256:ddc4be110f5af38da98603a1b541fe75a093bd83916365b0ac9337d175894cab",
+      "method": "snapshot"
+    },
+    {
+      "id": "portal",
+      "content_hash": "sha256:5418a03d5e8e6c09af97f18c9a640152b30ec8d6befff8bbcd1240089194fcc8",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Web search (2026-10-26): no official change to central subsidy rates in 2025-2026. The scheme's outlay and target run to FY 2026-27 (1 crore homes by March 2027). Talk of a 'PM Surya Ghar 2.0' is unconfirmed. The PIB progress release of 4 Aug 2026 (already cited) gives the 5.75% loan rate and 50.06 lakh homes.",
+  "findings": [
+    {
+      "target": "content.summary",
+      "severity": "minor",
+      "note": "'so you can get up to 300 units of electricity a month free' is supported by the Cabinet release ('providing free electricity up to 300 units every month'), but it is phrased as a personal promise and has no fact entry. The free units come from the household's own panels, and a 3 kW system generates 'more than 300 units a month on an average'.",
+      "suggestion": "Rephrase as 'The scheme aims to give homes up to 300 units of free electricity a month from their own panels.' Add a fact quoting the Cabinet release."
+    },
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "The scheme period (to FY 2026-27, about five months away) is not stated. With reverify_days 90 that is acceptable.",
+      "suggestion": "Add 'The scheme currently runs until March 2027' once an official source with that date is snapshotted, and re-check in early 2027."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "bank_account is cited to cabinet_2024, which does not mention bank accounts. aadhaar is cited to the portal, whose snapshot is 72 bytes (title only).",
+      "suggestion": "Cite progress_2026 ('subsidy released directly to beneficiaries through Direct Benefit Transfer') for the bank account. Snapshot a portal page that lists documents, or drop aadhaar."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "slug": "pmay-g",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "eaebf05d7d12fb8a",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "exclusions_2024", "content_hash": "sha256:ffdc0e8bf6cfa753988768fbb22a39fe421dbc3996998089ee373037af90ac75", "method": "snapshot" },
+    { "id": "cabinet_2024", "content_hash": "sha256:a82126075bf14cfced0e07047d014d416773b7b50183bb5871ea85c0cb003bca", "method": "snapshot" },
+    { "id": "framework", "content_hash": "sha256:760134a176732f933ab95c445f0dfb0198877e1cdc6fcbf8ae423ff50b4c2b15", "method": "snapshot" },
+    { "id": "portal", "content_hash": "sha256:f39638d2610c4a5cebd5805accc4daea0de202f9c9a68ea1a57279b8c4eb12bd", "method": "snapshot" },
+    { "id": "vbgramg", "content_hash": "sha256:059ba7791132c07139f32fd3dafabea67bb9a79ad7270f9f9a4d96c4ae94678a", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search (PIB, pmindia.gov.in, Lok Sabha replies on eparlib.sansad.in) for 2025-2026 PMAY-G changes: the Cabinet decision of 9 Aug 2024 extends PMAY-G to March 2029 at the existing unit assistance of Rs 1.20 / 1.30 lakh; a Lok Sabha reply says no revision of unit cost is under consideration. No renaming or discontinuation found. The MGNREGS-to-VB-G RAM G change from 1 July 2026 is already reflected in the content.",
+  "findings": [
+    { "target": "content.en.benefit", "severity": "minor", "note": "The framework (paras 2.1/5.x) and Cabinet note give Rs 1.30 lakh also in 'difficult areas' and IAP districts, not only NE and hill States. The content lists only NE + hill States, so people in difficult areas/IAP districts would read the lower amount.", "suggestion": "Add 'and in difficult areas and IAP districts named by the State' to the Rs 1.30 lakh sentence (en and hi), quoting framework line 'Rs.1.20 lakh in plain areas and 1.30 lakh in Hill states, North-Eastern States, Difficult Areas and IAP districts'." },
+    { "target": "rule:no_registered_business", "severity": "minor", "note": "Quote runs on into the unrelated items (earning over Rs 15,000, paying income tax) because the snapshot list has no separators. It does contain both supporting items ('non-agricultural enterprises registered with the Government', 'Paying professional tax'), so the rule is supported.", "suggestion": "Optional: no change needed; a tighter quote is not possible without separators." },
+    { "target": "rules", "severity": "minor", "note": "Exclusion rules are from a PIB Lok Sabha reply (govt_statement), so 'guidance' is correct. Eligibility also needs the family to be on the Awaas+ / SECC list, which no field captures; how_to_apply says so, which is adequate.", "suggestion": "None required." }
+  ]
+}

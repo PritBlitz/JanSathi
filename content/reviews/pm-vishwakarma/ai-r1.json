@@ -1,0 +1,46 @@
+{
+  "slug": "pm-vishwakarma",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "49339b69a77fc949",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:bea3f55ade5f124ec2eb3be6ec710539aa76b8355d61e8d5e3a773273cd46ebe",
+      "method": "snapshot"
+    },
+    {
+      "id": "pib_2025",
+      "content_hash": "sha256:cd1275f8f438c9e405b31bff466a4d28f217b8011d7660aa84ad51293e17b696",
+      "method": "snapshot"
+    },
+    {
+      "id": "scheme",
+      "content_hash": "sha256:998fb9996cafcbd11cf2f97205c8d445007c98fc79d0419e079c27c5aacf3e7f",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Web search (2026-10-26): no change to benefit or loan terms in 2025-2026. The scheme period runs to 2027-28 (in the guideline snapshot). The 3-year milestone was in Sep 2026. A parliamentary committee (Mar 2026) suggested renaming some trades: a recommendation only.",
+  "findings": [
+    {
+      "target": "content.benefit (en, hi)",
+      "severity": "minor",
+      "note": "'a ₹15,000 toolkit incentive' drops 'up to'. The guideline says 'toolkit incentive of upto Rs. 15,000'.",
+      "suggestion": "Write 'a toolkit incentive of up to ₹15,000' (hi: '₹15,000 तक की औज़ार सहायता')."
+    },
+    {
+      "target": "documents.aadhaar",
+      "severity": "minor",
+      "note": "Cited to pib_2025, which does not mention Aadhaar. The guideline does ('Aadhaar based biometric authenticated' registration by CSCs).",
+      "suggestion": "Cite the guidelines source for aadhaar."
+    },
+    {
+      "target": "rules",
+      "severity": "minor",
+      "note": "All four rules match Para 4 of the guideline, including the repaid-Mudra/SVANidhi exception in the field question and age >= 18 on the date of registration. 'confirmed' is right for guideline clauses. The one-member-per-family rule cannot be expressed and is in how_to_apply. Noted for the record.",
+      "suggestion": "None."
+    }
+  ]
+}

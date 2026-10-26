@@ -1,0 +1,35 @@
+{
+  "slug": "pm-kmy",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "1d9648348190b7ff",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "pib_2026",
+      "content_hash": "sha256:06ae1b7c742bb58e16256b846d872c0122d6e381f08985095f980db30f52eb97",
+      "method": "snapshot"
+    },
+    {
+      "id": "portal",
+      "content_hash": "sha256:4cd6beea9a655e6565ee104892d6957dd6b904cc8c472cde7a123d0e6b6f2add",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "The cited PIB explainer of 11 Sep 2026 shows the scheme running with unchanged terms (₹3,000 pension, ₹55-₹200 contribution, 18-40, up to 2 ha, land records as on 1 Aug 2019). No later change found.",
+  "findings": [
+    {
+      "target": "documents:land_records",
+      "severity": "minor",
+      "note": "The explainer says farmers bring Aadhaar, bank details and mobile number to the CSC; land records are not a document to bring (eligibility is self-declared, certified by the state).",
+      "suggestion": "Set land_records mandatory: false."
+    },
+    {
+      "target": "source:portal",
+      "severity": "minor",
+      "note": "The maandhan.in snapshot is the Labour Ministry portal (mainly PM-SYM) and does not describe PM-KMY. Only official_apply_url relies on it.",
+      "suggestion": "Acceptable; optionally point to a PM-KMY page."
+    }
+  ]
+}

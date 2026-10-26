@@ -1,0 +1,19 @@
+{
+  "slug": "pmgkay",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "0dd6e84078c3b7ab",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "cabinet_2023", "content_hash": "sha256:2a52ccc6aa17be71636eba9886887078ee6547619ba96ae4aff11a7a9ff3d30c", "method": "snapshot" },
+    { "id": "nfsa_act", "content_hash": "sha256:4f7f27f452ceda2a1951e4bde77177717971487453e45906b1ffc2bb75579c34", "method": "snapshot" },
+    { "id": "nfsa", "content_hash": "sha256:ecd23a6232ec57145d394adde8d9f5b6534d26b1c5b757c46de896eb8625e7c7", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search for 2025-2026 PMGKAY/NFSA changes: free foodgrains continue for five years from 1 Jan 2024 (to Dec 2028). DFPD published a draft National Food Security (Amendment) Bill, 2026 in June 2026 (comments to 13 Jul 2026) that would change AAY to 7 kg per person capped at 35 kg per household; secondary reports only, no PIB release, and it is not enacted. The source note already records this. No change needed now; re-check when the Bill is introduced/passed.",
+  "findings": [
+    { "target": "documents:aadhaar", "severity": "minor", "note": "aadhaar cites cabinet_2023, which does not mention Aadhaar. how_to_apply's 'Aadhaar with fingerprint' is also not in the cited Cabinet note. The NFSA Act s.12(2)(c) ('leveraging aadhaar for unique identification, with biometric information') supports it loosely.", "suggestion": "Change the aadhaar document source to nfsa_act (or an ONORC/DFPD page that describes Aadhaar biometric authentication at fair price shops)." },
+    { "target": "rule:nfsa_card", "severity": "minor", "note": "Logic is correct (PMGKAY is only for NFSA AAY/PHH card holders). Source is the Act (gazette), confidence 'guidance' is conservative and acceptable because the card is a proxy for being an identified household.", "suggestion": "None required." },
+    { "target": "content", "severity": "minor", "note": "If the NFS (Amendment) Bill 2026 is enacted, the AAY 35 kg per household wording will change to 7 kg per person (max 35 kg).", "suggestion": "Set reverify_days lower (e.g. 90) while the Bill is pending." }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "slug": "kcc",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "09f76ad7306ceba1",
+  "verdict": "changes_requested",
+  "sources_checked": [
+    {
+      "id": "pib_2026",
+      "content_hash": "sha256:59186de69287b83f2d59fdd0e2fc7cc22c1e8a154ebbdf8353dbf65babd1538a",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Web search (2026-10-26), and a fetch of the RBI circular RBI/2025-26/193 dated 13 Jan 2026 ('Modified Interest Subvention Scheme ... during the financial year 2025-26'). The circular keeps interest subvention and prompt repayment incentive 'on an overall limit of ₹3 lakh per annum', with a ₹2 lakh sub-limit for farmers in animal husbandry, dairy or fisheries only, at 7% (4% for prompt repayment). That contradicts the PIB backgrounder's claim that the MISS limit was 'raised from Rs 3 lakh to Rs 5 lakh' and the allied limit to Rs 5 lakh. News (Aug 2026) reports talks on a 50 bp cut in subvention: not decided. RBI has deferred its revised KCC Directions to 1 Jan 2027.",
+  "findings": [
+    {
+      "target": "content.benefit (en, hi); facts[1], facts[2]",
+      "severity": "blocker",
+      "note": "The benefit says the government 'raised the crop loan limit under the interest subvention scheme from ₹3 lakh to ₹5 lakh' and 'raised the limit for fisheries and allied work to ₹5 lakh'. The quote is in the PIB backgrounder of 11 Mar 2026, but the operative RBI MISS circular for FY 2025-26 (13 Jan 2026) still caps subvention at ₹3 lakh overall and ₹2 lakh for allied-only farmers. The text also says '₹3 lakh at 7%' in the same paragraph, which contradicts itself. A farmer could expect 4% credit up to ₹5 lakh, which is not what banks apply.",
+      "suggestion": "Remove the two '₹5 lakh' sentences (en and hi) and their facts. Keep: 'Short-term farm loans of up to ₹3 lakh at 7% interest; farmers who repay on time get 3% back, so the effective rate is 4% (RBI circular, 13 Jan 2026). Collateral-free loans up to ₹2 lakh (from 1 Jan 2025).' Add the RBI circular (rbi.org.in NotificationUser.aspx?Id=13270) as a source with a snapshot. If a later order really raises the MISS limit to ₹5 lakh, cite that order instead."
+    },
+    {
+      "target": "rule:farmer",
+      "severity": "minor",
+      "note": "The rule text says 'or does dairy, poultry or fisheries work', but the logic only accepts occupation == 'farmer'. A fisher or dairy worker who picks 'self_employed' or 'daily_wage' gets 'not eligible' with 'guidance' confidence, although KCC covers them (the source covers fishers since 2018-19, and animal husbandry).",
+      "suggestion": "Make the text match the logic ('Works as a farmer'), and set confidence to 'uncertain' so non-farmer occupations see 'check with the bank' rather than 'not eligible'."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "aadhaar is mandatory but not mentioned in the PIB snapshot. land_records is optional, but the source says farmers 'are required to submit copies of land records and information on the crops cultivated' (tenants use other documents).",
+      "suggestion": "Make aadhaar optional unless a source requires it. Keep land_records optional but note that owner farmers need it."
+    },
+    {
+      "target": "official_apply_url",
+      "severity": "minor",
+      "note": "Points to pmkisan.gov.in. KCC is applied for at banks. The PM-KISAN portal only hosts the form.",
+      "suggestion": "Acceptable. Consider the DA&FW KCC page or the Kisan Rin portal instead."
+    }
+  ]
+}

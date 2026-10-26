@@ -1,0 +1,18 @@
+{
+  "slug": "post-matric-st",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "3861d4318cfe2135",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "mota", "content_hash": "sha256:0f2a0bedc08dee157e48a6c695ea0db2c8573f49fa012c44bd6d93274fe8a539", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search (tribal.nic.in, PIB, Lok Sabha replies, press) for 2025-2026 changes: an August 2025 report says the Centre is considering revising parental income limits for SC/ST scholarships for FY 2026-27 to 2030-31, with MoTA proposing Rs 4.5 lakh for ST; I found no notification or Cabinet approval, so Rs 2.5 lakh still applies. No discontinuation found; the MoTA scholarship page (snapshot) still describes the scheme. Guideline period (2021-22 to 2025-26) has ended without published successor; treated as minor.",
+  "findings": [
+    { "target": "rule:income_max", "severity": "minor", "note": "<= 250000 matches 'should not exceed Rs.2.50 lakhs per annum'. A proposal to raise the ST limit to Rs 4.5 lakh for 2026-31 is pending.", "suggestion": "Watch tribal.nic.in / PIB; update rule and fixtures if notified." },
+    { "target": "rule:category_st", "severity": "minor", "note": "The quote ('disbursement of scholarship to eligible ST students ...') supports the ST requirement only indirectly. Acceptable; the scheme name itself is 'for ST students'.", "suggestion": "Optional: cite the MoTA Post-Matric guideline PDF linked from the same page for a direct eligibility clause (and use 'confirmed')." },
+    { "target": "content", "severity": "minor", "note": "content.en has no note that the guideline period ended in March 2026, unlike the SC/OBC files. Maintenance Rs 230-1,200/month matches the MoTA page.", "suggestion": "Optional: add 'check the portal for this year's rules' to how_to_apply for consistency." },
+    { "target": "documents", "severity": "minor", "note": "caste_certificate, income_certificate, marksheet, aadhaar, bank_account all cite the MoTA page, which lists none of them (only DBT to bank accounts and a UIDAI Aadhaar notification link). They are plausible.", "suggestion": "Cite the MoTA post-matric guideline PDF for the document list." }
+  ]
+}

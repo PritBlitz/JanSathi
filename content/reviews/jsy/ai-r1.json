@@ -1,0 +1,42 @@
+{
+  "slug": "jsy",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "6cdd348afb9e8876",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "nhm",
+      "content_hash": "sha256:a07afc3c88820e8736356dc25d367170d75e7f002217a61dd273049dae2f4e36",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Web search (2026-10-26) for 2025-2026 JSY revisions (PIB, MoHFW, NHM): none found. Amounts reported in 2026 match the NHM page (LPS Rs 1,400 rural / Rs 1,000 urban; HPS Rs 700 / Rs 600). The NHM page is undated, but nothing newer replaces it.",
+  "findings": [
+    {
+      "target": "rule:state_group",
+      "severity": "minor",
+      "note": "The LPS list follows the NHM page (which names 'Jammu and Kashmir', from before 2019). Ladakh ('la') was part of J&K when the list was made, but is not in the rule, so a general-category, non-BPL woman in Ladakh gets 'not eligible'.",
+      "suggestion": "Check the current NHM treatment of Ladakh. If it is still an LPS area, add 'la', or set the rule to 'uncertain' for Ladakh."
+    },
+    {
+      "target": "rule:pregnant",
+      "severity": "minor",
+      "note": "The field is 'pregnant or breastfeeding'. JSY pays for an institutional delivery, so a breastfeeding mother whose delivery is over (or happened at home) passes the rule although the benefit may no longer apply.",
+      "suggestion": "Acceptable with the current field set. Make the how_to_apply wording clear that the payment is tied to the delivery."
+    },
+    {
+      "target": "content.how_to_apply, documents",
+      "severity": "minor",
+      "note": "'The money goes to your bank account', and the mcp_card and bank_account documents, are not in the NHM snapshot (it gives eligibility and amounts only).",
+      "suggestion": "Snapshot the JSY guidelines PDF linked from the NHM page and cite it for payment mode and documents, or drop these claims."
+    },
+    {
+      "target": "content.en.benefit",
+      "severity": "minor",
+      "note": "'every woman delivering in a government facility qualifies' is a firm statement. It mirrors the source table ('All pregnant women delivering in government health centres') and is third person, but it reads close to a promise.",
+      "suggestion": "Prefer 'the scheme covers all women who deliver in a government facility'."
+    }
+  ]
+}

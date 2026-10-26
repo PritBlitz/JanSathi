@@ -1,0 +1,42 @@
+{
+  "slug": "kcc",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "09f76ad7306ceba1",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "pib_2026",
+      "content_hash": "sha256:59186de69287b83f2d59fdd0e2fc7cc22c1e8a154ebbdf8353dbf65babd1538a",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "The cited PIB backgrounder of 11 Mar 2026 records the 2025-26 changes (MISS limit ₹3 lakh to ₹5 lakh; collateral-free ₹2 lakh from 1 Jan 2025). No later 2026 change to KCC eligibility found in a web search.",
+  "findings": [
+    {
+      "target": "rule:farmer",
+      "severity": "minor",
+      "note": "Rule text says 'Farms ..., or does dairy, poultry or fisheries work' but the logic is only occupation == 'farmer'. A fisher or dairy worker who picks 'self_employed' sees this text marked failed (NOT_ELIGIBLE), although the source covers fishers and animal husbandry (p. 6). Text and logic disagree.",
+      "suggestion": "Either change text to 'Works as a farmer (owner, tenant, oral lessee or sharecropper)', or keep the allied wording and set confidence 'uncertain' so other occupations get 'check with the office'."
+    },
+    {
+      "target": "content.en.benefit",
+      "severity": "minor",
+      "note": "Says loans 'up to ₹3 lakh at 7% ... effective 4%' and then that the MISS limit was raised to ₹5 lakh. Both are in the source (itself inconsistent), but the reader cannot tell which limit applies now.",
+      "suggestion": "'Interest subvention (7%, effectively 4% with prompt repayment) applied to loans up to ₹3 lakh; in 2025-26 this limit was raised to ₹5 lakh.' Mirror in hi."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "aadhaar (mandatory) and sowing_certificate are not in the PIB snapshot; it mentions only copies of land records and crop information. 'identity proof' in how_to_apply is likewise unsourced.",
+      "suggestion": "Cite the RBI/NABARD KCC master circular or a bank form for KYC, or mark aadhaar non-mandatory and drop sowing_certificate."
+    },
+    {
+      "target": "content.en.summary",
+      "severity": "minor",
+      "note": "'... farmer groups can get one' is close to promise phrasing.",
+      "suggestion": "'... are covered by the scheme.'"
+    }
+  ]
+}

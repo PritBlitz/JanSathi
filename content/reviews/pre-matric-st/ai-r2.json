@@ -1,0 +1,18 @@
+{
+  "slug": "pre-matric-st",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "829b167404ee8b4f",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "mota", "content_hash": "sha256:0f2a0bedc08dee157e48a6c695ea0db2c8573f49fa012c44bd6d93274fe8a539", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search (tribal.nic.in, PIB, Lok Sabha, press) for 2025-2026: proposal (Aug 2025 report) to raise the ST parental income limit to Rs 4.5 lakh for 2026-31, not notified. The Rs 225 / Rs 525 per month rates are those of the 20 Dec 2019 increase order that the MoTA page links. No discontinuation found. Guidelines (2021-22 to 2025-26) period ended; minor.",
+  "findings": [
+    { "target": "rules", "severity": "minor", "note": "class_9_10 (== 'class_9_10') matches 'studying in Classes IX - X'; income <= 250000 matches 'should not exceed'. Fixtures test 249,999 and 250,001 but not exactly 250,000 or a straddling band.", "suggestion": "Add fixtures for income 250000 (LIKELY_ELIGIBLE) and band {200000,300000} (NEED_MORE_INFO, missing annual_income)." },
+    { "target": "rule:category_st", "severity": "minor", "note": "Same indirect quote as post-matric-st.", "suggestion": "Optional: cite the MoTA pre-matric guideline PDF." },
+    { "target": "documents", "severity": "minor", "note": "Documents cite the MoTA page, which does not list them; plausible.", "suggestion": "Cite the pre-matric guideline PDF." },
+    { "target": "rule:income_max", "severity": "minor", "note": "Pending proposal to raise the limit to Rs 4.5 lakh.", "suggestion": "Re-check before the 2027-28 cycle." }
+  ]
+}

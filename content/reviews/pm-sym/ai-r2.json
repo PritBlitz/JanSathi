@@ -1,0 +1,35 @@
+{
+  "slug": "pm-sym",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "513272731c135878",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "mole_2025",
+      "content_hash": "sha256:c9a1bf40e278e27ab8db96f0ce73e83e947890173d572cea07f8307394517202",
+      "method": "snapshot"
+    },
+    {
+      "id": "portal",
+      "content_hash": "sha256:4cd6beea9a655e6565ee104892d6957dd6b904cc8c472cde7a123d0e6b6f2add",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Web search for 2025-2026 changes: reports of an Aug 2026 PIB release on PM-SYM (revival window for dormant accounts extended to three years, two-way integration with e-Shram, registration drives). No change to eligibility (18-40, income up to ₹15,000, not in EPF/ESIC/NPS, not a taxpayer) or the ₹3,000 pension found.",
+  "findings": [
+    {
+      "target": "content.en.benefit",
+      "severity": "minor",
+      "note": "Family pension after death at 60+ is correct; the spouse's option to continue if the worker dies before 60 is not mentioned.",
+      "suggestion": "Optional: add the before-60 option from the source."
+    },
+    {
+      "target": "rules",
+      "severity": "minor",
+      "note": "The 'unorganised sector worker' condition is not encoded; it is largely covered by the EPF/ESIC/NPS exclusion. income_max uses the right field and boundary (₹15,000 or less).",
+      "suggestion": "Acceptable."
+    }
+  ]
+}

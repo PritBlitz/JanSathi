@@ -1,0 +1,42 @@
+{
+  "slug": "jsy",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "6cdd348afb9e8876",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "nhm",
+      "content_hash": "sha256:a07afc3c88820e8736356dc25d367170d75e7f002217a61dd273049dae2f4e36",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Web search for 2025-2026 JSY changes (PIB, nhm.gov.in): no revision of eligibility or cash amounts found; JSY continues under NHM. Secondary sites still give LPS ₹1,400/₹1,000 and HPS ₹700/₹600, matching the NHM page.",
+  "findings": [
+    {
+      "target": "content.en.how_to_apply",
+      "severity": "minor",
+      "note": "'The money goes to your bank account' and 'The ASHA helps with the paperwork' are not in the cited NHM page (it only says ASHA is the link between government and pregnant women). Documents mcp_card and bank_account are not listed there either.",
+      "suggestion": "Snapshot and cite the JSY guidelines PDF linked from the page for payment mode and documents, or drop the unsupported sentences."
+    },
+    {
+      "target": "content.en.benefit",
+      "severity": "minor",
+      "note": "'every woman delivering in a government facility qualifies' reads close to a promise.",
+      "suggestion": "'... covers all women who give birth in a government facility.'"
+    },
+    {
+      "target": "rule:state_group",
+      "severity": "minor",
+      "note": "The NHM page names 'Jammu and Kashmir' as an LPS (pre-2019 state). Ladakh (la), carved out of J&K, is not in the list, so a woman in Ladakh who is not BPL/SC/ST gets NOT_ELIGIBLE (guidance). The source does not settle Ladakh's status.",
+      "suggestion": "Treat la like jk, or make the rule 'uncertain' for la until a source settles it."
+    },
+    {
+      "target": "rule:pregnant",
+      "severity": "minor",
+      "note": "is_pregnant_or_lactating also covers breastfeeding mothers; JSY pays for the delivery. Rule text says 'or has just given birth'. Acceptable.",
+      "suggestion": "None required."
+    }
+  ]
+}

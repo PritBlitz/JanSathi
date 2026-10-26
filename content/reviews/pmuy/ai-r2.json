@@ -1,0 +1,17 @@
+{
+  "slug": "pmuy",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "6e1afa93fa3b100b",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "portal", "content_hash": "sha256:50dc812aa0bb49f8f56454dca4784a44eab220a40b8d8b8719467c56a5cd74aa", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search (PIB, MoPNG, press) for 2025-2026 PMUY changes: 25 lakh additional connections approved for FY 2025-26 (target 10.6 crore), already in the content; ~10.41 crore connections released by Jan 2026. Press reports of that approval say eligibility was simplified to 'adult women from poor households based on submission of a Deprivation Declaration'. The targeted LPG refill subsidy of Rs 300 per 14.2 kg cylinder (up to 9 refills a year) was approved for FY 2025-26; I found no 2026-27 decision. No discontinuation found.",
+  "findings": [
+    { "target": "rule:listed_group", "severity": "minor", "note": "Logic (SC/ST or is_bpl) is a partial check of the portal list; confidence 'uncertain' means a fail shows 'check with the office', which is correct. is_bpl covers AAY cards but also non-AAY BPL cards, which are not themselves a listed category (they would usually qualify via the 14-point / deprivation declaration). Reports of the 2025 approval say eligibility is now any poor household by Deprivation Declaration, which makes the list less decisive.", "suggestion": "Keep 'uncertain'. When MoPNG publishes the revised criteria on pmuy.gov.in, re-snapshot and update the rule text." },
+    { "target": "content.en.benefit", "severity": "minor", "note": "Amounts match the portal (Rs 1,600 / Rs 1,150; first refill and stove free). The Rs 300 per cylinder targeted refill subsidy (up to 9 refills) is not mentioned and has no source in the file.", "suggestion": "Optional: add it with a PIB source, stating the financial year it applies to." },
+    { "target": "content.en.how_to_apply", "severity": "minor", "note": "'these are being given out now' comes from the portal ('currently being released'); fine, and the advice to ask the distributor hedges it.", "suggestion": "None required." }
+  ]
+}

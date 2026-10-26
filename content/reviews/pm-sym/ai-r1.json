@@ -1,0 +1,41 @@
+{
+  "slug": "pm-sym",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "513272731c135878",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "mole_2025",
+      "content_hash": "sha256:c9a1bf40e278e27ab8db96f0ce73e83e947890173d572cea07f8307394517202",
+      "method": "snapshot"
+    },
+    {
+      "id": "portal",
+      "content_hash": "sha256:4cd6beea9a655e6565ee104892d6957dd6b904cc8c472cde7a123d0e6b6f2add",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Web search (2026-10-26): no change to PM-SYM in 2025-2026 and no merger. The Maandhan portal (snapshot) says 'Revamping of Maandhan portal is under process' and still lists 18-40 years, income up to Rs 15,000, and a Rs 3,000 pension.",
+  "findings": [
+    {
+      "target": "facts (contribution amounts)",
+      "severity": "minor",
+      "note": "The content gives '₹55 to ₹200' a month. The source table supports it (18 years ₹55 ... 40 years ₹200), but there is no fact entry quoting it, contrary to 'every amount has a quoted fact'. The amount is correct, so this does not block.",
+      "suggestion": "Add a fact quoting the contribution table, e.g. 'The contribution amount varies based on the age at the time of enrolment.' plus the ₹55 and ₹200 cells, or quote the portal."
+    },
+    {
+      "target": "rules (unorganised sector)",
+      "severity": "minor",
+      "note": "The 'unorganised sector employment' criterion (criterion 3) has no rule. It is covered indirectly by the EPF/ESIC/NPS exclusion and the income limit, so the outcome is right in most cases.",
+      "suggestion": "Accept. Optionally mention in the summary that salaried workers with EPF/ESIC are excluded (already implied)."
+    },
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "'If the worker dies after age 60, the spouse can get half of the pension.' The source's key-features section says 50% family pension on the beneficiary's death without an age limit, and the exit section covers death before 60 separately. The text is consistent with the 'Death After 60 Years' fact.",
+      "suggestion": "None needed."
+    }
+  ]
+}

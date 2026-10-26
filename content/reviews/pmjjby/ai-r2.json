@@ -1,0 +1,17 @@
+{
+  "slug": "pmjjby",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "64b7ab240873800c",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "dfs", "content_hash": "sha256:31920a0bcafb3b3441c46e43aafdc96c46fc56759f31d65ef4b094e4c41dcd7d", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search (PIB, DFS, press) for 2025-2026 PMJJBY changes: the last confirmed premium revision is 1 June 2022 (Rs 330 to Rs 436); a PIB factsheet of May 2025 still gives Rs 2 lakh cover for Rs 436. A June 2025 press report said the Finance Ministry was considering raising cover to Rs 4 lakh with a higher premium; no notification of that found. The DFS page (progress as on 28.02.2025) matches the content.",
+  "findings": [
+    { "target": "rule:age_max", "severity": "minor", "note": "Correct for joining (18-50, <=50 matches 'age group of 18 to 50 years'). Under the scheme rules, people who joined before 50 can keep renewing up to 55, so an existing 51-55 subscriber is shown NOT_ELIGIBLE. The cited DFS page does not say this, so the rule cannot be widened on this source.", "suggestion": "Optional: add the PMJJBY rules/FAQ (jansuraksha.gov.in) as a source and mention in content that cover can continue to 55 for those who joined earlier." },
+    { "target": "content.en.benefit", "severity": "minor", "note": "Amounts (Rs 2 lakh, Rs 436, 1 June-31 May) match quoted facts. The new-subscriber lien period (no cover for non-accidental death in the first 30 days) is omitted; the source does not mention it.", "suggestion": "Optional, with a source that states it." },
+    { "target": "content", "severity": "minor", "note": "Possible future change: proposal to raise cover to Rs 4 lakh (2025 press report).", "suggestion": "Re-check DFS/PIB before 1 June 2027 renewal." }
+  ]
+}

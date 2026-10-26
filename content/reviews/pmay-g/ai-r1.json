@@ -1,0 +1,21 @@
+{
+  "slug": "pmay-g",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "eaebf05d7d12fb8a",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "exclusions_2024", "content_hash": "sha256:ffdc0e8bf6cfa753988768fbb22a39fe421dbc3996998089ee373037af90ac75", "method": "snapshot" },
+    { "id": "cabinet_2024", "content_hash": "sha256:a82126075bf14cfced0e07047d014d416773b7b50183bb5871ea85c0cb003bca", "method": "snapshot" },
+    { "id": "framework", "content_hash": "sha256:760134a176732f933ab95c445f0dfb0198877e1cdc6fcbf8ae423ff50b4c2b15", "method": "snapshot" },
+    { "id": "portal", "content_hash": "sha256:f39638d2610c4a5cebd5805accc4daea0de202f9c9a68ea1a57279b8c4eb12bd", "method": "snapshot" },
+    { "id": "vbgramg", "content_hash": "sha256:059ba7791132c07139f32fd3dafabea67bb9a79ad7270f9f9a4d96c4ae94678a", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search (pmindia.gov.in, PIB, sansad.in, state pages) for 2025-2026 PMAY-G changes: unit assistance still Rs 1.20 / 1.30 lakh; Cabinet approval covers April 2024 to March 2029 with continuation beyond March 2026 subject to NITI Aayog evaluation and EFC re-appraisal; no outcome of that review found, but the portal snapshot (25/10/2026) shows the scheme active with Awaas+ 2024 survey circulars dated Aug-Sep 2026. No renaming or discontinuation found. MGNREGS -> VB-G RAM G change (1 July 2026) is already reflected.",
+  "findings": [
+    { "target": "sources:cabinet_2024", "severity": "minor", "note": "The Cabinet release makes continuation beyond March 2026 subject to NITI Aayog evaluation and EFC re-appraisal. No official document confirming that outcome is cited, though the portal shows the scheme running in Sep-Oct 2026.", "suggestion": "When available, add the post-March-2026 continuation order or a 2026 PIB/Lok Sabha reply; keep reverify_days at 180 or lower." },
+    { "target": "rule:no_income_tax", "severity": "minor", "note": "Quote begins with the unrelated item 'Any member of the family earning more than Rs.15,000 per month' before 'Paying income tax'. It still supports the rule.", "suggestion": "Optionally trim to 'Paying income tax Paying professional tax' or keep as is." },
+    { "target": "content.how_to_apply", "severity": "minor", "note": "The 2024 exclusion criteria (Rs 15,000, deleted two-wheeler etc.) apply to the Awaas+ 2024 survey; families on the older SECC 2011 PWL were screened under the earlier criteria. The 2024 PIB annexure also notes Telangana and Puducherry were not implementing PMAY-G.", "suggestion": "Consider a short note that state participation and list screening vary; check at the block office." }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "pm-kmy",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "1d9648348190b7ff",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "pib_2026",
+      "content_hash": "sha256:06ae1b7c742bb58e16256b846d872c0122d6e381f08985095f980db30f52eb97",
+      "method": "snapshot"
+    },
+    {
+      "id": "portal",
+      "content_hash": "sha256:4cd6beea9a655e6565ee104892d6957dd6b904cc8c472cde7a123d0e6b6f2add",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Web search (2026-10-26): no change to PM-KMY in 2025-2026 and no merger with PM-SYM. The PIB explainer of 11 Sep 2026 (already cited) confirms the current terms: 18-40, up to 2 ha, land records as on 1 Aug 2019, Rs 3,000 pension, Rs 55-200 contribution.",
+  "findings": [
+    {
+      "target": "rule:no_formal_cover",
+      "severity": "minor",
+      "note": "The rule text says 'not in PM-SYM or PM-LVM', but the field question (has_formal_pension_cover) asks only about EPF, ESIC, NPS or another government pension. PM-SYM/PM-LVM subscribers may answer 'no'.",
+      "suggestion": "Make the rule text match the field ('Not covered by EPF, ESIC or NPS, and gets no other government pension'), and mention PM-SYM/PM-LVM in how_to_apply."
+    },
+    {
+      "target": "rule:no_govt_job",
+      "severity": "minor",
+      "note": "The field family_has_govt_job also includes 'a pension of ₹10,000 or more a month', which is a PM-KISAN exclusion and not in the PM-KMY explainer. In practice it barely changes results (retired employees are excluded anyway).",
+      "suggestion": "Accept, or note the difference."
+    },
+    {
+      "target": "documents.land_records",
+      "severity": "minor",
+      "note": "Marked mandatory, but the PIB explainer says enrolment is 'paperless' with Aadhaar, bank details and mobile only. Land-record checks are done by the state.",
+      "suggestion": "Set land_records mandatory: false."
+    },
+    {
+      "target": "official_apply_url, sources.portal",
+      "severity": "minor",
+      "note": "maandhan.in is the Labour Ministry's Maandhan portal. Its snapshot is about PM-SYM and NPS-Traders, not PM-KMY. The explainer cites pmkmy.gov.in.",
+      "suggestion": "Use https://pmkmy.gov.in/ as official_apply_url and snapshot it."
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "slug": "pm-vishwakarma",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "49339b69a77fc949",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:bea3f55ade5f124ec2eb3be6ec710539aa76b8355d61e8d5e3a773273cd46ebe",
+      "method": "snapshot"
+    },
+    {
+      "id": "pib_2025",
+      "content_hash": "sha256:cd1275f8f438c9e405b31bff466a4d28f217b8011d7660aa84ad51293e17b696",
+      "method": "snapshot"
+    },
+    {
+      "id": "scheme",
+      "content_hash": "sha256:998fb9996cafcbd11cf2f97205c8d445007c98fc79d0419e079c27c5aacf3e7f",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Scheme period is FY 2023-24 to 2027-28 per the guidelines and the PIB note of 16 Sep 2025; no 2026 change found in a web search.",
+  "findings": [
+    {
+      "target": "content.en.benefit",
+      "severity": "minor",
+      "note": "'a ₹15,000 toolkit incentive': the guideline says 'upto Rs. 15,000'.",
+      "suggestion": "'a toolkit incentive of up to ₹15,000'. Mirror in hi ('₹15,000 तक')."
+    },
+    {
+      "target": "rules",
+      "severity": "minor",
+      "note": "The one-member-per-family limit is not encodable and is explained in how_to_apply.",
+      "suggestion": "None."
+    }
+  ]
+}

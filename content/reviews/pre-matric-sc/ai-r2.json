@@ -1,0 +1,19 @@
+{
+  "slug": "pre-matric-sc",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "1ce419a583474d1f",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:f26190bcb074695a4e2b72584b8a4c7f4e8478a8c9ed25f92cb3f5f35e36c1ba", "method": "snapshot" },
+    { "id": "msje", "content_hash": "sha256:2389b08b2300d56719eb0da14cc9a1c4375084aeafe8c35d8995e5dde0ef365d", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search (socialjustice.gov.in, PIB, press) for 2025-2026: a revision of SC/ST scholarship income limits for 2026-31 is reported as under consideration (proposals up to Rs 4.5 lakh), not notified. No new pre-matric SC guideline found; 15th-FC schemes extended on the same terms to 30 Sep 2026 or approval. The content already says the guidelines cover 2021-22 to 2025-26 and to check the portal; minor.",
+  "findings": [
+    { "target": "rules", "severity": "minor", "note": "All three rules match §4.2.1 exactly (SC; full-time class IX-X; income 'should not exceed Rs. 2.50 lakh' -> <=). Fixtures cover 249,999 / 250,000 / 250,001 and a straddling band. Correct.", "suggestion": "None." },
+    { "target": "content", "severity": "minor", "note": "Component 2 of the same scheme (children of manual scavengers, tanners/flayers, waste pickers and hazardous cleaners, any caste, classes I-X, no income ceiling, Rs 8,000/yr hosteller) is not covered, so such children are not shown this scheme.", "suggestion": "Optional: mention Component 2 in content, or add it as a separate scheme later (needs a new field)." },
+    { "target": "content.en.how_to_apply", "severity": "minor", "note": "'Applications open on NSP every April' is not backed by a quoted fact; the guideline timeline says applications from 1 April to 31 July (table near line 243).", "suggestion": "Optional: add a fact quoting the timeline." },
+    { "target": "documents", "severity": "minor", "note": "aadhaar and bank_account cite msje; the guideline itself (paras 9.x, Aadhaar-linked bank accounts) supports them directly.", "suggestion": "Re-point to 'guidelines'." }
+  ]
+}

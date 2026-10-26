@@ -1,0 +1,16 @@
+{
+  "slug": "pmuy",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "6e1afa93fa3b100b",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "portal", "content_hash": "sha256:50dc812aa0bb49f8f56454dca4784a44eab220a40b8d8b8719467c56a5cd74aa", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search for 2025-2026 PMUY changes: Government approved 25 lakh additional connections in Sept 2025 (FY 2025-26, Rs 676 crore), matching the portal text 'taking the overall target ... to 10.6 Crore connections. These connections are currently being released.' Eligibility is described as adult women from poor households via a deprivation (14-point) declaration, consistent with the portal list. Targeted refill subsidy of Rs 300/cylinder (up to 9 refills, FY 2025-26) is not in the content, which is fine. No 2026-27 approval of further connections or discontinuation found; the portal snapshot of 2026-10-25 still says connections are being released.",
+  "findings": [
+    { "target": "rule:listed_group", "severity": "minor", "note": "is_bpl means 'BPL or Antyodaya ration card', but the portal list names only Antyodaya (AAY); a plain BPL/PHH card is not itself a listed category (such households would normally qualify through the 14-point declaration). So is_bpl = true passes the rule slightly more broadly than the source. Low impact, and other categories are uncheckable, hence 'uncertain' is right.", "suggestion": "Optionally say in the rule text that BPL card holders who are not AAY qualify via the 14-point poverty declaration." },
+    { "target": "content.how_to_apply", "severity": "minor", "note": "The additional 25 lakh connections were approved for FY 2025-26; availability in late 2026 depends on whether the target is exhausted. The content already tells users to ask the distributor.", "suggestion": "Keep reverify_days at 60; update when a 2026-27 decision is published." }
+  ]
+}

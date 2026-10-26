@@ -1,0 +1,21 @@
+{
+  "slug": "post-matric-sc",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "6c8ddf475abf06dc",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:cf73697baff4d7ebaf5919363296479b501ea9efc146a27de50623a9472cfa57", "method": "snapshot" },
+    { "id": "guidelines_text", "content_hash": "sha256:d726e2c8a16dcf572b050a014df9551414781bdc8b0268e7f3fcd5374a2c9f22", "method": "snapshot" },
+    { "id": "msje", "content_hash": "sha256:720f07546e93fb08da7acc4a310e211252fbeb24f37d75ef22479a158569e45b", "method": "snapshot" },
+    { "id": "nsp", "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search for 2025-2026 PMS-SC changes: press reports (Jan and Mar 2026, citing an MSJE briefing to the parliamentary standing committee) say the government plans to raise the income limit from Rs 2.5 lakh to Rs 4.5 lakh and cap covered fees 'from next year'; no Cabinet approval or official notification found. No discontinuation or renaming found. The guideline period (2020-21 to 2025-26) has ended; the MSJE scheme page snapshot still presents the March 2021 guidelines as current. Treated as minor, but the income limit must be re-checked as soon as a 2026-27 notification appears.",
+  "findings": [
+    { "target": "rule:income_max", "severity": "minor", "note": "Correct for the cited guideline (<= 2,50,000, 'does not exceed'); fixtures test 249999/250000/250001 and straddling bands. A rise to Rs 4.5 lakh is reported as planned but not notified.", "suggestion": "Re-check at the next reverify (90 days) or when MSJE/NSP publishes 2026-27 guidelines; if raised, update rule, quote and add a 'changes' entry." },
+    { "target": "sources:guidelines", "severity": "minor", "note": "The guideline period ended 2025-26 and no continuation order for the 16th FC period was found. Not a blocker: the ministry page still serves these guidelines and nothing indicates discontinuation.", "suggestion": "Add the 2026-27 continuation/revised guidelines when published." },
+    { "target": "documents", "severity": "minor", "note": "caste_certificate, income_certificate and aadhaar cite 'guidelines' (scanned PDF; snapshot has no text), and marksheet, fee_receipt, bank_account and photo cite 'nsp', whose snapshot does not list documents. All are plausible, but none is checkable from the cited snapshot. guidelines_text does support income certificate (§5.3) and Aadhaar-linked bank accounts (§5.10).", "suggestion": "Re-point documents to guidelines_text where it supports them; cite an NSP FAQ/document-list page for marksheet, fee receipt and photo." },
+    { "target": "sources:guidelines_text", "severity": "minor", "note": "Hosted on socialwelfare.goa.gov.in (state government copy of the GoI guideline). Acceptable as an official copy; the text matches the GoI scheme page description.", "suggestion": "None required." }
+  ]
+}

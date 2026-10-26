@@ -1,0 +1,41 @@
+{
+  "slug": "atal-pension",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "8f343dd2ed19caba",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dfs",
+      "content_hash": "sha256:201c97abd73eb6d94149a16383edb4f3754d2e8b210c2fa43cae248743b3b7c8",
+      "method": "snapshot"
+    },
+    {
+      "id": "pib_2025",
+      "content_hash": "sha256:a660f44cb5e3fd4f3b7dab5f094a7e2a3eb93e7eb304f7f6f5d37c580346e428",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Web search (2026-10-26) for 2025-2026 APY changes (PIB, DFS, PFRDA, news): none found to eligibility, age band 18-40, the income-tax exclusion (from 1 Oct 2022) or the Rs 1,000-5,000 pension slabs; only enrolment milestones (about 9 crore subscribers, FY 2025-26). The DFS page and the PIB backgrounder of 8 May 2025 are current.",
+  "findings": [
+    {
+      "target": "content.how_to_apply",
+      "severity": "minor",
+      "note": "'or post office' is not in either snapshot. Neither the DFS page nor the PIB document names post offices as a channel.",
+      "suggestion": "Drop 'or post office' (en and hi), or add an official source that names post offices."
+    },
+    {
+      "target": "documents.aadhaar",
+      "severity": "minor",
+      "note": "Cited to pib_2025, but that snapshot does not mention Aadhaar. Only the bank account is listed there ('Mandatory for auto-debit of contributions').",
+      "suggestion": "Remove the aadhaar entry, or cite a source that mentions it (e.g. the APY scheme details from NPS CRA)."
+    },
+    {
+      "target": "rules",
+      "severity": "minor",
+      "note": "Rules match the sources: 18 <= age <= 40 ('minimum age of joining APY is 18 years and maximum age is 40 years') and the income-tax exclusion. Confidence 'guidance' is right for portal and govt_statement sources. Fixtures cover 17/18/40/41, a straddling band and a missing field. No change needed; noted for the record.",
+      "suggestion": "None."
+    }
+  ]
+}

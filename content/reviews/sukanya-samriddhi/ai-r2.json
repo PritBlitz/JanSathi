@@ -1,0 +1,17 @@
+{
+  "slug": "sukanya-samriddhi",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "600d315c5a12a32c",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "nsi", "content_hash": "sha256:a5dcd8e0eedcb520beb5512f1c3d315bffdd1c7a7334b65eaf779dcd85048e97", "method": "snapshot" }
+  ],
+  "newer_changes_search": "No specific web search run for this scheme beyond general checks; from my knowledge, the last rule change is the Ministry of Finance guideline effective 1 Oct 2024 requiring accounts opened by grandparents/non-legal guardians to be moved to a natural parent or legal guardian, which does not affect the content. Interest is set each quarter, and the content correctly avoids giving a rate. The NSI page (snapshot) matches the content.",
+  "findings": [
+    { "target": "documents", "severity": "minor", "note": "birth_certificate_child, aadhaar and photo cite the NSI page, which lists no documents (it links to the scheme rules/forms). Plausible, but not supported by the saved text.", "suggestion": "Cite the SSA Scheme 2019 rules or the India Post SSA page that lists KYC documents and the girl's birth certificate." },
+    { "target": "rule:daughter_under_10", "severity": "minor", "note": "Logic matches 'till she attains the age of 10 years'. The question asks about a 'daughter', so a legal guardian of a girl is not covered; content.summary mentions guardians.", "suggestion": "None required; optionally widen the field question later." },
+    { "target": "content.en.benefit", "severity": "minor", "note": "All statements match quoted facts (Rs 250 - Rs 1.5 lakh a year, 80C, tax-free interest, higher-education withdrawal, 21-year maturity, closure for marriage after 18, one account per girl). The rule limiting a family to two accounts (three for twins/triplets) is not in the saved source and is not claimed.", "suggestion": "None required." }
+  ]
+}

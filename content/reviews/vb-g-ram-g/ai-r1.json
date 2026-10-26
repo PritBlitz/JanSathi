@@ -1,0 +1,18 @@
+{
+  "slug": "vb-g-ram-g",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "a2fa92864803e072",
+  "verdict": "changes_requested",
+  "sources_checked": [
+    { "id": "faq", "content_hash": "sha256:c7fea166fce00b12ffc6cd4225cf38f687a92765f39b5f950cf42404030bd5dd", "method": "snapshot" },
+    { "id": "commencement", "content_hash": "sha256:059ba7791132c07139f32fd3dafabea67bb9a79ad7270f9f9a4d96c4ae94678a", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search for post-July-2026 VB-G RAM G changes: multiple outlets (The Hindu via Vision IAS, Outlook, Rural Voice, SCC Online 06-07-2026, Vikaspedia citing the portal) report that the Ministry of Rural Development notified revised state-wise wage rates under the Act effective 1 July 2026, with a Rs 300 per day interim base wage (national average about Rs 327 vs Rs 299 under MGNREGA). I could not open the PIB release itself. Act commencement on 1 July 2026 and 125 days are confirmed. No information found on Gramin Rozgar Guarantee Card issuance progress.",
+  "findings": [
+    { "target": "content.benefit", "severity": "blocker", "note": "'Until new wage rates are notified, the old MGNREGA wage rates apply' (fact quoted from the May 2026 FAQ) is out of date: new wage rates under the Act were notified effective 1 July 2026 with a Rs 300/day floor, per consistent reports. The content therefore tells users that the old rates apply when they no longer do. Same sentence in hi.", "suggestion": "Fetch the MoRD/PIB wage-rate notification (around 30 June - 1 July 2026) as a new source, snapshot it, and replace the sentence (en + hi) with e.g. 'Wage rates are notified for each state; since 1 July 2026 no state's rate is below ₹300 a day', quoting the notification; drop or re-cite the 'existing Mahatma Gandhi NREGA wage rates shall continue' fact." },
+    { "target": "rule:age_min", "severity": "minor", "note": "Eligibility is per household ('rural household whose adult members volunteer'); the age rule tests the user's own age, so a 17-year-old in an eligible household sees NOT_ELIGIBLE although an adult member could apply. Acceptable for a person-level profile.", "suggestion": "Optionally reword the rule text to 'The person asking for work must be 18 or older'." },
+    { "target": "sources", "severity": "minor", "note": "Both sources are PIB govt_statements (FAQ and press release), so 'guidance' is correct. The Act text (Gazette) or the operational rules would allow 'confirmed' and are the authoritative basis for the 15-day, allowance and 5 km clauses.", "suggestion": "Add the Gazette text of the VB-G RAM G Act, 2025 and any rules notified since July 2026." }
+  ]
+}

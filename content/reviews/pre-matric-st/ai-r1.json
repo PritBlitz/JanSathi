@@ -1,0 +1,17 @@
+{
+  "slug": "pre-matric-st",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "829b167404ee8b4f",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "mota", "content_hash": "sha256:0f2a0bedc08dee157e48a6c695ea0db2c8573f49fa012c44bd6d93274fe8a539", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search for 2025-2026 scholarship changes found nothing specific to the MoTA pre-matric ST scheme (no revised amounts, income limit, renaming or discontinuation). The MoTA page snapshot (2026-10-25) still states class IX-X, Rs 2.5 lakh income limit and Rs 225 / Rs 525 per month (the Dec 2019 revised rates, linked on the same page).",
+  "findings": [
+    { "target": "rule:category_st", "severity": "minor", "note": "Quote ('... disbursement of scholarship to eligible ST students ... through DBT') supports 'must be ST' only indirectly; context of the MoTA ST scholarship page makes it clear.", "suggestion": "Quote the eligibility clause of the pre-matric ST guideline PDF (linked on the page) and raise rules to 'confirmed'." },
+    { "target": "fixtures", "severity": "minor", "note": "Cases cover 249,999 and 250,001 but not exactly 250,000 or a band straddling the limit, and no missing-field case (CONTENT_AUTHORING §6).", "suggestion": "Add income 250000 (LIKELY_ELIGIBLE), band {200000-300000} (NEED_MORE_INFO, missing annual_income) and an empty-profile case." },
+    { "target": "documents", "severity": "minor", "note": "The MoTA page lists no documents; caste/income certificate, Aadhaar and bank account are plausible but not supported by the snapshot.", "suggestion": "Cite the guideline PDF or an NSP document list." }
+  ]
+}

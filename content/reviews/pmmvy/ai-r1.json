@@ -1,0 +1,18 @@
+{
+  "slug": "pmmvy",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "ca5e3478147177b5",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:3111323d93100e3890c90281deef0af1b59de69f513781e5e636c3d6f901bcb6", "method": "snapshot" },
+    { "id": "portal", "content_hash": "sha256:8fddbd9576a1b5a240f40cc2e1c23cd42def67a7ce777070973e65076029ec3c", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search (PIB, MoWCD, general) for 2025-2026 PMMVY / Mission Shakti changes: no Union Cabinet decision found continuing Mission Shakti for the 16th Finance Commission period (2026-27 onward), and no revision of amounts or criteria found. A Ministry of Finance instruction (seen via another scheme's official page) extended ongoing schemes ending 31.03.2026 on the same terms up to 30.09.2026 or until 16th-FC approval. The PMMVY portal snapshot (2026-10-25) is live, still offers the 2021-22 to 2025-26 Mission Shakti guideline, and shows enrolment/payment counters. Latest PIB material found is an Aug 2025 factsheet with the same Rs 5,000 / Rs 6,000 amounts.",
+  "findings": [
+    { "target": "sources:guidelines", "severity": "minor", "note": "The guideline covers 2021-22 to 2025-26 and the general interim extension found runs to 30.09.2026; no official document confirming the post-2025-26 scheme period was found. Not a blocker: the portal is live and still serves this guideline as current, the maternity benefit is a statutory entitlement under NFSA 2013 s.4, and nothing indicates discontinuation or changed amounts.", "suggestion": "Add the 16th-FC continuation order or a 2026 MoWCD/PIB statement when available; keep reverify_days at 90." },
+    { "target": "rule:disadvantaged_group", "severity": "minor", "note": "Logic matches items i-v, vii, viii of the guideline list (SC/ST, >=40% disability, BPL card, PM-JAY, e-Shram, job card, net family income < Rs 8 lakh with strict '<'). Items vi (PM-KISAN women farmers), ix (AWW/AWH/ASHA) and x cannot be checked, so 'uncertain' is correct and the rule text says so. is_bpl also counts Antyodaya cards, which is a reasonable reading of 'BPL ration card'.", "suggestion": "None required." },
+    { "target": "rules", "severity": "minor", "note": "'The benefit is available to a woman for the first two living children provided the second child is a girl' is not encoded (no field); content explains first child / second girl child.", "suggestion": "None required; consider a field later." }
+  ]
+}

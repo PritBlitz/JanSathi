@@ -1,0 +1,20 @@
+{
+  "slug": "pmmvy",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "ca5e3478147177b5",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:3111323d93100e3890c90281deef0af1b59de69f513781e5e636c3d6f901bcb6", "method": "snapshot" },
+    { "id": "portal", "content_hash": "sha256:8fddbd9576a1b5a240f40cc2e1c23cd42def67a7ce777070973e65076029ec3c", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search (PIB, wcd.gov.in, pmmvy.wcd.gov.in, press) for 2025-2026 changes: no new PMMVY/Mission Shakti guidelines and no Cabinet approval for the 2026-31 (16th FC) cycle found. A Finance Ministry instruction extended schemes ending 31 Mar 2026 on the same terms up to 30 Sep 2026 or approval for the 16th FC cycle, whichever is earlier. Reports from July and October 2026 show PMMVY payments continuing at Rs 5,000 / Rs 6,000. No discontinuation, renaming or amount change found. The 2021-22 to 2025-26 Mission Shakti guidelines are still the version on the portal, so I treat the expired period as minor, not a blocker.",
+  "findings": [
+    { "target": "sources:guidelines", "severity": "minor", "note": "Guideline period is 2021-22 to 2025-26; the interim extension of 15th-FC schemes ran to 30 Sep 2026. The scheme is still operating with the same norms and no replacement guideline is published, so the content is current in substance.", "suggestion": "Re-check pmmvy.wcd.gov.in / PIB for Mission Shakti 2026-31 approval or revised guidelines; keep reverify_days at 90." },
+    { "target": "rule:disadvantaged_group", "severity": "minor", "note": "Logic matches items i-viii of §2.2.6 (SC/ST, >=40% disability, BPL card, PM-JAY, e-Shram, MGNREGA job card, net family income < Rs 8 lakh: '<' is correct). But the quote only covers items i-iii; items iv-viii are in the snapshot (lines 1335-1346) but not quoted. 'uncertain' confidence is right because PM-KISAN women farmers, AWW/AWH/ASHA and 'any other category' cannot be checked.", "suggestion": "Extend the quote (or add a second fact) to include 'Women holding E-shram card ... Women holding MGNREGA Job Card viii. Women whose net family income is less than Rs. 8 Lakh per annum'." },
+    { "target": "content.en.benefit", "severity": "minor", "note": "'about ₹6,000 on average' with JSY: the supporting fact quote stops before the amount. The snapshot continues 'so that on an average, a woman will get ₹ 6000/-'.", "suggestion": "Extend that fact quote to '... after institutional delivery so that on an average, a woman will get ₹ 6000/-'." },
+    { "target": "rule:disadvantaged_group", "severity": "minor", "note": "Item vii names the MGNREGA job card; from 1 July 2026 these move to Gramin Rozgar Guarantee Cards under VB-G RAM G (has_job_card question already covers both).", "suggestion": "None now; revisit if WCD updates the list." },
+    { "target": "sources:portal", "severity": "minor", "note": "Portal snapshot is 721 bytes and supports nothing specific.", "suggestion": "None required (no rule cites it)." }
+  ]
+}

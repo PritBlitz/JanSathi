@@ -1,0 +1,51 @@
+{
+  "slug": "pm-kisan",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "19f9d4a7b66282a5",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:ae82cac83f61a5fa5049387a7c13e00c6d55cef0e9163deb5497dc86c86d697f",
+      "method": "snapshot"
+    },
+    {
+      "id": "faq",
+      "content_hash": "sha256:95d4e2892b4b351e599bf903f8c6f89b20d4b74831eb8f1a0e61a2a66771ff86",
+      "method": "snapshot"
+    },
+    {
+      "id": "cabinet_2026",
+      "content_hash": "sha256:cbbef24be1f7febe001d681f301d163d7f3f22a3fcdac5c792cb8daf677c0100",
+      "method": "snapshot"
+    },
+    {
+      "id": "portal",
+      "content_hash": "sha256:d69ddd8ee1cb1e4a671c759f609b6be3558f5227147fc4ca090c0e1a72463abc",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Web search (2026-10-26): no change to the Rs 6,000/year amount or the eligibility rules in 2025-2026. The Cabinet continued the scheme for 2026-27 to 2030-31 (PIB 31 Jul 2026, already cited). Changes reported are operational: e-KYC, Farmer ID in some states, and Aadhaar-bank seeding.",
+  "findings": [
+    {
+      "target": "rules (land cut-off)",
+      "severity": "minor",
+      "note": "Guideline §5.2 sets 01.02.2019 as the land-ownership cut-off (except inheritance). Neither the rules nor the content mention it, so someone who bought land after 2019 gets 'likely eligible'. (PM-KMY's content does mention its own cut-off date.)",
+      "suggestion": "Add one sentence to how_to_apply: 'Land bought after 1 February 2019 does not count, except land inherited after a death.' A rule is not possible with the current fields."
+    },
+    {
+      "target": "rule:owns_farmland",
+      "severity": "minor",
+      "note": "Guideline §5.1 makes an exception to the land-records requirement for the North-East states and Jharkhand (community land, etc.). With 'confirmed', a 'no' there gives 'not eligible'.",
+      "suggestion": "Mention the North-East/Jharkhand exception in how_to_apply, or accept it as a known limit."
+    },
+    {
+      "target": "rule:no_govt_job",
+      "severity": "minor",
+      "note": "The quote covers serving or retired employees (4.1(b)(iii)) but not the Rs 10,000 pension clause (iv), which the field question and rule text include. The logic is right; the quote is partial.",
+      "suggestion": "Optionally extend the quote or the locator to cover (iv)."
+    }
+  ]
+}

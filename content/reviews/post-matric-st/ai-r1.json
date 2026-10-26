@@ -1,0 +1,17 @@
+{
+  "slug": "post-matric-st",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "3861d4318cfe2135",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "mota", "content_hash": "sha256:0f2a0bedc08dee157e48a6c695ea0db2c8573f49fa012c44bd6d93274fe8a539", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search for 2025-2026 changes to MSJE/MoTA post-matric scholarships found only a reported (not notified) plan to raise the SC income limit to Rs 4.5 lakh; nothing specific to the ST scheme (no revised income limit, amounts, renaming or discontinuation). The MoTA page snapshot (2026-10-25) still describes the scheme with the Rs 2.5 lakh limit and reports releases up to 31 Mar 2025 and annexures through 2025-26.",
+  "findings": [
+    { "target": "rule:category_st", "severity": "minor", "note": "The quote ('... disbursement of scholarship to eligible ST students directly to their bank accounts through DBT') only indirectly supports 'must be ST'; the text also appears in the pre-matric section. The page title and context (scholarship schemes for ST students) make the meaning clear.", "suggestion": "When the MoTA post-matric guideline PDF is added, quote its eligibility clause for Scheduled Tribes and raise the rules to 'confirmed'." },
+    { "target": "content.benefit", "severity": "minor", "note": "Maintenance Rs 230 to Rs 1,200 per month and fees up to the state limit match the MoTA page exactly. These are long-standing rates; the page may lag the current guideline.", "suggestion": "Cross-check amounts against the current guideline PDF linked on the same page." },
+    { "target": "documents", "severity": "minor", "note": "The MoTA page snapshot lists no documents (only an Aadhaar notification link and DBT to bank accounts). caste_certificate, income_certificate, marksheet are plausible but not supported by the cited source.", "suggestion": "Cite the guideline PDF or an NSP document list for the documents." }
+  ]
+}

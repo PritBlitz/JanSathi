@@ -1,0 +1,41 @@
+{
+  "slug": "pm-svanidhi",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "2821eab0b7f762e4",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:c3e73b7107ee281e8c875478604722d0fdb8234ed0f4ebd8644a79d7722c43be",
+      "method": "snapshot"
+    },
+    {
+      "id": "portal",
+      "content_hash": "sha256:ba8eea2dd5eb7d258a6d36f9e8cfd30bd207484db5b1ecb50996a279b2ac2c24",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Web search (2026-10-26): the restructured scheme (Cabinet Aug 2025; MoHUA guidelines Jan 2026, already cited) runs lending to 31 Mar 2030 with tranches of Rs 15,000 / 25,000 / 50,000 and a RuPay credit card after the 2nd tranche. Six-year milestone in June 2026. No later change found. MoHUA posted a further document in June 2026 that I did not read.",
+  "findings": [
+    {
+      "target": "sources.portal",
+      "severity": "minor",
+      "note": "The portal's content_hash has no snapshot file in content/snapshots/, and documents.aadhaar is cited to it, so that document is unchecked.",
+      "suggestion": "Write the portal snapshot, or cite the guidelines (or the operational guidelines) for documents."
+    },
+    {
+      "target": "rule:street_vendor",
+      "severity": "minor",
+      "note": "The source limits the scheme to vendors in 'city-regions' (statutory towns, census towns, peri-urban areas). A vendor in an ordinary village passes. A hard area rule would wrongly exclude census-town and peri-urban vendors who answer 'rural', so leaving it out is defensible.",
+      "suggestion": "Say clearly in the summary that village vendors outside census towns and peri-urban areas are not covered (the summary already lists the areas). Optionally add a soft note."
+    },
+    {
+      "target": "content.how_to_apply",
+      "severity": "minor",
+      "note": "'a Common Service Centre or the PM SVANidhi portal' is not in the guideline snapshot, which names the PMS portal (Udyami Mitra) and says operational guidelines will be issued separately.",
+      "suggestion": "Cite the portal or the operational guidelines for the channels once they are snapshotted."
+    }
+  ]
+}

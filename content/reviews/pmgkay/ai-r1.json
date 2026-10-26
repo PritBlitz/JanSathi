@@ -1,0 +1,18 @@
+{
+  "slug": "pmgkay",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "0dd6e84078c3b7ab",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "cabinet_2023", "content_hash": "sha256:2a52ccc6aa17be71636eba9886887078ee6547619ba96ae4aff11a7a9ff3d30c", "method": "snapshot" },
+    { "id": "nfsa_act", "content_hash": "sha256:4f7f27f452ceda2a1951e4bde77177717971487453e45906b1ffc2bb75579c34", "method": "snapshot" },
+    { "id": "nfsa", "content_hash": "sha256:ecd23a6232ec57145d394adde8d9f5b6534d26b1c5b757c46de896eb8625e7c7", "method": "snapshot" }
+  ],
+  "newer_changes_search": "No separate web search for PMGKAY. Relied on the snapshots: the Cabinet decision covers five years from 1 Jan 2024 (to Dec 2028); the nfsa.gov.in snapshot shows a DFPD allocation order of 05-Jan-2026 for Feb 2026 with issue price Rs 0/kg, consistent with free grains continuing in 2026. The source note records a draft NFS (Amendment) Bill, 2026 that was not enacted as of 2026-10-25; entitlements under s.3(1) are unchanged.",
+  "findings": [
+    { "target": "content.how_to_apply", "severity": "minor", "note": "'(or Aadhaar with fingerprint)' and the aadhaar document (cited to cabinet_2023) are not supported by any snapshot; the Cabinet release does not mention Aadhaar.", "suggestion": "Cite a DFPD/ONORC page that describes Aadhaar-based biometric authentication at fair price shops, or drop the Aadhaar mention." },
+    { "target": "rule:nfsa_card", "severity": "minor", "note": "Quote covers priority households only; AAY households are covered by the first proviso (quoted in facts). Logic and 'guidance' confidence are fine (conservative for a gazette source, since the card is a proxy for identification under s.10).", "suggestion": "None required." }
+  ]
+}

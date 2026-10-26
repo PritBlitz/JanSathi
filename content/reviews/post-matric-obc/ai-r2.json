@@ -1,0 +1,20 @@
+{
+  "slug": "post-matric-obc",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "d2676d57d401f0cd",
+  "verdict": "changes_requested",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:4241720de7314a384a7b2f4c595066c974752aedf721e86dd160dc8e824c63d8", "method": "snapshot" },
+    { "id": "msje", "content_hash": "sha256:7897664e41137dd91ba373018d889d95be00b370a8d3905e20b3d797ae980f27", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search (socialjustice.gov.in, PIB, NSP, press) for 2025-2026 changes to PM-YASASVI post-matric: no revised guidelines, no change to the Rs 2.5 lakh income limit or the course-group amounts found; only aggregator pages for 2026. No Cabinet approval for the 2026-31 cycle found; schemes of the 15th FC period were extended on the same terms to 30 Sep 2026 or approval, whichever earlier. The scheme is still taking 2026-27 applications via state portals/NSP. The expired guideline period (2021-22 to 2025-26) is minor because the content says so and points users to the portal.",
+  "findings": [
+    { "target": "rule:category_obc", "severity": "blocker", "note": "The clause (§5(i)) opens the scholarship to OBCs, EBCs and DNTs; the guidelines define EBC and DNT as students 'who are not covered under SC, ST or OBC' (line 92/121). The rule is social_category == 'obc' with confidence 'confirmed', so an EBC or DNT student (who would answer 'general' or 'ews') gets a firm NOT_ELIGIBLE, contradicting the clause and the rule's own text ('EBC and DNT students can also apply: check with the office').", "suggestion": "Set confidence to 'uncertain' for this rule (a fail then shows 'check with the office'), keeping the logic {\"==\":[{\"var\":\"social_category\"},\"obc\"]}. Alternatively split it: a confirmed hard rule {\"!\":[{\"in\":[{\"var\":\"social_category\"},[\"sc\",\"st\"]]}]} is not appropriate either (SC/ST DNTs exist), so 'uncertain' is the simplest correct fix. Add a fixture: general-category student -> NEED_MORE_INFO with rules.category_obc = fail." },
+    { "target": "rule:income_max", "severity": "minor", "note": "<= 250000 matches 'does not exceed Rs. 2.50 lakh per annum'; fixtures test 250000 / 250001. Correct.", "suggestion": "None." },
+    { "target": "content.en.benefit", "severity": "minor", "note": "Group totals 20,000 / 13,000 / 8,000 / 5,000 match the §7.1 table (academic allowance + tuition fee). Group 4 has no tuition component (5000 + 0); 'pays a yearly academic allowance and tuition fee' is slightly broad. 'Your state may add more' matches §7.2 (state top-up of academic allowance).", "suggestion": "Optional: 'For group 4 courses the amount is an academic allowance only.'" },
+    { "target": "sources:guidelines", "severity": "minor", "note": "Guideline period 2021-22 to 2025-26 has ended; no newer guideline found and the content already tells users to check the portal for this year's rules.", "suggestion": "Re-check socialjustice.gov.in for 2026-31 guidelines; keep reverify_days at 90." },
+    { "target": "documents", "severity": "minor", "note": "aadhaar and bank_account cite the msje portal page; the guidelines themselves (Aadhaar paras, DBT to bank account) support them better.", "suggestion": "Re-point aadhaar and bank_account to 'guidelines'." }
+  ]
+}

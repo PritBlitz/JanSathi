@@ -1,0 +1,41 @@
+{
+  "slug": "atal-pension",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "8f343dd2ed19caba",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dfs",
+      "content_hash": "sha256:201c97abd73eb6d94149a16383edb4f3754d2e8b210c2fa43cae248743b3b7c8",
+      "method": "snapshot"
+    },
+    {
+      "id": "pib_2025",
+      "content_hash": "sha256:a660f44cb5e3fd4f3b7dab5f094a7e2a3eb93e7eb304f7f6f5d37c580346e428",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Web search for 2025-2026 changes: the Union Cabinet approved continuation of APY up to FY 2030-31 on 21 Jan 2026 (PIB; reported by Business Today, PMIndia), with promotional support and gap funding. No change to entry age (18-40), the income-tax-payer bar or the pension slabs was found.",
+  "findings": [
+    {
+      "target": "documents:aadhaar",
+      "severity": "minor",
+      "note": "aadhaar is attributed to pib_2025, but the PIB backgrounder snapshot does not mention Aadhaar (it only says a bank account is mandatory for auto-debit).",
+      "suggestion": "Cite a source that lists Aadhaar/KYC (PFRDA APY FAQ or scheme details) or drop the document."
+    },
+    {
+      "target": "content.en",
+      "severity": "minor",
+      "note": "Copy uses second person ('you join through your bank', 'You can join', 'After your death'); CONTENT_AUTHORING asks for third person.",
+      "suggestion": "'People join through their bank ... Joining age is 18 to 40.' / 'After the subscriber's death ...'. Mirror in hi."
+    },
+    {
+      "target": "changes",
+      "severity": "minor",
+      "note": "The Jan 2026 Cabinet continuation to 2030-31 is not recorded; not required, but a useful currency signal.",
+      "suggestion": "Optionally snapshot the PIB release of 21 Jan 2026 and add a changes entry."
+    }
+  ]
+}

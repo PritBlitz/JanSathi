@@ -1,0 +1,18 @@
+{
+  "slug": "pmfby",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "9aca5d8ee03f94c4",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "factsheet_2026", "content_hash": "sha256:fbea6acacc46d5864d6408dac2b23a7bf85361b5fc8b72ea42c5819a329ed33f", "method": "snapshot" },
+    { "id": "portal", "content_hash": "sha256:0580ed18711602b15107f18de2119a2ad1f3b3bc6c769617c3d0ba8189fb7444", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search for 2025-2026 PMFBY changes: the cited PIB factsheet is dated 29 Aug 2026 (current; 25 States/UTs in Kharif 2026, premium caps 2% / 1.5% / 5% unchanged). Revised modalities announced Nov 2025 for Kharif 2026 (wild-animal add-on cover, paddy inundation restored, 72-hour loss reporting) do not affect the eligibility rule or premium caps. A Kharif 2026 interim advisory (state copy) says the 2026-2030 tender cycle was under appraisal with an interim extension to 30.09.2026, so Rabi 2026-27 terms could change. No discontinuation or renaming found.",
+  "findings": [
+    { "target": "sources:portal", "severity": "minor", "note": "The portal snapshot is only the page title (82 bytes; JavaScript app), so nothing cited to it can be checked. The documents aadhaar and bank_account cite this source, and the enrolment channels in how_to_apply (bank, CSC, insurance company, website) are not in any snapshot.", "suggestion": "Add the PMFBY Operational Guidelines 2023 (pmfby.gov.in, guideline) as a source for documents and enrolment channels; it would also allow the farmer rule to be 'confirmed'." },
+    { "target": "rule:farmer", "severity": "minor", "note": "occupation is a single-choice member field; a household where another member farms, or a sharecropper who answers 'daily_wage', gets NOT_ELIGIBLE. Acceptable approximation, guidance confidence is right for a govt_statement.", "suggestion": "Optionally mention in the rule text that sharecroppers should choose 'farmer'." },
+    { "target": "reverify_days", "severity": "minor", "note": "The 2026-2030 implementation cycle was still under appraisal per the Kharif 2026 advisory.", "suggestion": "Re-check before Rabi 2026-27 enrolment; 120 days is acceptable." }
+  ]
+}

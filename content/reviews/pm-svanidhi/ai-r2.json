@@ -1,0 +1,36 @@
+{
+  "slug": "pm-svanidhi",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "2821eab0b7f762e4",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:c3e73b7107ee281e8c875478604722d0fdb8234ed0f4ebd8644a79d7722c43be",
+      "method": "snapshot"
+    },
+    {
+      "id": "portal",
+      "content_hash": "sha256:ba8eea2dd5eb7d258a6d36f9e8cfd30bd207484db5b1ecb50996a279b2ac2c24",
+      "method": "snapshot",
+      "note": "Snapshot file missing from content/snapshots; not checked."
+    }
+  ],
+  "newer_changes_search": "The cited MoHUA guidelines (Jan 2026) record the extension of lending to 31 March 2030 and the UPI-linked credit card. No later change found in a web search.",
+  "findings": [
+    {
+      "target": "source:portal",
+      "severity": "minor",
+      "note": "The portal source records content_hash sha256:ba8eea2d... but no snapshot file exists in content/snapshots/, so it cannot be checked. Document aadhaar cites it; the guidelines do not mention Aadhaar.",
+      "suggestion": "Re-run recheck.py --snapshot (or --hash-file) for the portal so the snapshot exists, and cite it for Aadhaar."
+    },
+    {
+      "target": "rule:street_vendor",
+      "severity": "minor",
+      "note": "Rule text adds '(with a vending certificate, ID or recommendation letter)', but q.is_street_vendor only asks whether the person sells on the street. Coverage is statutory towns, census towns and peri-urban areas only (summary says so).",
+      "suggestion": "Text: 'Sells goods or food on the street'; keep CoV/LoR in how_to_apply."
+    }
+  ]
+}

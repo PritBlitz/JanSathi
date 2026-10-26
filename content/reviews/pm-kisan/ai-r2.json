@@ -1,0 +1,45 @@
+{
+  "slug": "pm-kisan",
+  "reviewer": "ai-r2",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "19f9d4a7b66282a5",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:ae82cac83f61a5fa5049387a7c13e00c6d55cef0e9163deb5497dc86c86d697f",
+      "method": "snapshot"
+    },
+    {
+      "id": "faq",
+      "content_hash": "sha256:95d4e2892b4b351e599bf903f8c6f89b20d4b74831eb8f1a0e61a2a66771ff86",
+      "method": "snapshot"
+    },
+    {
+      "id": "cabinet_2026",
+      "content_hash": "sha256:cbbef24be1f7febe001d681f301d163d7f3f22a3fcdac5c792cb8daf677c0100",
+      "method": "snapshot"
+    },
+    {
+      "id": "portal",
+      "content_hash": "sha256:d69ddd8ee1cb1e4a671c759f609b6be3558f5227147fc4ca090c0e1a72463abc",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Cabinet continued PM-KISAN from 2026-27 to 2030-31 (PIB 31 Jul 2026, cited); ₹6,000 in three instalments unchanged. No change to exclusions found.",
+  "findings": [
+    {
+      "target": "rule:owns_farmland",
+      "severity": "minor",
+      "note": "Guidelines para 5.1 exempt North-East States and Jharkhand from the land-records condition. A hard confirmed fail on owns_farmland ('in its own name') can rule out eligible farmers there.",
+      "suggestion": "Mention the NE/Jharkhand exception in how_to_apply, or treat the rule as 'uncertain' for those states."
+    },
+    {
+      "target": "content.en.how_to_apply",
+      "severity": "minor",
+      "note": "The 01.02.2019 land-ownership cut-off (paras 5.2-5.3; later acquisitions count only if inherited) is not mentioned. The guideline set it 'for next 5 years'; whether it still applies needs a newer source.",
+      "suggestion": "Add one sentence if a current source confirms it still applies."
+    }
+  ]
+}

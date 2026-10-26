@@ -1,0 +1,16 @@
+{
+  "slug": "pmjjby",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "64b7ab240873800c",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "dfs", "content_hash": "sha256:31920a0bcafb3b3441c46e43aafdc96c46fc56759f31d65ef4b094e4c41dcd7d", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search for 2025-2026 PMJJBY changes: no official premium or age-limit revision found after the June 2022 revision (Rs 436). A June 2025 press report said the Finance Ministry was considering doubling cover to Rs 4 lakh with a higher premium; no adoption found. The DFS page snapshot (progress as on 28.02.2025) still shows Rs 2 lakh / Rs 436 / 18-50.",
+  "findings": [
+    { "target": "content.benefit", "severity": "minor", "note": "The DFS page does not mention the 30-day lien period for new enrolees (non-accidental death in the first 30 days is not covered) or that cover continues to age 55 for those who joined before 50. The benefit text is accurate to the cited source but slightly simplified.", "suggestion": "If a PMJJBY rules document (DFS/LIC) is added as a source, mention the lien period and the age-55 cover end." },
+    { "target": "rules", "severity": "minor", "note": "The 'having a bank account' condition is not encoded (no profile field); it is stated in the summary and documents. Age rules (>=18, <=50) match 'age group of 18 to 50 years'; fixtures test 17/18/50/51 and a straddling band.", "suggestion": "None required." }
+  ]
+}

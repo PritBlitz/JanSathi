@@ -1,0 +1,19 @@
+{
+  "slug": "pre-matric-sc",
+  "reviewer": "ai-r1",
+  "reviewer_kind": "ai",
+  "date": "2026-10-25",
+  "content_version": "1ce419a583474d1f",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:f26190bcb074695a4e2b72584b8a4c7f4e8478a8c9ed25f92cb3f5f35e36c1ba", "method": "snapshot" },
+    { "id": "msje", "content_hash": "sha256:2389b08b2300d56719eb0da14cc9a1c4375084aeafe8c35d8995e5dde0ef365d", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Web search for 2025-2026 MSJE scholarship changes: only a reported (not notified) plan to raise the post-matric SC income limit to Rs 4.5 lakh; nothing found for the pre-matric SC scheme (no revised amounts, income limit, renaming or discontinuation). No official 16th-FC (2026-27 onward) continuation order found; the guideline period 2021-22 to 2025-26 has ended. The content already says so and tells users to check the portal; treated as minor.",
+  "findings": [
+    { "target": "rules", "severity": "minor", "note": "Rules exactly match Component 1 (§4.2.1: class IX-X full time, Scheduled Caste, income not exceeding Rs 2.50 lakh -> <=). The same guideline has Component 2 (§4.2.2): children of manual scavengers, tanners and flayers, waste pickers and persons in hazardous cleaning, classes I-X, any caste, no income ceiling. Such students get NOT_ELIGIBLE here. The scheme name scopes this entry to SC class 9-10, so this is a coverage gap, not a wrong rule.", "suggestion": "Add Component 2 as a separate scheme entry (needs a proposed field such as parent_in_hazardous_occupation), or mention it in how_to_apply." },
+    { "target": "sources:guidelines", "severity": "minor", "note": "Guidelines cover 2021-22 to 2025-26; no continuation order found.", "suggestion": "Add the 2026-27 continuation/NSP notice when available; reverify_days 90 is fine." },
+    { "target": "content.how_to_apply", "severity": "minor", "note": "'After registering there, you complete the application on your state's portal' is not stated in the guideline (which lets states use their own portal or NSP, sharing data in real time). 'Every April' is loosely supported by the 1 April - 31 July application window.", "suggestion": "Rephrase to 'Apply on the National Scholarship Portal or your state's scholarship portal (applications usually open from April).'" },
+    { "target": "documents", "severity": "minor", "note": "aadhaar and bank_account cite 'msje', whose snapshot mentions neither; the guideline itself supports Aadhaar-linked verification and DBT.", "suggestion": "Re-point these documents to 'guidelines'." }
+  ]
+}
