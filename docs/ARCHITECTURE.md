@@ -72,7 +72,8 @@
 | **Ingestion** (`ingest/`) | Python | Fetches official pages and PDFs, extracts text, chunks and embeds, writes `source` snapshots and `chunk` rows, opens review tasks. Also runs the daily re-check. | Planned |
 | **Knowledge base** | PostgreSQL + pgvector | Schemes, rules, sources, documents, deadlines, chunks. See [DATA_MODEL.md](DATA_MODEL.md) and [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). | Planned |
 | **Reviewer UI** | Served by `backend/` (`/admin`) | Verify sources, encode rules, approve translations, publish | Planned |
-| **Volunteer portal** | `backend/` + `frontend/` | Consent-scoped, time-limited assisted sessions with an audit log. See [PRIVACY_AND_SECURITY.md](PRIVACY_AND_SECURITY.md). | Planned (Phase 5) |
+| **Volunteer portal** | `backend/` + `frontend/` | Consent-scoped, time-limited cases shared by code or help request, audit log the person can read, Saathi assisting helpers. See [PRIVACY_AND_SECURITY.md](PRIVACY_AND_SECURITY.md). | Built (2026-10-26) |
+| **Saathi, the AI guide** | `backend/` (`guide/`) + `frontend/` | Talks with each signed-in person, asks the questionnaire, records answers, explains results with sources; tools only, never decides. | Built (2026-10-26) |
 
 **Why two backend languages:** Spring Boot is the maintainer's choice for the product backend. The open-source Indic models (bge-m3, IndicTrans2, IndicWhisper, PaddleOCR) and the extraction tools (trafilatura, PyMuPDF) only have mature Python implementations. Keeping them in a small, stateless Python service means the Java side never depends on them directly, and any of them can be swapped for a hosted API by writing a new Java provider implementation.
 
@@ -140,6 +141,11 @@ All paths are under `/api/v1`. JSON is snake_case; errors are problem+json.
 | `POST /reminders` / `DELETE /reminders/{id}` | Opt in / out of reminders |
 | `POST /reports` | "Report outdated info", stored in the `report` table with personal numbers removed. **Built** |
 | `GET /admin/reports`, `POST /admin/reports/{id}/resolve` | Moderation queue; bearer token (`JANSATHI_ADMIN_TOKEN`) until per-person sign-in exists. **Built** |
+| `POST /auth/code`, `POST /auth/verify`, `POST /auth/sign-out` | Phone + one-time code sign-in (SmsSender; `dev` shows the code). **Built** |
+| `/me`, `/me/household`, `/me/conversation`, `/me/shares`, `/me/notes`, `/me/audit` | The person's own data: encrypted household sync, Saathi history, sharing with helpers, helper notes, audit log, delete. **Built** |
+| `POST /guide/messages`, `GET /guide/status` | Saathi, the AI guide: an agent loop over deterministic tools (questionnaire, rules engine, sources, checklist, ask a helper); replies checked against the copy rules. **Built** |
+| `/volunteer`, `/volunteer/join`, `/volunteer/requests/{id}/pick-up`, `/volunteer/cases/{id}` (+ `/notes`, `/assist`) | Helper portal: consent-scoped, time-limited cases, notes, Saathi assisting read-only; everything audited. **Built** |
+| `/admin/volunteers` | Register and remove helpers. **Built** |
 | `POST /stt`, `POST /tts` | Server speech fallback (proxied to the ML service) |
 | `/volunteer/*` | Session codes, scoped profile view, audit log (Phase 5) |
 | `/admin/*` | Reviewer workflow (authenticated, role-checked) |
@@ -236,8 +242,9 @@ Base package: `org.jansathi` (`in.jansathi` is not allowed because `in` is a Jav
 frontend/   React + Vite PWA (src/lib: rules, i18n, speech, data; src/pages, src/components)
 backend/        Spring Boot app (Gradle)
   src/main/java/org/jansathi/
-    content/ scheme/ rules/ match/ checklist/ search/ assist/ report/ web/ provider/llm/   (built)
-    reminder/ volunteer/                                                           (planned)
+    content/ scheme/ rules/ match/ checklist/ search/ assist/ report/ web/ provider/llm/
+    account/ (sign-in, crypto, households, audit) guide/ (Saathi) volunteer/ (helper portal)   (built)
+    reminder/                                                                      (planned)
   src/main/resources/
     application.yml
     db/migration/          Flyway SQL

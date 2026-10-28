@@ -65,10 +65,12 @@ Many people who qualify for scholarships, pensions, health cover, housing or far
 | Family mode: household questions once, each member's own results | Built (on the device) |
 | Office slip: schemes and documents to carry, print or share | Built |
 | Scheme stacking/conflicts | Planned: no relations recorded in content yet |
+| Saathi, the AI guide: talks with each signed-in person in their language, asks the questions, records answers, explains results with official sources (Google Gemini; works without AI by tapping answers) | Built |
+| Helper portal: NGO/CSC helpers see a case only when the person shares it, with an audit log the person can read | Built |
+| Sign in with a mobile number and one-time code; answers saved encrypted across phones | Built (SMS provider still to be connected; a test mode shows the code) |
 | Cited AI assistant in Hindi and English | Built: retrieval of official rule passages, an optional LLM explanation (any OpenAI-compatible provider), validation against the copy rules, and "no official source" when nothing matches. Off until a model is configured |
 | Spring Boot API: schemes, matching, rule bundle, checklist, search, assistant, reports and their moderation | Built (`backend/`), with PostgreSQL (H2 locally) and Docker |
 | Deadline reminders (Web Push, Telegram) | Planned: no deadlines recorded in content yet |
-| Volunteer portal with consent sessions and audit log | Planned (Phase 5) |
 | OCR document check | Planned (Phase 5) |
 | Nearby CSC and office map | Planned (Phase 6) |
 

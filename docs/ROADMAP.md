@@ -55,10 +55,10 @@ Phases from the [project brief](PROJECT_BRIEF.md#12-roadmap). ✅ = done.
 
 ## Phase 5 — Volunteer portal and OCR
 
-- [ ] Threat model for the volunteer portal
-- [ ] Volunteer verification and roles
-- [ ] Consent-scoped, time-limited sessions via short code
-- [ ] Field masking and the user-visible audit log ([PRIVACY_AND_SECURITY.md](PRIVACY_AND_SECURITY.md))
+- [ ] Threat model for the volunteer portal (summary in PRIVACY §4.5; full STRIDE pending)
+- [x] Volunteer roles (registered by the admin; partner-lead verification pending)
+- [x] Consent-scoped, time-limited sessions via short code, plus "ask for a helper" requests
+- [ ] Field masking and the user-visible audit log ([PRIVACY_AND_SECURITY.md](PRIVACY_AND_SECURITY.md)) (audit log built; per-field masking pending)
 - [ ] Pilot with a partner NGO or CSC
 - [ ] OCR document-type and readability check (delete after processing)
 
@@ -93,6 +93,7 @@ Decisions needed from the maintainer:
 |---|---|
 | 2026-10-24 | Backend is **Spring Boot** (Java 21). Python only for the internal ML service and ingestion. See [ARCHITECTURE.md](ARCHITECTURE.md). |
 | 2026-10-24 | Hero display word is the brand name **localised per language** (JanSathi, जनसाथी, …). See [DESIGN.md](../DESIGN.md#6-hero-component). |
+| 2026-10-26 | Sign-in by **phone + OTP**; every person gets **Saathi, an AI guide**, and registered **human helpers** (NGO/CSC) can help too; the AI is **Google Gemini** (OpenAI-compatible endpoint); scheme reviews are done by **independent AI reviewer agents** (REVIEW.md). |
 | 2026-10-25 | Frontend is **React** (Vite build), backend Spring Boot. Full visual redesign: "Neel" palette and Awwwards-pattern sections; the hero anatomy is kept. See [DESIGN.md](../DESIGN.md) and [FEASIBILITY.md](FEASIBILITY.md). |
 
 ## Improvements over the brief
