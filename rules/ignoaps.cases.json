@@ -10,8 +10,8 @@
     "expect": {
       "result": "LIKELY_ELIGIBLE",
       "missing_fields": [],
-      "stale": true,
-      "label": "uncertain"
+      "stale": false,
+      "label": "confirmed"
     }
   },
   {

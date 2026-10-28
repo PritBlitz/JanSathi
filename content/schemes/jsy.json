@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": null,
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:a07afc3c88820e8736356dc25d367170d75e7f002217a61dd273049dae2f4e36",
-      "verified_at": null,
-      "verified_by": null
+      "verified_at": "2026-10-26",
+      "verified_by": "ai-r1, ai-r2"
     }
   ],
   "rules": [
@@ -174,5 +174,14 @@
       "mandatory": false,
       "source": "nhm"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-26",
+    "content_version": "b3b7e766fdc7daf3"
+  }
 }

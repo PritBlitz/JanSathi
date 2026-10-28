@@ -2,45 +2,17 @@
   "slug": "ignoaps",
   "reviewer": "ai-r1",
   "reviewer_kind": "ai",
-  "date": "2026-10-25",
-  "content_version": "12ad4a1e111eae73",
+  "date": "2026-10-26",
+  "content_version": "777a0b7090d1545b",
   "verdict": "approve",
   "sources_checked": [
-    {
-      "id": "guidelines",
-      "content_hash": "sha256:d53a782b3be5b935393627d0d7ead94eeb24d341153ccac69befb8cc9a994718",
-      "method": "snapshot"
-    },
-    {
-      "id": "cabinet_2026",
-      "content_hash": "sha256:4c5a7e907618ef2f1910030171fc676cca9e2154f83448d62c0f3f7ed7f0cf7c",
-      "method": "snapshot"
-    },
-    {
-      "id": "portal",
-      "content_hash": "sha256:3be007cf44ceb7c9951cbd7f319292bb3c9566557e10533d46132f8b6bb98136",
-      "method": "snapshot"
-    }
+    { "id": "guidelines", "content_hash": "sha256:d53a782b3be5b935393627d0d7ead94eeb24d341153ccac69befb8cc9a994718", "method": "snapshot" },
+    { "id": "cabinet_2026", "content_hash": "sha256:4c5a7e907618ef2f1910030171fc676cca9e2154f83448d62c0f3f7ed7f0cf7c", "method": "snapshot" },
+    { "id": "portal", "content_hash": "sha256:3be007cf44ceb7c9951cbd7f319292bb3c9566557e10533d46132f8b6bb98136", "method": "snapshot" }
   ],
-  "newer_changes_search": "Web search (2026-10-26) and the PIB Cabinet release of 14 Oct 2026 (in the snapshots): IGNOAPS is renamed Pradhan Mantri Vridhavastha Pension Yojana and 'will continue in its existing form', so the 2014 guideline amounts (Rs 200 for ages 60-79, Rs 500 for 80+) and age 60 still apply. The scheme file reflects the rename. No other change found.",
+  "newer_changes_search": "Web search (2026-10-26) after the Cabinet decision of 14 Oct 2026 (PIB 2323264, in the snapshots): NSAP continues 2026-27 to 2030-31; the old age pension continues 'in its existing form' (Rs 200 for 60-79, Rs 500 for 80+). No other change found.",
   "findings": [
-    {
-      "target": "documents.aadhaar, documents.bank_account",
-      "severity": "minor",
-      "note": "Both are marked mandatory, but NSAP guideline §5.2.12 says no beneficiary is to be denied for lacking a bank/Post Office account or Aadhaar. Age-proof sources (birth or school certificate, ration card, EPIC, or a medical officer's certificate) are in §3.1.3, so age_proof is fine.",
-      "suggestion": "Set mandatory: false for aadhaar and bank_account."
-    },
-    {
-      "target": "rule:bpl",
-      "severity": "minor",
-      "note": "As for the other NSAP schemes: the field asks about a BPL card, but §3.1.3 says eligible people missing from the BPL list should not be left out.",
-      "suggestion": "Consider confidence 'uncertain' for the bpl rule (consistently across NSAP schemes)."
-    },
-    {
-      "target": "sources.guidelines",
-      "severity": "minor",
-      "note": "The guideline is hosted on an Odisha government site, not the NSAP site. It is official and current per the Cabinet's 'existing form' statement.",
-      "suggestion": "Prefer the nsap.dord.gov.in copy if one can be fetched."
-    }
+    { "target": "documents", "severity": "minor", "note": "Aadhaar, bank account and ration card are now optional, matching §5.2.12. Age proof stays mandatory (§3.1.3 lists acceptable proofs, including a medical certificate).", "suggestion": "None." },
+    { "target": "rule:bpl", "severity": "minor", "note": "Card-based field vs §3.1.3 ('should not be left out'); how_to_apply explains it.", "suggestion": "Consider 'uncertain' for the bpl rule across NSAP schemes." }
   ]
 }

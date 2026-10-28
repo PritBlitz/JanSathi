@@ -2,41 +2,40 @@
   "slug": "kcc",
   "reviewer": "ai-r2",
   "reviewer_kind": "ai",
-  "date": "2026-10-25",
-  "content_version": "09f76ad7306ceba1",
+  "date": "2026-10-26",
+  "content_version": "9cdd590c348fd6a0",
   "verdict": "approve",
   "sources_checked": [
     {
       "id": "pib_2026",
       "content_hash": "sha256:59186de69287b83f2d59fdd0e2fc7cc22c1e8a154ebbdf8353dbf65babd1538a",
       "method": "snapshot"
+    },
+    {
+      "id": "rbi_miss_2025_26",
+      "content_hash": "sha256:7059b323177d84b486b219dcc3fc6f1f3cf8c02445265a7955f2a02f8a9e46fc",
+      "method": "snapshot"
     }
   ],
-  "newer_changes_search": "The cited PIB backgrounder of 11 Mar 2026 records the 2025-26 changes (MISS limit ₹3 lakh to ₹5 lakh; collateral-free ₹2 lakh from 1 Jan 2025). No later 2026 change to KCC eligibility found in a web search.",
+  "newer_changes_search": "Web search for MISS / KCC changes after the RBI circular of 13 Jan 2026 (RBI/2025-26/193): no 2026-27 MISS circular found yet; press reports say MISS is to continue to 2031-32 with the same budget, with a possible cut in lender subvention under discussion. The RBI KCC Directions, 2026 take effect 1 Jan 2027 and exclude MISS. The content now follows the RBI circular (Rs 3 lakh overall, Rs 2 lakh sub-limit for allied-only farmers, 4% with prompt repayment) rather than the PIB backgrounder's Rs 5 lakh MISS claim; correct, since the RBI circular is the operative instruction for 2025-26.",
   "findings": [
     {
-      "target": "rule:farmer",
+      "target": "documents:aadhaar",
       "severity": "minor",
-      "note": "Rule text says 'Farms ..., or does dairy, poultry or fisheries work' but the logic is only occupation == 'farmer'. A fisher or dairy worker who picks 'self_employed' sees this text marked failed (NOT_ELIGIBLE), although the source covers fishers and animal husbandry (p. 6). Text and logic disagree.",
-      "suggestion": "Either change text to 'Works as a farmer (owner, tenant, oral lessee or sharecropper)', or keep the allied wording and set confidence 'uncertain' so other occupations get 'check with the office'."
+      "note": "aadhaar cites pib_2026, which does not mention Aadhaar. The RBI circular para 3(i) says 'Aadhaar seeding and authentication are mandatory for availing benefits under the scheme' (the MISS interest benefits).",
+      "suggestion": "Point the aadhaar document at rbi_miss_2025_26 (optionally mandatory: true for the interest benefit)."
     },
     {
       "target": "content.en.benefit",
       "severity": "minor",
-      "note": "Says loans 'up to ₹3 lakh at 7% ... effective 4%' and then that the MISS limit was raised to ₹5 lakh. Both are in the source (itself inconsistent), but the reader cannot tell which limit applies now.",
-      "suggestion": "'Interest subvention (7%, effectively 4% with prompt repayment) applied to loans up to ₹3 lakh; in 2025-26 this limit was raised to ₹5 lakh.' Mirror in hi."
+      "note": "All amounts match quoted facts: 7% lending rate, 3% prompt repayment incentive, 4% effective (RBI 2(i)-(ii)); Rs 3 lakh a year overall and Rs 2 lakh sub-limit for allied-only farmers (RBI 2(iii)); Rs 2 lakh collateral-free from 1 Jan 2025 (PIB). Hindi matches. No promise language.",
+      "suggestion": "None. Re-check when the 2026-27 MISS circular appears."
     },
     {
-      "target": "documents",
+      "target": "rule:farmer",
       "severity": "minor",
-      "note": "aadhaar (mandatory) and sowing_certificate are not in the PIB snapshot; it mentions only copies of land records and crop information. 'identity proof' in how_to_apply is likewise unsourced.",
-      "suggestion": "Cite the RBI/NABARD KCC master circular or a bank form for KYC, or mark aadhaar non-mandatory and drop sowing_certificate."
-    },
-    {
-      "target": "content.en.summary",
-      "severity": "minor",
-      "note": "'... farmer groups can get one' is close to promise phrasing.",
-      "suggestion": "'... are covered by the scheme.'"
+      "note": "occupation == farmer with confidence 'uncertain' now matches the text: allied-activity workers who pick another occupation get 'check with the bank', consistent with RBI/PIB covering animal husbandry, dairy and fisheries. Fixture 'salaried' -> NEED_MORE_INFO with farmer fail is right.",
+      "suggestion": "None."
     }
   ]
 }

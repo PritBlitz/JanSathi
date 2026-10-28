@@ -2,8 +2,8 @@
   "slug": "igndps",
   "reviewer": "ai-r2",
   "reviewer_kind": "ai",
-  "date": "2026-10-25",
-  "content_version": "b4761fb69b28767c",
+  "date": "2026-10-26",
+  "content_version": "a8f0b1cfc32a7fc3",
   "verdict": "approve",
   "sources_checked": [
     {
@@ -22,43 +22,37 @@
       "method": "snapshot"
     }
   ],
-  "newer_changes_search": "Searched pib.gov.in (via web search; PIB blocks direct fetch) for 2025-2026 NSAP changes. Found the Cabinet decision of 14 Oct 2026 (Release ID 2323264, confirmed by PMIndia and news coverage): NSAP continued 2026-27 to 2030-31 and renamed Pradhan Mantri Samajik Sahayata Yojana; sub-schemes renamed; disability pension revised (Rs 375 / Rs 625, benchmark disability 40%, from birth, guidelines within three months); old-age, widow and family benefit schemes continue in existing form. The scheme already reflects this decision. Revised disability-pension guidelines were not found yet (due by about mid-January 2027).",
+  "newer_changes_search": "Web search (PIB, PMIndia, news) for NSAP changes: the Cabinet decision of 14 Oct 2026 (PIB Release 2323264, snapshot in content) continues NSAP 2026-27 to 2030-31 as Pradhan Mantri Samajik Sahayata Yojana, renames the sub-schemes, revises the disability pension (Rs 375 / Rs 625, 40% benchmark disability, from birth, guidelines within three months) and continues the old-age, widow and family benefit schemes in their existing form. No revised disability-pension guidelines found as of 26 Oct 2026. The content already reflects the Cabinet decision and the transition period.",
   "findings": [
-    {
-      "target": "rule:benchmark_disability",
-      "severity": "minor",
-      "note": "The 40% threshold and 'from birth' rest on the Cabinet press release (govt_statement; confidence guidance is correct). The release says the change takes effect when revised guidelines are issued (within three months); until then offices apply 80% and age 18+. The benefit text explains this transition clearly and reverify_days is 30, which is appropriate.",
-      "suggestion": "When MoRD issues the revised guidelines, re-source the rule to them (confirmed) and remove the 'old rules' sentence."
-    },
     {
       "target": "content.en.benefit",
       "severity": "minor",
-      "note": "The 'old rules' sentence gives ₹300 a month but omits the old ₹500 from age 80 (guidelines §2.3).",
-      "suggestion": "'... ₹300 a month (₹500 from age 80).' Mirror in hi."
+      "note": "Old-rule amounts now complete (Rs 300, Rs 500 from age 80), quoted from the guidelines; new Rs 375 / Rs 625 quoted from the Cabinet release. Text now third person. Hindi matches.",
+      "suggestion": "None."
     },
     {
-      "target": "rule:disability",
+      "target": "rule:benchmark_disability",
       "severity": "minor",
-      "note": "Rule text says 'Has a disability with a disability certificate', but q.disability only asks 'Do you have a disability?'.",
-      "suggestion": "Text: 'Has a disability'. The certificate is covered by the documents list."
-    },
-    {
-      "target": "rule:bpl",
-      "severity": "minor",
-      "note": "The guideline criterion is belonging to the BPL category, and para 3.1.3 says an eligible person missing from the BPL list 'should not be left out'. q.is_bpl asks about a BPL/Antyodaya ration card, so a hard confirmed fail can rule out people the guidelines say should be assessed. how_to_apply already explains this, which mitigates it.",
-      "suggestion": "Consider confidence 'uncertain' for the bpl rule so a 'no' gives 'check with the office'; keep the how_to_apply note."
+      "note": "40% and 'from birth' rest on the Cabinet release (guidance is right). Until revised guidelines are issued, offices may still apply 80% and age 18+; a 40-79% applicant gets LIKELY_ELIGIBLE. The benefit text warns about this and reverify_days is 30.",
+      "suggestion": "Re-source to the revised MoRD guidelines (confirmed) when issued and drop the 'old rules' sentence."
     },
     {
       "target": "documents",
       "severity": "minor",
-      "note": "aadhaar and bank_account are marked mandatory, but guidelines para 5.2.12 say 'no beneficiary is denied his or her entitlements for the reason that she has no bank / Post Office account and/or Aadhaar number', and the application form (Annexe III) marks the bank account '(if available)'. ration_card is not a required document either (it appears only as an alternative age proof and as 'Ration Card No.:(if available)').",
-      "suggestion": "Set aadhaar, bank_account and ration_card to mandatory: false, or add a note that lacking Aadhaar or a bank account is not a reason for refusal."
+      "note": "ration_card, bank_account and aadhaar now mandatory: false, consistent with guidelines para 5.2.12; disability_certificate mandatory is right. Rule text 'Has a disability' now matches q.disability.",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:bpl",
+      "severity": "minor",
+      "note": "Hard 'confirmed' rule on is_bpl, whose question asks about a BPL/Antyodaya ration card. Guidelines para 3.1.3 say an eligible person missing from the BPL list should not be left out; a 'no' gives a firm NOT_ELIGIBLE. how_to_apply mitigates this where it carries the note.",
+      "suggestion": "Consider confidence 'uncertain' so a 'no' shows 'check with the office'."
     },
     {
       "target": "source:guidelines",
       "severity": "minor",
-      "note": "The 2014 MoRD NSAP guidelines are cited from a copy on ssepd.odisha.gov.in (an official state site), not nsap.dord.gov.in. The document is the MoRD original and is still the operative text for old-age, widow and family benefit (Cabinet 2026: 'continue in its existing form').",
-      "suggestion": "If the same PDF is on nsap.dord.gov.in, cite that URL instead."
+      "note": "The 2014 MoRD NSAP guidelines are cited from an official Odisha government copy (ssepd.odisha.gov.in), not nsap.dord.gov.in. Still the operative text for the parts used (Cabinet 2026: 'continue in its existing form').",
+      "suggestion": "Cite an nsap.dord.gov.in copy if one is available."
     }
   ]
 }

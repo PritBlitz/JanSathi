@@ -10,7 +10,7 @@
     "as_of": "2026-10-25",
     "expect": {
       "result": "LIKELY_ELIGIBLE",
-      "stale": true,
+      "stale": false,
       "label": "uncertain"
     }
   },

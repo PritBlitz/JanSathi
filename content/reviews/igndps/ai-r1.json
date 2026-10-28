@@ -2,51 +2,19 @@
   "slug": "igndps",
   "reviewer": "ai-r1",
   "reviewer_kind": "ai",
-  "date": "2026-10-25",
-  "content_version": "b4761fb69b28767c",
+  "date": "2026-10-26",
+  "content_version": "a8f0b1cfc32a7fc3",
   "verdict": "approve",
   "sources_checked": [
-    {
-      "id": "cabinet_2026",
-      "content_hash": "sha256:4c5a7e907618ef2f1910030171fc676cca9e2154f83448d62c0f3f7ed7f0cf7c",
-      "method": "snapshot"
-    },
-    {
-      "id": "guidelines",
-      "content_hash": "sha256:d53a782b3be5b935393627d0d7ead94eeb24d341153ccac69befb8cc9a994718",
-      "method": "snapshot"
-    },
-    {
-      "id": "portal",
-      "content_hash": "sha256:3be007cf44ceb7c9951cbd7f319292bb3c9566557e10533d46132f8b6bb98136",
-      "method": "snapshot"
-    }
+    { "id": "cabinet_2026", "content_hash": "sha256:4c5a7e907618ef2f1910030171fc676cca9e2154f83448d62c0f3f7ed7f0cf7c", "method": "snapshot" },
+    { "id": "guidelines", "content_hash": "sha256:d53a782b3be5b935393627d0d7ead94eeb24d341153ccac69befb8cc9a994718", "method": "snapshot" },
+    { "id": "portal", "content_hash": "sha256:3be007cf44ceb7c9951cbd7f319292bb3c9566557e10533d46132f8b6bb98136", "method": "snapshot" }
   ],
-  "newer_changes_search": "Web search (2026-10-26): the Union Cabinet decision of 14 Oct 2026 (PIB 2323264) renamed NSAP and IGNDPS (now Pradhan Mantri Divyangjan Pension Yojana), lowered the disability threshold from 80% to 40%, set the minimum age to 'since birth' and the rate to Rs 375 (0-79) / Rs 625 (80+). The scheme file already reflects this. I found no evidence that the revised guidelines have been issued yet; the Cabinet said within three months, so mid-January 2027 at the latest.",
+  "newer_changes_search": "Web search (2026-10-26) after the Cabinet decision of 14 Oct 2026 (PIB 2323264, in the snapshots): NSAP continues 2026-27 to 2030-31 as Pradhan Mantri Samajik Sahayata Yojana; the disability pension changes (40%, from birth, Rs 375/625) wait for guidelines due within three months (about mid-January 2027). No revised guidelines found yet.",
   "findings": [
-    {
-      "target": "rule:benchmark_disability",
-      "severity": "minor",
-      "note": "The 40% threshold (and no minimum age) comes from a Cabinet decision whose guidelines are not yet issued. Until then, offices may still apply the 2014 guideline (18+, 80%, Rs 300), so the 40-79% and child cases are 'likely relevant' on a decision that is not yet in force. The content says this clearly, confidence is 'guidance' and reverify_days is 30. That is acceptable.",
-      "suggestion": "Re-check within 30 days. When the revised guidelines appear, cite them as a 'guideline' source and raise confidence. Consider 'uncertain' on benchmark_disability until then, so the label shows the doubt."
-    },
-    {
-      "target": "documents.aadhaar, documents.bank_account",
-      "severity": "minor",
-      "note": "Both are marked mandatory and cited to the NSAP guidelines, but §5.2.12 says 'no beneficiary is denied his or her entitlements for the reason that she has no bank / Post Office account and/or Aadhaar number'.",
-      "suggestion": "Set mandatory: false for aadhaar and bank_account."
-    },
-    {
-      "target": "rule:bpl",
-      "severity": "minor",
-      "note": "is_bpl asks about a BPL/Antyodaya card, but guideline §3.1.3 says an eligible person whose name is not on the BPL list 'should not be left out'. A confident 'not eligible' for someone without a card is stricter than the source. how_to_apply mentions this, but the result does not.",
-      "suggestion": "Consider confidence 'uncertain' on the bpl rule, so a 'no' shows 'check with the office' rather than 'not eligible'. Apply the same choice to all NSAP schemes."
-    },
-    {
-      "target": "sources.guidelines",
-      "severity": "minor",
-      "note": "The 2014 MoRD guideline is a copy hosted on ssepd.odisha.gov.in (an official state site), not on nsap.dord.gov.in. It is official and its text is plainly the central guideline.",
-      "suggestion": "Prefer the copy on nsap.dord.gov.in if one can be fetched."
-    }
+    { "target": "content.benefit, facts", "severity": "minor", "note": "The old-rate sentence now includes Rs 500 from age 80, matching the guideline quote. New rates (Rs 375 / Rs 625) match the Cabinet release; the text says clearly they start when the guidelines are issued. hi matches en.", "suggestion": "Update when the revised guidelines are issued; reverify_days 30 is right." },
+    { "target": "rule:benchmark_disability", "severity": "minor", "note": "40% and no minimum age rest on a Cabinet decision not yet in force; confidence is 'guidance' and the content explains the old rules. Fixtures cover 39/40/41 and a child. Acceptable.", "suggestion": "None." },
+    { "target": "documents", "severity": "minor", "note": "Aadhaar, bank account and ration card are now optional, matching §5.2.12 (no one denied for lacking a bank/Post Office account or Aadhaar).", "suggestion": "None." },
+    { "target": "rule:bpl", "severity": "minor", "note": "The field asks about a BPL/Antyodaya card, but §3.1.3 says an eligible person missing from the BPL list 'should not be left out'. A non-card holder gets a confident NOT_ELIGIBLE.", "suggestion": "Consider 'uncertain' for the bpl rule across NSAP schemes, or a hint in the result." }
   ]
 }

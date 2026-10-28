@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": "2014-10",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:d53a782b3be5b935393627d0d7ead94eeb24d341153ccac69befb8cc9a994718",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-26",
+      "verified_by": "ai-r1, ai-r2",
       "note": "Central MoRD guidelines; this copy is hosted by the Government of Odisha (SSEPD). nsap.dord.gov.in does not host the guideline text.",
       "fetch": "manual",
       "fetch_note": "robots.txt on this host answers 403, which means \"disallow all\" for bots. Fetched by hand; hash with ingest/recheck.py --hash-file."
@@ -57,8 +57,8 @@
       "published_date": "2026-10-14",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:4c5a7e907618ef2f1910030171fc676cca9e2154f83448d62c0f3f7ed7f0cf7c",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-26",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
     },
@@ -196,5 +196,14 @@
       "mandatory": false,
       "source": "guidelines"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-26",
+    "content_version": "bd75d537a15cc297"
+  }
 }

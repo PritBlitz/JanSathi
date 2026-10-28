@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": null,
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:4241720de7314a384a7b2f4c595066c974752aedf721e86dd160dc8e824c63d8",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-26",
+      "verified_by": "ai-r1, ai-r2",
       "note": "Guidelines cover 2021-22 to 2025-26. A reviewer must confirm the scheme period after March 2026."
     },
     {
@@ -184,5 +184,14 @@
       "mandatory": true,
       "source": "guidelines"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-26",
+    "content_version": "54dc7f48807c8648"
+  }
 }

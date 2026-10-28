@@ -2,8 +2,8 @@
   "slug": "pm-parivar-labh",
   "reviewer": "ai-r2",
   "reviewer_kind": "ai",
-  "date": "2026-10-25",
-  "content_version": "c7976195c1dff19d",
+  "date": "2026-10-26",
+  "content_version": "11edf4edb61bbab6",
   "verdict": "approve",
   "sources_checked": [
     {
@@ -17,25 +17,37 @@
       "method": "snapshot"
     }
   ],
-  "newer_changes_search": "Searched pib.gov.in (via web search; PIB blocks direct fetch) for 2025-2026 NSAP changes. Found the Cabinet decision of 14 Oct 2026 (Release ID 2323264, confirmed by PMIndia and news coverage): NSAP continued 2026-27 to 2030-31 and renamed Pradhan Mantri Samajik Sahayata Yojana; sub-schemes renamed; disability pension revised (Rs 375 / Rs 625, benchmark disability 40%, from birth, guidelines within three months); old-age, widow and family benefit schemes continue in existing form. The scheme already reflects this decision. Revised disability-pension guidelines were not found yet (due by about mid-January 2027). For NFBS: renamed Pradhan Mantri Parivar Labh Yojana; continues in existing form (₹20,000).",
+  "newer_changes_search": "Web search (PIB, PMIndia, news) for NSAP changes: the Cabinet decision of 14 Oct 2026 (PIB Release 2323264, snapshot in content) continues NSAP 2026-27 to 2030-31 as Pradhan Mantri Samajik Sahayata Yojana, renames the sub-schemes, revises the disability pension (Rs 375 / Rs 625, 40% benchmark disability, from birth, guidelines within three months) and continues the old-age, widow and family benefit schemes in their existing form. No revised disability-pension guidelines found as of 26 Oct 2026. Family benefit renamed Pradhan Mantri Parivar Labh Yojana; continues in existing form (Rs 20,000).",
   "findings": [
     {
-      "target": "rule:bpl",
+      "target": "content",
       "severity": "minor",
-      "note": "The guideline criterion is belonging to the BPL category, and para 3.1.3 says an eligible person missing from the BPL list 'should not be left out'. q.is_bpl asks about a BPL/Antyodaya ration card, so a hard confirmed fail can rule out people the guidelines say should be assessed. how_to_apply already explains this, which mitigates it.",
-      "suggestion": "Consider confidence 'uncertain' for the bpl rule so a 'no' gives 'check with the office'; keep the how_to_apply note."
+      "note": "Rs 20,000 lump sum, any death (natural or otherwise), home-maker counts as bread-winner, paid to the head of household after local inquiry, household definition: all match guidelines p. 7. Hindi matches.",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:breadwinner_died",
+      "severity": "minor",
+      "note": "Source says 'more than 18 years of age and less than 60'; the field question says 'between 18 and 59'. Only a death at exactly 18 differs; negligible.",
+      "suggestion": "None required."
     },
     {
       "target": "documents",
       "severity": "minor",
-      "note": "bank_account and ration_card are marked mandatory; the guidelines say no one is denied for lacking a bank/post office account or Aadhaar (para 5.2.12) and do not require a ration card.",
-      "suggestion": "Set bank_account and ration_card to mandatory: false."
+      "note": "ration_card and bank_account now optional, consistent with para 5.2.12; death_certificate mandatory is right.",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:bpl",
+      "severity": "minor",
+      "note": "Hard 'confirmed' rule on is_bpl, whose question asks about a BPL/Antyodaya ration card. Guidelines para 3.1.3 say an eligible person missing from the BPL list should not be left out; a 'no' gives a firm NOT_ELIGIBLE. how_to_apply mitigates this where it carries the note.",
+      "suggestion": "Consider confidence 'uncertain' so a 'no' shows 'check with the office'."
     },
     {
       "target": "source:guidelines",
       "severity": "minor",
-      "note": "The 2014 MoRD NSAP guidelines are cited from a copy on ssepd.odisha.gov.in (an official state site), not nsap.dord.gov.in. The document is the MoRD original and is still the operative text for old-age, widow and family benefit (Cabinet 2026: 'continue in its existing form').",
-      "suggestion": "If the same PDF is on nsap.dord.gov.in, cite that URL instead."
+      "note": "The 2014 MoRD NSAP guidelines are cited from an official Odisha government copy (ssepd.odisha.gov.in), not nsap.dord.gov.in. Still the operative text for the parts used (Cabinet 2026: 'continue in its existing form').",
+      "suggestion": "Cite an nsap.dord.gov.in copy if one is available."
     }
   ]
 }

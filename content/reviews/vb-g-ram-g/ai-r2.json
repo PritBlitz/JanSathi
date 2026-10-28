@@ -2,18 +2,51 @@
   "slug": "vb-g-ram-g",
   "reviewer": "ai-r2",
   "reviewer_kind": "ai",
-  "date": "2026-10-25",
-  "content_version": "a2fa92864803e072",
-  "verdict": "changes_requested",
+  "date": "2026-10-26",
+  "content_version": "dc500e9c779bdd3d",
+  "verdict": "approve",
   "sources_checked": [
-    { "id": "faq", "content_hash": "sha256:c7fea166fce00b12ffc6cd4225cf38f687a92765f39b5f950cf42404030bd5dd", "method": "snapshot" },
-    { "id": "commencement", "content_hash": "sha256:059ba7791132c07139f32fd3dafabea67bb9a79ad7270f9f9a4d96c4ae94678a", "method": "snapshot" }
+    {
+      "id": "faq",
+      "content_hash": "sha256:c7fea166fce00b12ffc6cd4225cf38f687a92765f39b5f950cf42404030bd5dd",
+      "method": "snapshot"
+    },
+    {
+      "id": "commencement",
+      "content_hash": "sha256:059ba7791132c07139f32fd3dafabea67bb9a79ad7270f9f9a4d96c4ae94678a",
+      "method": "snapshot"
+    },
+    {
+      "id": "wage_notification",
+      "content_hash": "sha256:6d94625a3a7e9b0b8fc78c1f09dbf1714183b4118bf60b4fdb84c6fc79336744",
+      "method": "snapshot"
+    }
   ],
-  "newer_changes_search": "Web search for post-commencement changes: the Ministry of Rural Development notified state-wise wage rates under Section 10 of the VB-G RAM G Act on 30 June 2026, effective 1 July 2026 (reported by SCC Online 6 Jul 2026, Outlook, Upstox, Vikaspedia; the notification supersedes the 26 Feb 2013 notification; lowest rate Rs 300/day, national average about Rs 327/day vs Rs 298.8 under MGNREGA). I did not find the PIB release text itself. The PIB FAQ used as source is dated 11 May 2026, before that notification. Act in force from 1 July 2026 as stated.",
+  "newer_changes_search": "Previous blocker (old MGNREGA wage rates) fixed: the content now cites Gazette S.O. 3518(E) of 30 Jun 2026 (state-wise wage rates under section 10 from 1 Jul 2026, superseding S.O. 463(E) of 26 Feb 2013); the snapshot text matches. Web search found no later change to the Act's entitlements (125 days, 15-day allotment, unemployment allowance) after the 1 Jul 2026 commencement.",
   "findings": [
-    { "target": "content.en.benefit", "severity": "blocker", "note": "'Until new wage rates are notified, the old MGNREGA wage rates apply.' (and the same sentence in hi, plus the fact quoting it) is outdated: new state-wise wage rates under the Act were notified on 30 June 2026 and apply from 1 July 2026. Users would be told the old MGNREGA rates still apply.", "suggestion": "Replace the sentence in en and hi with: 'Each state has its own daily wage rate, notified under the Act from 1 July 2026; ask your gram panchayat for your state's rate.' / 'हर राज्य की अपनी दैनिक मज़दूरी दर है, जो 1 जुलाई 2026 से अधिनियम के तहत अधिसूचित है; अपने राज्य की दर ग्राम पंचायत से पूछें।' Add a source for the 30-6-2026 MoRD wage-rate notification (egazette.gov.in or a PIB/nrega.dord.gov.in page) with a quote, and drop the fact 'Until new Wage Rates are notified ... shall continue to apply'. Optionally state the Rs 300 minimum only if the official notification says so." },
-    { "target": "rules", "severity": "minor", "note": "rural (area == rural) and age_min (>= 18) match 'Every rural household whose adult members volunteer ...' and 'Adult members of rural areas may demand employment'. guidance fits a PIB FAQ. Fixtures cover 17/18, urban and missing fields.", "suggestion": "Optional: cite the Act (Gazette) for 'confirmed' confidence." },
-    { "target": "documents:aadhaar", "severity": "minor", "note": "aadhaar cites the commencement release, which only mentions 'e-KYC verified job cards'. Loose support.", "suggestion": "Acceptable as optional; better cite a source that names Aadhaar-based e-KYC." },
-    { "target": "content.en.benefit", "severity": "minor", "note": "Other statements (125 days, 15 days or unemployment allowance, weekly / fortnight wages via DBT, 5 km / 10% extra, peak-season pause) all match quoted FAQ text.", "suggestion": "None." }
+    {
+      "target": "content.en.benefit",
+      "severity": "minor",
+      "note": "Every statement matches a quoted source: 125 days, 15 days or unemployment allowance, weekly / within a fortnight of muster-roll closure via DBT, state-wise rates from 1 Jul 2026 (Gazette), 5 km / 10% extra, peak-season pause. how_to_apply (names, ages, address; e-KYC job cards valid; oral, form 6 or online) matches the FAQ and commencement release. Hindi matches.",
+      "suggestion": "Optional: add the minimum Rs 300 a day only with a quote from the Schedule."
+    },
+    {
+      "target": "rules",
+      "severity": "minor",
+      "note": "rural (area == rural) and age_min (>= 18) match the FAQ ('Every rural household whose adult members ...', 'Adult members of rural areas may demand employment'). 'guidance' fits a PIB FAQ. Fixtures cover 17/18, urban and missing fields.",
+      "suggestion": "Optional: cite the Act (Gazette) to raise confidence to 'confirmed'."
+    },
+    {
+      "target": "documents:aadhaar",
+      "severity": "minor",
+      "note": "aadhaar (optional) cites the commencement release, which mentions only 'e-KYC verified job cards'. Loose but acceptable for an optional document.",
+      "suggestion": "None required."
+    },
+    {
+      "target": "content.en.benefit",
+      "severity": "minor",
+      "note": "'can get up to 125 days of work' and 'paid into your bank' are second person; acceptable because the Act creates a legal guarantee, but third person is the house style.",
+      "suggestion": "Optional: 'The household may get up to 125 days ...', 'paid into the worker's bank ...'."
+    }
   ]
 }

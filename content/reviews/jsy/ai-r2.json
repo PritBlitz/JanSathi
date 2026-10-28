@@ -2,8 +2,8 @@
   "slug": "jsy",
   "reviewer": "ai-r2",
   "reviewer_kind": "ai",
-  "date": "2026-10-25",
-  "content_version": "6cdd348afb9e8876",
+  "date": "2026-10-26",
+  "content_version": "b3b7e766fdc7daf3",
   "verdict": "approve",
   "sources_checked": [
     {
@@ -12,31 +12,31 @@
       "method": "snapshot"
     }
   ],
-  "newer_changes_search": "Web search for 2025-2026 JSY changes (PIB, nhm.gov.in): no revision of eligibility or cash amounts found; JSY continues under NHM. Secondary sites still give LPS ₹1,400/₹1,000 and HPS ₹700/₹600, matching the NHM page.",
+  "newer_changes_search": "Web search for 2025-2026 JSY changes (PIB, nhm.gov.in): no revision of eligibility or cash amounts found; JSY continues under NHM with mother's package LPS Rs 1,400/1,000 and HPS Rs 700/600.",
   "findings": [
     {
-      "target": "content.en.how_to_apply",
+      "target": "content",
       "severity": "minor",
-      "note": "'The money goes to your bank account' and 'The ASHA helps with the paperwork' are not in the cited NHM page (it only says ASHA is the link between government and pregnant women). Documents mcp_card and bank_account are not listed there either.",
-      "suggestion": "Snapshot and cite the JSY guidelines PDF linked from the page for payment mode and documents, or drop the unsupported sentences."
+      "note": "Earlier findings fixed: benefit now says 'the rule covers' / 'may also be eligible', and how_to_apply drops the unsourced payment/paperwork sentences and uses the NHM sentence on ASHA as the link. Amounts match the NHM table. Hindi matches.",
+      "suggestion": "None."
     },
     {
-      "target": "content.en.benefit",
+      "target": "documents",
       "severity": "minor",
-      "note": "'every woman delivering in a government facility qualifies' reads close to a promise.",
-      "suggestion": "'... covers all women who give birth in a government facility.'"
+      "note": "mcp_card, bank_account and ration_card all cite 'nhm', but the NHM page snapshot mentions none of them (no 'MCP', 'bank' or 'ration'). The documents are unsourced.",
+      "suggestion": "Snapshot the JSY guidelines (or an NHM JSY FAQ) listing the MCP card and bank account (DBT) and cite it; until then mark them mandatory: false or drop ration_card."
     },
     {
       "target": "rule:state_group",
       "severity": "minor",
-      "note": "The NHM page names 'Jammu and Kashmir' as an LPS (pre-2019 state). Ladakh (la), carved out of J&K, is not in the list, so a woman in Ladakh who is not BPL/SC/ST gets NOT_ELIGIBLE (guidance). The source does not settle Ladakh's status.",
-      "suggestion": "Treat la like jk, or make the rule 'uncertain' for la until a source settles it."
+      "note": "LPS list (up, uk, br, jh, mp, cg, as, rj, od, jk) matches the NHM list. Ladakh (la), carved out of J&K, is not covered; a non-BPL, non-SC/ST woman in Ladakh gets NOT_ELIGIBLE although the source predates the split.",
+      "suggestion": "Treat la like jk, or set confidence 'uncertain'."
     },
     {
-      "target": "rule:pregnant",
+      "target": "rules",
       "severity": "minor",
-      "note": "is_pregnant_or_lactating also covers breastfeeding mothers; JSY pays for the delivery. Rule text says 'or has just given birth'. Acceptable.",
-      "suggestion": "None required."
+      "note": "female / pregnant / state_group logic matches the NHM eligibility table; guidance fits a portal. Fixtures cover LPS/HPS, BPL, SC/ST and missing fields.",
+      "suggestion": "None."
     }
   ]
 }

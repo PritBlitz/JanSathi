@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": "2026-03-11",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:59186de69287b83f2d59fdd0e2fc7cc22c1e8a154ebbdf8353dbf65babd1538a",
-      "verified_at": null,
-      "verified_by": null
+      "verified_at": "2026-10-26",
+      "verified_by": "ai-r1, ai-r2"
     },
     {
       "id": "rbi_miss_2025_26",
@@ -54,8 +54,8 @@
       "published_date": "2026-01-13",
       "fetched_at": "2026-10-26",
       "content_hash": "sha256:7059b323177d84b486b219dcc3fc6f1f3cf8c02445265a7955f2a02f8a9e46fc",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-26",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "rbi.org.in answers robots.txt with an 'Unauthorised Access' page for automated clients. Fetched by hand; hash with ingest/recheck.py --hash-file."
     }
@@ -125,5 +125,14 @@
       "mandatory": false,
       "source": "pib_2026"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-26",
+    "content_version": "9cdd590c348fd6a0"
+  }
 }

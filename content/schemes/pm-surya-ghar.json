@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": "2024-08",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:4301f494aaa3074ed857baace54a68ec80c7a5dfd0c83751e6465260bb20648b",
-      "verified_at": null,
-      "verified_by": null
+      "verified_at": "2026-10-26",
+      "verified_by": "ai-r1, ai-r2"
     },
     {
       "id": "cabinet_2024",
@@ -54,8 +54,8 @@
       "published_date": "2024-02-29",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:c7ca06f6a3e9216f7685b460f2cb77168507e007de37d747bd378774a4907aa0",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-26",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
     },
@@ -69,8 +69,8 @@
       "published_date": "2026-08-04",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:ddc4be110f5af38da98603a1b541fe75a093bd83916365b0ac9337d175894cab",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-26",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
     },
@@ -84,8 +84,8 @@
       "published_date": null,
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:5418a03d5e8e6c09af97f18c9a640152b30ec8d6befff8bbcd1240089194fcc8",
-      "verified_at": null,
-      "verified_by": null
+      "verified_at": "2026-10-26",
+      "verified_by": "ai-r1, ai-r2"
     }
   ],
   "rules": [
@@ -168,5 +168,14 @@
       "mandatory": false,
       "source": "portal"
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-26",
+    "content_version": "4a02d463797eb386"
+  }
 }

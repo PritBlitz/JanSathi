@@ -2,8 +2,8 @@
   "slug": "pm-surya-ghar",
   "reviewer": "ai-r2",
   "reviewer_kind": "ai",
-  "date": "2026-10-25",
-  "content_version": "b9a8b1cefe2c7562",
+  "date": "2026-10-26",
+  "content_version": "4a02d463797eb386",
   "verdict": "approve",
   "sources_checked": [
     {
@@ -27,19 +27,25 @@
       "method": "snapshot"
     }
   ],
-  "newer_changes_search": "The cited PIB release of 4 Aug 2026 shows the scheme running with the same CFA; concessional loan rate now 5.75% (repo + 50 bp). No change to the CFA pattern or eligibility found.",
+  "newer_changes_search": "Web search for changes after the PIB release of 4 Aug 2026: an 11 Aug 2026 Lok Sabha reply (newsonair) reports over 50 lakh households and a higher 2026-27 budget, with no change to the central subsidy slabs or eligibility. Reports of a 'PM Surya Ghar 2.0' are unconfirmed; no MNRE order found.",
   "findings": [
     {
       "target": "content.en.summary",
       "severity": "minor",
-      "note": "'so you can get up to 300 units of electricity a month free' reads as an outcome promise; free units depend on system size and generation.",
-      "suggestion": "'The scheme aims to give households up to 300 units of free electricity a month.' Mirror in hi."
+      "note": "Earlier promise-like wording fixed: now 'The scheme aims to give households up to 300 units of free electricity a month', backed by the new Cabinet 2024 fact. how_to_apply's DBT sentence is now quoted from the 2026 release. Hindi matches.",
+      "suggestion": "None."
     },
     {
-      "target": "content.en.how_to_apply",
+      "target": "content.en.benefit",
       "severity": "minor",
-      "note": "'paid into your bank account after the system is installed and inspected': DBT is in the 2026 release, inspection is not in any snapshot. Document aadhaar cites 'portal', whose snapshot lists no documents.",
-      "suggestion": "Snapshot the portal's process text and cite it, or soften to 'after installation'."
+      "note": "Amounts match quoted facts: Rs 30,000/kW first 2 kW, Rs 18,000 third kW (30,000 / 60,000 / 78,000), special category 33,000 / 19,800, 5.75% loan (Aug 2026), up to 3 kW collateral-free, 50.06 lakh homes. The CFA table is a 2024 MNRE annexure (govt_statement); the 2026 release shows the scheme running unchanged.",
+      "suggestion": "None."
+    },
+    {
+      "target": "documents:aadhaar",
+      "severity": "minor",
+      "note": "aadhaar (optional) cites the portal, whose snapshot does not mention Aadhaar.",
+      "suggestion": "Snapshot the portal text that lists documents, or drop aadhaar."
     }
   ]
 }

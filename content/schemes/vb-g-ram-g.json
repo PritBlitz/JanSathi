@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "published",
   "level": "central",
   "state_code": null,
   "window": {
@@ -41,8 +41,8 @@
       "published_date": "2026-05-11",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:c7fea166fce00b12ffc6cd4225cf38f687a92765f39b5f950cf42404030bd5dd",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-26",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
     },
@@ -56,8 +56,8 @@
       "published_date": "2026-06-30",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:059ba7791132c07139f32fd3dafabea67bb9a79ad7270f9f9a4d96c4ae94678a",
-      "verified_at": null,
-      "verified_by": null,
+      "verified_at": "2026-10-26",
+      "verified_by": "ai-r1, ai-r2",
       "fetch": "manual",
       "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
     },
@@ -71,8 +71,8 @@
       "published_date": "2026-06-30",
       "fetched_at": "2026-10-26",
       "content_hash": "sha256:6d94625a3a7e9b0b8fc78c1f09dbf1714183b4118bf60b4fdb84c6fc79336744",
-      "verified_at": null,
-      "verified_by": null
+      "verified_at": "2026-10-26",
+      "verified_by": "ai-r1, ai-r2"
     }
   ],
   "rules": [
@@ -190,5 +190,14 @@
         "hi": "अधिनियम के तहत राज्यवार नई दैनिक मज़दूरी दरों ने मनरेगा की पुरानी दरों की जगह ली।"
       }
     }
-  ]
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r1",
+      "ai-r2"
+    ],
+    "date": "2026-10-26",
+    "content_version": "dc500e9c779bdd3d"
+  }
 }

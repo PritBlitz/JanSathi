@@ -2,17 +2,18 @@
   "slug": "vb-g-ram-g",
   "reviewer": "ai-r1",
   "reviewer_kind": "ai",
-  "date": "2026-10-25",
-  "content_version": "a2fa92864803e072",
-  "verdict": "changes_requested",
+  "date": "2026-10-26",
+  "content_version": "dc500e9c779bdd3d",
+  "verdict": "approve",
   "sources_checked": [
     { "id": "faq", "content_hash": "sha256:c7fea166fce00b12ffc6cd4225cf38f687a92765f39b5f950cf42404030bd5dd", "method": "snapshot" },
-    { "id": "commencement", "content_hash": "sha256:059ba7791132c07139f32fd3dafabea67bb9a79ad7270f9f9a4d96c4ae94678a", "method": "snapshot" }
+    { "id": "commencement", "content_hash": "sha256:059ba7791132c07139f32fd3dafabea67bb9a79ad7270f9f9a4d96c4ae94678a", "method": "snapshot" },
+    { "id": "wage_notification", "content_hash": "sha256:6d94625a3a7e9b0b8fc78c1f09dbf1714183b4118bf60b4fdb84c6fc79336744", "method": "refetched" }
   ],
-  "newer_changes_search": "Web search for post-July-2026 VB-G RAM G changes: multiple outlets (The Hindu via Vision IAS, Outlook, Rural Voice, SCC Online 06-07-2026, Vikaspedia citing the portal) report that the Ministry of Rural Development notified revised state-wise wage rates under the Act effective 1 July 2026, with a Rs 300 per day interim base wage (national average about Rs 327 vs Rs 299 under MGNREGA). I could not open the PIB release itself. Act commencement on 1 July 2026 and 125 days are confirmed. No information found on Gramin Rozgar Guarantee Card issuance progress.",
+  "newer_changes_search": "Fetched Gazette S.O. 3518(E) (30 Jun 2026) again from egazette.gov.in: hash matches. Web search (2026-10-26): three sets of rules were notified on 1 Jul 2026 (transitional provisions; wage and unemployment allowance payment via DBT/APBS; expenditure beyond normative allocation); other draft rules (May 2026) may still be pending. No later change to the 125 days, 15-day or wage-rate provisions found.",
   "findings": [
-    { "target": "content.benefit", "severity": "blocker", "note": "'Until new wage rates are notified, the old MGNREGA wage rates apply' (fact quoted from the May 2026 FAQ) is out of date: new wage rates under the Act were notified effective 1 July 2026 with a Rs 300/day floor, per consistent reports. The content therefore tells users that the old rates apply when they no longer do. Same sentence in hi.", "suggestion": "Fetch the MoRD/PIB wage-rate notification (around 30 June - 1 July 2026) as a new source, snapshot it, and replace the sentence (en + hi) with e.g. 'Wage rates are notified for each state; since 1 July 2026 no state's rate is below ₹300 a day', quoting the notification; drop or re-cite the 'existing Mahatma Gandhi NREGA wage rates shall continue' fact." },
-    { "target": "rule:age_min", "severity": "minor", "note": "Eligibility is per household ('rural household whose adult members volunteer'); the age rule tests the user's own age, so a 17-year-old in an eligible household sees NOT_ELIGIBLE although an adult member could apply. Acceptable for a person-level profile.", "suggestion": "Optionally reword the rule text to 'The person asking for work must be 18 or older'." },
-    { "target": "sources", "severity": "minor", "note": "Both sources are PIB govt_statements (FAQ and press release), so 'guidance' is correct. The Act text (Gazette) or the operational rules would allow 'confirmed' and are the authoritative basis for the 15-day, allowance and 5 km clauses.", "suggestion": "Add the Gazette text of the VB-G RAM G Act, 2025 and any rules notified since July 2026." }
+    { "target": "content.benefit", "severity": "minor", "note": "The out-of-date MGNREGA-rate sentence is replaced by 'Each state has its own daily wage rate, set in a Gazette notification from 1 July 2026', quoted from the Gazette (MoRD, S.O. 3518(E), section 10 of the Act). The schedule shows no state below Rs 300 a day. hi matches en. The dated change entry is correct.", "suggestion": "Optional: add 'at least Rs 300 a day in every state' with a fact quoting the schedule." },
+    { "target": "documents.aadhaar", "severity": "minor", "note": "Cited to the commencement release, which does not mention Aadhaar. Reports of the 1 Jul 2026 payment rules say wages go through the Aadhaar Payment Bridge.", "suggestion": "Snapshot the payment rules (Gazette, 1 Jul 2026) and cite them for aadhaar and bank_account." },
+    { "target": "rules", "severity": "minor", "note": "Both rules rest on the PIB FAQ, so 'guidance' is right; the Act text would allow 'confirmed'. The age rule text now says the person asking for work is 18 or older, which matches the logic. Fixtures cover 17/18 and urban.", "suggestion": "Add the Act (Gazette) as a source later." }
   ]
 }

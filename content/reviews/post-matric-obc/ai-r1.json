@@ -2,17 +2,17 @@
   "slug": "post-matric-obc",
   "reviewer": "ai-r1",
   "reviewer_kind": "ai",
-  "date": "2026-10-25",
-  "content_version": "d2676d57d401f0cd",
-  "verdict": "changes_requested",
+  "date": "2026-10-26",
+  "content_version": "54dc7f48807c8648",
+  "verdict": "approve",
   "sources_checked": [
     { "id": "guidelines", "content_hash": "sha256:4241720de7314a384a7b2f4c595066c974752aedf721e86dd160dc8e824c63d8", "method": "snapshot" },
     { "id": "msje", "content_hash": "sha256:7897664e41137dd91ba373018d889d95be00b370a8d3905e20b3d797ae980f27", "method": "snapshot" }
   ],
-  "newer_changes_search": "Web search (general; no official MSJE/NSP result returned) for 2025-2026 PM-YASASVI changes: no revised income limit, amounts or renaming found; aggregator sites still list Rs 2.5 lakh and an NSP 2026-27 application round. No official continuation order for the 16th Finance Commission period (2026-27 onward) found. The guideline period (2021-22 to 2025-26) has ended; the MSJE scheme page snapshot still lists PM-YASASVI and its sub-schemes as current. I treat the lapse as minor (no sign of discontinuation; the content already tells users to check the portal), but it must be re-checked.",
+  "newer_changes_search": "Web search (2026-10-26) for PM-YASASVI 2026-27 changes or a continuation order for the 16th Finance Commission period: no official order found. Aggregators report an NSP 2026-27 round with the same Rs 2.5 lakh limit and Rs 5,000-20,000 amounts. No renaming or discontinuation found.",
   "findings": [
-    { "target": "rule:category_obc", "severity": "blocker", "note": "The clause opens the scholarship to 'OBCs, EBCs and DNTs, as notified', and the guideline defines EBC/DNT students as those 'not covered under SC, ST or OBC' (i.e. general-category students holding an EBC or DNT certificate). The logic social_category == 'obc' with hard + confirmed returns a definite NOT_ELIGIBLE for an EBC or DNT student (general or EWS), which contradicts both the clause and the rule's own text ('EBC and DNT students can also apply: check with the office').", "suggestion": "Split the rule: (a) a confirmed hard rule {\"!\":[{\"in\":[{\"var\":\"social_category\"},[\"sc\",\"st\"]]}]} (SC/ST have their own schemes), and (b) category_obc kept as {\"==\":[{\"var\":\"social_category\"},\"obc\"]} but with confidence 'uncertain', so general/EWS students get 'check with the office' (EBC/DNT certificate) instead of NOT_ELIGIBLE. Alternatively propose an is_ebc_or_dnt field. Update the 'general category' fixture to expect NEED_MORE_INFO." },
-    { "target": "sources:guidelines", "severity": "minor", "note": "Guidelines cover 2021-22 to 2025-26; no official post-March-2026 continuation document found.", "suggestion": "Add the 2026-27 NSP/MSJE notice or continuation order when available; reverify_days 90 is appropriate." },
-    { "target": "rule:post_matric", "severity": "minor", "note": "Logic (class_11_12, diploma, ug, pg) matches 'passed the Matriculation or Higher secondary or any higher examination'. Income rule <= 250000 matches 'does not exceed Rs. 2.50 lakh'; fixtures test 250000/250001. Amounts (20,000/13,000/8,000/5,000) match the table in §7.1 (academic allowance + tuition fee).", "suggestion": "None required." }
+    { "target": "rule:category_obc", "severity": "minor", "note": "Now 'uncertain', so general/EWS students with an EBC or DNT certificate see 'check with the office' instead of NOT_ELIGIBLE, matching §5(i) ('OBCs, EBCs and DNTs') and the guideline's definition of EBC/DNT students as those not covered under SC, ST or OBC. The fixture 'general category' expects NEED_MORE_INFO. Side effect: SC and ST students also get NEED_MORE_INFO rather than NOT_ELIGIBLE; they have their own schemes.", "suggestion": "Optional: add a confirmed hard rule excluding social_category sc/st." },
+    { "target": "sources.guidelines", "severity": "minor", "note": "The guideline period (2021-22 to 2025-26) has ended; no post-March-2026 order found. how_to_apply says so and reverify_days is 90.", "suggestion": "Cite the 2026-27 continuation order or NSP notice when it appears." },
+    { "target": "content.en.benefit", "severity": "minor", "note": "'Your state may add more' is second person; the source says states 'may ... top up the academic allowance'.", "suggestion": "'The state may add more.'" }
   ]
 }
