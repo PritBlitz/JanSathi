@@ -4,7 +4,11 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,6 +42,10 @@ public class CaseShares {
 	private static final Pattern PERSONAL_NUMBER = Pattern.compile("\\d(?:[\\s-]?\\d){8,}");
 	static final Duration MAX_DURATION = Duration.ofDays(7);
 	static final int MAX_NOTE = 1000;
+	/** Wrong codes a helper may enter per hour, so codes cannot be guessed. */
+	static final int MAX_FAILED_CODES_PER_HOUR = 10;
+
+	private final Map<String, Deque<Instant>> failedCodes = new ConcurrentHashMap<>();
 
 	private final JdbcClient jdbc;
 	private final Crypto crypto;
@@ -165,11 +173,27 @@ public class CaseShares {
 		if (code == null || code.isBlank()) {
 			throw new BadRequestException("Enter the code the person gave you");
 		}
+		Deque<Instant> fails = failedCodes.computeIfAbsent(helper.id(), h -> new ArrayDeque<>());
+		synchronized (fails) {
+			Instant hourAgo = Instant.now().minusSeconds(3600);
+			while (!fails.isEmpty() && fails.peekFirst().isBefore(hourAgo)) {
+				fails.pollFirst();
+			}
+			if (fails.size() >= MAX_FAILED_CODES_PER_HOUR) {
+				throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Too many wrong codes. Try again later.");
+			}
+		}
 		String id = jdbc.sql("""
 				SELECT id FROM case_share WHERE code_hash = :c AND revoked_at IS NULL AND expires_at > :now
 				AND (volunteer_id IS NULL OR volunteer_id = :v)
 				""").param("c", codeHash(code)).param("now", now()).param("v", helper.id()).query(String.class).optional()
-				.orElseThrow(() -> new NotFoundException("No active case with this code"));
+				.orElse(null);
+		if (id == null) {
+			synchronized (fails) {
+				fails.addLast(Instant.now());
+			}
+			throw new NotFoundException("No active case with this code");
+		}
 		return claim(helper, id);
 	}
 

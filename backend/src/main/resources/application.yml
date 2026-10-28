@@ -19,6 +19,10 @@ server:
     mime-types: application/json,application/problem+json,text/html,text/css,text/javascript,image/svg+xml
   error:
     include-message: never
+  # Behind a reverse proxy, take the client address from X-Forwarded-For so the per-address
+  # sign-in limit applies per person, not to everyone at once. Tomcat trusts the header only
+  # from private-network proxies, so a client on the internet cannot forge it.
+  forward-headers-strategy: native
 
 management:
   endpoints:

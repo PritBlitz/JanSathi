@@ -46,9 +46,15 @@ class AccountsAndVolunteersTest {
 		return MAPPER.readTree(r.andReturn().getResponse().getContentAsString());
 	}
 
-	/** Signs in with the development code and returns the bearer header. */
+	/**
+	 * Signs in with the development code and returns the bearer header. Each number comes from its
+	 * own address, so the per-address code limit does not depend on how many tests there are.
+	 */
 	private String signIn(String phone) throws Exception {
-		String code = body(mvc.perform(post("/api/v1/auth/code").contentType(JSON).content("{\"phone\": \"" + phone + "\"}"))
+		String digits = phone.replaceAll("\\D", "");
+		String address = "10.0.0." + digits.substring(digits.length() - 2);
+		String code = body(mvc.perform(post("/api/v1/auth/code").contentType(JSON).content("{\"phone\": \"" + phone + "\"}")
+						.with(r -> { r.setRemoteAddr(address); return r; }))
 				.andExpect(status().isOk())).path("dev_code").asString();
 		assertThat(code).hasSize(6);
 		String token = body(mvc.perform(post("/api/v1/auth/verify").contentType(JSON)
@@ -147,6 +153,19 @@ class AccountsAndVolunteersTest {
 		// The person ends it; the helper loses access at once.
 		mvc.perform(delete("/api/v1/me/shares/" + share.path("id").asString()).header("Authorization", person)).andExpect(status().isOk());
 		mvc.perform(get("/api/v1/volunteer/cases/" + caseId).header("Authorization", helper)).andExpect(status().isForbidden());
+	}
+
+	@Test
+	void helperWrongShareCodesAreLimited() throws Exception {
+		mvc.perform(post("/api/v1/admin/volunteers").header("Authorization", ADMIN).contentType(JSON)
+				.content("{\"phone\": \"9876500010\", \"name\": \"Kiran\"}")).andExpect(status().isOk());
+		String helper = signIn("9876500010");
+		for (int i = 0; i < 10; i++) {
+			mvc.perform(post("/api/v1/volunteer/join").header("Authorization", helper).contentType(JSON)
+					.content("{\"code\": \"ZZZZZ" + i + "\"}")).andExpect(status().isNotFound());
+		}
+		mvc.perform(post("/api/v1/volunteer/join").header("Authorization", helper).contentType(JSON)
+				.content("{\"code\": \"ZZZZZZ\"}")).andExpect(status().isTooManyRequests());
 	}
 
 	@Test

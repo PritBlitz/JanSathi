@@ -1,6 +1,6 @@
 # JanSathi with PostgreSQL:  docker compose up --build   →  http://localhost:8080
 # Secrets come from the environment or a .env file next to this one (never commit it):
-#   POSTGRES_PASSWORD=…   JANSATHI_ADMIN_TOKEN=…   (optional) JANSATHI_LLM_* (see backend/src/main/resources/application.yml)
+#   see .env.example for every setting (POSTGRES_PASSWORD, JANSATHI_SECRET, JANSATHI_ADMIN_TOKEN, SMS, Gemini).
 services:
   db:
     image: postgres:17-alpine
@@ -27,7 +27,9 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/jansathi
       SPRING_DATASOURCE_USERNAME: jansathi
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      JANSATHI_SECRET: ${JANSATHI_SECRET:?set JANSATHI_SECRET}
       JANSATHI_ADMIN_TOKEN: ${JANSATHI_ADMIN_TOKEN:-}
+      JANSATHI_SMS_PROVIDER: ${JANSATHI_SMS_PROVIDER:-dev}
       JANSATHI_LLM_PROVIDER: ${JANSATHI_LLM_PROVIDER:-none}
       JANSATHI_LLM_BASE_URL: ${JANSATHI_LLM_BASE_URL:-}
       JANSATHI_LLM_API_KEY: ${JANSATHI_LLM_API_KEY:-}
