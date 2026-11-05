@@ -1,0 +1,125 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "family_marriage_planned": true,
+      "annual_income": 200000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "guidance"
+    }
+  },
+  {
+    "name": "income 299,999",
+    "profile": {
+      "state": "up",
+      "family_marriage_planned": true,
+      "annual_income": 299999
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income exactly 3 lakh",
+    "profile": {
+      "state": "up",
+      "family_marriage_planned": true,
+      "annual_income": 300000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 300,001",
+    "profile": {
+      "state": "up",
+      "family_marriage_planned": true,
+      "annual_income": 300001
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "band straddles the limit",
+    "profile": {
+      "state": "up",
+      "family_marriage_planned": true,
+      "annual_income": {
+        "min": 250001,
+        "max": 500000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  },
+  {
+    "name": "no wedding planned",
+    "profile": {
+      "state": "up",
+      "family_marriage_planned": false,
+      "annual_income": 200000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "marriage_planned": "fail"
+      }
+    }
+  },
+  {
+    "name": "lives in another state",
+    "profile": {
+      "state": "br",
+      "family_marriage_planned": true,
+      "annual_income": 200000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "income unknown",
+    "profile": {
+      "state": "up",
+      "family_marriage_planned": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  }
+]

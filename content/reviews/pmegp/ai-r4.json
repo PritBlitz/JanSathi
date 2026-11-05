@@ -1,0 +1,52 @@
+{
+  "slug": "pmegp",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "7275cce583d9c4bc",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:90e9d90f6c61ee8c81dc6125a24cc3389e391987cd404c0d81f085a96e9d21fb",
+      "method": "refetched"
+    },
+    {
+      "id": "pib_2026",
+      "content_hash": "sha256:2763662cc312d5a9055a02c075ab498dbba829e4009273d173a7b24eb5887d0f",
+      "method": "snapshot"
+    },
+    {
+      "id": "pib_2022",
+      "content_hash": "sha256:50472f872a31dc3b25e99454bbc1e35c6df13624c8926d4369d9b4956a0c3ff2",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. New source pib_2022 read in the snapshot.",
+  "findings": [
+    {
+      "target": "source:guidelines",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Rules are now guidance, and the text says new applications could not be confirmed.",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:age_min",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Now >= 18, with a note that someone who has just turned 18 should check. Fixtures updated.",
+      "suggestion": "None."
+    },
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Subsidy rates and bank share now have quoted facts, and the rates are tied to the 2021-26 period.",
+      "suggestion": "None."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Still empty.",
+      "suggestion": "Add rows."
+    }
+  ]
+}

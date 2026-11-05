@@ -1,0 +1,188 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "changes": [],
+  "slug": "up-samuhik-vivah",
+  "category": "family_support",
+  "icon": "💍",
+  "ministry": {
+    "en": "Department of Social Welfare, Uttar Pradesh",
+    "hi": "समाज कल्याण विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://cmsvy.upsdc.gov.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "Mukhyamantri Samuhik Vivah Yojana (mass marriage)",
+      "summary": "Help for the wedding of a girl from a low-income family in Uttar Pradesh, at a group wedding. Widows and legally divorced women can use it to remarry.",
+      "benefit": "The scheme spends ₹1,00,000 per couple: ₹60,000 to the bride’s bank account, wedding gifts worth ₹25,000 and ₹15,000 for the event.",
+      "how_to_apply": "Apply at cmsvy.upsdc.gov.in with Aadhaar checks for the bride and groom. On the wedding date the bride must be 18 or older and the groom 21 or older. The bride must not have been married before, unless she is a widow or legally divorced. Ask the District Social Welfare Officer for help."
+    },
+    "hi": {
+      "name": "मुख्यमंत्री सामूहिक विवाह योजना",
+      "summary": "उत्तर प्रदेश के कम आय वाले परिवारों की बेटियों की शादी में सामूहिक विवाह के ज़रिए मदद। विधवा और क़ानूनी रूप से तलाकशुदा महिलाएँ पुनर्विवाह के लिए भी इसका लाभ ले सकती हैं।",
+      "benefit": "योजना में हर जोड़े पर ₹1,00,000 खर्च होते हैं: ₹60,000 दुल्हन के बैंक खाते में, ₹25,000 के वैवाहिक उपहार और ₹15,000 आयोजन पर।",
+      "how_to_apply": "cmsvy.upsdc.gov.in पर वर और वधू की आधार जाँच के साथ आवेदन करें। विवाह की तिथि पर वधू की उम्र 18 साल या ज़्यादा और वर की उम्र 21 साल या ज़्यादा हो। वधू का पहले विवाह न हुआ हो, जब तक वह विधवा या क़ानूनी रूप से तलाकशुदा न हो। मदद के लिए ज़िला समाज कल्याण अधिकारी से मिलें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "dept",
+      "url": "https://samajkalyan.up.gov.in/en/article/mukhyamantri-samuhik-vivah-yojana",
+      "title": "Mukhyamantri Samuhik Vivah Yojana",
+      "publisher": "Department of Social Welfare, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:ffa8a54782be648edad90051f243e417bc4a9da1717b5737aef1129cc5e446fb",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "go_2025",
+      "url": "https://samajkalyan.up.gov.in/site/writereaddata/siteContent/2025090316272035251-samuhik-Vivah_030925.pdf",
+      "title": "Government order 113/2025/1282/26-3-2025-1572678 of 23 May 2025",
+      "publisher": "Government of Uttar Pradesh",
+      "doc_type": "guideline",
+      "lang": "hi",
+      "published_date": "2025-05",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:138fc00c1f6de90c294824c35c1d4c1b1aebdd3cc1c8c5300fb173545aba9ff7",
+      "verified_at": null,
+      "verified_by": null,
+      "note": "Scanned with an unusable text layer. Read as images on 2026-11-05: pp. 1-2 confirm the ₹3 lakh income limit, ages 18 and 21, and ₹60,000 + ₹25,000 + ₹15,000. The Budget 2026-27 highlights say ₹1.01 lakh; this file follows the order and the department page."
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "4. Eligibility, Domicile",
+      "quote": "The applicant must be a native of Uttar Pradesh.",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "marriage_planned",
+      "logic": {
+        "==": [
+          {
+            "var": "family_marriage_planned"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "2. Objective",
+      "quote": "to assist in the marriage of daughters from economically weaker families",
+      "text": {
+        "en": "A daughter’s wedding, or the applicant’s own wedding or remarriage, is planned",
+        "hi": "बेटी की शादी, या आवेदक की अपनी शादी या पुनर्विवाह होने वाला है"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          300000
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "4. Eligibility, Income",
+      "quote": "The family's annual income must be up to ₹3 lakh.",
+      "text": {
+        "en": "Family income is up to ₹3 lakh a year",
+        "hi": "परिवार की सालाना आय ₹3 लाख तक है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "dept",
+      "quote": "provides financial assistance of ₹1,00,000 per couple"
+    },
+    {
+      "about": "amount",
+      "source": "dept",
+      "quote": "₹60,000 is transferred to the bride's bank account"
+    },
+    {
+      "about": "amount",
+      "source": "dept",
+      "quote": "Wedding gifts worth ₹25,000 are provided to the bride and groom"
+    },
+    {
+      "about": "amount",
+      "source": "dept",
+      "quote": "₹15,000 per couple is spent on event expenses"
+    },
+    {
+      "about": "age",
+      "source": "dept",
+      "quote": "The applicant girl/woman must be 18 years of age or older, and the groom must be 21 years of age or older."
+    }
+  ],
+  "documents": [
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "dept"
+    },
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "dept"
+    },
+    {
+      "code": "caste_certificate",
+      "mandatory": false,
+      "source": "dept"
+    },
+    {
+      "code": "photo",
+      "mandatory": true,
+      "source": "dept"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "dept"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "c4b85ff6fb35413a"
+  }
+}

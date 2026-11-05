@@ -1,0 +1,46 @@
+{
+  "slug": "post-matric-obc",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "7b7cec0a168ad4db",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:4241720de7314a384a7b2f4c595066c974752aedf721e86dd160dc8e824c63d8",
+      "method": "snapshot"
+    },
+    {
+      "id": "msje",
+      "content_hash": "sha256:7897664e41137dd91ba373018d889d95be00b370a8d3905e20b3d797ae980f27",
+      "method": "snapshot"
+    },
+    {
+      "id": "nsp",
+      "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. No continuation order found in my earlier search.",
+  "findings": [
+    {
+      "target": "source:guidelines",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Rules are now guidance or uncertain, and the text says no later order was found.",
+      "suggestion": "None."
+    },
+    {
+      "target": "source:guidelines",
+      "severity": "minor",
+      "note": "Still open: published_date is missing.",
+      "suggestion": "Add it."
+    },
+    {
+      "target": "tests",
+      "severity": "minor",
+      "note": "The first fixture expects stale: false, which holds only after the scheme is published, so npm test fails on it while the status is needs_review. This comes from the status, not the rules.",
+      "suggestion": "It should pass after publishing. Confirm with npm test then."
+    }
+  ]
+}

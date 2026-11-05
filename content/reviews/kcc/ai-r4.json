@@ -1,0 +1,47 @@
+{
+  "slug": "kcc",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "e9b1c2174ad5fe6a",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "pib_2026",
+      "content_hash": "sha256:59186de69287b83f2d59fdd0e2fc7cc22c1e8a154ebbdf8353dbf65babd1538a",
+      "method": "refetched"
+    },
+    {
+      "id": "rbi_miss_2025_26",
+      "content_hash": "sha256:7059b323177d84b486b219dcc3fc6f1f3cf8c02445265a7955f2a02f8a9e46fc",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots.",
+  "findings": [
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. The terms are tied to 2025-26, and the ₹5 lakh conflict is disclosed with a quoted fact, in both languages.",
+      "suggestion": "None."
+    },
+    {
+      "target": "content.how_to_apply",
+      "severity": "minor",
+      "note": "The new line on the form and CSC help is supported by the PIB backgrounder.",
+      "suggestion": "None."
+    },
+    {
+      "target": "documents:aadhaar",
+      "severity": "minor",
+      "note": "Still open: the RBI clause covers the interest subvention, not the card itself.",
+      "suggestion": "Add a note."
+    },
+    {
+      "target": "tests",
+      "severity": "minor",
+      "note": "The first fixture expects stale: false, which holds only after the scheme is published, so npm test fails on it while the status is needs_review. This comes from the status, not the rules.",
+      "suggestion": "It should pass after publishing. Confirm with npm test then."
+    }
+  ]
+}

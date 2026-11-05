@@ -1,0 +1,18 @@
+{
+  "slug": "e-shram",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "bb72caea813ba00d",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "faq", "content_hash": "sha256:d26a9fff1a0938a8573a8b681a60af7ebe279fd431f8c8ff8074414847e557e5", "method": "refetched" },
+    { "id": "nic", "content_hash": "sha256:b27bb509afb7db657306b2678e09e771f1efb39c93137b4e446ea1b9bb6c0b1d", "method": "refetched" },
+    { "id": "pib_2026", "content_hash": "sha256:9b369a91db454b65912b447f84bee0b7925b73e15e2c95d16314b57294d5d430", "method": "refetched" }
+  ],
+  "newer_changes_search": "Re-review of the diff. The new PIB backgrounder of 25 August 2026 says \"aged 16 years and above\", which the FAQ's 16-59 does not. age_max is now 'uncertain' and the conflict is stated in en and hi, which is accurate.",
+  "findings": [
+    { "target": "rule:no_epf_esic", "severity": "minor", "note": "has_formal_pension_cover is wider than ESIC or EPFO. Safe because the rule is 'uncertain'.", "suggestion": "Add a narrower field later." },
+    { "target": "source:faq", "severity": "minor", "note": "Two questions are numbered 11, so 'Question 11' is an unclear locator.", "suggestion": "Quote the question text in the locator." }
+  ]
+}

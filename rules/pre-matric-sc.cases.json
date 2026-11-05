@@ -11,7 +11,7 @@
     "expect": {
       "result": "LIKELY_ELIGIBLE",
       "stale": false,
-      "label": "confirmed"
+      "label": "guidance"
     }
   },
   {

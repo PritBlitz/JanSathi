@@ -20,14 +20,14 @@
     "en": {
       "name": "PM Vishwakarma (support for traditional artisans)",
       "summary": "Recognition, training, a toolkit grant and cheap loans for people who work with their hands and tools in one of 18 traditional trades, such as carpenters, blacksmiths, potters, cobblers, masons, barbers, tailors, washermen and goldsmiths.",
-      "benefit": "A PM Vishwakarma certificate and ID card; 5 days of basic training and 15 days or more of advanced training, with ₹500 a day as a stipend; a ₹15,000 toolkit incentive; collateral-free loans of up to ₹1 lakh (first part, 18 months) and then up to ₹2 lakh (second part, 30 months) at 5% interest; ₹1 per digital transaction for up to 100 transactions a month; and marketing support.",
-      "how_to_apply": "Register at a Common Service Centre (CSC). Registration uses Aadhaar with biometrics. The gram panchayat head or urban local body checks your application, then the district committee. Only one member of a family (husband, wife and unmarried children) can register. Mudra or PM SVANidhi borrowers who have fully repaid can apply."
+      "benefit": "A PM Vishwakarma certificate and ID card; 5 days of basic training and 15 days or more of advanced training, with ₹500 a day as a stipend; a toolkit incentive of up to ₹15,000, given as an e-voucher; collateral-free loans of up to ₹1 lakh (first part, 18 months) and then up to ₹2 lakh (second part, 30 months) at 5% interest; ₹1 per digital transaction for up to 100 transactions a month; and marketing support.",
+      "how_to_apply": "Register at a Common Service Centre (CSC). Registration uses Aadhaar with biometrics. The gram panchayat head or urban local body checks your application, then the district committee. Only one member of a family (husband, wife and unmarried children) can register. Mudra or PM SVANidhi borrowers who have fully repaid can apply. The official site says the target of 30 lakh registrations was reached in September 2025, so new registration may not be available. Ask at a CSC first."
     },
     "hi": {
       "name": "पीएम विश्वकर्मा (पारंपरिक कारीगरों के लिए सहायता)",
       "summary": "18 पारंपरिक कामों में हाथ और औज़ारों से काम करने वालों, जैसे बढ़ई, लोहार, कुम्हार, मोची, राजमिस्त्री, नाई, दर्ज़ी, धोबी और सुनार, के लिए पहचान, प्रशिक्षण, औज़ार सहायता और सस्ता ऋण।",
-      "benefit": "पीएम विश्वकर्मा प्रमाण पत्र और पहचान पत्र; 5 दिन का बुनियादी और 15 दिन या ज़्यादा का उन्नत प्रशिक्षण, ₹500 रोज़ भत्ते के साथ; ₹15,000 की औज़ार सहायता; बिना गिरवी के ₹1 लाख तक (पहली किस्त, 18 महीने) और फिर ₹2 लाख तक (दूसरी किस्त, 30 महीने) का ऋण, 5% ब्याज पर; हर डिजिटल लेनदेन पर ₹1, महीने में 100 लेनदेन तक; और बाज़ार से जोड़ने में मदद।",
-      "how_to_apply": "कॉमन सर्विस सेंटर (CSC) पर पंजीकरण करें। पंजीकरण आधार और बायोमेट्रिक से होता है। ग्राम पंचायत प्रमुख या नगर निकाय आवेदन जाँचता है, फिर ज़िला समिति। परिवार (पति, पत्नी और अविवाहित बच्चे) से केवल एक सदस्य पंजीकरण कर सकता है। जिन्होंने मुद्रा या पीएम स्वनिधि ऋण पूरा चुका दिया है, वे आवेदन कर सकते हैं।"
+      "benefit": "पीएम विश्वकर्मा प्रमाण पत्र और पहचान पत्र; 5 दिन का बुनियादी और 15 दिन या ज़्यादा का उन्नत प्रशिक्षण, ₹500 रोज़ भत्ते के साथ; ₹15,000 तक की औज़ार सहायता, ई-वाउचर के रूप में; बिना गिरवी के ₹1 लाख तक (पहली किस्त, 18 महीने) और फिर ₹2 लाख तक (दूसरी किस्त, 30 महीने) का ऋण, 5% ब्याज पर; हर डिजिटल लेनदेन पर ₹1, महीने में 100 लेनदेन तक; और बाज़ार से जोड़ने में मदद।",
+      "how_to_apply": "कॉमन सर्विस सेंटर (CSC) पर पंजीकरण करें। पंजीकरण आधार और बायोमेट्रिक से होता है। ग्राम पंचायत प्रमुख या नगर निकाय आवेदन जाँचता है, फिर ज़िला समिति। परिवार (पति, पत्नी और अविवाहित बच्चे) से केवल एक सदस्य पंजीकरण कर सकता है। जिन्होंने मुद्रा या पीएम स्वनिधि ऋण पूरा चुका दिया है, वे आवेदन कर सकते हैं। आधिकारिक साइट के अनुसार 30 लाख पंजीकरण का लक्ष्य सितंबर 2025 में पूरा हो गया, इसलिए नया पंजीकरण शायद उपलब्ध न हो। पहले CSC पर पूछ लें।"
     }
   },
   "sources": [
@@ -41,8 +41,8 @@
       "published_date": null,
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:bea3f55ade5f124ec2eb3be6ec710539aa76b8355d61e8d5e3a773273cd46ebe",
-      "verified_at": "2026-10-25",
-      "verified_by": "ai-r1, ai-r2"
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
     },
     {
       "id": "pib_2025",
@@ -54,8 +54,8 @@
       "published_date": "2025-09-16",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:cd1275f8f438c9e405b31bff466a4d28f217b8011d7660aa84ad51293e17b696",
-      "verified_at": "2026-10-25",
-      "verified_by": "ai-r1, ai-r2"
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
     },
     {
       "id": "scheme",
@@ -67,8 +67,21 @@
       "published_date": null,
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:998fb9996cafcbd11cf2f97205c8d445007c98fc79d0419e079c27c5aacf3e7f",
-      "verified_at": "2026-10-25",
-      "verified_by": "ai-r1, ai-r2"
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "home",
+      "url": "https://pmvishwakarma.gov.in/",
+      "title": "PM Vishwakarma home page",
+      "publisher": "Ministry of Micro, Small and Medium Enterprises",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:fb8e18548663a297cc9384d1b28614ba65b7b8cf67984eee472cc9bf0b25578b",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
     }
   ],
   "rules": [
@@ -188,13 +201,23 @@
       "about": "benefit",
       "source": "pib_2025",
       "quote": "Artisan and craftspersons are provided with the PM Vishwakarma certificate and ID Cards"
+    },
+    {
+      "about": "documents",
+      "source": "guidelines",
+      "quote": "Aadhaar based biometric authenticated PM"
+    },
+    {
+      "about": "target",
+      "source": "home",
+      "quote": "Target Already Achieved In September 2025"
     }
   ],
   "documents": [
     {
       "code": "aadhaar",
       "mandatory": true,
-      "source": "pib_2025"
+      "source": "guidelines"
     },
     {
       "code": "bank_account",
@@ -205,10 +228,10 @@
   "verification": {
     "method": "ai-dual-review",
     "reviewers": [
-      "ai-r1",
-      "ai-r2"
+      "ai-r3",
+      "ai-r4"
     ],
-    "date": "2026-10-25",
-    "content_version": "49339b69a77fc949"
+    "date": "2026-11-05",
+    "content_version": "e3fa6a5a370874c7"
   }
 }

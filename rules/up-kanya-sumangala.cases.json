@@ -1,0 +1,164 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "has_young_daughter": true,
+      "annual_income": 200000,
+      "family_has_up_to_two_children": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "income 299,999",
+    "profile": {
+      "state": "up",
+      "has_young_daughter": true,
+      "annual_income": 299999,
+      "family_has_up_to_two_children": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income exactly 3 lakh",
+    "profile": {
+      "state": "up",
+      "has_young_daughter": true,
+      "annual_income": 300000,
+      "family_has_up_to_two_children": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 300,001",
+    "profile": {
+      "state": "up",
+      "has_young_daughter": true,
+      "annual_income": 300001,
+      "family_has_up_to_two_children": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "band 2.5 to 5 lakh straddles the limit",
+    "profile": {
+      "state": "up",
+      "has_young_daughter": true,
+      "annual_income": {
+        "min": 250001,
+        "max": 500000
+      },
+      "family_has_up_to_two_children": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  },
+  {
+    "name": "no young daughter",
+    "profile": {
+      "state": "up",
+      "has_young_daughter": false,
+      "annual_income": 200000,
+      "family_has_up_to_two_children": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "has_daughter": "fail"
+      }
+    }
+  },
+  {
+    "name": "three children: exceptions exist, so check with the office",
+    "profile": {
+      "state": "up",
+      "has_young_daughter": true,
+      "annual_income": 200000,
+      "family_has_up_to_two_children": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "two_children": "fail"
+      }
+    }
+  },
+  {
+    "name": "lives in another state",
+    "profile": {
+      "state": "br",
+      "has_young_daughter": true,
+      "annual_income": 200000,
+      "family_has_up_to_two_children": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "state missing",
+    "profile": {
+      "has_young_daughter": true,
+      "annual_income": 200000,
+      "family_has_up_to_two_children": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "state"
+      ]
+    }
+  },
+  {
+    "name": "children answer missing",
+    "profile": {
+      "state": "up",
+      "has_young_daughter": true,
+      "annual_income": 200000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "family_has_up_to_two_children"
+      ]
+    }
+  }
+]

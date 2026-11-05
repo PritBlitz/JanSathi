@@ -1,0 +1,59 @@
+{
+  "slug": "up-odop-margin-money",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "9d610e1c08ac1afd",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "msme_connect",
+      "content_hash": "sha256:39683d1ee3f37252d58a6ca5ffed5bb8f63b5fe004d32ce3e5e202a3cfcb7919",
+      "method": "refetched"
+    },
+    {
+      "id": "eligibility_pdf",
+      "content_hash": "sha256:3ccca44b724bfb5aaf5a4bd66973c234c9f8104b92228ff4194b7affa2bd9096",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. Hand-transcribed lines compared with the official Hindi eligibility PDF I read: they match. Four-scheme re-review: page image of the eligibility PDF compared with the transcription.",
+  "findings": [
+    {
+      "target": "rules",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. no_prior_scheme added as uncertain, and the once-per-family limit added in both languages.",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:resident",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Now uncertain, worded around the unit, and the locator says no residence clause was found.",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:no_prior_scheme",
+      "severity": "minor",
+      "note": "The field covers a 5-year window and named schemes, narrower than the clause, so an older benefit passes. Uncertain confidence and the text are acceptable.",
+      "suggestion": "Consider a note."
+    },
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "Still open: margin money becomes a grant only after 2 years without default.",
+      "suggestion": "Add it with a quoted fact."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Still empty.",
+      "suggestion": "Add rows."
+    },
+    {
+      "target": "content.how_to_apply",
+      "severity": "minor",
+      "note": "Fixed: the 5% sentence is now transcribed and quoted. I compared it, and the 10% and earlier lines, with the page image of the official eligibility PDF: they match word for word.",
+      "suggestion": "None."
+    }
+  ]
+}

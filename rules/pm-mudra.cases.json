@@ -1,0 +1,57 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "runs_small_business": true,
+      "wants_to_start_business": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "guidance"
+    }
+  },
+  {
+    "name": "wants to start one",
+    "profile": {
+      "runs_small_business": false,
+      "wants_to_start_business": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "neither",
+    "profile": {
+      "runs_small_business": false,
+      "wants_to_start_business": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "small_business": "fail"
+      }
+    }
+  },
+  {
+    "name": "one no, the other missing",
+    "profile": {
+      "runs_small_business": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "wants_to_start_business"
+      ]
+    }
+  }
+]

@@ -1,0 +1,217 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [
+    {
+      "kind": "excludes",
+      "with": "pmegp",
+      "source": "msme_connect",
+      "quote": "Applicant should not be availing benefits of other central/state loan subsidy schemes.",
+      "note": {
+        "en": "A person using another loan subsidy scheme cannot also use this one.",
+        "hi": "दूसरी ऋण अनुदान योजना का लाभ लेने वाले इसे साथ में नहीं ले सकते।"
+      }
+    }
+  ],
+  "changes": [],
+  "slug": "up-cm-yuva",
+  "category": "employment",
+  "icon": "🚀",
+  "ministry": {
+    "en": "MSME and Export Promotion Department, Uttar Pradesh",
+    "hi": "एमएसएमई एवं निर्यात प्रोत्साहन विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://msme1connect.up.gov.in/scheme-list/-mukhyamantri-yuva-udyami-vikas-abhiyan-yojana-(cm-yuva)",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Mukhyamantri Yuva Udyami Vikas Abhiyan (CM-YUVA)",
+      "summary": "Interest-free loans for young people in Uttar Pradesh who want to start a small business.",
+      "benefit": "An interest-free loan of up to ₹5 lakh with no collateral, and a margin money subsidy of 10% of the project cost. The bank decides on the loan.",
+      "how_to_apply": "Register on the UP MSME portal of the Directorate of Industries and upload identity, age proof, training certificate and a project report. Women, SC, ST, OBC, minorities, persons with disabilities and unemployed youth get priority."
+    },
+    "hi": {
+      "name": "मुख्यमंत्री युवा उद्यमी विकास अभियान (CM-YUVA)",
+      "summary": "उत्तर प्रदेश के उन युवाओं के लिए ब्याज-मुक्त ऋण जो छोटा काम-धंधा शुरू करना चाहते हैं।",
+      "benefit": "₹5 लाख तक का ब्याज-मुक्त ऋण, बिना ज़मानत के, और परियोजना लागत का 10% मार्जिन मनी अनुदान। ऋण पर निर्णय बैंक करता है।",
+      "how_to_apply": "उद्योग निदेशालय के UP MSME पोर्टल पर पंजीकरण करें और पहचान, आयु प्रमाण, प्रशिक्षण प्रमाण पत्र और परियोजना रिपोर्ट अपलोड करें। महिलाओं, SC, ST, OBC, अल्पसंख्यकों, दिव्यांगजन और बेरोज़गार युवाओं को प्राथमिकता मिलती है।"
+    }
+  },
+  "sources": [
+    {
+      "id": "msme_connect",
+      "url": "https://msme1connect.up.gov.in/scheme-list/-mukhyamantri-yuva-udyami-vikas-abhiyan-yojana-(cm-yuva)",
+      "title": "Mukhyamantri Yuva Udyami Vikas Abhiyan Yojana (CM-YUVA)",
+      "publisher": "UP MSME 1-Connect, Government of Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:b52ad2be667d60c626fef75aaeb00e4f6cab997f3d3c116c76f5121089752285",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "budget_2026",
+      "url": "https://information.up.gov.in/admin/UploadDocument/OtherPress/compressed_12022026010930Final%20English%20Budget%202026-27.pdf",
+      "title": "Highlights and salient features of the Uttar Pradesh Budget 2026-27",
+      "publisher": "Information Department, Government of Uttar Pradesh",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-02",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "msme_connect",
+      "locator": "Introduction",
+      "quote": "aimed at promoting self-employment and entrepreneurship among the youth of the state",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          21
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "msme_connect",
+      "locator": "Eligibility, item 1",
+      "quote": "Age: 21 to 40 years. 2 Minimum qualification: Class 8th pass",
+      "text": {
+        "en": "Age 21 or older",
+        "hi": "उम्र 21 साल या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "age_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "age"
+          },
+          40
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "msme_connect",
+      "locator": "Eligibility, item 1",
+      "quote": "Age: 21 to 40 years. 2 Minimum qualification: Class 8th pass",
+      "text": {
+        "en": "Age 40 or younger",
+        "hi": "उम्र 40 साल या उससे कम"
+      }
+    },
+    {
+      "code": "new_business",
+      "logic": {
+        "==": [
+          {
+            "var": "wants_to_start_business"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "msme_connect",
+      "locator": "Introduction",
+      "quote": "encouraged to establish their own small industries, service ventures or business units",
+      "text": {
+        "en": "Wants to start a business",
+        "hi": "अपना काम-धंधा शुरू करना चाहते हैं"
+      }
+    },
+    {
+      "code": "class_8",
+      "logic": {
+        "==": [
+          {
+            "var": "passed_class_8"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "msme_connect",
+      "locator": "Eligibility, item 2",
+      "quote": "Minimum qualification: Class 8th pass or certified training/diploma/degree from recognized",
+      "text": {
+        "en": "Passed class 8, or holds certified training, a diploma or a degree",
+        "hi": "कक्षा 8 पास है, या प्रमाणित प्रशिक्षण, डिप्लोमा या डिग्री है"
+      }
+    },
+    {
+      "code": "no_other_subsidy",
+      "logic": {
+        "==": [
+          {
+            "var": "had_govt_business_loan_5y"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "msme_connect",
+      "locator": "Eligibility, item 4",
+      "quote": "Applicant should not be availing benefits of other central/state loan subsidy schemes.",
+      "text": {
+        "en": "Not using another government loan subsidy scheme",
+        "hi": "दूसरी सरकारी ऋण अनुदान योजना का लाभ नहीं ले रहे हैं"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "msme_connect",
+      "quote": "interest-free loans of up to ₹5 lakh without the need for collateral, along with a 10% margin-money subsidy on the total project cost"
+    },
+    {
+      "about": "budget",
+      "source": "budget_2026",
+      "quote": "A provision of ₹1,000 crore is proposed for the 'Mukhyamantri Yuva Udyami Vikas"
+    }
+  ],
+  "documents": [],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "5028cce67ab01b0a"
+  }
+}

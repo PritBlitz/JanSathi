@@ -2219,5 +2219,53 @@
     "expect": {
       "next_question": null
     }
+  },
+  {
+    "name": "a changed source makes the scheme stale, even one no rule cites",
+    "scheme": {
+      "slug": "t",
+      "status": "published",
+      "reverify_days": 180,
+      "rules": [
+        {
+          "code": "age_min",
+          "logic": {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          "hard": true,
+          "confidence": "confirmed",
+          "source": "g"
+        }
+      ],
+      "sources": [
+        {
+          "id": "g",
+          "doc_type": "guideline",
+          "verified_at": "2026-10-01"
+        },
+        {
+          "id": "p",
+          "doc_type": "portal",
+          "verified_at": "2026-10-01",
+          "changed_at": "2026-10-20"
+        }
+      ]
+    },
+    "profile": {
+      "age": 60
+    },
+    "skipped": [],
+    "as_of": "2026-10-24",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": true,
+      "label": "uncertain",
+      "missing_fields": []
+    }
   }
 ]

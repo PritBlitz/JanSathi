@@ -1,0 +1,17 @@
+{
+  "slug": "post-matric-obc",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "7b7cec0a168ad4db",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:4241720de7314a384a7b2f4c595066c974752aedf721e86dd160dc8e824c63d8", "method": "snapshot" },
+    { "id": "msje", "content_hash": "sha256:7897664e41137dd91ba373018d889d95be00b370a8d3905e20b3d797ae980f27", "method": "snapshot" },
+    { "id": "nsp", "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Re-review. Both blockers resolved: rules are 'guidance' or 'uncertain' with the period disclosed in en and hi, and the relation notes reflect the NSP clause. No continuation order found. socialjustice.gov.in robots.txt was unreadable and NSP unreachable, so sources were checked against saved text.",
+  "findings": [
+    { "target": "rule:income_max", "severity": "minor", "note": "Clause (xiv) combines an employed student's income with the parents'.", "suggestion": "Add the employed student case." }
+  ]
+}

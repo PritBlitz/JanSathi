@@ -1,0 +1,41 @@
+{
+  "slug": "up-samuhik-vivah",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "c4b85ff6fb35413a",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dept",
+      "content_hash": "sha256:ffa8a54782be648edad90051f243e417bc4a9da1717b5737aef1129cc5e446fb",
+      "method": "refetched"
+    },
+    {
+      "id": "go_2025",
+      "content_hash": "sha256:138fc00c1f6de90c294824c35c1d4c1b1aebdd3cc1c8c5300fb173545aba9ff7",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Read the GO of 23 May 2025 pp. 1-2 as images (hash matched): native guardian, ₹3 lakh, ages 18 and 21, ₹60,000 + ₹25,000 + ₹15,000. Press reports agree with ₹1 lakh. Budget 2026-27 highlights say ₹1.01 lakh, with no order found for that figure.",
+  "findings": [
+    {
+      "target": "content:benefit",
+      "severity": "minor",
+      "note": "Budget highlights say ₹1.01 lakh while the GO and department page add up to ₹1,00,000. The file follows the GO, which is the stronger source, and the source note records this.",
+      "suggestion": "Update if a newer GO appears."
+    },
+    {
+      "target": "content:summary",
+      "severity": "minor",
+      "note": "GO (v) also covers abandoned women (परित्यक्ता) with a legal separation, and (vii) gives priority to some groups.",
+      "suggestion": "Add both."
+    },
+    {
+      "target": "rule:resident",
+      "severity": "minor",
+      "note": "The GO says the guardian must be a native of UP, stricter than 'Lives in Uttar Pradesh'.",
+      "suggestion": "Reword."
+    }
+  ]
+}

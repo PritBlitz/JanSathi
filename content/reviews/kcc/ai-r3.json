@@ -1,0 +1,18 @@
+{
+  "slug": "kcc",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "e9b1c2174ad5fe6a",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "pib_2026", "content_hash": "sha256:59186de69287b83f2d59fdd0e2fc7cc22c1e8a154ebbdf8353dbf65babd1538a", "method": "refetched" },
+    { "id": "rbi_miss_2025_26", "content_hash": "sha256:7059b323177d84b486b219dcc3fc6f1f3cf8c02445265a7955f2a02f8a9e46fc", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Re-review. No 2026-27 MISS circular found. Both earlier blockers resolved: all interest terms are dated 2025-26, the ₹3 lakh and ₹5 lakh conflict is stated with a quoted fact, and how_to_apply now says the form can be downloaded. RBI robots.txt returned 418, so that source was checked against saved text.",
+  "findings": [
+    { "target": "documents:aadhaar", "severity": "minor", "note": "The row is backed for MISS benefits, not for holding a KCC as such.", "suggestion": "Say Aadhaar is needed for the interest help." },
+    { "target": "documents:land_records", "severity": "minor", "note": "Marked not mandatory, while the quoted fact says farmers are required to submit land records.", "suggestion": "Explain the tenant case." },
+    { "target": "official_apply_url", "severity": "minor", "note": "Still points to the PM-KISAN portal, which only offers the form.", "suggestion": "Consider a neutral link." }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "changes": [],
+  "slug": "up-odop-margin-money",
+  "category": "employment",
+  "icon": "🧵",
+  "ministry": {
+    "en": "MSME and Export Promotion Department, Uttar Pradesh",
+    "hi": "एमएसएमई एवं निर्यात प्रोत्साहन विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://msme1connect.up.gov.in/scheme-list/financial-assistance-scheme-for-one-district-one-product-(odop-margin-money-scheme)",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "ODOP Margin Money Scheme (One District One Product)",
+      "summary": "Help with a bank-financed project for people in Uttar Pradesh who make their district’s chosen ODOP product.",
+      "benefit": "Margin money depends on the project cost. Up to ₹25 lakh: 25% of the cost, at most ₹6.25 lakh. Above ₹25 lakh and up to ₹50 lakh: ₹6.25 lakh or 20%, whichever is higher. Above ₹50 lakh and up to ₹150 lakh: ₹10 lakh or 10%, whichever is higher. Above ₹150 lakh: 10%, at most ₹20 lakh.",
+      "how_to_apply": "Apply on the Directorate of Industries UPMSME portal, diupmsme.upsdc.gov.in. The application is checked, and selected applications are sent to the bank. No school qualification is needed. The applicant must not be a defaulter of a bank or government body. A person or family can benefit only once. General category applicants put in 10% of the project cost themselves; special categories put in 5%."
+    },
+    "hi": {
+      "name": "ओडीओपी मार्जिन मनी योजना (एक जनपद एक उत्पाद)",
+      "summary": "उत्तर प्रदेश में अपने ज़िले का चुना हुआ ODOP उत्पाद बनाने वालों के लिए बैंक से वित्तपोषित परियोजना में मदद।",
+      "benefit": "मार्जिन मनी परियोजना लागत पर निर्भर है। ₹25 लाख तक: लागत का 25%, अधिकतम ₹6.25 लाख। ₹25 लाख से ऊपर और ₹50 लाख तक: ₹6.25 लाख या 20%, जो ज़्यादा हो। ₹50 लाख से ऊपर और ₹150 लाख तक: ₹10 लाख या 10%, जो ज़्यादा हो। ₹150 लाख से ऊपर: 10%, अधिकतम ₹20 लाख।",
+      "how_to_apply": "उद्योग निदेशालय के UPMSME पोर्टल diupmsme.upsdc.gov.in पर आवेदन करें। आवेदन की जाँच होती है और चुने गए आवेदन बैंक को भेजे जाते हैं। कोई शैक्षिक योग्यता ज़रूरी नहीं है। आवेदक किसी बैंक या सरकारी संस्था का बकायेदार न हो। एक व्यक्ति या परिवार को केवल एक बार लाभ मिलता है। सामान्य श्रेणी के आवेदक परियोजना लागत का 10% ख़ुद देते हैं; विशेष श्रेणियाँ 5% देती हैं।"
+    }
+  },
+  "sources": [
+    {
+      "id": "msme_connect",
+      "url": "https://msme1connect.up.gov.in/scheme-list/financial-assistance-scheme-for-one-district-one-product-(odop-margin-money-scheme)",
+      "title": "Financial Assistance Scheme for One District One Product (ODOP Margin Money Scheme)",
+      "publisher": "UP MSME 1-Connect, Government of Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:39683d1ee3f37252d58a6ca5ffed5bb8f63b5fe004d32ce3e5e202a3cfcb7919",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "eligibility_pdf",
+      "url": "https://msme1connect.up.gov.in/GovernmentScheme/GovernmentScheme638769673321269906.pdf",
+      "title": "ओ.डी.ओ.पी वित्त पोषण हेतु सहायता योजना: eligibility sheet",
+      "publisher": "UP MSME 1-Connect, Government of Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "hi",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:3ccca44b724bfb5aaf5a4bd66973c234c9f8104b92228ff4194b7affa2bd9096",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "note": "The PDF text layer has broken font mapping. The quoted lines are a hand transcription from the page image, appended to the snapshot and marked as such. No residence clause was found in any ODOP document read."
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "eligibility_pdf",
+      "locator": "Eligibility, item 3. The clause is about units for a district’s ODOP product; no clause on where the applicant lives was found.",
+      "quote": "सुविधा संबन्धित जनपद हेतु चिन्हित ओ.डी.ओ.पी उत्पाद की इकाइयों को ही प्राप्त होगी",
+      "text": {
+        "en": "The unit is in Uttar Pradesh, for its district’s ODOP product",
+        "hi": "इकाई उत्तर प्रदेश में है, अपने ज़िले के ODOP उत्पाद के लिए"
+      }
+    },
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          18
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "msme_connect",
+      "locator": "Eligibility, item 2",
+      "quote": "The applicant must be at least 18 years old.",
+      "text": {
+        "en": "Age 18 or older",
+        "hi": "उम्र 18 साल या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "odop_product",
+      "logic": {
+        "==": [
+          {
+            "var": "in_odop_trade"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "msme_connect",
+      "locator": "Eligibility, item 1",
+      "quote": "Only units producing the ODOP-identified product for their respective district are eligible.",
+      "text": {
+        "en": "Makes, or plans to make, the ODOP product of their district",
+        "hi": "अपने ज़िले का ODOP उत्पाद बनाते हैं या बनाना चाहते हैं"
+      }
+    },
+    {
+      "code": "no_prior_scheme",
+      "logic": {
+        "==": [
+          {
+            "var": "had_govt_business_loan_5y"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "eligibility_pdf",
+      "locator": "Eligibility, item 5",
+      "quote": "आवेदक द्वारा भारत सरकार अथवा उत्तरप्रदेश सरकार द्वारा संचालित किसी अन्य स्वरोजगार योजना का पूर्व में लाभ प्राप्त न किया गया हो",
+      "text": {
+        "en": "Has not already used another central or state self-employment scheme",
+        "hi": "पहले किसी दूसरी केंद्र या राज्य स्वरोज़गार योजना का लाभ नहीं लिया है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "msme_connect",
+      "quote": "25 per cent of the total project cost subject to a maximum of Rs.6.25 lakh, whichever is less, shall be payable as margin money"
+    },
+    {
+      "about": "amount",
+      "source": "msme_connect",
+      "quote": "an amount of Rs. 6.25 lakh or 20% of the project cost, whichever is higher, shall be payable as margin money"
+    },
+    {
+      "about": "amount",
+      "source": "msme_connect",
+      "quote": "an amount of Rs. 10.00 lakh or 10% of the project cost, whichever is higher, shall be payable as margin money"
+    },
+    {
+      "about": "amount",
+      "source": "msme_connect",
+      "quote": "10% of the project cost, subject to a maximum of Rs. 20.00 lakh, whichever is less, shall be payable as margin money"
+    },
+    {
+      "about": "education",
+      "source": "msme_connect",
+      "quote": "There is no compulsion of educational qualification."
+    },
+    {
+      "about": "limit",
+      "source": "eligibility_pdf",
+      "quote": "आवेदक अथवा उसके परिवार के किसी सदस्य को योजनान्तर्गत केवल एक बार ही लाभान्वित किया जाएगा"
+    },
+    {
+      "about": "own_share",
+      "source": "eligibility_pdf",
+      "quote": "सामान्य श्रेणी के लाभार्थियों द्वारा परियोजना लागत का 10 प्रतिशत स्वयं के अंशदान के रूप में जमा करना होगा"
+    },
+    {
+      "about": "own_share",
+      "source": "eligibility_pdf",
+      "quote": "विशेष श्रेणी (अनुसूचित जाति, अनुसूचित जनजाति, अन्य पिछड़ा वर्ग, अल्पसंख्यक, महिला एवं दिव्यांगजन) के लाभार्थियों को कुल परियोजना लागत का 5 प्रतिशत स्वयं के अंशदान के रूप में जमा करना होगा"
+    }
+  ],
+  "documents": [],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "9d610e1c08ac1afd"
+  }
+}

@@ -1,0 +1,240 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "age": 65,
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "age 59",
+    "profile": {
+      "state": "up",
+      "age": 59,
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "age 60",
+    "profile": {
+      "state": "up",
+      "age": 60,
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 61",
+    "profile": {
+      "state": "up",
+      "age": 61,
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "rural income 46,079",
+    "profile": {
+      "state": "up",
+      "age": 65,
+      "area": "rural",
+      "annual_income": 46079
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "rural income exactly 46,080",
+    "profile": {
+      "state": "up",
+      "age": 65,
+      "area": "rural",
+      "annual_income": 46080
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "rural income 46,081",
+    "profile": {
+      "state": "up",
+      "age": 65,
+      "area": "rural",
+      "annual_income": 46081
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "urban income exactly 56,460",
+    "profile": {
+      "state": "up",
+      "age": 65,
+      "area": "urban",
+      "annual_income": 56460
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "urban income 56,461",
+    "profile": {
+      "state": "up",
+      "age": 65,
+      "area": "urban",
+      "annual_income": 56461
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "income band up to 1 lakh straddles the limit",
+    "profile": {
+      "state": "up",
+      "age": 65,
+      "area": "rural",
+      "annual_income": {
+        "min": 0,
+        "max": 100000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  },
+  {
+    "name": "income band above the limit",
+    "profile": {
+      "state": "up",
+      "age": 65,
+      "area": "rural",
+      "annual_income": {
+        "min": 100001,
+        "max": 250000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "lives in another state",
+    "profile": {
+      "state": "br",
+      "age": 65,
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "state missing",
+    "profile": {
+      "age": 65,
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "state"
+      ]
+    }
+  },
+  {
+    "name": "age missing",
+    "profile": {
+      "state": "up",
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "age"
+      ]
+    }
+  },
+  {
+    "name": "area missing",
+    "profile": {
+      "state": "up",
+      "age": 65,
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "area"
+      ]
+    }
+  }
+]

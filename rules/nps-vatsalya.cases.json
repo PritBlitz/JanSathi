@@ -1,0 +1,41 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "has_child_under_18": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "guidance"
+    }
+  },
+  {
+    "name": "no child under 18",
+    "profile": {
+      "has_child_under_18": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "child": "fail"
+      }
+    }
+  },
+  {
+    "name": "answer missing",
+    "profile": {},
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "has_child_under_18"
+      ]
+    }
+  }
+]

@@ -1,0 +1,147 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "age": 35,
+      "works_in_skilled_trade": true,
+      "got_toolkit_2y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "guidance"
+    }
+  },
+  {
+    "name": "age 17",
+    "profile": {
+      "state": "up",
+      "age": 17,
+      "works_in_skilled_trade": true,
+      "got_toolkit_2y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "age 18",
+    "profile": {
+      "state": "up",
+      "age": 18,
+      "works_in_skilled_trade": true,
+      "got_toolkit_2y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 19",
+    "profile": {
+      "state": "up",
+      "age": 19,
+      "works_in_skilled_trade": true,
+      "got_toolkit_2y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age band under 18",
+    "profile": {
+      "state": "up",
+      "age": {
+        "min": 0,
+        "max": 17
+      },
+      "works_in_skilled_trade": true,
+      "got_toolkit_2y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "not in a listed trade",
+    "profile": {
+      "state": "up",
+      "age": 35,
+      "works_in_skilled_trade": false,
+      "got_toolkit_2y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "trade": "fail"
+      }
+    }
+  },
+  {
+    "name": "toolkit within two years",
+    "profile": {
+      "state": "up",
+      "age": 35,
+      "works_in_skilled_trade": true,
+      "got_toolkit_2y": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "no_recent_toolkit": "fail"
+      }
+    }
+  },
+  {
+    "name": "lives in another state",
+    "profile": {
+      "state": "br",
+      "age": 35,
+      "works_in_skilled_trade": true,
+      "got_toolkit_2y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "trade answer missing",
+    "profile": {
+      "state": "up",
+      "age": 35,
+      "got_toolkit_2y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "works_in_skilled_trade"
+      ]
+    }
+  }
+]

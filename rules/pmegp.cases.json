@@ -1,0 +1,134 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "age": 30,
+      "wants_to_start_business": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "age 18 passes; the rule text tells them to check",
+    "profile": {
+      "age": 18,
+      "wants_to_start_business": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 19",
+    "profile": {
+      "age": 19,
+      "wants_to_start_business": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 20",
+    "profile": {
+      "age": 20,
+      "wants_to_start_business": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age band 18 to 39 passes",
+    "profile": {
+      "age": {
+        "min": 18,
+        "max": 39
+      },
+      "wants_to_start_business": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "not starting a new business",
+    "profile": {
+      "age": 30,
+      "wants_to_start_business": false,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "new_business": "fail"
+      }
+    }
+  },
+  {
+    "name": "earlier government loan: check with the office",
+    "profile": {
+      "age": 30,
+      "wants_to_start_business": true,
+      "had_govt_business_loan_5y": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "no_other_subsidy": "fail"
+      }
+    }
+  },
+  {
+    "name": "business answer missing",
+    "profile": {
+      "age": 30,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "wants_to_start_business"
+      ]
+    }
+  },
+  {
+    "name": "age 17",
+    "profile": {
+      "age": 17,
+      "wants_to_start_business": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  }
+]

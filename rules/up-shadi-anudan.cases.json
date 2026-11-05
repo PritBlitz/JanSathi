@@ -1,0 +1,204 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "social_category": "sc",
+      "family_marriage_planned": true,
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "guidance"
+    }
+  },
+  {
+    "name": "general category",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "family_marriage_planned": true,
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "EWS is within the General category",
+    "profile": {
+      "state": "up",
+      "social_category": "ews",
+      "family_marriage_planned": true,
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "OBC has a separate grant",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "family_marriage_planned": true,
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "category": "fail"
+      }
+    }
+  },
+  {
+    "name": "rural income 46,080",
+    "profile": {
+      "state": "up",
+      "social_category": "sc",
+      "family_marriage_planned": true,
+      "area": "rural",
+      "annual_income": 46080
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "rural income 46,081",
+    "profile": {
+      "state": "up",
+      "social_category": "sc",
+      "family_marriage_planned": true,
+      "area": "rural",
+      "annual_income": 46081
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "urban income 56,460",
+    "profile": {
+      "state": "up",
+      "social_category": "sc",
+      "family_marriage_planned": true,
+      "area": "urban",
+      "annual_income": 56460
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "urban income 56,461",
+    "profile": {
+      "state": "up",
+      "social_category": "sc",
+      "family_marriage_planned": true,
+      "area": "urban",
+      "annual_income": 56461
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "band straddles the limit",
+    "profile": {
+      "state": "up",
+      "social_category": "sc",
+      "family_marriage_planned": true,
+      "area": "rural",
+      "annual_income": {
+        "min": 0,
+        "max": 100000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  },
+  {
+    "name": "lives in another state",
+    "profile": {
+      "state": "br",
+      "social_category": "sc",
+      "family_marriage_planned": true,
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "category not given",
+    "profile": {
+      "state": "up",
+      "family_marriage_planned": true,
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "social_category"
+      ]
+    }
+  },
+  {
+    "name": "ST family, per the 2016 order",
+    "profile": {
+      "state": "up",
+      "social_category": "st",
+      "family_marriage_planned": true,
+      "area": "rural",
+      "annual_income": 40000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  }
+]

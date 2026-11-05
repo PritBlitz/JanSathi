@@ -1,0 +1,59 @@
+{
+  "slug": "up-cm-yuva",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "5028cce67ab01b0a",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "msme_connect",
+      "content_hash": "sha256:b52ad2be667d60c626fef75aaeb00e4f6cab997f3d3c116c76f5121089752285",
+      "method": "refetched"
+    },
+    {
+      "id": "budget_2026",
+      "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Searched msme1connect.up.gov.in and the web; read the UP Budget 2026-27 highlights. No official 2026 change found. Third-party pages mention a four-year interest subsidy, phase 2 loans and an own contribution of 10% to 15%, none confirmed by an official source I could read.",
+  "findings": [
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "\"Interest-free\" comes straight from the portal and budget, but third parties describe a 100% interest subsidy for four years and an own contribution. I could not confirm either.",
+      "suggestion": "Find the guideline and add the interest-free period and own share."
+    },
+    {
+      "target": "relations",
+      "severity": "minor",
+      "note": "The clause is generic and does not name PMEGP, but PMEGP is a central loan subsidy scheme, so the relation holds and the present-tense note matches it.",
+      "suggestion": "None needed."
+    },
+    {
+      "target": "rule:no_other_subsidy",
+      "severity": "minor",
+      "note": "The field asks about the past 5 years, which is wider than \"availing\". Uncertain confidence stops this hard-failing anyone.",
+      "suggestion": "Keep it uncertain."
+    },
+    {
+      "target": "tests",
+      "severity": "minor",
+      "note": "No fixture for no_other_subsidy failing.",
+      "suggestion": "Add one."
+    },
+    {
+      "target": "rule:resident",
+      "severity": "minor",
+      "note": "\"Youth of the state\" only implies residence.",
+      "suggestion": "Replace with a clause from the guideline when found."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Empty, though how_to_apply lists documents.",
+      "suggestion": "Add rows."
+    }
+  ]
+}

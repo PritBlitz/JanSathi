@@ -1,0 +1,16 @@
+{
+  "slug": "adip",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "815667f4f9d36c9e",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:46dc574f7ce6615ef9428ff100976244945c5381f3e6c02e8fbaa487b9419397", "method": "refetched" }
+  ],
+  "newer_changes_search": "Re-review. No ADIP continuation order for 2026-31 found. Both earlier blockers resolved: the §7.01 income bands are now in en and hi with a quoted fact, and the rules are 'guidance' or 'uncertain' with the end of the period disclosed in how_to_apply.",
+  "findings": [
+    { "target": "rule:disability_40", "severity": "minor", "note": "§6 notes (e) and (f) allow aids for children under 40% on joint certification (CWSN).", "suggestion": "Mention the exception." },
+    { "target": "documents", "severity": "minor", "note": "§6 accepts an Aadhaar enrolment ID and other income proofs such as BPL or MGNREGA cards.", "suggestion": "Note the alternatives." }
+  ]
+}

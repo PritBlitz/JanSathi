@@ -1,0 +1,244 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [
+    {
+      "label": {
+        "en": "Apply within 90 days before or after the wedding, inside the same financial year (1 April to 31 March)",
+        "hi": "विवाह से 90 दिन पहले या 90 दिन बाद तक, उसी वित्तीय वर्ष (1 अप्रैल से 31 मार्च) में आवेदन करें"
+      },
+      "state_code": "up",
+      "source": "dept",
+      "quote": "The application will be accepted only 90 days before or 90 days after the date of marriage"
+    }
+  ],
+  "relations": [],
+  "changes": [],
+  "slug": "up-shadi-anudan",
+  "category": "family_support",
+  "icon": "🎎",
+  "ministry": {
+    "en": "Department of Social Welfare, Uttar Pradesh",
+    "hi": "समाज कल्याण विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://shadianudan.upsdc.gov.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "Shadi Anudan Yojana (marriage grant, SC, ST and General)",
+      "summary": "A grant for the wedding of a daughter in a poor Scheduled Caste, Scheduled Tribe or General category family in Uttar Pradesh.",
+      "benefit": "₹20,000 for each marriage, for at most two daughters of a family.",
+      "how_to_apply": "A parent or guardian registers at shadianudan.upsdc.gov.in with Aadhaar and applies online. Within 7 days, give the signed copy to the Sub-Divisional Magistrate (town) or Block Development Officer (village). On the wedding date the daughter must be 18 or older and the groom 21 or older. People who already get an old age, widow or disability pension don’t need an income certificate. Backward Class families have a separate grant from the Backward Classes Welfare Department. The 2016 order names Scheduled Tribes, but the department page names only SC and General, so ST families should confirm with the office."
+    },
+    "hi": {
+      "name": "शादी अनुदान योजना (अनुसूचित जाति, जनजाति और सामान्य वर्ग)",
+      "summary": "उत्तर प्रदेश के ग़रीब अनुसूचित जाति, अनुसूचित जनजाति और सामान्य वर्ग के परिवारों की बेटी की शादी के लिए अनुदान।",
+      "benefit": "हर शादी पर ₹20,000, एक परिवार की अधिकतम दो बेटियों के लिए।",
+      "how_to_apply": "माता-पिता या अभिभावक shadianudan.upsdc.gov.in पर आधार से पंजीकरण करके ऑनलाइन आवेदन करें। 7 दिन के अंदर हस्ताक्षर की हुई प्रति उप ज़िला मजिस्ट्रेट (शहर) या खंड विकास अधिकारी (गाँव) को दें। विवाह की तिथि पर बेटी की उम्र 18 साल या ज़्यादा और वर की उम्र 21 साल या ज़्यादा हो। वृद्धावस्था, विधवा या दिव्यांग पेंशन पाने वालों को आय प्रमाण पत्र नहीं चाहिए। पिछड़ा वर्ग के परिवारों के लिए पिछड़ा वर्ग कल्याण विभाग का अलग अनुदान है। 2016 के आदेश में अनुसूचित जनजाति का नाम है, लेकिन विभाग के पेज पर केवल अनुसूचित जाति और सामान्य वर्ग हैं, इसलिए जनजाति के परिवार कार्यालय से पक्का कर लें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "dept",
+      "url": "https://samajkalyan.up.gov.in/en/article/shaadi-anudan-yojana",
+      "title": "Shaadi Anudan Yojana: grant for the marriage of daughters of poor Scheduled Caste and General category persons",
+      "publisher": "Department of Social Welfare, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:8c0fc977d5164fcf03820d83ef6243cd1aeaca5b7f8b5d54a5b60c3679d9270d",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "go_2016",
+      "url": "https://samajkalyan.up.gov.in/site/writereaddata/UploadGovermentOrder/pdf/C_202501281519218505.pdf",
+      "title": "Government order 115/2016/1873/26-3-2016 of 10 June 2016",
+      "publisher": "Government of Uttar Pradesh",
+      "doc_type": "guideline",
+      "lang": "hi",
+      "published_date": "2016-06",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:11a964d642007e4e94e97fa2ef6bc29f5bee0b39ac0fd6ce8b1a01bd55889916",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "note": "Text layer is in a legacy font. The quoted lines are a hand transcription from the page image, appended to the snapshot and marked as such. It covers Scheduled Caste/Tribe; the department web page names only SC and General."
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "2. Objective",
+      "quote": "economically weaker Scheduled Caste and General Category poor families of the state",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "category",
+      "logic": {
+        "in": [
+          {
+            "var": "social_category"
+          },
+          [
+            "sc",
+            "st",
+            "general",
+            "ews"
+          ]
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "go_2016",
+      "locator": "Subject line and para 1(iii)",
+      "quote": "अनुसूचित जाति/जनजाति एवं सामान्य वर्ग के गरीब व्यक्तियों के पुत्रियों की शादी हेतु अनुदान योजना",
+      "text": {
+        "en": "Scheduled Caste, Scheduled Tribe or General category",
+        "hi": "अनुसूचित जाति, अनुसूचित जनजाति या सामान्य वर्ग"
+      }
+    },
+    {
+      "code": "marriage_planned",
+      "logic": {
+        "==": [
+          {
+            "var": "family_marriage_planned"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "3. Benefits",
+      "quote": "The amount of financial assistance payable under this scheme per marriage",
+      "text": {
+        "en": "A daughter’s wedding is planned",
+        "hi": "बेटी की शादी होने वाली है"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "or": [
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "area"
+                  },
+                  "rural"
+                ]
+              },
+              {
+                "<=": [
+                  {
+                    "var": "annual_income"
+                  },
+                  46080
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "area"
+                  },
+                  "urban"
+                ]
+              },
+              {
+                "<=": [
+                  {
+                    "var": "annual_income"
+                  },
+                  56460
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "4. Eligibility",
+      "quote": "in the urban area ₹56,460/- per annum and in rural areas should not exceed Rs. 46080/- per annum",
+      "text": {
+        "en": "Yearly income is up to ₹46,080 in a village or ₹56,460 in a town",
+        "hi": "सालाना आय गाँव में ₹46,080 या शहर में ₹56,460 तक है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "dept",
+      "quote": "₹20,000 (Rupees twenty thousand only) is provided"
+    },
+    {
+      "about": "limit",
+      "source": "dept",
+      "quote": "Financial assistance is provided for a maximum of two weddings in a family."
+    },
+    {
+      "about": "age",
+      "source": "dept",
+      "quote": "the age of the daughter should be 18 years or more on the date of marriage and the age of the groom should be 21 years or more"
+    }
+  ],
+  "documents": [
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "dept"
+    },
+    {
+      "code": "caste_certificate",
+      "mandatory": false,
+      "source": "dept"
+    },
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "dept"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "dept"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "29415b0b28cf8d6b"
+  }
+}

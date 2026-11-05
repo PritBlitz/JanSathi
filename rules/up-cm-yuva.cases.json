@@ -1,0 +1,206 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "age": 25,
+      "wants_to_start_business": true,
+      "passed_class_8": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "age 20",
+    "profile": {
+      "state": "up",
+      "age": 20,
+      "wants_to_start_business": true,
+      "passed_class_8": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "age 21",
+    "profile": {
+      "state": "up",
+      "age": 21,
+      "wants_to_start_business": true,
+      "passed_class_8": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 22",
+    "profile": {
+      "state": "up",
+      "age": 22,
+      "wants_to_start_business": true,
+      "passed_class_8": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 39",
+    "profile": {
+      "state": "up",
+      "age": 39,
+      "wants_to_start_business": true,
+      "passed_class_8": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 40",
+    "profile": {
+      "state": "up",
+      "age": 40,
+      "wants_to_start_business": true,
+      "passed_class_8": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 41",
+    "profile": {
+      "state": "up",
+      "age": 41,
+      "wants_to_start_business": true,
+      "passed_class_8": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "age band 18 to 39 straddles the minimum",
+    "profile": {
+      "state": "up",
+      "age": {
+        "min": 18,
+        "max": 39
+      },
+      "wants_to_start_business": true,
+      "passed_class_8": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "age"
+      ]
+    }
+  },
+  {
+    "name": "no business plan",
+    "profile": {
+      "state": "up",
+      "age": 25,
+      "wants_to_start_business": false,
+      "passed_class_8": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "new_business": "fail"
+      }
+    }
+  },
+  {
+    "name": "did not pass class 8: training may count",
+    "profile": {
+      "state": "up",
+      "age": 25,
+      "wants_to_start_business": true,
+      "passed_class_8": false,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "class_8": "fail"
+      }
+    }
+  },
+  {
+    "name": "lives in another state",
+    "profile": {
+      "state": "br",
+      "age": 25,
+      "wants_to_start_business": true,
+      "passed_class_8": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "class 8 answer missing",
+    "profile": {
+      "state": "up",
+      "age": 25,
+      "wants_to_start_business": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "passed_class_8"
+      ]
+    }
+  }
+]

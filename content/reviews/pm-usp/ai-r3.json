@@ -1,0 +1,17 @@
+{
+  "slug": "pm-usp",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "1c45820c898065d1",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:131d34f467527d74600fb770e6920cb1f3a0ab0a64db0df35694292d4c93f605", "method": "snapshot" },
+    { "id": "nsp", "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Re-review of the diff. The relation with up-post-matric-general no longer names NSP, which closes my earlier minor finding; the other four relations are NSP schemes and keep the name correctly. Snapshot evidence only: the guidelines PDF was not re-fetched. My connection to scholarships.gov.in failed, and the coordinator reports the host's certificate as revoked. I did not bypass TLS, so the live copy is unconfirmed.",
+  "findings": [
+    { "target": "content:benefit", "severity": "minor", "note": "Omits ₹20,000 a year in the 4th and 5th years of some professional courses (§7).", "suggestion": "Add one sentence in en and hi." },
+    { "target": "documents", "severity": "minor", "note": "§8 requires a bank account; there is no row.", "suggestion": "Add bank_account." }
+  ]
+}

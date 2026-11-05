@@ -1,0 +1,273 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "yearly"
+  },
+  "deadlines": [
+    {
+      "label": {
+        "en": "2026-27 new students: online application",
+        "hi": "2026-27 नए छात्र: ऑनलाइन आवेदन"
+      },
+      "state_code": "up",
+      "opens_at": "2026-08-11",
+      "closes_at": "2026-09-21",
+      "source": "dates_pre",
+      "quote": "नवीन (Fresh) छात्रों द्वारा रजिस्ट्रेशन / आनलाइन आवेदन करना | August 11, 2026 | September 21, 2026"
+    }
+  ],
+  "relations": [],
+  "changes": [],
+  "slug": "up-pre-matric-general",
+  "category": "education",
+  "icon": "📚",
+  "ministry": {
+    "en": "Department of Social Welfare, Uttar Pradesh",
+    "hi": "समाज कल्याण विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://scholarship.up.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Uttar Pradesh Pre-Matric Scholarship, General category (class 9-10)",
+      "summary": "A yearly scholarship from the Uttar Pradesh government for General category students in class 9 or 10.",
+      "benefit": "₹3,000 a year, paid into the student’s bank account.",
+      "how_to_apply": "Apply at scholarship.up.gov.in, the whole process is online. Give the printed form and papers to your school. Dates change every year. Students from a minority community are covered by the Minority Welfare Department instead. A student can hold only one scholarship."
+    },
+    "hi": {
+      "name": "उत्तर प्रदेश पूर्वदशम छात्रवृत्ति, सामान्य वर्ग (कक्षा 9-10)",
+      "summary": "कक्षा 9 या 10 में पढ़ने वाले सामान्य वर्ग के छात्रों के लिए उत्तर प्रदेश सरकार की सालाना छात्रवृत्ति।",
+      "benefit": "साल में ₹3,000, जो छात्र के बैंक खाते में आते हैं।",
+      "how_to_apply": "scholarship.up.gov.in पर आवेदन करें, पूरा काम ऑनलाइन होता है। छपा हुआ फ़ॉर्म और काग़ज़ अपने विद्यालय में दें। तारीखें हर साल बदलती हैं। अल्पसंख्यक समुदाय के छात्र अल्पसंख्यक कल्याण विभाग की योजना में आते हैं। एक छात्र एक ही छात्रवृत्ति ले सकता है।"
+    }
+  },
+  "sources": [
+    {
+      "id": "dept",
+      "url": "https://samajkalyan.up.gov.in/en/article/scholarship-scheme",
+      "title": "Scholarship Scheme",
+      "publisher": "Department of Social Welfare, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:cbba8c2e0b837cab636be201a472a71de4a38b12f6df433094baf8ede1628445",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "dates_pre",
+      "url": "https://scholarship.up.gov.in/",
+      "title": "Important dates 2026-27: pre-matric (class 9-10) and class 11-12",
+      "publisher": "Scholarship and Fee Reimbursement Online System, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "hi",
+      "published_date": "2026-07",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:31fe1ff6c62c9875817b68fa2651225e7976c41e76aa96dd22143b6bc8cbac02",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "fetch": "manual",
+      "fetch_note": "The date table loads by script from the portal's public GetAlertBoxData call (scheme: Pre), so the automatic re-check can't see it. Saved as text on 2026-11-05. The dates are later than the first timetable order of 20 Jul 2026 (no. 92/2026/1940/26-3-2026)."
+    },
+    {
+      "id": "rules_2023",
+      "url": "https://samajkalyan.up.gov.in/site/writereaddata/siteContent/202511271535291484niymawali-9-10%20gen%202023-compressed.pdf",
+      "title": "Rules for the Uttar Pradesh General category pre-matric scholarship scheme 2023",
+      "publisher": "Government of Uttar Pradesh",
+      "doc_type": "guideline",
+      "lang": "hi",
+      "published_date": "2023-09",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:8ee6fca6cb097e85d70c287bcf6e9a32649079cdcbe56c55773822cebfe6f73d",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "note": "Scanned. The quoted lines are a hand transcription from the page images (read 2026-11-05), appended to the snapshot and marked as such; they are not extracted text."
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "rules_2023",
+      "locator": "Para 6(i)",
+      "quote": "केवल वे ही अभ्यर्थी इसके पात्र होंगे, जो उत्तर प्रदेश राज्य से सम्बन्धित हों अर्थात उत्तर प्रदेश राज्य के स्थाई निवासी हों",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          12
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "rules_2023",
+      "locator": "Para 6(vii). The age counts on 1 July, so a near miss should check.",
+      "quote": "01 जुलाई को अभ्यर्थी की आयु 12 वर्ष से कम तथा 20 वर्ष से अधिक होने पर अभ्यर्थी छात्रवृत्ति हेतु अपात्र होगा",
+      "text": {
+        "en": "Age 12 or older on 1 July",
+        "hi": "1 जुलाई को उम्र 12 साल या ज़्यादा"
+      }
+    },
+    {
+      "code": "age_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "age"
+          },
+          20
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "rules_2023",
+      "locator": "Para 6(vii). The age counts on 1 July, so a near miss should check.",
+      "quote": "01 जुलाई को अभ्यर्थी की आयु 12 वर्ष से कम तथा 20 वर्ष से अधिक होने पर अभ्यर्थी छात्रवृत्ति हेतु अपात्र होगा",
+      "text": {
+        "en": "Age 20 or younger on 1 July",
+        "hi": "1 जुलाई को उम्र 20 साल या कम"
+      }
+    },
+    {
+      "code": "category",
+      "logic": {
+        "in": [
+          {
+            "var": "social_category"
+          },
+          [
+            "general",
+            "ews"
+          ]
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "About Schemes, para 1",
+      "quote": "Pre-Matric Scholarship scheme Scheduled Castes/General Category (Class 9th and 10th)",
+      "text": {
+        "en": "General category",
+        "hi": "सामान्य वर्ग"
+      }
+    },
+    {
+      "code": "class_9_10",
+      "logic": {
+        "==": [
+          {
+            "var": "education_level"
+          },
+          "class_9_10"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "About Schemes, para 1",
+      "quote": "Pre-Matric Scholarship scheme Scheduled Castes/General Category (Class 9th and 10th)",
+      "text": {
+        "en": "Studying in class 9 or 10",
+        "hi": "कक्षा 9 या 10 में पढ़ रहे हैं"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          250000
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "About Schemes, para 1",
+      "quote": "annual income of per family from all sources has been fixed Rs. 2,50,000/-",
+      "text": {
+        "en": "Family income from all sources is up to ₹2.5 lakh a year",
+        "hi": "परिवार की सभी स्रोतों से सालाना आय ₹2.5 लाख तक है"
+      }
+    },
+    {
+      "code": "not_minority",
+      "logic": {
+        "==": [
+          {
+            "var": "is_minority"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "rules_2023",
+      "locator": "Para 5(vii)",
+      "quote": "अल्पसंख्यक श्रेणी के अंतर्गत आने वाले सामान्य वर्ग के अभ्यर्थी अल्पसंख्यक कल्याण विभाग द्वारा संचालित योजनाओं से आच्छादित होंगे",
+      "text": {
+        "en": "Not from a minority community (those students are covered by the Minority Welfare Department)",
+        "hi": "अल्पसंख्यक समुदाय से नहीं हैं (ऐसे छात्र अल्पसंख्यक कल्याण विभाग की योजनाओं में आते हैं)"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "payment",
+      "source": "dept",
+      "quote": "Amount of scholarship is transferred in the bank accounts of students through P.F.M.S."
+    },
+    {
+      "about": "amount",
+      "source": "rules_2023",
+      "quote": "सम्पूर्ण पाठ्यक्रम अवधि में छात्रवृत्ति की दर रू0 3000/- वार्षिक की धनराशि छात्रों को प्रदान की जानी है"
+    }
+  ],
+  "documents": [
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "rules_2023"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "rules_2023"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "rules_2023"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "267183dac6c1d4d4"
+  }
+}

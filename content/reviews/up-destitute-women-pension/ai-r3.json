@@ -1,0 +1,41 @@
+{
+  "slug": "up-destitute-women-pension",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "615876c4d47d755a",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "women_dept",
+      "content_hash": "sha256:60a61f5ac2e371487090d9728bcdad7d45c9a87d78a4c701e38889bc89842ea2",
+      "method": "snapshot"
+    },
+    {
+      "id": "budget_2026",
+      "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Budget 2026-27 lists the scheme. A ₹1,500 pension was announced by the Chief Minister in June 2026; reports of 12 October 2026 say it has in-principle approval only, with no Cabinet decision or order. ₹1,000 stands for now. mahilakalyan.up.nic.in robots.txt returned 500, so checked against saved text.",
+  "findings": [
+    {
+      "target": "content:benefit",
+      "severity": "minor",
+      "note": "A rise to ₹1,500 is reported as proposed, not ordered.",
+      "suggestion": "Watch for the order and update at once if issued."
+    },
+    {
+      "target": "rule:resident",
+      "severity": "minor",
+      "note": "The source says permanent resident (स्थायी निवासी), stricter than 'Lives in Uttar Pradesh'.",
+      "suggestion": "Say 'permanent resident'."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "No document rows.",
+      "suggestion": "Add them if a source lists them."
+    }
+  ]
+}

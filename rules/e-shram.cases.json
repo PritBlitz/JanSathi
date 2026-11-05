@@ -1,0 +1,191 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "age": 30,
+      "occupation": "daily_wage",
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "age 15",
+    "profile": {
+      "age": 15,
+      "occupation": "daily_wage",
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "age 16",
+    "profile": {
+      "age": 16,
+      "occupation": "daily_wage",
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 17",
+    "profile": {
+      "age": 17,
+      "occupation": "daily_wage",
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 58",
+    "profile": {
+      "age": 58,
+      "occupation": "daily_wage",
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 59",
+    "profile": {
+      "age": 59,
+      "occupation": "daily_wage",
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 60",
+    "profile": {
+      "age": 60,
+      "occupation": "daily_wage",
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "age_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "age band 60 to 69",
+    "profile": {
+      "age": {
+        "min": 60,
+        "max": 69
+      },
+      "occupation": "daily_wage",
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "age_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "salaried: check with the office",
+    "profile": {
+      "age": 30,
+      "occupation": "salaried",
+      "has_formal_pension_cover": false,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "unorganised": "fail"
+      }
+    }
+  },
+  {
+    "name": "EPF or other cover: check with the office",
+    "profile": {
+      "age": 30,
+      "occupation": "daily_wage",
+      "has_formal_pension_cover": true,
+      "pays_income_tax": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "no_epf_esic": "fail"
+      }
+    }
+  },
+  {
+    "name": "pays income tax",
+    "profile": {
+      "age": 30,
+      "occupation": "daily_wage",
+      "has_formal_pension_cover": false,
+      "pays_income_tax": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "no_income_tax": "fail"
+      }
+    }
+  },
+  {
+    "name": "tax answer missing",
+    "profile": {
+      "age": 30,
+      "occupation": "daily_wage",
+      "has_formal_pension_cover": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "pays_income_tax"
+      ]
+    }
+  }
+]

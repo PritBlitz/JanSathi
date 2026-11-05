@@ -1,0 +1,92 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "preparing_for_competitive_exam": true,
+      "education_level": "ug"
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "class 12",
+    "profile": {
+      "state": "up",
+      "preparing_for_competitive_exam": true,
+      "education_level": "class_11_12"
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "not studying: a graduate may still qualify",
+    "profile": {
+      "state": "up",
+      "preparing_for_competitive_exam": true,
+      "education_level": "not_studying"
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "education": "fail"
+      }
+    }
+  },
+  {
+    "name": "not preparing for an exam",
+    "profile": {
+      "state": "up",
+      "preparing_for_competitive_exam": false,
+      "education_level": "ug"
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "preparing": "fail"
+      }
+    }
+  },
+  {
+    "name": "lives in another state",
+    "profile": {
+      "state": "br",
+      "preparing_for_competitive_exam": true,
+      "education_level": "ug"
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "education missing",
+    "profile": {
+      "state": "up",
+      "preparing_for_competitive_exam": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "education_level"
+      ]
+    }
+  }
+]

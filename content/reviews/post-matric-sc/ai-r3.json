@@ -1,0 +1,19 @@
+{
+  "slug": "post-matric-sc",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "e7c9b931c15bdbe1",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:cf73697baff4d7ebaf5919363296479b501ea9efc146a27de50623a9472cfa57", "method": "snapshot" },
+    { "id": "guidelines_text", "content_hash": "sha256:d726e2c8a16dcf572b050a014df9551414781bdc8b0268e7f3fcd5374a2c9f22", "method": "refetched" },
+    { "id": "msje", "content_hash": "sha256:720f07546e93fb08da7acc4a310e211252fbeb24f37d75ef22479a158569e45b", "method": "snapshot" },
+    { "id": "nsp", "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Re-review. Both blockers resolved: rules are 'guidance' with the period disclosed in en and hi, and the relation notes reflect the NSP clause. The ₹4.5 lakh proposal (March 2026 report) is still not notified. The scanned 'guidelines' source could not be verified; guidelines_text was used.",
+  "findings": [
+    { "target": "documents", "severity": "minor", "note": "The marksheet, fee_receipt and bank_account rows cite 'nsp', whose saved text does not list them; guidelines_text supports them.", "suggestion": "Cite guidelines_text." },
+    { "target": "documents:aadhaar", "severity": "minor", "note": "The guidelines accept an Aadhaar EID or alternative ID at admission.", "suggestion": "Note the alternative." }
+  ]
+}

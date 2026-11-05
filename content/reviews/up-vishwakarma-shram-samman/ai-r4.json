@@ -1,0 +1,42 @@
+{
+  "slug": "up-vishwakarma-shram-samman",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "88d38cbdd382b0de",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "msme_connect",
+      "content_hash": "sha256:63fd2f45455232c12f247661d7aab2a174cbb80c28581a85aef41027edb1a13f",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Searched msme1connect.up.gov.in and the web for the 2.0 order and 2026 changes. The 2026-27 2.0 order could not be read: its link on the official page is broken (the href is the text \"File size exceeds 2048 KB limit\"). Older eligibility PDF read as an image. Patrika (20 Jun 2026) reports a district application last date of 30 June 2026.",
+  "findings": [
+    {
+      "target": "sources",
+      "severity": "minor",
+      "note": "Could not verify against the 2026-27 \"2.0\" government order because its link on the official page is broken. Rules and amounts were checked against the live portal text only, so guidance confidence is right.",
+      "suggestion": "Add the order as a source when a working copy is available."
+    },
+    {
+      "target": "content.how_to_apply",
+      "severity": "minor",
+      "note": "The older eligibility PDF on the same page says only one family member (husband or wife) may apply, and applicants outside traditional artisan castes need a certificate from the Gram Pradhan or ward member. June 2026 press repeats both. Neither is shown.",
+      "suggestion": "Add both, marked as subject to the 2.0 order."
+    },
+    {
+      "target": "window",
+      "severity": "minor",
+      "note": "Marked rolling, but press reports a district last date of 30 June 2026, so intake may run in batches.",
+      "suggestion": "Tell people to check the current application window."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Empty, though the scheme PDF on the official page lists identity proof, age proof, and caste or disability certificate if applicable.",
+      "suggestion": "Add document rows."
+    }
+  ]
+}

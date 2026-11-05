@@ -1,0 +1,52 @@
+{
+  "slug": "pmfby",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "8dce028088ed6c6a",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "factsheet_2026",
+      "content_hash": "sha256:fbea6acacc46d5864d6408dac2b23a7bf85361b5fc8b72ea42c5819a329ed33f",
+      "method": "refetched"
+    },
+    {
+      "id": "portal",
+      "content_hash": "sha256:0580ed18711602b15107f18de2119a2ad1f3b3bc6c769617c3d0ba8189fb7444",
+      "method": "snapshot"
+    },
+    {
+      "id": "guidelines_2020",
+      "content_hash": "sha256:fc57c66ee9a275309bdcf84a81398376075bdd8657d026c673ef363a3a7616f8",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. New source: Revamped Operational Guidelines effective Kharif 2020, read in the snapshot. A later 2023 revision was not obtained.",
+  "findings": [
+    {
+      "target": "deadlines",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. The dates are removed, and the text tells people to use their state's last date.",
+      "suggestion": "None."
+    },
+    {
+      "target": "documents:aadhaar",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Now optional, citing the 2020 guidelines, with the enrolment alternative in both languages.",
+      "suggestion": "None."
+    },
+    {
+      "target": "documents:bank_account",
+      "severity": "minor",
+      "note": "The quote \"Having a bank account is essential for such cases\" is about CSC applications only.",
+      "suggestion": "Quote a general clause if one exists."
+    },
+    {
+      "target": "tests",
+      "severity": "minor",
+      "note": "The first fixture expects stale: false, which holds only after the scheme is published, so npm test fails on it while the status is needs_review. This comes from the status, not the rules.",
+      "suggestion": "It should pass after publishing. Confirm with npm test then."
+    }
+  ]
+}

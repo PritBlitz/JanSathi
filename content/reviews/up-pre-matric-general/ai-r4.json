@@ -1,0 +1,58 @@
+{
+  "slug": "up-pre-matric-general",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "267183dac6c1d4d4",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dept",
+      "content_hash": "sha256:cbba8c2e0b837cab636be201a472a71de4a38b12f6df433094baf8ede1628445",
+      "method": "refetched"
+    },
+    {
+      "id": "dates_pre",
+      "content_hash": "sha256:31fe1ff6c62c9875817b68fa2651225e7976c41e76aa96dd22143b6bc8cbac02",
+      "method": "snapshot"
+    },
+    {
+      "id": "rules_2023",
+      "content_hash": "sha256:8ee6fca6cb097e85d70c287bcf6e9a32649079cdcbe56c55773822cebfe6f73d",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. Hand-transcribed paras 5(vii), 5(ix), 6(i) and 6(vii) compared with the page images I read: they match, apart from a comma in 6(i) that does not change the meaning. The rules PDF timed out on refetch, so it was checked by snapshot.",
+  "findings": [
+    {
+      "target": "rules",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Age rules (12 to 20 on 1 July) added as uncertain, with fixtures at 11, 12, 20 and 21.",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:category",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. not_minority rule and fixture added, quoting para 5(vii).",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:resident",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Now cites para 6(i), and the text is in the snapshot.",
+      "suggestion": "None."
+    },
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. ₹3,000 a year is now stated with a quoted fact.",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:class_9_10",
+      "severity": "minor",
+      "note": "Still open: para 6(i) requires a student at a government, aided or board-recognised school.",
+      "suggestion": "Mention it in how_to_apply."
+    }
+  ]
+}

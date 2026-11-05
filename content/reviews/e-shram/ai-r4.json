@@ -1,0 +1,34 @@
+{
+  "slug": "e-shram",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "bb72caea813ba00d",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "faq",
+      "content_hash": "sha256:d26a9fff1a0938a8573a8b681a60af7ebe279fd431f8c8ff8074414847e557e5",
+      "method": "refetched"
+    },
+    {
+      "id": "nic",
+      "content_hash": "sha256:b27bb509afb7db657306b2678e09e771f1efb39c93137b4e446ea1b9bb6c0b1d",
+      "method": "refetched"
+    },
+    {
+      "id": "pib_2026",
+      "content_hash": "sha256:9b369a91db454b65912b447f84bee0b7925b73e15e2c95d16314b57294d5d430",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. New pib_2026 page checked in the snapshot; the quote is found.",
+  "findings": [
+    {
+      "target": "rule:age_max",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Now uncertain, the conflict is disclosed in both languages, and fixtures are updated.",
+      "suggestion": "None."
+    }
+  ]
+}

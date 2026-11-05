@@ -6,7 +6,28 @@
     "type": "yearly"
   },
   "deadlines": [],
-  "relations": [],
+  "relations": [
+    {
+      "kind": "excludes",
+      "with": "post-matric-pwd",
+      "source": "guidelines",
+      "quote": "A scholarship holder under this Scheme will not hold any other scholarship/ stipend.",
+      "note": {
+        "en": "You may apply for both on the National Scholarship Portal, but the scheme rules let you keep only one. If you are offered both, choose one.",
+        "hi": "आप राष्ट्रीय छात्रवृत्ति पोर्टल पर दोनों के लिए आवेदन कर सकते हैं, लेकिन योजना के नियमों के अनुसार एक ही रख सकते हैं। दोनों मिलें तो एक चुनें।"
+      }
+    },
+    {
+      "kind": "excludes",
+      "with": "pm-usp",
+      "source": "guidelines",
+      "quote": "A scholarship holder under this Scheme will not hold any other scholarship/ stipend.",
+      "note": {
+        "en": "You may apply for both on the National Scholarship Portal, but the scheme rules let you keep only one. If you are offered both, choose one.",
+        "hi": "आप राष्ट्रीय छात्रवृत्ति पोर्टल पर दोनों के लिए आवेदन कर सकते हैं, लेकिन योजना के नियमों के अनुसार एक ही रख सकते हैं। दोनों मिलें तो एक चुनें।"
+      }
+    }
+  ],
   "slug": "post-matric-obc",
   "category": "education",
   "icon": "🎓",
@@ -21,13 +42,13 @@
       "name": "Post-matric scholarship for OBC, EBC and DNT students (PM-YASASVI)",
       "summary": "A scholarship for students from Other Backward Classes, Economically Backward Classes and Denotified Tribes who have passed class 10 and study further.",
       "benefit": "The scholarship pays a yearly academic allowance and tuition fee. The amount depends on the course group: ₹20,000 a year for degree and post-graduate professional courses, ₹13,000 for other professional courses, ₹8,000 for other graduate and post-graduate courses, and ₹5,000 for courses after class 10 that are not degrees (such as class 11-12, ITI and polytechnic). Your state may add more. Only two boys of the same parents can get it; there is no such limit for girls.",
-      "how_to_apply": "Apply on your state's scholarship portal or the National Scholarship Portal. Get an income certificate once, at admission. You cannot hold another scholarship at the same time. The current guidelines cover 2021-22 to 2025-26; check the portal for this year's rules."
+      "how_to_apply": "Apply on your state's scholarship portal or the National Scholarship Portal. Get an income certificate once, at admission. You cannot hold another scholarship at the same time. The guidelines ran to 2025-26. No later order was found, so confirm the current rules and amounts with the office before applying."
     },
     "hi": {
       "name": "अन्य पिछड़ा वर्ग, आर्थिक रूप से पिछड़ा वर्ग और विमुक्त जनजाति छात्रों के लिए पोस्ट-मैट्रिक छात्रवृत्ति (पीएम-यशस्वी)",
       "summary": "कक्षा 10 पास करके आगे पढ़ने वाले अन्य पिछड़ा वर्ग, आर्थिक रूप से पिछड़ा वर्ग और विमुक्त जनजाति के छात्रों के लिए छात्रवृत्ति।",
       "benefit": "छात्रवृत्ति सालाना शैक्षणिक भत्ता और ट्यूशन फ़ीस देती है। राशि कोर्स के समूह पर निर्भर है: डिग्री और स्नातकोत्तर स्तर के प्रोफ़ेशनल कोर्स के लिए साल में ₹20,000, दूसरे प्रोफ़ेशनल कोर्स के लिए ₹13,000, बाकी स्नातक और स्नातकोत्तर कोर्स के लिए ₹8,000, और कक्षा 10 के बाद के ऐसे कोर्स जो डिग्री नहीं हैं (जैसे कक्षा 11-12, आईटीआई और पॉलिटेक्निक) के लिए ₹5,000। राज्य इसमें और जोड़ सकता है। एक ही माता-पिता के केवल दो बेटों को मिलती है; बेटियों के लिए ऐसी कोई सीमा नहीं है।",
-      "how_to_apply": "अपने राज्य के छात्रवृत्ति पोर्टल या राष्ट्रीय छात्रवृत्ति पोर्टल पर आवेदन करें। आय प्रमाण पत्र एक बार, दाख़िले के समय बनवाएँ। एक साथ दूसरी छात्रवृत्ति नहीं ले सकते। मौजूदा दिशानिर्देश 2021-22 से 2025-26 तक के हैं; इस साल के नियम पोर्टल पर देखें।"
+      "how_to_apply": "अपने राज्य के छात्रवृत्ति पोर्टल या राष्ट्रीय छात्रवृत्ति पोर्टल पर आवेदन करें। आय प्रमाण पत्र एक बार, दाख़िले के समय बनवाएँ। एक साथ दूसरी छात्रवृत्ति नहीं ले सकते। दिशानिर्देश 2025-26 तक के थे। इसके बाद का कोई आदेश नहीं मिला, इसलिए आवेदन से पहले मौजूदा नियम और राशि कार्यालय से पक्की कर लें।"
     }
   },
   "sources": [
@@ -41,8 +62,8 @@
       "published_date": null,
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:4241720de7314a384a7b2f4c595066c974752aedf721e86dd160dc8e824c63d8",
-      "verified_at": "2026-10-26",
-      "verified_by": "ai-r1, ai-r2",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
       "note": "Guidelines cover 2021-22 to 2025-26. A reviewer must confirm the scheme period after March 2026."
     },
     {
@@ -57,6 +78,19 @@
       "content_hash": "sha256:7897664e41137dd91ba373018d889d95be00b370a8d3905e20b3d797ae980f27",
       "verified_at": null,
       "verified_by": null
+    },
+    {
+      "id": "nsp",
+      "url": "https://scholarships.gov.in/",
+      "title": "National Scholarship Portal",
+      "publisher": "Government of India",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
     }
   ],
   "rules": [
@@ -96,7 +130,7 @@
         ]
       },
       "hard": true,
-      "confidence": "confirmed",
+      "confidence": "guidance",
       "source": "guidelines",
       "locator": "Conditions of Eligibility (iii), p. 14",
       "quote": "passed the Matriculation or Higher secondary or any higher examination of a recognized University or Board of Secondary Education will be eligible",
@@ -116,7 +150,7 @@
         ]
       },
       "hard": true,
-      "confidence": "confirmed",
+      "confidence": "guidance",
       "source": "guidelines",
       "locator": "Conditions of Eligibility (xiv)-(xv), p. 15",
       "quote": "Unemployed students whose parents/guardians income from all sources does not exceed Rs. 2.50 lakh per annum will be entitled for the scholarship under the scheme.",
@@ -156,6 +190,11 @@
       "about": "benefit",
       "source": "guidelines",
       "quote": "Only two boys of the same parents/guardian will be entitled to receive scholarships. This restriction will, however, not apply to girls."
+    },
+    {
+      "about": "nsp_rule",
+      "source": "nsp",
+      "quote": "Students may apply for one merit-based scholarship scheme and one or more welfare-based scholarship schemes from AY 2026–27"
     }
   ],
   "documents": [
@@ -188,10 +227,10 @@
   "verification": {
     "method": "ai-dual-review",
     "reviewers": [
-      "ai-r1",
-      "ai-r2"
+      "ai-r3",
+      "ai-r4"
     ],
-    "date": "2026-10-26",
-    "content_version": "54dc7f48807c8648"
+    "date": "2026-11-05",
+    "content_version": "7b7cec0a168ad4db"
   }
 }

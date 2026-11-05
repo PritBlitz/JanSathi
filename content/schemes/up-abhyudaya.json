@@ -1,0 +1,177 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "changes": [],
+  "slug": "up-abhyudaya",
+  "category": "education",
+  "icon": "📖",
+  "ministry": {
+    "en": "Department of Social Welfare, Uttar Pradesh",
+    "hi": "समाज कल्याण विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://abhyudayup.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "Mukhyamantri Abhyudaya Yojana (free coaching)",
+      "summary": "Free coaching in Uttar Pradesh for students preparing for exams such as UPSC, UPPSC, NDA/CDS, JEE and NEET.",
+      "benefit": "Free coaching, online and in person, with mentoring and study material. It has no fee. A place depends on selection: for most courses by an entrance exam, merit or direct admission.",
+      "how_to_apply": "Apply online only, at abhyudayup.in, through \"Student Registration\". The application is free. Keep Aadhaar, a ration card, proof of your studies and proof that you live in Uttar Pradesh ready."
+    },
+    "hi": {
+      "name": "मुख्यमंत्री अभ्युदय योजना (मुफ़्त कोचिंग)",
+      "summary": "उत्तर प्रदेश में UPSC, UPPSC, NDA/CDS, JEE और NEET जैसी परीक्षाओं की तैयारी करने वाले छात्रों के लिए मुफ़्त कोचिंग।",
+      "benefit": "मुफ़्त कोचिंग, ऑनलाइन और कक्षा में, मार्गदर्शन और अध्ययन सामग्री के साथ। इसकी कोई फ़ीस नहीं है। जगह चयन पर निर्भर है: ज़्यादातर कोर्स में प्रवेश परीक्षा, मेरिट या सीधे प्रवेश से।",
+      "how_to_apply": "केवल ऑनलाइन abhyudayup.in पर \"Student Registration\" से आवेदन करें। आवेदन मुफ़्त है। आधार, राशन कार्ड, पढ़ाई का प्रमाण और उत्तर प्रदेश में रहने का प्रमाण तैयार रखें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "dept",
+      "url": "https://samajkalyan.up.gov.in/en/article/mukhyamantri-abhyuday-scheme",
+      "title": "Mukhyamantri Abhyuday Scheme",
+      "publisher": "Department of Social Welfare, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:4936b91d100c9c0ab9a93804f345ef461a9f69afb5db3eaa7e6e629a3dd59772",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "budget_2026",
+      "url": "https://information.up.gov.in/admin/UploadDocument/OtherPress/compressed_12022026010930Final%20English%20Budget%202026-27.pdf",
+      "title": "Highlights and salient features of the Uttar Pradesh Budget 2026-27",
+      "publisher": "Information Department, Government of Uttar Pradesh",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-02",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "Eligibility, Residence",
+      "quote": "It is mandatory to be a native of Uttar Pradesh.",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "preparing",
+      "logic": {
+        "==": [
+          {
+            "var": "preparing_for_competitive_exam"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "Objective",
+      "quote": "to prepare for UPSC, UPPSC, NDA/CDS, JEE (Mains), NEET",
+      "text": {
+        "en": "Is preparing for a competitive exam",
+        "hi": "किसी प्रतियोगी परीक्षा की तैयारी कर रहे हैं"
+      }
+    },
+    {
+      "code": "education",
+      "logic": {
+        "in": [
+          {
+            "var": "education_level"
+          },
+          [
+            "class_9_10",
+            "class_11_12",
+            "ug",
+            "pg"
+          ]
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "dept",
+      "locator": "Eligibility, Educational qualification",
+      "quote": "Students studying in class 10th and 12th, or graduates.",
+      "text": {
+        "en": "Studying in class 10 or 12, or a graduate",
+        "hi": "कक्षा 10 या 12 में पढ़ रहे हैं, या स्नातक हैं"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "benefit",
+      "source": "dept",
+      "quote": "Free coaching: Training is provided in both online"
+    },
+    {
+      "about": "reach",
+      "source": "budget_2026",
+      "quote": "Under the 'Mukhyamantri Abhyudaya Yojana' more than 23,000 youth are currently"
+    },
+    {
+      "about": "how_to_apply",
+      "source": "dept",
+      "quote": "Application is done through online mode only."
+    },
+    {
+      "about": "selection",
+      "source": "dept",
+      "quote": "Students for most courses will be selected through an entrance exam, merit, or direct admission."
+    }
+  ],
+  "documents": [
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "dept"
+    },
+    {
+      "code": "ration_card",
+      "mandatory": true,
+      "source": "dept"
+    },
+    {
+      "code": "domicile_certificate",
+      "mandatory": true,
+      "source": "dept"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "62bb64e67258a7a5"
+  }
+}

@@ -1,0 +1,135 @@
+Unique Disability ID (UDID) | Department of Empowerment of Persons with Disabilities | India
+-->
+Unique Disability ID (UDID)
+Unique Disability ID (UDID)
+The Unique ID for Persons with Disabilities project is being implemented to create a national database of Persons with Disabilities (PwDs) and issue a Unique Disability Identity Card (UDID) to each individual. This initiative ensures transparency, efficiency and ease in delivering government benefits to PwDs while maintaining uniformity across regions.
+It also aids in tracking the physical and financial progress of beneficiaries across various administrative levels, including village, block, district, state and national levels.
+The UDID project, launched by the Department of Empowerment of Persons with Disabilities, aims to build a comprehensive end-to-end system for issuing Universal IDs and Disability Certificates. This system includes:
+Nationwide availability of PwD data through a centralized web application.
+Online application submission for Disability Certificate and UDID card (offline submissions are also allowed and digitized later).
+Efficient assessment by hospitals or Medical Boards to determine the percentage of disability.
+Elimination of duplicate PwD records.
+Online renewal and updating of information by or on behalf of PwDs.
+Management Information System (MIS) reporting framework.
+Integrated management of various government benefits and schemes for PwDs.
+Support for additional disabilities in the future (currently 21 disabilities, subject to updates).
+Below is a brief overview of the card generation workflow and the key users of the UDID application:
+Persons with Disabilities (PwDs): PwDs must register on the
+UDID Portal
+Once registered and logged in, they can apply for a Disability Certificate and UDID card, track application status, request renewals or replacements and download or print their certificates.
+The portal also helps locate the concerned CMO Office, Medical Authority and District Welfare Officer and provides information regarding disability-related schemes and news.
+Medical Authorities: CMO Offices and Medical Boards use the portal to process applications, verify details, perform assessments and issue Disability Certificates and UDID cards electronically.
+This digital workflow accelerates processing and ensures timely delivery.
+District Welfare Officers: These officers assist PwDs by managing application counters and facilitating registration camps.
+The portal also supports the implementation of government schemes for Persons with Disabilities.
+District Collectors: District Collectors oversee project implementation and use the portal’s reporting features to monitor effectiveness and coverage.
+UDID
+Title
+Date
+View / Download
+Scheme for Financial Support for Implementation of Disability Certification and Unique Disability ID (UDID) Project (2026-27 to 2030-31)
+02/09/2026
+Accessible Version :
+View
+(402 KB)
+Standard Operating Procedure (SoP) for Rejection of Applications and Handling Rejected Applications through the UDID Portal (www.swavlambancard.gov.in)
+20/02/2026
+Accessible Version :
+View
+(227 KB)
+Advisory Regarding Prevention of Fraudulent UDID Cards and Disability Certificates
+25/11/2025
+Accessible Version :
+View
+(1 MB)
+SOP for e-KYC Process for PwD Applicant on UDID Portal
+20/11/2025
+Accessible Version :
+View
+(365 KB)
+Revised Updated Standard Operating Procedure (SoP) for Aadhaar enrolment of Children in difficult circumstances including missing children – by the Ministry of Women and Child Development
+07/11/2025
+Accessible Version :
+View
+(4 MB)
+Standard Operating Procedure for Aadhaar enrolment of destitute persons with disabilities who are above 18 years of age
+07/11/2025
+Accessible Version :
+View
+(1 MB)
+Intimation regarding Self-Service and Assisted Features available on the UDID Portal
+30/10/2025
+Accessible Version :
+View
+(200 KB)
+Standard Operating Procedure For Data Sharing Of UDID Through API (for Govt. & associated Organization’s)
+24/10/2025
+Accessible Version :
+View
+(611 KB)
+Advisory cum Standard Operating Procedure (SoP) to address cases of PwDs aggrieved with the decision of Medical Board Constituted by Government Employers (GEs) or GIHE and OHEI aided by Government.
+15/10/2025
+Accessible Version :
+View
+(252 KB)
+Standard Operating Procedure (SoP) for Deactivating/cancelling a Disability Certificate and UDID Card
+01/02/2025
+Accessible Version :
+View
+(499 KB)
+The Rights of Persons with Disabilities (Amendment) Rules, 2024.
+23/10/2024
+Accessible Version :
+View
+(3 MB)
+Standard Operating Procedure (SOP) for submitting request for renewal of Disability certificate/UDID card and handling such request through UDID portal (www.swavlambancard.gov.in)
+16/10/2024
+Accessible Version :
+View
+(568 KB)
+Revised system of delivery of benefits under the schemes/programmes and services of the Department and its associated organizations regarding
+18/09/2024
+Accessible Version :
+View
+(465 KB)
+Advisory for Issuance of Disability Certificates/UDID cards to PwDs assessed below 40% Disability
+05/07/2024
+Accessible Version :
+View
+(89 KB)
+Standard Operating Procedure (SOP) for appeal for re-assessment as per section 59 of the RPwD Act, 2016
+01/07/2024
+Accessible Version :
+View
+(1 MB)
+Standard Operating Procedure to handle the cases where type or percentage of disability or both of PwD has changed etc
+13/06/2024
+Accessible Version :
+View
+(755 KB)
+Standard Operating Procedure For Data Sharing Of UDID Through API (For Private Org.)
+20/03/2024
+Accessible Version :
+View
+(936 KB)
+Latest Notified Guidelines for assessing the extent of specified disabilities dated 14 March 2024
+14/03/2024
+Accessible Version :
+View
+(8 MB)
+Notification for making Aadhaar number mandatory for applying for UDID card for Adult
+08/08/2023
+Accessible Version :
+View
+(1 MB)
+Notification for making Aadhaar number mandatory for applying for UDID card for Children
+08/08/2023
+Accessible Version :
+View
+(1 MB)
+This website uses cookies to provide a better user experience.
+By clicking accept, you agree to the policies outlined in the Cookie Settings .
+Customize cookies
+Decline optional cookies
+Accept all cookies
+-->

@@ -1,0 +1,36 @@
+{
+  "slug": "adip",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "815667f4f9d36c9e",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:46dc574f7ce6615ef9428ff100976244945c5381f3e6c02e8fbaa487b9419397",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. No continuation order found in my earlier search.",
+  "findings": [
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. The income split is added with a quoted fact, in both languages.",
+      "suggestion": "None."
+    },
+    {
+      "target": "source:guidelines",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Rules are now guidance, and the text says no later order was found.",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:income_max",
+      "severity": "minor",
+      "note": "Still open: the clause is the person's own income, while the field asks for family income.",
+      "suggestion": "Explain it in the text."
+    }
+  ]
+}

@@ -21,13 +21,13 @@
       "name": "PM Fasal Bima Yojana (crop insurance)",
       "summary": "Low-cost insurance for crops lost to bad weather, pests or disease. Owner farmers, tenant farmers and sharecroppers can join. Farmers without a crop loan can join if they choose. For farmers with a crop loan, the bank takes the premium from the loan.",
       "benefit": "The farmer pays at most 2% of the insured amount for kharif food and oilseed crops, 1.5% for rabi food and oilseed crops, and 5% for commercial and horticulture crops. The central and state governments pay the rest of the premium.",
-      "how_to_apply": "Enrol through your bank, a Common Service Centre, the insurance company or the PMFBY website before your state's last date for the season. Only notified crops in notified areas are covered. In Kharif 2026, 25 states and union territories run the scheme, so check whether your state does. Tenant farmers and sharecroppers need the tenancy or sowing document your state asks for."
+      "how_to_apply": "Enrol through your bank, a Common Service Centre, the insurance company or the PMFBY website before your state's last date for the season. Only notified crops in notified areas are covered. In Kharif 2026, 25 states and union territories run the scheme, so check whether your state does. Tenant farmers and sharecroppers need the tenancy or sowing document your state asks for. Aadhaar is needed; a farmer without it may enrol with proof of Aadhaar enrolment."
     },
     "hi": {
       "name": "प्रधानमंत्री फ़सल बीमा योजना",
       "summary": "ख़राब मौसम, कीड़ों या बीमारी से फ़सल के नुकसान के लिए कम कीमत का बीमा। ज़मीन के मालिक किसान, किरायेदार किसान और बटाईदार जुड़ सकते हैं। जिन किसानों पर फ़सल ऋण नहीं है, वे चाहें तो जुड़ सकते हैं। फ़सल ऋण वाले किसानों का प्रीमियम बैंक ऋण की राशि से काटता है।",
       "benefit": "किसान ख़रीफ़ की खाद्य और तिलहन फ़सलों के लिए बीमा राशि का ज़्यादा से ज़्यादा 2%, रबी की खाद्य और तिलहन फ़सलों के लिए 1.5%, और व्यावसायिक व बागवानी फ़सलों के लिए 5% देता है। बाकी प्रीमियम केंद्र और राज्य सरकार देती हैं।",
-      "how_to_apply": "सीज़न के लिए अपने राज्य की आख़िरी तारीख़ से पहले बैंक, कॉमन सर्विस सेंटर, बीमा कंपनी या पीएमएफ़बीवाई वेबसाइट से नामांकन करें। केवल अधिसूचित क्षेत्रों की अधिसूचित फ़सलें कवर होती हैं। ख़रीफ़ 2026 में 25 राज्य और केंद्र शासित प्रदेश यह योजना चला रहे हैं, इसलिए देखें कि आपका राज्य इसमें है या नहीं। किरायेदार किसानों और बटाईदारों को राज्य का माँगा गया किरायेदारी या बुवाई का दस्तावेज़ चाहिए।"
+      "how_to_apply": "सीज़न के लिए अपने राज्य की आख़िरी तारीख़ से पहले बैंक, कॉमन सर्विस सेंटर, बीमा कंपनी या पीएमएफ़बीवाई वेबसाइट से नामांकन करें। केवल अधिसूचित क्षेत्रों की अधिसूचित फ़सलें कवर होती हैं। ख़रीफ़ 2026 में 25 राज्य और केंद्र शासित प्रदेश यह योजना चला रहे हैं, इसलिए देखें कि आपका राज्य इसमें है या नहीं। किरायेदार किसानों और बटाईदारों को राज्य का माँगा गया किरायेदारी या बुवाई का दस्तावेज़ चाहिए। आधार ज़रूरी है; जिस किसान के पास आधार नहीं है, वह आधार नामांकन के प्रमाण से जुड़ सकता है।"
     }
   },
   "sources": [
@@ -41,8 +41,8 @@
       "published_date": "2026-08-29",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:fbea6acacc46d5864d6408dac2b23a7bf85361b5fc8b72ea42c5819a329ed33f",
-      "verified_at": "2026-10-25",
-      "verified_by": "ai-r1, ai-r2"
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
     },
     {
       "id": "portal",
@@ -56,6 +56,19 @@
       "content_hash": "sha256:0580ed18711602b15107f18de2119a2ad1f3b3bc6c769617c3d0ba8189fb7444",
       "verified_at": "2026-10-25",
       "verified_by": "ai-r1, ai-r2"
+    },
+    {
+      "id": "guidelines_2020",
+      "url": "https://pmfby.gov.in/pdf/Revamped%20Operational%20Guidelines_17th%20August%202020.pdf",
+      "title": "PMFBY Revamped Operational Guidelines",
+      "publisher": "Department of Agriculture, Cooperation and Farmers Welfare",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2020-08",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:fc57c66ee9a275309bdcf84a81398376075bdd8657d026c673ef363a3a7616f8",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
     }
   ],
   "rules": [
@@ -110,18 +123,33 @@
       "about": "benefit",
       "source": "factsheet_2026",
       "quote": "crop losses in non-notified areas, outside the covered crop lifecycle (i.e., before sowing and after removal of the crop from the field), and losses caused by negligence or man-made or preventable risks are not covered."
+    },
+    {
+      "about": "documents",
+      "source": "guidelines_2020",
+      "quote": "Aadhaar has been made mandatory for availing Crop insurance from Kharif"
+    },
+    {
+      "about": "documents",
+      "source": "guidelines_2020",
+      "quote": "Farmers not having Aadhaar Identity (ID) may also enrol under PMFBY subject to"
+    },
+    {
+      "about": "documents",
+      "source": "guidelines_2020",
+      "quote": "Having a bank account is essential for such cases."
     }
   ],
   "documents": [
     {
       "code": "aadhaar",
-      "mandatory": true,
-      "source": "portal"
+      "mandatory": false,
+      "source": "guidelines_2020"
     },
     {
       "code": "bank_account",
       "mandatory": true,
-      "source": "portal"
+      "source": "guidelines_2020"
     },
     {
       "code": "land_records",
@@ -137,10 +165,10 @@
   "verification": {
     "method": "ai-dual-review",
     "reviewers": [
-      "ai-r1",
-      "ai-r2"
+      "ai-r3",
+      "ai-r4"
     ],
-    "date": "2026-10-25",
-    "content_version": "9aca5d8ee03f94c4"
+    "date": "2026-11-05",
+    "content_version": "8dce028088ed6c6a"
   }
 }

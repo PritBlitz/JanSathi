@@ -1,0 +1,248 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [
+    {
+      "kind": "excludes",
+      "with": "up-old-age-pension",
+      "source": "dept",
+      "quote": "Individuals that are receiving pension/grant/aid under old age pension, widow pension, Samajwadi pension or any other scheme",
+      "note": {
+        "en": "A person getting another government pension cannot also get this one.",
+        "hi": "जिन्हें दूसरी सरकारी पेंशन मिल रही है, वे यह पेंशन साथ में नहीं ले सकते।"
+      }
+    },
+    {
+      "kind": "excludes",
+      "with": "up-destitute-women-pension",
+      "source": "dept",
+      "quote": "Individuals that are receiving pension/grant/aid under old age pension, widow pension, Samajwadi pension or any other scheme",
+      "note": {
+        "en": "A person getting another government pension cannot also get this one.",
+        "hi": "जिन्हें दूसरी सरकारी पेंशन मिल रही है, वे यह पेंशन साथ में नहीं ले सकते।"
+      }
+    }
+  ],
+  "changes": [],
+  "slug": "up-divyang-pension",
+  "category": "disability",
+  "icon": "♿",
+  "ministry": {
+    "en": "Empowerment of Persons with Disabilities Department, Uttar Pradesh",
+    "hi": "दिव्यांगजन सशक्तीकरण विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://sspy-up.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Uttar Pradesh Divyang Pension (Nourishment Grant)",
+      "summary": "A monthly grant for adults in Uttar Pradesh with a disability of 40% or more and a low income.",
+      "benefit": "₹1,000 a month, paid into an Aadhaar-seeded bank account. New applicants are paid first come, first served, as the budget allows. No earlier months are paid.",
+      "how_to_apply": "Fill in the form at sspy-up.gov.in, through a Jan Suvidha Kendra, Lokvani or the internet. People living free of cost in government homes or shelters are not covered. The District Magistrate decides who qualifies."
+    },
+    "hi": {
+      "name": "उत्तर प्रदेश दिव्यांग पेंशन (भरण-पोषण अनुदान)",
+      "summary": "उत्तर प्रदेश के उन वयस्कों के लिए मासिक अनुदान जिनकी दिव्यांगता 40% या उससे ज़्यादा है और जिनकी आय कम है।",
+      "benefit": "हर महीने ₹1,000, जो आधार से जुड़े बैंक खाते में आते हैं। नए आवेदकों को बजट के अनुसार पहले आओ, पहले पाओ के आधार पर भुगतान होता है। पिछले महीनों का पैसा नहीं दिया जाता।",
+      "how_to_apply": "sspy-up.gov.in पर जन सुविधा केंद्र, लोकवाणी या इंटरनेट से फ़ॉर्म भरें। सरकारी संस्था या आश्रय में मुफ़्त रहने वाले लोग इसमें शामिल नहीं हैं। पात्रता पर ज़िलाधिकारी का निर्णय अंतिम होता है।"
+    }
+  },
+  "sources": [
+    {
+      "id": "dept",
+      "url": "https://uphwd.gov.in/article/en/viklang-pension",
+      "title": "Divyang Pension: Nourishment Grant (Pension) Scheme for Destitute PWDs",
+      "publisher": "Empowerment of Persons with Disabilities Department, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:f58bcb40688586e497cbde139c8b58f17b4249880c5045123c515174e0e19ffc",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "budget_2026",
+      "url": "https://information.up.gov.in/admin/UploadDocument/OtherPress/compressed_12022026010930Final%20English%20Budget%202026-27.pdf",
+      "title": "Highlights and salient features of the Uttar Pradesh Budget 2026-27",
+      "publisher": "Information Department, Government of Uttar Pradesh",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-02",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "Eligibility and Conditions",
+      "quote": "Resident of Uttar Pradesh and presently living in Uttar Pradesh.",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          18
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "Eligibility and Conditions",
+      "quote": "Persons with Disabilities who have completed 18 years of age",
+      "text": {
+        "en": "Age 18 or older",
+        "hi": "उम्र 18 साल या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "disability_40",
+      "logic": {
+        ">=": [
+          {
+            "var": "disability_percent"
+          },
+          40
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "Eligibility and Conditions",
+      "quote": "has minimum 40 percent of disability",
+      "text": {
+        "en": "Disability of 40% or more",
+        "hi": "दिव्यांगता 40% या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "or": [
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "area"
+                  },
+                  "rural"
+                ]
+              },
+              {
+                "<=": [
+                  {
+                    "var": "annual_income"
+                  },
+                  46080
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "area"
+                  },
+                  "urban"
+                ]
+              },
+              {
+                "<=": [
+                  {
+                    "var": "annual_income"
+                  },
+                  56460
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "Income",
+      "quote": "currently Rs. 46080 / - in rural areas and Rs. 56460 / - per family per year in urban areas",
+      "text": {
+        "en": "Family income is up to ₹46,080 a year in a village or ₹56,460 in a town",
+        "hi": "परिवार की सालाना आय गाँव में ₹46,080 या शहर में ₹56,460 तक है"
+      }
+    },
+    {
+      "code": "no_other_pension",
+      "logic": {
+        "==": [
+          {
+            "var": "gets_govt_pension"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "Eligibility and Conditions",
+      "quote": "Individuals that are receiving pension/grant/aid under old age pension, widow pension, Samajwadi pension or any other scheme",
+      "text": {
+        "en": "Gets no old age, widow or other government pension",
+        "hi": "वृद्धावस्था, विधवा या कोई दूसरी सरकारी पेंशन नहीं मिल रही है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "dept",
+      "quote": "rate of grant will be Rs.1000/- per beneficiary per month"
+    },
+    {
+      "about": "amount",
+      "source": "budget_2026",
+      "quote": "Under the 'Divyangjan Pension Yojana' financial assistance of ₹1,000 per month is"
+    },
+    {
+      "about": "payment",
+      "source": "dept",
+      "quote": "Payment of the grant money to new applicants will be according to the availability of budget on First Come First Serve basis"
+    }
+  ],
+  "documents": [],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "e88ad82be89c8ad3"
+  }
+}

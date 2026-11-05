@@ -1,0 +1,19 @@
+{
+  "slug": "up-post-matric-general",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "df3502b2946bc351",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "dept", "content_hash": "sha256:cbba8c2e0b837cab636be201a472a71de4a38b12f6df433094baf8ede1628445", "method": "refetched" },
+    { "id": "dates_post", "content_hash": "sha256:c613e1f2056a2cf0c74c9354f8332d202be96dcb76d7b775ce5f817c1f94d7cb", "method": "snapshot" },
+    { "id": "dates_pre", "content_hash": "sha256:31fe1ff6c62c9875817b68fa2651225e7976c41e76aa96dd22143b6bc8cbac02", "method": "snapshot" },
+    { "id": "rules_2023", "content_hash": "sha256:9a58709e330cb7a97eaf5cae259edb0dc53a6f981d1f020eb9903b1f089cfbb5", "method": "refetched" }
+  ],
+  "newer_changes_search": "Re-review. Compared the hand-transcribed lines with page images 2-4: 5(ix), 5(xii) note 2, 6(i), 6(ii)(छ), 6(iii), 6(xiv), 6(xvii) and 6(xviii) all match. All four blockers resolved: resident and after_class_10 quote the Rules; income is 'uncertain' with the conflict stated; not_minority is added. No order on the income limit found. scholarship.up.gov.in failed on legacy TLS, not bypassed.",
+  "findings": [
+    { "target": "rule:income_max", "severity": "minor", "note": "Press reports of July 2025 and October 2026 give ₹2.5 lakh. The rule asks families above ₹2 lakh to check, so the risk is handled.", "suggestion": "Update when an order is found." },
+    { "target": "sources", "severity": "minor", "note": "dates_pre and dates_post share one URL with different hashes, and both dates have passed.", "suggestion": "Use the exact page URL." }
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "yearly"
+  },
+  "deadlines": [
+    {
+      "label": {
+        "en": "2026-27 new students, class 11-12: online application",
+        "hi": "2026-27 नए छात्र, कक्षा 11-12: ऑनलाइन आवेदन"
+      },
+      "state_code": "up",
+      "opens_at": "2026-08-11",
+      "closes_at": "2026-09-21",
+      "source": "dates_pre",
+      "quote": "नवीन (Fresh) छात्रों द्वारा रजिस्ट्रेशन / आनलाइन आवेदन करना | August 11, 2026 | September 21, 2026"
+    },
+    {
+      "label": {
+        "en": "2026-27 new students, above class 12: online application",
+        "hi": "2026-27 नए छात्र, कक्षा 12 से ऊपर: ऑनलाइन आवेदन"
+      },
+      "state_code": "up",
+      "opens_at": "2026-09-15",
+      "closes_at": "2026-10-31",
+      "source": "dates_post",
+      "quote": "नवीन (Fresh) छात्रों द्वारा रजिस्ट्रेशन / आनलाइन आवेदन करना | September 15, 2026 | October 31, 2026"
+    }
+  ],
+  "relations": [],
+  "changes": [],
+  "slug": "up-post-matric-general",
+  "category": "education",
+  "icon": "🎓",
+  "ministry": {
+    "en": "Department of Social Welfare, Uttar Pradesh",
+    "hi": "समाज कल्याण विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://scholarship.up.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Uttar Pradesh Post-Matric Scholarship and Fee Reimbursement, General category",
+      "summary": "Scholarship and fee reimbursement from the Uttar Pradesh government for General category students after class 10.",
+      "benefit": "A scholarship and fee reimbursement paid into the student’s bank account. The amount depends on the course and the state’s rules; check it on the portal.",
+      "how_to_apply": "Apply at scholarship.up.gov.in, the whole process is online. Give the printed form and papers to your institution. Dates change every year, and class 11-12 has different dates from other courses. The rules also say: correspondence and distance courses are not covered, attendance must be 75% or more, the institution needs NAAC or NBA grading from 2025-26, and no fee is repaid on management-quota or spot seats. Private professional courses also have a minimum marks rule. The department page gives an income limit of ₹2 lakh, but the rules leave it to the state, so confirm the current limit."
+    },
+    "hi": {
+      "name": "उत्तर प्रदेश दशमोत्तर छात्रवृत्ति और शुल्क प्रतिपूर्ति, सामान्य वर्ग",
+      "summary": "कक्षा 10 के बाद पढ़ने वाले सामान्य वर्ग के छात्रों के लिए उत्तर प्रदेश सरकार की छात्रवृत्ति और शुल्क प्रतिपूर्ति।",
+      "benefit": "छात्रवृत्ति और शुल्क प्रतिपूर्ति, जो छात्र के बैंक खाते में आती है। राशि कोर्स और राज्य के नियमों पर निर्भर है; इसे पोर्टल पर देखें।",
+      "how_to_apply": "scholarship.up.gov.in पर आवेदन करें, पूरा काम ऑनलाइन होता है। छपा हुआ फ़ॉर्म और काग़ज़ अपनी संस्था में दें। तारीखें हर साल बदलती हैं, और कक्षा 11-12 की तारीखें दूसरे कोर्स से अलग होती हैं। नियमों में यह भी है: पत्राचार और दूरस्थ कोर्स शामिल नहीं हैं, उपस्थिति 75% या ज़्यादा होनी चाहिए, 2025-26 से संस्थान की NAAC या NBA ग्रेडिंग ज़रूरी है, और प्रबंधकीय कोटा या स्पॉट सीट पर फ़ीस वापस नहीं होती। निजी प्रोफ़ेशनल कोर्स के लिए न्यूनतम अंकों का नियम भी है। विभाग के पेज पर आय सीमा ₹2 लाख है, लेकिन नियमों में इसे राज्य पर छोड़ा गया है, इसलिए मौजूदा सीमा पक्की कर लें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "dept",
+      "url": "https://samajkalyan.up.gov.in/en/article/scholarship-scheme",
+      "title": "Scholarship Scheme",
+      "publisher": "Department of Social Welfare, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:cbba8c2e0b837cab636be201a472a71de4a38b12f6df433094baf8ede1628445",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "dates_post",
+      "url": "https://scholarship.up.gov.in/",
+      "title": "Important dates 2026-27: post-matric courses other than class 11-12",
+      "publisher": "Scholarship and Fee Reimbursement Online System, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "hi",
+      "published_date": "2026-07",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:c613e1f2056a2cf0c74c9354f8332d202be96dcb76d7b775ce5f817c1f94d7cb",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "fetch": "manual",
+      "fetch_note": "The date table loads by script from the portal's public GetAlertBoxData call (scheme: Post), so the automatic re-check can't see it. Saved as text on 2026-11-05."
+    },
+    {
+      "id": "dates_pre",
+      "url": "https://scholarship.up.gov.in/",
+      "title": "Important dates 2026-27: pre-matric (class 9-10) and class 11-12",
+      "publisher": "Scholarship and Fee Reimbursement Online System, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "hi",
+      "published_date": "2026-07",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:31fe1ff6c62c9875817b68fa2651225e7976c41e76aa96dd22143b6bc8cbac02",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "fetch": "manual",
+      "fetch_note": "The date table loads by script from the portal's public GetAlertBoxData call (scheme: Pre), so the automatic re-check can't see it. Saved as text on 2026-11-05. The dates are later than the first timetable order of 20 Jul 2026 (no. 92/2026/1940/26-3-2026)."
+    },
+    {
+      "id": "rules_2023",
+      "url": "https://samajkalyan.up.gov.in/site/writereaddata/siteContent/202511271536211779rename-Gen%202023-compressed.pdf",
+      "title": "Amendments to the Uttar Pradesh General category post-matric scholarship scheme rules 2023",
+      "publisher": "Government of Uttar Pradesh",
+      "doc_type": "guideline",
+      "lang": "hi",
+      "published_date": "2023-09",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:9a58709e330cb7a97eaf5cae259edb0dc53a6f981d1f020eb9903b1f089cfbb5",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "note": "Scanned. The quoted lines are a hand transcription from page images 2-4 (read 2026-11-05), appended to the snapshot and marked as such; they are not extracted text."
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "rules_2023",
+      "locator": "Para 6(i)",
+      "quote": "केवल वे ही अभ्यर्थी इसके पात्र होंगे, जो उत्तर प्रदेश राज्य से सम्बन्धित हों अर्थात उत्तर प्रदेश राज्य के स्थाई निवासी हों",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "category",
+      "logic": {
+        "in": [
+          {
+            "var": "social_category"
+          },
+          [
+            "general",
+            "ews"
+          ]
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "About Schemes, para 2",
+      "quote": "for General category 2,00,000/- (Rupees Two lakh only)",
+      "text": {
+        "en": "General category",
+        "hi": "सामान्य वर्ग"
+      }
+    },
+    {
+      "code": "after_class_10",
+      "logic": {
+        "in": [
+          {
+            "var": "education_level"
+          },
+          [
+            "class_11_12",
+            "diploma",
+            "ug",
+            "pg"
+          ]
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "rules_2023",
+      "locator": "Para 6(i)",
+      "quote": "जिन्होंने किसी मान्यता प्राप्त विश्वविद्यालय या माध्यमिक शिक्षा बोर्ड की मैट्रिकुलेशन या हायर सेकेन्ड्री या इससे कोई उच्चतर परीक्षा उत्तीर्ण कर ली हो",
+      "text": {
+        "en": "Studying after class 10",
+        "hi": "कक्षा 10 के बाद पढ़ रहे हैं"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          200000
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "dept",
+      "locator": "Department page, para 2 (undated). Rules para 6(iii) say only \"the limit set by the state\", so a family above ₹2 lakh should check.",
+      "quote": "for General category 2,00,000/- (Rupees Two lakh only)",
+      "text": {
+        "en": "Family income is up to ₹2 lakh a year on the department page; confirm the current limit",
+        "hi": "विभाग के पेज के अनुसार परिवार की सालाना आय ₹2 लाख तक है; मौजूदा सीमा पक्की कर लें"
+      }
+    },
+    {
+      "code": "not_minority",
+      "logic": {
+        "==": [
+          {
+            "var": "is_minority"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "rules_2023",
+      "locator": "Para 5(ix)",
+      "quote": "अल्पसंख्यक श्रेणी के अन्तर्गत आने वाले सामान्य वर्ग के अभ्यर्थी अल्पसंख्यक कल्याण विभाग द्वारा संचालित योजनाओं से आच्छादित होंगे",
+      "text": {
+        "en": "Not from a minority community (those students are covered by the Minority Welfare Department)",
+        "hi": "अल्पसंख्यक समुदाय से नहीं हैं (ऐसे छात्र अल्पसंख्यक कल्याण विभाग की योजनाओं में आते हैं)"
+      }
+    },
+    {
+      "code": "age_private",
+      "logic": {
+        "<=": [
+          {
+            "var": "age"
+          },
+          40
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "rules_2023",
+      "locator": "Para 6(xviii). Applies at private institutions, not to research or doctorate courses, so a failing answer shows \"check with the office\".",
+      "quote": "निजी क्षेत्र के शिक्षण संस्थानों में संचालित पाठ्यक्रमों में अध्ययनरत छात्र/छात्राओं को अधिकतम 40 वर्ष आयु की सीमा तक शैक्षणिक भत्ता एवं शुल्क प्रतिपूर्ति अनुमन्य होगी",
+      "text": {
+        "en": "Age 40 or younger on 1 July, if at a private institution (not research or doctorate)",
+        "hi": "निजी संस्थान में हों तो 1 जुलाई को उम्र 40 साल या कम (रिसर्च या डॉक्टरेट पर लागू नहीं)"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "payment",
+      "source": "dept",
+      "quote": "Amount of scholarship is transferred in the bank accounts of students through P.F.M.S."
+    },
+    {
+      "about": "attendance",
+      "source": "rules_2023",
+      "quote": "शैक्षिक सत्र में 75 प्रतिशत या उससे ऊपर उपस्थित वाले छात्र/छात्राओं को शैक्षणिक भत्ता एवं शुल्क प्रतिपूर्ति सुविधा अनुमन्य होगी"
+    },
+    {
+      "about": "courses",
+      "source": "rules_2023",
+      "quote": "पत्राचार पाठ्यक्रम एवं सुदूर व अनुवर्ती शिक्षा के पाठ्यक्रम"
+    },
+    {
+      "about": "seats",
+      "source": "rules_2023",
+      "quote": "प्रबन्धकीय कोटा सीट, स्पाट (spot) प्रवेश सीट के सापेक्ष प्रवेशित छात्र/छात्राओं द्वारा दावा किये गये शुल्क की प्रतिपूर्ति अनुमन्य नहीं होगी"
+    },
+    {
+      "about": "grading",
+      "source": "rules_2023",
+      "quote": "वर्ष 2025-26 से उक्तानुसार ग्रेडिंग प्राप्त विश्वविद्यालयों/शिक्षण संस्थाओं में अध्ययनरत छात्र/छात्राओं को ही शैक्षणिक भत्ता एवं शुल्क प्रतिपूर्ति अनुमन्य होगी"
+    }
+  ],
+  "documents": [
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "dept"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "df3502b2946bc351"
+  }
+}

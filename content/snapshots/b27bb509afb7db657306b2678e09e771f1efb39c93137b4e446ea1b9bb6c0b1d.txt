@@ -1,0 +1,41 @@
+e-Shram | National Informatics Centre | India
+Home
+e-Shram
+-->
+e-Shram
+National Database of Unorganised Workers
+e-Shram, an initiative of the Ministry of Labour and Employment, is a step towards building the Aadhaar Authenticated Comprehensive National Database of Unorganized Workers (NDUW), working in the country.
+National Informatics Centre (NIC) as a technology partner has designed the e-Shram portal for optimum recognition of employability and to beneﬁt from the social security schemes. It is the first-ever national database of unorganised workers including migrant workers, construction workers, etc.
+Objectives of eShram Portal
+Creation of a centralized database of all unorganized workers (UWs) including Construction Workers, Migrant Workers, Gig and Platform workers, Street Vendors, Domestic Workers, Agriculture Workers, etc., to be seeded with Aadhaar
+To improve the implementation efficiency of the social security services for the unorganized workers and integration of Social Security Schemes meant for UWs being administered by MoLE and subsequently those run by other ministries as well
+Sharing of information in respect of registered unorganised workers with various stakeholders such as Ministries/ Departments/ Boards/ Agencies/ Organisations of the Central & State Governments through APIs for delivery of various social security and welfare schemes being administered by them
+Portability of the social security and welfare benefits to the migrant and construction workers
+Providing a comprehensive database to Central and State Governments for tackling any National Crises like COVID-19 in future
+Category of Unorganized Workers covered
+Construction Worker
+Migrant Worker
+Gig & Platform Worker
+Street Vendor
+Domestic Worker
+Agriculture Worker
+Other Unorganized Workers
+Any worker who is working in unorganized sector and aged between 16-59, is eligible to register on the e-Shram portal.Each registrant is allocated a Universal Account Number (UAN) and can download UAN card instantly and can avail beneﬁts anytime, anywhere
+National Database of Unorganized Workers covered
+UMANG Mobile App
+Self Registration
+Assisted Mode State Seva Kendra
+Assisted Mode Common Service Centre(CSC)
+Verify Mobile No
+Aadhaar KYC
+Aadhaar Seeded Bank Account Status
+Education Qualification, Occupational Details, Skills and Bank Details etc.
+e-Shram database
+Universal Account Number
+Digi Locker
+e-SHRAM HELPDESK FACILITY
+Toll Free Number 14434
+Assistance in 9 languages
+Mon to Sat
+40 Resources are Deployed at the Call Centre Helpdesk
+For more information, kindly visit the following link: https://eshram.gov.in/

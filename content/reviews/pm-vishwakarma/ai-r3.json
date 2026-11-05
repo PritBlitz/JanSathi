@@ -1,0 +1,19 @@
+{
+  "slug": "pm-vishwakarma",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "e3fa6a5a370874c7",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:bea3f55ade5f124ec2eb3be6ec710539aa76b8355d61e8d5e3a773273cd46ebe", "method": "refetched" },
+    { "id": "pib_2025", "content_hash": "sha256:cd1275f8f438c9e405b31bff466a4d28f217b8011d7660aa84ad51293e17b696", "method": "refetched" },
+    { "id": "scheme", "content_hash": "sha256:998fb9996cafcbd11cf2f97205c8d445007c98fc79d0419e079c27c5aacf3e7f", "method": "refetched" },
+    { "id": "home", "content_hash": "sha256:fb8e18548663a297cc9384d1b28614ba65b7b8cf67984eee472cc9bf0b25578b", "method": "counters_only" }
+  ],
+  "newer_changes_search": "Re-review. The toolkit blocker is resolved (up to ₹15,000, e-voucher, en and hi). I fetched the home page again and diffed it against the snapshot: only three running totals differ, and the one quote citing this source, \"Target Already Achieved In September 2025\", is still on the live page. The page also still shows Apply Now, so 'may not be available' is fair.",
+  "findings": [
+    { "target": "documents", "severity": "minor", "note": "Para 5 also asks for a ration card, or Aadhaar numbers of all family members.", "suggestion": "Add ration_card with the alternative." },
+    { "target": "facts[7]", "severity": "minor", "note": "The Aadhaar quote is a fragment.", "suggestion": "Use \"Aadhaar authentication will be mandatory\"." }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "nps-vatsalya",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "62655ec59c21f6ff",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "faq",
+      "content_hash": "sha256:594fc3bfc79e2ee89d064c057231423e8e33f73f6e7aa1c65d7fcfa3d208cb29",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Used the NPS Trust FAQ updated 16 June 2026 (host robots.txt returned 403, so checked against the saved text). A web search found no later change, but it returned nothing specific on NPS Vatsalya, so this is a weak negative.",
+  "findings": [
+    {
+      "target": "documents:birth_certificate_child",
+      "severity": "minor",
+      "note": "The FAQ accepts other proofs of date of birth (school leaving certificate, matriculation certificate, minor's PAN, passport), and also needs guardian KYC and PAN or Form 60.",
+      "suggestion": "Name the alternatives, and add guardian KYC as a row if a code exists."
+    }
+  ]
+}

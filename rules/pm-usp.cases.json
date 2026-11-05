@@ -1,0 +1,138 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "top_20_percent_class_12": true,
+      "education_level": "ug",
+      "annual_income": 300000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "confirmed"
+    }
+  },
+  {
+    "name": "post-graduate",
+    "profile": {
+      "top_20_percent_class_12": true,
+      "education_level": "pg",
+      "annual_income": 300000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "diploma",
+    "profile": {
+      "top_20_percent_class_12": true,
+      "education_level": "diploma",
+      "annual_income": 300000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "degree": "fail"
+      }
+    }
+  },
+  {
+    "name": "not in the top 20%",
+    "profile": {
+      "top_20_percent_class_12": false,
+      "education_level": "ug",
+      "annual_income": 300000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "top_20": "fail"
+      }
+    }
+  },
+  {
+    "name": "income 449,999",
+    "profile": {
+      "top_20_percent_class_12": true,
+      "education_level": "ug",
+      "annual_income": 449999
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income exactly 4.5 lakh",
+    "profile": {
+      "top_20_percent_class_12": true,
+      "education_level": "ug",
+      "annual_income": 450000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 450,001",
+    "profile": {
+      "top_20_percent_class_12": true,
+      "education_level": "ug",
+      "annual_income": 450001
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "band 2.5 to 5 lakh straddles the limit",
+    "profile": {
+      "top_20_percent_class_12": true,
+      "education_level": "ug",
+      "annual_income": {
+        "min": 250001,
+        "max": 500000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  },
+  {
+    "name": "top 20% answer missing",
+    "profile": {
+      "education_level": "ug",
+      "annual_income": 300000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "top_20_percent_class_12"
+      ]
+    }
+  }
+]

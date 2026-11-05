@@ -1,0 +1,122 @@
+{
+  "status": "published",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "changes": [],
+  "slug": "pmkvy",
+  "category": "employment",
+  "icon": "🛠️",
+  "ministry": {
+    "en": "Ministry of Skill Development and Entrepreneurship",
+    "hi": "कौशल विकास और उद्यमशीलता मंत्रालय"
+  },
+  "official_apply_url": "https://www.skillindiadigital.gov.in/",
+  "reverify_days": 30,
+  "content": {
+    "en": {
+      "name": "Pradhan Mantri Kaushal Vikas Yojana 4.0 (PMKVY)",
+      "summary": "Free short skill training and certificates for young people and workers.",
+      "benefit": "Free short-duration skill training and certification. Short courses are for ages 15 to 45. People aged 18 to 59 with work experience can get their skill certified (Recognition of Prior Learning).",
+      "how_to_apply": "Find a course and a training centre on Skill India Digital. Aadhaar is needed, and each job role has its own entry rules. The guidelines ran to 2025-26. No later order was found, so confirm the current rules and amounts with the office before applying."
+    },
+    "hi": {
+      "name": "प्रधानमंत्री कौशल विकास योजना 4.0 (PMKVY)",
+      "summary": "युवाओं और कामगारों के लिए मुफ़्त छोटा कौशल प्रशिक्षण और प्रमाण पत्र।",
+      "benefit": "मुफ़्त छोटा कौशल प्रशिक्षण और प्रमाणन। छोटे कोर्स 15 से 45 साल के लोगों के लिए हैं। काम का अनुभव रखने वाले 18 से 59 साल के लोग अपने हुनर का प्रमाण पत्र ले सकते हैं (पूर्व शिक्षण की मान्यता)।",
+      "how_to_apply": "स्किल इंडिया डिजिटल पर कोर्स और प्रशिक्षण केंद्र खोजें। आधार ज़रूरी है, और हर काम के अपने नियम हैं। दिशानिर्देश 2025-26 तक के थे। इसके बाद का कोई आदेश नहीं मिला, इसलिए आवेदन से पहले मौजूदा नियम और राशि कार्यालय से पक्की कर लें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "guidelines",
+      "url": "https://www.msde.gov.in/static/uploads/2024/02/PMKVY-4.0-Guidelines_final-copy.pdf",
+      "title": "Guidelines for Pradhan Mantri Kaushal Vikas Yojana 4.0",
+      "publisher": "Ministry of Skill Development and Entrepreneurship",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2024-02",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:ab048f598c35c8db912a38c0bda29b7830e53f5bbf89e3a8436455f1a396f82c",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "note": "A reviewer must confirm the scheme period after March 2026.",
+      "fetch": "manual",
+      "fetch_note": "msde.gov.in answers 403 to the re-check bot, though its robots.txt allows it. Saved copy of the PDF, 2026-11-05."
+    }
+  ],
+  "rules": [
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          15
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "guidelines",
+      "locator": "Scheme components table, Age Group",
+      "quote": "Age Group 15 – 45 years 15 – 45 years 18– 59 years",
+      "text": {
+        "en": "Age 15 or older",
+        "hi": "उम्र 15 साल या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "age_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "age"
+          },
+          59
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "guidelines",
+      "locator": "Scheme components table, Age Group",
+      "quote": "Age Group 15 – 45 years 15 – 45 years 18– 59 years",
+      "text": {
+        "en": "Age 59 or younger (short courses go up to 45)",
+        "hi": "उम्र 59 साल या उससे कम (छोटे कोर्स 45 साल तक)"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "benefit",
+      "source": "guidelines",
+      "quote": "providing free short-duration skill training and incentivizing youth for skill certification"
+    },
+    {
+      "about": "eligibility",
+      "source": "guidelines",
+      "quote": "Indian nationals possessing valid Aadhaar and fulfilling eligibility criteria of respective job role"
+    }
+  ],
+  "documents": [
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "guidelines"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "f821dd937e1d5116"
+  }
+}

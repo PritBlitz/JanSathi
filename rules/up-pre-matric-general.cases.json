@@ -1,0 +1,286 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "education_level": "class_9_10",
+      "annual_income": 200000,
+      "age": 15,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "EWS is within General",
+    "profile": {
+      "state": "up",
+      "social_category": "ews",
+      "education_level": "class_9_10",
+      "annual_income": 200000,
+      "age": 15,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "SC student",
+    "profile": {
+      "state": "up",
+      "social_category": "sc",
+      "education_level": "class_9_10",
+      "annual_income": 200000,
+      "age": 15,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "category": "fail"
+      }
+    }
+  },
+  {
+    "name": "income 249,999",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "education_level": "class_9_10",
+      "annual_income": 249999,
+      "age": 15,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income exactly 2.5 lakh",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "education_level": "class_9_10",
+      "annual_income": 250000,
+      "age": 15,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 250,001",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "education_level": "class_9_10",
+      "annual_income": 250001,
+      "age": 15,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "band 2.5 to 5 lakh is above the limit",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "education_level": "class_9_10",
+      "annual_income": {
+        "min": 250001,
+        "max": 500000
+      },
+      "age": 15,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "band up to 2.5 lakh passes",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "education_level": "class_9_10",
+      "annual_income": {
+        "min": 100001,
+        "max": 250000
+      },
+      "age": 15,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "class 11-12",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "education_level": "class_11_12",
+      "annual_income": 200000,
+      "age": 15,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "class_9_10": "fail"
+      }
+    }
+  },
+  {
+    "name": "lives in another state",
+    "profile": {
+      "state": "br",
+      "social_category": "general",
+      "education_level": "class_9_10",
+      "annual_income": 200000,
+      "age": 15,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "income missing",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "education_level": "class_9_10",
+      "age": 15,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  },
+  {
+    "name": "age 11",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "education_level": "class_9_10",
+      "annual_income": 200000,
+      "age": 11,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "age 12",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "education_level": "class_9_10",
+      "annual_income": 200000,
+      "age": 12,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 20",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "education_level": "class_9_10",
+      "annual_income": 200000,
+      "age": 20,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 21",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "education_level": "class_9_10",
+      "annual_income": 200000,
+      "age": 21,
+      "is_minority": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "age_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "minority student",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "education_level": "class_9_10",
+      "annual_income": 200000,
+      "age": 15,
+      "is_minority": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "not_minority": "fail"
+      }
+    }
+  }
+]

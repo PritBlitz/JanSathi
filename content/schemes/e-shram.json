@@ -1,0 +1,218 @@
+{
+  "status": "published",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "changes": [],
+  "slug": "e-shram",
+  "category": "employment",
+  "icon": "🪪",
+  "ministry": {
+    "en": "Ministry of Labour and Employment",
+    "hi": "श्रम और रोज़गार मंत्रालय"
+  },
+  "official_apply_url": "https://eshram.gov.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "e-Shram registration",
+      "summary": "A free national register of unorganised workers. It links workers to social security and welfare schemes.",
+      "benefit": "Registration is free and gives a Universal Account Number (UAN). It pays no money by itself.",
+      "how_to_apply": "Register on the e-Shram portal with Aadhaar and an Aadhaar-linked mobile number. Without a linked mobile number, go to a Common Service Centre (CSC) or State Seva Kendra for a fingerprint check. No one may charge for registering. The portal FAQ says ages 16 to 59, while a 2026 government note says 16 and above. Workers aged 60 or more should check on the portal or at a CSC."
+    },
+    "hi": {
+      "name": "ई-श्रम पंजीकरण",
+      "summary": "असंगठित कामगारों का मुफ़्त राष्ट्रीय रजिस्टर। यह कामगारों को सामाजिक सुरक्षा और कल्याण योजनाओं से जोड़ता है।",
+      "benefit": "पंजीकरण मुफ़्त है और इससे यूनिवर्सल अकाउंट नंबर (UAN) मिलता है। इससे अपने आप कोई पैसा नहीं मिलता।",
+      "how_to_apply": "ई-श्रम पोर्टल पर आधार और आधार से जुड़े मोबाइल नंबर से पंजीकरण करें। मोबाइल नंबर जुड़ा न हो तो कॉमन सर्विस सेंटर (CSC) या राज्य सेवा केंद्र पर अंगूठे से जाँच कराएँ। पंजीकरण के लिए कोई शुल्क नहीं लगता। पोर्टल FAQ में उम्र 16 से 59 साल लिखी है, जबकि 2026 के सरकारी नोट में 16 साल और उससे ऊपर लिखा है। 60 साल या उससे ज़्यादा उम्र के कामगार पोर्टल या CSC पर पूछ लें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "faq",
+      "url": "https://beta.eshram.gov.in/faqs",
+      "title": "e-Shram: frequently asked questions",
+      "publisher": "Ministry of Labour and Employment",
+      "doc_type": "faq",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:d26a9fff1a0938a8573a8b681a60af7ebe279fd431f8c8ff8074414847e557e5",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "nic",
+      "url": "https://www.nic.gov.in/project/e-shram/",
+      "title": "e-Shram project page",
+      "publisher": "National Informatics Centre",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:b27bb509afb7db657306b2678e09e771f1efb39c93137b4e446ea1b9bb6c0b1d",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "fetch": "manual",
+      "fetch_note": "nic.gov.in answers 403 to the re-check bot, though its robots.txt allows it. Saved copy of the page, 2026-11-05."
+    },
+    {
+      "id": "pib_2026",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2303053&reg=48&lang=2",
+      "title": "5 Years of e-Shram Portal",
+      "publisher": "Press Information Bureau",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-08",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:9b369a91db454b65912b447f84bee0b7925b73e15e2c95d16314b57294d5d430",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "fetch": "manual",
+      "fetch_note": "pib.gov.in blocks bots. Saved copy of the page, 2026-11-05."
+    }
+  ],
+  "rules": [
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          16
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "faq",
+      "locator": "Question 11",
+      "quote": "aged between 16-59 years, is eligible to register on the e-Shram portal",
+      "text": {
+        "en": "Age 16 or older",
+        "hi": "उम्र 16 साल या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "age_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "age"
+          },
+          59
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "faq",
+      "locator": "Question 11",
+      "quote": "aged between 16-59 years, is eligible to register on the e-Shram portal",
+      "text": {
+        "en": "Age 59 or younger on the portal FAQ (a 2026 government note gives no upper age, so older workers should check)",
+        "hi": "पोर्टल FAQ के अनुसार उम्र 59 साल या कम (2026 के सरकारी नोट में ऊपरी उम्र नहीं है, इसलिए ज़्यादा उम्र के कामगार पूछ लें)"
+      }
+    },
+    {
+      "code": "unorganised",
+      "logic": {
+        "in": [
+          {
+            "var": "occupation"
+          },
+          [
+            "daily_wage",
+            "self_employed",
+            "farmer"
+          ]
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "faq",
+      "locator": "Who is an unorganised worker",
+      "quote": "a home-based worker, self-employed worker or a wage worker working in the unorganised sector",
+      "text": {
+        "en": "Works from home, works for themselves, or is a wage worker in the unorganised sector",
+        "hi": "घर से काम करते हैं, अपना काम करते हैं, या असंगठित क्षेत्र में मज़दूरी करते हैं"
+      }
+    },
+    {
+      "code": "no_epf_esic",
+      "logic": {
+        "==": [
+          {
+            "var": "has_formal_pension_cover"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "faq",
+      "locator": "Who is an unorganised worker",
+      "quote": "not a member of ESIC or EPFO",
+      "text": {
+        "en": "Not a member of ESIC or EPFO",
+        "hi": "ESIC या EPFO के सदस्य नहीं हैं"
+      }
+    },
+    {
+      "code": "no_income_tax",
+      "logic": {
+        "==": [
+          {
+            "var": "pays_income_tax"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "faq",
+      "locator": "Income criteria",
+      "quote": "the worker should not be an income tax payee",
+      "text": {
+        "en": "Does not pay income tax",
+        "hi": "आयकर नहीं देते"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "fee",
+      "source": "faq",
+      "quote": "Registration on e-Shram portal is free."
+    },
+    {
+      "about": "uan",
+      "source": "nic",
+      "quote": "Each registrant is allocated a Universal Account Number (UAN)"
+    },
+    {
+      "about": "age",
+      "source": "pib_2026",
+      "quote": "Any worker aged 16 years and above , engaged in the unorganised sector, is eligible to register on the e-Shram Portal."
+    }
+  ],
+  "documents": [
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "faq"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "bb72caea813ba00d"
+  }
+}

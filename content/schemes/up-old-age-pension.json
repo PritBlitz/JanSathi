@@ -1,0 +1,217 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "changes": [],
+  "slug": "up-old-age-pension",
+  "category": "pension",
+  "icon": "🧓",
+  "ministry": {
+    "en": "Department of Social Welfare, Uttar Pradesh",
+    "hi": "समाज कल्याण विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://sspy-up.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Uttar Pradesh Old Age / Farmer Pension",
+      "summary": "A monthly pension from the Uttar Pradesh government for people aged 60 or older with a low income.",
+      "benefit": "₹1,000 a month.",
+      "how_to_apply": "Apply online at sspy-up.gov.in. The whole process is online, from the application to the payment. A Jan Suvidha Kendra (CSC) or the District Social Welfare Officer can help. The form needs proof of age, an income certificate and bank account details. Rules can change, so check the current process with the District Social Welfare Officer."
+    },
+    "hi": {
+      "name": "उत्तर प्रदेश वृद्धावस्था / किसान पेंशन",
+      "summary": "उत्तर प्रदेश सरकार की मासिक पेंशन, 60 साल या उससे ज़्यादा उम्र के कम आय वाले लोगों के लिए।",
+      "benefit": "हर महीने ₹1,000।",
+      "how_to_apply": "sspy-up.gov.in पर ऑनलाइन आवेदन करें। आवेदन से भुगतान तक पूरा काम ऑनलाइन होता है। जन सुविधा केंद्र (CSC) या ज़िला समाज कल्याण अधिकारी मदद कर सकते हैं। फ़ॉर्म के साथ आयु का प्रमाण, आय प्रमाण पत्र और बैंक खाते का विवरण चाहिए। नियम बदल सकते हैं, इसलिए मौजूदा प्रक्रिया ज़िला समाज कल्याण अधिकारी से पक्की कर लें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "dept",
+      "url": "https://samajkalyan.up.gov.in/en/article/old-age-pension-scheme",
+      "title": "Old Age Pension Scheme",
+      "publisher": "Department of Social Welfare, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:3eb2631aa83237e4250a57d5632275553710287a5bbf7e372c1c3a53dad2c77f",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "budget_2026",
+      "url": "https://information.up.gov.in/admin/UploadDocument/OtherPress/compressed_12022026010930Final%20English%20Budget%202026-27.pdf",
+      "title": "Highlights and salient features of the Uttar Pradesh Budget 2026-27",
+      "publisher": "Information Department, Government of Uttar Pradesh",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-02",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "go_2016",
+      "url": "https://samajkalyan.up.gov.in/site/writereaddata/siteContent/2025090315575023964-Old-Age-Pension-GO-2016.pdf",
+      "title": "Government order 3/2016/579/26-2-2016-100(02)/2007: online application for old age, disability and widow pensions",
+      "publisher": "Government of Uttar Pradesh",
+      "doc_type": "guideline",
+      "lang": "hi",
+      "published_date": "2016-02",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:e4a3bbc38b99fea76454a84c4ddc73a3a1b47cd079feda4005e5cd1a6060dc19",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "note": "Text layer is in a legacy font, so it cannot be quoted. Read page by page as images on 2026-11-05: para 4(1)(iv) lists the documents. Amended by order 09/2018/794 of 16 May 2018 (Aadhaar date of birth also accepted as age proof)."
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "budget_2026",
+      "locator": "Budget highlights, Social Welfare, p. 20. This shows a state pension only. No residence clause was found in any source read, so a failing answer shows \"check with the office\".",
+      "quote": "Under the Old Age/Farmer Pension Scheme, 67.50 lakh beneficiaries are provided a pension of ₹1,000 per month.",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          60
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "About Schemes, para 1",
+      "quote": "those old aged people who are 60 years of age or above",
+      "text": {
+        "en": "Age 60 or older",
+        "hi": "उम्र 60 साल या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "or": [
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "area"
+                  },
+                  "rural"
+                ]
+              },
+              {
+                "<=": [
+                  {
+                    "var": "annual_income"
+                  },
+                  46080
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "area"
+                  },
+                  "urban"
+                ]
+              },
+              {
+                "<=": [
+                  {
+                    "var": "annual_income"
+                  },
+                  56460
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "About Schemes, para 1",
+      "quote": "whose income from all sources in rural area is up to ₹46,080/- and in Urban areas ₹56460/-",
+      "text": {
+        "en": "Yearly income from all sources is up to ₹46,080 in a village or ₹56,460 in a town",
+        "hi": "सभी स्रोतों से सालाना आय गाँव में ₹46,080 या शहर में ₹56,460 तक है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "dept",
+      "quote": "people of 60 years or above will be given a pension amount ₹1000/- per month"
+    },
+    {
+      "about": "amount",
+      "source": "budget_2026",
+      "quote": "Under the Old Age/Farmer Pension Scheme, 67.50 lakh beneficiaries are provided a pension of ₹1,000 per month."
+    },
+    {
+      "about": "how_to_apply",
+      "source": "dept",
+      "quote": "Entire process is online right from application till disbursement of amount."
+    }
+  ],
+  "documents": [
+    {
+      "code": "age_proof",
+      "mandatory": true,
+      "source": "go_2016"
+    },
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "go_2016"
+    },
+    {
+      "code": "bank_account",
+      "mandatory": true,
+      "source": "go_2016"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "7c18638cda5cc05e"
+  }
+}

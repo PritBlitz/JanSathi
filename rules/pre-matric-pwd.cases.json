@@ -1,0 +1,148 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "disability_percent": 45,
+      "education_level": "class_9_10",
+      "annual_income": 200000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "confirmed"
+    }
+  },
+  {
+    "name": "disability 39%",
+    "profile": {
+      "disability_percent": 39,
+      "education_level": "class_9_10",
+      "annual_income": 200000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "disability_40": "fail"
+      }
+    }
+  },
+  {
+    "name": "disability 40%",
+    "profile": {
+      "disability_percent": 40,
+      "education_level": "class_9_10",
+      "annual_income": 200000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "disability 41%",
+    "profile": {
+      "disability_percent": 41,
+      "education_level": "class_9_10",
+      "annual_income": 200000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 249,999",
+    "profile": {
+      "disability_percent": 45,
+      "education_level": "class_9_10",
+      "annual_income": 249999
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income exactly 2.5 lakh",
+    "profile": {
+      "disability_percent": 45,
+      "education_level": "class_9_10",
+      "annual_income": 250000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 250,001",
+    "profile": {
+      "disability_percent": 45,
+      "education_level": "class_9_10",
+      "annual_income": 250001
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "band up to 2.5 lakh passes",
+    "profile": {
+      "disability_percent": 45,
+      "education_level": "class_9_10",
+      "annual_income": {
+        "min": 100001,
+        "max": 250000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "class 11-12",
+    "profile": {
+      "disability_percent": 45,
+      "education_level": "class_11_12",
+      "annual_income": 200000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "class_9_10": "fail"
+      }
+    }
+  },
+  {
+    "name": "income missing",
+    "profile": {
+      "disability_percent": 45,
+      "education_level": "class_9_10"
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  }
+]

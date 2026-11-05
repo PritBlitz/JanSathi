@@ -1,0 +1,46 @@
+{
+  "slug": "pre-matric-pwd",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "a15668007b8f7c50",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:2f4a1e8a7d453cf049092960d0f5df950cccbc382f224db0a1503cf714ca6171",
+      "method": "refetched"
+    },
+    {
+      "id": "revision_2025",
+      "content_hash": "sha256:a26f688260d03eb31b46261447dbab9d85e859f2dcf900bb5b6b148614d5157d",
+      "method": "refetched"
+    },
+    {
+      "id": "nsp",
+      "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. scholarships.gov.in reports a revoked certificate here, so its copies are treated as snapshot evidence.",
+  "findings": [
+    {
+      "target": "content.how_to_apply",
+      "severity": "minor",
+      "note": "Still open: the twin exception in §2(iv) is not mentioned.",
+      "suggestion": "Add it."
+    },
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "Still open: \"Half the slots\" has no quoted fact.",
+      "suggestion": "Add one."
+    },
+    {
+      "target": "relations",
+      "severity": "minor",
+      "note": "Fixed: the notes for the UP General scheme no longer name a portal, in English or Hindi. Notes between NSP schemes still name NSP, which is correct.",
+      "suggestion": "None."
+    }
+  ]
+}

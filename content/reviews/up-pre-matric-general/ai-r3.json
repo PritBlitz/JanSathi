@@ -1,0 +1,17 @@
+{
+  "slug": "up-pre-matric-general",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "267183dac6c1d4d4",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "dept", "content_hash": "sha256:cbba8c2e0b837cab636be201a472a71de4a38b12f6df433094baf8ede1628445", "method": "refetched" },
+    { "id": "dates_pre", "content_hash": "sha256:31fe1ff6c62c9875817b68fa2651225e7976c41e76aa96dd22143b6bc8cbac02", "method": "snapshot" },
+    { "id": "rules_2023", "content_hash": "sha256:8ee6fca6cb097e85d70c287bcf6e9a32649079cdcbe56c55773822cebfe6f73d", "method": "refetched" }
+  ],
+  "newer_changes_search": "Re-review. Compared the hand-transcribed lines 5(vii), 5(ix), 6(i) and 6(vii) with page images 2-3: all match. Both blockers resolved: resident quotes Rules 6(i), and not_minority is added as 'uncertain'. Age rules and ₹3,000 are also added. Press on a higher income limit (April 2026) is a proposal only. scholarship.up.gov.in failed on legacy TLS, not bypassed.",
+  "findings": [
+    { "target": "rule:resident", "severity": "minor", "note": "The Rules say permanent resident, stricter than 'Lives in Uttar Pradesh'.", "suggestion": "Say 'permanent resident'." }
+  ]
+}

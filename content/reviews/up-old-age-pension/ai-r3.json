@@ -1,0 +1,19 @@
+{
+  "slug": "up-old-age-pension",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "7c18638cda5cc05e",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "dept", "content_hash": "sha256:3eb2631aa83237e4250a57d5632275553710287a5bbf7e372c1c3a53dad2c77f", "method": "refetched" },
+    { "id": "budget_2026", "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e", "method": "refetched" },
+    { "id": "go_2016", "content_hash": "sha256:e4a3bbc38b99fea76454a84c4ddc73a3a1b47cd079feda4005e5cd1a6060dc19", "method": "refetched" }
+  ],
+  "newer_changes_search": "Re-review. The 2016 GO fetched this time; read pp. 1-3 as images: para 4(1)(iv) confirms age proof, income certificate and bank details, and there is no residence clause, as the file says. The resident rule is now 'uncertain' with that stated in the locator. Family ID enrolment is still press-only (November 2025), so it cannot be cited; how_to_apply tells people to check the current process, and following it does no harm. The ₹1,500 rise is still a proposal.",
+  "findings": [
+    { "target": "content:how_to_apply", "severity": "minor", "note": "The general caution does not name Family ID enrolment.", "suggestion": "Add it as soon as an official source is found." },
+    { "target": "content:how_to_apply", "severity": "minor", "note": "'The whole process is online' follows the department page, but GO para 4(1)(ix) also requires a signed hard copy within 30 days, and (v) requires Aadhaar.", "suggestion": "Confirm whether the hard copy still applies; add an Aadhaar row." },
+    { "target": "content:benefit", "severity": "minor", "note": "The file dropped 'paid every three months', though the department page says quarterly.", "suggestion": "Restore it unless a source shows a change." }
+  ]
+}

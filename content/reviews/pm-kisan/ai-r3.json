@@ -1,0 +1,19 @@
+{
+  "slug": "pm-kisan",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "7f3ecf2972a5b525",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:ae82cac83f61a5fa5049387a7c13e00c6d55cef0e9163deb5497dc86c86d697f", "method": "refetched" },
+    { "id": "faq", "content_hash": "sha256:95d4e2892b4b351e599bf903f8c6f89b20d4b74831eb8f1a0e61a2a66771ff86", "method": "refetched" },
+    { "id": "cabinet_2026", "content_hash": "sha256:cbbef24be1f7febe001d681f301d163d7f3f22a3fcdac5c792cb8daf677c0100", "method": "refetched" },
+    { "id": "portal", "content_hash": "sha256:d7cbe9d60f28ca947a6564dce891615c21eacf9af39ede5b0ad57f6838f07666", "method": "refetched" }
+  ],
+  "newer_changes_search": "Re-review. The portal hash was updated and now matches the live page, which resolves the earlier blocker. Cabinet continuation to 2030-31 still stands. Farmer ID in 14 states remains secondary reporting only.",
+  "findings": [
+    { "target": "content:how_to_apply", "severity": "minor", "note": "Omits the portal's mandatory eKYC and the reported Farmer ID requirement.", "suggestion": "Add eKYC; confirm Farmer ID from an official notice." },
+    { "target": "facts[2]", "severity": "minor", "note": "The quote stops before the date 01.02.2019.", "suggestion": "Extend it or cite the guideline clause." }
+  ]
+}

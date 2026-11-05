@@ -1,0 +1,119 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "disability_percent": 80,
+      "education_level": "ug",
+      "annual_income": 240000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "confirmed"
+    }
+  },
+  {
+    "name": "disability 39%",
+    "profile": {
+      "disability_percent": 39,
+      "education_level": "ug",
+      "annual_income": 240000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "disability_40": "fail"
+      }
+    }
+  },
+  {
+    "name": "disability 40%",
+    "profile": {
+      "disability_percent": 40,
+      "education_level": "ug",
+      "annual_income": 240000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income exactly 2.5 lakh",
+    "profile": {
+      "disability_percent": 80,
+      "education_level": "ug",
+      "annual_income": 250000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 250,001",
+    "profile": {
+      "disability_percent": 80,
+      "education_level": "ug",
+      "annual_income": 250001
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "class 9-10",
+    "profile": {
+      "disability_percent": 80,
+      "education_level": "class_9_10",
+      "annual_income": 240000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "after_class_10": "fail"
+      }
+    }
+  },
+  {
+    "name": "class 11-12",
+    "profile": {
+      "disability_percent": 80,
+      "education_level": "class_11_12",
+      "annual_income": 240000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "education missing",
+    "profile": {
+      "disability_percent": 80,
+      "annual_income": 240000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "education_level"
+      ]
+    }
+  }
+]

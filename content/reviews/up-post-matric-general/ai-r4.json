@@ -1,0 +1,69 @@
+{
+  "slug": "up-post-matric-general",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "df3502b2946bc351",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dept",
+      "content_hash": "sha256:cbba8c2e0b837cab636be201a472a71de4a38b12f6df433094baf8ede1628445",
+      "method": "refetched"
+    },
+    {
+      "id": "dates_post",
+      "content_hash": "sha256:c613e1f2056a2cf0c74c9354f8332d202be96dcb76d7b775ce5f817c1f94d7cb",
+      "method": "snapshot"
+    },
+    {
+      "id": "dates_pre",
+      "content_hash": "sha256:31fe1ff6c62c9875817b68fa2651225e7976c41e76aa96dd22143b6bc8cbac02",
+      "method": "snapshot"
+    },
+    {
+      "id": "rules_2023",
+      "content_hash": "sha256:9a58709e330cb7a97eaf5cae259edb0dc53a6f981d1f020eb9903b1f089cfbb5",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. Hand-transcribed paras (5(ix), 5(xii) note 2, 6(i), 6(ii), 6(iii), 6(xiv), 6(xvii), 6(xviii)) compared with the page images I read: they match.",
+  "findings": [
+    {
+      "target": "rule:category",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. not_minority rule and fixture added.",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:after_class_10",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Now cites para 6(i).",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:resident",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Now cites para 6(i).",
+      "suggestion": "None."
+    },
+    {
+      "target": "sources",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. The 2023 rules are a source; age 40 is an uncertain rule; distance, attendance, grading and seat limits are in how_to_apply with quoted facts.",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:income_max",
+      "severity": "minor",
+      "note": "Honest change: rules para 6(iii) leaves the limit to the state, so ₹2 lakh is uncertain and disclosed.",
+      "suggestion": "None."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Still open: only the income certificate is listed.",
+      "suggestion": "Add Aadhaar and bank account."
+    }
+  ]
+}

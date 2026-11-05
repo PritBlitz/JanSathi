@@ -1,0 +1,63 @@
+{
+  "slug": "pm-vishwakarma",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "e3fa6a5a370874c7",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:bea3f55ade5f124ec2eb3be6ec710539aa76b8355d61e8d5e3a773273cd46ebe",
+      "method": "refetched"
+    },
+    {
+      "id": "pib_2025",
+      "content_hash": "sha256:cd1275f8f438c9e405b31bff466a4d28f217b8011d7660aa84ad51293e17b696",
+      "method": "refetched"
+    },
+    {
+      "id": "scheme",
+      "content_hash": "sha256:998fb9996cafcbd11cf2f97205c8d445007c98fc79d0419e079c27c5aacf3e7f",
+      "method": "refetched"
+    },
+    {
+      "id": "home",
+      "content_hash": "sha256:fb8e18548663a297cc9384d1b28614ba65b7b8cf67984eee472cc9bf0b25578b",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. New source: the official home page snapshot, quote found.",
+  "findings": [
+    {
+      "target": "content.how_to_apply",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. The text says the target was reached and new registration may not be available, and to ask at a CSC first.",
+      "suggestion": "None."
+    },
+    {
+      "target": "source:home",
+      "severity": "minor",
+      "note": "The live hash differs from the recorded one (live 13e17bc3e26a), but only in three running totals. recheck.py classes this as counters_only: its stable hash matches, so it is not treated as a change.",
+      "suggestion": "None."
+    },
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Now says \"up to ₹15,000\".",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:no_govt_employee",
+      "severity": "minor",
+      "note": "Still open: the field is wider than the scheme's family.",
+      "suggestion": "Reword the question or text."
+    },
+    {
+      "target": "tests",
+      "severity": "minor",
+      "note": "The first fixture expects stale: false, which holds only after the scheme is published, so npm test fails on it while the status is needs_review. This comes from the status, not the rules.",
+      "suggestion": "It should pass after publishing. Confirm with npm test then."
+    }
+  ]
+}

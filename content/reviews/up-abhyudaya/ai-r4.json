@@ -1,0 +1,41 @@
+{
+  "slug": "up-abhyudaya",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "62bb64e67258a7a5",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dept",
+      "content_hash": "sha256:4936b91d100c9c0ab9a93804f345ef461a9f69afb5db3eaa7e6e629a3dd59772",
+      "method": "refetched"
+    },
+    {
+      "id": "budget_2026",
+      "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots.",
+  "findings": [
+    {
+      "target": "content.how_to_apply",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Now says online only at abhyudayup.in, and official_apply_url points there.",
+      "suggestion": "None."
+    },
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Selection added with a quoted fact.",
+      "suggestion": "None."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Still open: birth certificate and photo are missing.",
+      "suggestion": "Add them if codes exist."
+    }
+  ]
+}

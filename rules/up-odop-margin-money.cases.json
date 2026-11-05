@@ -1,0 +1,128 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "in_odop_trade": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "age 17",
+    "profile": {
+      "state": "up",
+      "age": 17,
+      "in_odop_trade": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "age 18",
+    "profile": {
+      "state": "up",
+      "age": 18,
+      "in_odop_trade": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 19",
+    "profile": {
+      "state": "up",
+      "age": 19,
+      "in_odop_trade": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "not the ODOP product",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "in_odop_trade": false,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "odop_product": "fail"
+      }
+    }
+  },
+  {
+    "name": "lives in another state",
+    "profile": {
+      "state": "br",
+      "age": 30,
+      "in_odop_trade": true,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "ODOP answer missing",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "had_govt_business_loan_5y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "in_odop_trade"
+      ]
+    }
+  },
+  {
+    "name": "earlier scheme benefit: check with the office",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "in_odop_trade": true,
+      "had_govt_business_loan_5y": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "no_prior_scheme": "fail"
+      }
+    }
+  }
+]

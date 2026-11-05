@@ -1,0 +1,47 @@
+{
+  "slug": "up-destitute-women-pension",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "615876c4d47d755a",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "women_dept",
+      "content_hash": "sha256:60a61f5ac2e371487090d9728bcdad7d45c9a87d78a4c701e38889bc89842ea2",
+      "method": "refetched"
+    },
+    {
+      "id": "budget_2026",
+      "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Searched mahilakalyan.up.nic.in and the web; read the UP Budget 2026-27 highlights. Free Press Journal (21 Apr 2026) repeats the ₹2 lakh family limit. Press reports (Oct 2026) say the CM gave in-principle approval to raise old age, widow and divyang pensions from ₹1,000 to ₹1,500, with cabinet approval still pending; no cabinet decision or order found. ₹1,000 still stands today.",
+  "findings": [
+    {
+      "target": "relations",
+      "severity": "minor",
+      "note": "Checked in context: the clause bars a pension from any other state or central scheme, so both excludes relations are backed and do not over-claim.",
+      "suggestion": "None."
+    },
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "Press reports (Oct 2026) say the CM gave in-principle approval to raise old age, widow and divyang pensions from ₹1,000 to ₹1,500, with cabinet approval still pending; no cabinet decision or order found. ₹1,000 still stands today.",
+      "suggestion": "Re-check before publishing and after the cabinet meeting."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Empty, though GO 2016 para 4(1)(IV) has a list for the widow pension.",
+      "suggestion": "Add document rows from the order."
+    },
+    {
+      "target": "sources",
+      "severity": "minor",
+      "note": "Evidence is a portal page and budget highlights; the governing order is not cited.",
+      "suggestion": "Add it when located. Guidance confidence is right for now."
+    }
+  ]
+}

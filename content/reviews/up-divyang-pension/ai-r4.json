@@ -1,0 +1,41 @@
+{
+  "slug": "up-divyang-pension",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "e88ad82be89c8ad3",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dept",
+      "content_hash": "sha256:f58bcb40688586e497cbde139c8b58f17b4249880c5045123c515174e0e19ffc",
+      "method": "refetched"
+    },
+    {
+      "id": "budget_2026",
+      "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Searched uphwd.gov.in and the web; read the UP Budget 2026-27 highlights and the 2016 GO. Press reports (Oct 2026) say the CM gave in-principle approval to raise old age, widow and divyang pensions from ₹1,000 to ₹1,500, with cabinet approval still pending; no cabinet decision or order found. ₹1,000 still stands today.",
+  "findings": [
+    {
+      "target": "relations",
+      "severity": "minor",
+      "note": "Checked in context: the sentence ends \"will not be eligible for this scheme\", so both excludes relations are backed and do not over-claim. The quote stops before those words.",
+      "suggestion": "Extend the quote so it shows the exclusion."
+    },
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "Press reports (Oct 2026) say the CM gave in-principle approval to raise old age, widow and divyang pensions from ₹1,000 to ₹1,500, with cabinet approval still pending; no cabinet decision or order found. ₹1,000 still stands today.",
+      "suggestion": "Re-check before publishing and after the cabinet meeting."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Empty. GO 2016 para 4(1)(IV) requires an income certificate and a certificate of at least 40% disability, and the page requires an Aadhaar-seeded account.",
+      "suggestion": "Add document rows."
+    }
+  ]
+}

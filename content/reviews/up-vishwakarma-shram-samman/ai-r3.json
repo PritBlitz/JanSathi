@@ -1,0 +1,30 @@
+{
+  "slug": "up-vishwakarma-shram-samman",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "88d38cbdd382b0de",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "msme_connect",
+      "content_hash": "sha256:63fd2f45455232c12f247661d7aab2a174cbb80c28581a85aef41027edb1a13f",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "The portal page matched and describes version 2.0 with 25 trades. The 'Government order 2026-27 2.0' PDF it lists was not read, so amounts rest on the portal text. I ran no scheme-specific web search.",
+  "findings": [
+    {
+      "target": "source:msme_connect",
+      "severity": "minor",
+      "note": "Amounts rest on a portal page; a 2026-27 GO exists.",
+      "suggestion": "Add the GO as a source."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "No document rows.",
+      "suggestion": "Add rows from the GO."
+    }
+  ]
+}

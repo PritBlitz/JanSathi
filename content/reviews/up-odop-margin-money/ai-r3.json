@@ -1,0 +1,16 @@
+{
+  "slug": "up-odop-margin-money",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "9d610e1c08ac1afd",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "msme_connect", "content_hash": "sha256:39683d1ee3f37252d58a6ca5ffed5bb8f63b5fe004d32ce3e5e202a3cfcb7919", "method": "refetched" },
+    { "id": "eligibility_pdf", "content_hash": "sha256:3ccca44b724bfb5aaf5a4bd66973c234c9f8104b92228ff4194b7affa2bd9096", "method": "refetched" }
+  ],
+  "newer_changes_search": "Re-review of the diff. The new 5% fact and its transcription match the page image of the eligibility PDF, so my earlier minor finding on the own-share fact is closed. The other transcribed lines were compared earlier and also match. The sheet has no applicant residence clause; the rule is 'uncertain' and says so. The Government Order PDF was not read.",
+  "findings": [
+    { "target": "content:benefit", "severity": "minor", "note": "The sheet says margin money becomes a grant after 2 years of successful running without default, and that loan beneficiaries are trained.", "suggestion": "Add both." }
+  ]
+}

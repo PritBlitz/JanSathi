@@ -1,0 +1,17 @@
+{
+  "slug": "up-abhyudaya",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "62bb64e67258a7a5",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "dept", "content_hash": "sha256:4936b91d100c9c0ab9a93804f345ef461a9f69afb5db3eaa7e6e629a3dd59772", "method": "refetched" },
+    { "id": "budget_2026", "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e", "method": "refetched" }
+  ],
+  "newer_changes_search": "Re-review. The blocker is resolved: how_to_apply and official_apply_url now point to online-only registration at abhyudayup.in, selection is stated, and both have quoted facts in en and hi.",
+  "findings": [
+    { "target": "rule:resident", "severity": "minor", "note": "The source says 'native', stricter than 'Lives in Uttar Pradesh'.", "suggestion": "Say 'native or domicile of Uttar Pradesh'." },
+    { "target": "documents", "severity": "minor", "note": "The source also lists a birth certificate and a photo.", "suggestion": "Add rows." }
+  ]
+}

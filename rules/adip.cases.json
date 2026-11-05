@@ -1,0 +1,150 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "disability_percent": 50,
+      "annual_income": 200000,
+      "got_aid_last_3y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "disability 39%",
+    "profile": {
+      "disability_percent": 39,
+      "annual_income": 200000,
+      "got_aid_last_3y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "disability_40": "fail"
+      }
+    }
+  },
+  {
+    "name": "disability 40%",
+    "profile": {
+      "disability_percent": 40,
+      "annual_income": 200000,
+      "got_aid_last_3y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "disability 41%",
+    "profile": {
+      "disability_percent": 41,
+      "annual_income": 200000,
+      "got_aid_last_3y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 359,999",
+    "profile": {
+      "disability_percent": 50,
+      "annual_income": 359999,
+      "got_aid_last_3y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income exactly 3.6 lakh",
+    "profile": {
+      "disability_percent": 50,
+      "annual_income": 360000,
+      "got_aid_last_3y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 360,001",
+    "profile": {
+      "disability_percent": 50,
+      "annual_income": 360001,
+      "got_aid_last_3y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "band 2.5 to 5 lakh straddles the limit",
+    "profile": {
+      "disability_percent": 50,
+      "annual_income": {
+        "min": 250001,
+        "max": 500000
+      },
+      "got_aid_last_3y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  },
+  {
+    "name": "help within 3 years: check with the office",
+    "profile": {
+      "disability_percent": 50,
+      "annual_income": 200000,
+      "got_aid_last_3y": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "no_recent_aid": "fail"
+      }
+    }
+  },
+  {
+    "name": "disability percent missing",
+    "profile": {
+      "annual_income": 200000,
+      "got_aid_last_3y": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "disability_percent"
+      ]
+    }
+  }
+]

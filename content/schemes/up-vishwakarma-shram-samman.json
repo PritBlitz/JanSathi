@@ -1,0 +1,163 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "changes": [],
+  "slug": "up-vishwakarma-shram-samman",
+  "category": "employment",
+  "icon": "🔨",
+  "ministry": {
+    "en": "MSME and Export Promotion Department, Uttar Pradesh",
+    "hi": "एमएसएमई एवं निर्यात प्रोत्साहन विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://msme1connect.up.gov.in/scheme-list/vishwakarma-shram-samman-yojana",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Vishwakarma Shram Samman Yojana 2.0",
+      "summary": "Free training, a toolkit and loan help for artisans and workers in 25 trades in Uttar Pradesh, such as tailors, carpenters, potters and mobile repair workers.",
+      "benefit": "Free training of up to 10 days, a toolkit worth up to ₹15,000 after training, and for trained people a loan of up to ₹10 lakh with a 15% margin money subsidy, no collateral and no interest. The person pays 10% of the project cost (General category men) or 5% (others, including women) as their own share.",
+      "how_to_apply": "Apply on the Directorate of Industries UPMSME portal, diupmsme.upsdc.gov.in. Create a profile, choose the scheme and fill in the details."
+    },
+    "hi": {
+      "name": "विश्वकर्मा श्रम सम्मान योजना 2.0",
+      "summary": "उत्तर प्रदेश में 25 ट्रेड के कारीगरों और कामगारों, जैसे दर्ज़ी, बढ़ई, कुम्हार और मोबाइल मरम्मत करने वालों के लिए मुफ़्त प्रशिक्षण, टूलकिट और ऋण सहायता।",
+      "benefit": "10 दिन तक का मुफ़्त प्रशिक्षण, प्रशिक्षण के बाद ₹15,000 तक की टूलकिट, और प्रशिक्षित लोगों के लिए ₹10 लाख तक का ऋण, 15% मार्जिन मनी अनुदान के साथ, बिना ज़मानत और बिना ब्याज के। अपना हिस्सा परियोजना लागत का 10% (सामान्य वर्ग के पुरुष) या 5% (महिलाओं सहित अन्य) होता है।",
+      "how_to_apply": "उद्योग निदेशालय के UPMSME पोर्टल diupmsme.upsdc.gov.in पर आवेदन करें। प्रोफ़ाइल बनाएँ, योजना चुनें और विवरण भरें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "msme_connect",
+      "url": "https://msme1connect.up.gov.in/scheme-list/vishwakarma-shram-samman-yojana",
+      "title": "Vishwakarma Shram Samman Yojana 2.0",
+      "publisher": "UP MSME 1-Connect, Government of Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:63fd2f45455232c12f247661d7aab2a174cbb80c28581a85aef41027edb1a13f",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "msme_connect",
+      "locator": "Eligibility, item 2",
+      "quote": "The applicant must be a legal resident of Uttar Pradesh.",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          18
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "msme_connect",
+      "locator": "Eligibility, item 2",
+      "quote": "The applicant must be at least 18 years old.",
+      "text": {
+        "en": "Age 18 or older",
+        "hi": "उम्र 18 साल या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "trade",
+      "logic": {
+        "==": [
+          {
+            "var": "works_in_skilled_trade"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "msme_connect",
+      "locator": "Eligibility, item 3",
+      "quote": "covers a total of 25 trades, comprising both traditional and modern occupations",
+      "text": {
+        "en": "Works in one of the 25 listed trades",
+        "hi": "25 सूचीबद्ध ट्रेड में से किसी एक में काम करते हैं"
+      }
+    },
+    {
+      "code": "no_recent_toolkit",
+      "logic": {
+        "==": [
+          {
+            "var": "got_toolkit_2y"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "msme_connect",
+      "locator": "Eligibility, item 1",
+      "quote": "Applicant should not have recieved any sort of Tool kit in last two years.",
+      "text": {
+        "en": "Has not received a toolkit in the last two years",
+        "hi": "पिछले दो साल में टूलकिट नहीं मिली है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "msme_connect",
+      "quote": "Loan assistance of up to ₹10.00 lakh with 15% margin money subsidy , without collateral security and interest"
+    },
+    {
+      "about": "amount",
+      "source": "msme_connect",
+      "quote": "Provide advanced toolkit support of up to ₹15,000 to eligible beneficiaries after completion of training."
+    },
+    {
+      "about": "training",
+      "source": "msme_connect",
+      "quote": "Free skill development training of up to 10 days, based on market demand."
+    },
+    {
+      "about": "own_share",
+      "source": "msme_connect",
+      "quote": "the beneficiary shall contribute 10% of the project cost in case of male beneficiaries belonging to the General Category and 5% in case of beneficiaries belonging to other categories"
+    }
+  ],
+  "documents": [],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "88d38cbdd382b0de"
+  }
+}

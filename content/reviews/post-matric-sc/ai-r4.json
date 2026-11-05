@@ -1,0 +1,57 @@
+{
+  "slug": "post-matric-sc",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "e7c9b931c15bdbe1",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:cf73697baff4d7ebaf5919363296479b501ea9efc146a27de50623a9472cfa57",
+      "method": "snapshot"
+    },
+    {
+      "id": "guidelines_text",
+      "content_hash": "sha256:d726e2c8a16dcf572b050a014df9551414781bdc8b0268e7f3fcd5374a2c9f22",
+      "method": "refetched"
+    },
+    {
+      "id": "msje",
+      "content_hash": "sha256:720f07546e93fb08da7acc4a310e211252fbeb24f37d75ef22479a158569e45b",
+      "method": "snapshot"
+    },
+    {
+      "id": "nsp",
+      "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. No continuation order found in my earlier search.",
+  "findings": [
+    {
+      "target": "source:guidelines_text",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Rules are now guidance, and the period is disclosed in both languages.",
+      "suggestion": "None."
+    },
+    {
+      "target": "relations",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. The note now says you may apply for both but keep one.",
+      "suggestion": "None."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Still open: rows cite sources that do not show those documents.",
+      "suggestion": "Cite guidelines_text or a page that lists them."
+    },
+    {
+      "target": "tests",
+      "severity": "minor",
+      "note": "The first fixture expects stale: false, which holds only after the scheme is published, so npm test fails on it while the status is needs_review. This comes from the status, not the rules.",
+      "suggestion": "It should pass after publishing. Confirm with npm test then."
+    }
+  ]
+}

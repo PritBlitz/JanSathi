@@ -1,0 +1,57 @@
+{
+  "slug": "pm-kisan",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "7f3ecf2972a5b525",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:ae82cac83f61a5fa5049387a7c13e00c6d55cef0e9163deb5497dc86c86d697f",
+      "method": "refetched"
+    },
+    {
+      "id": "faq",
+      "content_hash": "sha256:95d4e2892b4b351e599bf903f8c6f89b20d4b74831eb8f1a0e61a2a66771ff86",
+      "method": "refetched"
+    },
+    {
+      "id": "cabinet_2026",
+      "content_hash": "sha256:cbbef24be1f7febe001d681f301d163d7f3f22a3fcdac5c792cb8daf677c0100",
+      "method": "snapshot"
+    },
+    {
+      "id": "portal",
+      "content_hash": "sha256:d7cbe9d60f28ca947a6564dce891615c21eacf9af39ede5b0ad57f6838f07666",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots.",
+  "findings": [
+    {
+      "target": "source:portal",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. The hash is refreshed to the current page.",
+      "suggestion": "None."
+    },
+    {
+      "target": "fact:how_to_apply",
+      "severity": "minor",
+      "note": "Still open: the quote stops before the date.",
+      "suggestion": "Extend it."
+    },
+    {
+      "target": "content.how_to_apply",
+      "severity": "minor",
+      "note": "Still open: eKYC, mandatory on the portal, is not mentioned.",
+      "suggestion": "Add it."
+    },
+    {
+      "target": "tests",
+      "severity": "minor",
+      "note": "The first fixture expects stale: false, which holds only after the scheme is published, so npm test fails on it while the status is needs_review. This comes from the status, not the rules.",
+      "suggestion": "It should pass after publishing. Confirm with npm test then."
+    }
+  ]
+}

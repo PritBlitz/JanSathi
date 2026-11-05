@@ -1,0 +1,229 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [
+    {
+      "kind": "excludes",
+      "with": "up-old-age-pension",
+      "source": "women_dept",
+      "quote": "आवेदिका को राज्य अथवा केन्द्र सरकार की किसी अन्य योजना से पेंशन न प्राप्त हो रही हो",
+      "note": {
+        "en": "A person getting another government pension cannot also get this one.",
+        "hi": "जिन्हें दूसरी सरकारी पेंशन मिल रही है, वे यह पेंशन साथ में नहीं ले सकते।"
+      }
+    },
+    {
+      "kind": "excludes",
+      "with": "up-divyang-pension",
+      "source": "women_dept",
+      "quote": "आवेदिका को राज्य अथवा केन्द्र सरकार की किसी अन्य योजना से पेंशन न प्राप्त हो रही हो",
+      "note": {
+        "en": "A person getting another government pension cannot also get this one.",
+        "hi": "जिन्हें दूसरी सरकारी पेंशन मिल रही है, वे यह पेंशन साथ में नहीं ले सकते।"
+      }
+    }
+  ],
+  "changes": [],
+  "slug": "up-destitute-women-pension",
+  "category": "pension",
+  "icon": "🕊️",
+  "ministry": {
+    "en": "Department of Women and Child Development, Uttar Pradesh",
+    "hi": "महिला एवं बाल विकास विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://sspy-up.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Uttar Pradesh Destitute Women Pension (widow pension)",
+      "summary": "A monthly pension for women in Uttar Pradesh whose husband has died.",
+      "benefit": "₹1,000 a month.",
+      "how_to_apply": "New applicants apply at sspy-up.gov.in. The department sets time limits for each step: 45 days for the inquiry, 15 days for the block or sub-division officer, one month for the district committee and one month to send the money."
+    },
+    "hi": {
+      "name": "उत्तर प्रदेश निराश्रित महिला पेंशन (विधवा पेंशन)",
+      "summary": "उत्तर प्रदेश की उन महिलाओं के लिए मासिक पेंशन जिनके पति की मृत्यु हो गई है।",
+      "benefit": "हर महीने ₹1,000।",
+      "how_to_apply": "नए आवेदक sspy-up.gov.in पर आवेदन करें। विभाग ने हर चरण का समय तय किया है: जाँच के लिए 45 दिन, खंड या उप ज़िला अधिकारी के लिए 15 दिन, ज़िला समिति के लिए एक महीना और पैसा भेजने के लिए एक महीना।"
+    }
+  },
+  "sources": [
+    {
+      "id": "women_dept",
+      "url": "https://mahilakalyan.up.nic.in/OurProgram.aspx",
+      "title": "Programmes and schemes run by Women Welfare",
+      "publisher": "Directorate of Women Welfare, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "hi",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:60a61f5ac2e371487090d9728bcdad7d45c9a87d78a4c701e38889bc89842ea2",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "fetch": "manual",
+      "fetch_note": "The robots.txt of this host answers with a server error, so the automatic re-check will not fetch it. Saved copy of the page, 2026-11-05."
+    },
+    {
+      "id": "budget_2026",
+      "url": "https://information.up.gov.in/admin/UploadDocument/OtherPress/compressed_12022026010930Final%20English%20Budget%202026-27.pdf",
+      "title": "Highlights and salient features of the Uttar Pradesh Budget 2026-27",
+      "publisher": "Information Department, Government of Uttar Pradesh",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-02",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "women_dept",
+      "locator": "Scheme 1, application standards",
+      "quote": "आवेदिका उ0प्र0 की स्थायी निवासी हो",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "female",
+      "logic": {
+        "==": [
+          {
+            "var": "gender"
+          },
+          "female"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "women_dept",
+      "locator": "Scheme 1, application standards",
+      "quote": "आवेदिका के पति की मृत्यु हो गयी हो",
+      "text": {
+        "en": "Is a woman",
+        "hi": "महिला हैं"
+      }
+    },
+    {
+      "code": "widowed",
+      "logic": {
+        "==": [
+          {
+            "var": "marital_status"
+          },
+          "widowed"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "women_dept",
+      "locator": "Scheme 1, application standards",
+      "quote": "आवेदिका के पति की मृत्यु हो गयी हो",
+      "text": {
+        "en": "Her husband has died",
+        "hi": "पति की मृत्यु हो चुकी है"
+      }
+    },
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          18
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "women_dept",
+      "locator": "Scheme 1, application standards",
+      "quote": "आवेदिका की आयु 18 वर्ष से कम नहीं होनी चाहिए",
+      "text": {
+        "en": "Age 18 or older",
+        "hi": "उम्र 18 साल या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          200000
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "women_dept",
+      "locator": "Scheme 1, application standards",
+      "quote": "आवेदिका एंव उसके परिवार की वार्षिक आय सीमा समस्त श्रोतों से रू0 2.00 लाख प्रतिवर्ष से अधिक नहीं होनी चाहिये",
+      "text": {
+        "en": "Her and her family's yearly income from all sources is up to ₹2 lakh",
+        "hi": "उनकी और परिवार की सालाना आय सभी स्रोतों से ₹2 लाख तक है"
+      }
+    },
+    {
+      "code": "no_other_pension",
+      "logic": {
+        "==": [
+          {
+            "var": "gets_govt_pension"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "women_dept",
+      "locator": "Scheme 1, application standards",
+      "quote": "आवेदिका को राज्य अथवा केन्द्र सरकार की किसी अन्य योजना से पेंशन न प्राप्त हो रही हो",
+      "text": {
+        "en": "Gets no pension from another state or central scheme",
+        "hi": "किसी दूसरी राज्य या केंद्र योजना से पेंशन नहीं मिल रही है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "women_dept",
+      "quote": "प्रत्येक लाभार्थी को प्रति माह रू0 1000/— की धनराशि"
+    },
+    {
+      "about": "coverage",
+      "source": "budget_2026",
+      "quote": "A provision of ₹3,500 crore is being proposed for the Destitute Women Pension"
+    }
+  ],
+  "documents": [],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "615876c4d47d755a"
+  }
+}

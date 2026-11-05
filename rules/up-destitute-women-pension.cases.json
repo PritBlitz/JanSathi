@@ -1,0 +1,256 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 45,
+      "annual_income": 150000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "guidance"
+    }
+  },
+  {
+    "name": "age 17",
+    "profile": {
+      "state": "up",
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 17,
+      "annual_income": 150000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "age 18",
+    "profile": {
+      "state": "up",
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 18,
+      "annual_income": 150000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "age 19",
+    "profile": {
+      "state": "up",
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 19,
+      "annual_income": 150000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 199,999",
+    "profile": {
+      "state": "up",
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 45,
+      "annual_income": 199999,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income exactly 2 lakh",
+    "profile": {
+      "state": "up",
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 45,
+      "annual_income": 200000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 200,001",
+    "profile": {
+      "state": "up",
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 45,
+      "annual_income": 200001,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "band 1 to 2.5 lakh straddles the limit",
+    "profile": {
+      "state": "up",
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 45,
+      "annual_income": {
+        "min": 100001,
+        "max": 250000
+      },
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  },
+  {
+    "name": "married",
+    "profile": {
+      "state": "up",
+      "gender": "female",
+      "marital_status": "married",
+      "age": 45,
+      "annual_income": 150000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "widowed": "fail"
+      }
+    }
+  },
+  {
+    "name": "man",
+    "profile": {
+      "state": "up",
+      "gender": "male",
+      "marital_status": "widowed",
+      "age": 45,
+      "annual_income": 150000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "female": "fail"
+      }
+    }
+  },
+  {
+    "name": "already gets another pension",
+    "profile": {
+      "state": "up",
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 45,
+      "annual_income": 150000,
+      "gets_govt_pension": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "no_other_pension": "fail"
+      }
+    }
+  },
+  {
+    "name": "lives in another state",
+    "profile": {
+      "state": "br",
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 45,
+      "annual_income": 150000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "state missing",
+    "profile": {
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 45,
+      "annual_income": 150000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "state"
+      ]
+    }
+  },
+  {
+    "name": "pension answer missing",
+    "profile": {
+      "state": "up",
+      "gender": "female",
+      "marital_status": "widowed",
+      "age": 45,
+      "annual_income": 150000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "gets_govt_pension"
+      ]
+    }
+  }
+]

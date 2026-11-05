@@ -1,0 +1,231 @@
+{
+  "status": "published",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "yearly"
+  },
+  "deadlines": [],
+  "relations": [
+    {
+      "kind": "excludes",
+      "with": "pre-matric-sc",
+      "source": "guidelines",
+      "quote": "A scholarship holder under this scheme will not avail any other scholarship/stipend.",
+      "note": {
+        "en": "You may apply for both on the National Scholarship Portal, but the scheme rules let you keep only one. If you are offered both, choose one.",
+        "hi": "आप राष्ट्रीय छात्रवृत्ति पोर्टल पर दोनों के लिए आवेदन कर सकते हैं, लेकिन योजना के नियमों के अनुसार एक ही रख सकते हैं। दोनों मिलें तो एक चुनें।"
+      }
+    },
+    {
+      "kind": "excludes",
+      "with": "pre-matric-st",
+      "source": "guidelines",
+      "quote": "A scholarship holder under this scheme will not avail any other scholarship/stipend.",
+      "note": {
+        "en": "You may apply for both on the National Scholarship Portal, but the scheme rules let you keep only one. If you are offered both, choose one.",
+        "hi": "आप राष्ट्रीय छात्रवृत्ति पोर्टल पर दोनों के लिए आवेदन कर सकते हैं, लेकिन योजना के नियमों के अनुसार एक ही रख सकते हैं। दोनों मिलें तो एक चुनें।"
+      }
+    },
+    {
+      "kind": "excludes",
+      "with": "up-pre-matric-general",
+      "source": "guidelines",
+      "quote": "A scholarship holder under this scheme will not avail any other scholarship/stipend.",
+      "note": {
+        "en": "You may apply for both, but the scheme rules let you keep only one. If you are offered both, choose one.",
+        "hi": "आप दोनों के लिए आवेदन कर सकते हैं, लेकिन योजना के नियमों के अनुसार एक ही रख सकते हैं। दोनों मिलें तो एक चुनें।"
+      }
+    }
+  ],
+  "changes": [],
+  "slug": "pre-matric-pwd",
+  "category": "disability",
+  "icon": "📘",
+  "ministry": {
+    "en": "Department of Empowerment of Persons with Disabilities",
+    "hi": "दिव्यांगजन सशक्तीकरण विभाग"
+  },
+  "official_apply_url": "https://scholarships.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Pre-matric scholarship for students with disabilities (class 9 and 10)",
+      "summary": "A yearly scholarship for students with a disability of 40% or more who study full time in class 9 or 10.",
+      "benefit": "Each month: ₹800 for hostel students or ₹500 for day scholars. Each year: a disability allowance of ₹4,000 (visual or intellectual disability) or ₹2,000 (other disabilities), and ₹1,000 for books. Half the slots are kept for girls. The number of scholarships is limited.",
+      "how_to_apply": "Apply on the National Scholarship Portal. A UDID card and an Aadhaar card are needed. At most two children with disabilities of the same parents can get it. A student can’t hold another scholarship or stipend at the same time."
+    },
+    "hi": {
+      "name": "दिव्यांग छात्रों के लिए प्री-मैट्रिक छात्रवृत्ति (कक्षा 9 और 10)",
+      "summary": "कक्षा 9 या 10 में पूरे समय पढ़ने वाले 40% या उससे ज़्यादा दिव्यांगता वाले छात्रों के लिए सालाना छात्रवृत्ति।",
+      "benefit": "हर महीने: छात्रावास के छात्रों को ₹800 या घर से पढ़ने वालों को ₹500। हर साल: दिव्यांगता भत्ता ₹4,000 (दृष्टि या बौद्धिक दिव्यांगता) या ₹2,000 (दूसरी दिव्यांगता), और किताबों के लिए ₹1,000। आधी सीटें लड़कियों के लिए हैं। छात्रवृत्तियों की संख्या सीमित है।",
+      "how_to_apply": "राष्ट्रीय छात्रवृत्ति पोर्टल पर आवेदन करें। UDID कार्ड और आधार कार्ड चाहिए। एक ही माता-पिता के अधिकतम दो दिव्यांग बच्चों को यह मिल सकती है। छात्र साथ में कोई दूसरी छात्रवृत्ति या वज़ीफ़ा नहीं ले सकता।"
+    }
+  },
+  "sources": [
+    {
+      "id": "guidelines",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3e58aea67b01fa747687f038dfde066f6/uploads/2024/09/202409261656732428.pdf",
+      "title": "Revised guidelines of the Central Sector Umbrella Scheme \"Scholarships for Students with Disabilities\", 25 Sep 2024",
+      "publisher": "Department of Empowerment of Persons with Disabilities",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2024-09",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:2f4a1e8a7d453cf049092960d0f5df950cccbc382f224db0a1503cf714ca6171",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "revision_2025",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3e58aea67b01fa747687f038dfde066f6/uploads/2025/09/202509111852335844.pdf",
+      "title": "Revision of guidelines of the Scholarships for Students with Disabilities, O.M. of 4 Sep 2025",
+      "publisher": "Department of Empowerment of Persons with Disabilities",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2025-09",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:a26f688260d03eb31b46261447dbab9d85e859f2dcf900bb5b6b148614d5157d",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "nsp",
+      "url": "https://scholarships.gov.in/",
+      "title": "National Scholarship Portal",
+      "publisher": "Government of India",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    }
+  ],
+  "rules": [
+    {
+      "code": "disability_40",
+      "logic": {
+        ">=": [
+          {
+            "var": "disability_percent"
+          },
+          40
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§2(ii)",
+      "quote": "benchmark disability i.e. 40% or more disability",
+      "text": {
+        "en": "Disability of 40% or more",
+        "hi": "दिव्यांगता 40% या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "class_9_10",
+      "logic": {
+        "==": [
+          {
+            "var": "education_level"
+          },
+          "class_9_10"
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§4.1",
+      "quote": "should be a regular, full time student studying in classes IX or X",
+      "text": {
+        "en": "Studying full time in class 9 or 10",
+        "hi": "कक्षा 9 या 10 में पूरे समय पढ़ रहे हैं"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          250000
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§3 table, row 1",
+      "quote": "Pre-Matric IX and X 25,000 (including renewal cases) Rs. 2.5 lakh",
+      "text": {
+        "en": "Parents' income is up to ₹2.5 lakh a year",
+        "hi": "माता-पिता की सालाना आय ₹2.5 लाख तक है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Rs.800/- per month for hostellers, Rs. 500/- per month for day-scholars"
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Rs. 4,000/- per annum for Visual Impairment/ Intellectual Disabilities."
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Rs 2000/- per annum for All other types of disabilities."
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Book allowance Rs. 1,000/- per annum."
+    },
+    {
+      "about": "limit",
+      "source": "guidelines",
+      "quote": "Not more than two children with disabilities of the same parents will be entitled to receive benefits of the scheme."
+    },
+    {
+      "about": "documents",
+      "source": "revision_2025",
+      "quote": "Unique Disability Identity card (UDID)."
+    },
+    {
+      "about": "nsp_rule",
+      "source": "nsp",
+      "quote": "Students may apply for one merit-based scholarship scheme and one or more welfare-based scholarship schemes from AY 2026–27"
+    }
+  ],
+  "documents": [
+    {
+      "code": "disability_certificate",
+      "mandatory": true,
+      "source": "revision_2025"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "revision_2025"
+    },
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "guidelines"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "a15668007b8f7c50"
+  }
+}

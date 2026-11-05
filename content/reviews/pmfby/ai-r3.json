@@ -1,0 +1,19 @@
+{
+  "slug": "pmfby",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "8dce028088ed6c6a",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "factsheet_2026", "content_hash": "sha256:fbea6acacc46d5864d6408dac2b23a7bf85361b5fc8b72ea42c5819a329ed33f", "method": "refetched" },
+    { "id": "portal", "content_hash": "sha256:0580ed18711602b15107f18de2119a2ad1f3b3bc6c769617c3d0ba8189fb7444", "method": "refetched" },
+    { "id": "guidelines_2020", "content_hash": "sha256:fc57c66ee9a275309bdcf84a81398376075bdd8657d026c673ef363a3a7616f8", "method": "refetched" }
+  ],
+  "newer_changes_search": "Re-review. Both blockers resolved: the old-edition dates are gone and the file says 'your state's last date'; the Aadhaar and bank rows now cite the Revamped Operational Guidelines (effective Kharif 2020), with the enrolment alternative stated. I did not check for any revision after 2020.",
+  "findings": [
+    { "target": "content:summary", "severity": "minor", "note": "The now-cited guidelines say loanee cover works on an opt-out basis. The summary says only that the bank takes the premium.", "suggestion": "Add the opt-out, which can now be quoted." },
+    { "target": "documents:bank_account", "severity": "minor", "note": "The quote \"essential for such cases\" is about applying through a CSC.", "suggestion": "Quote a general clause if there is one." },
+    { "target": "rule:farmer", "severity": "minor", "note": "A hard 'guidance' rule fails anyone who grows crops but answers another occupation. KCC uses 'uncertain'.", "suggestion": "Use 'uncertain'." }
+  ]
+}

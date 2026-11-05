@@ -1,0 +1,69 @@
+{
+  "$comment": "Written by ingest/recheck.py; do not edit by hand. docs/KNOWLEDGE_BASE.md section 5.",
+  "sources": {
+    "igndps/portal": {
+      "status": "dismissed",
+      "since": "2026-11-04",
+      "stable_hash": "sha256:dc5fd332f05fc5af3cf72a4c7c9dda8b12cc1dd81dc93a456805c5c9a89c9275",
+      "by": "ai-triage-2026-11-04",
+      "note": "Only the page title changed (Social Audit wording dropped); read against the saved snapshot. No fact cites this source."
+    },
+    "ignoaps/portal": {
+      "status": "dismissed",
+      "since": "2026-11-04",
+      "stable_hash": "sha256:dc5fd332f05fc5af3cf72a4c7c9dda8b12cc1dd81dc93a456805c5c9a89c9275",
+      "by": "ai-triage-2026-11-04",
+      "note": "Only the page title changed (Social Audit wording dropped); read against the saved snapshot. No fact cites this source."
+    },
+    "ignwps/portal": {
+      "status": "dismissed",
+      "since": "2026-11-04",
+      "stable_hash": "sha256:dc5fd332f05fc5af3cf72a4c7c9dda8b12cc1dd81dc93a456805c5c9a89c9275",
+      "by": "ai-triage-2026-11-04",
+      "note": "Only the page title changed (Social Audit wording dropped); read against the saved snapshot. No fact cites this source."
+    },
+    "pm-kisan/portal": {
+      "status": "dismissed",
+      "since": "2026-11-04",
+      "stable_hash": "sha256:a004820140ff9441becc2dd55e62dffcf62278484816d5a8776295be6e85bcd7",
+      "by": "ai-triage-2026-11-04",
+      "note": "Only the latest instalment announcement and running totals changed; read against the saved snapshot. No fact cites this source."
+    },
+    "pm-svanidhi/portal": {
+      "status": "changed",
+      "since": "2026-11-04"
+    },
+    "pmmvy/guidelines": {
+      "status": "manual_check",
+      "since": "2026-11-04"
+    },
+    "pmmvy/portal": {
+      "status": "manual_check",
+      "since": "2026-11-04"
+    },
+    "post-matric-obc/guidelines": {
+      "status": "manual_check",
+      "since": "2026-11-04"
+    },
+    "post-matric-obc/msje": {
+      "status": "manual_check",
+      "since": "2026-11-04"
+    },
+    "post-matric-sc/guidelines": {
+      "status": "manual_check",
+      "since": "2026-11-04"
+    },
+    "post-matric-sc/msje": {
+      "status": "manual_check",
+      "since": "2026-11-04"
+    },
+    "pre-matric-sc/guidelines": {
+      "status": "manual_check",
+      "since": "2026-11-04"
+    },
+    "pre-matric-sc/msje": {
+      "status": "manual_check",
+      "since": "2026-11-04"
+    }
+  }
+}

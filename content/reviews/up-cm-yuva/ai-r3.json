@@ -1,0 +1,41 @@
+{
+  "slug": "up-cm-yuva",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "5028cce67ab01b0a",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "msme_connect",
+      "content_hash": "sha256:b52ad2be667d60c626fef75aaeb00e4f6cab997f3d3c116c76f5121089752285",
+      "method": "refetched"
+    },
+    {
+      "id": "budget_2026",
+      "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Budget 2026-27 confirms ₹1,000 crore and guarantee-free, interest-free loans. The portal page matched. The one web search that named this scheme returned nothing on it, so this rests on the live portal page and the Budget.",
+  "findings": [
+    {
+      "target": "rule:resident",
+      "severity": "minor",
+      "note": "The quote says only 'youth of the state'. It supports a state scheme but is weak evidence of a residence condition.",
+      "suggestion": "Cite the Government Order's residence clause."
+    },
+    {
+      "target": "rule:no_other_subsidy",
+      "severity": "minor",
+      "note": "had_govt_business_loan_5y is not the same as currently using a subsidy scheme. Safe because it is 'uncertain'.",
+      "suggestion": "Reword later."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "No document rows, though how_to_apply lists identity, age proof, training certificate and project report.",
+      "suggestion": "Add rows."
+    }
+  ]
+}

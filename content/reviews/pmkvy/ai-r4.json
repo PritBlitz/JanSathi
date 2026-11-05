@@ -1,0 +1,30 @@
+{
+  "slug": "pmkvy",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "f821dd937e1d5116",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:ab048f598c35c8db912a38c0bda29b7830e53f5bbf89e3a8436455f1a396f82c",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. No continuation order found in my earlier search.",
+  "findings": [
+    {
+      "target": "source:guidelines",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Rules are now guidance, and the text says no later order was found.",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:age_max",
+      "severity": "minor",
+      "note": "Ages 46 to 59 pass only for Recognition of Prior Learning, and the text says so.",
+      "suggestion": "Consider a note on the result."
+    }
+  ]
+}

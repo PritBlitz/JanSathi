@@ -1,0 +1,35 @@
+{
+  "slug": "pm-mudra",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "1ad5b990b8a11f5e",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "home",
+      "content_hash": "sha256:ca0cab38b40eb95f2041e41a700a2f1224ba524b6b29a425fd4d29d4292b187f",
+      "method": "refetched"
+    },
+    {
+      "id": "faq",
+      "content_hash": "sha256:64912fc1817ce61fcb21a6258baf8bc35c1833f72c98fca8a0543c4b0e31cd20",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Refetched both sources. Searched the web: Tarun Plus limits confirmed from October 2024. I found no sign that an MSME proposal to raise Shishu and Kishor limits was adopted, and disregarded one low-quality PDF claiming new limits from April 2026.",
+  "findings": [
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Empty.",
+      "suggestion": "Add rows if an official list is found."
+    },
+    {
+      "target": "rules",
+      "severity": "minor",
+      "note": "The sources give no age rule, so none is coded, and a minor could get a likely match.",
+      "suggestion": "Consider a note that the lender decides."
+    }
+  ]
+}

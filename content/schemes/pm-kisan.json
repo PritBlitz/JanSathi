@@ -21,13 +21,13 @@
       "name": "PM-KISAN (farmer income support)",
       "summary": "Money support for farmer families who own farm land in their name. Here \"family\" means husband, wife and children under 18.",
       "benefit": "The scheme gives ₹6,000 a year to eligible farmer families, in three instalments of ₹2,000 every four months, straight into the bank account. The Union Cabinet continued the scheme from 2026-27 to 2030-31.",
-      "how_to_apply": "Register on the PM-KISAN website (New Farmer Registration) or at a Common Service Centre. Aadhaar is needed. Your state checks the land records before payment starts. Families with a member who holds or held a constitutional post, or is or was a minister, MP, MLA, MLC, mayor or district panchayat chairperson, are not covered. Institutional land holders and NRI families are not covered."
+      "how_to_apply": "Register on the PM-KISAN website (New Farmer Registration) or at a Common Service Centre. Aadhaar is needed. Your state checks the land records before payment starts. Families with a member who holds or held a constitutional post, or is or was a minister, MP, MLA, MLC, mayor or district panchayat chairperson, are not covered. Institutional land holders and NRI families are not covered. Land bought after 1 February 2019 usually does not count, except land passed on after a death."
     },
     "hi": {
       "name": "पीएम-किसान (किसान आय सहायता)",
       "summary": "जिन किसान परिवारों के नाम पर खेती की ज़मीन है, उनके लिए पैसों की मदद। यहाँ \"परिवार\" का मतलब पति, पत्नी और 18 साल से कम उम्र के बच्चे है।",
       "benefit": "इस योजना में पात्र किसान परिवारों को साल में ₹6,000 दिए जाते हैं, हर चार महीने में ₹2,000 की तीन किस्तों में, सीधे बैंक खाते में। केंद्रीय मंत्रिमंडल ने योजना को 2026-27 से 2030-31 तक जारी रखा है।",
-      "how_to_apply": "पीएम-किसान वेबसाइट पर (नया किसान पंजीकरण) या कॉमन सर्विस सेंटर पर पंजीकरण करें। आधार ज़रूरी है। भुगतान से पहले राज्य ज़मीन के रिकॉर्ड जाँचता है। जिन परिवारों में कोई अभी या पहले संवैधानिक पद पर रहा है, या मंत्री, सांसद, विधायक, विधान परिषद सदस्य, महापौर या ज़िला पंचायत अध्यक्ष है या रहा है, वे शामिल नहीं हैं। संस्थागत भूमिधारक और अनिवासी भारतीय (NRI) परिवार शामिल नहीं हैं।"
+      "how_to_apply": "पीएम-किसान वेबसाइट पर (नया किसान पंजीकरण) या कॉमन सर्विस सेंटर पर पंजीकरण करें। आधार ज़रूरी है। भुगतान से पहले राज्य ज़मीन के रिकॉर्ड जाँचता है। जिन परिवारों में कोई अभी या पहले संवैधानिक पद पर रहा है, या मंत्री, सांसद, विधायक, विधान परिषद सदस्य, महापौर या ज़िला पंचायत अध्यक्ष है या रहा है, वे शामिल नहीं हैं। संस्थागत भूमिधारक और अनिवासी भारतीय (NRI) परिवार शामिल नहीं हैं। 1 फ़रवरी 2019 के बाद ली गई ज़मीन आमतौर पर नहीं गिनी जाती, सिवाय मृत्यु के बाद विरासत में मिली ज़मीन के।"
     }
   },
   "sources": [
@@ -39,10 +39,10 @@
       "doc_type": "guideline",
       "lang": "en",
       "published_date": "2020-03-29",
-      "fetched_at": "2026-10-25",
+      "fetched_at": "2026-11-05",
       "content_hash": "sha256:ae82cac83f61a5fa5049387a7c13e00c6d55cef0e9163deb5497dc86c86d697f",
-      "verified_at": "2026-10-25",
-      "verified_by": "ai-r1, ai-r2"
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
     },
     {
       "id": "faq",
@@ -52,10 +52,10 @@
       "doc_type": "faq",
       "lang": "en",
       "published_date": null,
-      "fetched_at": "2026-10-25",
+      "fetched_at": "2026-11-05",
       "content_hash": "sha256:95d4e2892b4b351e599bf903f8c6f89b20d4b74831eb8f1a0e61a2a66771ff86",
-      "verified_at": null,
-      "verified_by": null
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
     },
     {
       "id": "cabinet_2026",
@@ -67,8 +67,8 @@
       "published_date": "2026-07-31",
       "fetched_at": "2026-10-25",
       "content_hash": "sha256:cbbef24be1f7febe001d681f301d163d7f3f22a3fcdac5c792cb8daf677c0100",
-      "verified_at": "2026-10-25",
-      "verified_by": "ai-r1, ai-r2",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
       "fetch": "manual",
       "fetch_note": "pib.gov.in answers 403 to automated clients. Fetched by hand in a browser; hash with ingest/recheck.py --hash-file."
     },
@@ -80,8 +80,8 @@
       "doc_type": "portal",
       "lang": "en",
       "published_date": null,
-      "fetched_at": "2026-10-25",
-      "content_hash": "sha256:d69ddd8ee1cb1e4a671c759f609b6be3558f5227147fc4ca090c0e1a72463abc",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:d7cbe9d60f28ca947a6564dce891615c21eacf9af39ede5b0ad57f6838f07666",
       "verified_at": null,
       "verified_by": null
     }
@@ -178,6 +178,11 @@
       "about": "benefit",
       "source": "cabinet_2026",
       "quote": "has approved continuation of the Pradhan Mantri Kisan Samman Nidhi (PM-KISAN) Scheme from 2026–27 to 2030–31"
+    },
+    {
+      "about": "how_to_apply",
+      "source": "faq",
+      "quote": "The cut-off date for determination of eligibility of beneficiaries under the scheme is"
     }
   ],
   "documents": [
@@ -200,10 +205,10 @@
   "verification": {
     "method": "ai-dual-review",
     "reviewers": [
-      "ai-r1",
-      "ai-r2"
+      "ai-r3",
+      "ai-r4"
     ],
-    "date": "2026-10-25",
-    "content_version": "19f9d4a7b66282a5"
+    "date": "2026-11-05",
+    "content_version": "7f3ecf2972a5b525"
   }
 }

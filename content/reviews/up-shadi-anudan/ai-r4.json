@@ -1,0 +1,41 @@
+{
+  "slug": "up-shadi-anudan",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "29415b0b28cf8d6b",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dept",
+      "content_hash": "sha256:8c0fc977d5164fcf03820d83ef6243cd1aeaca5b7f8b5d54a5b60c3679d9270d",
+      "method": "refetched"
+    },
+    {
+      "id": "go_2016",
+      "content_hash": "sha256:11a964d642007e4e94e97fa2ef6bc29f5bee0b39ac0fd6ce8b1a01bd55889916",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. Hand-transcribed GO block compared with the extracted text of the order: it matches.",
+  "findings": [
+    {
+      "target": "rule:category",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. ST added with guidance confidence, the order cited, a fixture added, and the conflict with the department page disclosed in both languages.",
+      "suggestion": "None."
+    },
+    {
+      "target": "fact:budget",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. The OBC budget fact and source are removed.",
+      "suggestion": "None."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Still open: income_certificate is mandatory though pensioners are exempt, caste_certificate is optional though mandatory for SC, and the marriage card is missing.",
+      "suggestion": "Mark as conditional and add the card."
+    }
+  ]
+}

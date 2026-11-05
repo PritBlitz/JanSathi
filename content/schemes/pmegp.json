@@ -1,0 +1,210 @@
+{
+  "status": "published",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [
+    {
+      "kind": "excludes",
+      "with": "up-cm-yuva",
+      "source": "guidelines",
+      "quote": "units that have already availed Government",
+      "note": {
+        "en": "A unit that already got a government subsidy cannot use this one too.",
+        "hi": "जिस इकाई ने पहले सरकारी सब्सिडी ली है, वह इसे भी नहीं ले सकती।"
+      }
+    }
+  ],
+  "changes": [],
+  "slug": "pmegp",
+  "category": "employment",
+  "icon": "🏭",
+  "ministry": {
+    "en": "Ministry of Micro, Small and Medium Enterprises",
+    "hi": "सूक्ष्म, लघु एवं मध्यम उद्यम मंत्रालय"
+  },
+  "official_apply_url": "https://www.kviconline.gov.in/pmegpeportal/pmegphome/index.jsp",
+  "reverify_days": 30,
+  "content": {
+    "en": {
+      "name": "Prime Minister’s Employment Generation Programme (PMEGP)",
+      "summary": "A bank loan with a government subsidy to start a new small business outside farming.",
+      "benefit": "For 2021-22 to 2025-26 the subsidy was 15% of the project cost in a town and 25% in a village for General category applicants, and 25% and 35% for special categories such as SC, ST, OBC, women, transgender people and people with disabilities. The largest project cost that counts is ₹50 lakh for manufacturing and ₹20 lakh for business or service. The bank sanctions 90% of the cost for the General category and 95% for special categories; the person pays the rest.",
+      "how_to_apply": "Apply online on the KVIC PMEGP e-portal. Only one person in a family (self and spouse) can get help. Projects above ₹10 lakh (manufacturing) or ₹5 lakh (business or service) need a class 8 pass. The guidelines ran to 2025-26. The government was still paying subsidy in October 2026, but no order for the new period was found, so it could not be confirmed that new applications are accepted or on what terms. Confirm with the office before applying."
+    },
+    "hi": {
+      "name": "प्रधानमंत्री रोज़गार सृजन कार्यक्रम (PMEGP)",
+      "summary": "खेती से अलग नया छोटा काम शुरू करने के लिए सरकारी सब्सिडी के साथ बैंक ऋण।",
+      "benefit": "2021-22 से 2025-26 के लिए सब्सिडी सामान्य वर्ग को शहर में परियोजना लागत की 15% और गाँव में 25% थी, और SC, ST, OBC, महिलाओं, ट्रांसजेंडर और दिव्यांगजन जैसी विशेष श्रेणियों को 25% और 35%। अधिकतम परियोजना लागत निर्माण के लिए ₹50 लाख और व्यापार या सेवा के लिए ₹20 लाख है। बैंक सामान्य वर्ग को लागत का 90% और विशेष श्रेणियों को 95% मंज़ूर करता है; बाक़ी व्यक्ति देता है।",
+      "how_to_apply": "KVIC के PMEGP ई-पोर्टल पर ऑनलाइन आवेदन करें। एक परिवार (स्वयं और जीवनसाथी) में एक ही व्यक्ति को मदद मिल सकती है। ₹10 लाख (निर्माण) या ₹5 लाख (व्यापार या सेवा) से ज़्यादा की परियोजना के लिए कक्षा 8 पास होना चाहिए। दिशानिर्देश 2025-26 तक के थे। अक्टूबर 2026 तक सरकार सब्सिडी दे रही थी, लेकिन नई अवधि का कोई आदेश नहीं मिला, इसलिए यह पक्का नहीं हो सका कि नए आवेदन लिए जा रहे हैं या किन शर्तों पर। आवेदन से पहले कार्यालय से पक्का कर लें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "guidelines",
+      "url": "https://master-msme.digifootprint.gov.in/static/uploads/2025/06/9a440310b5d789b2988e12f7769e15e0.pdf",
+      "title": "Revised PMEGP guidelines, O.M. PMEGP/UdhyamReg./01/2023 of 7 Dec 2023",
+      "publisher": "Ministry of Micro, Small and Medium Enterprises",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2023-12",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:90e9d90f6c61ee8c81dc6125a24cc3389e391987cd404c0d81f085a96e9d21fb",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "note": "kviconline.gov.in did not resolve from here, so the copy on the Ministry content host is used. Guidelines cover 2021-22 to 2025-26. A reviewer must confirm the period after March 2026."
+    },
+    {
+      "id": "pib_2026",
+      "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2329819&reg=1&lang=1",
+      "title": "Union Minister for MSME releases ₹1,000 crore margin money subsidy under PMEGP",
+      "publisher": "Press Information Bureau",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2026-10",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:2763662cc312d5a9055a02c075ab498dbba829e4009273d173a7b24eb5887d0f",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "fetch": "manual",
+      "fetch_note": "pib.gov.in blocks bots. Saved copy of the page, 2026-11-05."
+    },
+    {
+      "id": "pib_2022",
+      "url": "https://www.pib.gov.in/Pressreleaseshare.aspx?PRID=1829437&reg=48&lang=2",
+      "title": "Continuation of PMEGP over the 15th Finance Commission cycle, 2021-22 to 2025-26",
+      "publisher": "Press Information Bureau",
+      "doc_type": "govt_statement",
+      "lang": "en",
+      "published_date": "2022-05",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:50472f872a31dc3b25e99454bbc1e35c6df13624c8926d4369d9b4956a0c3ff2",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "fetch": "manual",
+      "fetch_note": "pib.gov.in blocks bots. Saved copy of the page, 2026-11-05."
+    }
+  ],
+  "rules": [
+    {
+      "code": "age_min",
+      "logic": {
+        ">=": [
+          {
+            "var": "age"
+          },
+          18
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "guidelines",
+      "locator": "§4.1(i)",
+      "quote": "Any individual, above 18 years of age",
+      "text": {
+        "en": "Age 18 or older (the guidelines say \"above 18 years\", so a person who has just turned 18 should check)",
+        "hi": "उम्र 18 साल या ज़्यादा (दिशानिर्देश में \"18 वर्ष से ऊपर\" लिखा है, इसलिए अभी 18 के हुए लोग पूछ लें)"
+      }
+    },
+    {
+      "code": "new_business",
+      "logic": {
+        "==": [
+          {
+            "var": "wants_to_start_business"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "guidelines",
+      "locator": "§4.1(iv)",
+      "quote": "Assistance under the scheme is available only for new projects sanctioned",
+      "text": {
+        "en": "Wants to start a new business",
+        "hi": "नया काम-धंधा शुरू करना चाहते हैं"
+      }
+    },
+    {
+      "code": "no_other_subsidy",
+      "logic": {
+        "==": [
+          {
+            "var": "had_govt_business_loan_5y"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "guidelines",
+      "locator": "§4.1(v)",
+      "quote": "units that have already availed Government",
+      "text": {
+        "en": "Has not already used a government subsidy for the unit",
+        "hi": "इकाई के लिए पहले सरकारी सब्सिडी नहीं ली है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Manufacturing sector is Rs. 50 lakhs."
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Business/Service sector is Rs. 20 lakhs."
+    },
+    {
+      "about": "income",
+      "source": "guidelines",
+      "quote": "There will be no income ceiling for assistance for setting up projects under"
+    },
+    {
+      "about": "family",
+      "source": "guidelines",
+      "quote": "Only one person from one family is eligible for obtaining financial assistance"
+    },
+    {
+      "about": "education",
+      "source": "guidelines",
+      "quote": "possess at least VIII standard pass educational qualification"
+    },
+    {
+      "about": "currency",
+      "source": "pib_2026",
+      "quote": "Prior to this release, during FY 2026-27, PMEGP had already supported 25,895 micro enterprises"
+    },
+    {
+      "about": "amount",
+      "source": "pib_2022",
+      "quote": "Higher rate of Margin Money subsidy - 25% of the project cost in urban area and 35% of the project cost in rural areas, for special category applicants"
+    },
+    {
+      "about": "amount",
+      "source": "pib_2022",
+      "quote": "For General category applicants subsidy is 15% of the project cost in urban area and 25% of the project cost in rural areas."
+    },
+    {
+      "about": "own_share",
+      "source": "guidelines",
+      "quote": "The Bank will sanction 90% of the project cost in case of General Category of beneficiary and 95% in case of Special Category of the beneficiary"
+    }
+  ],
+  "documents": [],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "7275cce583d9c4bc"
+  }
+}

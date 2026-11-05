@@ -1,0 +1,18 @@
+{
+  "slug": "pre-matric-sc",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "add58fa0448bb4c2",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:f26190bcb074695a4e2b72584b8a4c7f4e8478a8c9ed25f92cb3f5f35e36c1ba", "method": "snapshot" },
+    { "id": "msje", "content_hash": "sha256:2389b08b2300d56719eb0da14cc9a1c4375084aeafe8c35d8995e5dde0ef365d", "method": "snapshot" },
+    { "id": "nsp", "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Re-review. Both blockers resolved: rules are 'guidance' with the period disclosed in en and hi, and the relation note reflects the NSP clause. No continuation order found. Host robots.txt unreadable, so sources were checked against saved text.",
+  "findings": [
+    { "target": "documents", "severity": "minor", "note": "The aadhaar and bank_account rows cite 'msje', whose saved text does not mention them; the guidelines do.", "suggestion": "Cite guidelines." },
+    { "target": "content:summary", "severity": "minor", "note": "Component 2 (children of parents in unclean or hazardous work) is not covered in this file.", "suggestion": "Add a pointer or a separate entry." }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "status": "published",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "changes": [],
+  "slug": "adip",
+  "category": "disability",
+  "icon": "🦽",
+  "ministry": {
+    "en": "Department of Empowerment of Persons with Disabilities",
+    "hi": "दिव्यांगजन सशक्तीकरण विभाग"
+  },
+  "official_apply_url": "https://adip.depwd.gov.in/",
+  "reverify_days": 30,
+  "content": {
+    "en": {
+      "name": "ADIP scheme: aids and appliances for persons with disabilities",
+      "summary": "Help to buy or fit aids and appliances for people of any age with a disability of 40% or more.",
+      "benefit": "Help depends on income. Up to ₹22,500 a month: the full cost. From ₹22,501 to ₹30,000 a month: 50% of the cost. Cost limits also apply: full help for aids up to ₹15,000, help up to ₹15,000 for aids costing ₹15,001 to ₹30,000, and for listed costly items above that the government bears 50%.",
+      "how_to_apply": "Apply through an ADIP implementing agency or an assessment camp. See adip.depwd.gov.in. A UDID card with a disability certificate, Aadhaar and an income certificate are needed. The guidelines ran to 31 March 2026. No later order was found, so confirm the current rules and amounts with the office before applying."
+    },
+    "hi": {
+      "name": "एडिप योजना: दिव्यांगजन के लिए सहायक उपकरण",
+      "summary": "40% या उससे ज़्यादा दिव्यांगता वाले किसी भी उम्र के लोगों को सहायक उपकरण ख़रीदने या लगवाने में मदद।",
+      "benefit": "मदद आय पर निर्भर है। महीने में ₹22,500 तक: पूरी लागत। ₹22,501 से ₹30,000 महीने तक: लागत का 50%। लागत की सीमा भी लागू है: ₹15,000 तक के उपकरण पर पूरी मदद, ₹15,001 से ₹30,000 के उपकरण पर ₹15,000 तक मदद, और इससे महँगी सूचीबद्ध चीज़ों पर सरकार 50% देती है।",
+      "how_to_apply": "ADIP कार्यान्वयन एजेंसी या जाँच शिविर से आवेदन करें। adip.depwd.gov.in देखें। दिव्यांगता प्रमाण पत्र के साथ UDID कार्ड, आधार और आय प्रमाण पत्र चाहिए। दिशानिर्देश 31 मार्च 2026 तक के थे। इसके बाद का कोई आदेश नहीं मिला, इसलिए आवेदन से पहले मौजूदा नियम और राशि कार्यालय से पक्की कर लें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "guidelines",
+      "url": "https://adip.depwd.gov.in/files/ADIP_English.pdf",
+      "title": "Revision of the ADIP Scheme, O.M. 4-2(12)/2020-DD-I (19233) of 2 Apr 2024",
+      "publisher": "Department of Empowerment of Persons with Disabilities",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2024-04",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:46dc574f7ce6615ef9428ff100976244945c5381f3e6c02e8fbaa487b9419397",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "note": "Covers 01.04.2022 to 31.03.2026. A reviewer must confirm the period after March 2026. An older copy on another host says ₹20,000 a month; this 2024 revision says ₹30,000."
+    }
+  ],
+  "rules": [
+    {
+      "code": "disability_40",
+      "logic": {
+        ">=": [
+          {
+            "var": "disability_percent"
+          },
+          40
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "guidelines",
+      "locator": "§6.0(ii)",
+      "quote": "UDID card alongwith Disability Certificate with atleast 40% disability",
+      "text": {
+        "en": "Disability of 40% or more",
+        "hi": "दिव्यांगता 40% या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          360000
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "guidelines",
+      "locator": "§6.0(iv)-(v). ₹30,000 a month is ₹3.6 lakh a year.",
+      "quote": "Having monthly income from all sources not exceeding Rs.30,000/-",
+      "text": {
+        "en": "Income from all sources is up to ₹30,000 a month (₹3.6 lakh a year)",
+        "hi": "सभी स्रोतों से आय महीने में ₹30,000 (साल में ₹3.6 लाख) तक है"
+      }
+    },
+    {
+      "code": "no_recent_aid",
+      "logic": {
+        "==": [
+          {
+            "var": "got_aid_last_3y"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "guidelines",
+      "locator": "§6.0(vi)",
+      "quote": "Not having received assistance during the last 3 years for the same",
+      "text": {
+        "en": "Has not had help for the same aid in the last 3 years (one year for children under 12)",
+        "hi": "पिछले 3 साल में उसी उपकरण के लिए मदद नहीं ली है (12 साल से कम उम्र के बच्चों के लिए एक साल)"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "For aids /appliances costing upto Rs. 15,000/-."
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Financial assistance upto Rs 15000/-"
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "50% of cost of these items thus listed by the Committee"
+    },
+    {
+      "about": "age",
+      "source": "guidelines",
+      "quote": "An Indian citizen of any age."
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Upto Rs. 22,500/- per month ii. Rs.22,501/- to Rs. 30,000/- per month i. Full cost of aid/appliance ii. 50%"
+    }
+  ],
+  "documents": [
+    {
+      "code": "disability_certificate",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "guidelines"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "815667f4f9d36c9e"
+  }
+}

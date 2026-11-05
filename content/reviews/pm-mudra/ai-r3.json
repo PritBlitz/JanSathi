@@ -1,0 +1,35 @@
+{
+  "slug": "pm-mudra",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "1ad5b990b8a11f5e",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "home",
+      "content_hash": "sha256:ca0cab38b40eb95f2041e41a700a2f1224ba524b6b29a425fd4d29d4292b187f",
+      "method": "refetched"
+    },
+    {
+      "id": "faq",
+      "content_hash": "sha256:64912fc1817ce61fcb21a6258baf8bc35c1833f72c98fca8a0543c4b0e31cd20",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Live MUDRA home page and FAQ matched the recorded hashes, including TarunPlus up to ₹20 lakh. No separate search for newer changes turned up anything; I ran no Mudra-specific web search, so this rests on the live official pages.",
+  "findings": [
+    {
+      "target": "content:summary",
+      "severity": "minor",
+      "note": "'Bank loans' is narrower than the FAQ, which also names NBFCs and MFIs; how_to_apply already says so.",
+      "suggestion": "Say 'loans'."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "No document rows. Acceptable, as the source lists none.",
+      "suggestion": "Add rows if a source is found."
+    }
+  ]
+}

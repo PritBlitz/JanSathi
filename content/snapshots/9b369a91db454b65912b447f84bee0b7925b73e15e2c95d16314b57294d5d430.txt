@@ -1,0 +1,222 @@
+Press Release Page | Press Information Bureau
+PIB Backgrounder
+5 Years of e-Shram Portal
+Building an Inclusive Social Security Ecosystem
+Posted On:
+25 AUG 2026 2:38PM by PIB Delhi
+The e-Shram Portal completes five years on 26 August 2026, marking a significant milestone in strengthening social security for India's unorganised workforce. Launched in 2021 by the Ministry of Labour and Employment, it created the country's first-ever Aadhaar-seeded National Database of Unorganised Workers. It gives every registered worker a unique Universal Account Number and has evolved into a one-stop digital platform integrating welfare, jobs, skilling, apprenticeship and pension services. With over 31.89 crore registrations, e-Shram has improved benefit delivery, portability and evidence-based policymaking. It advances the Government's vision of an inclusive, technology-driven social security ecosystem.
+Empowering India's Unorganised Workforce
+As India advances towards the vision of Viksit Bharat , empowering its vast workforce remains central to inclusive and sustainable growth. The unorganised sector comprises a diverse range of workers, including agricultural labourers, construction workers, domestic workers, street vendors, migrant workers, gig and platform workers, and many others. Together, they form a vital pillar of India’s workforce and economy. Ensuring their access to social security and welfare has therefore remained a key priority of the Government.
+Building on this commitment, the e-Shram Portal was launched on 26 August 2021, and completes 5 years since then. It marks an important milestone in India's efforts to build a comprehensive social security ecosystem for unorganised workers.
+The Vision Behind e-Shram
+The e-Shram Portal, developed by the National Informatics Centre (NIC), created the country's first Aadhaar authenticated National Database of Unorganised Workers (NDUW) .It provides every registered worker with a unique 12-digit Universal Account Number (UAN) . The key objectives include:
+Improve delivery of social security services by enabling the convergence of welfare schemes across Ministries and Departments.
+Facilitate secure sharing of worker data with government agencies through APIs. This supports the effective delivery of welfare schemes and evidence-based policymaking.
+Facilitate nationwide access and portability of social security and welfare benefits for migrant and construction workers.
+Create a comprehensive national database that supports timely planning and response during national emergencies and crises.
+"Unorganised worker" includes a home-based worker, self-employed worker, or a wage worker in the unorganised sector. It also includes a worker in the organised sector who is not a member of ESIC/ EPFO/ Government Employee.
+Evolution into a One-Stop Solution
+The e-Shram portal transformed from a worker registry into a unified service delivery platform with the launch of the e-Shram One-Stop Solution on 21 October 2024 . It now integrates welfare, employment, skilling and pension services. This aligns with the Union Budget 2024–25 vision of delivering a wide range of labour services through a single digital platform. Registered workers can access eligible schemes and view benefits already received. The platform also promotes convergence across government portals. It strengthens access to social security and improves service delivery for unorganised workers.
+The One-Stop Solution brings together 15 Social Security and Welfare Schemes on a single platform. These include Pradhan Mantri Shram Yogi Maan-Dhan Yojana (PM-SYM), Pradhan Mantri Suraksha Bima Yojana (PMSBY), Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY), National Social Assistance Programme (NSAP), One Nation One Ration Card (ONORC), Pradhan Mantri Awaas Yojana–Gramin (PMAY-G) and others.
+eShram registrants can conveniently enrol in the Pradhan Mantri Suraksha Bima Yojana (PMSBY) and Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY) through the eShram portal. Under PMSBY, workers are eligible for accidental insurance benefits of ₹2 lakh for accidental death or permanent disability and ₹1 lakh for partial disability. PMJJBY provides a life insurance cover of ₹2 lakh in the event of death due to any cause.
+The portal connects workers with the National Career Service (NCS) for employment opportunities. It also provides access to the Skill India Digital Hub for skilling and apprenticeship. Workers can also use myScheme to identify government schemes for which they may be eligible.
+Through the portal, eligible workers can enrol in the Pradhan Mantri Shram Yogi Maan-Dhan (PM-SYM) Scheme, which offers a minimum assured pension of ₹3,000 per month upon attaining the age of 60 years, subject to eligibility .
+Powered by the Bhashini platform, multilingual functionality in 22 languages was introduced in 2025 .
+The portal includes a provision to capture the family details of migrant workers.
+It enables sharing of construction workers' data with States and Union Territories. This facilitates their registration with the respective Building and Other Construction Workers (BOCW) Boards .
+eShram provides a platform for the identification and registration of gig and platform workers as part of the national database of unorganised workers. As of date, around 11.5 lakh platform workers have registered on the portal . This database may support the formulation and implementation of suitable social security and welfare measures for such workers.
+e-Shram Registration: Eligibility and Process
+Registration on the e-Shram Portal is simple, accessible and a one-time process.
+Eligibility : Any worker aged 16 years and above , engaged in the unorganised sector, is eligible to register on the e-Shram Portal. A worker must not be an income tax-payer or a member of the Employees' Provident Fund Organisation (EPFO) or the Employees' State Insurance Corporation (ESIC) .
+Coverage : The portal covers a wide range of unorganised workers. These include construction workers, migrant workers, gig and platform workers, street vendors, domestic workers, agricultural workers, and other unorganised workers.
+How to register : Workers can register by visiting the e-Shram Portal ( https://register.eshram.gov.in/#/user/self ) . They can also register through the nearest Common Service Centre (CSC) or State Seva Kendra . State Government field officers also facilitate registration at the district and sub-district levels.
+Registration cost : Registration on the e-Shram Portal is completely free of cost. Workers are not required to pay any fee to any registering agency or service provider.
+Required Documents : Registration requires their Aadhaar number (for Aadhar eKYC) and a mobile number (preferably linked with Aadhaar).
+Growing Coverage of India's Unorganised Workforce
+Registrations on e-Shram portal over the past 5 years reflects broad participation across genders, age groups, occupations and States (as on 18 August, 2026).
+Total registrations: The portal has recorded 31.89 crore registrations.
+Gender distribution: Women account for 54.28% of registered workers, while men account for 45.72% .
+Age profile: 0.08% are aged 16-18 years, 55.21% of registered workers are aged 18–40 years , 24.18% are aged 40–50 years and 20.53% are above 50 years (as on 20 August, 2026).
+Top occupational categories: Agriculture, Domestic and Household Workers, Construction, and Apparel account for the highest registrations.
+Top States: Uttar Pradesh, Bihar, West Bengal, Madhya Pradesh, and Maharashtra have recorded the highest registrations.
+Mode of registration: Most registrations have been completed through Common Service Centres (CSCs) , followed by self-registration .
+Building the Future of Labour Welfare
+The e-Shram Portal has laid a strong foundation for an inclusive and technology-enabled social security ecosystem for India’s unorganised workforce . By creating a nationwide digital identity and database for unorganised workers, it has enabled more targeted and transparent delivery of government support. As its coverage and services continue to expand, e-Shram remains an important digital pillar of a more inclusive and future-ready workforce.
+References
+Ministry of Labour & Employment
+https://eshram.gov.in/
+https://maandhan.in/
+https://www.youtube.com/watch?v=b5anRFQBono
+https://www.pib.gov.in/pressreleasepage.aspx?prid=1749294&reg=48&lang=2
+https://www.pib.gov.in/PressReleasePage.aspx?PRID=2090895&reg=48&lang=2
+https://www.pib.gov.in/PressReleasePage.aspx?PRID=2099153&reg=3&lang=2
+https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2109421&reg=48&lang=2
+https://eshramwebportal-megh.azureedge.net/nduwwsmedia/sites/default/files/pdf/leaflets/leaflet-en.pdf
+Ministry of Electronics & IT
+https://www.nic.gov.in/newsletter-content/products-services/
+Ministry of Finance
+https://www.indiabudget.gov.in/doc/bspeech/bs2024_25.pdf
+Click here to see pdf
+PIB Research
+(Release ID: 2303053)
+Read this release in:
+Urdu
+,
+हिन्दी
+,
+Bengali
+,
+Punjabi
+,
+Gujarati
+,
+Tamil
+Share
+-- words
+|
+-- min read
+PIB Backgrounder
+5 Years of e-Shram Portal
+Building an Inclusive Social Security Ecosystem
+Posted On:
+25 AUG 2026 2:38PM by PIB Delhi
+The e-Shram Portal completes five years on 26 August 2026, marking a significant milestone in strengthening social security for India's unorganised workforce. Launched in 2021 by the Ministry of Labour and Employment, it created the country's first-ever Aadhaar-seeded National Database of Unorganised Workers. It gives every registered worker a unique Universal Account Number and has evolved into a one-stop digital platform integrating welfare, jobs, skilling, apprenticeship and pension services. With over 31.89 crore registrations, e-Shram has improved benefit delivery, portability and evidence-based policymaking. It advances the Government's vision of an inclusive, technology-driven social security ecosystem.
+Empowering India's Unorganised Workforce
+As India advances towards the vision of Viksit Bharat , empowering its vast workforce remains central to inclusive and sustainable growth. The unorganised sector comprises a diverse range of workers, including agricultural labourers, construction workers, domestic workers, street vendors, migrant workers, gig and platform workers, and many others. Together, they form a vital pillar of India’s workforce and economy. Ensuring their access to social security and welfare has therefore remained a key priority of the Government.
+Building on this commitment, the e-Shram Portal was launched on 26 August 2021, and completes 5 years since then. It marks an important milestone in India's efforts to build a comprehensive social security ecosystem for unorganised workers.
+The Vision Behind e-Shram
+The e-Shram Portal, developed by the National Informatics Centre (NIC), created the country's first Aadhaar authenticated National Database of Unorganised Workers (NDUW) .It provides every registered worker with a unique 12-digit Universal Account Number (UAN) . The key objectives include:
+Improve delivery of social security services by enabling the convergence of welfare schemes across Ministries and Departments.
+Facilitate secure sharing of worker data with government agencies through APIs. This supports the effective delivery of welfare schemes and evidence-based policymaking.
+Facilitate nationwide access and portability of social security and welfare benefits for migrant and construction workers.
+Create a comprehensive national database that supports timely planning and response during national emergencies and crises.
+"Unorganised worker" includes a home-based worker, self-employed worker, or a wage worker in the unorganised sector. It also includes a worker in the organised sector who is not a member of ESIC/ EPFO/ Government Employee.
+Evolution into a One-Stop Solution
+The e-Shram portal transformed from a worker registry into a unified service delivery platform with the launch of the e-Shram One-Stop Solution on 21 October 2024 . It now integrates welfare, employment, skilling and pension services. This aligns with the Union Budget 2024–25 vision of delivering a wide range of labour services through a single digital platform. Registered workers can access eligible schemes and view benefits already received. The platform also promotes convergence across government portals. It strengthens access to social security and improves service delivery for unorganised workers.
+The One-Stop Solution brings together 15 Social Security and Welfare Schemes on a single platform. These include Pradhan Mantri Shram Yogi Maan-Dhan Yojana (PM-SYM), Pradhan Mantri Suraksha Bima Yojana (PMSBY), Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY), National Social Assistance Programme (NSAP), One Nation One Ration Card (ONORC), Pradhan Mantri Awaas Yojana–Gramin (PMAY-G) and others.
+eShram registrants can conveniently enrol in the Pradhan Mantri Suraksha Bima Yojana (PMSBY) and Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY) through the eShram portal. Under PMSBY, workers are eligible for accidental insurance benefits of ₹2 lakh for accidental death or permanent disability and ₹1 lakh for partial disability. PMJJBY provides a life insurance cover of ₹2 lakh in the event of death due to any cause.
+The portal connects workers with the National Career Service (NCS) for employment opportunities. It also provides access to the Skill India Digital Hub for skilling and apprenticeship. Workers can also use myScheme to identify government schemes for which they may be eligible.
+Through the portal, eligible workers can enrol in the Pradhan Mantri Shram Yogi Maan-Dhan (PM-SYM) Scheme, which offers a minimum assured pension of ₹3,000 per month upon attaining the age of 60 years, subject to eligibility .
+Powered by the Bhashini platform, multilingual functionality in 22 languages was introduced in 2025 .
+The portal includes a provision to capture the family details of migrant workers.
+It enables sharing of construction workers' data with States and Union Territories. This facilitates their registration with the respective Building and Other Construction Workers (BOCW) Boards .
+eShram provides a platform for the identification and registration of gig and platform workers as part of the national database of unorganised workers. As of date, around 11.5 lakh platform workers have registered on the portal . This database may support the formulation and implementation of suitable social security and welfare measures for such workers.
+e-Shram Registration: Eligibility and Process
+Registration on the e-Shram Portal is simple, accessible and a one-time process.
+Eligibility : Any worker aged 16 years and above , engaged in the unorganised sector, is eligible to register on the e-Shram Portal. A worker must not be an income tax-payer or a member of the Employees' Provident Fund Organisation (EPFO) or the Employees' State Insurance Corporation (ESIC) .
+Coverage : The portal covers a wide range of unorganised workers. These include construction workers, migrant workers, gig and platform workers, street vendors, domestic workers, agricultural workers, and other unorganised workers.
+How to register : Workers can register by visiting the e-Shram Portal ( https://register.eshram.gov.in/#/user/self ) . They can also register through the nearest Common Service Centre (CSC) or State Seva Kendra . State Government field officers also facilitate registration at the district and sub-district levels.
+Registration cost : Registration on the e-Shram Portal is completely free of cost. Workers are not required to pay any fee to any registering agency or service provider.
+Required Documents : Registration requires their Aadhaar number (for Aadhar eKYC) and a mobile number (preferably linked with Aadhaar).
+Growing Coverage of India's Unorganised Workforce
+Registrations on e-Shram portal over the past 5 years reflects broad participation across genders, age groups, occupations and States (as on 18 August, 2026).
+Total registrations: The portal has recorded 31.89 crore registrations.
+Gender distribution: Women account for 54.28% of registered workers, while men account for 45.72% .
+Age profile: 0.08% are aged 16-18 years, 55.21% of registered workers are aged 18–40 years , 24.18% are aged 40–50 years and 20.53% are above 50 years (as on 20 August, 2026).
+Top occupational categories: Agriculture, Domestic and Household Workers, Construction, and Apparel account for the highest registrations.
+Top States: Uttar Pradesh, Bihar, West Bengal, Madhya Pradesh, and Maharashtra have recorded the highest registrations.
+Mode of registration: Most registrations have been completed through Common Service Centres (CSCs) , followed by self-registration .
+Building the Future of Labour Welfare
+The e-Shram Portal has laid a strong foundation for an inclusive and technology-enabled social security ecosystem for India’s unorganised workforce . By creating a nationwide digital identity and database for unorganised workers, it has enabled more targeted and transparent delivery of government support. As its coverage and services continue to expand, e-Shram remains an important digital pillar of a more inclusive and future-ready workforce.
+References
+Ministry of Labour & Employment
+https://eshram.gov.in/
+https://maandhan.in/
+https://www.youtube.com/watch?v=b5anRFQBono
+https://www.pib.gov.in/pressreleasepage.aspx?prid=1749294&reg=48&lang=2
+https://www.pib.gov.in/PressReleasePage.aspx?PRID=2090895&reg=48&lang=2
+https://www.pib.gov.in/PressReleasePage.aspx?PRID=2099153&reg=3&lang=2
+https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2109421&reg=48&lang=2
+https://eshramwebportal-megh.azureedge.net/nduwwsmedia/sites/default/files/pdf/leaflets/leaflet-en.pdf
+Ministry of Electronics & IT
+https://www.nic.gov.in/newsletter-content/products-services/
+Ministry of Finance
+https://www.indiabudget.gov.in/doc/bspeech/bs2024_25.pdf
+Click here to see pdf
+PIB Research
+(Release ID: 2303053)
+Building an Inclusive Social Security Ecosystem<br/>" />
+<tbody>
+<tr>
+<td>
+<div>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><em>The e-Shram Portal completes five years on 26 August 2026, marking a significant milestone in strengthening social security for India&#39;s unorganised workforce. Launched in 2021 by the Ministry of Labour and Employment, it created the country&#39;s first-ever Aadhaar-seeded National Database of Unorganised Workers. It gives every registered worker a unique Universal Account Number and has evolved into a one-stop digital platform integrating welfare, jobs, skilling, apprenticeship and pension services. With over 31.89 crore registrations, e-Shram has improved benefit delivery, portability and evidence-based policymaking. It advances the Government&#39;s vision of an inclusive, technology-driven social security ecosystem.</em></span></span></p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align:justify">&nbsp;</p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="background-color:#5b9bd5"><strong><span style="color:white">Empowering India&#39;s Unorganised Workforce</span></strong></span></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>As India advances towards the vision of <em>Viksit Bharat</em>, empowering its vast workforce remains central to inclusive and sustainable growth.</strong> The unorganised sector comprises a diverse range of workers, including agricultural labourers, construction workers, domestic workers, street vendors, migrant workers, gig and platform workers, and many others. Together, they form a vital pillar of India&rsquo;s workforce and economy. Ensuring their access to social security and welfare has therefore remained a key priority of the Government.</span></span></p>
+<p style="margin-left:0cm; text-align:center"><img alt="" src="https://static.pib.gov.in/WriteReadData/userfiles/image/2026/aug/image004_20260825143721_3d972a.png" /></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Building on this commitment,<strong> the e-Shram Portal was launched on 26 August 2021, and completes 5 years since then. </strong>It marks an important milestone in India&#39;s efforts to build a comprehensive social security ecosystem for unorganised workers. </span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="background-color:#5b9bd5"><strong><span style="color:white">The Vision Behind e-Shram</span></strong></span></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">The e-Shram Portal, developed by the National Informatics Centre (NIC), created the country&#39;s <strong>first Aadhaar authenticated National Database of Unorganised Workers (NDUW)</strong>.It provides every registered worker with a unique <strong>12-digit Universal Account Number (UAN)</strong>. The key objectives include:</span></span></p>
+<ul>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Improve delivery of social security services by enabling the convergence of welfare schemes across Ministries and Departments.</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Facilitate secure sharing of worker data with government agencies through APIs. This supports the effective delivery of welfare schemes and evidence-based policymaking.</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Facilitate nationwide access and portability of social security and welfare benefits for migrant and construction workers.</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Create a comprehensive national database that supports timely planning and response during national emergencies and crises.</span></span></li>
+</ul>
+<table align="center" border="1" bordercolor="#ccc" cellpadding="5" cellspacing="0" class="MsoTableGrid" style="border-collapse:collapse">
+<tbody>
+<tr>
+<td style="width:450.8pt">
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">&quot;Unorganised worker&quot; includes a home-based worker, self-employed worker, or a wage worker in the unorganised sector. It also includes a worker in the organised sector who is not a member of ESIC/ EPFO/ Government Employee.</span></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="background-color:#5b9bd5"><strong><span style="color:white">Evolution into a One-Stop Solution</span></strong></span></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">The e-Shram portal transformed from a worker registry into a <strong>unified service delivery platform with the </strong>launch of the <strong>e-Shram One-Stop Solution</strong> on <strong>21 October 2024</strong>. It now integrates <strong>welfare, employment, skilling and pension services. </strong>This aligns with the Union Budget 2024&ndash;25 vision of delivering a wide range of labour services through a single digital platform. Registered workers can access eligible schemes and view benefits already received. The platform also promotes convergence across government portals. It strengthens access to social security and improves service delivery for unorganised workers.</span></span></p>
+<ul>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">The One-Stop Solution brings together <strong>15 Social Security and Welfare Schemes</strong> on a single platform. These include Pradhan Mantri Shram Yogi Maan-Dhan Yojana (PM-SYM), Pradhan Mantri Suraksha Bima Yojana (PMSBY), Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY), National Social Assistance Programme (NSAP), One Nation One Ration Card (ONORC), Pradhan Mantri Awaas Yojana&ndash;Gramin (PMAY-G) and others.</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">eShram registrants can conveniently enrol in the Pradhan Mantri Suraksha Bima Yojana (PMSBY) and Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY) through the eShram portal. Under PMSBY, workers are eligible for accidental insurance benefits of ₹2 lakh for accidental death or permanent disability and ₹1 lakh for partial disability. PMJJBY provides a life insurance cover of ₹2 lakh in the event of death due to any cause.</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">The portal connects workers with the <strong>National Career Service (NCS)</strong> for employment opportunities. It also provides access to the <strong>Skill India Digital Hub</strong> for skilling and apprenticeship. Workers can also use <strong>myScheme</strong> to identify government schemes for which they may be eligible.</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Through the portal, eligible workers can enrol in the Pradhan Mantri Shram Yogi Maan-Dhan (PM-SYM) Scheme, which offers a minimum assured pension of <strong>₹3,000 per month</strong> upon attaining the age of 60 years, subject to eligibility</span>.</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Powered by the <strong>Bhashini</strong> platform, multilingual functionality in 22 languages was introduced in<strong> 2025</strong>.</span></span></li>
+</ul>
+<p style="margin-left:0cm; text-align:center"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><img alt="A screen shot of a computerAI-generated content may be incorrect." id="Picture_x0020_3" src="https://static.pib.gov.in/WriteReadData/userfiles/image/2026/aug/image005_20260825143148_ce2be2.jpg" /></span></span></p>
+<ul>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The portal </span>includes a provision to capture the family details of migrant workers.</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">It enables </span>sharing of construction workers&#39; data with States and Union Territories. This facilitates their registration with the respective <strong>Building and Other Construction Workers (BOCW) Boards</strong>.</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">eShram provides a platform for the <strong>identification and registration of gig and platform workers</strong> as part of the national database of unorganised workers. As of date, around <strong>11.5 lakh platform workers have registered on the portal</strong>. This database may support the formulation and implementation of suitable social security and welfare measures for such workers.</span></span></li>
+</ul>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="background-color:#5b9bd5"><strong><span style="color:white">e-Shram Registration: Eligibility and Process</span></strong></span></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>Registration</strong> on the e-Shram Portal is <strong>simple, accessible </strong>and a <strong>one-time process.</strong></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>Eligibility</strong>: Any worker aged <strong>16 years and above</strong>, engaged in the unorganised sector, is eligible to register on the e-Shram Portal. A worker must not be an income tax-payer or a member of the <strong>Employees&#39; Provident Fund Organisation (EPFO)</strong> or the <strong>Employees&#39; State Insurance Corporation (ESIC)</strong>.</span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>Coverage</strong>: The portal covers a wide range of unorganised workers. These include construction workers, migrant workers, gig and platform workers, street vendors, domestic workers, agricultural workers, and other unorganised workers.</span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>How to register</strong>: Workers can register by visiting the <strong>e-Shram Portal (</strong><a href="https://register.eshram.gov.in/#/user/self"><strong>https://register.eshram.gov.in/#/user/self</strong></a><strong>)</strong>. They can also register through the nearest <strong>Common Service Centre (CSC)</strong> or <strong>State Seva Kendra</strong>. State Government field officers also facilitate registration at the district and sub-district levels.</span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>Registration cost</strong>: Registration on the e-Shram Portal is completely free of cost. Workers are not required to pay any fee to any registering agency or service provider.</span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>Required Documents</strong>: Registration requires their <strong>Aadhaar number (for Aadhar eKYC)</strong> and a <strong>mobile number</strong> (preferably linked with Aadhaar).</span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="background-color:#5b9bd5"><strong><span style="color:white">Growing Coverage of India&#39;s Unorganised Workforce</span></strong></span></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Registrations on e-Shram portal over the past 5 years reflects broad participation across genders, age groups, occupations and States (as on 18 August, 2026).</span></span></p>
+<p style="margin-left:0cm; text-align:center"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><img alt="A close-up of a blue and white graphAI-generated content may be incorrect." id="Picture_x0020_5" src="https://static.pib.gov.in/WriteReadData/userfiles/image/2026/aug/image006_20260825143213_eb39b0.jpg" /></span></span></p>
+<ul>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>Total registrations:</strong> The portal has recorded <strong>31.89 crore</strong> registrations.</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>Gender distribution:</strong> Women account for <strong>54.28%</strong> of registered workers, while men account for <strong>45.72%</strong>.</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>Age profile: </strong>0.08% are aged <strong>16-18 years, 55.21%</strong> of registered workers are aged <strong>18&ndash;40 years</strong>, <strong>24.18%</strong> are aged <strong>40&ndash;50 years</strong> and <strong>20.53%</strong> are above <strong>50 years </strong>(as on 20 August, 2026).</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>Top occupational categories:</strong> Agriculture, Domestic and Household Workers, Construction, and Apparel account for the highest registrations.</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>Top States:</strong> Uttar Pradesh, Bihar, West Bengal, Madhya Pradesh, and Maharashtra have recorded the highest registrations.</span></span></li>
+<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>Mode of registration:</strong> Most registrations have been completed through <strong>Common Service Centres (CSCs)</strong>, followed by <strong>self-registration</strong>.</span></span></li>
+</ul>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="background-color:#5b9bd5"><strong><span style="color:white">Building the Future of Labour Welfare</span></strong></span></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>The e-Shram Portal has laid a strong foundation for an inclusive and technology-enabled social security ecosystem for India&rsquo;s unorganised workforce</strong>. By creating a nationwide digital identity and database for unorganised workers, it has enabled more targeted and transparent delivery of government support. As its coverage and services continue to expand, e-Shram remains an important digital pillar of a more inclusive and future-ready workforce.</span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>References </strong></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>Ministry of Labour &amp; Employment</strong></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><a href="https://eshram.gov.in/">https://eshram.gov.in/</a></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><a href="https://maandhan.in/">https://maandhan.in/</a></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><a href="https://www.youtube.com/watch?v=b5anRFQBono">https://www.youtube.com/watch?v=b5anRFQBono</a></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><a href="https://www.pib.gov.in/pressreleasepage.aspx?prid=1749294&amp;reg=48&amp;lang=2">https://www.pib.gov.in/pressreleasepage.aspx?prid=1749294&amp;reg=48&amp;lang=2</a></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2090895&amp;reg=48&amp;lang=2">https://www.pib.gov.in/PressReleasePage.aspx?PRID=2090895&amp;reg=48&amp;lang=2</a></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2099153&amp;reg=3&amp;lang=2">https://www.pib.gov.in/PressReleasePage.aspx?PRID=2099153&amp;reg=3&amp;lang=2</a></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><a href="https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2109421&amp;reg=48&amp;lang=2">https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2109421&amp;reg=48&amp;lang=2</a></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><a href="https://eshramwebportal-megh.azureedge.net/nduwwsmedia/sites/default/files/pdf/leaflets/leaflet-en.pdf">https://eshramwebportal-megh.azureedge.net/nduwwsmedia/sites/default/files/pdf/leaflets/leaflet-en.pdf</a></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><strong>Ministry of Electronics &amp; IT</strong></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><a href="https://www.nic.gov.in/newsletter-content/products-services/">https://www.nic.gov.in/newsletter-content/products-services/</a></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><strong>Ministry of Finance</strong></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><a href="https://www.indiabudget.gov.in/doc/bspeech/bs2024_25.pdf">https://www.indiabudget.gov.in/doc/bspeech/bs2024_25.pdf</a></span></span></p>
+<p style="margin-left:0cm; text-align:justify"><a href="https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/aug/doc_9692_20260825_14270901.pdf" target="_blank"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Click here to see pdf</span></span></a></p>
+<p style="margin-left:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong>PIB Research </strong></span></span></p>
+" />

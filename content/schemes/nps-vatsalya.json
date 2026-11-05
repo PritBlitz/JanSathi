@@ -1,0 +1,106 @@
+{
+  "status": "published",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "changes": [],
+  "slug": "nps-vatsalya",
+  "category": "pension",
+  "icon": "🧒",
+  "ministry": {
+    "en": "Pension Fund Regulatory and Development Authority",
+    "hi": "पेंशन निधि विनियामक और विकास प्राधिकरण"
+  },
+  "official_apply_url": "https://npstrust.org.in/open-nps-vatsalya",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "NPS Vatsalya",
+      "summary": "A long-term savings and pension account that a parent or guardian opens for a child under 18.",
+      "benefit": "This is a savings scheme, not a payment. The account can be opened with ₹250, and the minimum is ₹250 a year.",
+      "how_to_apply": "A parent or guardian opens the account at a Point of Presence (PoP) or on the eNPS website. It needs proof of the child’s date of birth, the guardian’s KYC, and the guardian’s PAN or Form 60. The guardian runs the account until the child turns 18."
+    },
+    "hi": {
+      "name": "एनपीएस वात्सल्य",
+      "summary": "लंबे समय की बचत और पेंशन का खाता, जिसे माता-पिता या अभिभावक 18 साल से कम उम्र के बच्चे के लिए खोलते हैं।",
+      "benefit": "यह बचत योजना है, कोई भुगतान नहीं। खाता ₹250 से खुल सकता है और साल में कम से कम ₹250 जमा करना होता है।",
+      "how_to_apply": "माता-पिता या अभिभावक पॉइंट ऑफ़ प्रेज़ेंस (PoP) पर या eNPS वेबसाइट पर खाता खोलें। बच्चे की जन्मतिथि का प्रमाण, अभिभावक का KYC, और अभिभावक का PAN या फ़ॉर्म 60 चाहिए। बच्चे के 18 साल का होने तक खाता अभिभावक चलाते हैं।"
+    }
+  },
+  "sources": [
+    {
+      "id": "faq",
+      "url": "https://npstrust.org.in/sites/default/files/inline-files/FAQs_NPS_Vatsalya_updated_16_06_2026.pdf",
+      "title": "NPS Vatsalya: frequently asked questions (updated 16 June 2026)",
+      "publisher": "NPS Trust",
+      "doc_type": "faq",
+      "lang": "en",
+      "published_date": "2026-06",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:594fc3bfc79e2ee89d064c057231423e8e33f73f6e7aa1c65d7fcfa3d208cb29",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "fetch": "manual",
+      "fetch_note": "npstrust.org.in answers 403 to the re-check bot for robots.txt, so the job will not fetch it. Saved copy of the PDF, 2026-11-05."
+    }
+  ],
+  "rules": [
+    {
+      "code": "child",
+      "logic": {
+        "==": [
+          {
+            "var": "has_child_under_18"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "faq",
+      "locator": "Features, Q1",
+      "quote": "NPS Vatsalya is open to all Indian citizens under 18 years of age.",
+      "text": {
+        "en": "The family has a child under 18",
+        "hi": "परिवार में 18 साल से कम उम्र का बच्चा है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "faq",
+      "quote": "The minimum contribution for account opening is ₹250/-."
+    },
+    {
+      "about": "amount",
+      "source": "faq",
+      "quote": "The minimum annual contribution is ₹250/-."
+    },
+    {
+      "about": "how_to_apply",
+      "source": "faq",
+      "quote": "The account will be opened and operated by the guardian on behalf of the minor."
+    }
+  ],
+  "documents": [
+    {
+      "code": "birth_certificate_child",
+      "mandatory": true,
+      "source": "faq"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "62655ec59c21f6ff"
+  }
+}

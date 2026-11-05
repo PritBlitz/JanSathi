@@ -1,0 +1,18 @@
+{
+  "slug": "post-matric-pwd",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "37a31573d8cbf181",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:2f4a1e8a7d453cf049092960d0f5df950cccbc382f224db0a1503cf714ca6171", "method": "refetched" },
+    { "id": "revision_2025", "content_hash": "sha256:a26f688260d03eb31b46261447dbab9d85e859f2dcf900bb5b6b148614d5157d", "method": "refetched" },
+    { "id": "nsp", "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc", "method": "snapshot" }
+  ],
+  "newer_changes_search": "Re-review of the diff. The relation with up-post-matric-general no longer names NSP, in en and hi, which closes my earlier minor finding. The guidelines state no end date; no official 2026-27 order found.",
+  "findings": [
+    { "target": "content:how_to_apply", "severity": "minor", "note": "§2(iv) limits the scheme to two children with disabilities of the same parents; the file omits it.", "suggestion": "Add it." },
+    { "target": "documents", "severity": "minor", "note": "§7(b) also lists a photo, proof of age, fee receipt and last qualification certificate.", "suggestion": "Add rows." }
+  ]
+}

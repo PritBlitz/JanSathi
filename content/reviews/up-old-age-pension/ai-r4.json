@@ -1,0 +1,58 @@
+{
+  "slug": "up-old-age-pension",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "7c18638cda5cc05e",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dept",
+      "content_hash": "sha256:3eb2631aa83237e4250a57d5632275553710287a5bbf7e372c1c3a53dad2c77f",
+      "method": "refetched"
+    },
+    {
+      "id": "budget_2026",
+      "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e",
+      "method": "snapshot"
+    },
+    {
+      "id": "go_2016",
+      "content_hash": "sha256:e4a3bbc38b99fea76454a84c4ddc73a3a1b47cd079feda4005e5cd1a6060dc19",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. New search: Press: a ₹1,500 pension was announced in June 2026 (\"will provide\") and got in-principle approval in Oct 2026, with cabinet approval pending. No cabinet decision or order found, so ₹1,000 stands today. PTI (14 Nov 2025) reports the UP cabinet approved a reform so eligible seniors need not apply separately; I could not open the full report.",
+  "findings": [
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. The payment frequency and its fact are removed, and how_to_apply says to check the current process.",
+      "suggestion": "None."
+    },
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "Press: a ₹1,500 pension was announced in June 2026 (\"will provide\") and got in-principle approval in Oct 2026, with cabinet approval pending. No cabinet decision or order found, so ₹1,000 stands today.",
+      "suggestion": "Re-check before publishing and after the cabinet meeting."
+    },
+    {
+      "target": "content.how_to_apply",
+      "severity": "minor",
+      "note": "PTI (Nov 2025) reports eligible seniors will no longer need to apply separately. The text still says to apply online, though it now tells people to check the process.",
+      "suggestion": "Find the order and add it."
+    },
+    {
+      "target": "rule:resident",
+      "severity": "minor",
+      "note": "Now uncertain, and the locator says no residence clause was found. Acceptable.",
+      "suggestion": "None."
+    },
+    {
+      "target": "rule:income_max",
+      "severity": "minor",
+      "note": "Still open: \"income from all sources\" may be personal, while annual_income asks for family income.",
+      "suggestion": "Confirm against the order."
+    }
+  ]
+}

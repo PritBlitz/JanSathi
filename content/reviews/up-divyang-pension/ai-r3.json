@@ -1,0 +1,35 @@
+{
+  "slug": "up-divyang-pension",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "e88ad82be89c8ad3",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dept",
+      "content_hash": "sha256:f58bcb40688586e497cbde139c8b58f17b4249880c5045123c515174e0e19ffc",
+      "method": "refetched"
+    },
+    {
+      "id": "budget_2026",
+      "content_hash": "sha256:28f47915ef2eb2357fa7a0c3ef762b36bdb3c922bafcc1b069284b96ca122b0e",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Budget 2026-27 confirms ₹1,000 a month. The ₹1,500 proposal (reported 12 October 2026) has no Cabinet decision or order. A search found no 2026 change to ₹46,080 or ₹56,460.",
+  "findings": [
+    {
+      "target": "content:benefit",
+      "severity": "minor",
+      "note": "A rise to ₹1,500 is reported as proposed, not ordered.",
+      "suggestion": "Watch for the order."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "No rows, though the page mentions a certificate from a first-class magistrate and an Aadhaar-seeded account.",
+      "suggestion": "Add rows."
+    }
+  ]
+}

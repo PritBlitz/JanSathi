@@ -1,0 +1,238 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "disability_percent": 60,
+      "area": "urban",
+      "annual_income": 50000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "guidance"
+    }
+  },
+  {
+    "name": "age 17",
+    "profile": {
+      "state": "up",
+      "age": 17,
+      "disability_percent": 60,
+      "area": "urban",
+      "annual_income": 50000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "age 18",
+    "profile": {
+      "state": "up",
+      "age": 18,
+      "disability_percent": 60,
+      "area": "urban",
+      "annual_income": 50000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "disability 39%",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "disability_percent": 39,
+      "area": "urban",
+      "annual_income": 50000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "disability_40": "fail"
+      }
+    }
+  },
+  {
+    "name": "disability 40%",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "disability_percent": 40,
+      "area": "urban",
+      "annual_income": 50000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "disability 41%",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "disability_percent": 41,
+      "area": "urban",
+      "annual_income": 50000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "urban income 56,460",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "disability_percent": 60,
+      "area": "urban",
+      "annual_income": 56460,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "urban income 56,461",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "disability_percent": 60,
+      "area": "urban",
+      "annual_income": 56461,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "rural income 46,081",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "disability_percent": 60,
+      "area": "rural",
+      "annual_income": 46081,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "income band straddles the limit",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "disability_percent": 60,
+      "area": "urban",
+      "annual_income": {
+        "min": 0,
+        "max": 100000
+      },
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  },
+  {
+    "name": "gets a widow pension",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "disability_percent": 60,
+      "area": "urban",
+      "annual_income": 50000,
+      "gets_govt_pension": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "no_other_pension": "fail"
+      }
+    }
+  },
+  {
+    "name": "lives in another state",
+    "profile": {
+      "state": "br",
+      "age": 30,
+      "disability_percent": 60,
+      "area": "urban",
+      "annual_income": 50000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "disability percent missing",
+    "profile": {
+      "state": "up",
+      "age": 30,
+      "area": "urban",
+      "annual_income": 50000,
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "disability_percent"
+      ]
+    }
+  }
+]

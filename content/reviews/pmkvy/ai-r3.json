@@ -1,0 +1,15 @@
+{
+  "slug": "pmkvy",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "f821dd937e1d5116",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:ab048f598c35c8db912a38c0bda29b7830e53f5bbf89e3a8436455f1a396f82c", "method": "refetched" }
+  ],
+  "newer_changes_search": "Re-review. No PMKVY 5.0 approval or 2026-27 order found. The blocker is resolved: age rules are now 'guidance' and how_to_apply states the period ended and no later order was found, in en and hi.",
+  "findings": [
+    { "target": "rule:age_max", "severity": "minor", "note": "Ages 46 to 59 pass as LIKELY_ELIGIBLE although that range is RPL only. The rule text mentions the limit.", "suggestion": "Add an 'uncertain' experience check." }
+  ]
+}

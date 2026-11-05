@@ -1,0 +1,18 @@
+{
+  "slug": "pmegp",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "7275cce583d9c4bc",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:90e9d90f6c61ee8c81dc6125a24cc3389e391987cd404c0d81f085a96e9d21fb", "method": "refetched" },
+    { "id": "pib_2026", "content_hash": "sha256:2763662cc312d5a9055a02c075ab498dbba829e4009273d173a7b24eb5887d0f", "method": "refetched" },
+    { "id": "pib_2022", "content_hash": "sha256:50472f872a31dc3b25e99454bbc1e35c6df13624c8926d4369d9b4956a0c3ff2", "method": "refetched" }
+  ],
+  "newer_changes_search": "Re-review. All three blockers resolved: age is now >= 18 as 'guidance' with the 'above 18' wording disclosed; subsidy rates are quoted from PIB 2022 and own share from guidelines §8.1; the period is dated and the content says plainly that new applications could not be confirmed. No Cabinet approval for 2026-31 found.",
+  "findings": [
+    { "target": "rule:no_other_subsidy", "severity": "minor", "note": "The quote and the relation quote stop before 'Subsidy'. Safe because the rule is 'uncertain'.", "suggestion": "Complete the quote." },
+    { "target": "official_apply_url", "severity": "minor", "note": "The source note says kviconline.gov.in did not resolve.", "suggestion": "Confirm that the link works." }
+  ]
+}

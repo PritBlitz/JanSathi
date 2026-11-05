@@ -1,5 +1,5 @@
 {
-  "$comment": "Document types. 'how_to' is generic, all-India guidance; state-specific guidance goes in 'states.<code>'. Every how_to cites a source. Draft: verified_at is null until a reviewer checks it.",
+  "$comment": "Document types. 'how_to' is generic, all-India guidance; state-specific guidance goes in 'how_to_by_state.<code>' (how_to, office, portal_url, source with quote and content_hash). Every how_to cites a source. Draft: verified_at is null until a reviewer checks it.",
   "documents": {
     "aadhaar": {
       "icon": "🪪",
@@ -32,7 +32,10 @@
       },
       "office": { "en": "Food and civil supplies office", "hi": "खाद्य एवं नागरिक आपूर्ति कार्यालय" },
       "portal_url": "https://nfsa.gov.in/",
-      "source": { "url": "https://nfsa.gov.in/", "publisher": "Department of Food and Public Distribution", "doc_type": "portal", "verified_at": null }
+      "source": { "url": "https://nfsa.gov.in/", "publisher": "Department of Food and Public Distribution", "doc_type": "portal", "verified_at": null },
+      "how_to_by_state": {
+        "up": {"how_to":{"en":"e-District Uttar Pradesh lists a new ration card service with a fee of ₹15. The page lists ID proof, address proof and a family income certificate.","hi":"ई-डिस्ट्रिक्ट उत्तर प्रदेश पर नया राशन कार्ड बनाने की सेवा है, शुल्क ₹15 है। पेज पर पहचान प्रमाण, पते का प्रमाण और परिवार के आय प्रमाण पत्र की सूची है।"},"office":{"en":"Jan Seva Kendra (CSC) or tehsil","hi":"जन सेवा केंद्र (CSC) या तहसील"},"portal_url":"https://edistrict.up.gov.in/edistrictup/","source":{"url":"https://edistrict.up.gov.in/eDistrictup/Services/services_hi.aspx","publisher":"e-District Uttar Pradesh","doc_type":"portal","lang":"hi","fetched_at":"2026-11-05","content_hash":"sha256:02765ffc658655c4d32c0e7ec79c406b928e3f7e4457fef123f750f543e41ad4","quote":"नवीन राशन कार्ड निर्गत करना","verified_at":null}}
+      }
     },
     "age_proof": {
       "icon": "🎂",
@@ -54,7 +57,10 @@
       },
       "office": { "en": "Tehsil / block office or CSC", "hi": "तहसील / ब्लॉक कार्यालय या CSC" },
       "portal_url": null,
-      "source": { "url": "https://www.india.gov.in/", "publisher": "National Portal of India", "doc_type": "portal", "verified_at": null }
+      "source": { "url": "https://www.india.gov.in/", "publisher": "National Portal of India", "doc_type": "portal", "verified_at": null },
+      "how_to_by_state": {
+        "up": {"how_to":{"en":"Apply through e-District Uttar Pradesh, at a Jan Seva Kendra or online. The page shows a fee of ₹30 from 16 Nov 2020 and ₹15 from 13 Jan 2021; ask which applies. The page lists a self-declaration, a copy of the ration card and, for salaried people, the latest pay slip. Aadhaar e-KYC is needed.","hi":"ई-डिस्ट्रिक्ट उत्तर प्रदेश से जन सेवा केंद्र पर या ऑनलाइन आवेदन करें। पेज पर 16 नवंबर 2020 से ₹30 और 13 जनवरी 2021 से ₹15 शुल्क लिखा है; कौन सा लागू है, पूछ लें। पेज पर स्वप्रमाणित घोषणा पत्र, राशन कार्ड की छाया प्रति और वेतन पाने वालों के लिए ताज़ा वेतन पर्ची की सूची है। आधार ई-केवाईसी ज़रूरी है।"},"office":{"en":"Jan Seva Kendra (CSC) or tehsil","hi":"जन सेवा केंद्र (CSC) या तहसील"},"portal_url":"https://edistrict.up.gov.in/edistrictup/","source":{"url":"https://edistrict.up.gov.in/eDistrictup/Services/services_hi.aspx","publisher":"e-District Uttar Pradesh","doc_type":"portal","lang":"hi","fetched_at":"2026-11-05","content_hash":"sha256:02765ffc658655c4d32c0e7ec79c406b928e3f7e4457fef123f750f543e41ad4","quote":"आय प्रमाण पत्र की सेवाएं आधार ई-केवाईसी सत्यापित होने के बाद ही उपलब्ध होंगी","verified_at":null}}
+      }
     },
     "caste_certificate": {
       "icon": "📄",
@@ -65,7 +71,10 @@
       },
       "office": { "en": "Tehsil / block office or CSC", "hi": "तहसील / ब्लॉक कार्यालय या CSC" },
       "portal_url": null,
-      "source": { "url": "https://www.india.gov.in/", "publisher": "National Portal of India", "doc_type": "portal", "verified_at": null }
+      "source": { "url": "https://www.india.gov.in/", "publisher": "National Portal of India", "doc_type": "portal", "verified_at": null },
+      "how_to_by_state": {
+        "up": {"how_to":{"en":"Apply through e-District Uttar Pradesh, at a Jan Seva Kendra or online. The page shows a fee of ₹30 from 16 Nov 2020 and ₹15 from 13 Jan 2021; ask which applies. Attach a photo, a self-declaration, caste papers and proof of residence and identity. Aadhaar e-KYC is needed.","hi":"ई-डिस्ट्रिक्ट उत्तर प्रदेश से जन सेवा केंद्र पर या ऑनलाइन आवेदन करें। पेज पर 16 नवंबर 2020 से ₹30 और 13 जनवरी 2021 से ₹15 शुल्क लिखा है; कौन सा लागू है, पूछ लें। फ़ोटो, स्वप्रमाणित घोषणा पत्र, जाति से जुड़े दस्तावेज़ और निवास व पहचान के दस्तावेज़ लगाएँ। आधार ई-केवाईसी ज़रूरी है।"},"office":{"en":"Jan Seva Kendra (CSC) or tehsil","hi":"जन सेवा केंद्र (CSC) या तहसील"},"portal_url":"https://edistrict.up.gov.in/edistrictup/","source":{"url":"https://edistrict.up.gov.in/eDistrictup/Services/services_hi.aspx","publisher":"e-District Uttar Pradesh","doc_type":"portal","lang":"hi","fetched_at":"2026-11-05","content_hash":"sha256:02765ffc658655c4d32c0e7ec79c406b928e3f7e4457fef123f750f543e41ad4","quote":"जाति प्रमाण पत्र की सेवाएं आधार ई-केवाईसी सत्यापित होने के बाद ही उपलब्ध होंगी","verified_at":null}}
+      }
     },
     "disability_certificate": {
       "icon": "♿",
@@ -76,7 +85,21 @@
       },
       "office": { "en": "District government hospital", "hi": "ज़िला सरकारी अस्पताल" },
       "portal_url": "https://www.swavlambancard.gov.in/",
-      "source": { "url": "https://www.swavlambancard.gov.in/", "publisher": "Department of Empowerment of Persons with Disabilities", "doc_type": "portal", "verified_at": null }
+      "source": { "url": "https://www.swavlambancard.gov.in/", "publisher": "Department of Empowerment of Persons with Disabilities", "doc_type": "portal", "verified_at": null },
+      "how_to_by_state": {
+        "up": {"how_to":{"en":"Apply online on the UDID portal, swavlambancard.gov.in. There is no fee. You need a passport photo, signature or thumbprint, identity proof and medical records. Contact your chosen hospital’s UDID cell for a date, and attend the medical assessment. A hospital or Medical Board decides the percentage of disability. The certificate is issued online, and the card comes free by speed post. A legal guardian may apply for a child. e-District Uttar Pradesh also lists a disability certificate service, with a fee of ₹30 from 16 Nov 2020 and ₹15 from 13 Jan 2021.","hi":"UDID पोर्टल swavlambancard.gov.in पर ऑनलाइन आवेदन करें। कोई शुल्क नहीं है। पासपोर्ट फ़ोटो, हस्ताक्षर या अंगूठे का निशान, पहचान प्रमाण और मेडिकल काग़ज़ चाहिए। तारीख़ के लिए अपने चुने अस्पताल के UDID सेल से संपर्क करें और मेडिकल जाँच में जाएँ। अस्पताल या मेडिकल बोर्ड दिव्यांगता का प्रतिशत तय करता है। प्रमाण पत्र ऑनलाइन जारी होता है और कार्ड स्पीड पोस्ट से मुफ़्त आता है। बच्चे के लिए क़ानूनी अभिभावक आवेदन कर सकते हैं। ई-डिस्ट्रिक्ट उत्तर प्रदेश पर भी दिव्यांग प्रमाणपत्र की सेवा है, शुल्क 16 नवंबर 2020 से ₹30 और 13 जनवरी 2021 से ₹15 लिखा है।"},"office":{"en":"Hospital UDID cell or CMO office","hi":"अस्पताल का UDID सेल या CMO कार्यालय"},"portal_url":"https://swavlambancard.gov.in/","source":{"url":"https://depwd.gov.in/en/udid-scheme/","publisher":"Department of Empowerment of Persons with Disabilities","doc_type":"portal","lang":"en","fetched_at":"2026-11-05","content_hash":"sha256:368d212711f58bbee6bc2c8a2f5a80d20d1f993cdf187b6d1f5a787c71ad8241","quote":"contact your chosen hospital to seek date of medical assessment of disability from UDID cell in the hospital","verified_at":null},"more_sources":[{"url":"https://depwd.gov.in/en/unique-disability-id-udid/","publisher":"Department of Empowerment of Persons with Disabilities","doc_type":"portal","lang":"en","fetched_at":"2026-11-05","content_hash":"sha256:9fe6c0b72624896b8c255808e089d9d6e1fc5b168f577553280acc1ae9db1672","quote":"Efficient assessment by hospitals or Medical Boards to determine the percentage of disability.","verified_at":null},{"url":"https://edistrict.up.gov.in/eDistrictup/Services/services_hi.aspx","publisher":"e-District Uttar Pradesh","doc_type":"portal","lang":"hi","fetched_at":"2026-11-05","content_hash":"sha256:02765ffc658655c4d32c0e7ec79c406b928e3f7e4457fef123f750f543e41ad4","quote":"दिव्यांग प्रमाणपत्र प्रारूप के लिए क्लिक करें","verified_at":null}]}
+      }
+    },
+    "domicile_certificate": {
+      "icon": "🏠",
+      "name": {"en":"Domicile certificate","hi":"अधिवास प्रमाण पत्र"},
+      "how_to": {"en":"Your state or district office gives a certificate that shows you live in the state. Ask at the tehsil or a service centre.","hi":"राज्य या ज़िले का कार्यालय यह प्रमाण पत्र देता है कि आप उस राज्य में रहते हैं। तहसील या सेवा केंद्र पर पूछें।"},
+      "office": {"en":"Tehsil or service centre","hi":"तहसील या सेवा केंद्र"},
+      "portal_url": "https://edistrict.up.gov.in/edistrictup/",
+      "source": {"url":"https://edistrict.up.gov.in/eDistrictup/Services/services_hi.aspx","publisher":"e-District Uttar Pradesh","doc_type":"portal","verified_at":null},
+      "how_to_by_state": {
+        "up": {"how_to":{"en":"Apply through e-District Uttar Pradesh, at a Jan Seva Kendra or online. The page shows a fee of ₹30 from 16 Nov 2020 and ₹15 from 13 Jan 2021; ask which applies. Attach a self-declaration, a copy of the ration card or electricity bill, a copy of the voter ID, and a school certificate if studying. Aadhaar e-KYC is needed.","hi":"ई-डिस्ट्रिक्ट उत्तर प्रदेश से जन सेवा केंद्र पर या ऑनलाइन आवेदन करें। पेज पर 16 नवंबर 2020 से ₹30 और 13 जनवरी 2021 से ₹15 शुल्क लिखा है; कौन सा लागू है, पूछ लें। स्वप्रमाणित घोषणा पत्र, राशन कार्ड या बिजली बिल की छाया प्रति, वोटर पहचान पत्र की छाया प्रति, और पढ़ाई कर रहे हों तो शैक्षणिक प्रमाण पत्र लगाएँ। आधार ई-केवाईसी ज़रूरी है।"},"office":{"en":"Jan Seva Kendra (CSC) or tehsil","hi":"जन सेवा केंद्र (CSC) या तहसील"},"portal_url":"https://edistrict.up.gov.in/edistrictup/","source":{"url":"https://edistrict.up.gov.in/eDistrictup/Services/services_hi.aspx","publisher":"e-District Uttar Pradesh","doc_type":"portal","lang":"hi","fetched_at":"2026-11-05","content_hash":"sha256:02765ffc658655c4d32c0e7ec79c406b928e3f7e4457fef123f750f543e41ad4","quote":"अधिवास प्रमाण पत्र की सेवाएं आधार ई-केवाईसी सत्यापित होने के बाद ही उपलब्ध होंगी","verified_at":null}}
+      }
     },
     "land_records": {
       "icon": "🗺️",
@@ -109,7 +132,10 @@
       },
       "office": { "en": "Gram panchayat / municipal registrar", "hi": "ग्राम पंचायत / नगर निकाय रजिस्ट्रार" },
       "portal_url": "https://crsorgi.gov.in/",
-      "source": { "url": "https://crsorgi.gov.in/", "publisher": "Office of the Registrar General, India", "doc_type": "portal", "verified_at": null }
+      "source": { "url": "https://crsorgi.gov.in/", "publisher": "Office of the Registrar General, India", "doc_type": "portal", "verified_at": null },
+      "how_to_by_state": {
+        "up": {"how_to":{"en":"Apply through e-District Uttar Pradesh. The page shows a fee of ₹30 from 16 Nov 2020 and ₹15 from 13 Jan 2021; ask which applies. Attach a photo ID and the hospital’s death certificate, if there is one.","hi":"ई-डिस्ट्रिक्ट उत्तर प्रदेश से आवेदन करें। पेज पर 16 नवंबर 2020 से ₹30 और 13 जनवरी 2021 से ₹15 शुल्क लिखा है; कौन सा लागू है, पूछ लें। फ़ोटो पहचान पत्र और अस्पताल का मृत्यु प्रमाण पत्र, अगर हो, लगाएँ।"},"office":{"en":"Jan Seva Kendra (CSC) or tehsil","hi":"जन सेवा केंद्र (CSC) या तहसील"},"portal_url":"https://edistrict.up.gov.in/edistrictup/","source":{"url":"https://edistrict.up.gov.in/eDistrictup/Services/services_hi.aspx","publisher":"e-District Uttar Pradesh","doc_type":"portal","lang":"hi","fetched_at":"2026-11-05","content_hash":"sha256:02765ffc658655c4d32c0e7ec79c406b928e3f7e4457fef123f750f543e41ad4","quote":"मृत्यु प्रमाणपत्र प्रारूप के लिए क्लिक करें","verified_at":null}}
+      }
     },
     "birth_certificate_child": {
       "icon": "👶",
@@ -120,7 +146,10 @@
       },
       "office": { "en": "Gram panchayat / municipal registrar", "hi": "ग्राम पंचायत / नगर निकाय रजिस्ट्रार" },
       "portal_url": "https://crsorgi.gov.in/",
-      "source": { "url": "https://crsorgi.gov.in/", "publisher": "Office of the Registrar General, India", "doc_type": "portal", "verified_at": null }
+      "source": { "url": "https://crsorgi.gov.in/", "publisher": "Office of the Registrar General, India", "doc_type": "portal", "verified_at": null },
+      "how_to_by_state": {
+        "up": {"how_to":{"en":"Apply through e-District Uttar Pradesh. The page shows a fee of ₹30 from 16 Nov 2020 and ₹15 from 13 Jan 2021; ask which applies. Attach a photo ID and the hospital’s birth certificate. If the child was not born in a hospital, see the e-District page for what to attach.","hi":"ई-डिस्ट्रिक्ट उत्तर प्रदेश से आवेदन करें। पेज पर 16 नवंबर 2020 से ₹30 और 13 जनवरी 2021 से ₹15 शुल्क लिखा है; कौन सा लागू है, पूछ लें। फ़ोटो पहचान पत्र और अस्पताल का जन्म प्रमाण पत्र लगाएँ। अगर बच्चे का जन्म अस्पताल में नहीं हुआ, तो क्या लगाना है यह ई-डिस्ट्रिक्ट पेज पर देखें।"},"office":{"en":"Jan Seva Kendra (CSC) or tehsil","hi":"जन सेवा केंद्र (CSC) या तहसील"},"portal_url":"https://edistrict.up.gov.in/edistrictup/","source":{"url":"https://edistrict.up.gov.in/eDistrictup/Services/services_hi.aspx","publisher":"e-District Uttar Pradesh","doc_type":"portal","lang":"hi","fetched_at":"2026-11-05","content_hash":"sha256:02765ffc658655c4d32c0e7ec79c406b928e3f7e4457fef123f750f543e41ad4","quote":"चिकित्सालय का जन्म/मृत्यु प्रमाण पत्र","verified_at":null}}
+      }
     },
     "mcp_card": {
       "icon": "🤰",

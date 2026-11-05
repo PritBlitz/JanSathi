@@ -320,6 +320,76 @@
       "type": "bool",
       "scope": "member",
       "icon": "👥"
+    },
+    "has_young_daughter": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "👧"
+    },
+    "family_has_up_to_two_children": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "👪"
+    },
+    "family_marriage_planned": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "💍"
+    },
+    "wants_to_start_business": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🚀"
+    },
+    "runs_small_business": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🏪"
+    },
+    "passed_class_8": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "📗"
+    },
+    "in_odop_trade": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🧵"
+    },
+    "works_in_skilled_trade": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🔧"
+    },
+    "got_toolkit_2y": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🧰"
+    },
+    "has_child_under_18": {
+      "type": "bool",
+      "scope": "household",
+      "icon": "🧒"
+    },
+    "top_20_percent_class_12": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🏅"
+    },
+    "preparing_for_competitive_exam": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "📖"
+    },
+    "gets_govt_pension": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🧾"
+    },
+    "got_aid_last_3y": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🦽"
     }
   }
 }

@@ -1,0 +1,52 @@
+{
+  "slug": "up-kanya-sumangala",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "510dba1c65a7493a",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "portal",
+      "content_hash": "sha256:02400cd48c8037a11cfbbf03e56d42dc923e6776cd19ba5b84c54da2b3ed051d",
+      "method": "snapshot"
+    },
+    {
+      "id": "women_dept",
+      "content_hash": "sha256:60a61f5ac2e371487090d9728bcdad7d45c9a87d78a4c701e38889bc89842ea2",
+      "method": "snapshot"
+    },
+    {
+      "id": "go_2024",
+      "content_hash": "sha256:834072b67c050e5bacefd9523e39fd2cfc811c6b6938d10345bc5c12ac830f4a",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "Re-review of the changed version against my earlier record. Robots: only hosts with a readable or absent robots.txt were refetched; the rest were checked against snapshots. mksy.up.gov.in returned an HTML page for robots.txt, so it counts as not confirmed and the portal was checked by snapshot.",
+  "findings": [
+    {
+      "target": "source:portal",
+      "severity": "minor",
+      "note": "My earlier blocker came from a live fetch that differed only in the footer version (V8-4 to V8-5). The recorded hash has not been refreshed, but under the robots instruction I no longer refetch this host, and no fact is affected.",
+      "suggestion": "Refresh the hash when the host can be fetched, or treat the footer as volatile."
+    },
+    {
+      "target": "rule:has_daughter",
+      "severity": "minor",
+      "note": "Fixed: earlier blocker resolved. Now uncertain, and the text covers all six stages, so a family with a girl joining college gets \"check with the office\".",
+      "suggestion": "None."
+    },
+    {
+      "target": "sources",
+      "severity": "minor",
+      "note": "Still open: the instructions said to be dated 16 January 2026 and the 2019 guidelines were not found.",
+      "suggestion": "Find them and add any age or date condition."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Still open: proof of residence is missing.",
+      "suggestion": "Add it."
+    }
+  ]
+}

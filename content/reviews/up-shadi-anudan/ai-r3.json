@@ -1,0 +1,18 @@
+{
+  "slug": "up-shadi-anudan",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "29415b0b28cf8d6b",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "dept", "content_hash": "sha256:8c0fc977d5164fcf03820d83ef6243cd1aeaca5b7f8b5d54a5b60c3679d9270d", "method": "refetched" },
+    { "id": "go_2016", "content_hash": "sha256:11a964d642007e4e94e97fa2ef6bc29f5bee0b39ac0fd6ce8b1a01bd55889916", "method": "refetched" }
+  ],
+  "newer_changes_search": "Re-review. Compared the hand-transcribed subject line and para 1(iii) with the page image of GO 115/2016: they match. Both blockers resolved: the OBC ₹210 crore fact is removed, and ST is included as 'guidance' from the GO, with the source conflict stated in how_to_apply in en and hi. No current order settling ST was found.",
+  "findings": [
+    { "target": "content:name", "severity": "minor", "note": "The name and summary state ST flatly while the 2026-27 Budget and department page list SC and General. The how_to_apply note covers this, but an 'uncertain' ST rule would be safer.", "suggestion": "Move ST to an 'uncertain' rule, or confirm from a current order." },
+    { "target": "rule:marriage_planned", "severity": "minor", "note": "family_marriage_planned is also true for a person's own wedding.", "suggestion": "Clarify in the rule text." },
+    { "target": "documents", "severity": "minor", "note": "The source also lists a marriage card.", "suggestion": "Add it." }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "status": "published",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "yearly"
+  },
+  "deadlines": [],
+  "relations": [
+    {
+      "kind": "excludes",
+      "with": "up-post-matric-general",
+      "source": "guidelines",
+      "quote": "Not availing benefit of any other scholarship schemes including State run scholarship schemes",
+      "note": {
+        "en": "You may apply for both, but the scheme rules let you keep only one. If you are offered both, choose one.",
+        "hi": "आप दोनों के लिए आवेदन कर सकते हैं, लेकिन योजना के नियमों के अनुसार एक ही रख सकते हैं। दोनों मिलें तो एक चुनें।"
+      }
+    },
+    {
+      "kind": "excludes",
+      "with": "post-matric-sc",
+      "source": "guidelines",
+      "quote": "Not availing benefit of any other scholarship schemes including State run scholarship schemes",
+      "note": {
+        "en": "You may apply for both on the National Scholarship Portal, but the scheme rules let you keep only one. If you are offered both, choose one.",
+        "hi": "आप राष्ट्रीय छात्रवृत्ति पोर्टल पर दोनों के लिए आवेदन कर सकते हैं, लेकिन योजना के नियमों के अनुसार एक ही रख सकते हैं। दोनों मिलें तो एक चुनें।"
+      }
+    },
+    {
+      "kind": "excludes",
+      "with": "post-matric-st",
+      "source": "guidelines",
+      "quote": "Not availing benefit of any other scholarship schemes including State run scholarship schemes",
+      "note": {
+        "en": "You may apply for both on the National Scholarship Portal, but the scheme rules let you keep only one. If you are offered both, choose one.",
+        "hi": "आप राष्ट्रीय छात्रवृत्ति पोर्टल पर दोनों के लिए आवेदन कर सकते हैं, लेकिन योजना के नियमों के अनुसार एक ही रख सकते हैं। दोनों मिलें तो एक चुनें।"
+      }
+    },
+    {
+      "kind": "excludes",
+      "with": "post-matric-obc",
+      "source": "guidelines",
+      "quote": "Not availing benefit of any other scholarship schemes including State run scholarship schemes",
+      "note": {
+        "en": "You may apply for both on the National Scholarship Portal, but the scheme rules let you keep only one. If you are offered both, choose one.",
+        "hi": "आप राष्ट्रीय छात्रवृत्ति पोर्टल पर दोनों के लिए आवेदन कर सकते हैं, लेकिन योजना के नियमों के अनुसार एक ही रख सकते हैं। दोनों मिलें तो एक चुनें।"
+      }
+    },
+    {
+      "kind": "excludes",
+      "with": "post-matric-pwd",
+      "source": "guidelines",
+      "quote": "Not availing benefit of any other scholarship schemes including State run scholarship schemes",
+      "note": {
+        "en": "You may apply for both on the National Scholarship Portal, but the scheme rules let you keep only one. If you are offered both, choose one.",
+        "hi": "आप राष्ट्रीय छात्रवृत्ति पोर्टल पर दोनों के लिए आवेदन कर सकते हैं, लेकिन योजना के नियमों के अनुसार एक ही रख सकते हैं। दोनों मिलें तो एक चुनें।"
+      }
+    }
+  ],
+  "changes": [],
+  "slug": "pm-usp",
+  "category": "education",
+  "icon": "🏅",
+  "ministry": {
+    "en": "Department of Higher Education, Ministry of Education",
+    "hi": "उच्चतर शिक्षा विभाग, शिक्षा मंत्रालय"
+  },
+  "official_apply_url": "https://scholarships.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "PM-USP Central Sector Scholarship for college and university students",
+      "summary": "A yearly scholarship for bright students from low-income families who study a regular degree after class 12.",
+      "benefit": "₹12,000 a year for the first three years of a degree, and ₹20,000 a year at post-graduate level. Up to 82,000 new scholarships are given each year.",
+      "how_to_apply": "Apply on the National Scholarship Portal. It is for regular degree courses, not distance learning or diplomas. A student can keep only this one, without another scholarship or a fee waiver. Only new applicants need an income certificate."
+    },
+    "hi": {
+      "name": "पीएम-यूएसपी केंद्रीय छात्रवृत्ति (कॉलेज और विश्वविद्यालय के छात्र)",
+      "summary": "कक्षा 12 के बाद नियमित डिग्री पढ़ने वाले कम आय वाले परिवारों के होनहार छात्रों के लिए सालाना छात्रवृत्ति।",
+      "benefit": "डिग्री के पहले तीन साल में हर साल ₹12,000 और स्नातकोत्तर स्तर पर हर साल ₹20,000। हर साल 82,000 तक नई छात्रवृत्तियाँ दी जाती हैं।",
+      "how_to_apply": "राष्ट्रीय छात्रवृत्ति पोर्टल पर आवेदन करें। यह नियमित डिग्री कोर्स के लिए है, दूरस्थ शिक्षा या डिप्लोमा के लिए नहीं। छात्र दूसरी छात्रवृत्ति या फ़ीस माफ़ी के बिना केवल यही रख सकता है। आय प्रमाण पत्र केवल नए आवेदकों को चाहिए।"
+    }
+  },
+  "sources": [
+    {
+      "id": "guidelines",
+      "url": "https://scholarships.gov.in/public/schemeGuidelines/CSSS_GUIDLINES_06022024.pdf",
+      "title": "PM-USP Yojana: guidelines for the Central Sector Scheme of Scholarship for College and University Students (from 2022-23)",
+      "publisher": "Department of Higher Education, Ministry of Education",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2024-02",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:131d34f467527d74600fb770e6920cb1f3a0ab0a64db0df35694292d4c93f605",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "fetch": "manual",
+      "fetch_note": "Windows reports the certificate of scholarships.gov.in as revoked (CRYPT_E_REVOKED, checked 2026-11-05), so curl refuses it. The PDF was saved on 2026-11-05 through the web fetch tool, which does not make that revocation check. A reviewer should compare it with a copy obtained over a trusted connection."
+    },
+    {
+      "id": "nsp",
+      "url": "https://scholarships.gov.in/",
+      "title": "National Scholarship Portal",
+      "publisher": "Government of India",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-10-25",
+      "content_hash": "sha256:63132b56739de975cf55a39494e47e16b6ba3153bacb2aa637379da3dc65d3fc",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    }
+  ],
+  "rules": [
+    {
+      "code": "top_20",
+      "logic": {
+        "==": [
+          {
+            "var": "top_20_percent_class_12"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§4(i)",
+      "quote": "Students who are above 80th percentile of successful candidates",
+      "text": {
+        "en": "In the top 20% of those who passed class 12 in the same stream and board",
+        "hi": "उसी बोर्ड और स्ट्रीम में कक्षा 12 पास करने वालों के शीर्ष 20% में हैं"
+      }
+    },
+    {
+      "code": "degree",
+      "logic": {
+        "in": [
+          {
+            "var": "education_level"
+          },
+          [
+            "ug",
+            "pg"
+          ]
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§4(ii)",
+      "quote": "Pursuing regular degree courses and not correspondence or distance mode or pursuing Diploma courses",
+      "text": {
+        "en": "Studying a regular degree course",
+        "hi": "नियमित डिग्री कोर्स में पढ़ रहे हैं"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          450000
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§4(v)",
+      "quote": "Students with gross parental/family income upto Rs. 4.5 lakh per annum",
+      "text": {
+        "en": "Family income is up to ₹4.5 lakh a year",
+        "hi": "परिवार की सालाना आय ₹4.5 लाख तक है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "The rate of scholarship is Rs.12,000/-per annum at Graduation level for first three years of College and University courses and Rs.20,000/-per annum at Post-Graduation level"
+    },
+    {
+      "about": "slots",
+      "source": "guidelines",
+      "quote": "of 82,000 fresh scholarships per annum are provided"
+    },
+    {
+      "about": "nsp_rule",
+      "source": "nsp",
+      "quote": "Students may apply for one merit-based scholarship scheme and one or more welfare-based scholarship schemes from AY 2026–27"
+    }
+  ],
+  "documents": [
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "guidelines"
+    },
+    {
+      "code": "marksheet",
+      "mandatory": true,
+      "source": "guidelines"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "1c45820c898065d1"
+  }
+}

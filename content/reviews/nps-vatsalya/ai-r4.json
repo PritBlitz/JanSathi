@@ -1,0 +1,30 @@
+{
+  "slug": "nps-vatsalya",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "62655ec59c21f6ff",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "faq",
+      "content_hash": "sha256:594fc3bfc79e2ee89d064c057231423e8e33f73f6e7aa1c65d7fcfa3d208cb29",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Refetched the FAQ of 16 Jun 2026. Searched the web: coverage of the PFRDA Scheme Guidelines 2025 (circular of 7 Jan 2026) confirms the ₹250 minimum; no later change found.",
+  "findings": [
+    {
+      "target": "sources",
+      "severity": "minor",
+      "note": "The PFRDA guidelines themselves are not cited. Guidance confidence is right for an FAQ.",
+      "suggestion": "Add them."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "The guardian's KYC and PAN or Form 60 appear only in how_to_apply.",
+      "suggestion": "Add rows if codes exist."
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "status": "published",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "changes": [],
+  "slug": "pm-mudra",
+  "category": "employment",
+  "icon": "💼",
+  "ministry": {
+    "en": "Department of Financial Services, Ministry of Finance",
+    "hi": "वित्तीय सेवाएँ विभाग, वित्त मंत्रालय"
+  },
+  "official_apply_url": "https://www.udyamimitra.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "Pradhan Mantri MUDRA Yojana (PMMY)",
+      "summary": "Bank loans for small non-farm businesses that are not companies, in manufacturing, services and trade.",
+      "benefit": "Loans in four groups: Shishu up to ₹50,000; Kishor above ₹50,000 and up to ₹5 lakh; Tarun above ₹5 lakh and up to ₹10 lakh; TarunPlus above ₹10 lakh and up to ₹20 lakh, for people who took a Tarun loan and repaid it. The lender decides on the loan.",
+      "how_to_apply": "Go to a nearby bank, NBFC or microfinance branch, or apply on udyamimitra.in. MUDRA itself does not lend. It has no agents, so stay away from anyone who says they are one."
+    },
+    "hi": {
+      "name": "प्रधानमंत्री मुद्रा योजना (PMMY)",
+      "summary": "निर्माण, सेवा और व्यापार के छोटे ग़ैर-कृषि काम-धंधों के लिए बैंक ऋण, जो कंपनी नहीं हैं।",
+      "benefit": "चार तरह के ऋण: शिशु ₹50,000 तक; किशोर ₹50,000 से ऊपर और ₹5 लाख तक; तरुण ₹5 लाख से ऊपर और ₹10 लाख तक; तरुणप्लस ₹10 लाख से ऊपर और ₹20 लाख तक, उनके लिए जिन्होंने तरुण ऋण लेकर चुका दिया है। ऋण पर निर्णय ऋणदाता करता है।",
+      "how_to_apply": "पास की बैंक, NBFC या माइक्रोफ़ाइनेंस शाखा में जाएँ, या udyamimitra.in पर आवेदन करें। मुद्रा ख़ुद ऋण नहीं देती। इसके कोई एजेंट नहीं हैं, इसलिए एजेंट बताने वालों से दूर रहें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "home",
+      "url": "https://www.mudra.org.in/",
+      "title": "MUDRA home page: Pradhan Mantri MUDRA Yojana",
+      "publisher": "Micro Units Development and Refinance Agency",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:ca0cab38b40eb95f2041e41a700a2f1224ba524b6b29a425fd4d29d4292b187f",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "faq",
+      "url": "https://www.mudra.org.in/AboutUs/FAQs",
+      "title": "MUDRA: frequently asked questions",
+      "publisher": "Micro Units Development and Refinance Agency",
+      "doc_type": "faq",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:64912fc1817ce61fcb21a6258baf8bc35c1833f72c98fca8a0543c4b0e31cd20",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    }
+  ],
+  "rules": [
+    {
+      "code": "small_business",
+      "logic": {
+        "or": [
+          {
+            "==": [
+              {
+                "var": "runs_small_business"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "wants_to_start_business"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "home",
+      "locator": "Pradhan Mantri MUDRA Yojana (PMMY)",
+      "quote": "to the non-corporate, non-farm small/micro enterprises",
+      "text": {
+        "en": "Runs or wants to start a small non-farm business",
+        "hi": "छोटा ग़ैर-कृषि काम-धंधा चलाते हैं या शुरू करना चाहते हैं"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "home",
+      "quote": "for providing loans up to 10 lakh"
+    },
+    {
+      "about": "amount",
+      "source": "home",
+      "quote": "20 lakh for those entrepreneurs who have availed and successfully repaid previous loans under the 'Tarun' category"
+    },
+    {
+      "about": "amount",
+      "source": "home",
+      "quote": "Covering loans upto 50,000/-"
+    },
+    {
+      "about": "amount",
+      "source": "home",
+      "quote": "Covering loans above 50,000/- and upto 5 lakh"
+    },
+    {
+      "about": "amount",
+      "source": "home",
+      "quote": "Covering loans above 5 lakh and upto 10 lakh"
+    },
+    {
+      "about": "amount",
+      "source": "home",
+      "quote": "Covering loans above 10 lakh and upto 20 lakh"
+    },
+    {
+      "about": "how_to_apply",
+      "source": "faq",
+      "quote": "MUDRA does not lend directly to the micro entrepreneurs / individuals."
+    },
+    {
+      "about": "how_to_apply",
+      "source": "faq",
+      "quote": "There are no agents or middleman engaged by MUDRA for availing of Mudra Loans."
+    }
+  ],
+  "documents": [],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "1ad5b990b8a11f5e"
+  }
+}

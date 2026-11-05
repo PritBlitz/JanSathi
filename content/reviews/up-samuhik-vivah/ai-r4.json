@@ -1,0 +1,47 @@
+{
+  "slug": "up-samuhik-vivah",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "c4b85ff6fb35413a",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dept",
+      "content_hash": "sha256:ffa8a54782be648edad90051f243e417bc4a9da1717b5737aef1129cc5e446fb",
+      "method": "refetched"
+    },
+    {
+      "id": "go_2025",
+      "content_hash": "sha256:138fc00c1f6de90c294824c35c1d4c1b1aebdd3cc1c8c5300fb173545aba9ff7",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Searched samajkalyan.up.gov.in and the web; read the UP Budget 2026-27 highlights. The GO of 23 May 2025 has a corrupted text layer: its numerals are legible (3.00 lakh, 60,000, 25,000, 15,000, 1,00,000) and match the portal, but I could not read its clauses word by word. Patrika (Jul 2026) repeats ₹1 lakh with ₹60,000 to the account.",
+  "findings": [
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "UP Budget 2026-27 highlights say the grant rose \"from ₹51,000 to ₹1.01 lakh\", while the order and department page give ₹1,00,000 (60,000 + 25,000 + 15,000). The order is the better source and the parts add up, but the conflict is unexplained.",
+      "suggestion": "Keep ₹1,00,000 and record the discrepancy for the next re-check."
+    },
+    {
+      "target": "rule:marriage_planned",
+      "severity": "minor",
+      "note": "The quote stops at \"daughters from economically weaker families\", while the rule text also covers the applicant's own remarriage.",
+      "suggestion": "Extend the quote to \"and in the remarriage of widows, abandoned women, and divorced women\"."
+    },
+    {
+      "target": "content.summary",
+      "severity": "minor",
+      "note": "The objective also names abandoned women, but section 4 lists only legally divorced and widowed women. The content follows section 4, the safer reading.",
+      "suggestion": "Check the order and add abandoned women if it covers them."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Address proof, listed in section 5, is missing.",
+      "suggestion": "Add it if a document code exists."
+    }
+  ]
+}
