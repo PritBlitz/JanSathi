@@ -1,6 +1,10 @@
 # JanSathi with PostgreSQL:  docker compose up --build   →  http://localhost:8080
 # Secrets come from the environment or a .env file next to this one (never commit it):
-#   see .env.example for every setting (POSTGRES_PASSWORD, JANSATHI_SECRET, JANSATHI_ADMIN_TOKEN, SMS, Gemini).
+#   see .env.example for every setting, docs/OPERATIONS.md for how to run this on a server.
+# With TLS (Caddy):  docker compose --profile tls up -d --build
+# With the ML service (embeddings, server speech, translation; ml/README.md):
+#   docker compose --profile ml up -d --build, with JANSATHI_EMBED_PROVIDER=ml-service and
+#   JANSATHI_SPEECH_PROVIDER=ml-service in .env.
 services:
   db:
     image: postgres:17-alpine
@@ -8,8 +12,12 @@ services:
       POSTGRES_DB: jansathi
       POSTGRES_USER: jansathi
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      # The API's own role (deploy/postgres/10-app-role.sh): it owns nothing, so it can't touch the
+      # audit logs' triggers. Created when the volume is first made.
+      POSTGRES_APP_PASSWORD: ${POSTGRES_APP_PASSWORD:?set POSTGRES_APP_PASSWORD}
     volumes:
       - db-data:/var/lib/postgresql/data
+      - ./deploy/postgres/10-app-role.sh:/docker-entrypoint-initdb.d/10-app-role.sh:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U jansathi -d jansathi"]
       interval: 5s
@@ -21,19 +29,116 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    # On this machine only: from outside, requests come through Caddy, which sets the client address.
     ports:
-      - "8080:8080"
+      - "${JANSATHI_BIND:-127.0.0.1}:8080:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/jansathi
-      SPRING_DATASOURCE_USERNAME: jansathi
-      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      SPRING_DATASOURCE_USERNAME: jansathi_app
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_APP_PASSWORD}
+      # Migrations run as the owner; the API does not.
+      SPRING_FLYWAY_USER: jansathi
+      SPRING_FLYWAY_PASSWORD: ${POSTGRES_PASSWORD}
+      LOGGING_STRUCTURED_FORMAT_CONSOLE: ecs
+      # On by default: refuses to start with the dev SMS sender or a short secret.
+      JANSATHI_PRODUCTION: ${JANSATHI_PRODUCTION:-true}
       JANSATHI_SECRET: ${JANSATHI_SECRET:?set JANSATHI_SECRET}
+      JANSATHI_SECRET_PREVIOUS: ${JANSATHI_SECRET_PREVIOUS:-}
       JANSATHI_ADMIN_TOKEN: ${JANSATHI_ADMIN_TOKEN:-}
       JANSATHI_SMS_PROVIDER: ${JANSATHI_SMS_PROVIDER:-dev}
+      JANSATHI_SMS_OTP_TEMPLATE_ID: ${JANSATHI_SMS_OTP_TEMPLATE_ID:-}
+      JANSATHI_SMS_CHECKLIST_TEMPLATE_ID: ${JANSATHI_SMS_CHECKLIST_TEMPLATE_ID:-}
+      JANSATHI_SMS_DEADLINE_TEMPLATE_ID: ${JANSATHI_SMS_DEADLINE_TEMPLATE_ID:-}
+      JANSATHI_SMS_MSG91_AUTH_KEY: ${JANSATHI_SMS_MSG91_AUTH_KEY:-}
+      JANSATHI_SMS_TWILIO_ACCOUNT_SID: ${JANSATHI_SMS_TWILIO_ACCOUNT_SID:-}
+      JANSATHI_SMS_TWILIO_AUTH_TOKEN: ${JANSATHI_SMS_TWILIO_AUTH_TOKEN:-}
+      JANSATHI_SMS_TWILIO_MESSAGING_SERVICE_SID: ${JANSATHI_SMS_TWILIO_MESSAGING_SERVICE_SID:-}
+      JANSATHI_PUBLIC_URL: ${JANSATHI_PUBLIC_URL:-}
+      JANSATHI_PUSH_PUBLIC_KEY: ${JANSATHI_PUSH_PUBLIC_KEY:-}
+      JANSATHI_PUSH_PRIVATE_KEY: ${JANSATHI_PUSH_PRIVATE_KEY:-}
+      JANSATHI_PUSH_SUBJECT: ${JANSATHI_PUSH_SUBJECT:-}
+      JANSATHI_TELEGRAM_BOT_TOKEN: ${JANSATHI_TELEGRAM_BOT_TOKEN:-}
+      JANSATHI_TELEGRAM_BOT_USERNAME: ${JANSATHI_TELEGRAM_BOT_USERNAME:-}
+      JANSATHI_TELEGRAM_WEBHOOK_SECRET: ${JANSATHI_TELEGRAM_WEBHOOK_SECRET:-}
+      JANSATHI_WHATSAPP_ACCESS_TOKEN: ${JANSATHI_WHATSAPP_ACCESS_TOKEN:-}
+      JANSATHI_WHATSAPP_PHONE_NUMBER_ID: ${JANSATHI_WHATSAPP_PHONE_NUMBER_ID:-}
+      JANSATHI_WHATSAPP_CHECKLIST_TEMPLATE: ${JANSATHI_WHATSAPP_CHECKLIST_TEMPLATE:-}
+      JANSATHI_WHATSAPP_DEADLINE_TEMPLATE: ${JANSATHI_WHATSAPP_DEADLINE_TEMPLATE:-}
+      JANSATHI_WHATSAPP_LANGUAGES: ${JANSATHI_WHATSAPP_LANGUAGES:-en}
+      # Docker's private ranges: Caddy reaches the app from one of these.
+      JANSATHI_TRUSTED_PROXIES: ${JANSATHI_TRUSTED_PROXIES:-172.16.0.0/12}
+      JANSATHI_RATE_LIMIT_ENABLED: ${JANSATHI_RATE_LIMIT_ENABLED:-true}
+      JANSATHI_METRICS_TOKEN: ${JANSATHI_METRICS_TOKEN:-}
+      JANSATHI_SENTRY_DSN: ${JANSATHI_SENTRY_DSN:-}
+      JANSATHI_ENVIRONMENT: ${JANSATHI_ENVIRONMENT:-production}
       JANSATHI_LLM_PROVIDER: ${JANSATHI_LLM_PROVIDER:-none}
       JANSATHI_LLM_BASE_URL: ${JANSATHI_LLM_BASE_URL:-}
       JANSATHI_LLM_API_KEY: ${JANSATHI_LLM_API_KEY:-}
       JANSATHI_LLM_MODEL: ${JANSATHI_LLM_MODEL:-}
+      JANSATHI_EMBED_PROVIDER: ${JANSATHI_EMBED_PROVIDER:-none}
+      JANSATHI_EMBED_BASE_URL: ${JANSATHI_EMBED_BASE_URL:-http://ml:8090}
+      JANSATHI_EMBED_TOKEN: ${ML_SERVICE_TOKEN:-}
+      JANSATHI_SPEECH_PROVIDER: ${JANSATHI_SPEECH_PROVIDER:-none}
+      JANSATHI_SPEECH_BASE_URL: ${JANSATHI_SPEECH_BASE_URL:-http://ml:8090}
+      JANSATHI_SPEECH_TOKEN: ${ML_SERVICE_TOKEN:-}
+
+  # Internal: reachable by the API, and on this machine only for tools/translate-content.mjs.
+  ml:
+    profiles: [ml]
+    build: ./ml
+    mem_limit: 4g
+    ports:
+      - "127.0.0.1:8090:8090"
+    volumes:
+      - ${ML_MODELS_DIR:-./ml/.models}:/models
+    environment:
+      ML_SERVICE_TOKEN: ${ML_SERVICE_TOKEN:-}
+      ML_THREADS: ${ML_THREADS:-4}
+      ML_STT_MODEL: ${ML_STT_MODEL:-small}
+      ML_STT_LANGS: ${ML_STT_LANGS:-en,hi,ta}
+      ML_TRANSLATE_MODEL: ${ML_TRANSLATE_MODEL:-sarvam}
+      ML_LLAMA_URL: http://llama:8091
+      HF_TOKEN: ${HF_TOKEN:-}
+
+  # Once, to make the voices: docker compose --profile ml-export run --rm ml-export
+  ml-export:
+    profiles: [ml-export]
+    build:
+      context: ./ml
+      dockerfile: Dockerfile.export
+    environment:
+      ML_MODELS_DIR: /models
+      HF_HOME: /tmp/hf
+    volumes:
+      - ${ML_MODELS_DIR:-./ml/.models}:/models
+
+  # Only to regenerate content/translations with Sarvam-Translate (ML_TRANSLATE_MODEL=sarvam).
+  llama:
+    profiles: [translate]
+    image: ghcr.io/ggml-org/llama.cpp:server
+    mem_limit: 4g
+    command: ["-m", "/models/sarvam-translate/sarvam-translate-q4_k_m.gguf", "--host", "0.0.0.0", "--port", "8091", "-c", "4096", "-np", "4"]
+    volumes:
+      - ${ML_MODELS_DIR:-./ml/.models}:/models:ro
+
+  # TLS in front of the app, with certificates from Let's Encrypt. Needs JANSATHI_DOMAIN.
+  caddy:
+    image: caddy:2-alpine
+    profiles: [tls]
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      JANSATHI_DOMAIN: ${JANSATHI_DOMAIN:-localhost}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
 
 volumes:
   db-data:
+  caddy-data:
+  caddy-config:

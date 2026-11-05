@@ -1,0 +1,4 @@
+# Only for ML_TRANSLATE_MODEL=indictrans2 (gated: needs HF_TOKEN). Adds torch; not in the image.
+torch
+transformers>=4.48,<4.56
+IndicTransToolkit

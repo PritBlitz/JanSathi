@@ -1,0 +1,10 @@
+# What the Docker image installs. No torch: ONNX Runtime and CTranslate2 run every model.
+# The HTTP layer and test_service.py need none of this, only the standard library.
+# Pinned: faster-whisper 1.2 breaks with PyAV 19, which dropped an argument it passes.
+numpy==2.5.4
+onnxruntime==1.31.1
+tokenizers==0.23.3
+ctranslate2==4.8.5
+faster-whisper==1.2.1
+av==15.1.0
+num2words==0.5.14

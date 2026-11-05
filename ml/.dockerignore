@@ -1,0 +1,4 @@
+.models
+__pycache__
+*.md
+test_service.py

@@ -1,0 +1,7 @@
+# One-off: turn facebook/mms-tts-* into ONNX so the service needs no torch. See export_tts.py.
+FROM python:3.12-slim
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu \
+ && pip install --no-cache-dir "transformers>=4.48,<4.56" "optimum-onnx" onnx onnxruntime
+WORKDIR /app
+COPY export_tts.py .
+ENTRYPOINT ["python", "export_tts.py"]
