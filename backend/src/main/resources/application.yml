@@ -11,7 +11,8 @@ spring:
     username: ${SPRING_DATASOURCE_USERNAME:sa}
     password: ${SPRING_DATASOURCE_PASSWORD:}
   flyway:
-    locations: classpath:db/migration
+    # db/vendor/postgresql: what only PostgreSQL can do (the audit log's insert-only triggers).
+    locations: classpath:db/migration,classpath:db/vendor/{vendor}
 
 server:
   compression:
@@ -19,22 +20,31 @@ server:
     mime-types: application/json,application/problem+json,text/html,text/css,text/javascript,image/svg+xml
   error:
     include-message: never
-  # Behind a reverse proxy, take the client address from X-Forwarded-For so the per-address
-  # sign-in limit applies per person, not to everyone at once. Tomcat trusts the header only
-  # from private-network proxies, so a client on the internet cannot forge it.
-  forward-headers-strategy: native
+  # Off: the app itself decides what X-Forwarded-For to believe (jansathi.web.trusted-proxies), so a
+  # forged header can't pick the address the limits count.
+  forward-headers-strategy: none
 
 management:
   endpoints:
     web:
       exposure:
-        include: health,info
+        include: health,info,prometheus
+
+# Structured logs: set LOGGING_STRUCTURED_FORMAT_CONSOLE=ecs (docker-compose.yml does). Every string
+# in them passes through LogScrubber.
+logging:
+  structured:
+    json:
+      customizer: org.jansathi.web.LogScrubber
 
 springdoc:
   api-docs:
     path: /v3/api-docs
 
 jansathi:
+  # True (or Spring profile prod/production): refuse to start with the dev SMS sender, a short secret
+  # or drafts on (ProductionGuard).
+  production: ${JANSATHI_PRODUCTION:false}
   # Unset: read the bundle packaged in the jar (copied from frontend/public/data at build time).
   # Local development: JANSATHI_BUNDLE_DIR=../frontend/public/data picks up `npm run build` without a rebuild.
   bundle-dir: ${JANSATHI_BUNDLE_DIR:}
@@ -44,10 +54,60 @@ jansathi:
   # Keys for phone hashes and encryption at rest. Set a long random value in production and keep it:
   # changing it makes saved accounts and data unreadable. Blank (local dev): a random key per start.
   secret: ${JANSATHI_SECRET:}
+  # Only while rotating the secret: the old value, still readable (docs/OPERATIONS.md §6).
+  secret-previous: ${JANSATHI_SECRET_PREVIOUS:}
   sms:
-    # dev: no SMS is sent; the sign-in code is shown on screen. Replace before launch.
+    # dev: no SMS is sent; the sign-in code is shown on screen. msg91 or twilio for real messages.
     provider: ${JANSATHI_SMS_PROVIDER:dev}
-  # Blank switches the admin API (/api/v1/admin/**) off.
+    otp-template-id: ${JANSATHI_SMS_OTP_TEMPLATE_ID:}
+    checklist-template-id: ${JANSATHI_SMS_CHECKLIST_TEMPLATE_ID:}
+    deadline-template-id: ${JANSATHI_SMS_DEADLINE_TEMPLATE_ID:}
+    msg91:
+      auth-key: ${JANSATHI_SMS_MSG91_AUTH_KEY:}
+    twilio:
+      account-sid: ${JANSATHI_SMS_TWILIO_ACCOUNT_SID:}
+      auth-token: ${JANSATHI_SMS_TWILIO_AUTH_TOKEN:}
+      messaging-service-sid: ${JANSATHI_SMS_TWILIO_MESSAGING_SERVICE_SID:}
+  # Reminder channels besides Web Push. Each stays off until its settings are complete.
+  reminders:
+    public-url: ${JANSATHI_PUBLIC_URL:}
+    telegram:
+      bot-token: ${JANSATHI_TELEGRAM_BOT_TOKEN:}
+      bot-username: ${JANSATHI_TELEGRAM_BOT_USERNAME:}
+      webhook-secret: ${JANSATHI_TELEGRAM_WEBHOOK_SECRET:}
+    whatsapp:
+      access-token: ${JANSATHI_WHATSAPP_ACCESS_TOKEN:}
+      phone-number-id: ${JANSATHI_WHATSAPP_PHONE_NUMBER_ID:}
+      checklist-template: ${JANSATHI_WHATSAPP_CHECKLIST_TEMPLATE:}
+      deadline-template: ${JANSATHI_WHATSAPP_DEADLINE_TEMPLATE:}
+      languages: ${JANSATHI_WHATSAPP_LANGUAGES:en}
+  web:
+    # Our own reverse proxies, as addresses or CIDR ranges. Blank: X-Forwarded-For is ignored.
+    trusted-proxies: ${JANSATHI_TRUSTED_PROXIES:}
+    rate-limit-enabled: ${JANSATHI_RATE_LIMIT_ENABLED:true}
+    # Bearer token for /actuator/prometheus. Blank switches it off.
+    metrics-token: ${JANSATHI_METRICS_TOKEN:}
+    # Sentry-compatible error reports (scrubbed). Blank switches them off.
+    sentry-dsn: ${JANSATHI_SENTRY_DSN:}
+    environment: ${JANSATHI_ENVIRONMENT:development}
+  embed:
+    # none: keyword retrieval only. ml-service: also the internal ML service (ml/README.md).
+    provider: ${JANSATHI_EMBED_PROVIDER:none}
+    base-url: ${JANSATHI_EMBED_BASE_URL:}
+    token: ${JANSATHI_EMBED_TOKEN:}
+    model: ${JANSATHI_EMBED_MODEL:intfloat/multilingual-e5-small}
+  speech:
+    # none: the app keeps to browser speech. ml-service: /api/v1/speech/* through the internal ML service.
+    provider: ${JANSATHI_SPEECH_PROVIDER:none}
+    base-url: ${JANSATHI_SPEECH_BASE_URL:}
+    token: ${JANSATHI_SPEECH_TOKEN:}
+  # Web Push reminders. Blank keys switch them off.
+  push:
+    public-key: ${JANSATHI_PUSH_PUBLIC_KEY:}
+    private-key: ${JANSATHI_PUSH_PRIVATE_KEY:}
+    subject: ${JANSATHI_PUSH_SUBJECT:}
+  # Bootstrap for the admin API (/api/v1/admin/**): acts as an admin, to create staff accounts. Remove
+  # it after that. Blank with no staff account switches the admin API off.
   admin-token: ${JANSATHI_ADMIN_TOKEN:}
   cors-origins:
     - http://localhost:5173

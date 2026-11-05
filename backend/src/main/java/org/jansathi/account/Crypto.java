@@ -13,6 +13,8 @@ import javax.crypto.spec.SecretKeySpec;
 import org.jansathi.JansathiProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -30,8 +32,16 @@ public class Crypto {
 
 	private final byte[] hmacKey;
 	private final SecretKeySpec aesKey;
+	/** The key being rotated away from: read, never written (docs/OPERATIONS.md §6). */
+	private final byte[] previousHmacKey;
+	private final SecretKeySpec previousAesKey;
 
 	public Crypto(JansathiProperties properties) {
+		this(properties, null);
+	}
+
+	@Autowired
+	public Crypto(JansathiProperties properties, @Value("${jansathi.secret-previous:}") String previous) {
 		byte[] secret;
 		if (properties.secret() == null || properties.secret().isBlank()) {
 			secret = randomBytes(32);
@@ -41,6 +51,14 @@ public class Crypto {
 		}
 		this.hmacKey = hmac(secret, "jansathi:hmac".getBytes(StandardCharsets.UTF_8));
 		this.aesKey = new SecretKeySpec(hmac(secret, "jansathi:aes".getBytes(StandardCharsets.UTF_8)), "AES");
+		if (previous == null || previous.isBlank()) {
+			this.previousHmacKey = null;
+			this.previousAesKey = null;
+		} else {
+			byte[] old = previous.getBytes(StandardCharsets.UTF_8);
+			this.previousHmacKey = hmac(old, "jansathi:hmac".getBytes(StandardCharsets.UTF_8));
+			this.previousAesKey = new SecretKeySpec(hmac(old, "jansathi:aes".getBytes(StandardCharsets.UTF_8)), "AES");
+		}
 	}
 
 	public static byte[] randomBytes(int n) {
@@ -77,6 +95,11 @@ public class Crypto {
 		return HexFormat.of().formatHex(hmac(hmacKey, value.getBytes(StandardCharsets.UTF_8)));
 	}
 
+	/** The same hash under the key being rotated away from; null when no rotation is under way. */
+	public String previousKeyedHash(String value) {
+		return previousHmacKey == null ? null : HexFormat.of().formatHex(hmac(previousHmacKey, value.getBytes(StandardCharsets.UTF_8)));
+	}
+
 	/** Unkeyed SHA-256 (hex), for random tokens that are already unguessable. */
 	public static String sha256(String value) {
 		try {
@@ -107,13 +130,24 @@ public class Crypto {
 	}
 
 	public String decrypt(String encoded) {
+		byte[] in = Base64.getDecoder().decode(encoded);
 		try {
-			byte[] in = Base64.getDecoder().decode(encoded);
-			Cipher c = Cipher.getInstance("AES/GCM/NoPadding");
-			c.init(Cipher.DECRYPT_MODE, aesKey, new GCMParameterSpec(128, in, 0, IV_BYTES));
-			return new String(c.doFinal(in, IV_BYTES, in.length - IV_BYTES), StandardCharsets.UTF_8);
+			return decrypt(in, aesKey);
 		} catch (GeneralSecurityException e) {
+			if (previousAesKey != null) {
+				try {
+					return decrypt(in, previousAesKey);
+				} catch (GeneralSecurityException ignored) {
+					// Falls through to the message below.
+				}
+			}
 			throw new IllegalStateException("Stored data cannot be decrypted (was JANSATHI_SECRET changed?)", e);
 		}
+	}
+
+	private static String decrypt(byte[] in, SecretKeySpec key) throws GeneralSecurityException {
+		Cipher c = Cipher.getInstance("AES/GCM/NoPadding");
+		c.init(Cipher.DECRYPT_MODE, key, new GCMParameterSpec(128, in, 0, IV_BYTES));
+		return new String(c.doFinal(in, IV_BYTES, in.length - IV_BYTES), StandardCharsets.UTF_8);
 	}
 }

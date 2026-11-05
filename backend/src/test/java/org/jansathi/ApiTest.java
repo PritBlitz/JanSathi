@@ -38,10 +38,11 @@ class ApiTest {
 		mvc.perform(get("/api/v1/schemes").param("lang", "hi"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.version").isString())
-				.andExpect(jsonPath("$.schemes.length()").value(28))
+				.andExpect(jsonPath("$.schemes.length()").value(37))
 				.andExpect(jsonPath("$.schemes[0].slug").isString())
-				// Drafts are never presented as verified (kcc is under its second review).
-				.andExpect(jsonPath("$.schemes[?(@.slug == 'kcc')].stale").value(org.hamcrest.Matchers.contains(true)))
+				// Published, so not stale; still uncertain because its rule is marked uncertain on purpose.
+				// Drafts and unverified sources are covered by rules/_engine.cases.json.
+				.andExpect(jsonPath("$.schemes[?(@.slug == 'kcc')].stale").value(org.hamcrest.Matchers.contains(false)))
 				.andExpect(jsonPath("$.schemes[?(@.slug == 'kcc')].label").value(org.hamcrest.Matchers.contains("uncertain")))
 				// Published after two independent reviews: sources verified, not stale.
 				.andExpect(jsonPath("$.schemes[?(@.slug == 'pm-kisan')].stale").value(org.hamcrest.Matchers.contains(false)));
@@ -116,7 +117,8 @@ class ApiTest {
 				.andExpect(jsonPath("$.answer").doesNotExist())
 				.andExpect(jsonPath("$.passages[0].id").value("p1"))
 				.andExpect(jsonPath("$.passages[0].source.url").isString())
-				.andExpect(jsonPath("$.label").value("uncertain"));
+				// The weakest cited passage sets the label; these schemes are published and not stale.
+				.andExpect(jsonPath("$.label").value("guidance"));
 	}
 
 	@Test
@@ -157,6 +159,8 @@ class ApiTest {
 		mvc.perform(get("/api/v1/categories"))
 				.andExpect(status().isOk())
 				.andExpect(header().string("X-Content-Type-Options", "nosniff"))
+				// Voice input and nearby help work on our pages; the camera is never needed (file input only).
+				.andExpect(header().string("Permissions-Policy", "camera=(), geolocation=(self), microphone=(self)"))
 				.andExpect(jsonPath("$.categories.pension").isNumber());
 	}
 

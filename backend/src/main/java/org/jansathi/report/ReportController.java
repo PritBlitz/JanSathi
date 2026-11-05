@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * "Report outdated info" (brief §6.3): the public endpoint files a report; the admin endpoints
- * (behind {@link org.jansathi.web.AdminTokenFilter}) list and close them. A report holds no
+ * (behind {@link org.jansathi.web.AdminAuthFilter}) list and close them. A report holds no
  * personal data: no IP address, no profile, and long digit runs are removed from the note.
  */
 @RestController
@@ -58,7 +58,7 @@ public class ReportController {
 		if (request.scheme() == null || bundles.get().scheme(request.scheme()).isEmpty()) {
 			throw new BadRequestException("Unknown scheme");
 		}
-		if (!REASONS.contains(request.reason())) {
+		if (request.reason() == null || !REASONS.contains(request.reason())) {
 			throw new BadRequestException("reason must be one of " + REASONS);
 		}
 		String note = request.note() == null ? "" : request.note().strip();
@@ -83,7 +83,7 @@ public class ReportController {
 
 	@PostMapping("/admin/reports/{id}/resolve")
 	public void resolve(@PathVariable String id, @RequestBody ResolveRequest request) {
-		if (!CLOSED.contains(request.status())) {
+		if (request.status() == null || !CLOSED.contains(request.status())) {
 			throw new BadRequestException("status must be resolved or rejected");
 		}
 		String resolution = request.resolution() == null ? null : redact(request.resolution().strip());

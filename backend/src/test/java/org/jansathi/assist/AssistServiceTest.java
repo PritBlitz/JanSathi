@@ -19,7 +19,7 @@ class AssistServiceTest {
 
 	private static final ObjectMapper JSON = JsonMapper.builder().build();
 	private final BundleRepository bundles =
-			new BundleRepository(new JansathiProperties(null, true, true, List.of(), null, null, null, null), JSON);
+			new BundleRepository(new JansathiProperties(null, true, true, List.of(), null, null, null, null, null, null), JSON);
 	private final Retriever retriever = new Retriever(bundles);
 	private final AnswerValidator validator = new AnswerValidator(JSON, new CopyRules(JSON));
 
@@ -79,8 +79,18 @@ class AssistServiceTest {
 		assertThat(r.answer()).contains("[p1]");
 		assertThat(r.citations()).containsExactly("p1");
 		assertThat(r.promptVersion()).isEqualTo("assistant.v1");
-		// Drafts are never presented as verified.
-		assertThat(r.label()).isEqualTo(Confidence.UNCERTAIN);
+		// p1 is a confirmed rule of a published scheme; only what is cited sets the label.
+		assertThat(r.label()).isEqualTo(Confidence.CONFIRMED);
+	}
+
+	@Test
+	void aStaleCitedPassageIsNeverPresentedAsVerified() {
+		var passages = service(LlmConfig.DISABLED).ask("widow pension age", "en", null, null).passages();
+		var first = passages.getFirst();
+		var stale = new org.jansathi.assist.Retriever.Passage(first.id(), first.scheme(), first.schemeName(), first.text(),
+				Confidence.CONFIRMED, first.locator(), first.source(), true);
+
+		assertThat(AssistService.label(java.util.List.of(stale), java.util.List.of(first.id()))).isEqualTo(Confidence.UNCERTAIN);
 	}
 
 	@Test

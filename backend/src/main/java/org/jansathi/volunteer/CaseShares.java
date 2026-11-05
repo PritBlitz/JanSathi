@@ -4,11 +4,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -35,8 +31,8 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class CaseShares {
 
-	/** What a helper may see. */
-	public static final Set<String> SCOPES = Set.of("profile", "checklist", "conversation");
+	/** What a helper may see. "sensitive" adds income, caste, disability and similar answers (see {@link CaseMasking}). */
+	public static final Set<String> SCOPES = Set.of("profile", "sensitive", "checklist", "conversation");
 	/** No 0/O, 1/I/L: easy to read out on the phone. */
 	private static final String CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 	private static final Pattern PERSONAL_NUMBER = Pattern.compile("\\d(?:[\\s-]?\\d){8,}");
@@ -44,8 +40,6 @@ public class CaseShares {
 	static final int MAX_NOTE = 1000;
 	/** Wrong codes a helper may enter per hour, so codes cannot be guessed. */
 	static final int MAX_FAILED_CODES_PER_HOUR = 10;
-
-	private final Map<String, Deque<Instant>> failedCodes = new ConcurrentHashMap<>();
 
 	private final JdbcClient jdbc;
 	private final Crypto crypto;
@@ -96,6 +90,7 @@ public class CaseShares {
 
 	@Transactional
 	public Share create(User user, List<String> scopes, Duration duration, boolean helpRequest, String lang) {
+		accounts.requireNotOnDeviceOnly(user.id());
 		Set<String> sc = parseScopes(scopes);
 		Duration d = duration == null || duration.isNegative() || duration.isZero() ? Duration.ofDays(1)
 				: duration.compareTo(MAX_DURATION) > 0 ? MAX_DURATION : duration;
@@ -134,6 +129,18 @@ public class CaseShares {
 		accounts.audit(user.id(), user.id(), "You", "ended_sharing", null);
 	}
 
+	/** A helper who worked on one of this person's cases, for "report a helper". */
+	public record PastHelper(String shareId, String helper, Instant claimedAt) {}
+
+	/** Every helper who joined a case of this person, ended ones too: trouble often shows afterwards. */
+	public List<PastHelper> helpersOf(User user) {
+		return jdbc.sql("SELECT * FROM case_share WHERE user_id = :u AND volunteer_id IS NOT NULL ORDER BY claimed_at DESC LIMIT 50")
+				.param("u", user.id())
+				.query((rs, i) -> new PastHelper(rs.getString("id"), accounts.find(rs.getString("volunteer_id")).map(User::label).orElse("Helper"),
+						rs.getObject("claimed_at", OffsetDateTime.class).toInstant()))
+				.list();
+	}
+
 	// ---------- helper side ----------
 
 	/** A case in a helper's list: no personal details, only what is needed to pick it up. */
@@ -167,21 +174,17 @@ public class CaseShares {
 				.param("v", helper.id()).param("now", now()).query((rs, i) -> summary(rs)).list();
 	}
 
-	@Transactional
+	/** A wrong code must not roll back: the stored failure is what stops guessing, across restarts. */
+	@Transactional(noRollbackFor = NotFoundException.class)
 	public CaseSummary joinByCode(User helper, String code) {
 		requireVolunteer(helper);
 		if (code == null || code.isBlank()) {
 			throw new BadRequestException("Enter the code the person gave you");
 		}
-		Deque<Instant> fails = failedCodes.computeIfAbsent(helper.id(), h -> new ArrayDeque<>());
-		synchronized (fails) {
-			Instant hourAgo = Instant.now().minusSeconds(3600);
-			while (!fails.isEmpty() && fails.peekFirst().isBefore(hourAgo)) {
-				fails.pollFirst();
-			}
-			if (fails.size() >= MAX_FAILED_CODES_PER_HOUR) {
-				throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Too many wrong codes. Try again later.");
-			}
+		int failed = jdbc.sql("SELECT COUNT(*) FROM share_code_failure WHERE helper_id = :h AND failed_at > :since")
+				.param("h", helper.id()).param("since", now().minusHours(1)).query(Integer.class).single();
+		if (failed >= MAX_FAILED_CODES_PER_HOUR) {
+			throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Too many wrong codes. Try again later.");
 		}
 		String id = jdbc.sql("""
 				SELECT id FROM case_share WHERE code_hash = :c AND revoked_at IS NULL AND expires_at > :now
@@ -189,9 +192,8 @@ public class CaseShares {
 				""").param("c", codeHash(code)).param("now", now()).param("v", helper.id()).query(String.class).optional()
 				.orElse(null);
 		if (id == null) {
-			synchronized (fails) {
-				fails.addLast(Instant.now());
-			}
+			jdbc.sql("INSERT INTO share_code_failure (id, helper_id, failed_at) VALUES (:id, :h, :now)")
+					.param("id", UUID.randomUUID().toString()).param("h", helper.id()).param("now", now()).update();
 			throw new NotFoundException("No active case with this code");
 		}
 		return claim(helper, id);

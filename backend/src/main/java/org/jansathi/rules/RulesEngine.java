@@ -399,7 +399,7 @@ public class RulesEngine {
 		Set<String> missing = new LinkedHashSet<>();
 		hard.stream().filter(r -> r.outcome() == RuleOutcome.UNKNOWN).forEach(r -> missing.addAll(r.missingFields()));
 
-		boolean stale = !"published".equals(scheme.path("status").asString(""));
+		boolean stale = !"published".equals(scheme.path("status").asString("")) || hasChangedSource(scheme);
 		int reverify = scheme.path("reverify_days").isNumber() ? scheme.get("reverify_days").intValue() : DEFAULT_REVERIFY_DAYS;
 		for (RuleTrace r : hard) {
 			JsonNode src = sources.get(r.source());
@@ -424,6 +424,16 @@ public class RulesEngine {
 		}
 
 		return new SchemeResult(scheme.path("slug").asString(""), result, label, stale, new ArrayList<>(missing), traces);
+	}
+
+	/** The re-check found a source of this scheme different and no reviewer has looked yet (§9.5). */
+	public static boolean hasChangedSource(JsonNode scheme) {
+		for (JsonNode src : scheme.path("sources")) {
+			if (src.path("changed_at").isString()) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	// ---------- §9.6 next question ----------

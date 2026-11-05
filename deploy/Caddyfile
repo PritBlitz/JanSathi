@@ -1,0 +1,19 @@
+# TLS in front of JanSathi (docs/OPERATIONS.md section 2). Caddy gets and renews the certificate, and
+# replaces any X-Forwarded-For a client sent with the address it really saw.
+{$JANSATHI_DOMAIN} {
+	encode zstd gzip
+
+	# Metrics and API documents stay on the private network. Prometheus scrapes app:8080 directly.
+	handle /actuator/health {
+		reverse_proxy app:8080
+	}
+	handle /actuator/* {
+		respond 404
+	}
+	handle /v3/api-docs* {
+		respond 404
+	}
+	handle {
+		reverse_proxy app:8080
+	}
+}

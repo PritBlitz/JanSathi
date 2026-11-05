@@ -18,6 +18,8 @@ COPY backend/gradle gradle
 RUN ./gradlew --no-daemon -q dependencies > /dev/null
 COPY backend/src src
 COPY frontend/public/data /src/frontend/public/data
+COPY frontend/public/locales /src/frontend/public/locales
+COPY content/source-status.json /src/content/source-status.json
 COPY tools/banned-phrases.json /src/tools/banned-phrases.json
 COPY --from=web /src/frontend/dist /src/frontend/dist
 RUN ./gradlew --no-daemon -q bootJar -x test

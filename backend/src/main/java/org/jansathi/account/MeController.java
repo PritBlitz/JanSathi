@@ -46,6 +46,14 @@ public class MeController {
 		accounts.delete(user.id());
 	}
 
+	/** @param onDeviceOnly true while the person is under 18 by their own answer (PRIVACY §6) */
+	public record Restrictions(boolean onDeviceOnly) {}
+
+	@GetMapping("/restrictions")
+	public Restrictions restrictions(User user) {
+		return new Restrictions(accounts.onDeviceOnly(user.id()));
+	}
+
 	@GetMapping("/household")
 	public JsonNode household(User user) {
 		return households.get(user.id());

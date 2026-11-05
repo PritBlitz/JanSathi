@@ -78,18 +78,22 @@ public class VolunteerController {
 	/**
 	 * What the helper may see of one case.
 	 *
-	 * @param members each member's name, answers and (with the profile scope) rules engine results
+	 * @param members each member's name, answers, rules engine results and which fields are masked
+	 *     (with the profile scope). Results are worked out on the masked answers, so a rule trace
+	 *     cannot give away a hidden answer: those rules show as "need more information".
 	 * @param checklist only with the checklist scope
-	 * @param conversation only with the conversation scope
+	 * @param applications the person's own application tracking; only with the checklist scope
+	 * @param conversation only with both the conversation and sensitive scopes: free text can hold
+	 *     anything the person told Saathi, including the answers masked here
 	 */
 	public record CaseView(
-			String id, Set<String> scopes, List<Map<String, Object>> members, JsonNode checklist,
+			String id, Set<String> scopes, List<Map<String, Object>> members, JsonNode checklist, JsonNode applications,
 			List<GuideService.Line> conversation, List<CaseShares.Note> notes) {}
 
 	@GetMapping("/cases/{id}")
 	public CaseView view(User helper, @PathVariable String id) {
 		CaseShares.Access a = shares.access(helper, id);
-		ObjectNode h = households.get(a.ownerId());
+		ObjectNode h = CaseMasking.visible(households.get(a.ownerId()), a.scopes());
 		ContentBundle b = bundles.get();
 		List<Map<String, Object>> members = new ArrayList<>();
 		if (a.scopes().contains("profile")) {
@@ -103,15 +107,25 @@ public class VolunteerController {
 				mm.put("name", m.path("name").isString() ? m.get("name").asString() : null);
 				mm.put("profile", profile);
 				mm.put("skipped", skipped);
+				mm.put("masked", CaseMasking.masked(a.scopes()));
 				mm.put("results", match.results());
 				members.add(mm);
 			}
 		}
-		accounts.audit(a.ownerId(), helper.id(), helper.label(), "helper_viewed", "Saw: " + String.join(", ", a.scopes()));
+		boolean checklist = a.scopes().contains("checklist");
+		boolean conversation = a.scopes().contains("conversation") && a.scopes().contains("sensitive");
+		accounts.audit(a.ownerId(), helper.id(), helper.label(), "helper_viewed", seen(a.scopes(), h));
 		return new CaseView(id, a.scopes(), members,
-				a.scopes().contains("checklist") ? h.path("checklist") : null,
-				a.scopes().contains("conversation") ? guide.history(a.ownerId(), 50) : List.of(),
+				checklist ? h.path("checklist") : null,
+				checklist && h.has("applications") ? h.get("applications") : null,
+				conversation ? guide.history(a.ownerId(), 50) : List.of(),
 				shares.notes(id, null));
+	}
+
+	/** The audit line: which scopes were used and, by name only, which sensitive answers were shown. */
+	private static String seen(Set<String> scopes, ObjectNode visible) {
+		List<String> sensitive = scopes.contains("sensitive") && scopes.contains("profile") ? CaseMasking.answered(visible) : List.of();
+		return "Saw: " + String.join(", ", scopes) + (sensitive.isEmpty() ? "" : " (sensitive answers: " + String.join(", ", sensitive) + ")");
 	}
 
 	public record NoteRequest(String text) {}
@@ -135,10 +149,8 @@ public class VolunteerController {
 		List<Message> conversation = request.messages().stream()
 				.map(m -> "user".equals(m.role()) ? Message.user(m.text()) : Message.assistant(m.text()))
 				.toList();
-		ObjectNode h = households.get(a.ownerId());
-		if (!a.scopes().contains("checklist")) {
-			((ObjectNode) h.path("checklist")).putArray("schemes");
-		}
+		// The guide works on the same masked copy the helper sees, never the full household.
+		ObjectNode h = CaseMasking.visible(households.get(a.ownerId()), a.scopes());
 		accounts.audit(a.ownerId(), helper.id(), helper.label(), "helper_asked_ai", null);
 		return guide.assistHelper(helper, h, conversation, request.lang());
 	}

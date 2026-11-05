@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.jansathi.content.Languages;
 import org.jansathi.web.BadRequestException;
+import org.jansathi.web.ClientAddress;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,8 +26,11 @@ public class AuthController {
 	private final Accounts accounts;
 	private final Map<String, Deque<Instant>> recentByAddress = new ConcurrentHashMap<>();
 
-	public AuthController(Accounts accounts) {
+	private final ClientAddress addresses;
+
+	public AuthController(Accounts accounts, ClientAddress addresses) {
 		this.accounts = accounts;
+		this.addresses = addresses;
 	}
 
 	public record CodeRequest(String phone, String lang) {}
@@ -38,7 +42,7 @@ public class AuthController {
 
 	@PostMapping("/code")
 	public CodeResponse code(@RequestBody CodeRequest request, HttpServletRequest http) {
-		limitByAddress(http.getRemoteAddr());
+		limitByAddress(addresses.of(http));
 		var sent = accounts.sendCode(request.phone(), Languages.orEnglish(request.lang()));
 		return new CodeResponse(true, sent.devCode());
 	}

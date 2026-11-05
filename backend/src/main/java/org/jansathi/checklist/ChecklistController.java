@@ -32,7 +32,7 @@ public class ChecklistController {
 		this.bundles = bundles;
 	}
 
-	public record ChecklistRequest(List<String> schemes, String lang) {}
+	public record ChecklistRequest(List<String> schemes, String lang, String state) {}
 
 	/**
 	 * @param mandatory true if any of the schemes requires it
@@ -59,6 +59,7 @@ public class ChecklistController {
 			throw new BadRequestException("schemes must list 1 to " + MAX_SCHEMES + " scheme slugs");
 		}
 		String lang = Languages.orEnglish(request.lang());
+		String state = request.state();
 		Map<String, Boolean> mandatory = new LinkedHashMap<>();
 		Map<String, List<String>> usedBy = new LinkedHashMap<>();
 		for (String slug : request.schemes()) {
@@ -71,11 +72,14 @@ public class ChecklistController {
 		}
 		List<ChecklistItem> items = new ArrayList<>();
 		for (Map.Entry<String, Boolean> e : mandatory.entrySet()) {
-			JsonNode doc = b.document(e.getKey());
+			JsonNode general = b.document(e.getKey());
+			// The household's state may have its own steps for this document, with their own source.
+			JsonNode local = state == null ? null : general.path("how_to_by_state").get(state);
+			JsonNode doc = local != null ? local : general;
 			items.add(new ChecklistItem(
 					e.getKey(),
-					doc.path("icon").asString(""),
-					Localized.pick(doc.path("name"), lang),
+					general.path("icon").asString(""),
+					Localized.pick(general.path("name"), lang),
 					e.getValue(),
 					usedBy.get(e.getKey()),
 					Localized.pick(doc.path("how_to"), lang),

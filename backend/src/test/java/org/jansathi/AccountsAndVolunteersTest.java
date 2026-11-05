@@ -42,6 +42,9 @@ class AccountsAndVolunteersTest {
 	@Autowired
 	JdbcClient jdbc;
 
+	@Autowired
+	org.jansathi.content.BundleRepository bundles;
+
 	private JsonNode body(org.springframework.test.web.servlet.ResultActions r) throws Exception {
 		return MAPPER.readTree(r.andReturn().getResponse().getContentAsString());
 	}
@@ -125,7 +128,7 @@ class AccountsAndVolunteersTest {
 		mvc.perform(get("/api/v1/volunteer").header("Authorization", person)).andExpect(status().isForbidden());
 
 		JsonNode share = body(mvc.perform(post("/api/v1/me/shares").header("Authorization", person).contentType(JSON)
-				.content("{\"scopes\": [\"profile\"], \"hours\": 2}")).andExpect(status().isOk()));
+				.content("{\"scopes\": [\"profile\", \"sensitive\"], \"hours\": 2}")).andExpect(status().isOk()));
 		String code = share.path("code").asString();
 		assertThat(code).hasSize(6);
 
@@ -214,6 +217,103 @@ class AccountsAndVolunteersTest {
 		mvc.perform(post("/api/v1/guide/messages").header("Authorization", me).contentType(JSON)
 						.content("{\"answer\": {\"field\": \"age\", \"value\": \"not_an_option\"}}"))
 				.andExpect(status().isBadRequest());
+	}
+
+	@Test
+	void helpersCannotGuessCodes() throws Exception {
+		mvc.perform(post("/api/v1/admin/volunteers").header("Authorization", ADMIN).contentType(JSON)
+				.content("{\"phone\": \"9876500011\", \"name\": \"Guesser\"}")).andExpect(status().isOk());
+		String helper = signIn("9876500011");
+		for (int i = 0; i < 10; i++) {
+			mvc.perform(post("/api/v1/volunteer/join").header("Authorization", helper).contentType(JSON).content("{\"code\": \"AAAAA" + i + "\"}"))
+					.andExpect(status().isNotFound());
+		}
+		mvc.perform(post("/api/v1/volunteer/join").header("Authorization", helper).contentType(JSON).content("{\"code\": \"BBBBBB\"}"))
+				.andExpect(status().isTooManyRequests());
+	}
+
+	/** A person with sensitive answers shares with these scopes; returns the helper's view of the case. */
+	private String sharedCase(String person, String helper, String scopes) throws Exception {
+		mvc.perform(put("/api/v1/me/household").header("Authorization", person).contentType(JSON)
+						.content("{\"members\": [{\"id\": \"me\", \"name\": \"Asha\", \"profile\": {\"age\": 65, \"is_bpl\": true, \"social_category\": \"sc\"},"
+								+ " \"skipped\": [\"disability\", \"gender\"], \"history\": [{\"field\": \"is_bpl\", \"prev\": false}]}], \"active\": \"me\","
+								+ " \"checklist\": {\"schemes\": [\"ignoaps\"], \"have\": {\"aadhaar\": true}},"
+								+ " \"applications\": {\"ignoaps\": {\"status\": \"applied\", \"reason\": null, \"updated\": \"2026-11-01\"}}}"))
+				.andExpect(status().isOk());
+		String code = body(mvc.perform(post("/api/v1/me/shares").header("Authorization", person).contentType(JSON)
+				.content("{\"scopes\": " + scopes + ", \"hours\": 2}")).andExpect(status().isOk())).path("code").asString();
+		return body(mvc.perform(post("/api/v1/volunteer/join").header("Authorization", helper).contentType(JSON)
+				.content("{\"code\": \"" + code + "\"}")).andExpect(status().isOk())).path("id").asString();
+	}
+
+	private String newHelper(String phone) throws Exception {
+		mvc.perform(post("/api/v1/admin/volunteers").header("Authorization", ADMIN).contentType(JSON)
+				.content("{\"phone\": \"" + phone + "\", \"name\": \"Meera\"}")).andExpect(status().isOk());
+		return signIn(phone);
+	}
+
+	@Test
+	void sensitiveAnswersAreMaskedEverywhereUnlessShared() throws Exception {
+		String person = signIn("9876500012");
+		String helper = newHelper("9876500013");
+		String caseId = sharedCase(person, helper, "[\"profile\", \"conversation\"]");
+
+		String raw = mvc.perform(get("/api/v1/volunteer/cases/" + caseId).header("Authorization", helper))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.members[0].profile.age").value(65))
+				.andExpect(jsonPath("$.members[0].profile.is_bpl").doesNotExist())
+				.andExpect(jsonPath("$.members[0].profile.social_category").doesNotExist())
+				.andExpect(jsonPath("$.members[0].masked", org.hamcrest.Matchers.hasItems("is_bpl", "social_category", "annual_income")))
+				.andExpect(jsonPath("$.members[0].skipped", org.hamcrest.Matchers.contains("gender")))
+				// The rule on the hidden answer is unknown, not passed: results do not give it away.
+				.andExpect(jsonPath("$.members[0].results[?(@.scheme == 'ignoaps')].result").value(org.hamcrest.Matchers.contains("NEED_MORE_INFO")))
+				.andExpect(jsonPath("$.checklist").doesNotExist())
+				.andExpect(jsonPath("$.applications").doesNotExist())
+				.andReturn().getResponse().getContentAsString();
+		assertThat(raw).doesNotContain("\"sc\"").doesNotContain("\"prev\"");
+		mvc.perform(get("/api/v1/me/audit").header("Authorization", person))
+				.andExpect(jsonPath("$[?(@.action == 'helper_viewed')].detail").value(org.hamcrest.Matchers.contains("Saw: profile, conversation")));
+	}
+
+	@Test
+	void seeingSensitiveAnswersNeedsTheirOwnScopeAndIsAuditedByNameOnly() throws Exception {
+		String person = signIn("9876500014");
+		String helper = newHelper("9876500015");
+		String caseId = sharedCase(person, helper, "[\"profile\", \"sensitive\", \"checklist\"]");
+
+		mvc.perform(get("/api/v1/volunteer/cases/" + caseId).header("Authorization", helper))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.members[0].profile.is_bpl").value(true))
+				.andExpect(jsonPath("$.members[0].masked.length()").value(0))
+				.andExpect(jsonPath("$.checklist.schemes[0]").value("ignoaps"))
+				.andExpect(jsonPath("$.applications.ignoaps.status").value("applied"));
+		String detail = body(mvc.perform(get("/api/v1/me/audit").header("Authorization", person))).findValues("detail").stream()
+				.map(JsonNode::asString).filter(d -> d.contains("sensitive answers")).findFirst().orElseThrow();
+		assertThat(detail).contains("is_bpl", "social_category").doesNotContain("true").doesNotContain(": sc");
+	}
+
+	@Test
+	void everySensitiveFieldIsARealField() {
+		assertThat(org.jansathi.volunteer.CaseMaskingFields.names()).allSatisfy(f -> assertThat(bundles.get().fields().isKnown(f)).as(f).isTrue());
+	}
+
+	@Test
+	void applicationTrackingIsSavedAndCleaned() throws Exception {
+		String me = signIn("9876500016");
+		String longReason = "x".repeat(400);
+		mvc.perform(put("/api/v1/me/household").header("Authorization", me).contentType(JSON)
+						.content("{\"members\": [{\"id\": \"me\", \"profile\": {}}], \"applications\": {"
+								+ "\"ignoaps\": {\"status\": \"rejected\", \"reason\": \"Aadhaar 1234 5678 9012 did not match\", \"updated\": \"2026-11-01\", \"extra\": 1},"
+								+ "\"kcc\": {\"status\": \"applied\", \"reason\": \"" + longReason + "\", \"updated\": \"2026-11-02\"},"
+								+ "\"not-a-scheme\": {\"status\": \"applied\", \"updated\": \"2026-11-01\"},"
+								+ "\"pm-kisan\": {\"status\": \"paid\", \"updated\": \"2026-11-01\"},"
+								+ "\"pmjjby\": {\"status\": \"applied\", \"updated\": \"yesterday\"}}}"))
+				.andExpect(status().isOk());
+		JsonNode a = body(mvc.perform(get("/api/v1/me/household").header("Authorization", me))).path("applications");
+		assertThat(a.propertyNames()).containsExactlyInAnyOrder("ignoaps", "kcc");
+		assertThat(a.path("ignoaps").path("reason").asString()).isEqualTo("Aadhaar [number removed] did not match");
+		assertThat(a.path("ignoaps").has("extra")).isFalse();
+		assertThat(a.path("kcc").path("reason").asString()).hasSize(300);
 	}
 
 	@Test

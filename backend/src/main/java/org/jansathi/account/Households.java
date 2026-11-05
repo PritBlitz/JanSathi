@@ -1,10 +1,15 @@
 package org.jansathi.account;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeParseException;
 import java.util.Map;
+import java.util.Set;
+import java.util.regex.Pattern;
 import org.jansathi.content.BundleRepository;
 import org.jansathi.web.BadRequestException;
+import org.jansathi.web.OnDeviceOnlyException;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.JsonNode;
@@ -15,25 +20,31 @@ import tools.jackson.databind.node.ObjectNode;
 
 /**
  * A person's household, stored encrypted: the same JSON the PWA keeps on the device
- * ({@code {members: [{id, name, profile, skipped, history}], active, checklist}}). Only fields from
- * fields.json are accepted in profiles, so nothing else (an Aadhaar number, say) can be saved.
+ * ({@code {members: [{id, name, profile, skipped, history}], active, checklist, applications}}). Only
+ * fields from fields.json are accepted in profiles, so nothing else (an Aadhaar number, say) can be saved.
  */
 @Service
 public class Households {
 
 	static final int MAX_BYTES = 64_000;
 	static final int MAX_MEMBERS = 12;
+	static final int MAX_REASON = 300;
+	/** Manual application tracking (brief §6.7). */
+	static final Set<String> APPLICATION_STATUSES = Set.of("planned", "applied", "under_review", "approved", "rejected");
+	private static final Pattern PERSONAL_NUMBER = Pattern.compile("\\d(?:[\\s-]?\\d){8,}");
 
 	private final JdbcClient jdbc;
 	private final Crypto crypto;
 	private final ObjectMapper json;
 	private final BundleRepository bundles;
+	private final Accounts accounts;
 
-	public Households(JdbcClient jdbc, Crypto crypto, ObjectMapper json, BundleRepository bundles) {
+	public Households(JdbcClient jdbc, Crypto crypto, ObjectMapper json, BundleRepository bundles, Accounts accounts) {
 		this.jdbc = jdbc;
 		this.crypto = crypto;
 		this.json = json;
 		this.bundles = bundles;
+		this.accounts = accounts;
 	}
 
 	/** The saved household, or a new one with a single member. */
@@ -60,6 +71,11 @@ public class Households {
 
 	public ObjectNode put(String userId, JsonNode household) {
 		ObjectNode clean = validate(household);
+		if (isUnder18(holder(clean))) {
+			keepOnDeviceOnly(userId);
+			throw new OnDeviceOnlyException();
+		}
+		jdbc.sql("UPDATE app_user SET on_device_only = FALSE WHERE id = :u AND on_device_only = TRUE").param("u", userId).update();
 		String plain = json.writeValueAsString(clean);
 		if (plain.length() > MAX_BYTES) {
 			throw new BadRequestException("Saved data is too large");
@@ -72,6 +88,39 @@ public class Households {
 					.param("u", userId).param("p", crypto.encrypt(plain)).param("now", now).update();
 		}
 		return clean;
+	}
+
+	/** The account holder: the member the app calls "me", or else the first. A child added by a parent is not. */
+	static JsonNode holder(ObjectNode household) {
+		for (JsonNode m : household.path("members")) {
+			if ("me".equals(m.path("id").asString(""))) {
+				return m;
+			}
+		}
+		return household.path("members").get(0);
+	}
+
+	/** True for the band {@code under_18} or an exact age below 18. An unanswered age is not under 18. */
+	static boolean isUnder18(JsonNode member) {
+		JsonNode age = member.path("profile").path("age");
+		return age.isNumber() ? age.asInt() < 18 : "under_18".equals(age.asString(""));
+	}
+
+	/**
+	 * PRIVACY §6: there is no verifiable guardian consent, so someone under 18 uses the app on their
+	 * device only. Whatever the server holds goes now, and the flag stops sharing, reminders and
+	 * Saathi. Answering with an adult age clears the flag (the answer is the person's own; see §6).
+	 */
+	private void keepOnDeviceOnly(String userId) {
+		jdbc.sql("UPDATE app_user SET on_device_only = TRUE WHERE id = :u").param("u", userId).update();
+		jdbc.sql("DELETE FROM user_data WHERE user_id = :u").param("u", userId).update();
+		jdbc.sql("DELETE FROM guide_message WHERE user_id = :u").param("u", userId).update();
+		jdbc.sql("DELETE FROM push_subscription WHERE user_id = :u").param("u", userId).update();
+		jdbc.sql("DELETE FROM reminder_channel WHERE user_id = :u").param("u", userId).update();
+		jdbc.sql("DELETE FROM telegram_link WHERE user_id = :u").param("u", userId).update();
+		jdbc.sql("UPDATE case_share SET revoked_at = :now WHERE user_id = :u AND revoked_at IS NULL")
+				.param("now", OffsetDateTime.now(ZoneOffset.UTC)).param("u", userId).update();
+		accounts.audit(userId, userId, "You", "on_device_only", null);
 	}
 
 	/** Keeps only the known shape; rejects unknown profile fields. */
@@ -126,7 +175,41 @@ public class Households {
 				have.put(e.getKey(), e.getValue().booleanValue());
 			}
 		});
+		if (h.path("applications").isObject()) {
+			ObjectNode applications = out.putObject("applications");
+			h.path("applications").properties().forEach(e -> {
+				if (bundles.get().scheme(e.getKey()).isPresent() && validApplication(e.getValue())) {
+					ObjectNode a = applications.putObject(e.getKey());
+					a.put("status", e.getValue().get("status").asString());
+					JsonNode reason = e.getValue().path("reason");
+					if (reason.isString() && !reason.asString().isBlank()) {
+						a.put("reason", cleanReason(reason.asString()));
+					} else {
+						a.putNull("reason");
+					}
+					a.put("updated", e.getValue().get("updated").asString());
+				}
+			});
+		}
 		return out;
+	}
+
+	private static boolean validApplication(JsonNode a) {
+		if (!APPLICATION_STATUSES.contains(a.path("status").asString(""))) {
+			return false;
+		}
+		try {
+			LocalDate.parse(a.path("updated").asString(""));
+			return true;
+		} catch (DateTimeParseException e) {
+			return false;
+		}
+	}
+
+	/** A reason is the person's own words, so a pasted Aadhaar or account number is taken out. */
+	private static String cleanReason(String reason) {
+		String clean = PERSONAL_NUMBER.matcher(reason.strip()).replaceAll("[number removed]");
+		return clean.length() > MAX_REASON ? clean.substring(0, MAX_REASON) : clean;
 	}
 
 	/** The active member (or the first). */

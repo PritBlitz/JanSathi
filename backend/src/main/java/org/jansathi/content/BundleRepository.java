@@ -81,8 +81,8 @@ public class BundleRepository {
 
 	private JsonNode read(String name) {
 		try {
-			if (properties.bundleDir() != null) {
-				return json.readTree(Files.readString(properties.bundleDir().resolve(name)));
+			if (properties.bundlePath() != null) {
+				return json.readTree(Files.readString(properties.bundlePath().resolve(name)));
 			}
 			try (InputStream in = new ClassPathResource("bundle/" + name).getInputStream()) {
 				return json.readTree(in);

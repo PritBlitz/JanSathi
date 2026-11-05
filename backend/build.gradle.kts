@@ -27,6 +27,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-restclient")
 	implementation("org.flywaydb:flyway-database-postgresql")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:3.2.0")
+	runtimeOnly("io.micrometer:micrometer-registry-prometheus")
 	runtimeOnly("org.postgresql:postgresql")
 	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-actuator-test")
@@ -50,6 +51,10 @@ tasks.processResources {
 	from(rootDir.parentFile.resolve("tools/banned-phrases.json")) {
 		into("copy")
 	}
+	// What the daily source re-check found, for the reviewers' read-only status page.
+	from(rootDir.parentFile.resolve("content/source-status.json")) {
+		into("content")
+	}
 	// The built PWA, when present (npm run build:web:api), so one jar serves app and API.
 	from(rootDir.parentFile.resolve("frontend/dist")) {
 		into("static")
@@ -62,6 +67,10 @@ tasks.withType<Test> {
 	systemProperty("jansathi.repoRoot", rootDir.parentFile.absolutePath)
 	// Tests run on every scheme, published or not, so publishing never changes test results.
 	systemProperty("jansathi.include-drafts", "true")
+	// Tests send thousands of requests from one address; RateLimitTest turns the limits back on.
+	systemProperty("jansathi.web.rate-limit-enabled", "false")
+	// PostgresTest runs when CI or a developer points it at a database (docs/OPERATIONS.md §10).
+	System.getenv("JANSATHI_TEST_PG_URL")?.let { systemProperty("jansathi.test.pg-url", it) }
 	// Tests never touch the local file database.
 	systemProperty("spring.datasource.url", "jdbc:h2:mem:test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1")
 }

@@ -17,16 +17,58 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @param llm the language model that explains retrieved passages (docs/RAG_ASSISTANT.md)
  * @param secret server secret for keyed hashes and encryption at rest ({@code JANSATHI_SECRET})
  * @param sms how one-time codes reach the phone
+ * @param push Web Push reminders; off unless both keys are set
+ * @param embed the embedding service for semantic retrieval; off by default
  */
 @ConfigurationProperties("jansathi")
 public record JansathiProperties(
-		Path bundleDir, boolean previewFallback, boolean includeDrafts, List<String> corsOrigins, String adminToken, Llm llm, String secret, Sms sms) {
+		String bundleDir, boolean previewFallback, boolean includeDrafts, List<String> corsOrigins, String adminToken, Llm llm, String secret, Sms sms, Push push, Embed embed) {
 
 	public JansathiProperties {
-		bundleDir = bundleDir == null || bundleDir.toString().isBlank() ? null : bundleDir;
+		bundleDir = bundleDir == null || bundleDir.isBlank() ? null : bundleDir;
 		corsOrigins = corsOrigins == null ? List.of() : List.copyOf(corsOrigins);
 		llm = llm == null ? new Llm(null, null, null, null, null) : llm;
 		sms = sms == null ? new Sms(null) : sms;
+		push = push == null ? new Push(null, null, null) : push;
+		embed = embed == null ? new Embed(null, null, null, null, null) : embed;
+	}
+
+	/**
+	 * The bundle directory as a filesystem path, or null. Bound as a string: Spring's own Path
+	 * conversion goes through resource loading and rejects relative paths such as ../frontend.
+	 */
+	public Path bundlePath() {
+		return bundleDir == null ? null : Path.of(bundleDir);
+	}
+
+	/**
+	 * @param provider {@code none} (default: keyword retrieval only) or {@code ml-service}
+	 * @param baseUrl the internal ML service, e.g. http://ml:8090
+	 * @param token shared service token; may be blank on a private network
+	 * @param model the model the service runs, kept with cached vectors
+	 * @param timeout per request; a slow service falls back to keywords
+	 */
+	public record Embed(String provider, String baseUrl, String token, String model, Duration timeout) {
+
+		public Embed {
+			provider = provider == null || provider.isBlank() ? "none" : provider;
+			token = token == null || token.isBlank() ? null : token;
+			timeout = timeout == null ? Duration.ofSeconds(5) : timeout;
+		}
+	}
+
+	/**
+	 * @param publicKey VAPID public key, base64url
+	 * @param privateKey VAPID private key, base64url
+	 * @param subject {@code mailto:} or {@code https:} contact the push services can reach
+	 */
+	public record Push(String publicKey, String privateKey, String subject) {
+
+		public Push {
+			publicKey = publicKey == null || publicKey.isBlank() ? null : publicKey;
+			privateKey = privateKey == null || privateKey.isBlank() ? null : privateKey;
+			subject = subject == null || subject.isBlank() ? "https://github.com/PritBlitz/JanSathi" : subject;
+		}
 	}
 
 	/**
