@@ -25,6 +25,7 @@ from backends import BadInput, Unavailable
 
 MAX_TEXTS = 256
 MAX_BODY = 2_000_000
+MAX_DRAIN = 32_000_000  # past this the connection is simply closed
 MAX_AUDIO = 10_000_000
 MAX_TTS_CHARS = 2000
 MAX_TRANSLATE_CHARS = 5000
@@ -210,7 +211,21 @@ def handler(models: Backends, token: str | None) -> type[BaseHTTPRequestHandler]
                 length = int(self.headers.get("Content-Length") or 0)
             except ValueError:
                 return None
-            return None if length < 0 or length > limit else self.rfile.read(length)
+            if length < 0:
+                return None
+            if length > limit:
+                self.drain(length)
+                return None
+            return self.rfile.read(length)
+
+        def drain(self, length: int) -> None:
+            """Reads and drops an oversized body, so the client gets the 413 and not a broken pipe."""
+            left = min(length, MAX_DRAIN)
+            while left > 0:
+                got = self.rfile.read(min(left, 65536))
+                if not got:
+                    return
+                left -= len(got)
 
         @staticmethod
         def run(work: Callable[[], tuple[int, object]]) -> tuple[int, object]:
