@@ -1,0 +1,237 @@
+{
+  "status": "published",
+  "level": "central",
+  "state_code": null,
+  "window": {
+    "type": "yearly"
+  },
+  "deadlines": [],
+  "relations": [
+    {
+      "kind": "excludes",
+      "with": "post-matric-pwd",
+      "source": "guidelines",
+      "quote": "A scholarship holder under this scheme will not avail any other scholarship/stipend.",
+      "note": {
+        "en": "You may apply for both on the National Scholarship Portal, but the scheme rules let you keep only one. If you are offered both, choose one.",
+        "hi": "आप राष्ट्रीय छात्रवृत्ति पोर्टल पर दोनों के लिए आवेदन कर सकते हैं, लेकिन योजना के नियमों के अनुसार एक ही रख सकते हैं। दोनों मिलें तो एक चुनें।"
+      }
+    }
+  ],
+  "changes": [],
+  "slug": "top-class-pwd",
+  "category": "disability",
+  "icon": "🏛️",
+  "ministry": {
+    "en": "Department of Empowerment of Persons with Disabilities",
+    "hi": "दिव्यांगजन सशक्तीकरण विभाग"
+  },
+  "official_apply_url": "https://scholarships.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Top Class Education Scholarship for students with disabilities",
+      "summary": "A scholarship for students with a disability of 40% or more at notified top institutes, for a degree or diploma at graduate or post-graduate level.",
+      "benefit": "Fees repaid up to ₹1.90 lakh a year, other fees up to ₹10,000 a year, a one-time ₹45,000 for a computer and a one-time ₹30,000 for aids in the first year, ₹3,000 a month for hostel students or ₹1,500 for day scholars, ₹2,000 a month as special allowance and ₹5,000 a year for books. Up to 300 slots, half for girls.",
+      "how_to_apply": "Apply on the National Scholarship Portal. A UDID card and an Aadhaar card are needed. Only institutes on the department’s list count. It is not for distance, part-time or weekend courses, and a person can get it only once. A student can keep no other scholarship or stipend at the same time."
+    },
+    "hi": {
+      "name": "दिव्यांग छात्रों के लिए टॉप क्लास शिक्षा छात्रवृत्ति",
+      "summary": "अधिसूचित शीर्ष संस्थानों में स्नातक या स्नातकोत्तर स्तर की डिग्री या डिप्लोमा करने वाले 40% या उससे ज़्यादा दिव्यांगता वाले छात्रों के लिए छात्रवृत्ति।",
+      "benefit": "फ़ीस की वापसी साल में ₹1.90 लाख तक, दूसरी फ़ीस साल में ₹10,000 तक, पहले साल कंप्यूटर के लिए एक बार ₹45,000 और उपकरणों के लिए एक बार ₹30,000, छात्रावास के छात्रों को हर महीने ₹3,000 या घर से पढ़ने वालों को ₹1,500, हर महीने ₹2,000 विशेष भत्ता और किताबों के लिए साल में ₹5,000। 300 तक सीटें, आधी लड़कियों के लिए।",
+      "how_to_apply": "राष्ट्रीय छात्रवृत्ति पोर्टल पर आवेदन करें। UDID कार्ड और आधार कार्ड चाहिए। केवल विभाग की सूची के संस्थान गिने जाते हैं। यह दूरस्थ, अंशकालिक या सप्ताहांत कोर्स के लिए नहीं है, और एक व्यक्ति को केवल एक बार मिलती है। छात्र साथ में कोई दूसरी छात्रवृत्ति या वज़ीफ़ा नहीं रख सकता।"
+    }
+  },
+  "sources": [
+    {
+      "id": "guidelines",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3e58aea67b01fa747687f038dfde066f6/uploads/2024/09/202409261656732428.pdf",
+      "title": "Revised guidelines of the Central Sector Umbrella Scheme \"Scholarships for Students with Disabilities\", 25 Sep 2024",
+      "publisher": "Department of Empowerment of Persons with Disabilities",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2024-09",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:2f4a1e8a7d453cf049092960d0f5df950cccbc382f224db0a1503cf714ca6171",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "revision_2025",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3e58aea67b01fa747687f038dfde066f6/uploads/2025/09/202509111852335844.pdf",
+      "title": "Revision of guidelines of the Scholarships for Students with Disabilities, O.M. of 4 Sep 2025",
+      "publisher": "Department of Empowerment of Persons with Disabilities",
+      "doc_type": "guideline",
+      "lang": "en",
+      "published_date": "2025-09",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:a26f688260d03eb31b46261447dbab9d85e859f2dcf900bb5b6b148614d5157d",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    }
+  ],
+  "rules": [
+    {
+      "code": "disability_40",
+      "logic": {
+        ">=": [
+          {
+            "var": "disability_percent"
+          },
+          40
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§2(ii)",
+      "quote": "benchmark disability i.e. 40% or more disability",
+      "text": {
+        "en": "Disability of 40% or more",
+        "hi": "दिव्यांगता 40% या उससे ज़्यादा"
+      }
+    },
+    {
+      "code": "institute",
+      "logic": {
+        "==": [
+          {
+            "var": "at_top_class_institute"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§6.1",
+      "quote": "pursuing Graduate and Post graduate Degree/Diploma courses in Institutes of Excellence in Education as notified by the Department",
+      "text": {
+        "en": "Studies at an institute on the department’s Top Class list",
+        "hi": "विभाग की टॉप क्लास सूची के संस्थान में पढ़ते हैं"
+      }
+    },
+    {
+      "code": "degree",
+      "logic": {
+        "in": [
+          {
+            "var": "education_level"
+          },
+          [
+            "ug",
+            "pg",
+            "diploma"
+          ]
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§6.1",
+      "quote": "pursuing Graduate and Post graduate Degree/Diploma courses in Institutes of Excellence in Education as notified by the Department",
+      "text": {
+        "en": "Studying at graduate or post-graduate level",
+        "hi": "स्नातक या स्नातकोत्तर स्तर पर पढ़ रहे हैं"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          800000
+        ]
+      },
+      "hard": true,
+      "confidence": "confirmed",
+      "source": "guidelines",
+      "locator": "§3 table, row 3",
+      "quote": "in institutes notified by DEPwD 300 (including renewal cases) Rs. 8 lakh",
+      "text": {
+        "en": "Parents' income is up to ₹8 lakh a year",
+        "hi": "माता-पिता की सालाना आय ₹8 लाख तक है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Up to Rs. 1.90 lakh – per annum (subject to actual amount)"
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "i) Up to Rs 10,000/- per annum (subject to actual amount)"
+    },
+    {
+      "about": "amount",
+      "source": "revision_2025",
+      "quote": "A fixed amount of Rs. 45,000/- (no document is required) as a one time grant in the first year of the course."
+    },
+    {
+      "about": "amount",
+      "source": "revision_2025",
+      "quote": "A fixed amount of Rs. 30,000/- as a one time grant in the first year of the course"
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Rs.3,000/- per month for hostellers, Rs. 1,500/- per month for day-scholars"
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "escort allowance, helper allowance etc.) Rs 2000/- per month."
+    },
+    {
+      "about": "amount",
+      "source": "guidelines",
+      "quote": "Book allowance Rs. 5,000/- per annum."
+    },
+    {
+      "about": "limit",
+      "source": "guidelines",
+      "quote": "the individual can be awarded only once"
+    },
+    {
+      "about": "limit",
+      "source": "guidelines",
+      "quote": "shall not be admissible for pursuing distance- learning/part-time/week-end courses"
+    },
+    {
+      "about": "documents",
+      "source": "revision_2025",
+      "quote": "Unique Disability Identity card (UDID)."
+    }
+  ],
+  "documents": [
+    {
+      "code": "disability_certificate",
+      "mandatory": true,
+      "source": "revision_2025"
+    },
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "revision_2025"
+    },
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "guidelines"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "e907025da1306a01"
+  }
+}

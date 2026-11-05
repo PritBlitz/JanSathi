@@ -1,0 +1,178 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "disability_percent": 50,
+      "at_top_class_institute": true,
+      "education_level": "ug",
+      "annual_income": 500000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "confirmed"
+    }
+  },
+  {
+    "name": "disability 39%",
+    "profile": {
+      "disability_percent": 39,
+      "at_top_class_institute": true,
+      "education_level": "ug",
+      "annual_income": 500000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "disability_40": "fail"
+      }
+    }
+  },
+  {
+    "name": "disability 40%",
+    "profile": {
+      "disability_percent": 40,
+      "at_top_class_institute": true,
+      "education_level": "ug",
+      "annual_income": 500000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "not a listed institute",
+    "profile": {
+      "disability_percent": 50,
+      "at_top_class_institute": false,
+      "education_level": "ug",
+      "annual_income": 500000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "institute": "fail"
+      }
+    }
+  },
+  {
+    "name": "class 11-12",
+    "profile": {
+      "disability_percent": 50,
+      "at_top_class_institute": true,
+      "education_level": "class_11_12",
+      "annual_income": 500000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "degree": "fail"
+      }
+    }
+  },
+  {
+    "name": "income 799,999",
+    "profile": {
+      "disability_percent": 50,
+      "at_top_class_institute": true,
+      "education_level": "ug",
+      "annual_income": 799999
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income exactly 8 lakh",
+    "profile": {
+      "disability_percent": 50,
+      "at_top_class_institute": true,
+      "education_level": "ug",
+      "annual_income": 800000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 800,001",
+    "profile": {
+      "disability_percent": 50,
+      "at_top_class_institute": true,
+      "education_level": "ug",
+      "annual_income": 800001
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "band 5 to 8 lakh passes",
+    "profile": {
+      "disability_percent": 50,
+      "at_top_class_institute": true,
+      "education_level": "ug",
+      "annual_income": {
+        "min": 500001,
+        "max": 800000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "band above 8 lakh straddles the limit",
+    "profile": {
+      "disability_percent": 50,
+      "at_top_class_institute": true,
+      "education_level": "ug",
+      "annual_income": {
+        "min": 800001,
+        "max": 1000000000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE"
+    }
+  },
+  {
+    "name": "institute answer missing",
+    "profile": {
+      "disability_percent": 50,
+      "education_level": "ug",
+      "annual_income": 500000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "at_top_class_institute"
+      ]
+    }
+  }
+]

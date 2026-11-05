@@ -1,0 +1,36 @@
+{
+  "slug": "up-obc-computer-training",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "d29abfc500304f78",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dept",
+      "content_hash": "sha256:5608cccd2b6e1ee8d696f724740ce6ba0583020d2bbd777d27c7f9dfd4277a7b",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "backwardwelfareup.gov.in answers robots.txt with an HTML page, so it is not confirmed and the snapshot was used. Searched the web: Free Press Journal reports over 70,000 applications for 2026-27, and a secondary source a last date of 20 July 2026. No change to limits found.",
+  "findings": [
+    {
+      "target": "window",
+      "severity": "minor",
+      "note": "Marked rolling, but intake appears to run yearly with a last date (reported 20 July 2026).",
+      "suggestion": "Set it to yearly, or tell people to check the current dates."
+    },
+    {
+      "target": "content.how_to_apply",
+      "severity": "minor",
+      "note": "Omits the 75% biometric attendance requirement.",
+      "suggestion": "Add it."
+    },
+    {
+      "target": "sources",
+      "severity": "minor",
+      "note": "The page is undated. The income limit is confirmed only by this page.",
+      "suggestion": "Consider saying so, as the pre-matric page does."
+    }
+  ]
+}

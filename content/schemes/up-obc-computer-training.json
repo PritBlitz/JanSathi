@@ -1,0 +1,204 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [],
+  "changes": [],
+  "slug": "up-obc-computer-training",
+  "category": "employment",
+  "icon": "💻",
+  "ministry": {
+    "en": "Backward Classes Welfare Department, Uttar Pradesh",
+    "hi": "पिछड़ा वर्ग कल्याण विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://backwardwelfareup.gov.in/hi/page/computer-training-scheme",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "Uttar Pradesh Computer Training for OBC youth (O Level and CCC)",
+      "summary": "Free computer training for unemployed Other Backward Class young people in Uttar Pradesh who have passed class 12.",
+      "benefit": "Free O Level training (1 year) or CCC training (3 months). The department pays the institute up to ₹15,000 for O Level and up to ₹3,500 for CCC per trainee.",
+      "how_to_apply": "Register at obccomputertraining.upsdc.gov.in, upload income, caste and class 12 papers and a photo, and give the printed form to the District Backward Classes Welfare Officer. Trainees are chosen by class 12 marks against the district target. Applicants must not be getting another government benefit such as a scholarship or fee reimbursement. A trainee who leaves without good reason repays the registration fee and can’t use the scheme again."
+    },
+    "hi": {
+      "name": "उत्तर प्रदेश कंप्यूटर प्रशिक्षण योजना, अन्य पिछड़ा वर्ग (ओ लेवल और सीसीसी)",
+      "summary": "उत्तर प्रदेश के कक्षा 12 पास बेरोज़गार अन्य पिछड़ा वर्ग के युवाओं के लिए मुफ़्त कंप्यूटर प्रशिक्षण।",
+      "benefit": "मुफ़्त ओ लेवल प्रशिक्षण (1 साल) या सीसीसी प्रशिक्षण (3 महीने)। विभाग संस्था को हर प्रशिक्षार्थी के लिए ओ लेवल पर ₹15,000 तक और सीसीसी पर ₹3,500 तक देता है।",
+      "how_to_apply": "obccomputertraining.upsdc.gov.in पर पंजीकरण करें, आय, जाति और कक्षा 12 के काग़ज़ और फ़ोटो अपलोड करें, और छपा हुआ फ़ॉर्म ज़िला पिछड़ा वर्ग कल्याण अधिकारी को दें। ज़िले के लक्ष्य के अनुसार कक्षा 12 के अंकों से चयन होता है। आवेदक को छात्रवृत्ति या शुल्क प्रतिपूर्ति जैसी कोई दूसरी सरकारी सुविधा न मिल रही हो। बिना उचित कारण प्रशिक्षण छोड़ने पर पंजीकरण शुल्क लौटाना होता है और आगे यह योजना नहीं मिलती।"
+    }
+  },
+  "sources": [
+    {
+      "id": "dept",
+      "url": "https://backwardwelfareup.gov.in/hi/page/computer-training-scheme",
+      "title": "कंप्यूटर प्रशिक्षण योजना",
+      "publisher": "Backward Classes Welfare Department, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "hi",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:5608cccd2b6e1ee8d696f724740ce6ba0583020d2bbd777d27c7f9dfd4277a7b",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "पात्रता, item 1",
+      "quote": "उत्तर प्रदेश के मूल निवासी। इण्टरमीडिएट (10+2) पास बेरोजगार युवक/युवतियों हेतु",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "category",
+      "logic": {
+        "==": [
+          {
+            "var": "social_category"
+          },
+          "obc"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "उद्देश्य",
+      "quote": "अन्य पिछड़े वर्ग के बेरोजगार युवक/युवतियों को उनके कौशल विकास में वृद्धि करते हुए",
+      "text": {
+        "en": "Other Backward Class",
+        "hi": "अन्य पिछड़ा वर्ग"
+      }
+    },
+    {
+      "code": "class_12",
+      "logic": {
+        "==": [
+          {
+            "var": "passed_class_12"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "पात्रता, item 2",
+      "quote": "इण्टरमीडिएट (10+2) पास बेरोजगार युवक/युवतियों हेतु",
+      "text": {
+        "en": "Passed class 12",
+        "hi": "कक्षा 12 पास हैं"
+      }
+    },
+    {
+      "code": "unemployed",
+      "logic": {
+        "==": [
+          {
+            "var": "occupation"
+          },
+          "unemployed"
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "dept",
+      "locator": "पात्रता, item 2",
+      "quote": "इण्टरमीडिएट (10+2) पास बेरोजगार युवक/युवतियों हेतु",
+      "text": {
+        "en": "Unemployed",
+        "hi": "बेरोज़गार हैं"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          100000
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "पात्रता, item 3",
+      "quote": "माता-पिता/ अभिभावकों की वार्षिक आय रू0 एक लाख तक अथवा उससे कम",
+      "text": {
+        "en": "Parents' or guardian's income is up to ₹1 lakh a year",
+        "hi": "माता-पिता या अभिभावक की सालाना आय ₹1 लाख तक है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "dept",
+      "quote": "कम्प्यूटर प्रशिक्षण हेतु - अधिकतम् रू0 15,000/- प्रति प्रशिक्षार्थी"
+    },
+    {
+      "about": "amount",
+      "source": "dept",
+      "quote": "कम्प्यूटर प्रशिक्षण - अधिकतम् रू0 3,500/- प्रति प्रशिक्षार्थी"
+    },
+    {
+      "about": "free",
+      "source": "dept",
+      "quote": "पंजीकरण तथा संस्था द्वारा दिये जाने वाला प्रशिक्षण निःशुल्क होगा"
+    },
+    {
+      "about": "limit",
+      "source": "dept",
+      "quote": "किसी अन्य सरकारी योजना जैसे:- छात्रवृत्ति/शुल्क प्रतिपूर्ति आदि का लाभ न मिल रहा हो"
+    }
+  ],
+  "documents": [
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "dept"
+    },
+    {
+      "code": "caste_certificate",
+      "mandatory": true,
+      "source": "dept"
+    },
+    {
+      "code": "marksheet",
+      "mandatory": true,
+      "source": "dept"
+    },
+    {
+      "code": "photo",
+      "mandatory": true,
+      "source": "dept"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "d29abfc500304f78"
+  }
+}

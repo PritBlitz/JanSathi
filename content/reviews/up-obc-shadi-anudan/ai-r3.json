@@ -1,0 +1,17 @@
+{
+  "slug": "up-obc-shadi-anudan",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "558f5dfa9a0405a2",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "dept", "content_hash": "sha256:5e76acb6bf48ed7e9c25b050a1dc2a842aabf9ab63ef2b04b3ab956441ac404b", "method": "refetched" }
+  ],
+  "newer_changes_search": "The department page matched and carries figures up to 2025-26. Budget 2026-27 gives ₹210 crore for the OBC grant, so the scheme is running. Amount, ₹1 lakh limit, ages, two-daughter limit, 90-day window, first come first served and no carry-over all match the page. No later change found.",
+  "findings": [
+    { "target": "content:how_to_apply", "severity": "minor", "note": "The page also requires the printed copy to go to the verifying official named by the SDM (town) or BDO (village). Leaving out this step could cost an applicant the grant.", "suggestion": "Add it in en and hi; this should be the first fix." },
+    { "target": "documents", "severity": "minor", "note": "The page also lists a proof of the wedding date (marriage card).", "suggestion": "Add it." },
+    { "target": "rule:marriage_planned", "severity": "minor", "note": "family_marriage_planned is also true for a person's own wedding.", "suggestion": "Clarify in the rule text." }
+  ]
+}

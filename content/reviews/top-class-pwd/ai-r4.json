@@ -1,0 +1,41 @@
+{
+  "slug": "top-class-pwd",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "e907025da1306a01",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "guidelines",
+      "content_hash": "sha256:2f4a1e8a7d453cf049092960d0f5df950cccbc382f224db0a1503cf714ca6171",
+      "method": "refetched"
+    },
+    {
+      "id": "revision_2025",
+      "content_hash": "sha256:a26f688260d03eb31b46261447dbab9d85e859f2dcf900bb5b6b148614d5157d",
+      "method": "refetched"
+    }
+  ],
+  "newer_changes_search": "Refetched both sources earlier today with matching hashes. §6.1, §6.2 and the §3 table read in full, with the 4 Sep 2025 revision. No later change found; no stated end date.",
+  "findings": [
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "All amounts match §6.2 and the revision. The ₹30,000 is \"subject to non-availing of same through ARJUN portal\", which is left out.",
+      "suggestion": "Add the condition."
+    },
+    {
+      "target": "relations",
+      "severity": "minor",
+      "note": "The clause backs the relation. The note cites NSP, but this scheme has no nsp source or fact, unlike the other two disability schemes.",
+      "suggestion": "Add the nsp source and fact for consistency."
+    },
+    {
+      "target": "tests",
+      "severity": "minor",
+      "note": "The fixture named \"band above 8 lakh straddles the limit\" does not straddle it; the result NOT_ELIGIBLE is right.",
+      "suggestion": "Rename it."
+    }
+  ]
+}

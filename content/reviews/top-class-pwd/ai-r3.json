@@ -1,0 +1,18 @@
+{
+  "slug": "top-class-pwd",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "e907025da1306a01",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "guidelines", "content_hash": "sha256:2f4a1e8a7d453cf049092960d0f5df950cccbc382f224db0a1503cf714ca6171", "method": "refetched" },
+    { "id": "revision_2025", "content_hash": "sha256:a26f688260d03eb31b46261447dbab9d85e859f2dcf900bb5b6b148614d5157d", "method": "refetched" }
+  ],
+  "newer_changes_search": "Both sources matched. §6.1, §6.2 and the §3 table support every rule and amount, and the 2025 revision's fixed ₹45,000 and ₹30,000 are used correctly. The guidelines state no end date; no official 2026-27 order found, same as the other PwD scholarships.",
+  "findings": [
+    { "target": "content:benefit", "severity": "minor", "note": "The 2025 revision gives ₹30,000 only if the same help was not taken through the ARJUN portal.", "suggestion": "Add the condition in en and hi." },
+    { "target": "relations", "severity": "minor", "note": "The note relies on the NSP clause, but this file does not cite nsp.", "suggestion": "Add the NSP source and fact, as the other PwD files do." },
+    { "target": "content:how_to_apply", "severity": "minor", "note": "§2(iv) limits the scheme to two children with disabilities of the same parents; the file omits it.", "suggestion": "Add it." }
+  ]
+}

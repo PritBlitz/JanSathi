@@ -1,0 +1,209 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [
+    {
+      "label": {
+        "en": "Apply within 90 days before or after the wedding",
+        "hi": "शादी से 90 दिन पहले या 90 दिन बाद तक आवेदन करें"
+      },
+      "state_code": "up",
+      "source": "dept",
+      "quote": "आनलाइन आवेदन शादी की तिथि के 90 दिन पूर्व तथा 90 दिन पश्चात् तक करना अनिवार्य होगा"
+    }
+  ],
+  "relations": [],
+  "changes": [],
+  "slug": "up-obc-shadi-anudan",
+  "category": "family_support",
+  "icon": "🎎",
+  "ministry": {
+    "en": "Backward Classes Welfare Department, Uttar Pradesh",
+    "hi": "पिछड़ा वर्ग कल्याण विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://shadianudan.upsdc.gov.in/",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "Shadi Anudan Yojana for OBC families (marriage grant)",
+      "summary": "A grant for the wedding of a daughter in a poor Other Backward Class family. Minority backward classes are not covered.",
+      "benefit": "₹20,000 for each wedding, for at most two daughters of a family. Payment is first come, first served.",
+      "how_to_apply": "Apply online at shadianudan.upsdc.gov.in. The bride must be 18 or older and the groom 21 or older. The tehsil’s online caste certificate number is needed. Destitute women and widows get priority and don’t need an income certificate. Claims not paid in a financial year are not carried to the next one."
+    },
+    "hi": {
+      "name": "अन्य पिछड़ा वर्ग शादी अनुदान योजना",
+      "summary": "अन्य पिछड़ा वर्ग के ग़रीब परिवार की बेटी की शादी के लिए अनुदान। अल्पसंख्यक पिछड़े वर्ग इसमें शामिल नहीं हैं।",
+      "benefit": "हर शादी पर ₹20,000, एक परिवार की अधिकतम दो बेटियों के लिए। भुगतान पहले आओ, पहले पाओ के आधार पर होता है।",
+      "how_to_apply": "shadianudan.upsdc.gov.in पर ऑनलाइन आवेदन करें। लड़की की उम्र 18 साल या ज़्यादा और लड़के की 21 साल या ज़्यादा हो। तहसील के ऑनलाइन जाति प्रमाण पत्र का क्रमांक चाहिए। निराश्रित महिला या विधवा को प्राथमिकता मिलती है और उन्हें आय प्रमाण पत्र नहीं चाहिए। एक वित्तीय वर्ष की माँग अगले वर्ष में नहीं जाती।"
+    }
+  },
+  "sources": [
+    {
+      "id": "dept",
+      "url": "https://backwardwelfareup.gov.in/hi/page/marriage-grant-scheme",
+      "title": "शादी अनुदान योजना",
+      "publisher": "Backward Classes Welfare Department, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "hi",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:5e76acb6bf48ed7e9c25b050a1dc2a842aabf9ab63ef2b04b3ab956441ac404b",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "dept",
+      "locator": "उद्देश्य. No residence clause was found; this is a state department scheme run through UP tehsils, so a failing answer shows \"check with the office\".",
+      "quote": "अन्य पिछडे वर्ग के आवेदको को तहसील द्वारा आनलाइन निर्गत जाति प्रमाण पत्र का क्रमाॅंक",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "category",
+      "logic": {
+        "==": [
+          {
+            "var": "social_category"
+          },
+          "obc"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "पात्रता, para 1",
+      "quote": "अन्य पिछड़े वर्ग (अल्पसंख्यक पिछड़े वर्ग को छोड़कर) के गरीब व्यक्तियों की पुत्रियो की शादी",
+      "text": {
+        "en": "Other Backward Class",
+        "hi": "अन्य पिछड़ा वर्ग"
+      }
+    },
+    {
+      "code": "not_minority",
+      "logic": {
+        "==": [
+          {
+            "var": "is_minority"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "पात्रता, para 1",
+      "quote": "अन्य पिछड़े वर्ग (अल्पसंख्यक पिछड़े वर्ग को छोड़कर) के गरीब व्यक्तियों की पुत्रियो की शादी",
+      "text": {
+        "en": "Not from a minority backward class",
+        "hi": "अल्पसंख्यक पिछड़े वर्ग से नहीं हैं"
+      }
+    },
+    {
+      "code": "marriage_planned",
+      "logic": {
+        "==": [
+          {
+            "var": "family_marriage_planned"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "उद्देश्य",
+      "quote": "शादी अनुदान योजना में रू0 20,000/- प्रति शादी की सहायता दी जाती है",
+      "text": {
+        "en": "A daughter’s wedding is planned",
+        "hi": "बेटी की शादी होने वाली है"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          100000
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "पात्रता",
+      "quote": "उक्त योजनान्तर्गत आवेदक की आय रू0 1,00,000/-प्रतिवर्ष से अधिक नहीं होनी चाहिए",
+      "text": {
+        "en": "Income is up to ₹1 lakh a year (widows and destitute women need no income certificate)",
+        "hi": "आय साल में ₹1 लाख तक है (विधवा और निराश्रित महिला को आय प्रमाण पत्र नहीं चाहिए)"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "dept",
+      "quote": "शादी अनुदान योजना में रू0 20,000/- प्रति शादी की सहायता दी जाती है"
+    },
+    {
+      "about": "limit",
+      "source": "dept",
+      "quote": "एक ही परिवार से अधिकतम 02 पुत्रियों की शादी हेतु अनुदान अनुमन्य होगा"
+    },
+    {
+      "about": "age",
+      "source": "dept",
+      "quote": "विवाह हेतु किये गये आवेदन में लड़की की उम्र 18 वर्ष एवं लड़के की उम्र 21 वर्ष या उससे अधिक होनी अनिवार्य है"
+    },
+    {
+      "about": "priority",
+      "source": "dept",
+      "quote": "पति की मृत्यु के उपरान्त निराश्रित महिला अथवा विधवा आवेदक को वरीयता प्रदान की जायेगी"
+    }
+  ],
+  "documents": [
+    {
+      "code": "aadhaar",
+      "mandatory": true,
+      "source": "dept"
+    },
+    {
+      "code": "income_certificate",
+      "mandatory": true,
+      "source": "dept"
+    },
+    {
+      "code": "caste_certificate",
+      "mandatory": true,
+      "source": "dept"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "558f5dfa9a0405a2"
+  }
+}

@@ -1,0 +1,259 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "age": 62,
+      "gender": "male",
+      "disability": false,
+      "has_artisan_card": true,
+      "annual_income": 80000,
+      "occupation": "self_employed",
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "man aged 59",
+    "profile": {
+      "state": "up",
+      "age": 59,
+      "gender": "male",
+      "disability": false,
+      "has_artisan_card": true,
+      "annual_income": 80000,
+      "occupation": "self_employed",
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "man aged 60",
+    "profile": {
+      "state": "up",
+      "age": 60,
+      "gender": "male",
+      "disability": false,
+      "has_artisan_card": true,
+      "annual_income": 80000,
+      "occupation": "self_employed",
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "woman aged 54",
+    "profile": {
+      "state": "up",
+      "age": 54,
+      "gender": "female",
+      "disability": false,
+      "has_artisan_card": true,
+      "annual_income": 80000,
+      "occupation": "self_employed",
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "age_min": "fail"
+      }
+    }
+  },
+  {
+    "name": "woman aged 55",
+    "profile": {
+      "state": "up",
+      "age": 55,
+      "gender": "female",
+      "disability": false,
+      "has_artisan_card": true,
+      "annual_income": 80000,
+      "occupation": "self_employed",
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "man with a disability aged 55",
+    "profile": {
+      "state": "up",
+      "age": 55,
+      "gender": "male",
+      "disability": true,
+      "has_artisan_card": true,
+      "annual_income": 80000,
+      "occupation": "self_employed",
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "no artisan card",
+    "profile": {
+      "state": "up",
+      "age": 62,
+      "gender": "male",
+      "disability": false,
+      "has_artisan_card": false,
+      "annual_income": 80000,
+      "occupation": "self_employed",
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "artisan_card": "fail"
+      }
+    }
+  },
+  {
+    "name": "income exactly 1 lakh",
+    "profile": {
+      "state": "up",
+      "age": 62,
+      "gender": "male",
+      "disability": false,
+      "has_artisan_card": true,
+      "annual_income": 100000,
+      "occupation": "self_employed",
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 100,001",
+    "profile": {
+      "state": "up",
+      "age": 62,
+      "gender": "male",
+      "disability": false,
+      "has_artisan_card": true,
+      "annual_income": 100001,
+      "occupation": "self_employed",
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "salaried: check with the office",
+    "profile": {
+      "state": "up",
+      "age": 62,
+      "gender": "male",
+      "disability": false,
+      "has_artisan_card": true,
+      "annual_income": 80000,
+      "occupation": "salaried",
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "not_salaried": "fail"
+      }
+    }
+  },
+  {
+    "name": "gets another pension",
+    "profile": {
+      "state": "up",
+      "age": 62,
+      "gender": "male",
+      "disability": false,
+      "has_artisan_card": true,
+      "annual_income": 80000,
+      "occupation": "self_employed",
+      "gets_govt_pension": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "no_other_pension": "fail"
+      }
+    }
+  },
+  {
+    "name": "lives in another state: check with the office",
+    "profile": {
+      "state": "br",
+      "age": 62,
+      "gender": "male",
+      "disability": false,
+      "has_artisan_card": true,
+      "annual_income": 80000,
+      "occupation": "self_employed",
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "card answer missing",
+    "profile": {
+      "state": "up",
+      "age": 62,
+      "gender": "male",
+      "disability": false,
+      "annual_income": 80000,
+      "occupation": "self_employed",
+      "gets_govt_pension": false
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "has_artisan_card"
+      ]
+    }
+  }
+]

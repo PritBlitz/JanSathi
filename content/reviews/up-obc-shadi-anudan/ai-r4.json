@@ -1,0 +1,36 @@
+{
+  "slug": "up-obc-shadi-anudan",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "558f5dfa9a0405a2",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dept",
+      "content_hash": "sha256:5e76acb6bf48ed7e9c25b050a1dc2a842aabf9ab63ef2b04b3ab956441ac404b",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "backwardwelfareup.gov.in answers robots.txt with an HTML page, so it is not confirmed and the snapshot was used. Searched the web: Amar Ujala (25 Jun 2026) repeats the ₹1 lakh limit, ₹20,000, two daughters, the minority exclusion and first come, first served for 2026-27. No change found.",
+  "findings": [
+    {
+      "target": "content.benefit",
+      "severity": "minor",
+      "note": "\"First come, first served\" is right (source: \"प्रथम आवत एवं प्रथम पावत\") but has no quoted fact, and neither does the line on claims not carried forward.",
+      "suggestion": "Add both quotes."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "The source also lists the wedding card and bank papers, and proof for widows or people with disabilities.",
+      "suggestion": "Add rows if codes exist."
+    },
+    {
+      "target": "content.how_to_apply",
+      "severity": "minor",
+      "note": "Omits that the signed printout goes to the verifying officer after applying online. income_certificate is mandatory though widows and destitute women are exempt.",
+      "suggestion": "Add the step and mark the certificate conditional."
+    }
+  ]
+}

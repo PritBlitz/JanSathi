@@ -1,0 +1,41 @@
+{
+  "slug": "up-obc-pre-matric",
+  "reviewer": "ai-r4",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "378e591fa0ba5b66",
+  "verdict": "approve",
+  "sources_checked": [
+    {
+      "id": "dept",
+      "content_hash": "sha256:ded1a258809cf181dbcd37e3e82a103635b48f873a9deef9056a77f1d76056ea",
+      "method": "snapshot"
+    },
+    {
+      "id": "dates_pre",
+      "content_hash": "sha256:31fe1ff6c62c9875817b68fa2651225e7976c41e76aa96dd22143b6bc8cbac02",
+      "method": "snapshot"
+    }
+  ],
+  "newer_changes_search": "backwardwelfareup.gov.in answers robots.txt with an HTML page, so it is not confirmed and the snapshot was used. scholarship.up.gov.in was checked by snapshot (TLS failure). Searched the web: Outlook (11 Aug 2026, updated 21 Oct) repeats ₹2 lakh, class 9-10, and 21 September for new applicants. No change found.",
+  "findings": [
+    {
+      "target": "rule:category",
+      "severity": "minor",
+      "note": "The department page does not say whether minority OBC students are covered, though the General schemes send minorities to the Minority Welfare Department. No exclusion is claimed, so nothing is wrong.",
+      "suggestion": "Check the rules and add an exclusion if they have one."
+    },
+    {
+      "target": "content.how_to_apply",
+      "severity": "minor",
+      "note": "Priority also puts renewals before fresh students at aided and private schools.",
+      "suggestion": "Add it."
+    },
+    {
+      "target": "documents",
+      "severity": "minor",
+      "note": "Empty.",
+      "suggestion": "Add rows if a list is found."
+    }
+  ]
+}

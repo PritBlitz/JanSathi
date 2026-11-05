@@ -17,7 +17,7 @@ For the next AI session working in this repo. Read [CLAUDE.md](CLAUDE.md) and [d
 
 The maintainer asked for the full product and delegated the open decisions (PROJECT_BRIEF §17). Nothing is committed.
 
-**Content.** 21 new schemes were authored, reviewed by two fresh agents (ai-r3, ai-r4) who recorded 67 blocker findings between them, many the same problem, corrected, and re-reviewed. All 49 schemes are published. Where a guideline period ended in March 2026 and no continuation order was found (adip, pmegp, pmkvy, SC and OBC scholarships) rules were lowered to `guidance` and the text says so. `docs/REVIEW.md` gained `counters_only`.
+**Content.** 21 new schemes were authored, reviewed by two fresh agents (ai-r3, ai-r4) who recorded 67 blocker findings between them, many the same problem, corrected, and re-reviewed. All 54 schemes are published. Where a guideline period ended in March 2026 and no continuation order was found (adip, pmegp, pmkvy, SC and OBC scholarships) rules were lowered to `guidance` and the text says so. `docs/REVIEW.md` gained `counters_only`.
 
 Known soft spots, all disclosed in the content or review records: the UP pension may rise to ₹1,500 (no order found by 2026-11-05: re-check); up-old-age-pension has no residence clause in any source read; up-post-matric-general's income limit is unverified and the rule is `uncertain`; up-shadi-anudan includes ST on a 2016 order while the current page doesn't; relation notes on pm-usp and the PwD scholarships say "National Scholarship Portal" even for UP pairs (minor). Four snapshots hold marked hand transcriptions of scans: don't run `recheck --snapshot` on those sources.
 
@@ -32,6 +32,8 @@ Known soft spots, all disclosed in the content or review records: the UP pension
 **Certificates:** `pmsvanidhi.mohua.gov.in` and `scholarships.gov.in` report a revoked certificate from this machine (it may be local). So pm-svanidhi/portal stays "changed" with its warning, and the NSP copies behind pm-usp and the scholarship notes need comparing with a copy from a trusted connection. The re-check uses urllib, which does not check revocation.
 
 **Robots lapses in this round, for the record:** the author fetched from msme.up.gov.in, cdn.s3waas.gov.in and pfrda.org.in before reading their robots.txt (they disallow bots); it stopped and nothing cites them. Reviewers fetched a few hosts with unreadable robots.txt.
+
+**CI (2026-11-05):** on branch full-product the Java job passes, including PostgreSQL. The web job still fails at `npm run smoke` on Linux (about 8 s after start; cause unknown, logs need a GitHub token). Next step: reproduce with `node:24` plus chromium from a clean clone.
 
 ## Since session 4 (2026-11-04)
 

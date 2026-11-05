@@ -1,0 +1,295 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "rolling"
+  },
+  "deadlines": [],
+  "relations": [
+    {
+      "kind": "excludes",
+      "with": "up-old-age-pension",
+      "source": "hi_sheet",
+      "quote": "हस्तशिल्पी को एक ही प्रकार की पेंशन योजना का लाभ अनुमन्य होगा। यदि हस्तशिल्पी द्वारा भारत सरकार/राज्य सरकार की अन्य योजनाओं में पेंशन का लाभ प्राप्त किया गया हो, तो वह इस योजना का लाभ पाने हेतु पात्र नही होगा।",
+      "note": {
+        "en": "A person getting another government pension cannot also get this one.",
+        "hi": "जिन्हें दूसरी सरकारी पेंशन मिल रही है, वे यह पेंशन साथ में नहीं ले सकते।"
+      }
+    },
+    {
+      "kind": "excludes",
+      "with": "up-destitute-women-pension",
+      "source": "hi_sheet",
+      "quote": "हस्तशिल्पी को एक ही प्रकार की पेंशन योजना का लाभ अनुमन्य होगा। यदि हस्तशिल्पी द्वारा भारत सरकार/राज्य सरकार की अन्य योजनाओं में पेंशन का लाभ प्राप्त किया गया हो, तो वह इस योजना का लाभ पाने हेतु पात्र नही होगा।",
+      "note": {
+        "en": "A person getting another government pension cannot also get this one.",
+        "hi": "जिन्हें दूसरी सरकारी पेंशन मिल रही है, वे यह पेंशन साथ में नहीं ले सकते।"
+      }
+    },
+    {
+      "kind": "excludes",
+      "with": "up-divyang-pension",
+      "source": "hi_sheet",
+      "quote": "हस्तशिल्पी को एक ही प्रकार की पेंशन योजना का लाभ अनुमन्य होगा। यदि हस्तशिल्पी द्वारा भारत सरकार/राज्य सरकार की अन्य योजनाओं में पेंशन का लाभ प्राप्त किया गया हो, तो वह इस योजना का लाभ पाने हेतु पात्र नही होगा।",
+      "note": {
+        "en": "A person getting another government pension cannot also get this one.",
+        "hi": "जिन्हें दूसरी सरकारी पेंशन मिल रही है, वे यह पेंशन साथ में नहीं ले सकते।"
+      }
+    }
+  ],
+  "changes": [],
+  "slug": "up-handicraft-pension",
+  "category": "pension",
+  "icon": "🧶",
+  "ministry": {
+    "en": "MSME and Export Promotion Department, Uttar Pradesh",
+    "hi": "एमएसएमई एवं निर्यात प्रोत्साहन विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://msme1connect.up.gov.in/scheme-list/chief-minister-handicrafts-pension-scheme",
+  "reverify_days": 180,
+  "content": {
+    "en": {
+      "name": "Mukhyamantri Hastshilp Pension Yojana (handicraft pension)",
+      "summary": "A monthly pension for selected older handicraft workers in Uttar Pradesh who hold an artisan card.",
+      "benefit": "₹500 a month for selected artisans.",
+      "how_to_apply": "Apply on the Directorate of Industries portal, diupmsme.upsdc.gov.in. Women and artisans with a physical disability get five years’ age relief. The artisan must not be a regular paid employee and must not own a four-wheeler. The scheme comes from a 2016 order; confirm the current amount with the District Industries Centre."
+    },
+    "hi": {
+      "name": "मुख्यमंत्री हस्तशिल्प पेंशन योजना",
+      "summary": "उत्तर प्रदेश के चुने गए बुज़ुर्ग हस्तशिल्पियों के लिए मासिक पेंशन, जिनके पास आर्टीज़न कार्ड है।",
+      "benefit": "चुने गए शिल्पकारों को हर महीने ₹500।",
+      "how_to_apply": "उद्योग निदेशालय के पोर्टल diupmsme.upsdc.gov.in पर आवेदन करें। महिलाओं और शारीरिक रूप से दिव्यांग शिल्पकारों को उम्र में पाँच साल की छूट है। शिल्पकार नियमित वेतन पाने वाला कर्मचारी न हो और चार पहिया वाहन का मालिक न हो। योजना 2016 के आदेश से है; मौजूदा राशि ज़िला उद्योग केंद्र से पक्की कर लें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "en_sheet",
+      "url": "https://msme1connect.up.gov.in/GovernmentScheme/GovernmentScheme638772158650624379.pdf",
+      "title": "Chief Minister Handicrafts Pension Scheme (English sheet)",
+      "publisher": "UP MSME 1-Connect, Government of Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "en",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:6906f68cbaa8129e1ec1a1c6ebea6e693377f8462f40ebff461249384ace28fc",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "hi_sheet",
+      "url": "https://msme1connect.up.gov.in/GovernmentScheme/GovernmentScheme638772160640370339.pdf",
+      "title": "मुख्यमंत्री हस्तशिल्प पेंशन योजना (Hindi sheet, citing order 748/18-4-2016 of 2 Jun 2016)",
+      "publisher": "UP MSME 1-Connect, Government of Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "hi",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:3ecd1219b1fedf5b36e9d5e98afa094d582d59ba0791928a2c0b8fb13ab7a0e9",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "note": "Scanned, no text layer. The quoted lines are a hand transcription from the page image of p. 1, read 2026-11-05, appended to the snapshot and marked as such. They are not extracted text. Running recheck with --snapshot on this source overwrites them."
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "en_sheet",
+      "locator": "About. No separate residence clause was found, so a failing answer shows \"check with the office\".",
+      "quote": "economic condition of the handicraftsmen of the state",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "age_min",
+      "logic": {
+        "or": [
+          {
+            ">=": [
+              {
+                "var": "age"
+              },
+              60
+            ]
+          },
+          {
+            "and": [
+              {
+                ">=": [
+                  {
+                    "var": "age"
+                  },
+                  55
+                ]
+              },
+              {
+                "or": [
+                  {
+                    "==": [
+                      {
+                        "var": "gender"
+                      },
+                      "female"
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "disability"
+                      },
+                      true
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "hi_sheet",
+      "locator": "Eligibility, item 1",
+      "quote": "हस्तशिल्पियों की न्यूनतम आयु 60 वर्ष या इससे अधिक हो। (महिला हस्तशिल्पियों एवं शारीरिक रूप से विकलांग हस्तशिल्पियों को न्यूनतम आयु सीमा में पाँच वर्ष की छूट अनुमन्य होगी।)",
+      "text": {
+        "en": "Age 60 or older, or 55 or older for women and people with a physical disability",
+        "hi": "उम्र 60 साल या ज़्यादा, या महिलाओं और शारीरिक रूप से दिव्यांग लोगों के लिए 55 साल या ज़्यादा"
+      }
+    },
+    {
+      "code": "artisan_card",
+      "logic": {
+        "==": [
+          {
+            "var": "has_artisan_card"
+          },
+          true
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "hi_sheet",
+      "locator": "Eligibility, item 2",
+      "quote": "हस्तशिल्पियों के पास विकास आयुक्त (हस्तशिल्प), वस्त्र मंत्रालय, भारत सरकार द्वारा निर्गत हस्तशिल्प पहचान-पत्र (आर्टीजन कार्ड) होना आवश्यक है।",
+      "text": {
+        "en": "Has the handicraft artisan card from the Development Commissioner (Handicrafts)",
+        "hi": "विकास आयुक्त (हस्तशिल्प) का आर्टीज़न कार्ड है"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          100000
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "hi_sheet",
+      "locator": "Eligibility, item 3",
+      "quote": "शिल्पकार के परिवार की वार्षिक आय रूपया एक लाख से अधिक न हो।",
+      "text": {
+        "en": "Family income is up to ₹1 lakh a year",
+        "hi": "परिवार की सालाना आय ₹1 लाख तक है"
+      }
+    },
+    {
+      "code": "not_salaried",
+      "logic": {
+        "!=": [
+          {
+            "var": "occupation"
+          },
+          "salaried"
+        ]
+      },
+      "hard": true,
+      "confidence": "uncertain",
+      "source": "hi_sheet",
+      "locator": "Eligibility, item 4",
+      "quote": "शिल्पकार सरकारी/अर्ध सरकारी/गैर सरकारी/एन0जी0ओ0/निजी संगठनों में नियमित वेतनभोगी कर्मचारी न हो।",
+      "text": {
+        "en": "Not a regular paid employee",
+        "hi": "नियमित वेतन पाने वाले कर्मचारी नहीं हैं"
+      }
+    },
+    {
+      "code": "no_other_pension",
+      "logic": {
+        "==": [
+          {
+            "var": "gets_govt_pension"
+          },
+          false
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "hi_sheet",
+      "locator": "Eligibility, item 5",
+      "quote": "हस्तशिल्पी को एक ही प्रकार की पेंशन योजना का लाभ अनुमन्य होगा। यदि हस्तशिल्पी द्वारा भारत सरकार/राज्य सरकार की अन्य योजनाओं में पेंशन का लाभ प्राप्त किया गया हो, तो वह इस योजना का लाभ पाने हेतु पात्र नही होगा।",
+      "text": {
+        "en": "Gets no other central or state government pension",
+        "hi": "केंद्र या राज्य सरकार की कोई दूसरी पेंशन नहीं मिल रही है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "en_sheet",
+      "quote": "selected craftsmen are given a pension of Rs. 500 / - per month"
+    },
+    {
+      "about": "vehicle",
+      "source": "hi_sheet",
+      "quote": "योजना से आच्छादित हस्तशिल्पी चार पहिया वाहन का मालिक न हो।"
+    }
+  ],
+  "documents": [
+    {
+      "code": "aadhaar",
+      "mandatory": false,
+      "source": "en_sheet"
+    },
+    {
+      "code": "age_proof",
+      "mandatory": true,
+      "source": "en_sheet"
+    },
+    {
+      "code": "caste_certificate",
+      "mandatory": false,
+      "source": "en_sheet"
+    },
+    {
+      "code": "disability_certificate",
+      "mandatory": false,
+      "source": "en_sheet"
+    }
+  ],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "3cb0db909c18c8a8"
+  }
+}

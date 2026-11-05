@@ -1,0 +1,17 @@
+{
+  "slug": "up-handicraft-pension",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "3cb0db909c18c8a8",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "en_sheet", "content_hash": "sha256:6906f68cbaa8129e1ec1a1c6ebea6e693377f8462f40ebff461249384ace28fc", "method": "refetched" },
+    { "id": "hi_sheet", "content_hash": "sha256:3ecd1219b1fedf5b36e9d5e98afa094d582d59ba0791928a2c0b8fb13ab7a0e9", "method": "refetched" }
+  ],
+  "newer_changes_search": "Compared the six hand-transcribed lines with the page image of the Hindi sheet: all match, and the sheet cites GO 748/18-4-2016-8 of 02-06-2016. The ₹500 rests on a 2016 scheme; how_to_apply says so and asks users to confirm. I ran no scheme-specific web search, and the order itself was not read. The sheet has no residence clause; the rule is 'uncertain'.",
+  "findings": [
+    { "target": "rule:age_min", "severity": "minor", "note": "The relief is for physical disability; the disability field is wider. The rule text says 'physical'.", "suggestion": "Leave as is or narrow later." },
+    { "target": "rules", "severity": "minor", "note": "The no four-wheeler condition has no rule, only text.", "suggestion": "Add an 'uncertain' rule if a field is added." }
+  ]
+}

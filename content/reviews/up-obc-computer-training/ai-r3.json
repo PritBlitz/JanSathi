@@ -1,0 +1,16 @@
+{
+  "slug": "up-obc-computer-training",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "d29abfc500304f78",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "dept", "content_hash": "sha256:5608cccd2b6e1ee8d696f724740ce6ba0583020d2bbd777d27c7f9dfd4277a7b", "method": "refetched" }
+  ],
+  "newer_changes_search": "The department page matched and carries a progress table up to 2024-25. Amounts, the ₹1 lakh limit, selection by class 12 marks and the drop-out condition all match it. I ran no scheme-specific web search.",
+  "findings": [
+    { "target": "rule:resident", "severity": "minor", "note": "The source says native of UP, stricter than 'Lives in Uttar Pradesh'.", "suggestion": "Reword." },
+    { "target": "content:how_to_apply", "severity": "minor", "note": "The page says a trainee can use the scheme only once and needs 75% biometric attendance; both are omitted.", "suggestion": "Add them, including what it says about moving from CCC to O Level." }
+  ]
+}

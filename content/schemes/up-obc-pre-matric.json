@@ -1,0 +1,180 @@
+{
+  "status": "published",
+  "level": "state",
+  "state_code": "up",
+  "window": {
+    "type": "yearly"
+  },
+  "deadlines": [
+    {
+      "label": {
+        "en": "2026-27 new students: online application",
+        "hi": "2026-27 नए छात्र: ऑनलाइन आवेदन"
+      },
+      "state_code": "up",
+      "opens_at": "2026-08-11",
+      "closes_at": "2026-09-21",
+      "source": "dates_pre",
+      "quote": "नवीन (Fresh) छात्रों द्वारा रजिस्ट्रेशन / आनलाइन आवेदन करना | August 11, 2026 | September 21, 2026"
+    }
+  ],
+  "relations": [],
+  "changes": [],
+  "slug": "up-obc-pre-matric",
+  "category": "education",
+  "icon": "📚",
+  "ministry": {
+    "en": "Backward Classes Welfare Department, Uttar Pradesh",
+    "hi": "पिछड़ा वर्ग कल्याण विभाग, उत्तर प्रदेश"
+  },
+  "official_apply_url": "https://scholarship.up.gov.in/",
+  "reverify_days": 90,
+  "content": {
+    "en": {
+      "name": "Uttar Pradesh Pre-Matric Scholarship for OBC students (class 9-10)",
+      "summary": "A yearly scholarship for Other Backward Class students in class 9 or 10 who study in Uttar Pradesh and belong to the state.",
+      "benefit": "₹150 a month for up to 10 months and a yearly grant of ₹750, at most ₹2,250 a year. It is paid into the student’s bank account as far as the budget allows.",
+      "how_to_apply": "Apply at scholarship.up.gov.in in the OBC students option, then give the printed form and papers to your school. Students in government schools come first, then aided schools, then recognised private schools. The department page has no date; confirm the current amount and limit with the district Backward Classes Welfare Officer."
+    },
+    "hi": {
+      "name": "उत्तर प्रदेश पूर्वदशम् छात्रवृत्ति, अन्य पिछड़ा वर्ग (कक्षा 9-10)",
+      "summary": "उत्तर प्रदेश में पढ़ने वाले और प्रदेश के मूल निवासी, कक्षा 9 या 10 के अन्य पिछड़ा वर्ग के छात्रों के लिए सालाना छात्रवृत्ति।",
+      "benefit": "अधिकतम 10 महीने तक हर महीने ₹150 और सालाना ₹750 अनुदान, साल में अधिकतम ₹2,250। बजट की सीमा तक यह छात्र के बैंक खाते में आता है।",
+      "how_to_apply": "scholarship.up.gov.in पर ओबीसी छात्रों के विकल्प में आवेदन करें, फिर छपा हुआ फ़ॉर्म और काग़ज़ अपने विद्यालय में दें। पहले राजकीय, फिर सहायता प्राप्त, फिर मान्यता प्राप्त निजी विद्यालयों के छात्रों को प्राथमिकता मिलती है। विभाग के पेज पर तारीख़ नहीं है; मौजूदा राशि और सीमा ज़िला पिछड़ा वर्ग कल्याण अधिकारी से पक्की कर लें।"
+    }
+  },
+  "sources": [
+    {
+      "id": "dept",
+      "url": "https://backwardwelfareup.gov.in/hi/page/pre-matric-scholarship-scheme",
+      "title": "पूर्वदशम् छात्रवृत्ति योजना",
+      "publisher": "Backward Classes Welfare Department, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "hi",
+      "published_date": null,
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:ded1a258809cf181dbcd37e3e82a103635b48f873a9deef9056a77f1d76056ea",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4"
+    },
+    {
+      "id": "dates_pre",
+      "url": "https://scholarship.up.gov.in/",
+      "title": "Important dates 2026-27: pre-matric (class 9-10) and class 11-12",
+      "publisher": "Scholarship and Fee Reimbursement Online System, Uttar Pradesh",
+      "doc_type": "portal",
+      "lang": "hi",
+      "published_date": "2026-07",
+      "fetched_at": "2026-11-05",
+      "content_hash": "sha256:31fe1ff6c62c9875817b68fa2651225e7976c41e76aa96dd22143b6bc8cbac02",
+      "verified_at": "2026-11-05",
+      "verified_by": "ai-r3, ai-r4",
+      "fetch": "manual",
+      "fetch_note": "The date table loads by script from the portal's public GetAlertBoxData call (scheme: Pre). Saved as text on 2026-11-05."
+    }
+  ],
+  "rules": [
+    {
+      "code": "resident",
+      "logic": {
+        "==": [
+          {
+            "var": "state"
+          },
+          "up"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "पात्रता, item 1",
+      "quote": "उत्तर प्रदेश में अध्ययनरत् एवं उत्तर प्रदेश के मूल निवासी",
+      "text": {
+        "en": "Lives in Uttar Pradesh",
+        "hi": "उत्तर प्रदेश में रहते हैं"
+      }
+    },
+    {
+      "code": "category",
+      "logic": {
+        "==": [
+          {
+            "var": "social_category"
+          },
+          "obc"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "प्रक्रिया, step 1",
+      "quote": "स्टूडेन्ट सेक्शन में ओ0बी0सी0 छात्रों हेतु Option पर Click करना",
+      "text": {
+        "en": "Other Backward Class",
+        "hi": "अन्य पिछड़ा वर्ग"
+      }
+    },
+    {
+      "code": "class_9_10",
+      "logic": {
+        "==": [
+          {
+            "var": "education_level"
+          },
+          "class_9_10"
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "अनुमन्यता",
+      "quote": "वर्तमान में केवल कक्षा 9-10 हेतु योजना आनलाइन संचालित है",
+      "text": {
+        "en": "Studying in class 9 or 10",
+        "hi": "कक्षा 9 या 10 में पढ़ रहे हैं"
+      }
+    },
+    {
+      "code": "income_max",
+      "logic": {
+        "<=": [
+          {
+            "var": "annual_income"
+          },
+          200000
+        ]
+      },
+      "hard": true,
+      "confidence": "guidance",
+      "source": "dept",
+      "locator": "पात्रता, item 2",
+      "quote": "छात्र के माता-पिता/अभिभावक की वार्षिक आय रू. 2 लाख तक",
+      "text": {
+        "en": "Parents' or guardian's income is up to ₹2 lakh a year",
+        "hi": "माता-पिता या अभिभावक की सालाना आय ₹2 लाख तक है"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "about": "amount",
+      "source": "dept",
+      "quote": "रू0 150/- प्रति माह, अधिकतम् 10 माह हेतु एवं वार्षिक तदर्थ अनुदान रू0 750/- एकमुश्त, अधिकतम् रू0 2250/- वार्षिक"
+    },
+    {
+      "about": "limit",
+      "source": "dept",
+      "quote": "योजना फण्ड लिमिटेड होने के कारण विगत वर्षो की देनदारियां देय नहीं होती हैं"
+    }
+  ],
+  "documents": [],
+  "verification": {
+    "method": "ai-dual-review",
+    "reviewers": [
+      "ai-r3",
+      "ai-r4"
+    ],
+    "date": "2026-11-05",
+    "content_version": "378e591fa0ba5b66"
+  }
+}

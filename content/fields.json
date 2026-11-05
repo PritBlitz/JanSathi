@@ -390,6 +390,21 @@
       "type": "bool",
       "scope": "member",
       "icon": "🦽"
+    },
+    "passed_class_12": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "📘"
+    },
+    "has_artisan_card": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🧶"
+    },
+    "at_top_class_institute": {
+      "type": "bool",
+      "scope": "member",
+      "icon": "🏛️"
     }
   }
 }

@@ -1,0 +1,155 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "is_minority": false,
+      "family_marriage_planned": true,
+      "annual_income": 80000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "minority backward class",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "is_minority": true,
+      "family_marriage_planned": true,
+      "annual_income": 80000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "not_minority": "fail"
+      }
+    }
+  },
+  {
+    "name": "SC family has a different grant",
+    "profile": {
+      "state": "up",
+      "social_category": "sc",
+      "is_minority": false,
+      "family_marriage_planned": true,
+      "annual_income": 80000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "category": "fail"
+      }
+    }
+  },
+  {
+    "name": "no wedding planned",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "is_minority": false,
+      "family_marriage_planned": false,
+      "annual_income": 80000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "marriage_planned": "fail"
+      }
+    }
+  },
+  {
+    "name": "income 99,999",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "is_minority": false,
+      "family_marriage_planned": true,
+      "annual_income": 99999
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income exactly 1 lakh",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "is_minority": false,
+      "family_marriage_planned": true,
+      "annual_income": 100000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 100,001",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "is_minority": false,
+      "family_marriage_planned": true,
+      "annual_income": 100001
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "lives in another state: check with the office",
+    "profile": {
+      "state": "br",
+      "social_category": "obc",
+      "is_minority": false,
+      "family_marriage_planned": true,
+      "annual_income": 80000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "income missing",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "is_minority": false,
+      "family_marriage_planned": true
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "annual_income"
+      ]
+    }
+  }
+]

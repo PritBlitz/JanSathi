@@ -716,5 +716,8 @@
   "reminder.telegram_linked": "JanSathi reminders are on. Send /stop any time to end them.",
   "reminder.telegram_stopped": "JanSathi reminders are off, and this chat is no longer linked.",
   "reminder.telegram_link_failed": "This link has expired or was already used. Make a new one in the JanSathi app.",
-  "reminder.telegram_help": "To get reminders, open JanSathi, sign in and choose Telegram."
+  "reminder.telegram_help": "To get reminders, open JanSathi, sign in and choose Telegram.",
+  "q.passed_class_12": "Have you passed class 12?",
+  "q.has_artisan_card": "Do you have a handicraft artisan card from the Development Commissioner (Handicrafts)?",
+  "q.at_top_class_institute": "Do you study at an institute on the government's Top Class list for students with disabilities?"
 }

@@ -1,0 +1,173 @@
+[
+  {
+    "name": "passes every rule",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "passed_class_12": true,
+      "occupation": "unemployed",
+      "annual_income": 80000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE",
+      "stale": false,
+      "label": "uncertain"
+    }
+  },
+  {
+    "name": "general category",
+    "profile": {
+      "state": "up",
+      "social_category": "general",
+      "passed_class_12": true,
+      "occupation": "unemployed",
+      "annual_income": 80000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "category": "fail"
+      }
+    }
+  },
+  {
+    "name": "did not pass class 12",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "passed_class_12": false,
+      "occupation": "unemployed",
+      "annual_income": 80000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "class_12": "fail"
+      }
+    }
+  },
+  {
+    "name": "a student: check with the office",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "passed_class_12": true,
+      "occupation": "student",
+      "annual_income": 80000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "rules": {
+        "unemployed": "fail"
+      }
+    }
+  },
+  {
+    "name": "income 99,999",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "passed_class_12": true,
+      "occupation": "unemployed",
+      "annual_income": 99999
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income exactly 1 lakh",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "passed_class_12": true,
+      "occupation": "unemployed",
+      "annual_income": 100000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "income 100,001",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "passed_class_12": true,
+      "occupation": "unemployed",
+      "annual_income": 100001
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "income_max": "fail"
+      }
+    }
+  },
+  {
+    "name": "band up to 1 lakh passes",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "passed_class_12": true,
+      "occupation": "unemployed",
+      "annual_income": {
+        "min": 0,
+        "max": 100000
+      }
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "LIKELY_ELIGIBLE"
+    }
+  },
+  {
+    "name": "lives in another state",
+    "profile": {
+      "state": "br",
+      "social_category": "obc",
+      "passed_class_12": true,
+      "occupation": "unemployed",
+      "annual_income": 80000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NOT_ELIGIBLE",
+      "rules": {
+        "resident": "fail"
+      }
+    }
+  },
+  {
+    "name": "class 12 answer missing",
+    "profile": {
+      "state": "up",
+      "social_category": "obc",
+      "occupation": "unemployed",
+      "annual_income": 80000
+    },
+    "skipped": [],
+    "as_of": "2026-11-05",
+    "expect": {
+      "result": "NEED_MORE_INFO",
+      "missing_fields": [
+        "passed_class_12"
+      ]
+    }
+  }
+]

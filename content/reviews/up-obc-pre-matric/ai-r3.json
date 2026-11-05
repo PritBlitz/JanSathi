@@ -1,0 +1,19 @@
+{
+  "slug": "up-obc-pre-matric",
+  "reviewer": "ai-r3",
+  "reviewer_kind": "ai",
+  "date": "2026-11-05",
+  "content_version": "378e591fa0ba5b66",
+  "verdict": "approve",
+  "sources_checked": [
+    { "id": "dept", "content_hash": "sha256:ded1a258809cf181dbcd37e3e82a103635b48f873a9deef9056a77f1d76056ea", "method": "refetched" },
+    { "id": "dates_pre", "content_hash": "sha256:31fe1ff6c62c9875817b68fa2651225e7976c41e76aa96dd22143b6bc8cbac02", "method": "snapshot" }
+  ],
+  "newer_changes_search": "The department page matched and carries figures up to 2025-26. Press reports conflict on the limit for backward classes: July 2025 and October 2026 say ₹2.5 lakh, April 2026 says ₹2 lakh is current with ₹4 lakh proposed. No order found. The rule is 'guidance' and how_to_apply tells users to confirm the limit, so this is not a blocker. scholarship.up.gov.in failed on legacy TLS, not bypassed.",
+  "findings": [
+    { "target": "rule:income_max", "severity": "minor", "note": "A hard 'guidance' rule gives NOT_ELIGIBLE between ₹2 lakh and ₹2.5 lakh while press reports give ₹2.5 lakh. up-post-matric-general uses 'uncertain' for the same doubt.", "suggestion": "Use 'uncertain' here too." },
+    { "target": "rule:category", "severity": "minor", "note": "The quote is a navigation step. It shows the OBC option but is weak evidence.", "suggestion": "Quote the scheme's own objective." },
+    { "target": "rule:resident", "severity": "minor", "note": "The source needs a native of UP who also studies in UP; the rule text says only 'Lives in Uttar Pradesh'. The summary does state it.", "suggestion": "Align the rule text." },
+    { "target": "documents", "severity": "minor", "note": "No document rows, though the process refers to attachments.", "suggestion": "Add rows if a source lists them." }
+  ]
+}

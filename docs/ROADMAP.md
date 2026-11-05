@@ -20,7 +20,7 @@ Phases from the [project brief](PROJECT_BRIEF.md#12-roadmap). ✅ = done.
 - [ ] Postgres + pgvector schema and migrations ([DATA_MODEL.md](DATA_MODEL.md)) (accounts, reports and reminders are in PostgreSQL; scheme content stays as code, see "Improvements"; vectors are held in memory until a model is chosen)
 - [ ] Ingestion: fetch + snapshot + hash, extract, chunk, embed ([KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md))
 - [x] Admin UI (`#/admin`): moderation queues, helpers, staff, source status. Publishing stays in `tools/publish.mjs`, because content is code
-- [x] 49 published schemes (37 central, 12 Uttar Pradesh), en + hi, after two independent AI reviews (ai-r3, ai-r4 in the 2026-11-05 round). Earlier note: **28 central schemes written from official sources (2026-10-25) and all published after two independent AI reviews (19 on 2026-10-26, 9 on 2026-10-28; `ai-dual-review`). All 28 have Hindi content. A human review is still to come; no state chosen yet.**
+- [x] 54 published schemes (38 central, 16 Uttar Pradesh), en + hi, after two independent AI reviews (ai-r3, ai-r4 in the 2026-11-05 round). Earlier note: **28 central schemes written from official sources (2026-10-25) and all published after two independent AI reviews (19 on 2026-10-26, 9 on 2026-10-28; `ai-dual-review`). All 28 have Hindi content. A human review is still to come; no state chosen yet.**
 - [x] Spring Boot read API: `/api/v1/schemes`, `/schemes/{slug}`, `/categories`, `/search` (from the published bundle; database pending)
 - [x] Scheme detail page: summary, documents, apply link, sources with `verified_at` (a "When to apply" panel shows `deadlines` when recorded, otherwise the scheme's window type)
 - [x] Copy lint and locale key-parity checks in CI (`.github/workflows/ci.yml`)

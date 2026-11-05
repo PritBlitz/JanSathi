@@ -38,7 +38,7 @@ class ApiTest {
 		mvc.perform(get("/api/v1/schemes").param("lang", "hi"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.version").isString())
-				.andExpect(jsonPath("$.schemes.length()").value(37))
+				.andExpect(jsonPath("$.schemes.length()").value(38))
 				.andExpect(jsonPath("$.schemes[0].slug").isString())
 				// Published, so not stale; still uncertain because its rule is marked uncertain on purpose.
 				// Drafts and unverified sources are covered by rules/_engine.cases.json.

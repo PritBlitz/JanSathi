@@ -61,7 +61,7 @@ Many people who qualify for scholarships, pensions, health cover, housing or far
 |---|---|
 | 10-language UI (en, hi, bn, ta, te, mr, gu, kn, ml, pa) with voice in and out and icon tiles | Built. Machine-authored; awaiting native-speaker review. The staff admin tool is English only |
 | Eligibility questionnaire with three results and rule traces | Built (on-device rules engine) |
-| Knowledge base | 49 published schemes: 37 central and 12 Uttar Pradesh, each approved by two independent AI reviewers ("Checked by AI reviewers"; no person has checked them yet). |
+| Knowledge base | 54 published schemes: 38 central and 16 Uttar Pradesh, each approved by two independent AI reviewers ("Checked by AI reviewers"; no person has checked them yet). |
 | Scheme text in all 10 languages | English and Hindi are reviewed. The other 8 are machine translated, labelled, with a button to read the English |
 | State-specific "how to get it" for documents | Built for Uttar Pradesh, with official sources |
 | Source re-check | Daily job; a changed source shows users a "may be outdated" warning and opens an issue. Page counters are told apart from real changes |
