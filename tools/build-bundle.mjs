@@ -8,6 +8,7 @@ import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync, rmSync
 import { createHash } from 'node:crypto';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { citedSources } from './lib/quality.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const args = new Set(process.argv.slice(2));
@@ -24,6 +25,18 @@ const all = readdirSync(join(root, 'content/schemes'))
   .sort()
   .map((f) => readJson(`content/schemes/${f}`))
   .filter((s) => s.status !== 'archived' && (includeDrafts || s.status === 'published'));
+
+// What the daily re-check found (docs/KNOWLEDGE_BASE.md §5). Scheme files are not touched, because
+// any edit to one voids its reviews; the warning travels on the source in the bundle instead.
+const sourceStatus = existsSync(join(root, 'content/source-status.json')) ? readJson('content/source-status.json').sources : {};
+// A source nothing cites is only a link for the reader: its change can't make a fact out of date.
+for (const s of all) {
+  const cited = citedSources(s);
+  for (const src of s.sources) {
+    const st = sourceStatus[`${s.slug}/${src.id}`];
+    if (st?.status === 'changed' && cited.has(src.id)) src.changed_at = st.since;
+  }
+}
 
 const central = all.filter((s) => s.level !== 'state');
 const byState = {};
@@ -65,6 +78,43 @@ if (existsSync(stateDir) && !check) {
     if (f.endsWith(suffix) && (includeDrafts || !f.endsWith('.preview.json')) && !states[code]) rmSync(join(stateDir, f));
   }
 }
-emit(`bundle${suffix}`, { include_drafts: includeDrafts, fields, documents, states, schemes: central });
+// Machine-translated scheme text (content/translations): served as it is, one file per language.
+const trDir = join(root, 'content/translations');
+const translated = [];
+const english = (t) => (t && typeof t === 'object' ? t.en : t);
+const fresh = (key, text, tr) => text && tr.source_hash?.[key] === `sha256:${createHash('sha256').update(text, 'utf8').digest('hex')}`;
+function currentTranslations(tr) {
+  const schemes = {};
+  for (const s of all) {
+    const from = tr.schemes?.[s.slug];
+    if (!from) continue;
+    const out = {};
+    for (const k of ['name', 'summary', 'benefit', 'how_to_apply']) if (from[k] && fresh(`schemes.${s.slug}.${k}`, s.content.en[k], tr)) out[k] = from[k];
+    const rules = {};
+    for (const r of s.rules) if (from.rules?.[r.code] && fresh(`schemes.${s.slug}.rules.${r.code}`, english(r.text), tr)) rules[r.code] = from.rules[r.code];
+    if (Object.keys(rules).length) out.rules = rules;
+    if (Object.keys(out).length) schemes[s.slug] = out;
+  }
+  const docs = {};
+  for (const [code, d] of Object.entries(documents.documents)) {
+    const from = tr.documents?.[code];
+    if (!from) continue;
+    const out = {};
+    for (const k of ['name', 'how_to', 'office']) if (from[k] && fresh(`documents.${code}.${k}`, english(d[k]), tr)) out[k] = from[k];
+    if (Object.keys(out).length) docs[code] = out;
+  }
+  return { schemes, documents: docs };
+}
+if (existsSync(trDir)) {
+  for (const f of readdirSync(trDir).filter((x) => x.endsWith('.json'))) {
+    const tr = readJson(`content/translations/${f}`);
+    const served = currentTranslations(tr);
+    if (Object.keys(served.schemes).length) {
+      translated.push(f.replace('.json', ''));
+      if (!includeDrafts) emit(`translations/${f}`, served);
+    }
+  }
+}
+emit(`bundle${suffix}`, { include_drafts: includeDrafts, fields, documents, states, translations: translated, schemes: central });
 console.log(`${includeDrafts ? 'preview' : 'published'}: ${central.length} central schemes, ${Object.keys(states).length} states with ${all.length - central.length} state schemes`);
 if (stale) process.exit(1);

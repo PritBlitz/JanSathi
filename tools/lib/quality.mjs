@@ -34,11 +34,19 @@ export function snapshotText(contentHash) {
   return snapshotCache.get(hex);
 }
 
-/** Every quote a scheme makes: rule quotes and supporting facts. */
+/** Every source a scheme relies on. tools/publish.mjs verifies exactly these. */
+export function citedSources(scheme) {
+  const lists = [scheme.rules, scheme.facts, scheme.documents, scheme.deadlines, scheme.relations, scheme.changes];
+  return new Set(lists.flatMap((l) => (l || []).map((x) => x.source)).filter(Boolean));
+}
+
+/** Every quote a scheme makes: rules, facts, deadlines and relations. */
 export function quotesOf(scheme) {
   const out = [];
   for (const r of scheme.rules || []) out.push({ where: `rule ${r.code}`, source: r.source, quote: r.quote });
   for (const [i, f] of (scheme.facts || []).entries()) out.push({ where: `fact ${i} (${f.about || ''})`, source: f.source, quote: f.quote });
+  for (const [i, d] of (scheme.deadlines || []).entries()) out.push({ where: `deadline ${i}`, source: d.source, quote: d.quote });
+  for (const [i, r] of (scheme.relations || []).entries()) out.push({ where: `relation ${i}`, source: r.source, quote: r.quote });
   return out;
 }
 

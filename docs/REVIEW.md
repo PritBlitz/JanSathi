@@ -42,7 +42,7 @@ One file per reviewer per scheme: `content/reviews/<slug>/<reviewer>.json` (revi
 
 - `verdict`: `approve` (no blockers) or `changes_requested`.
 - `severity`: `blocker` (wrong rule or amount, unofficial or outdated source, quote not found, promise language, discontinued scheme) or `minor`.
-- `method`: `refetched` (fetched again and hash matched), `snapshot` (host blocks bots; checked against the saved text), `changed` (the live source differs from the recorded hash: always a blocker).
+- `method`: `refetched` (fetched again and hash matched), `snapshot` (host blocks bots; checked against the saved text), `changed` (the live source differs from the recorded hash: always a blocker), `counters_only` (`ingest/recheck.py` finds that only numbers differ, such as running totals or a footer build label, and a reviewer confirms no quoted text moved: not a blocker).
 
 ## 4. Publishing
 

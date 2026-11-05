@@ -5,7 +5,7 @@
 // Usage: node tools/publish.mjs [--dry-run]
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { root, allSchemes, reviewStatus, verifyQuotes } from './lib/quality.mjs';
+import { root, allSchemes, citedSources, reviewStatus, verifyQuotes } from './lib/quality.mjs';
 
 const dry = process.argv.includes('--dry-run');
 let published = 0;
@@ -31,7 +31,7 @@ for (const { file, scheme } of allSchemes()) {
       date,
       content_version: r.version,
     };
-    const cited = new Set([...scheme.rules.map((x) => x.source), ...(scheme.facts || []).map((x) => x.source), ...(scheme.documents || []).map((x) => x.source)]);
+    const cited = citedSources(scheme);
     for (const s of scheme.sources) {
       if (cited.has(s.id)) {
         s.verified_at = date;

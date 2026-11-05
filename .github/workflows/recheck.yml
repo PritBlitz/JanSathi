@@ -1,6 +1,8 @@
 # Daily: re-fetch every official source (robots.txt respected, 5 s per host), compare its hash
 # with the one recorded in content/, and open an issue when a source changed or could not be
-# fetched (docs/KNOWLEDGE_BASE.md §5). It never edits content: a reviewer reads the change.
+# fetched, or a scheme is past its re-verification interval (docs/KNOWLEDGE_BASE.md §5).
+# It never edits scheme files. It commits only content/source-status.json and the rebuilt bundle,
+# which can add a "may be outdated" warning; a reviewer reads the change itself.
 name: Source re-check
 
 on:
@@ -9,7 +11,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   issues: write
 
 jobs:
@@ -28,6 +30,19 @@ jobs:
           python -I ingest/recheck.py > recheck.txt 2>&1
           echo "code=$?" >> "$GITHUB_OUTPUT"
           cat recheck.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Publish the warnings
+        run: |
+          npm run build
+          git add content/source-status.json frontend/public/data
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Source re-check: update warnings"
+            git push
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: recheck-report
@@ -39,8 +54,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           {
-            echo "The daily re-check found official sources that changed or could not be fetched."
-            echo "A reviewer must read each change and update the scheme (docs/REVIEW.md)."
+            echo "The daily re-check found official sources that changed or could not be fetched, or schemes past their re-verification interval ([   due] lines)."
+            echo "A reviewer must read each one and update the scheme (docs/REVIEW.md), or dismiss a harmless change with recheck.py --dismiss."
             echo
             echo '```'
             tail -n 80 recheck.txt
@@ -48,7 +63,7 @@ jobs:
             echo
             echo "Full report: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           } > body.md
-          gh issue create --title "Source re-check $(date -u +%F): sources changed" --label source-changed --body-file body.md \
-            || gh issue create --title "Source re-check $(date -u +%F): sources changed" --body-file body.md
+          gh issue create --title "Source re-check $(date -u +%F): needs a reviewer" --label source-changed --body-file body.md \
+            || gh issue create --title "Source re-check $(date -u +%F): needs a reviewer" --body-file body.md
       - if: steps.run.outputs.code == '2'
         run: exit 1

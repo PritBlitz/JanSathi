@@ -5,7 +5,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateLogic } from '../frontend/src/lib/rules.js';
-import { verifyQuotes, reviewStatus } from './lib/quality.mjs';
+import { citedSources, verifyQuotes, reviewStatus, normaliseForQuote, snapshotText } from './lib/quality.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const readJson = (p) => JSON.parse(readFileSync(join(root, p), 'utf8'));
@@ -52,6 +52,17 @@ for (const [code, d] of Object.entries(documents)) {
   bilingual(`documents.${code}.name`, d.name);
   bilingual(`documents.${code}.how_to`, d.how_to);
   if (d.source && !DOC_TYPES.includes(d.source.doc_type)) err(`documents.${code}`, `unknown doc_type ${d.source.doc_type}`);
+  // State-specific steps carry their own source, and its quote must be in the saved copy.
+  for (const [state, h] of Object.entries(d.how_to_by_state || {})) {
+    const at = `documents.${code}.how_to_by_state.${state}`;
+    bilingual(`${at}.how_to`, h.how_to);
+    if (!h.source?.url || !h.source.quote) err(at, 'needs a source with a url and a quote');
+    else {
+      const text = snapshotText(h.source.content_hash);
+      if (text === null) err(at, 'no snapshot for its source');
+      else if (!text.includes(normaliseForQuote(h.source.quote))) err(at, `quote not found: "${h.source.quote.slice(0, 60)}"`);
+    }
+  }
 }
 
 // schemes
@@ -129,7 +140,7 @@ for (const file of files) {
   for (const p of verifyQuotes(s).filter((x) => !x.includes('no snapshot'))) err(at, p);
 
   if (s.status === 'published') {
-    const used = new Set([...(s.rules || []).map((r) => r.source), ...(s.documents || []).map((d) => d.source), ...(s.facts || []).map((f) => f.source)]);
+    const used = citedSources(s);
     for (const id of used) {
       const src = sources.get(id);
       if (src && (!src.verified_at || !src.fetched_at || !src.content_hash)) {
@@ -141,6 +152,19 @@ for (const file of files) {
     if (!s.verification) err(at, 'a published scheme needs a verification record (run tools/publish.mjs)');
     else if (s.verification.content_version !== rs.version) err(at, 'content changed after publication: set status needs_review (tools/publish.mjs does this)');
     if (!rs.approved && s.verification?.content_version === rs.version) err(at, 'a published scheme needs two approving reviews of its current content');
+  }
+}
+
+// The re-check's status file must point at real sources.
+if (existsSync(join(root, 'content/source-status.json'))) {
+  const entries = JSON.parse(readFileSync(join(root, 'content/source-status.json'), 'utf8')).sources;
+  for (const [key, st] of Object.entries(entries)) {
+    const [slug, id] = key.split('/');
+    const file = join(root, 'content/schemes', `${slug}.json`);
+    if (!existsSync(file) || !JSON.parse(readFileSync(file, 'utf8')).sources.some((x) => x.id === id)) err(`source-status ${key}`, 'no such source');
+    if (!['changed', 'dismissed', 'manual_check'].includes(st.status)) err(`source-status ${key}`, `unknown status ${st.status}`);
+    if (!ISO_DATE.test(st.since || '')) err(`source-status ${key}`, 'since must be YYYY-MM-DD');
+    if (st.status === 'dismissed' && !(st.note && st.by && st.stable_hash)) err(`source-status ${key}`, 'a dismissal needs note, by and stable_hash');
   }
 }
 

@@ -12,10 +12,18 @@ Usage:
                                            # write fetched_at + content_hash for that scheme
   python ingest/recheck.py --hash-file page.html
                                            # hash a copy you fetched by hand (same normalisation)
+  python ingest/recheck.py --dismiss pm-kisan/portal --by NAME --note "only the instalment news changed"
+                                           # a reviewer read the change and no fact is affected
   add --snapshot to any of these to save the extracted text to content/snapshots/<hash>.txt
   (PDF text needs PyMuPDF: run with `python -E -P` so the user site-packages are visible)
 
-Exit code: 0 if nothing changed, 1 if any source changed or failed, 2 on usage errors.
+A check of all schemes also writes content/source-status.json: what the build needs to warn users
+(a cited source that changed makes its scheme stale in both engines) without editing scheme files,
+because any edit to one voids its reviews. Sources whose host's robots.txt forbids us are recorded
+as manual_check, not errors: a person looks at them, and they are never fetched.
+
+Exit code: 0 if nothing needs a person, 1 if a source changed or failed or a scheme is past its
+re-verification interval, 2 on usage errors.
 Only the standard library is needed (PyMuPDF is optional, for PDF snapshots). This job never
 sets verified_at: tools/publish.mjs does, after two independent reviews (docs/REVIEW.md).
 """
@@ -39,6 +47,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SCHEMES = ROOT / "content" / "schemes"
 REPORTS = ROOT / "ingest" / "reports"
 SNAPSHOTS = ROOT / "content" / "snapshots"
+STATUS_FILE = ROOT / "content" / "source-status.json"
+DEFAULT_REVERIFY_DAYS = 180
 USER_AGENT = "JanSathi-bot/0.1 (+https://github.com/PritBlitz/JanSathi)"
 DELAY_SECONDS = 5.0
 TIMEOUT = 60
@@ -134,6 +144,86 @@ def fetch(url: str) -> tuple[bytes, str]:
         return resp.read(), resp.headers.get("Content-Type", "")
 
 
+def stable_hash(text: str) -> str:
+    """Hash of a page without its numbers: running totals and dates change daily and mean nothing."""
+    words = re.sub(r"\d[\d,./:-]*", " ", text)
+    return "sha256:" + hashlib.sha256(" ".join(words.split()).encode("utf-8")).hexdigest()
+
+
+def recorded_stable_hash(content_hash_value: str | None) -> str | None:
+    """stable_hash of the snapshot reviewers read, if there is one."""
+    if not content_hash_value:
+        return None
+    path = SNAPSHOTS / f"{content_hash_value.split(':', 1)[-1]}.txt"
+    return stable_hash(path.read_text(encoding="utf-8")) if path.exists() else None
+
+
+def next_entry(previous: dict | None, result: dict, today: str) -> dict | None:
+    """The source-status entry after a check. None removes it. Pure, so it can be tested."""
+    status = result["status"]
+    if status == "failed":
+        return previous  # a bad day at the host says nothing about the page
+    if status == "disallowed_by_robots":
+        since = previous["since"] if previous and previous["status"] == "manual_check" else today
+        return {"status": "manual_check", "since": since}
+    if status == "changed":
+        if previous and previous["status"] == "dismissed" and previous["stable_hash"] == result.get("stable_hash"):
+            return previous
+        since = previous["since"] if previous and previous["status"] == "changed" else today
+        return {"status": "changed", "since": since}
+    return None  # unchanged, counters_only, manual, new
+
+
+def reverify_due(scheme: dict, today: dt.date) -> list[str]:
+    """Hard-rule sources past the scheme's interval: the same test as RULES_ENGINE §9.5."""
+    if scheme.get("status") != "published":
+        return []
+    days = scheme.get("reverify_days", DEFAULT_REVERIFY_DAYS)
+    sources = {s.get("id"): s for s in scheme.get("sources", [])}
+    due = []
+    for rule in scheme.get("rules", []):
+        src = sources.get(rule.get("source"), {})
+        verified = src.get("verified_at")
+        if rule.get("hard") and verified and (today - dt.date.fromisoformat(verified[:10])).days > days and src["id"] not in due:
+            due.append(src["id"])
+    return due
+
+
+def load_status() -> dict:
+    if STATUS_FILE.exists():
+        return json.loads(STATUS_FILE.read_text(encoding="utf-8"))
+    return {
+        "$comment": "Written by ingest/recheck.py; do not edit by hand. docs/KNOWLEDGE_BASE.md section 5.",
+        "sources": {},
+    }
+
+
+def save_status(status: dict) -> None:
+    status["sources"] = dict(sorted(status["sources"].items()))
+    STATUS_FILE.write_text(json.dumps(status, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+
+
+def dismiss(key: str, by: str, note: str) -> int:
+    """A reviewer read the change and no fact depends on it. Holds until the words change again."""
+    slug, _, source_id = key.partition("/")
+    _, scheme = load(slug)
+    src = next((s for s in scheme.get("sources", []) if s.get("id") == source_id), None)
+    if src is None:
+        sys.exit(f"no such source: {key}")
+    if not robots_allows(src["url"]):
+        sys.exit(f"{key}: robots.txt forbids fetching this page")
+    body, ctype = fetch(src["url"])
+    text = extract_text(body, ctype)
+    if not text:
+        sys.exit(f"{key}: no text to compare")
+    status = load_status()
+    today = dt.date.today().isoformat()
+    status["sources"][key] = {"status": "dismissed", "since": today, "stable_hash": stable_hash(text), "by": by, "note": note}
+    save_status(status)
+    print(f"dismissed {key}")
+    return 0
+
+
 def check_source(src: dict, snapshot: bool = False) -> dict:
     url = src.get("url")
     result = {"id": src.get("id"), "url": url, "recorded": src.get("content_hash")}
@@ -158,6 +248,11 @@ def check_source(src: dict, snapshot: bool = False) -> dict:
         status = "unchanged"
     else:
         status = "changed"
+        text = extract_text(body, ctype)
+        if text:
+            result["stable_hash"] = stable_hash(text)
+            if result["stable_hash"] == recorded_stable_hash(src["content_hash"]):
+                status = "counters_only"
     return {**result, "status": status, "hash": new}
 
 
@@ -174,7 +269,15 @@ def main() -> int:
     ap.add_argument("--update", metavar="SLUG", help="write fetched_at and content_hash for this scheme")
     ap.add_argument("--hash-file", metavar="PATH", help="print the content hash of a local file and exit")
     ap.add_argument("--snapshot", action="store_true", help="save extracted text to content/snapshots/<hash>.txt")
+    ap.add_argument("--dismiss", metavar="SLUG/SOURCE", help="record that a reviewer read this change and no fact is affected")
+    ap.add_argument("--by", help="who dismissed it (with --dismiss)")
+    ap.add_argument("--note", help="why it is safe (with --dismiss)")
     args = ap.parse_args()
+
+    if args.dismiss:
+        if not args.by or not args.note:
+            ap.error("--dismiss needs --by and --note")
+        return dismiss(args.dismiss, args.by, args.note)
 
     if args.hash_file:
         body = Path(args.hash_file).read_bytes()
@@ -187,18 +290,31 @@ def main() -> int:
 
     slugs = [args.update] if args.update else (args.slugs or sorted(p.stem for p in SCHEMES.glob("*.json")))
     today = dt.date.today().isoformat()
-    report = {"run_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "schemes": {}}
+    report = {"run_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "schemes": {}, "reverify_due": {}}
     problems = 0
+    status = load_status()
 
     for slug in slugs:
         path, scheme = load(slug)
         results = [check_source(s, args.snapshot) for s in scheme.get("sources", [])]
         report["schemes"][slug] = results
         for r in results:
-            mark = {"unchanged": "ok", "new": "new", "manual": "manual"}.get(r["status"], "!!")
-            print(f"[{mark:>6}] {slug}/{r['id']}: {r['status']} {r.get('error', '')}".rstrip())
-            if r["status"] in ("changed", "failed", "disallowed_by_robots"):
+            key = f"{slug}/{r['id']}"
+            entry = next_entry(status["sources"].get(key), r, today)
+            if entry is None:
+                status["sources"].pop(key, None)
+            else:
+                status["sources"][key] = entry
+            shown = entry["status"] if entry and r["status"] in ("changed", "disallowed_by_robots") else r["status"]
+            mark = {"unchanged": "ok", "counters_only": "ok", "dismissed": "ok", "new": "new", "manual": "manual", "manual_check": "manual"}.get(shown, "!!")
+            print(f"[{mark:>6}] {key}: {shown} {r.get('error', '')}".rstrip())
+            if shown in ("changed", "failed"):
                 problems += 1
+        due = reverify_due(scheme, dt.date.today())
+        if due:
+            report["reverify_due"][slug] = due
+            print(f"[   due] {slug}: past its re-verification interval ({', '.join(due)})")
+            problems += 1
         if args.update:
             by_id = {r["id"]: r for r in results}
             for src in scheme["sources"]:
@@ -209,6 +325,8 @@ def main() -> int:
             path.write_text(json.dumps(scheme, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
             print(f"updated {path.relative_to(ROOT)} (verified_at is unchanged; a reviewer sets it)")
 
+    if not args.update:
+        save_status(status)
     REPORTS.mkdir(parents=True, exist_ok=True)
     out = REPORTS / f"recheck-{today}.json"
     out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
