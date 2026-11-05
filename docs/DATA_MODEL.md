@@ -1,6 +1,6 @@
 # Data model
 
-> **Status (2026-10-25):** only the `report` table exists (Flyway `V1__reports.sql`, PostgreSQL in production, H2 in PostgreSQL mode locally and in tests). Schemes, rules, sources and documents are still files in `content/`, served from the generated bundle. Everything else here is **planned**. Target: PostgreSQL 15+ with `pgvector` (Supabase or Neon). Types below are Postgres types.
+> **Status (updated 2026-11-04):** the tables that exist are `report` (Flyway V1); `app_user`, `otp_challenge`, `auth_session`, `user_data`, `guide_message`, `case_share`, `case_note`, `audit_log` (V2); and `push_subscription` (V3): PostgreSQL in production, H2 in PostgreSQL mode locally and in tests. The household, checklist and application tracking are one encrypted JSON document in `user_data`, not the separate tables described below. What the daily re-check finds is in `content/source-status.json` (KNOWLEDGE_BASE §5). Schemes, rules, sources and documents are still files in `content/`, served from the generated bundle. Everything else here is **planned**. Target: PostgreSQL 15+ with `pgvector` (Supabase or Neon). Types below are Postgres types.
 
 ## 1. Conventions
 
@@ -194,7 +194,7 @@ Index: `hnsw (embedding vector_cosine_ops)`, plus btree on `(source_id)` and `(l
 
 ### 3.2 User side
 
-All optional. The default MVP mode keeps the profile on the device (IndexedDB) and sends coarse bands only when matching. These tables are used only when the user opts in to sync or reminders.
+All optional. The default MVP mode keeps the profile on the device (`localStorage`) and sends coarse bands only when matching. These tables are used only when the user opts in to sync or reminders.
 
 #### `user_profile`
 | Column | Type | Notes |

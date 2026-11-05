@@ -1,6 +1,6 @@
 # Architecture
 
-> **Status (2026-10-25):** built: the React PWA (`frontend/`) with the on-device rules engine; the content files (`content/`); shared rule fixtures (`rules/`); the source re-check script (`ingest/recheck.py`); and the Spring Boot API (`backend/`) with the Java rules engine and the endpoints marked *built* in §5, a PostgreSQL/H2 database (Flyway) for the report queue, the assistant with an optional LLM behind `LlmProvider`, CI and a Docker image. The API reads scheme content from the published bundle files. pgvector retrieval, the ML service, reminders and the volunteer portal are **planned**.
+> **Status (updated 2026-11-05):** built: everything in the README feature table, including `ml/` (real Hugging Face models in Docker), reminder channels, staff accounts, the admin UI and speech endpoints. Sections below marked planned that disagree with this line are older design notes. Scheme content remains files in `content/` served from the bundle; PostgreSQL holds people's data, reports and audit logs; embeddings are held in memory. Runbook: [OPERATIONS.md](OPERATIONS.md).
 > **Backend decision (2026-10-24):** the main backend is **Spring Boot** (Java). The ML models in the stack (embeddings, IndicTrans2, Whisper, OCR) and the ingestion tools are Python-only, so they run as a separate internal Python service and a Python batch job, called through the provider interfaces in §6.
 
 ## 1. Design goals
@@ -68,10 +68,10 @@
 | **API** (`backend/`) | Java 25, Spring Boot 4.1 | Public API: schemes, matching, assistant, checklist, reminders, reports, volunteer sessions, reviewer admin. Owns all database writes except ingestion snapshots. | Read, match, checklist, search, ask (retrieval), reports built; the rest planned |
 | **Rules engine** | Java (in `backend/`) + JS (in `frontend/`) | Evaluates json-logic rules against a profile and returns a three-state result with a trace. Both implement RULES_ENGINE §9 directly (no stock json-logic library) and pass the same fixtures. See [RULES_ENGINE.md](RULES_ENGINE.md). | Built |
 | **RAG service** | Java (in `backend/`) | Retrieves verified chunks, asks the LLM to explain, validates citations, attaches the confidence label. See [RAG_ASSISTANT.md](RAG_ASSISTANT.md). | Planned |
-| **ML service** (`ml/`) | Python | Stateless HTTP wrapper around local models: embeddings, translation, STT, TTS, OCR. Internal network only; authenticated with a shared service token. | Planned |
+| **ML service** (`ml/`) | Python | Stateless HTTP wrapper around local models: embeddings, translation, STT, TTS, OCR. Internal network only; authenticated with a shared service token. | `/v1/embed` skeleton built (see `ml/README.md`); the rest planned |
 | **Ingestion** (`ingest/`) | Python | Fetches official pages and PDFs, extracts text, chunks and embeds, writes `source` snapshots and `chunk` rows, opens review tasks. Also runs the daily re-check. | Planned |
 | **Knowledge base** | PostgreSQL + pgvector | Schemes, rules, sources, documents, deadlines, chunks. See [DATA_MODEL.md](DATA_MODEL.md) and [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md). | Planned |
-| **Reviewer UI** | Served by `backend/` (`/admin`) | Verify sources, encode rules, approve translations, publish | Planned |
+| **Admin UI** | `#/admin` in the PWA, `/api/v1/admin/**` |  Verify sources, encode rules, approve translations, publish | Planned |
 | **Volunteer portal** | `backend/` + `frontend/` | Consent-scoped, time-limited cases shared by code or help request, audit log the person can read, Saathi assisting helpers. See [PRIVACY_AND_SECURITY.md](PRIVACY_AND_SECURITY.md). | Built (2026-10-26) |
 | **Saathi, the AI guide** | `backend/` (`guide/`) + `frontend/` | Talks with each signed-in person, asks the questionnaire, records answers, explains results with sources; tools only, never decides. | Built (2026-10-26) |
 
@@ -138,7 +138,7 @@ All paths are under `/api/v1`. JSON is snake_case; errors are problem+json.
 | `POST /match` | Three-state results for a profile; rejects fields not in fields.json. **Built** (households planned) |
 | `POST /ask` | Cited answer: keyword retrieval → optional LLM explanation → validation (RAG_ASSISTANT §5) → `answered`, `sources_only` or `not_found`. **Built** (pgvector later) |
 | `POST /checklist` | De-duplicated document list for selected schemes, with how-to-obtain. **Built** (per-state guidance planned) |
-| `POST /reminders` / `DELETE /reminders/{id}` | Opt in / out of reminders |
+| `GET /reminders/push-key`, `PUT` / `DELETE /me/reminders/push` | *Built.* VAPID key (null when off); opt in / out, one browser per person, signed in only |
 | `POST /reports` | "Report outdated info", stored in the `report` table with personal numbers removed. **Built** |
 | `GET /admin/reports`, `POST /admin/reports/{id}/resolve` | Moderation queue; bearer token (`JANSATHI_ADMIN_TOKEN`) until per-person sign-in exists. **Built** |
 | `POST /auth/code`, `POST /auth/verify`, `POST /auth/sign-out` | Phone + one-time code sign-in (SmsSender; `dev` shows the code). **Built** |
@@ -224,7 +224,7 @@ The ML service's own API is versioned (`/v1/embed`, …) and documented in `ml/R
 
 Base package: `org.jansathi` (`in.jansathi` is not allowed because `in` is a Java keyword).
 
-## 8. Deployment (planned)
+## 8. Deployment (built as Docker Compose, see OPERATIONS.md; never yet run on a public host)
 
 | Piece | Where |
 |---|---|

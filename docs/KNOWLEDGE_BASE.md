@@ -1,6 +1,6 @@
 # Knowledge base
 
-> **Status (2026-10-25):** content lives as reviewed files in `content/` (not yet a database); `ingest/recheck.py` re-fetches and hashes sources and runs daily in GitHub Actions (`.github/workflows/recheck.yml`), opening an issue when a source changes; "Report outdated info" goes to the API's `report` table (`POST /api/v1/reports`, moderated via `/api/v1/admin/reports`). Chunking, embeddings and the reviewer UI are **planned**.
+> **Status (updated 2026-11-04):** content lives as reviewed files in `content/` (not yet a database); `ingest/recheck.py` re-fetches and hashes sources and runs daily in GitHub Actions (`.github/workflows/recheck.yml`), writing `content/source-status.json` (§5) and opening an issue when a person is needed; "Report outdated info" goes to the API's `report` table (`POST /api/v1/reports`, moderated via `/api/v1/admin/reports`). Chunking, embeddings and the reviewer UI are **planned**.
 
 The knowledge base is the verified, structured store of schemes, rules, documents, deadlines and their sources. Nothing reaches a user unless a human reviewer has checked it against an official source.
 
@@ -81,14 +81,24 @@ Every fact shown to a user, in the UI or in an assistant answer, carries a citat
 
 ## 5. Re-check job
 
-Runs daily (GitHub Actions cron or `pg_cron`):
+Runs daily (`.github/workflows/recheck.yml`). Scheme files are never edited by the job: any edit to one voids its reviews and demotes it (REVIEW.md §1). What it finds goes in `content/source-status.json`, which `tools/build-bundle.mjs` merges into the bundle.
 
-1. For each source of a `published` scheme, fetch with the same rules as ingestion.
-2. Normalise the text (strip navigation, timestamps, whitespace) and hash it. Normalisation avoids false alarms from page chrome.
-3. **Hash changed** → set the scheme to `needs_review`, open a `review_task(kind = source_changed)` with a text diff, and keep serving the old content with the "may be outdated" warning.
-4. **Fetch failed** (404, moved) three runs in a row → same as changed, with the reason recorded.
-5. **Past interval:** if `now - verified_at > scheme.reverify_days` (default 180 days; 30 days during an open application window) → open a `review_task(kind = reverify_due)` and mark the facts stale.
-6. A reviewer re-verifies: either confirms nothing material changed (updates `verified_at`, new hash) or edits rules/content and goes through the second check again.
+1. For each source, respect `robots.txt`, fetch politely, normalise and hash. Sources marked `fetch: manual` are skipped.
+2. **Same hash:** nothing to do; any earlier entry for the source is removed.
+3. **Hash differs, but only numbers differ** from the saved snapshot (`counters_only`): portal running totals and "as on" dates. Not a change.
+4. **Words differ** → status `changed`, and the issue opens. If anything in the scheme cites that source, the bundle gets `changed_at` on the source, both engines mark the scheme stale (RULES_ENGINE §9.5), its label becomes `uncertain`, and users see the "may be outdated" warning. The old content stays. This is what the brief calls `needs_review`; the scheme file's own `status` only changes when a reviewer acts. A source nothing cites gets an issue but no warning, because no fact rests on it.
+5. **`robots.txt` forbids us** → status `manual_check`. It isn't fetched, isn't an error and shows no warning; a person checks it, and the re-verification interval still applies.
+6. **Fetch failed** → in the issue, with no change to the status: a bad day at a government host says nothing about the page.
+7. **Past interval:** if `now - verified_at > scheme.reverify_days` (default 180) for a hard rule's source, the job prints a `[   due]` line and the issue opens. The engines already mark such a scheme stale.
+8. The workflow commits `source-status.json` and the rebuilt bundle, so a warning reaches the static site on the next deploy and the API on its next build.
+
+A reviewer then either updates the scheme through REVIEW.md, or reads the change, finds no fact affected, and runs:
+
+```bash
+python ingest/recheck.py --dismiss pm-kisan/portal --by NAME --note "only the instalment news changed"
+```
+
+A dismissal records a hash of the page without its numbers, so it holds until the words change again. It verifies nothing: `verified_at` is still set only by `tools/publish.mjs`.
 
 ## 6. User reports
 

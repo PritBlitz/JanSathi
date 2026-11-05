@@ -1,6 +1,6 @@
 # Languages and voice
 
-> **Status:** the UI i18n and browser speech in §1–§5.2 are built (`frontend/src/lib/i18n.js` and its React provider `i18n-context.jsx`, `frontend/src/lib/speech.js` and its hooks `use-speech.js`), with all 10 locale files and `frontend/public/locales/review-status.json`; `npm run check:locales` checks key parity. The 9 non-English locales are machine-authored and unreviewed, and 32 newer keys still hold the English text (`untranslated_keys` in `review-status.json`). Server-side speech, content translation and the review tooling (§5.3, §6) are planned.
+> **Status:** the UI i18n and browser speech in §1–§5.2 are built (`frontend/src/lib/i18n.js` and its React provider `i18n-context.jsx`, `frontend/src/lib/speech.js` and its hooks `use-speech.js`), with all 10 locale files and `frontend/public/locales/review-status.json`; `npm run check:locales` checks key parity. The 9 non-English locales are machine-authored and unreviewed; none holds English placeholders today (`untranslated_keys` in `review-status.json` are empty). Server speech (`/api/v1/speech/*`, off by default) and machine translation of scheme content (`content/translations/`) are built and measured (§5.3, §6); the app's use of server speech is up to the frontend. Review tooling for translations is planned.
 
 ## 1. Supported languages
 
@@ -85,15 +85,27 @@ Uses the browser `SpeechRecognition` (`webkitSpeechRecognition`) through `listen
 
 ### 5.3 Voice coverage and fallbacks
 
-Browser voices vary by device. Several Indic languages have no voice on desktop browsers. Planned fallbacks:
+Browser voices vary by device, and several Indic languages have no voice on desktop browsers. Fallbacks:
 
-| Gap | Planned fallback |
-|---|---|
-| No browser TTS voice | Server TTS: Piper or AI4Bharat Indic-TTS, via `/tts`, cached per text hash |
-| No browser speech recognition | Server STT: IndicWhisper / Whisper, via `/stt` (audio is processed and deleted, never stored) |
-| Offline | Pre-generated audio for fixed UI strings (tiles, questionnaire) cached by the service worker |
+| Gap | Fallback | Status |
+|---|---|---|
+| No browser TTS voice | Server voices: `POST /api/v1/speech/tts`, MMS through `ml/`, all 10 languages | Built, off by default. **MMS is CC-BY-NC: non-commercial** |
+| No browser speech recognition | `POST /api/v1/speech/stt?lang=hi`, Whisper small through `ml/` | Built, off by default. **English, Hindi and Tamil only** |
+| Offline | Pre-generated audio for fixed UI strings, cached by the service worker | Planned |
 
-The client picks: browser first → server fallback (if online and the user allows sending audio) → text only.
+The client picks: browser first, then server (if online and the user allows sending audio), then text only.
+
+**API** (no sign-in needed; 20 requests a minute per address, 2 running at once):
+
+- `GET /api/v1/speech/status`: `{"tts":["en","hi",…],"stt":["en","hi","ta"]}`. Both empty when speech is off or the service is down, so the app knows to stay on browser speech.
+- `POST /api/v1/speech/tts` with `{"text":"…","lang":"hi"}`, up to 1000 characters: `audio/wav`.
+- `POST /api/v1/speech/stt?lang=hi` with the recording as the raw body (`audio/*`, up to 5 MB, 60 seconds): `{"text":"…"}`.
+
+Errors are problem+json: 400 bad input, 413 too large, 415 not audio, 429 over the limit, 503 off, down or busy. A 503 means fall back, not retry. Audio and text pass through memory only: they are never stored or logged, and responses are `no-store`.
+
+**Why three languages for speech input.** We synthesised the app's own sentences and transcribed them back (`ml/roundtrip.py`, character error rate, lower is better; above 1 means more text was invented than was said): en 0.06, ta 0.12, hi 0.19, mr 0.74, ml 0.99, pa 1.27, kn 1.39, te 1.45, gu 1.46, bn 1.62. In the last group Whisper small writes nonsense, sometimes in another script (Bengali comes back as Telugu). `ML_STT_LANGS` can add languages, but a wrong transcript is worse than the typing box. This test uses a synthetic voice, so it compares languages and proves the pipeline; **it is not accuracy on real speech**, which is untested. Better Indic recognition (IndicWhisper, a larger Whisper on a bigger machine) is the next step.
+
+Numbers: MMS voices cannot read digits, so `₹6,000` becomes words in Hindi, English and Bengali, and digit by digit in the other languages. Whisper often garbles a spoken amount ("छह हज़ार" came back as "चे हजे"), so people must check a transcribed number before relying on it.
 
 ## 6. Translation review
 
@@ -106,13 +118,14 @@ The current translations of the UI strings were machine-authored and **need nati
 3. Checks: meaning, simple wording (grade 5), the copy rules in their language, consistent terms (e.g. one word for "scheme"), and fit in the layout.
 4. Reviewed keys are recorded in `frontend/public/locales/review-status.json` (planned) with reviewer and date.
 
-### Scheme content (planned, Phase 6)
+### Scheme content
 
-1. IndicTrans2 translates reviewed English/Hindi content into the other languages.
-2. Results are cached in `scheme_translation` with `machine_translated = true`.
-3. Machine-translated content is shown with a small "machine translated" note until a reviewer approves it (`reviewed_by`, `reviewed_at`).
-4. Amounts, dates and scheme names are protected from translation (placeholder masking) and checked after translation.
-5. If the source content changes, its translations go back to `machine_translated = true` and are re-queued for review.
+Built: see [content/translations/README.md](../content/translations/README.md). `tools/translate-content.mjs` translates English scheme and document text into `content/translations/<lang>.json` for the 8 languages without reviewed text, through `/v1/translate`.
+
+1. These files are separate from the reviewed scheme files; rules and logic are never touched. The app overlays them for display and labels the scheme as machine translated.
+2. Each field stores the hash of its English source. Changed English removes that field on the next run, and only what is new or changed is sent to the model.
+3. Amounts and numbers must match the English exactly, URLs and acronyms are masked and restored, and banned phrases are rejected in each language. A field that fails stays out, and English shows instead.
+4. Planned: native-speaker review (`reviewed_by`, `reviewed_at`) before the "machine translated" note can go, and an API copy of these files. Nothing here has been reviewed by a speaker of these languages.
 
 ### Banned phrases in every language
 

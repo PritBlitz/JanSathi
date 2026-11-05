@@ -1,7 +1,8 @@
 # JanSathi — Design System
 
-> **Status:** v0.3, draft. This is the visual and interaction spec for the JanSathi frontend. It sits alongside the product brief ([docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md)). When this file and a product rule disagree, the product rule wins (see §1).
-> **Built so far (2026-10-25, React redesign):** the "Neel" palette (§3), type and layout tokens (§4–§5) in `frontend/src/styles/tokens.css`; the hero with per-locale width fit (§6, unchanged anatomy, abstract collage placeholder until licensed photos exist); and every §7 pattern: marquee strip, scroll-lit manifesto, big-number stats, sticky storytelling, index list, trust band, call-to-action band, full-bleed footer, plus the in-app theme switch (system / light / dark). Inner pages (questionnaire, results, scheme detail bento, checklist, search, privacy) follow §7.1. Fonts are self-hosted; an English first load fetches 2 font files (55 KB). Hindi, Bengali, Telugu and Gujarati pages add one script font, about 150–175 KB in total, slightly over the §10 font budget. Also built: family mode, office slip (print styles), "what changed", the nav that switches to the menu when a language's labels don't fit (measured, not guessed). First-load JS is about 81 KB gzipped, pages load lazily (over the §10 budget, see there). Lighthouse (mobile, slow 4G, 2026-10-25, English home, served by the jar): performance 97, accessibility 100, best practices 100, SEO 100; LCP 1.7 s, TBT 170 ms, CLS 0.
+> **Status:** v0.4, draft. This is the visual and interaction spec for the JanSathi frontend. It sits alongside the product brief ([docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md)). When this file and a product rule disagree, the product rule wins (see §1).
+> **v0.4 (2026-10-28, maintainer):** light everywhere by default, everything a size smaller, new Latin fonts, and a real photo inside the letters of the hero word. Light is the default on every device (dark only through the theme button); the night bands became soft lavender bands; type, spacing, buttons and cards are smaller (§4.2, §5); Latin text is Plus Jakarta Sans and Latin headings Bricolage Grotesque (§4.1); the hero word is filled with a CC BY-SA photo of volunteers at a community kitchen (§6.4).
+> **Built so far (2026-10-25 React redesign, updated 2026-10-28):** the "Neel" palette (§3), type and layout tokens (§4–§5) in `frontend/src/styles/tokens.css`; the hero with per-locale width fit and the photo knockout (§6); and every §7 pattern: marquee strip, scroll-lit manifesto, big-number stats, sticky storytelling, index list, trust band, call-to-action band, full-bleed footer, plus the in-app theme switch (light / dark). Inner pages (questionnaire, results, scheme detail bento, checklist, search, privacy) follow §7.1. Fonts are self-hosted; an English first load fetches 3 font files (85 KB). Indic pages add one script font (33–121 KB). Also built: family mode, office slip (print styles), "what changed", the nav that switches to the menu when a language's labels don't fit (measured, not guessed). First-load JS is about 81 KB gzipped, pages load lazily (over the §10 budget, see there). Lighthouse (mobile, slow 4G, 2026-10-25, English home, served by the jar): performance 97, accessibility 100, best practices 100, SEO 100; LCP 1.7 s, TBT 170 ms, CLS 0.
 
 ---
 
@@ -21,7 +22,7 @@ Awwwards sites are often built for fast laptops and fibre broadband. Our users i
 | Rule (non-negotiable) | What it means for the design |
 |---|---|
 | Voice and icons first | Every section can be read aloud; the main actions are picture tiles, not text links. |
-| Accessible | WCAG 2.2 AA, touch targets ≥ 48 px, visible focus, keyboard-only use works, screen-reader labels on everything. |
+| Accessible | WCAG 2.2 AA, touch targets ≥ 44 px, visible focus, keyboard-only use works, screen-reader labels on everything. |
 | Low-end devices | Performance budget in §10. No WebGL, no scroll-jacking, no smooth-scroll libraries, no custom cursor. |
 | 10 languages, 9 scripts | No layout may depend on English word length. Uppercase and tight letter-spacing are for English only (§4.3). |
 | Every string through i18n | No text baked into images or SVGs. |
@@ -46,50 +47,51 @@ Voice of the UI copy: short sentences, grade-5 reading level, second person, act
 
 ## 3. Colour
 
-**"Neel" palette (2026-10-25, replaces the coral palette).** Warm chalk page, deep indigo-black ink, **indigo** (neel, the dye) for every action, **rani pink** as the brand accent, and **lime** only on night bands. Green and marigold are kept for status only. Indigo and rani pink come from Indian textiles rather than flags, so the palette avoids saffron/white/green as a set and does not read as official or political. The maintainer found the coral palette weak; this one has more contrast and lets primary buttons use white text at AA.
+**"Neel" palette (2026-10-25, replaces the coral palette; lightened 2026-10-28).** Near-white warm page, deep indigo-black ink, **indigo** (neel, the dye) for every action, **rani pink** as the brand accent, soft lavender bands instead of dark ones. Green and marigold are kept for status only. Indigo and rani pink come from Indian textiles rather than flags, so the palette avoids saffron/white/green as a set and does not read as official or political. The maintainer found the coral palette weak; this one has more contrast and lets primary buttons use white text at AA.
 
 ### 3.1 Tokens — light (default)
 
 | Token | Hex | Use | Contrast |
 |---|---|---|---|
-| `--paper` | `#F7F4ED` | Page background (chalk) | — |
+| `--paper` | `#FBFAF6` | Page background | — |
 | `--surface` | `#FFFFFF` | Cards, sheets | — |
-| `--surface-2` | `#ECE7DC` | Sunken areas, progress tracks | — |
-| `--line` | `#D9D3C5` | Hairlines, card borders | decorative |
-| `--ink` | `#15122E` | Body and display text, outlines | 16.5 : 1 on paper |
-| `--ink-muted` | `#57536E` | Secondary text | 6.7 : 1 on paper, 7.3 : 1 on surface, 5.9 : 1 on surface-2 |
-| `--indigo` | `#3B2FD0` | Primary buttons, links in cards, active step | white (`--on-indigo`) on it 8.4 : 1; as text on paper 7.6 : 1 |
-| `--indigo-soft` | `#E6E3FF` | Icon circles, quiet fills | ink on it 14.5 : 1 |
-| `--rani` | `#FF4F7E` | Logo, kicker dot, CTA band, mic button | ink (`--on-rani`) on it 5.8 : 1. Never as text colour (2.9 : 1 on paper). |
-| `--rani-text` | `#C2185B` | Kickers and small accent text | 5.4 : 1 on paper |
-| `--lime` | `#D7F25C` | Night bands only: marquee, footer headings, kickers | 14.5 : 1 on `--night`. Never on paper. |
-| `--night` | `#15122E` | Night bands: marquee, trust section, menu, footer | — |
+| `--surface-2` | `#F2F0EA` | Sunken areas, progress tracks | — |
+| `--line` | `#E4E0D6` | Hairlines, card and button borders | decorative |
+| `--ink` | `#1B1A2E` | Body and display text | 16.6 : 1 on paper |
+| `--ink-muted` | `#5A5870` | Secondary text | 6.6 : 1 on paper, 6.9 : 1 on surface, 5.7 : 1 on `--band` |
+| `--indigo` | `#4338CA` | Primary buttons, links in cards, active step, focus ring | white (`--on-indigo`) on it 7.4 : 1; as text on paper 7.0 : 1 |
+| `--indigo-soft` | `#EEEDFE` | Icon circles, hover fills | ink on it 15.4 : 1; indigo on it 6.2 : 1 |
+| `--rani` | `#FF5C8A` | Logo, kicker dot, mic button | ink (`--on-rani`) on it 6.2 : 1. Never as text colour. |
+| `--rani-text` | `#C2185B` | Kickers, footer headings, small accent text | 5.5 : 1 on paper |
+| `--rani-soft` | `#FFE4EC` | Call-to-action band, member avatars | ink on it 14.3 : 1 |
+| `--band` | `#F1EFFC` | Lavender bands: marquee, trust section, menu, footer | — |
 | `--leaf` | `#1F6B4A` | "Likely eligible", confirmed labels | white on it 6.4 : 1; as text on paper 5.9 : 1 |
 | `--marigold` | `#F5B23D` | "Need more info" badge fill | ink on it 9.8 : 1. Never as text colour. |
 
 **Deviation from the reference:** the Dribbble shot puts white text on its coral button (about 3.0 : 1, fails AA). The coral is gone; the primary button is indigo with white text (8.4 : 1).
 
-**Night bands re-scope the tokens** (`.band-ink`, `.marquee`, `.footer`, the mobile menu): inside them `--paper` becomes `--night`, `--ink` `#F4F1FF`, `--ink-muted` `#B9B4D3` (9.1 : 1), `--leaf` `#7FD1A6`, `--indigo` `#9B92FF` (6.9 : 1), so every component keeps AA without a special variant.
+**Bands re-scope only the background** (`.band-ink`, `.marquee`, `.footer`, the mobile menu): inside them `--paper` becomes `--band`. Ink, muted text and indigo keep their theme values, which pass AA on the band. (Until 2026-10-28 these were dark "night" bands with lime text; the maintainer asked for light colours throughout.)
 
 ### 3.2 Tokens — dark
 
 | Token | Hex |
 |---|---|
-| `--paper` | `#0D0B1C` |
-| `--surface` | `#16132B` |
-| `--surface-2` | `#221E3D` |
-| `--line` | `#2E2950` |
-| `--ink` | `#F4F1FF` (17.5 : 1) |
-| `--ink-muted` | `#ADA8C6` (8.5 : 1; 7.0 : 1 on surface-2) |
-| `--indigo` | `#9B92FF` (`--on-indigo` `#0D0B1C` on it 7.4 : 1; 6.8 : 1 as text on surface) |
-| `--indigo-soft` | `#221E4A` |
-| `--rani` | `#FF5C8A` (`--on-rani` `#0D0B1C` on it 6.6 : 1) |
-| `--rani-text` | `#FF7FA3` (8.2 : 1) |
-| `--night` | `#1B1738` (a step lighter than paper so bands still read) |
+| `--paper` | `#0F0E1D` |
+| `--surface` | `#18172B` |
+| `--surface-2` | `#232139` |
+| `--line` | `#302D4C` |
+| `--ink` | `#F4F2FF` (17.4 : 1) |
+| `--ink-muted` | `#AFABC8` (8.6 : 1; 7.0 : 1 on surface-2) |
+| `--indigo` | `#A49CFF` (`--on-indigo` `#0F0E1D` on it 7.9 : 1) |
+| `--indigo-soft` | `#24214A` |
+| `--rani` | `#FF5C8A` (`--on-rani` `#0F0E1D` on it 6.6 : 1) |
+| `--rani-text` | `#FF8AAD` (8.8 : 1) |
+| `--rani-soft` | `#3A1B2A` |
+| `--band` | `#1A1833` (a step lighter than paper so bands still read) |
 | `--leaf` | `#7FD1A6` (10.7 : 1) |
 | `--marigold` | `#F5B23D` |
 
-Define tokens on `:root`. Switch them with `@media (prefers-color-scheme: dark)` and the in-app override `:root[data-theme="dark"]` / `[data-theme="light"]` (theme button in the nav, saved on the device).
+Define tokens on `:root`. **Light is the default on every device**, whatever the system prefers (maintainer, 2026-10-28). Dark applies only through `:root[data-theme="dark"]`, set by the theme button in the nav and saved on the device.
 
 ### 3.3 Semantic colours (results and trust labels)
 
@@ -114,12 +116,12 @@ Colour is **never** the only signal. Every state also has an icon and a text lab
 
 | Role | Latin | Indic scripts |
 |---|---|---|
-| Hero display (knockout word only) | **Anton**, 400 (ultra-condensed, OFL) | Noto Sans <Script>, weight 900 (the brand name in that script; see §6.3) |
-| Section titles | Noto Sans, 800 | Noto Sans <Script>, 800 |
-| UI and body | Noto Sans, 400–600 | Noto Sans Devanagari / Bengali / Tamil / Telugu / Gujarati / Kannada / Malayalam / Gurmukhi, 400–600 |
-| Wordmark | Anton (see §8) | — |
+| Hero display (knockout word only) | **Anton**, 400 (ultra-condensed, OFL): thick strokes leave room for the photo | Noto Sans <Script>, weight 900 (the brand name in that script; see §6.3) |
+| Headings, big numbers | **Bricolage Grotesque**, 700–800 | Noto Sans <Script>, 700–800 |
+| UI and body | **Plus Jakarta Sans**, 450–700 | Noto Sans Devanagari / Bengali / Tamil / Telugu / Gujarati / Kannada / Malayalam / Gurmukhi, 450–700 |
+| Wordmark | Bricolage Grotesque 800 (see §8) | — |
 
-- Anton covers Latin only, so it is used for the English hero word and the wordmark. Every other piece of text is Noto, so all 10 languages look like one product.
+- 2026-10-28: Plus Jakarta Sans and Bricolage Grotesque replace Noto Sans for Latin (the maintainer asked for better fonts). Indic text stays on Noto Sans <Script>: it is the most readable choice for every script, and the designed alternatives were too heavy (Anek Devanagari alone is 258 KB). The font stacks list the Noto families after the Latin ones, so each language falls through to its own script.
 - Load only the active script plus Latin. Use `unicode-range` subsets and `font-display: swap`.
 - Self-host the font files with the PWA so they work offline.
 
@@ -127,14 +129,15 @@ Colour is **never** the only signal. Every state also has an icon and a text lab
 
 | Token | Size | Line-height (Latin / Indic) |
 |---|---|---|
-| `--fs-display` | `clamp(5rem, 22vw, 17rem)` | 0.88 / 1.1 |
-| `--fs-h1` | `clamp(2rem, 4vw + 1rem, 4rem)` | 1.05 / 1.3 |
-| `--fs-h2` | `clamp(1.5rem, 2vw + 1rem, 2.5rem)` | 1.15 / 1.35 |
-| `--fs-lead` | `clamp(1.125rem, 0.6vw + 1rem, 1.375rem)` | 1.5 / 1.7 |
-| `--fs-body` | `1.125rem` (18 px minimum) | 1.55 / 1.75 |
-| `--fs-label` | `0.9375rem` (nav, buttons, kickers) | 1.3 / 1.5 |
+| Hero word | `calc(var(--fit) * 22cqi)` (fills the width, §6.5) | 0.88 / 1.2 |
+| `--fs-mega` | `clamp(2rem, 2.6vw + 1.1rem, 3.5rem)` (section titles) | 1.1 / 1.35 |
+| `--fs-h1` | `clamp(1.875rem, 2.2vw + 1rem, 3rem)` | 1.1 / 1.35 |
+| `--fs-h2` | `clamp(1.375rem, 1vw + 1rem, 1.875rem)` | 1.1 / 1.35 |
+| `--fs-lead` | `clamp(1.0625rem, 0.35vw + 0.95rem, 1.25rem)` | 1.6 / 1.75 |
+| `--fs-body` | `1.0625rem` (17 px) | 1.6 / 1.75 |
+| `--fs-label` | `0.875rem` (nav, buttons, kickers) | 1.3 / 1.5 |
 
-Body text is never smaller than 16 px. Default body is 18 px for our audience.
+Body text is never smaller than 16 px. Default body is 17 px (18 px until 2026-10-28, when the maintainer found everything too big).
 
 ### 4.3 Script rules
 
@@ -147,12 +150,12 @@ Body text is never smaller than 16 px. Default body is 18 px for our audience.
 
 ## 5. Layout, spacing, shape
 
-- **Grid:** 4 columns on mobile, 8 on tablet, 12 on desktop. Max content width 1440 px. Side gutter `clamp(16px, 4vw, 56px)`.
-- **Spacing scale (px):** 4, 8, 12, 16, 24, 32, 48, 64, 96, 144. Section padding `clamp(64px, 10vw, 144px)` top and bottom. Generous whitespace is the main Awwwards cue we keep.
-- **Radius:** `--r-sm: 12px` (chips, inputs), `--r-md: 20px` (cards, tiles), `--r-lg: 32px` (media, sheets), `--r-pill: 999px` (buttons, tags), `50%` (avatars, icon buttons).
-- **Borders:** 1.5 px `--ink` outlines for secondary buttons and icon buttons, as in the reference.
-- **Elevation:** flat. Separate surfaces with colour, not shadows. One soft shadow token for floating elements only: `0 12px 40px rgb(27 26 23 / 0.12)`.
-- **Touch targets:** at least 48 × 48 px, with at least 8 px between targets.
+- **Grid:** 4 columns on mobile, 8 on tablet, 12 on desktop. Max content width 1240 px. Side gutter `clamp(16px, 3.5vw, 40px)`.
+- **Spacing scale (px):** 4, 8, 12, 16, 24, 32, 48, 64, 104. Section padding `clamp(56px, 7vw, 104px)` top and bottom.
+- **Radius:** `--r-sm: 10px` (chips, inputs), `--r-md: 16px` (cards, tiles), `--r-lg: 24px` (media, sheets), `--r-pill: 999px` (buttons, tags), `50%` (avatars, icon buttons).
+- **Borders:** 1 px `--line` (or 28% ink) outlines for secondary buttons, icon buttons and cards; they darken to ink or indigo on hover.
+- **Elevation:** flat. Separate surfaces with colour and hairlines. One soft shadow token for floating elements and card hover: `0 8px 28px rgb(27 26 46 / 0.08)`.
+- **Touch targets:** at least 44 × 44 px (WCAG 2.2 AAA size), with at least 8 px between targets. Primary hero buttons are 52 px tall.
 - No horizontal page scroll at 320 px width.
 
 ---
@@ -229,6 +232,8 @@ Card text comes from scheme data, not locale files. A card is shown **only** if 
 
 ### 6.4 Knockout collage image
 
+**Built (2026-10-28):** "India-0410 - Give Back by Helping Others" by Dennis G. Jarvis (CC BY-SA 2.0, Wikimedia Commons): volunteers of several ages making rotis together at the community kitchen of Gurudwara Bangla Sahib, Delhi. Cropped to a band through the faces, darkened for contrast, served as `hero-band-{800,1600}.{avif,webp}` (19–104 KB) with `image-set()`. The credit line sits under the word, as the licence asks. Details in `frontend/public/img/CREDITS.md`. A commissioned collage with the people listed below can replace it later.
+
 - One pre-composed image (not live-tiled photos), cropped so faces fall inside the letter shapes at the desktop breakpoint, with a separate mobile crop.
 - People: a student, an older woman, a farmer, a person using a wheelchair, a mother and child, a CSC volunteer. Represent several regions and ages.
 - Use only photos with a clear licence (commissioned with signed model releases, or a free licence such as Unsplash/Pexels with no implied endorsement). Record the licence and source in `frontend/public/img/CREDITS.md`.
@@ -242,7 +247,7 @@ Card text comes from scheme data, not locale files. A card is shown **only** if 
 - Contrast: the collage is graded dark enough that every letter reads as a solid dark shape against `--paper` (target ≥ 3 : 1 for the letter area on average; check with a blurred screenshot).
 - Before the image loads, or if `background-clip: text` is unsupported (`@supports not (background-clip: text)`), the word renders in solid `--ink`. A slow network never shows invisible text.
 - `forced-colors: active` (Windows High Contrast): solid `CanvasText`, no image.
-- Dark mode: same image, with `--paper` dark behind it. Check that the letters still read as shapes; brighten the grade if they don't.
+- Dark mode: same image, brightened with `filter: brightness(1.6)` so the letters still read as shapes on the dark page.
 - **Sizing:** the word is always one line and fills the content width. Lengths differ a lot between scripts (Anton `JanSathi` is narrow; `ஜனசாத்தி` in Noto Sans Tamil is much wider), so each locale gets a width-fit factor: `font-size: calc(var(--fit, 1) * 22cqi)` on a `container-type: inline-size` wrapper, with `--fit` set per `:lang()` and tuned once per locale. No JavaScript text-fitting.
 - Indic locales use Noto Sans <Script> at weight 900, with line-height 1.1–1.2 so vowel signs above and below the letters aren't clipped by the image mask. Add top and bottom padding inside the clipped element for the same reason.
 - Joined Indic letters (conjuncts) make thinner strokes than Anton. Check that faces stay recognisable in the collage, and use a tighter crop for Indic locales if they don't.
@@ -279,19 +284,19 @@ Each pattern lists where it comes from and how we adapt it.
 | **Oversized section titles** | Large display type with lots of air | `--fs-mega` section titles (`--fs-h1` on inner pages, with a 1.5 px ink rule below) and a rani kicker with a dot. |
 | **Bento grid** | Mixed-size cards in a tight grid | Scheme detail: indigo summary tile, benefit, how to apply, rules with clause citations, documents, sources on a 12-column grid. One column on mobile. |
 | **Sticky storytelling** | A pinned visual while text steps scroll past | "How it works": the title and a giant outlined step numeral stay pinned while the 4 steps scroll past; the step in view turns indigo (`IntersectionObserver`). `position: sticky` only, no scroll-jacking. A plain list under 900 px. |
-| **Marquee strip** | Infinite horizontal ticker | The 10 language names in their own scripts, lime on a slightly tilted night band, in system fonts (no extra font downloads). Pauses on hover/focus, has a pause button, is `aria-hidden` (the same list is in the footer), and stops under reduced motion. |
+| **Marquee strip** | Infinite horizontal ticker | The 10 language names in their own scripts, indigo on a lavender band, in system fonts (no extra font downloads). Pauses on hover/focus, has a pause button, is `aria-hidden` (the same list is in the footer), and stops under reduced motion. |
 | **Scroll-lit statement** | Text that lights up as it scrolls into view | The manifesto: three short lines fade from 15% to full opacity via CSS `animation-timeline: view()`. Static where unsupported or under reduced motion. |
 | **Index list** | Big editorial rows with a hover fill | Categories on the home page: icon, label, count, ↗; an indigo fill rises on hover and focus. |
 | **Numbered steps** | Large outline numerals | Questionnaire progress and document checklist. Numerals use the active locale's digits via `Intl.NumberFormat`. |
 | **Big-number stats** | Impact figures in display type | Counted from the bundle at runtime: schemes, distinct official sources, rules, languages, plus a line with the number verified by a reviewer (0 today). No invented or rounded-up numbers. |
 | **Card hover lift** | Subtle translate + image zoom | Scheme cards: 4 px lift and border colour change. Same effect on `:focus-visible`. |
 | **Colour bands** | Full-bleed sections in a contrasting colour | A night trust band (the three trust labels explained) and a rani call-to-action band. |
-| **Full-bleed footer** | Giant wordmark footer | Night background, a rani wordmark cropped at the bottom edge, "Report outdated info", privacy, language list, and the disclaimer: *"JanSathi is not a government service. Final decisions are made by the government."* |
+| **Full-bleed footer** | Giant wordmark footer | Lavender background, a pale indigo wordmark cropped at the bottom edge, "Report outdated info", privacy, language list, and the disclaimer: *"JanSathi is not a government service. Final decisions are made by the government."* |
 
 ### 7.1 Core components
 
-- **Button:** pill, min height 56 px (hero) / 48 px (elsewhere), 24–32 px horizontal padding, icon + label. Variants: primary (`--indigo` fill, white text; the arrow icon nudges right on hover), secondary (1.5 px `--ink` outline), quiet (text). Every icon-only button has an `aria-label` from i18n.
-- **Icon button:** 48 px circle with a 1.5 px `--ink` outline (the reference's ↗ button) that fills ink on hover. Line icons, not emoji, for UI controls (§8).
+- **Button:** pill, min height 52 px (hero) / 44 px (elsewhere), 16–26 px horizontal padding, icon + label. Variants: primary (`--indigo` fill, white text; the arrow icon nudges right on hover), secondary (white with a 1 px hairline that darkens on hover), quiet (text). Every icon-only button has an `aria-label` from i18n.
+- **Icon button:** 44 px white circle with a 1 px `--line` outline that turns ink on hover. Line icons, not emoji, for UI controls (§8).
 - **Answer tile (questionnaire):** `--surface`, `--r-md`, emoji icon 40 px above the label, min 140 px tall, two columns on a 360 px phone. Hover lifts 4 px with an ink border; press fills indigo.
 - **Filter chip (scheme list):** pill with icon and label in a horizontally scrolling row; the active chip is filled ink and carries `aria-current`.
 - **Story / scheme card (rail):** 72 px circular photo (emoji on an `--indigo-soft` circle until photos exist), `--rani-text` kicker, 2-line headline (`-webkit-line-clamp: 2`, full text in the link's accessible name), ↗ icon button. The whole card is one link.
@@ -307,9 +312,9 @@ Each pattern lists where it comes from and how we adapt it.
 ## 8. Logo, icons, illustration
 
 - **Logo mark:** a cluster of vertical rani-pink bars of varying height, like a sound waveform (the reference uses a similar mark). For JanSathi it stands for voice. Inline SVG, `aria-hidden`; the wordmark text is the accessible name.
-- **Wordmark:** "JANSATHI" in Anton, `--ink`. A custom logotype can replace it later.
+- **Wordmark:** "JanSathi" in Bricolage Grotesque 800, `--ink`. A custom logotype can replace it later.
 - **Icons:** UI controls (arrows, mic, speaker, globe, menu, theme, trust states) use the line icons in `frontend/src/components/Icon.jsx`: 2 px stroke, rounded joins, 24 px grid. Category and answer icons are still emoji; replace them with the same line style later. Icons always come with a label; they never replace it.
-- Decorative shapes are inline SVG in `--rani`, `--indigo` or `--lime` (night bands only), `aria-hidden`.
+- Decorative shapes are inline SVG in `--rani` or `--indigo`, `aria-hidden`.
 
 ---
 
@@ -339,9 +344,9 @@ Measured on a mid-range Android phone (Moto G-class) on throttled "Slow 4G" in L
 | LCP | ≤ 2.5 s (the LCP element is the display word; it renders in solid ink before the image arrives) |
 | CLS | ≤ 0.05 |
 | INP | ≤ 200 ms |
-| JS (gzipped, first load) | ≤ 60 KB (**currently about 81 KB**: React and React DOM are about 58 KB of it; see below) |
+| JS (gzipped, first load) | ≤ 60 KB target (**currently about 81 KB**, held at 88 KB by `npm run check:budget`: React and React DOM are about 58 KB of it; see below) |
 | CSS (gzipped) | ≤ 25 KB |
-| Fonts (first load) | ≤ 3 files, ≤ 150 KB total |
+| Fonts (first load) | ≤ 3 files, ≤ 150 KB total (English: Anton, Plus Jakarta Sans, Bricolage Grotesque, 85 KB) |
 | Hero collage | ≤ 140 KB mobile / ≤ 260 KB desktop |
 
 **React and the JS budget (2026-10-25):** the maintainer chose React for the frontend, which puts first-load JS over budget. Measured anyway on 2026-10-25: Lighthouse mobile performance 97, LCP 1.7 s, TBT 170 ms, so the user-facing budgets hold. Every page except home loads lazily. If LCP or INP miss their budgets later, alias `react` and `react-dom` to `preact/compat` in `vite.config.js` (no code changes). Also note: the app now renders after the locale and bundle load; the boot screen in `index.html` shows the brand word in solid ink meanwhile, so first paint does not wait for them.
@@ -353,8 +358,8 @@ Animation libraries (e.g. GSAP) are allowed only if lazy-loaded after first pain
 ## 11. Accessibility checklist (design side)
 
 - [ ] Text contrast ≥ 4.5 : 1 (≥ 3 : 1 for 24 px+ display text); tokens in §3 already meet this.
-- [ ] Visible focus ring: 3 px `--ink` outline, 3 px offset, on every interactive element (rani and lime are not used for focus; on night bands and the indigo summary tile the ring switches to the light ink).
-- [ ] Touch targets ≥ 48 px.
+- [ ] Visible focus ring: 3 px `--indigo` outline, 3 px offset, on every interactive element (rani is not used for focus; on the indigo summary tile the ring switches to `--on-indigo`).
+- [ ] Touch targets ≥ 44 px.
 - [ ] State shown by icon + text + colour, never colour alone.
 - [ ] Works at 200% zoom and at 320 px width without horizontal scroll.
 - [ ] Every section has a "read aloud" path; every tile speaks its name.
@@ -371,7 +376,7 @@ Animation libraries (e.g. GSAP) are allowed only if lazy-loaded after first pain
 
 ## 13. Open design questions
 
-1. Wordmark (nav): commission a logotype, or keep "JANSATHI" in Anton for now? Should the nav wordmark also switch script with the language, like the hero word?
+1. Wordmark (nav): commission a logotype, or keep "JanSathi" in Bricolage Grotesque for now? Should the nav wordmark also switch script with the language, like the hero word?
 2. Hero photography: commission a shoot with consent and releases, or start with licensed stock?
 
 **Decided:** the hero display word is the brand name localised per language (2026-10-24, §6.3).

@@ -231,7 +231,8 @@ The scheme's `missing_fields` is the union of the hard `unknown` rules' `missing
 - **`stale`** is true if any of these hold:
   - status ≠ `published`;
   - any source referenced by a hard rule has `verified_at == null`;
-  - `as_of − verified_at > reverify_days` for any such source.
+  - `as_of − verified_at > reverify_days` for any such source;
+  - any source of the scheme has `changed_at` (added to the bundle by the re-check, KNOWLEDGE_BASE §5).
 - **`label`** is the weakest confidence among the hard rules, where `uncertain` < `guidance` < `confirmed`. A stale scheme forces `label = uncertain`.
 
 ### 9.6 `next_question`

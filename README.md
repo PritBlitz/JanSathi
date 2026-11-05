@@ -16,7 +16,9 @@ JanSathi/
 ├── rules/      Test cases for the eligibility rules (both frontend and backend must pass them).
 ├── ingest/     Python job that re-downloads official sources and detects changes.
 ├── tools/      Node scripts: tests, validators, bundle builder, dev server.
+├── ml/         Python service for Hugging Face models: embeddings, speech, translation.
 ├── eval/       Questions that measure the assistant's retrieval (run in CI).
+├── deploy/     Caddy and PostgreSQL setup for production.
 └── docs/       Product brief and design documents.
 ```
 
@@ -57,37 +59,26 @@ Many people who qualify for scholarships, pensions, health cover, housing or far
 
 | Feature | Status |
 |---|---|
-| 10-language UI (en, hi, bn, ta, te, mr, gu, kn, ml, pa) with voice in/out and icon tiles | Built (`frontend/`); 9 locales await native-speaker review |
-| Eligibility questionnaire with three results: likely eligible / not eligible / need more info, with rule traces | Built (on-device rules engine, `frontend/src/lib/rules.js`) |
-| Scheme pages with official sources, clause locators and checked/verified dates | Built; 28 central schemes, all **drafts** awaiting human review |
-| Source re-check job (hash changes → review) | Built; runs daily in GitHub Actions and opens an issue when a source changes |
-| Personal document checklist with "how to get it" guidance | Built (generic, all-India guidance) |
-| Family mode: household questions once, each member's own results | Built (on the device) |
-| Office slip: schemes and documents to carry, print or share | Built |
-| Scheme stacking/conflicts | Planned: no relations recorded in content yet |
-| Saathi, the AI guide: talks with each signed-in person in their language, asks the questions, records answers, explains results with official sources (Google Gemini; works without AI by tapping answers) | Built |
-| Helper portal: NGO/CSC helpers see a case only when the person shares it, with an audit log the person can read | Built |
-| Sign in with a mobile number and one-time code; answers saved encrypted across phones | Built (SMS provider still to be connected; a test mode shows the code) |
-| Cited AI assistant in Hindi and English | Built: retrieval of official rule passages, an optional LLM explanation (any OpenAI-compatible provider), validation against the copy rules, and "no official source" when nothing matches. Off until a model is configured |
-| Spring Boot API: schemes, matching, rule bundle, checklist, search, assistant, reports and their moderation | Built (`backend/`), with PostgreSQL (H2 locally) and Docker |
-| Deadline reminders (Web Push, Telegram) | Planned: no deadlines recorded in content yet |
-| OCR document check | Planned (Phase 5) |
-| Nearby CSC and office map | Planned (Phase 6) |
+| 10-language UI (en, hi, bn, ta, te, mr, gu, kn, ml, pa) with voice in and out and icon tiles | Built. Machine-authored; awaiting native-speaker review. The staff admin tool is English only |
+| Eligibility questionnaire with three results and rule traces | Built (on-device rules engine) |
+| Knowledge base | 49 published schemes: 37 central and 12 Uttar Pradesh, each approved by two independent AI reviewers ("Checked by AI reviewers"; no person has checked them yet). |
+| Scheme text in all 10 languages | English and Hindi are reviewed. The other 8 are machine translated, labelled, with a button to read the English |
+| State-specific "how to get it" for documents | Built for Uttar Pradesh, with official sources |
+| Source re-check | Daily job; a changed source shows users a "may be outdated" warning and opens an issue. Page counters are told apart from real changes |
+| Family mode, office slip, document checklist | Built |
+| Application tracking and anonymous rejection insights | Built; insights show only once 10 or more people share |
+| Photo check of a document | Built: OCR in the browser (English and Hindi), the photo never leaves the device |
+| Reminders | Built: on the device, Web Push, Telegram, SMS and WhatsApp behind one interface. Providers need keys; only the on-device path has run for real |
+| Nearby help | Built: search by PIN code (India Post's directory) or location, OpenStreetMap and Leaflet, official CSC locator linked |
+| Saathi, the AI guide, and the cited assistant | Built; the rules engine decides and the model only explains. Works without a model by tapping answers |
+| Search across languages | Built: multilingual-e5 embeddings fused with keywords in `ml/`, falling back to keywords |
+| Server speech for devices without voices | Built in `ml/`: text-to-speech in all 10 languages (MMS); speech-to-text in English, Hindi and Tamil only (Whisper is not reliable in the others) |
+| Helper portal | Built: consent-scoped sharing, sensitive answers masked unless allowed, audit log, report-a-helper |
+| Accounts and security | Phone sign-in (MSG91 or Twilio), encrypted data, staff accounts with authenticator codes, insert-only audit log, retention jobs, under-18 on-device rule, grievance form |
+| Admin and moderation | Built at `#/admin`; publishing stays in `tools/publish.mjs` |
+| Operations | Docker Compose with PostgreSQL, Caddy TLS, Prometheus metrics, error reporting. See [docs/OPERATIONS.md](docs/OPERATIONS.md) |
 
-See [docs/ROADMAP.md](docs/ROADMAP.md) for the full plan.
-
-## Status
-
-What exists now (October 2026):
-
-- **`frontend/`**: a React + Vite PWA (redesigned 2026-10-25, see [DESIGN.md](DESIGN.md)). Questionnaire, three-state results with rule traces, scheme pages with sources, document checklist, search, read-aloud and voice answers, 10 languages, offline support. All matching happens on the device; nothing about the user leaves the phone.
-- **`content/`**: 28 central schemes across pensions, insurance, farming, health, housing, food, work, energy, women and children, disability and scholarships (see `content/schemes/`). Every rule cites the clause of an official source it rests on, and each source has `fetched_at` and a content hash. **They are drafts:** a human reviewer has not yet set `verified_at`, so the app runs in *preview mode* and labels every result "may be outdated".
-- **`rules/`**: shared fixtures (233 cases) that both the JS and the Java engine pass.
-- **`ingest/recheck.py`** and **`tools/`**: source re-check, content validator, copy lint (10 languages), locale parity, bundle builder, browser smoke test.
-- **`backend/`**: Spring Boot 4.1 API under `/api/v1`: schemes, categories, match, rule bundle (ETag-cached), checklist, search, the assistant (`/ask`), outdated-info reports with an admin moderation queue, OpenAPI. Its Java rules engine gives the same results as the JS one on every fixture. Flyway migrations on PostgreSQL (H2 locally). One jar or Docker image serves the PWA and the API.
-- **CI** (`.github/workflows/`): every push runs the content checks, both engines, the API tests, the retrieval evaluation, a headless-Chrome walk-through in English and Tamil, and a Docker build; a daily job re-checks every official source.
-
-Is the idea feasible? See [docs/FEASIBILITY.md](docs/FEASIBILITY.md): yes for the technology; the real constraint is human review of content and translations.
+See [docs/ROADMAP.md](docs/ROADMAP.md) for what is left, and [HANDOVER.md](HANDOVER.md) for what has and has not been exercised live.
 
 ## Quick start
 
@@ -96,10 +87,11 @@ Requires Node 20.19+ (the root tooling has no dependencies; `npm run setup` inst
 ```bash
 npm run setup && npm run dev   # open http://localhost:5173
 
-npm run check            # content validation, copy lint, locale parity, bundle freshness, 312 unit tests
+npm run check            # content validation, copy lint, locale parity, bundle freshness, unit tests
 npm run test:backend     # Java engine on the shared fixtures, API tests, retrieval evaluation
 npm run build:jar        # one jar with the PWA and the API: java -jar backend/build/libs/api-0.0.1-SNAPSHOT.jar
-docker compose up --build   # the same with PostgreSQL (set POSTGRES_PASSWORD first)
+docker compose up --build   # the same with PostgreSQL; set the values in .env.example first
+docker compose --profile ml up   # adds the model service (see ml/README.md)
 npm run smoke            # build, then a headless-Chrome walk through the app (needs Chrome or Edge)
 python ingest/recheck.py # re-fetch every official source and report changes
 ```
