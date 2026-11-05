@@ -117,7 +117,7 @@ services:
     profiles: [translate]
     image: ghcr.io/ggml-org/llama.cpp:server
     mem_limit: 4g
-    command: ["-m", "/models/sarvam-translate/sarvam-translate-q4_k_m.gguf", "--host", "0.0.0.0", "--port", "8091", "-c", "4096", "-np", "4"]
+    command: ["-m", "/models/sarvam-translate/sarvam-translate-q4_k_m.gguf", "--host", "0.0.0.0", "--port", "8091", "-c", "4096", "-np", "4", "--cache-ram", "0"]
     volumes:
       - ${ML_MODELS_DIR:-./ml/.models}:/models:ro
 
