@@ -3,7 +3,7 @@
 // Usage: node tools/smoke-web.mjs [--shots DIR] [--lang hi] [--scheme light|dark] [--url http://localhost:8080/ [--admin-token T]]
 // Needs Chrome or Edge; set CHROME=/path/to/chrome if it is not found.
 import { spawn } from 'node:child_process';
-import { existsSync, mkdirSync, writeFileSync, mkdtempSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
@@ -129,8 +129,13 @@ try {
     await evaluate(`document.querySelector('.footer-langs button[lang="${langArg}"]').click()`);
     check(await waitFor(`document.documentElement.lang === '${langArg}'`), `language switches to ${langArg}`);
   }
-  check(await waitFor(`document.querySelector('.hero-word').classList.contains('has-image')`), 'hero word gets the collage fill');
-  check(await evaluate(`getComputedStyle(document.querySelector('.hero-word > span')).backgroundImage.includes('collage')`), 'collage is the background of the hero word');
+  check(await waitFor(`document.querySelector('.hero-word').classList.contains('has-image')`), 'hero word gets the photo fill');
+  check(await evaluate(`getComputedStyle(document.querySelector('.hero-word > span')).backgroundImage.includes('hero-band')`), 'the photo shows through the letters of the hero word');
+  check(await evaluate(`!!document.querySelector('.hero-credit a[href*="commons.wikimedia.org"]')`), 'hero photo credits its author and licence');
+  check(
+    await evaluate(`!document.documentElement.dataset.theme && getComputedStyle(document.body).backgroundColor === 'rgb(251, 250, 246)'`),
+    'light theme by default, whatever the device prefers',
+  );
   // Preview mode (drafts, with a banner) only while nothing is published.
   const published = await evaluate(`fetch('data/bundle.json').then((r) => r.json()).then((b) => b.schemes.length)`);
   check(await evaluate(`!!document.querySelector('.banner')`) === (published === 0), `preview banner ${published ? 'is hidden (schemes are published)' : 'is shown (no published schemes yet)'}`);
@@ -140,7 +145,7 @@ try {
   await evaluate(`document.querySelector('.marquee-btn').click()`);
   check(await waitFor(`document.querySelector('.marquee').classList.contains('paused')`), 'marquee can be paused');
   await evaluate(`document.querySelector('.nav-tools > .icon-btn').click()`);
-  check(await waitFor(`document.documentElement.dataset.theme === 'light'`), 'theme button switches theme');
+  check(await waitFor(`document.documentElement.dataset.theme === 'dark'`), 'theme button switches to dark');
   await evaluate(`localStorage.removeItem('jansathi.theme'); delete document.documentElement.dataset.theme`);
   await evaluate(`document.querySelector('.hero-ctas .btn-outline').click()`);
   check(await waitFor(`document.querySelector('dialog.sheet')?.open`), 'ask sheet opens');
@@ -205,6 +210,55 @@ try {
   await waitFor(`document.querySelectorAll('.check-item').length >= 3`);
   await evaluate(`document.querySelector('.seg button:nth-child(2)').click()`);
   check(await waitFor(`!!document.querySelector('details[open]')`), "'don't have' opens how-to-get-it");
+  // Tracking: a status set on the scheme page shows in My applications, with a nav entry.
+  await go('#/scheme/pm-kisan');
+  check(await waitFor(`!!document.querySelector('.panel-when p')`), 'scheme page says when to apply');
+  await waitFor(`!!document.querySelector('#track-pm-kisan')`);
+  await evaluate(`(() => { const s = document.querySelector('#track-pm-kisan'); Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set.call(s, 'rejected'); s.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+  check(await waitFor(`!!document.querySelector('#track-pm-kisan-why')`), 'a rejected application asks for the reason');
+  await go('#/applications');
+  check(await waitFor(`document.querySelectorAll('.application-list .check-item').length >= 1 && !!document.querySelector('a[href="#/applications"]')`), 'My applications lists the tracked scheme');
+
+  // Reminders: switching on is remembered on the device. (Headless Chrome denies notifications.)
+  await go('#/checklist');
+  await waitFor(`!!document.querySelector('.reminder-switch input')`);
+  await evaluate(`document.querySelector('.reminder-switch input').click()`);
+  check(await waitFor(`JSON.parse(localStorage.getItem('jansathi.reminders') || '{}').enabled === true`), 'reminders can be switched on');
+
+  // Photo check: real OCR in the browser on a page drawn here, so nothing depends on a sample file.
+  await evaluate(`(async () => {
+    const c = document.createElement('canvas'); c.width = 1200; c.height = 500;
+    const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, 1200, 500); g.fillStyle = '#000'; g.font = '44px serif';
+    ['INCOME CERTIFICATE', 'This is to certify that the annual', 'income of the family is shown below', 'as recorded by the Tehsil office'].forEach((l, i) => g.fillText(l, 60, 100 + i * 90));
+    const blob = await new Promise((r) => c.toBlob(r, 'image/png'));
+    const input = document.querySelector('[data-doc-check="income_certificate"], [data-doc-check]');
+    window.__ocrCode = input.dataset.docCheck;
+    const dt = new DataTransfer(); dt.items.add(new File([blob], 'page.png', { type: 'image/png' })); input.files = dt.files;
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+  })()`);
+  check(await waitFor(`['looks_right', 'cannot_tell'].includes(document.querySelector('[data-verdict]')?.dataset.verdict)`, 90000), 'photo check reads an image on the device and gives a verdict');
+  check(await evaluate(`!document.querySelector('.doc-check').innerText.toLowerCase().includes('tehsil')`), 'photo check never shows the text it read');
+  check(await evaluate(`document.querySelector('.doc-check').innerText.includes('valid') || document.documentElement.lang !== 'en'`), 'photo check says it does not prove a document is valid');
+
+  // Nearby help: a fixed position and a stubbed map service, so the run needs no third party.
+  await go('#/help');
+  await waitFor(`!!document.querySelector('a[href*="locator.csccloud.in"]')`);
+  check(await evaluate(`performance.getEntriesByType('resource').every((r) => !/overpass|openstreetmap/.test(r.name))`), 'nearby help contacts no map service before the person asks');
+  await evaluate(`(() => {
+    navigator.geolocation.getCurrentPosition = (ok) => ok({ coords: { latitude: 28.61394, longitude: 77.20902 } });
+    const real = window.fetch;
+    window.fetch = (u, o) => {
+      if (!String(u).includes('overpass')) return real(u, o);
+      window.__overpassQuery = String(o.body);
+      return Promise.resolve(new Response(JSON.stringify({ elements: [{ type: 'node', id: 1, lat: 28.62, lon: 77.22, tags: { name: '<b>Test</b> CSC', amenity: 'townhall' } }] })));
+    };
+    document.querySelector('.page-head .actions button').click();
+  })()`);
+  check(await waitFor(`document.querySelectorAll('.nearby-list li').length === 1`), 'nearby help lists places');
+  check(await evaluate(`decodeURIComponent(window.__overpassQuery).includes('28.61,77.21') && !decodeURIComponent(window.__overpassQuery).includes('28.613')`), 'nearby help sends only a rounded location');
+  check(await waitFor(`!!document.querySelector('.nearby-map .leaflet-container, .nearby-map.leaflet-container')`), 'nearby help draws the map');
+  check(await evaluate(`!document.querySelector('.nearby-list b') && document.querySelector('.nearby-list strong').textContent.includes('<b>')`), 'place names are shown as text, not HTML');
+
   await go('#/search?q=pension');
   check(await waitFor(`document.querySelectorAll('.scheme-card').length >= 3`), 'search finds pension schemes');
   await go('#/search?q=zzzzqqq');
@@ -212,16 +266,16 @@ try {
   await go('#/privacy');
   await waitFor(`!!document.querySelector('.privacy-points')`);
   await evaluate(`window.confirm = () => true; document.querySelector('.page .btn-primary').click()`);
-  check(await waitFor(`!localStorage.getItem('jansathi.profile') && !localStorage.getItem('jansathi.checklist')`), 'delete my data clears storage');
+  check(await waitFor(`!localStorage.getItem('jansathi.profile') && !localStorage.getItem('jansathi.checklist') && !localStorage.getItem('jansathi.reminders') && !localStorage.getItem('jansathi.applications')`), 'delete my data clears storage');
 
-  // Hero width-fit per locale (DESIGN §6.5): the word should fill 85-100% of the content width.
+  // Hero width-fit per locale (DESIGN §6.5): the word should fill 80-100% of the content width.
   await go('#/');
   const fits = [];
   for (const code of ['en', 'hi', 'bn', 'ta', 'te', 'mr', 'gu', 'kn', 'ml', 'pa']) {
     await evaluate(`document.querySelector('.footer-langs button[lang="${code}"]').click()`);
     await waitFor(`document.documentElement.lang === '${code}'`);
     await sleep(300);
-    const ratio = await evaluate(`(() => { const w = document.querySelector('.hero-word'); const s = w.firstElementChild; return s.getBoundingClientRect().width / w.parentElement.clientWidth; })()`);
+    const ratio = await evaluate(`(() => { const p = document.querySelector('.hero-word-wrap'); const cs = getComputedStyle(p); const s = p.querySelector('.hero-word > span'); return s.getBoundingClientRect().width / (p.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)); })()`);
     fits.push(`${code} ${ratio.toFixed(2)}`);
     check(ratio > 0.8 && ratio <= 1.0, `hero word fills ${Math.round(ratio * 100)}% of the width in ${code}`);
   }
@@ -287,10 +341,32 @@ try {
     check(await waitFor(`[...document.querySelectorAll('.audit-list li')].some((li) => li.textContent.includes('Smoke Helper'))`), "the person sees the helper's visit in their audit log");
   }
 
+  // Accessibility: axe on each page, both themes on home. Any serious or critical issue fails.
+  const axeSource = readFileSync(join(root, 'frontend/node_modules/axe-core/axe.min.js'), 'utf8');
+  await evaluate(axeSource + ';0');
+  const axeRun = async (name) => {
+    const found = await evaluate(`axe.run(document, { resultTypes: ['violations'] }).then((r) => r.violations.filter((v) => ['serious', 'critical'].includes(v.impact)).map((v) => v.id + ' x' + v.nodes.length + ' ' + v.nodes[0].target.join(' ')))`);
+    check(found.length === 0, `axe finds no serious issues on ${name} ${found.join(' | ')}`);
+  };
+  for (const [hash, ready] of [['#/', '.hero-word'], ['#/check', '.q-title'], ['#/schemes', '.scheme-card'], ['#/scheme/pm-kisan', '.panel-when'], ['#/checklist', '.page-head'], ['#/applications', '.page-head'], ['#/help', '.page-head'], ['#/family', '.member-card'], ['#/privacy', '.privacy-points'], ['#/grievance', '.page-head']]) {
+    await go(hash);
+    await waitFor(`!!document.querySelector('${ready}')`);
+    await sleep(900); // scroll reveals and colour transitions settle
+    await evaluate(`document.querySelectorAll('.reveal, [data-reveal]').forEach((e) => e.classList.add('in', 'is-in', 'is-visible'))`);
+    await axeRun(hash);
+  }
+  await go('#/');
+  await evaluate(`document.documentElement.dataset.theme = 'dark'`);
+  await sleep(600);
+  await axeRun('#/ (dark)');
+  await evaluate(`delete document.documentElement.dataset.theme`);
+
   // A key on screen means a missing translation (t() falls back to the key itself).
   const untranslated = await evaluate(`fetch('locales/en.json').then((r) => r.json()).then((en) => { const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); const out = []; while (w.nextNode()) { const s = w.currentNode.textContent.trim(); if (s && s in en) out.push(s); } return out; })`);
   check(untranslated.length === 0, `no raw i18n keys on screen ${untranslated.join(', ')}`);
-  check(consoleErrors.length === 0, `no console errors${consoleErrors.length ? ': ' + consoleErrors.join(' | ') : ''}`);
+  // Tesseract's own engine prints these for parameters its language files don't use; harmless.
+  const realErrors = consoleErrors.filter((e) => !/^Warning: Parameter not found: \w+ .*\/ocr\/tesseract-core/.test(e));
+  check(realErrors.length === 0, `no console errors${realErrors.length ? ': ' + realErrors.join(' | ') : ''}`);
 } catch (err) {
   failures.push(err.message);
   console.error(err);
@@ -302,6 +378,9 @@ try {
   }
   chrome.kill();
   server.kill();
+  // Chrome holds the profile until it exits; then delete it, or every run leaves ~50 MB in the temp folder.
+  await new Promise((resolve) => (chrome.exitCode !== null ? resolve() : chrome.once('exit', resolve)));
+  rmSync(profileDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 });
 }
 console.log(failures.length ? `\n${failures.length} failure(s)` : '\nsmoke test passed');
 process.exit(failures.length ? 1 : 0);

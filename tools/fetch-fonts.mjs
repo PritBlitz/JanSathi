@@ -1,5 +1,6 @@
 // Downloads the self-hosted fonts (SIL Open Font License) into frontend/public/fonts/ and writes frontend/public/css/fonts.css.
-// Only the subsets JanSathi needs: Latin for Anton and Noto Sans, the script subset for each Indic Noto family.
+// Only the subsets JanSathi needs: Latin for Anton (hero word), Plus Jakarta Sans (UI) and Bricolage Grotesque (headings), the script
+// subset for each Indic Noto family (UI and headings in that script).
 // Each @font-face keeps Google's unicode-range, so a browser downloads only the scripts on the page.
 // Usage: node tools/fetch-fonts.mjs   (needs network; re-run to update)
 import { writeFileSync, mkdirSync } from 'node:fs';
@@ -10,7 +11,8 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36';
 const FAMILIES = [
   { family: 'Anton', query: 'Anton', subset: 'latin', file: 'anton-latin' },
-  { family: 'Noto Sans', query: 'Noto+Sans:wght@400..800', subset: 'latin', file: 'notosans-latin' },
+  { family: 'Plus Jakarta Sans', query: 'Plus+Jakarta+Sans:wght@400..800', subset: 'latin', file: 'jakarta-latin' },
+  { family: 'Bricolage Grotesque', query: 'Bricolage+Grotesque:wght@500..800', subset: 'latin', file: 'bricolage-latin' },
   { family: 'Noto Sans Devanagari', query: 'Noto+Sans+Devanagari:wght@400..900', subset: 'devanagari', file: 'notosans-devanagari' },
   { family: 'Noto Sans Bengali', query: 'Noto+Sans+Bengali:wght@400..900', subset: 'bengali', file: 'notosans-bengali' },
   { family: 'Noto Sans Tamil', query: 'Noto+Sans+Tamil:wght@400..900', subset: 'tamil', file: 'notosans-tamil' },
