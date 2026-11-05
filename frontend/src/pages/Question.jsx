@@ -149,7 +149,7 @@ export function Question() {
           >
             <Icon name="speaker" size={18} /> {t('q.speak')}
           </button>
-          {!q.exact && canListen() && (
+          {!q.exact && canListen(speech) && (
             <button className="btn btn-outline btn-sm" type="button" onClick={mic}>
               <Icon name="mic" size={18} /> {t('q.mic')}
             </button>

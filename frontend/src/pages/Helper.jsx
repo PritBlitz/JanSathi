@@ -241,6 +241,7 @@ function CaseView({ id }) {
                 ))}
               </dl>
             )}
+            {m.masked?.length > 0 && <p className="small muted">{t('helper.masked', { fields: m.masked.map((f) => t(`q.${f}`)).join(', ') })}</p>}
             <h3 className="label-strong">{t('helper.results')}</h3>
             {ORDER.filter((k) => groups[k].length).map((k) => (
               <div key={k} className="helper-group">
@@ -264,6 +265,21 @@ function CaseView({ id }) {
         );
       })}
 
+      {Object.keys(view.applications || {}).length > 0 && (
+        <section className="panel helper-member">
+          <h2 className="panel-title">{t('apps.title')}</h2>
+          <ul className="doc-list">
+            {Object.entries(view.applications).map(([slug, a]) => (
+              <li key={slug}>
+                <span>
+                  {schemeBy(slug) ? schemeText(schemeBy(slug), 'name', lang) : slug}: {t(`apps.${a.status}`)}
+                  {a.reason ? ` (${a.reason})` : ''}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       {view.checklist && (
         <section className="panel helper-member">
           <h2 className="panel-title">{t('helper.checklist')}</h2>

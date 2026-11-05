@@ -38,6 +38,15 @@ export async function loadBundle({ wantPreview }) {
   return { bundle, preview: true, source: 'static' };
 }
 
+/** Machine-translated scheme text for a language; null when there is none. */
+export async function loadTranslations(lang) {
+  try {
+    return await (await fetchJson(`${base}data/translations/${lang}.json`)).json();
+  } catch {
+    return null;
+  }
+}
+
 /** One state's schemes (public/data/states/<code>.json, or .preview.json while in preview). */
 export async function loadStateSchemes(code, preview) {
   const res = await fetchJson(`${base}data/states/${code}${preview ? '.preview' : ''}.json`);
@@ -52,6 +61,27 @@ export async function reportApi(report) {
     return true;
   } catch {
     return false;
+  }
+}
+
+/** Anonymous outcome (brief §6.7): sent only when the person taps share. Carries no identity. */
+export async function shareOutcome(outcome) {
+  if (!hasApi()) return false;
+  try {
+    await fetchJson(apiUrl('/outcomes'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(outcome) });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/** What people reported for a scheme; the server answers only when at least 10 did. */
+export async function loadOutcomes(slug) {
+  if (!hasApi()) return null;
+  try {
+    return await (await fetchJson(apiUrl(`/schemes/${slug}/outcomes`))).json();
+  } catch {
+    return null;
   }
 }
 

@@ -9,12 +9,18 @@ import { useApp } from '../lib/app-state.jsx';
 import { useSay } from '../lib/use-speech.js';
 import { REPORT_URL, inEnglish, langProps, schemeText } from '../lib/scheme.js';
 import { reportApi } from '../lib/data.js';
+import { Timeline } from '../components/SchemeTimeline.jsx';
+import { isMachineTranslated } from '../lib/translated.js';
+import { useState } from 'react';
+import { Outcomes } from '../components/Outcomes.jsx';
+import { TrackApplication } from '../components/TrackApplication.jsx';
 
 export function Scheme({ slug }) {
   const { t, lang, pick, formatNumber, formatDate } = useI18n();
   const { bundle, result, schemeBy, answered, checklist, addToChecklist, showNotice } = useApp();
   const say = useSay();
   const s = schemeBy(slug);
+  const [original, setOriginal] = useState(false);
 
   if (!s) {
     return (
@@ -34,7 +40,8 @@ export function Scheme({ slug }) {
   const r = result.results.find((x) => x.scheme === s.slug);
   const srcIndex = new Map(s.sources.map((src, i) => [src.id, i + 1]));
   const added = checklist.schemes.includes(s.slug);
-  const text = (key) => schemeText(s, key, lang);
+  const machine = isMachineTranslated(s, lang);
+  const text = (key) => schemeText(s, key, original ? 'en' : lang);
 
   function cite(id, locator) {
     const src = s.sources.find((x) => x.id === id);
@@ -95,6 +102,14 @@ export function Scheme({ slug }) {
         {s.verification?.method === 'ai-dual-review' && <Warn>{t('trust.ai_checked_long', { date: formatDate(s.verification.date) })}</Warn>}
         {s.status !== 'published' ? <Warn>{t('trust.draft_warning')}</Warn> : r.stale && <Warn>{t('trust.stale_warning')}</Warn>}
         {inEnglish(s, lang) && <p className="small muted">{t('detail.in_english')}</p>}
+        {machine && (
+          <p className="small muted">
+            {t('detail.machine_translated')}{' '}
+            <button className="link-btn" type="button" onClick={() => setOriginal(!original)}>
+              {t(original ? 'detail.show_translation' : 'detail.show_english')}
+            </button>
+          </p>
+        )}
         <div className="actions">
           <a className="btn btn-primary" href={s.official_apply_url} rel="noopener noreferrer" target="_blank">
             {t('detail.apply')} <Icon name="arrowUpRight" size={18} />
@@ -117,6 +132,7 @@ export function Scheme({ slug }) {
           <h2 className="panel-title">{t('detail.how')}</h2>
           <p>{text('how_to_apply')}</p>
         </Reveal>
+        <Timeline scheme={s} cite={cite} />
         <Reveal className="panel panel-rules">
           <h2 className="panel-title">{t('detail.rules')}</h2>
           <ul className="trace trace-detail">
@@ -174,6 +190,8 @@ export function Scheme({ slug }) {
             )}
           </button>
         </Reveal>
+        <TrackApplication slug={s.slug} />
+        <Outcomes slug={s.slug} />
         <Reveal className="panel panel-sources">
           <h2 className="panel-title">{t('detail.sources')}</h2>
           <ol className="source-list">

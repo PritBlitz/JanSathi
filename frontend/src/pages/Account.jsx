@@ -7,8 +7,10 @@ import { useI18n } from '../lib/i18n-context.jsx';
 import { useApp } from '../lib/app-state.jsx';
 import { useSession } from '../lib/session.jsx';
 import { go } from '../lib/router.js';
+import { Warn } from '../components/Trust.jsx';
+import { ReminderChannels, ReportHelper } from '../components/AccountExtras.jsx';
 
-const SCOPES = ['profile', 'checklist', 'conversation'];
+const SCOPES = ['profile', 'sensitive', 'checklist', 'conversation'];
 const DURATIONS = [2, 24, 72, 168];
 
 export function Account() {
@@ -21,8 +23,10 @@ export function Account() {
   const [scopes, setScopes] = useState(['profile', 'checklist']);
   const [hours, setHours] = useState(24);
   const [code, setCode] = useState(null);
+  const [onDevice, setOnDevice] = useState(false);
 
   const load = useCallback(() => {
+    session.call('/me/restrictions').then((r) => setOnDevice(!!r.on_device_only)).catch(() => {});
     session.call('/me/shares').then(setShares).catch(() => {});
     session.call('/me/notes').then(setNotes).catch(() => {});
     session.call('/me/audit').then(setAudit).catch(() => {});
@@ -76,6 +80,9 @@ export function Account() {
         </div>
       </PageHead>
 
+      {onDevice && <Warn>{t('account.on_device_only')}</Warn>}
+      {!onDevice && <ReminderChannels />}
+      {!onDevice && (
       <section className="panel account-section" aria-labelledby="share-title">
         <h2 className="panel-title" id="share-title">
           {t('share.title')}
@@ -93,6 +100,8 @@ export function Account() {
               {t(`share.scope_${s}`)}
             </label>
           ))}
+          {scopes.includes('checklist') && <p className="small muted">{t('share.checklist_note')}</p>}
+          {scopes.includes('conversation') && !scopes.includes('sensitive') && <p className="small muted">{t('share.conversation_note')}</p>}
         </fieldset>
         <label className="label-strong" htmlFor="share-hours">
           {t('share.duration')}
@@ -123,6 +132,7 @@ export function Account() {
         )}
       </section>
 
+      )}
       <section className="account-section" aria-labelledby="shares-title">
         <h2 className="group-title" id="shares-title">
           {t('share.active')}
@@ -166,6 +176,7 @@ export function Account() {
         </section>
       )}
 
+      <ReportHelper />
       <section className="account-section" aria-labelledby="audit-title">
         <h2 className="group-title" id="audit-title">
           {t('audit.title')}

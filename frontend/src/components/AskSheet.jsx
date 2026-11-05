@@ -26,7 +26,7 @@ export function AskSheet({ open, onClose }) {
     if (!d) return;
     if (open && !d.open) {
       setFound(null);
-      setStatus(canListen() ? '' : t('ask.unsupported'));
+      setStatus(canListen(speech) ? '' : t('ask.unsupported'));
       if (d.showModal) d.showModal();
       else d.setAttribute('open', '');
       // Focus on open, not on mount: autoFocus inside the closed dialog forced a layout at startup.
@@ -74,7 +74,7 @@ export function AskSheet({ open, onClose }) {
           <Icon name="close" />
         </button>
       </div>
-      {canListen() && (
+      {canListen(speech) && (
         <button className={`mic-big ${listening ? 'listening' : ''}`} type="button" aria-label={t('ask.mic')} onClick={mic}>
           <Icon name="mic" size={40} />
         </button>

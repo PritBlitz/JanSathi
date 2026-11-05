@@ -7,6 +7,7 @@ import { useI18n } from './lib/i18n-context.jsx';
 import { useApp } from './lib/app-state.jsx';
 import { useRoute } from './lib/router.js';
 import { stop } from './lib/speech.js';
+import { useReminders } from './lib/reminders.js';
 import { Home } from './pages/Home.jsx';
 
 const named = (load, name) => lazy(() => load().then((m) => ({ default: m[name] })));
@@ -16,7 +17,10 @@ const Scheme = named(() => import('./pages/Scheme.jsx'), 'Scheme');
 const Schemes = named(() => import('./pages/Pages.jsx'), 'Schemes');
 const Checklist = named(() => import('./pages/Pages.jsx'), 'Checklist');
 const Search = named(() => import('./pages/Pages.jsx'), 'Search');
-const Help = named(() => import('./pages/Pages.jsx'), 'Help');
+const Help = named(() => import('./pages/Nearby.jsx'), 'Nearby');
+const Admin = named(() => import('./pages/Admin.jsx'), 'Admin');
+const Grievance = named(() => import('./pages/Grievance.jsx'), 'Grievance');
+const Applications = named(() => import('./pages/Applications.jsx'), 'Applications');
 const Privacy = named(() => import('./pages/Pages.jsx'), 'Privacy');
 const Family = named(() => import('./pages/Family.jsx'), 'Family');
 const Slip = named(() => import('./pages/Slip.jsx'), 'Slip');
@@ -55,6 +59,12 @@ function Page({ route, onAsk }) {
       return <Account />;
     case 'helper':
       return <Helper caseId={route.arg} />;
+    case 'grievance':
+      return <Grievance />;
+    case 'admin':
+      return <Admin />;
+    case 'applications':
+      return <Applications />;
     case 'help':
       return <Help />;
     case 'privacy':
@@ -68,6 +78,7 @@ export function App() {
   const { t } = useI18n();
   const { preview, showNotice } = useApp();
   const route = useRoute();
+  useReminders();
   const [asking, setAsking] = useState(false);
   const main = useRef(null);
   const askLoaded = useRef(false);

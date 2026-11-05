@@ -15,31 +15,34 @@ const NAV = [
   { href: '#/how', key: 'nav.how', route: 'how' },
   { href: '#/family', key: 'nav.family', route: 'family' },
   { href: '#/checklist', key: 'nav.checklist', route: 'checklist' },
+  { href: '#/applications', key: 'nav.applications', route: 'applications', ifApplications: true },
   { href: '#/changes', key: 'nav.changes', route: 'changes', ifChanges: true },
   { href: '#/help', key: 'nav.help', route: 'help' },
 ];
 
 /** Nav entries to show: 'What changed' only when content records a change. */
 function useNav() {
-  const { bundle } = useApp();
+  const { bundle, applications } = useApp();
   const session = useSession();
+  const hasApplications = Object.keys(applications).length > 0;
   const hasChanges = bundle.schemes.some((s) => s.changes?.length);
-  const items = NAV.filter((n) => (!n.ifChanges || hasChanges) && (!n.needsApi || session.available));
+  const items = NAV.filter((n) => (!n.ifChanges || hasChanges) && (!n.ifApplications || hasApplications) && (!n.needsApi || session.available));
   if (session.user?.role === 'volunteer') items.push({ href: '#/helper', key: 'nav.helper', route: 'helper' });
   return items;
 }
 
-const THEMES = ['system', 'light', 'dark'];
-const THEME_ICON = { system: 'auto', light: 'sun', dark: 'moon' };
+// Light on every device unless the person picks dark here (DESIGN §3); a saved 'system' reads as light.
+const THEMES = ['light', 'dark'];
+const THEME_ICON = { light: 'sun', dark: 'moon' };
 
 export function applyTheme(theme) {
-  if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+  if (theme === 'dark') document.documentElement.dataset.theme = 'dark';
   else delete document.documentElement.dataset.theme;
 }
 
 function ThemeButton() {
   const { t } = useI18n();
-  const [theme, setTheme] = useState(() => store.get(KEYS.theme) || 'system');
+  const [theme, setTheme] = useState(() => (store.get(KEYS.theme) === 'dark' ? 'dark' : 'light'));
   const next = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
   return (
     <button
@@ -263,6 +266,9 @@ export function Footer() {
               <a href="#/privacy">{t('footer.privacy')}</a>
             </li>
             <li>
+              <a href="#/grievance">{t('grievance.title')}</a>
+            </li>
+            <li>
               <a href="https://github.com/PritBlitz/JanSathi" rel="noopener">
                 {t('footer.source')}
               </a>
@@ -295,9 +301,7 @@ export function Footer() {
           <input type="checkbox" checked={reduced} onChange={(e) => setReduced(e.target.checked)} /> <span>{t('footer.reduce_motion')}</span>
         </label>
       </div>
-      <p className="footer-word" aria-hidden="true">
-        JanSathi
-      </p>
+      <p className="footer-word" aria-hidden="true" data-word="JanSathi" />
     </footer>
   );
 }

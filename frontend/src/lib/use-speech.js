@@ -10,7 +10,7 @@ export function useSay() {
   const { showNotice } = useApp();
   return useCallback(
     (text) => {
-      if (!canSpeak()) {
+      if (!canSpeak(speech)) {
         showNotice(t('speech.unsupported'));
         return false;
       }

@@ -8,6 +8,7 @@ import { useSay } from '../lib/use-speech.js';
 import { schemeText } from '../lib/scheme.js';
 import { go } from '../lib/router.js';
 import { MemberSwitch } from './Family.jsx';
+import { RelationNotes } from '../components/SchemeTimeline.jsx';
 
 const ORDER = ['LIKELY_ELIGIBLE', 'NEED_MORE_INFO', 'NOT_ELIGIBLE'];
 
@@ -75,6 +76,8 @@ export function Results() {
           </a>
         ))}
       </nav>
+
+      <RelationNotes />
 
       {ORDER.filter((k) => groups[k].length).map((k) => (
         <section className="results-group" key={k} id={`group-${RESULT_KEY[k]}`} aria-labelledby={`group-title-${k}`}>

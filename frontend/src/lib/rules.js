@@ -261,7 +261,8 @@ export function evaluateScheme(scheme, profile, fields, { as_of } = {}) {
     for (const f of r.missing_fields) if (!missing.includes(f)) missing.push(f);
   }
 
-  let stale = scheme.status !== 'published';
+  // changed_at: the re-check found this source different and no reviewer has looked yet (§9.5).
+  let stale = scheme.status !== 'published' || (scheme.sources || []).some((src) => src.changed_at);
   const reverify = scheme.reverify_days ?? 180;
   for (const r of hard) {
     const src = sources.get(r.source);

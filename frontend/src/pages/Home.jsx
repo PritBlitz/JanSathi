@@ -10,16 +10,21 @@ import { useApp } from '../lib/app-state.jsx';
 import { LANGS } from '../lib/i18n.js';
 import { CATEGORY_ICONS, langProps, schemeText } from '../lib/scheme.js';
 
+// The photo inside the hero word: volunteers making rotis together at a community kitchen in Delhi.
+// CC BY-SA 2.0 asks for credit where the photo is shown (frontend/public/img/CREDITS.md).
+const PHOTO_SOURCE = 'https://commons.wikimedia.org/wiki/File:India-0410_-_Give_Back_by_Helping_Others_(2215104870).jpg';
+
 function Hero({ onAsk }) {
   const { t, lang } = useI18n();
   const { bundle, preview } = useApp();
   const [hasImage, setHasImage] = useState(false);
   const rail = useRef(null);
 
+  // Fill the letters only once the photo is here (the same file the CSS picks), so the word is never invisible.
   useEffect(() => {
     const img = new Image();
     img.onload = () => setHasImage(true);
-    img.src = `${import.meta.env.BASE_URL}img/collage.svg`;
+    img.src = `${import.meta.env.BASE_URL}img/hero-band-${matchMedia('(max-width: 799px)').matches ? 800 : 1600}.webp`;
   }, []);
 
   // Published schemes have verified sources. In preview mode, drafts are shown with their warning.
@@ -37,6 +42,11 @@ function Hero({ onAsk }) {
           <span aria-hidden="true">{t('hero.display')}</span>
         </h1>
       </div>
+      <p className="hero-credit">
+        <a href={PHOTO_SOURCE} target="_blank" rel="noopener">
+          {t('hero.photo')}: Dennis G. Jarvis, CC BY-SA 2.0
+        </a>
+      </p>
       <p className="hero-lead">{t('hero.lead')}</p>
       <div className="hero-ctas">
         <a className="btn btn-primary btn-hero" href="#/check">

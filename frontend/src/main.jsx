@@ -6,6 +6,7 @@ import { SessionProvider } from './lib/session.jsx';
 import { I18nProvider, loadAll } from './lib/i18n-context.jsx';
 import { detectLang, store } from './lib/i18n.js';
 import { loadBundle } from './lib/data.js';
+import { loadServerSpeech } from './lib/speech.js';
 import { applyTheme } from './components/Chrome.jsx';
 import './styles/tokens.css';
 import './styles/base.css';
@@ -22,6 +23,7 @@ async function start() {
   const wantPreview = new URLSearchParams(location.search).has('preview');
   const [i18n, data] = await Promise.all([loadAll(detectLang()), loadBundle({ wantPreview })]);
   document.getElementById('boot')?.remove();
+  loadServerSpeech();
 
   createRoot(document.getElementById('root')).render(
     <StrictMode>

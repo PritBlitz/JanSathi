@@ -1,8 +1,10 @@
-// Smaller pages: scheme list, checklist, search, nearby help, privacy.
+// Smaller pages: scheme list, checklist, search, privacy.
 import { useState } from 'react';
 import { Icon } from '../components/Icon.jsx';
 import { PageHead, SchemeCard, EmptyState } from '../components/SchemeParts.jsx';
 import { Warn } from '../components/Trust.jsx';
+import { DocumentCheck } from '../components/DocumentCheck.jsx';
+import { ReminderSwitch } from '../components/ReminderSwitch.jsx';
 import { useI18n } from '../lib/i18n-context.jsx';
 import { useApp } from '../lib/app-state.jsx';
 import { CATEGORY_ICONS, schemeText } from '../lib/scheme.js';
@@ -39,7 +41,8 @@ export function Schemes({ category }) {
 
 export function Checklist() {
   const { t, lang, pick, formatNumber } = useI18n();
-  const { bundle, checklist, schemeBy, setHave, clearChecklist } = useApp();
+  const { bundle, checklist, schemeBy, setHave, clearChecklist, members } = useApp();
+  const state = members[0]?.profile.state;
   const slugs = checklist.schemes.filter((slug) => schemeBy(slug));
 
   if (!slugs.length) {
@@ -89,7 +92,11 @@ export function Checklist() {
           <a className="btn btn-primary" href="#/slip">
             {t('slip.button')} <Icon name="arrow" size={18} />
           </a>
+          <a className="btn btn-outline" href="#/applications">
+            {t('apps.title')}
+          </a>
         </div>
+        <ReminderSwitch />
       </div>
       {ready.length > 0 && (
         <ul className="ready-list" aria-label={t('checklist.ready')}>
@@ -105,7 +112,9 @@ export function Checklist() {
       )}
       <ul className="check-list">
         {items.map((d, i) => {
-          const doc = bundle.documents.documents[d.code] || {};
+          const general = bundle.documents.documents[d.code] || {};
+          // The household's state has its own steps for some documents; each carries its own source.
+          const doc = { ...general, ...(general.how_to_by_state?.[state] || {}) };
           const v = checklist.have[d.code];
           const name = pick(doc.name).text;
           return (
@@ -139,8 +148,16 @@ export function Checklist() {
                     </a>
                   </p>
                 )}
+                {[doc.source, ...(doc.more_sources || [])].filter((src) => src?.url).map((src) => (
+                  <p className="small" key={src.url}>
+                    <a href={src.url} rel="noopener noreferrer" target="_blank">
+                      {src.publisher || src.url} <Icon name="arrowUpRight" size={14} />
+                    </a>
+                  </p>
+                ))}
                 {doc.source && !doc.source.verified_at && <p className="small muted">{t('source.not_verified')}</p>}
               </details>
+              <DocumentCheck code={d.code} name={name} />
             </li>
           );
         })}
@@ -191,15 +208,6 @@ export function Search({ query }) {
         ) : (
           <Warn>{t('search.none')}</Warn>
         ))}
-    </div>
-  );
-}
-
-export function Help() {
-  const { t } = useI18n();
-  return (
-    <div className="page">
-      <PageHead kicker={t('nav.help')} title={t('help.title')} lead={t('help.body')} />
     </div>
   );
 }

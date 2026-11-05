@@ -225,7 +225,7 @@ export function Guide() {
           {t('guide.placeholder')}
         </label>
         <input id="guide-input" value={text} placeholder={t('guide.placeholder')} autoComplete="off" maxLength={600} onChange={(e) => setText(e.target.value)} />
-        {canListen() && (
+        {canListen(speech) && (
           <button className={`icon-btn ${listening ? 'is-listening' : ''}`} type="button" aria-label={t('guide.mic')} onClick={mic}>
             <Icon name="mic" />
           </button>

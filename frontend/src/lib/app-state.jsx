@@ -6,14 +6,17 @@
 // are answered per person.
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { match } from './rules.js';
+import { PREFS_CACHE, cleanApplication } from './schedule.js';
 import { store } from './i18n.js';
-import { loadStateSchemes } from './data.js';
+import { loadStateSchemes, loadTranslations } from './data.js';
+import { applyTranslations } from './translated.js';
+import { useI18n } from './i18n-context.jsx';
 import { useSession } from './session.jsx';
 
-export const KEYS = { profile: 'jansathi.profile', checklist: 'jansathi.checklist', motion: 'jansathi.motion', theme: 'jansathi.theme' };
+export const KEYS = { profile: 'jansathi.profile', checklist: 'jansathi.checklist', motion: 'jansathi.motion', theme: 'jansathi.theme', applications: 'jansathi.applications', reminders: 'jansathi.reminders' };
 const today = () => new Date().toISOString().slice(0, 10);
 const newId = () => Math.random().toString(36).slice(2, 10);
-const hasAnswers = (h) => h && (h.members || []).some((m) => Object.keys(m.profile || {}).length || (m.skipped || []).length) || (h?.checklist?.schemes || []).length > 0;
+const hasAnswers = (h) => h && (h.members || []).some((m) => Object.keys(m.profile || {}).length || (m.skipped || []).length) || (h?.checklist?.schemes || []).length > 0 || Object.keys(h?.applications || {}).length > 0;
 const emptyMember = (name = null) => ({ id: newId(), name, profile: {}, skipped: [], history: [] });
 
 function readJson(key) {
@@ -32,7 +35,7 @@ function loadSaved() {
   // Version 1 stored one profile; it becomes the first member ("Me").
   if (!members.length) members = [{ ...emptyMember(), profile: p.profile || {}, skipped: p.skipped || [], history: p.history || [] }];
   const active = members.some((m) => m.id === p.active) ? p.active : members[0].id;
-  return { members, active, checklist: { schemes: c.schemes || [], have: c.have || {} } };
+  return { members, active, checklist: { schemes: c.schemes || [], have: c.have || {} }, applications: readJson(KEYS.applications) || {} };
 }
 
 const AppContext = createContext(null);
@@ -42,8 +45,12 @@ export function AppProvider({ data, children }) {
   const [saved, setSaved] = useState(loadSaved);
   const [notice, setNotice] = useState(null);
   const noticeTimer = useRef();
+  const noticeRef = useRef();
   const [voiceMode, setVoiceMode] = useState(false);
   const [stateSchemes, setStateSchemes] = useState({});
+  const { lang, t } = useI18n();
+  const toldOnDevice = useRef(false);
+  const [translations, setTranslations] = useState({});
   const session = useSession();
   const syncTimer = useRef();
   const savedRef = useRef(saved);
@@ -52,6 +59,7 @@ export function AppProvider({ data, children }) {
   const writeLocal = (next) => {
     store.set(KEYS.profile, JSON.stringify({ version: 2, members: next.members, active: next.active }));
     store.set(KEYS.checklist, JSON.stringify(next.checklist));
+    store.set(KEYS.applications, JSON.stringify(next.applications || {}));
   };
 
   // Signed in: the household is also saved (encrypted) on the server, so the guide and any helper
@@ -62,16 +70,25 @@ export function AppProvider({ data, children }) {
       writeLocal(next);
       if (session?.signedIn) {
         clearTimeout(syncTimer.current);
-        syncTimer.current = setTimeout(() => session.call('/me/household', { method: 'PUT', body: next }).catch(() => {}), 800);
+        syncTimer.current = setTimeout(
+          () =>
+            session.call('/me/household', { method: 'PUT', body: next }).catch((e) => {
+              if (e.status === 403 && !toldOnDevice.current) {
+                toldOnDevice.current = true;
+                noticeRef.current?.(t('account.on_device_only'), 12000);
+              }
+            }),
+          800,
+        );
       }
     },
-    [session],
+    [session, t],
   );
 
   /** Takes the household the server returned (after the guide saved answers). */
   const replaceHousehold = useCallback((h) => {
     if (!h?.members?.length) return;
-    const next = { members: h.members, active: h.active, checklist: h.checklist || { schemes: [], have: {} } };
+    const next = { members: h.members, active: h.active, checklist: h.checklist || { schemes: [], have: {} }, applications: h.applications || {} };
     setSaved(next);
     writeLocal(next);
   }, []);
@@ -95,6 +112,7 @@ export function AppProvider({ data, children }) {
     clearTimeout(noticeTimer.current);
     noticeTimer.current = setTimeout(() => setNotice(null), ms);
   }, []);
+  noticeRef.current = showNotice;
 
   // A state's own schemes are a separate file, loaded once the household's state is known.
   const stateCode = saved.members[0]?.profile.state;
@@ -105,10 +123,17 @@ export function AppProvider({ data, children }) {
       .catch(() => {});
   }, [stateCode, bundle, preview, stateSchemes]);
 
+  // Scheme text in the other languages arrives after first paint; until then it shows in English.
+  useEffect(() => {
+    if (!bundle.translations?.includes(lang) || translations[lang] !== undefined) return;
+    loadTranslations(lang).then((tr) => setTranslations((all) => ({ ...all, [lang]: tr })));
+  }, [lang, translations, bundle]);
+
   const value = useMemo(() => {
-    const { members, active, checklist } = saved;
+    const { members, active, checklist, applications = {} } = saved;
     const fields = bundle.fields.fields;
-    const all = { ...bundle, schemes: [...bundle.schemes, ...(stateSchemes[stateCode] || [])] };
+    // Translations change display text only; match() below reads the same rule logic either way.
+    const all = applyTranslations({ ...bundle, schemes: [...bundle.schemes, ...(stateSchemes[stateCode] || [])] }, translations[lang], lang);
     const member = members.find((m) => m.id === active) || members[0];
     const { profile, skipped, history } = member;
     const resultFor = (m) => match(all, m.profile, { skipped: m.skipped, as_of: today() });
@@ -201,6 +226,7 @@ export function AppProvider({ data, children }) {
       skipped,
       history,
       checklist,
+      applications,
       result,
       resultFor,
       schemeBy,
@@ -225,14 +251,24 @@ export function AppProvider({ data, children }) {
         persist({ ...saved, checklist: { ...checklist, schemes: checklist.schemes.includes(slug) ? checklist.schemes : [...checklist.schemes, slug] } }),
       setHave: (code, have) => persist({ ...saved, checklist: { ...checklist, have: { ...checklist.have, [code]: have } } }),
       clearChecklist: () => persist({ ...saved, checklist: { schemes: [], have: {} } }),
+      /** Manual tracking (brief §6.7): the person's own note of where an application stands. */
+      trackApplication(slug, entry) {
+        const clean = cleanApplication(entry, today());
+        if (clean) persist({ ...saved, applications: { ...applications, [slug]: clean } });
+      },
+      stopTracking(slug) {
+        const { [slug]: _gone, ...rest } = applications;
+        persist({ ...saved, applications: rest });
+      },
       deleteAll() {
         for (const k of Object.values(KEYS)) store.remove(k);
         store.remove('jansathi.lang');
         const m = emptyMember();
-        setSaved({ members: [m], active: m.id, checklist: { schemes: [], have: {} } });
+        globalThis.caches?.delete(PREFS_CACHE).catch(() => {});
+        setSaved({ members: [m], active: m.id, checklist: { schemes: [], have: {} }, applications: {} });
       },
     };
-  }, [saved, bundle, preview, source, persist, replaceHousehold, voiceMode, notice, showNotice, stateSchemes, stateCode]);
+  }, [saved, bundle, preview, source, persist, replaceHousehold, voiceMode, notice, showNotice, stateSchemes, stateCode, translations, lang]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
