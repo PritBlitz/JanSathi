@@ -36,6 +36,8 @@ const server = urlArg ? { kill() {} } : spawn(process.execPath, [join(root, 'too
 const profileDir = mkdtempSync(join(tmpdir(), 'jansathi-chrome-'));
 const chrome = spawn(chromePath, [
   '--headless=new', `--remote-debugging-port=${DEBUG_PORT}`, `--user-data-dir=${profileDir}`,
+  // Ubuntu 24.04 runners block Chrome's sandbox; this only ever opens our own build.
+  ...(process.env.CI ? ['--no-sandbox'] : []),
   '--no-first-run', '--no-default-browser-check', `--lang=${langArg}`, 'about:blank',
 ], { stdio: 'ignore' });
 
